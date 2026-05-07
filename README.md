@@ -4,7 +4,7 @@
 > No cloud. No cell towers. No accounts: local coordination, SOS relay, and continuity across nearby nodes.  
 > **Early‑warning system + life‑saving mesh**—an infrastructure‑independent resilience layer, deployable from ordinary phones.
 
-# VitalGuard AI - Infrastructure-Independent Survival Framework (v4.2)
+# VitalGuard AI - Infrastructure-Independent Survival Framework
 
 VitalGuard AI is a **single-file, offline-first** continuity demo that keeps **local decision support** available when **power and connectivity are disrupted** - with **no accounts, no cloud dependency, and no telemetry by design**.
 **UI languages (7):** English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español
