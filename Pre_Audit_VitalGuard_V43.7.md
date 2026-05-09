@@ -1,4 +1,4 @@
-# VitalGuard V4.3.7 Pre-Audit Self-Assessment Summary
+# VitalGuard V4.3.7 Pre-Audit Self-Assessment Report
 
 **Audit Date:** 2026-05-08  
 **Version:** VitalGuard V4.3.7  
