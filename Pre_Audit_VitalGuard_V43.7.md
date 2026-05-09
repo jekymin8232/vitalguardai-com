@@ -1,4 +1,4 @@
-**Early codename:** Stealth AI (later changed to Offline AI) This is fundamentally different from on-device AI.
+This is fundamentally different from on-device AI.
 
 # VitalGuard V4.3.7 Self-Assessment Report
 
