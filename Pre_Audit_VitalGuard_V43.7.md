@@ -1,7 +1,6 @@
 # VitalGuard V4.3.7 Self-Assessment Report
 
-**Early codename:** Stealth AI (later changed to Offline AI) 
-*This is fundamentally different from on-device AI.
+**Early codename:** Stealth AI (later changed to Offline AI) This is fundamentally different from on-device AI.
 
 **Audit Date:** 2026-05-09
 **Version:** VitalGuard V4.3.7  
