@@ -3,7 +3,8 @@
 **Audit Date:** 2026-05-09
 **Version:** VitalGuard V4.3.7  
 **Focus:** Zero-dependency, zero-egress, browser security policy, offline behavior 
-**Early codename:** Stealth AI (later changed to Offline AI)
+
+**Early codename:** Stealth AI (later changed to Offline AI) This is fundamentally different from on-device AI.
 
 ---
 
