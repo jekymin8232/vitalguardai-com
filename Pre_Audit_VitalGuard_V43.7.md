@@ -1,6 +1,5 @@
+# VitalGuard AI V4.3.7 Self-Assessment Report
 This is fundamentally different from on-device AI.
-
-# VitalGuard V4.3.7 Self-Assessment Report
 
 **Audit Date:** 2026-05-09
 **Version:** VitalGuard V4.3.7  
