@@ -18,6 +18,7 @@ This is fundamentally different from on-device AI.
 9. The system must be accessible and understandable to non-specialists.
 10. The AI must not collect unnecessary data, and if any data is stored, users must be able to delete it easily at any time.
 
+**Technology is not the most important thing. Philosophy matters more.**
 ---
 
 ## 1. Executive Summary
