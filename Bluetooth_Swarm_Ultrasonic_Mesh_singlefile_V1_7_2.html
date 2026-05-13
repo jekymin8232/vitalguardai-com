@@ -1,6 +1,6 @@
 <!--
 ===============================================================================
-VITALGUARD CLOSED BETA 1.7.1 (TEST V7.1) FIELD OPERATIONS COMMENT
+VITALGUARD CLOSED BETA 1.7.2 (TEST V7.2) FIELD OPERATIONS COMMENT
 ===============================================================================
 
 © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
@@ -94,7 +94,7 @@ CLOSED BETA 1.7.2 (TEST V7.2)
 - Adds an operator button for virtual field test records next to the existing
   real Field Matrix button. Real hardware evidence is still required for final
   deployment claims.
-- Adds a V7.1 self-test hook confirming the virtual field-test suite is
+- Adds a V7.2 self-test hook confirming the virtual field-test suite is
   registered, and includes virtual field status in the public diagnostic alias.
 
 CBT 1.7.0 TEST V7.0 FULL-STACK REINFORCEMENT
@@ -118,7 +118,7 @@ TEST V7.0 FULL-STACK ACOUSTIC AND LOW-ITEM CLOSURE
   best-effort idle auto-wipe. This clears browser-accessible state, stops local
   radios/audio/flash, rotates identity, and records the limitation that JavaScript
   deletion cannot guarantee forensic erasure outside the browser sandbox.
-- Keeps all new V7-stage behavior inside a Closed Beta 1.7.1 (Test V7.1) build.
+- Keeps all new V7-stage behavior inside a Closed Beta 1.7.2 (Test V7.2) build.
   This is mature enough to represent a V7 test stage, but still closed-beta and
   not recommended for broad public deployment without hardware field evidence.
 
@@ -159,7 +159,7 @@ CRITICAL FIXES
   comment, HTML meta tags, ETHICAL_MANIFEST, visible UI footer, and sanitized
   audit exports.
 - SOS Query Board now displays real native-script emergency text rather than
-  English placeholders. CBT 1.7.1 (Test V7.1) adds Bengali, Rohingya Latin transliteration, Urdu,
+  English placeholders. CBT 1.7.2 (Test V7.2) adds Bengali, Rohingya Latin transliteration, Urdu,
   and Swahili for refugee and field deployments. Arabic and Urdu render right-to-left.
 - AudioContext state is monitored, resumed from a user gesture where possible,
   and recorded in local field evidence. First-beacon silence from suspended audio
@@ -191,7 +191,7 @@ PRESERVED FROM V5.0
   AI-Coder algorithms, Field Evidence Matrix, and explicit browser BLE TX honesty.
 
 OPERATIONAL LIMITS
-VitalGuard CBT 1.7.1 (Test V7.1) is not a certified rescue device, not a medical device, not a
+VitalGuard CBT 1.7.2 (Test V7.2) is not a certified rescue device, not a medical device, not a
 law-enforcement product, and not a guarantee of detection or delivery. BLE RSSI
 is approximate, browser background execution is limited, browser BLE advertisement
 TX usually requires a native bridge, and JavaScript deletion is browser-sandbox
@@ -225,9 +225,9 @@ scoring, and helps rescuers move toward a general area. It should never be used
 for coercive tracking, surveillance, profiling, policing, military targeting,
 commercial data collection, or persistent identity reconstruction.
 
-Closed Beta 1.7.1 (Test V7.1) was created to address the main weaknesses found in the prior V3.0 review.
+Closed Beta 1.7.2 (Test V7.2) was created to address the main weaknesses found in the prior V3.0 review.
 First, every style selector is scoped below the local module container. This means
-that CBT 1.7.1 (Test V7.1) can be pasted into another document without leaking global style rules
+that CBT 1.7.2 (Test V7.2) can be pasted into another document without leaking global style rules
 into the host page. There is no global page reset. There is no unscoped selector.
 The style layer is intentionally conservative because review teams often inspect
 single-file tools for unintended interference with surrounding pages.
@@ -237,9 +237,9 @@ makes the file easier for security reviewers, civil-society partners, field
 operators, and funding reviewers to audit. The system avoids hidden language
 switching in the operator interface and keeps all warnings explicit.
 
-Third, CBT 1.7.1 (Test V7.1) uses recursive sanitization. A shallow filter can miss personally
+Third, CBT 1.7.2 (Test V7.2) uses recursive sanitization. A shallow filter can miss personally
 identifying content buried inside nested reports, arrays, diagnostic objects, or
-operator notes. CBT 1.7.1 (Test V7.1) recursively walks objects, limits depth, handles circular
+operator notes. CBT 1.7.2 (Test V7.2) recursively walks objects, limits depth, handles circular
 references, removes dangerous key names, redacts email-like strings, redacts
 phone-like strings, redacts hardware-address-like strings, and blocks precise
 coordinate fields from normal exports. Emergency coordinates should be handled
@@ -247,7 +247,7 @@ through a lawful rescue workflow, not casual diagnostic export.
 
 Fourth, the node identifier is ephemeral by default. A rescue deployment may need
 a stable pseudonym for a fixed Sentinel node, but that should be an explicit
-operator choice. CBT 1.7.1 (Test V7.1) starts with a session-only identity and a rotating privacy
+operator choice. CBT 1.7.2 (Test V7.2) starts with a session-only identity and a rotating privacy
 salt. Operators can rotate both at any time. This is important because persistent
 BLE identity would create unnecessary surveillance risk.
 
@@ -259,28 +259,28 @@ Bayesian Optimization, and Isolation Forest. They are lightweight and readable.
 They are used for local scoring, channel selection, anomaly detection, and tuning
 rather than for any claim of certified medical or rescue automation.
 
-Sixth, CBT 1.7.1 (Test V7.1) records field evidence without overstating it. The Field Matrix stores
+Sixth, CBT 1.7.2 (Test V7.2) records field evidence without overstating it. The Field Matrix stores
 local evidence for browser capability, local-only network egress blocking,
 recursive sanitization, deletion dry-run behavior, and manual field-test slots.
 It does not convert a browser test into a certification claim. It simply gives
 operators and reviewers a concrete local record of what was checked.
 
-Seventh, CBT 1.7.1 (Test V7.1) is honest about browser BLE transmit limitations. Browsers commonly
+Seventh, CBT 1.7.2 (Test V7.2) is honest about browser BLE transmit limitations. Browsers commonly
 support BLE scanning and some GATT operations better than they support general
 BLE advertisement transmission. This file therefore separates transmit into four
 paths: native bridge hook, GATT peer write, fixed BLE beacon hardware operated
 outside the browser, and acoustic fallback. When the browser cannot transmit BLE
-advertisements directly, CBT 1.7.1 (Test V7.1) records the limitation instead of pretending that a
+advertisements directly, CBT 1.7.2 (Test V7.2) records the limitation instead of pretending that a
 universal browser-native transmit API exists.
 
-Eighth, CBT 1.7.1 (Test V7.1) is honest about single-file offline limits. A robust cache-first PWA
+Eighth, CBT 1.7.2 (Test V7.2) is honest about single-file offline limits. A robust cache-first PWA
 usually needs a separate service-worker file served from the same origin. Because
-this requested build is strictly one HTML file, CBT 1.7.1 (Test V7.1) keeps the single-file audit
+this requested build is strictly one HTML file, CBT 1.7.2 (Test V7.2) keeps the single-file audit
 benefit and documents the production mitigation: use a split deployment with a
 separate sw.js file, or use a trusted native wrapper for long-running unattended
 operation. This keeps the review claim narrow, testable, and defensible.
 
-Ninth, CBT 1.7.1 (Test V7.1) treats deletion as best-effort browser deletion. JavaScript can clear
+Ninth, CBT 1.7.2 (Test V7.2) treats deletion as best-effort browser deletion. JavaScript can clear
 IndexedDB, localStorage, sessionStorage, timers, owned typed arrays, local maps,
 scan handles, audio handles, queues, and logs. It can overwrite buffers that it
 owns. It cannot guarantee physical destruction of every browser-engine copy,
@@ -340,12 +340,12 @@ coordination under infrastructure failure when deployed responsibly.
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' blob: data:; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self' blob:">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(self), geolocation=(self), bluetooth=(self), accelerometer=(self), gyroscope=(self), magnetometer=(self)">
-<title>VitalGuard Bluetooth Swarm + Ultrasonic Mesh — Closed Beta 1.7.1 (Test V7.1)</title>
+<title>VitalGuard Bluetooth Swarm + Ultrasonic Mesh — Closed Beta 1.7.2 (Test V7.2)</title>
 <meta name="author" content="Morgan J. (Gyu-min Jeon) — M-Corp Ethical AI">
 <meta name="copyright" content="© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI">
 <meta name="license" content="M-Corp Ethical AI License (Hippocratic 3.0 derivative)">
 <meta name="license-scope" content="civilian, agricultural, humanitarian use ONLY">
-<meta name="description" content="VitalGuard Closed Beta 1.7.1 (Test V7.1) single-file offline humanitarian BLE/acoustic rescue mesh with V7-stage Goertzel/TDMA acoustic fallback, URL debug mode, idle auto-wipe, local-only operation, and zero external dependencies.">
+<meta name="description" content="VitalGuard Closed Beta 1.7.2 (Test V7.2) single-file offline humanitarian BLE/acoustic rescue mesh with V7-stage Goertzel/TDMA acoustic fallback, URL debug mode, idle auto-wipe, local-only operation, and zero external dependencies.">
 <style id="vg6-scoped-style">
 #vg6-root{--vg-bg:#030705;--vg-panel:#0a1711;--vg-panel-2:#10221a;--vg-panel-3:#172d24;--vg-line:#284437;--vg-line-2:#396858;--vg-text:#f2fff9;--vg-muted:#acd2c0;--vg-dim:#7e9c8d;--vg-good:#56ee95;--vg-warn:#ffd36f;--vg-bad:#ff7184;--vg-info:#72dcff;--vg-violet:#c2adff;--vg-shadow:0 18px 56px rgba(0,0,0,.42);--vg-radius:18px;--vg-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:100vh;margin:0;background:radial-gradient(circle at 8% -6%,#1f4b36 0,#06120d 42%,#020403 100%);color:var(--vg-text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.35}
 #vg6-root *{box-sizing:border-box}
@@ -455,7 +455,7 @@ coordination under infrastructure failure when deployed responsibly.
 #vg6-root .vg6-ltr{direction:ltr;text-align:left}
 
 /* ==========================================================================
-   CBT 1.7.1 (Test V7.1) reinforcement styles: all selectors stay scoped to #vg6-root.
+   CBT 1.7.2 (Test V7.2) reinforcement styles: all selectors stay scoped to #vg6-root.
    MiniChart and QR output use SVG; there is no canvas, iframe, embed, object,
    remote display panel, source-display area, CDN, or external asset.
    ========================================================================== */
@@ -482,7 +482,7 @@ coordination under infrastructure failure when deployed responsibly.
   <div class="vg6-wrap">
     <section class="vg6-hero" aria-label="VitalGuard Bluetooth Swarm Ultrasonic Mesh Closed Beta 1.7.0 Test V7.0">
       <div class="vg6-title">
-        <h1>VitalGuard Bluetooth Swarm + Ultrasonic Mesh Closed Beta 1.7.1 (Test V7.1)</h1>
+        <h1>VitalGuard Bluetooth Swarm + Ultrasonic Mesh Closed Beta 1.7.2 (Test V7.2)</h1>
         <p>Single-file offline rescue mesh for humanitarian continuity. Fully scoped CSS, local-only state, passive BLE detection, ethical rescue scoring, native BLE advertising bridge separation, acoustic fallback, field evidence recording, and explicit browser limitation disclosure.</p>
         <div class="vg6-badges" aria-label="build properties">
           <span class="vg6-badge vg6-good">No external libraries</span>
@@ -490,7 +490,7 @@ coordination under infrastructure failure when deployed responsibly.
           <span class="vg6-badge vg6-good">Scoped CSS</span>
           <span class="vg6-badge vg6-good">Recursive sanitizer</span>
           <span class="vg6-badge vg6-warn">Browser BLE TX gated</span>
-          <span class="vg6-badge">CBT 1.7.1 (Test V7.1) reinforced audit build</span>
+          <span class="vg6-badge">CBT 1.7.2 (Test V7.2) reinforced audit build</span>
         </div>
       </div>
       <div class="vg6-node">
@@ -519,7 +519,7 @@ coordination under infrastructure failure when deployed responsibly.
             <div class="vg6-stat"><span>AI Suite</span><b id="vg6-stat-ai">10/10</b></div>
             <div class="vg6-stat"><span>Field Matrix</span><b id="vg6-stat-field">pending</b></div>
             <div class="vg6-stat"><span>Runtime Guard</span><b id="vg6-stat-guard">armed</b></div>
-            <div class="vg6-stat"><span>CBT 1.7.1 (Test V7.1) Queue</span><b id="vg62-stat-queue">0</b></div>
+            <div class="vg6-stat"><span>CBT 1.7.2 (Test V7.2) Queue</span><b id="vg62-stat-queue">0</b></div>
             <div class="vg6-stat"><span>Debug</span><b id="vg62-stat-debug">off</b></div>
             <div class="vg6-stat"><span>Idle Guard</span><b id="vg62-stat-idle">armed</b></div>
           </div>
@@ -529,7 +529,7 @@ coordination under infrastructure failure when deployed responsibly.
       <article class="vg6-card">
         <header><h2>Profile & Identity</h2><span class="vg6-pill">local config</span></header>
         <div class="vg6-body">
-          <div class="vg6-field"><label for="vg6-build-mode">Build view</label><select id="vg6-build-mode"><option value="clean">Clean Audit Core</option><option value="field">Field Operations</option><option value="experimental">Experimental Acoustic Lab</option><option value="all">Full CBT 1.7.1 (Test V7.1) Review</option></select></div>
+          <div class="vg6-field"><label for="vg6-build-mode">Build view</label><select id="vg6-build-mode"><option value="clean">Clean Audit Core</option><option value="field">Field Operations</option><option value="experimental">Experimental Acoustic Lab</option><option value="all">Full CBT 1.7.2 (Test V7.2) Review</option></select></div>
           <div class="vg6-field"><label for="vg6-role">Node role</label><select id="vg6-role"><option value="sentinel">Sentinel</option><option value="relay">Relay</option><option value="rescuer">Rescuer</option><option value="gateway">Gateway</option><option value="commander">Commander</option></select></div>
           <div class="vg6-field"><label for="vg6-profile">Environment profile</label><select id="vg6-profile"><option value="cornfield">Cornfield or maze</option><option value="forest" selected>Forest or trail</option><option value="remoteRoad">Remote road</option><option value="urban">Urban or elder care</option><option value="water">Water-adjacent</option><option value="general">General humanitarian</option></select></div>
           <div class="vg6-field"><label for="vg6-group-id">Coverage group</label><input id="vg6-group-id" maxlength="32" value="sector-alpha"></div>
@@ -555,7 +555,7 @@ coordination under infrastructure failure when deployed responsibly.
             <button id="vg6-export-audit" class="vg6-btn">Export Sanitized Audit</button>
             <button id="vg6-wipe-all" class="vg6-btn vg6-btn-danger">Emergency 7-Pass Wipe</button>
           </div>
-          <div class="vg6-warning" style="margin-top:12px">Web Bluetooth normally supports scanning more reliably than advertising. CBT 1.7.1 (Test V7.1) separates BLE advertisement transmit into a native bridge hook, GATT peer write, and acoustic fallback. It does not claim browser-native advertisement transmission.</div>
+          <div class="vg6-warning" style="margin-top:12px">Web Bluetooth normally supports scanning more reliably than advertising. CBT 1.7.2 (Test V7.2) separates BLE advertisement transmit into a native bridge hook, GATT peer write, and acoustic fallback. It does not claim browser-native advertisement transmission.</div>
         </div>
       </article>
 
@@ -603,7 +603,7 @@ coordination under infrastructure failure when deployed responsibly.
           <div class="vg6-field"><label for="vg6-acoustic-mode">Transmission mode</label><select id="vg6-acoustic-mode"><option value="audible_v7" selected>Audible FSK V7 (Goertzel + FFT, iOS Safari compatible)</option><option value="near_us_v7">Near-ultrasonic FSK V7 (Android preferred)</option><option value="birdcall_v7">Bird-call style FSK V7 (operator-visible experimental)</option><option value="morse_v7">Morse audible V7</option></select></div>
           <div class="vg6-field"><label for="vg6-message-text">Message</label><textarea id="vg6-message-text" maxlength="120">VG7:SAFE CHECK full-stack acoustic fallback test.</textarea></div>
           <div class="vg6-buttons"><button id="vg6-start-audio" class="vg6-btn vg6-btn-info">Start Audio RX</button><button id="vg6-calibrate-audio" class="vg6-btn">Calibrate</button><button id="vg6-send-text" class="vg6-btn vg6-btn-primary">Send Text</button><button id="vg6-send-morse" class="vg6-btn">Send Morse</button></div>
-          <p class="vg6-mini">Raw audio is never persisted. Closed Beta 1.7.1 (Test V7.1) acoustic fallback includes Goertzel demodulation, CRC framing, TDMA collision reduction, and an operator-visible bird-call profile; it remains experimental field evidence, not a certified delivery channel.</p>
+          <p class="vg6-mini">Raw audio is never persisted. Closed Beta 1.7.2 (Test V7.2) acoustic fallback includes Goertzel demodulation, CRC framing, TDMA collision reduction, and an operator-visible bird-call profile; it remains experimental field evidence, not a certified delivery channel.</p>
         </div>
       </article>
 
@@ -639,7 +639,7 @@ coordination under infrastructure failure when deployed responsibly.
 
 
       <article class="vg6-card vg6-wide" id="vg62-panel">
-        <header><h2>CBT 1.7.1 (Test V7.1) Reinforcement Panel</h2><span id="vg62-panel-pill" class="vg6-pill vg6-good">QR / queue / debug / idle</span></header>
+        <header><h2>CBT 1.7.2 (Test V7.2) Reinforcement Panel</h2><span id="vg62-panel-pill" class="vg6-pill vg6-good">QR / queue / debug / idle</span></header>
         <div class="vg6-body">
           <div class="vg6-buttons">
             <button id="vg62-generate-qr" class="vg6-btn vg6-btn-primary">Generate Real QR SOS Card</button>
@@ -654,8 +654,8 @@ coordination under infrastructure failure when deployed responsibly.
             <div><span>sent</span><b id="vg62-q-sent">0</b></div>
             <div><span>dropped</span><b id="vg62-q-dropped">0</b></div>
           </div>
-          <div class="vg62-chart"><svg id="vg62-mini-chart-svg" viewBox="0 0 680 154" role="img" aria-label="CBT 1.7.1 (Test V7.1) local mini chart"></svg></div>
-          <p class="vg6-mini">Closed Beta 1.7.1 (Test V7.1) additions are local-only: V7 acoustic survival protocol with Goertzel/FFT demodulation, CRC framing, TDMA collision reduction, operator-visible bird-call profile, real QR card, bounded SOS priority queue, ?debug=1 sanitized debug, high contrast, keyboard shortcuts, and 30-minute idle auto-wipe.</p>
+          <div class="vg62-chart"><svg id="vg62-mini-chart-svg" viewBox="0 0 680 154" role="img" aria-label="CBT 1.7.2 (Test V7.2) local mini chart"></svg></div>
+          <p class="vg6-mini">Closed Beta 1.7.2 (Test V7.2) additions are local-only: V7 acoustic survival protocol with Goertzel/FFT demodulation, CRC framing, TDMA collision reduction, operator-visible bird-call profile, real QR card, bounded SOS priority queue, ?debug=1 sanitized debug, high contrast, keyboard shortcuts, and 30-minute idle auto-wipe.</p>
         </div>
       </article>
 
@@ -698,7 +698,7 @@ coordination under infrastructure failure when deployed responsibly.
           <textarea id="vg6-field-note-input" class="vg6-field-note" maxlength="360" placeholder="Optional sanitized field evidence note. Stored locally only."></textarea>
           <div class="vg6-buttons"><button id="vg6-run-field" class="vg6-btn vg6-btn-primary">Run Field Matrix</button><button id="vg6-run-virtual-field" class="vg6-btn vg6-btn-info">Run Virtual Field Test</button><button id="vg6-export-field-json" class="vg6-btn">Export Field Evidence JSON</button><button id="vg6-add-field-note" class="vg6-btn">Add Evidence Note</button><button id="vg6-safe-mode" class="vg6-btn vg6-btn-warn">Enter Safe Mode</button></div>
           <div id="vg6-field-list" class="vg6-list" style="margin-top:10px"></div>
-          <p class="vg6-mini">CBT 1.7.1 (Test V7.1) records evidence without claiming certification: BLE compatibility, deletion verification, audio/visual/tactile fallback, battery duty-cycle, and no-egress audit.</p>
+          <p class="vg6-mini">CBT 1.7.2 (Test V7.2) records evidence without claiming certification: BLE compatibility, deletion verification, audio/visual/tactile fallback, battery duty-cycle, and no-egress audit.</p>
         </div>
       </article>
 
@@ -720,8 +720,8 @@ coordination under infrastructure failure when deployed responsibly.
       </article>
 
       <article class="vg6-card vg6-full">
-        <header><h2>CBT 1.7.1 (Test V7.1) Operator Help</h2><span class="vg6-pill">usage manual</span></header>
-        <div class="vg6-body"><div class="vg6-help-panel"><h3>Fast start</h3><ul><li>Choose role and environment profile, then press Start Core.</li><li>Run Self Tests and Field Matrix before field deployment.</li><li>Use BLE Protocol Scan for known VitalGuard nodes; use Passive BLE Scan only after the consent modal and only for authorized humanitarian deployments.</li><li>Use the SOS board, audio beacon, flash beacon, vibration beacon, and QR/SVG SOS card as fallback communication channels.</li><li>Export sanitized audit evidence after drills; run Emergency 7-Pass Wipe before the device leaves operator custody.</li></ul><h3>Safety claims</h3><p>VitalGuard CBT 1.7.1 (Test V7.1) improves local detection and coordination probability. It does not guarantee detection, rescue, exact location, medical outcome, browser background operation, or BLE advertisement transmit from a normal browser.</p><h3>Privacy rules</h3><p>No external servers, no persistent identity profiles, no biometric recognition, no raw audio persistence, short retention windows, recursive sanitization, and one-gesture best-effort deletion.</p></div></div>
+        <header><h2>CBT 1.7.2 (Test V7.2) Operator Help</h2><span class="vg6-pill">usage manual</span></header>
+        <div class="vg6-body"><div class="vg6-help-panel"><h3>Fast start</h3><ul><li>Choose role and environment profile, then press Start Core.</li><li>Run Self Tests and Field Matrix before field deployment.</li><li>Use BLE Protocol Scan for known VitalGuard nodes; use Passive BLE Scan only after the consent modal and only for authorized humanitarian deployments.</li><li>Use the SOS board, audio beacon, flash beacon, vibration beacon, and QR/SVG SOS card as fallback communication channels.</li><li>Export sanitized audit evidence after drills; run Emergency 7-Pass Wipe before the device leaves operator custody.</li></ul><h3>Safety claims</h3><p>VitalGuard CBT 1.7.2 (Test V7.2) improves local detection and coordination probability. It does not guarantee detection, rescue, exact location, medical outcome, browser background operation, or BLE advertisement transmit from a normal browser.</p><h3>Privacy rules</h3><p>No external servers, no persistent identity profiles, no biometric recognition, no raw audio persistence, short retention windows, recursive sanitization, and one-gesture best-effort deletion.</p></div></div>
       </article>
 
       <article class="vg6-card vg6-full">
@@ -738,7 +738,7 @@ coordination under infrastructure failure when deployed responsibly.
 
 /*
 ===============================================================================
-VITALGUARD BLUETOOTH SWARM + ULTRASONIC MESH CLOSED BETA 1.7.1 (TEST V7.1)
+VITALGUARD BLUETOOTH SWARM + ULTRASONIC MESH CLOSED BETA 1.7.2 (TEST V7.2)
 ===============================================================================
 Project: VitalGuard Bluetooth Swarm Ultrasonic Mesh
 Closed Beta Version: 1.7.0 / Test maturity stage: V7.0
@@ -749,7 +749,7 @@ Primary purpose: civilian humanitarian rescue continuity and field resilience
 
 1. WHY THIS SYSTEM EXISTS
 -------------------------------------------------------------------------------
-VitalGuard CBT 1.7.1 (Test V7.1) is designed for a specific humanitarian problem: people can become
+VitalGuard CBT 1.7.2 (Test V7.2) is designed for a specific humanitarian problem: people can become
 lost, injured, disoriented, or isolated in places where ordinary infrastructure is
 unavailable or failing. Cornfields, forests, remote roads, disaster zones, refugee
 camp perimeters, large outdoor events, and dense low-visibility environments can
@@ -772,7 +772,7 @@ what each subsystem is trying to do.
 -------------------------------------------------------------------------------
 This system is a rescue-support tool, not a surveillance tool. BLE proximity can
 be misused if long-term identity tracking, central aggregation, or covert
-monitoring are added. CBT 1.7.1 (Test V7.1) therefore uses short-lived fingerprints, local-only
+monitoring are added. CBT 1.7.2 (Test V7.2) therefore uses short-lived fingerprints, local-only
 state, explicit retention periods, aggressive deletion, recursive sanitization,
 no external network path, and a tamper response. It is designed for posted,
 supervised, consent-aware deployments where people can reasonably know that a
@@ -780,7 +780,7 @@ local rescue or safety mesh is present. Examples include a corn maze, a national
 park trailhead pilot, a campus field drill, a care facility perimeter with proper
 policy review, or a disaster-response staging zone.
 
-CBT 1.7.1 (Test V7.1) intentionally does not implement person identification, face recognition,
+CBT 1.7.2 (Test V7.2) intentionally does not implement person identification, face recognition,
 voice fingerprinting, persistent device histories, cloud dashboards, hidden data
 exfiltration, or remote physical control. It does not provide law-enforcement or
 military targeting functions. It does not claim to identify a person. It observes
@@ -788,9 +788,9 @@ short-lived radio patterns and estimates rescue-relevant proximity. The design
 attempts to make surveillance structurally unattractive by keeping data local,
 coarse, expiring, and easy to erase.
 
-3. WHAT CBT 1.7.1 (Test V7.1) IMPLEMENTS
+3. WHAT CBT 1.7.2 (Test V7.2) IMPLEMENTS
 -------------------------------------------------------------------------------
-CBT 1.7.1 (Test V7.1) upgrades the prior V3.0 review prototype into a stronger field-ready audit
+CBT 1.7.2 (Test V7.2) upgrades the prior V3.0 review prototype into a stronger field-ready audit
 build. The most important changes are:
 
 - Fully scoped CSS. Every stylesheet selector is scoped under #vg6-root. There is
@@ -803,12 +803,12 @@ build. The most important changes are:
   funders, security labs, and humanitarian partners.
 
 - Recursive sanitizer and safe DOM rendering. V3.0 removed risky top-level keys;
-  CBT 1.7.1 (Test V7.1) recursively walks arrays and objects, blocks dangerous keys, redacts common
+  CBT 1.7.2 (Test V7.2) recursively walks arrays and objects, blocks dangerous keys, redacts common
   email/phone/token patterns, limits depth and array length, and uses textContent
   for user-controlled rendering. Sanitized audit export coarsens sensitive rescue
   coordinates unless the operator is explicitly exporting an active rescue record.
 
-- Ephemeral node identity. CBT 1.7.1 (Test V7.1) defaults to a session-only node identifier and
+- Ephemeral node identity. CBT 1.7.2 (Test V7.2) defaults to a session-only node identifier and
   rotates the privacy salt on schedule. A stationary pseudonymous ID can be
   selected only for posted sentinel deployments. This reduces the risk that a
   copied file creates durable identity traces.
@@ -822,13 +822,13 @@ build. The most important changes are:
 
 - Browser BLE transmit honesty. Web Bluetooth scanning can be useful on supported
   Android/desktop browsers, but browser-native BLE advertisement transmission is
-  generally not available as a reliable public web API. CBT 1.7.1 (Test V7.1) does not pretend
+  generally not available as a reliable public web API. CBT 1.7.2 (Test V7.2) does not pretend
   otherwise. It separates outbound transport into three paths: a native bridge
   hook for real advertisement TX, a GATT peer write path when a connectable peer is
   available, and an acoustic fallback path for emergency tones or short messages.
 
 - Service Worker honesty. A single HTML file cannot guarantee cache-first PWA
-  behavior in every browser. CBT 1.7.1 (Test V7.1) records this as a field-matrix limitation and
+  behavior in every browser. CBT 1.7.2 (Test V7.2) records this as a field-matrix limitation and
   provides a same-file manifest probe, but it does not claim certified offline PWA
   caching. Production deployments that need persistent background operation should
   use a signed Android wrapper, Trusted Web Activity, Capacitor wrapper, or a
@@ -836,12 +836,12 @@ build. The most important changes are:
 
 - Best-effort deletion disclosure. JavaScript cannot guarantee forensic erasure
   of browser engine internals, garbage-collected copies, flash wear-leveling, or
-  OS-level caches. CBT 1.7.1 (Test V7.1) is explicit: deletion is best-effort within the browser
+  OS-level caches. CBT 1.7.2 (Test V7.2) is explicit: deletion is best-effort within the browser
   sandbox. It clears IndexedDB, localStorage, sessionStorage, runtime maps,
   buffers, event logs, relay queues, and typed arrays with seven overwrite passes
   before releasing references.
 
-- Field Evidence Matrix. CBT 1.7.1 (Test V7.1) provides repeatable local test records for BLE
+- Field Evidence Matrix. CBT 1.7.2 (Test V7.2) provides repeatable local test records for BLE
   compatibility, no-egress posture, deletion verification, audio fallback, and
   power-duty behavior. These records are local, sanitized, and exportable for
   reviewers. They are evidence logs, not certification claims.
@@ -869,7 +869,7 @@ Step D: Observe passive tracks. A passive track is not an identity. It is a
 short-lived local correlation of RSSI, time, and packet shape. Operators should
 interpret concern scores as triage signals only. Human judgment remains required.
 
-Step E: Use consensus and escalation. CBT 1.7.1 (Test V7.1) reduces false positives by using time,
+Step E: Use consensus and escalation. CBT 1.7.2 (Test V7.2) reduces false positives by using time,
 RSSI stability, group behavior, response memory, profile thresholds, and mesh
 consensus. A single odd reading should not trigger a real rescue unless the
 operator has additional evidence.
@@ -883,47 +883,47 @@ Step G: Record field evidence. Run the Field Matrix after each drill: BLE suppor
 no-egress check, deletion test, acoustic fallback check, and power duty-cycle
 observation. Export only sanitized records for review.
 
-5. LIMITATIONS AND HOW CBT 1.7.1 (Test V7.1) MITIGATES THEM
+5. LIMITATIONS AND HOW CBT 1.7.2 (Test V7.2) MITIGATES THEM
 -------------------------------------------------------------------------------
 Limitation: Web Bluetooth is not universal. iOS Safari does not run Web Bluetooth
 mesh node software. Some desktop and Android browsers support scanning better
 than others.
-Mitigation: CBT 1.7.1 (Test V7.1) includes capability gates, visible unsupported-platform messages,
+Mitigation: CBT 1.7.2 (Test V7.2) includes capability gates, visible unsupported-platform messages,
 simulation mode, audio fallback, and an explicit recommendation for native Android
 wrappers in production.
 
 Limitation: Browser-native BLE advertisement transmission is not reliable.
-Mitigation: CBT 1.7.1 (Test V7.1) separates actual advertisement TX into a native bridge hook
+Mitigation: CBT 1.7.2 (Test V7.2) separates actual advertisement TX into a native bridge hook
 (window.VG6NativeAdvertiser.broadcast), supports GATT peer writes where possible,
 and offers acoustic fallback. The UI and audit log clearly disclose this.
 
 Limitation: RSSI location is imprecise. Vegetation, humidity, terrain, buildings,
 body absorption, crowd density, device orientation, and multipath reflections can
 change signal strength.
-Mitigation: CBT 1.7.1 (Test V7.1) uses profile-specific path-loss values, rolling RSSI buffers,
+Mitigation: CBT 1.7.2 (Test V7.2) uses profile-specific path-loss values, rolling RSSI buffers,
 Kalman-style smoothing, consensus, confidence scores, and manual field calibration.
 It guides rescuers to a general area, then relies on calling out, visual search,
 and audio beaconing.
 
 Limitation: Detection is probabilistic. Bluetooth may be disabled, a device may
 stop advertising, batteries may die, or the person may carry no BLE device.
-Mitigation: CBT 1.7.1 (Test V7.1) treats BLE as one signal among many. It supports display-board
+Mitigation: CBT 1.7.2 (Test V7.2) treats BLE as one signal among many. It supports display-board
 messages, audible beacons, manual rescue protocols, and field checklists. It does
 not claim guaranteed detection.
 
 Limitation: Background browser execution is fragile. Tabs can be hidden, screens
 can turn off, and operating systems can kill long-running browser tasks.
-Mitigation: CBT 1.7.1 (Test V7.1) uses Wake Lock where available, power duty-cycles, watchdog
+Mitigation: CBT 1.7.2 (Test V7.2) uses Wake Lock where available, power duty-cycles, watchdog
 signals, safe mode, and explicit native-wrapper guidance for production.
 
 Limitation: JavaScript deletion is best-effort only.
-Mitigation: CBT 1.7.1 (Test V7.1) wipes all accessible stores and memory pools, overwrites typed
+Mitigation: CBT 1.7.2 (Test V7.2) wipes all accessible stores and memory pools, overwrites typed
 arrays, rotates identity, and documents the limitation. For high-risk deployments,
 use a dedicated device, encrypted storage at the OS level, and field procedures
 that physically control devices.
 
 Limitation: Passive BLE can be ethically sensitive.
-Mitigation: CBT 1.7.1 (Test V7.1) forbids persistent identity tracking, external telemetry,
+Mitigation: CBT 1.7.2 (Test V7.2) forbids persistent identity tracking, external telemetry,
 biometric identification, covert deployment claims, military targeting, and
 commercial data brokerage. Data expires quickly and can be erased immediately.
 
@@ -963,11 +963,11 @@ Acoustic: Audible/near-ultrasonic fallback with no raw audio persistence.
 Navigator: Rescuer compass and dead-reckoning aid.
 FieldMatrix: Evidence logs for auditors and operators.
 UI: Scoped, event-driven user interface using safe DOM text rendering.
-CBT 1.7.1 (Test V7.1): QREncoder, QRSosCard, SosQueueV6 compatibility queue, MiniChart, DebugMode, HighContrastMode, IdleTimeout, KeyboardShortcuts, EthicalGateAudit, and V7 Acoustic Survival Protocol.
+CBT 1.7.2 (Test V7.2): QREncoder, QRSosCard, SosQueueV6 compatibility queue, MiniChart, DebugMode, HighContrastMode, IdleTimeout, KeyboardShortcuts, EthicalGateAudit, and V7 Acoustic Survival Protocol.
 
 8. REVIEWER-FACING SUMMARY
 -------------------------------------------------------------------------------
-VitalGuard CBT 1.7.1 (Test V7.1) is an offline-first, zero-dependency, single-file BLE proximity
+VitalGuard CBT 1.7.2 (Test V7.2) is an offline-first, zero-dependency, single-file BLE proximity
 and rescue-coordination framework for humanitarian continuity scenarios. It uses
 compact local heartbeats, managed flooding, local trust scoring, short-lived
 passive detection, ethical retention limits, recursive sanitization, and explicit
@@ -978,9 +978,9 @@ for real deployments with appropriate governance.
 ===============================================================================
 */
 
-var APP_VERSION='1.7.1-cbt';
-var TEST_VERSION='V7.1';
-var APP_DISPLAY_VERSION='Closed Beta 1.7.1 (Test V7.1)';
+var APP_VERSION='1.7.2-cbt';
+var TEST_VERSION='V7.2';
+var APP_DISPLAY_VERSION='Closed Beta 1.7.2 (Test V7.2)';
 var SERVICE_UUID='7d6b7001-5654-414c-4755-415244563730';
 var SERVICE_UUID_SHORT='7d6b7001';
 var CHARACTERISTIC_UUID='7d6b7002-5654-414c-4755-415244563730';
@@ -1059,7 +1059,7 @@ function registerModule(name,deps,factory){
 
 
 var SafeStorage=(function(){
-  /* CBT 1.7.1 (Test V7.1) audit rule: this is the sole local preference write wrapper. */
+  /* CBT 1.7.2 (Test V7.2) audit rule: this is the sole local preference write wrapper. */
   var quotaWarned=false;
   function report(message,level){try{if(typeof log==='function')log('sys',message,level||'warn');else console.warn('[VG6 SafeStorage]',message);}catch(e){}}
   function cleanupTemporaryKeys(){var deleted=0;try{var keys=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&(k.indexOf('vg7_cbt_')===0||k.indexOf('vg6_')===0||k.indexOf('vg5_')===0||k.indexOf('swarm_')===0)&&(/temp|probe|old|cache/i.test(k)))keys.push(k);}keys.forEach(function(k){try{localStorage.removeItem(k);deleted++;}catch(e){}});}catch(e){}return deleted;}
@@ -1074,7 +1074,7 @@ var SafeStorage=(function(){
 
 var ETHICAL_MANIFEST=U.deepFreeze({
   version:APP_VERSION,
-  project:'VitalGuard Bluetooth Swarm Ultrasonic Mesh Closed Beta 1.7.1 (Test V7.1)',
+  project:'VitalGuard Bluetooth Swarm Ultrasonic Mesh Closed Beta 1.7.2 (Test V7.2)',
   copyright:'© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI',
   license:'M-Corp Ethical AI License — Hippocratic 3.0 derivative',
   licenseScope:'civilian, agricultural, humanitarian use ONLY',
@@ -1084,7 +1084,7 @@ var ETHICAL_MANIFEST=U.deepFreeze({
   allowed:['search_and_rescue','disaster_resilience','posted_local_safety','accessibility','education','privacy_preserving_field_tests','agricultural_safety','humanitarian_continuity'],
   prohibited:['weaponization','coercive_tracking','surveillance','persistent_identity_profiling','commercial_data_brokering','external_telemetry','remote_physical_control','biometric_identification','voice_fingerprinting','face_recognition','border_enforcement','target_tracking','military_targeting','law_enforcement_targeting','secret_communication_channels'],
   licenseDeny:['military','surveillance','law-enforcement-targeting','commercial-data-brokering','border-enforcement','biometric-identification'],
-  operationGate:'Closed Beta 1.7.1 (Test V7.1) operation-specific whitelist with passive-scan consent, URL debug gating, TDMA acoustic scheduling, and idle auto-wipe enforcement',
+  operationGate:'Closed Beta 1.7.2 (Test V7.2) operation-specific whitelist with passive-scan consent, URL debug gating, TDMA acoustic scheduling, and idle auto-wipe enforcement',
   retention:{rawRssi:'60 seconds memory only',fingerprint:'30 minutes maximum',movement:'2 hours maximum',alerts:'12 hours maximum',aggregatePatterns:'2 days maximum',fieldAudit:'7 days maximum'},
   safeguards:['zero_metadata_default','local_only','no_external_network','instant_best_effort_deletion','tamper_wipe','short_lived_fingerprints','recursive_sanitization','no_raw_audio_persistence','browser_capability_disclosure','ephemeral_identity_default','passive_scan_consent','visible_rescue_channels'],
   legal:['UDHR','Geneva Conventions humanitarian principles','UNCRC','CRPD','GDPR data minimization','Wassenaar Arrangement and EU 2021/821 dual-use caution']
@@ -1164,7 +1164,7 @@ var NetworkGuard=registerModule('NetworkGuard',function(){
   var installed=false,originals={};
   var primitiveNames=['fetch','XMLHttpRequest','WebSocket','EventSource','RTCPeerConnection','webkitRTCPeerConnection'];
   function block(name){VG6.state.guard.blocked++;SwarmBus.emit('security:egress-blocked',{api:name,at:U.now()});log('ethics','Blocked external network primitive: '+name,'warn');}
-  function install(){if(installed)return true;installed=true;VG6.state.guard.networkInstalled=true;if(window.fetch){originals.fetch=window.fetch;window.fetch=function(){block('fetch');return Promise.reject(new Error('VitalGuard CBT 1.7.1 (Test V7.1) local-only egress blocked'));};}['XMLHttpRequest','WebSocket','EventSource','RTCPeerConnection','webkitRTCPeerConnection'].forEach(function(name){if(window[name]){originals[name]=window[name];window[name]=function(){block(name);throw new Error('VitalGuard CBT 1.7.1 (Test V7.1) local-only egress blocked');};}});if(navigator&&typeof navigator.sendBeacon==='function'){originals.sendBeacon=navigator.sendBeacon.bind(navigator);var sb=function(){block('sendBeacon');return false;};try{Object.defineProperty(Navigator.prototype,'sendBeacon',{configurable:true,writable:true,value:sb});}catch(e){}try{Object.defineProperty(navigator,'sendBeacon',{configurable:true,writable:true,value:sb});}catch(e){try{navigator.sendBeacon=sb;}catch(_){}}}VG6.state.guard.guarded=Object.keys(originals);log('ethics','Runtime network egress guard installed, including sendBeacon where present','good');return true;}
+  function install(){if(installed)return true;installed=true;VG6.state.guard.networkInstalled=true;if(window.fetch){originals.fetch=window.fetch;window.fetch=function(){block('fetch');return Promise.reject(new Error('VitalGuard CBT 1.7.2 (Test V7.2) local-only egress blocked'));};}['XMLHttpRequest','WebSocket','EventSource','RTCPeerConnection','webkitRTCPeerConnection'].forEach(function(name){if(window[name]){originals[name]=window[name];window[name]=function(){block(name);throw new Error('VitalGuard CBT 1.7.2 (Test V7.2) local-only egress blocked');};}});if(navigator&&typeof navigator.sendBeacon==='function'){originals.sendBeacon=navigator.sendBeacon.bind(navigator);var sb=function(){block('sendBeacon');return false;};try{Object.defineProperty(Navigator.prototype,'sendBeacon',{configurable:true,writable:true,value:sb});}catch(e){}try{Object.defineProperty(navigator,'sendBeacon',{configurable:true,writable:true,value:sb});}catch(e){try{navigator.sendBeacon=sb;}catch(_){}}}VG6.state.guard.guarded=Object.keys(originals);log('ethics','Runtime network egress guard installed, including sendBeacon where present','good');return true;}
   function probe(){install();var before=VG6.state.guard.blocked,expected=0;Object.keys(originals).forEach(function(name){expected++;try{if(name==='fetch')window.fetch('data:text/plain,blocked').catch(function(){});else if(name==='sendBeacon')navigator.sendBeacon('data:text/plain,blocked','x');else new window[name]('about:blank');}catch(e){}});var blocked=VG6.state.guard.blocked-before;var out={passed:expected===0||blocked>=expected,expected:expected,blocked:blocked,guarded:Object.keys(originals),at:U.now()};VG6.state.guard.probes++;VG6.state.guard.lastProbe=out;return out;}
   function status(){return {installed:installed,blocked:VG6.state.guard.blocked,guarded:Object.keys(originals),sendBeaconBlocked:!!originals.sendBeacon,probes:VG6.state.guard.probes,lastProbe:VG6.state.guard.lastProbe};}
   return {install:install,status:status,probe:probe};
@@ -1393,7 +1393,7 @@ var MeshCore=registerModule('MeshCore',function(){
 
 
 /* ============================================================================
-   CBT 1.7.1 (Test V7.1) MODULE: EthicalGateAudit
+   CBT 1.7.2 (Test V7.2) MODULE: EthicalGateAudit
    ----------------------------------------------------------------------------
    This small local ledger proves that sensitive entry points call Ethics.canOperate
    at the function boundary. It is not telemetry. It is bounded, sanitized, and
@@ -1433,7 +1433,7 @@ var BLE=registerModule('BLE',function(){
 
 var Acoustic=registerModule('Acoustic',function(){
   /*
-  Closed Beta 1.7.1 (Test V7.1) acoustic survival protocol.
+  Closed Beta 1.7.2 (Test V7.2) acoustic survival protocol.
   Scope: emergency field fallback only. The module never persists raw audio.
   Full-stack additions over V6.2:
   - Goertzel demodulation with FFT-bin cross-check.
@@ -1522,7 +1522,7 @@ var VibrationBeacon=registerModule('VibrationBeacon',function(){
 
 
 var QREncoder=registerModule('QREncoder',function(){
-  /* CBT 1.7.1 (Test V7.1) real QR encoder: QR Code Model 2, Version 5, Error Correction Level L,
+  /* CBT 1.7.2 (Test V7.2) real QR encoder: QR Code Model 2, Version 5, Error Correction Level L,
    * byte mode, single block. It includes function patterns, timing pattern,
    * alignment pattern, format bits, GF(256), Reed-Solomon remainder, data
    * placement, mask selection, and SVG rendering. It is intentionally narrow so
@@ -1551,14 +1551,14 @@ var QREncoder=registerModule('QREncoder',function(){
 });
 
 var SOSCard=registerModule('SOSCard',function(){
-  /* CBT 1.7.1 (Test V7.1) QRSosCard. Compact payload, local SVG, no persistent identity. */
+  /* CBT 1.7.2 (Test V7.2) QRSosCard. Compact payload, local SVG, no persistent identity. */
   var lastUrl='';
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function compactData(){var loc=VG6.state.location||{};var lat=loc.lat==null?'u':U.coarsenNumber(loc.lat,4);var lon=loc.lon==null?'u':U.coarsenNumber(loc.lon,4);var node=String(VG6.state.nodeId||'VG7T').slice(-10);var group=String(VG6.state.groupId||'local').replace(/[^a-z0-9_-]/ig,'').slice(0,16)||'local';var ts=Math.floor(U.now()/1000).toString(36);var chk=U.djb2([node,group,lat,lon,ts].join('|')).toString(36).slice(0,6);return 'VG7T|SOS|N:'+node+'|G:'+group+'|T:'+ts+'|P:'+lat+','+lon+'|C:'+chk;}
   function makeData(){var loc=VG6.state.location||{};return {lat:loc.lat==null?'unknown':U.coarsenNumber(loc.lat,5),lon:loc.lon==null?'unknown':U.coarsenNumber(loc.lon,5),accuracy:loc.accuracy==null?'unknown':Math.round(loc.accuracy)+'m',time:new Date().toISOString(),node:VG6.state.nodeId,group:VG6.state.groupId||'local',payload:compactData()};}
-  function svg(data){Ethics.canOperate('qr:render',{group:data&&data.group});EthicalGateAudit.note('SOSCard.svg','qr-sos-card',{group:data&&data.group});data=data||makeData();var qr=QREncoder.encode(data.payload);var qrSvg=QREncoder.svg(qr,5).replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'');var lines=['EN: Show this card to a rescuer or passerby.','KO: 구조자에게 이 화면을 보여주세요.','AR: أظهر هذه البطاقة للمساعدة.','BN: সাহায্যের জন্য এই কার্ডটি দেখান.'];var text=lines.map(function(line,i){return '<text x="36" y="'+(510+i*27)+'" font-size="15" fill="#111">'+esc(line)+'</text>';}).join('');return '<svg xmlns="http://www.w3.org/2000/svg" width="520" height="720" viewBox="0 0 520 720"><rect width="520" height="720" fill="#fff"/><text x="260" y="78" text-anchor="middle" font-size="72" font-weight="700" fill="#c00000">SOS</text><text x="260" y="112" text-anchor="middle" font-size="18" fill="#111">VitalGuard CBT 1.7.1 (Test V7.1) local QR rescue card</text><g transform="translate(122 132)">'+qrSvg+'</g><rect x="32" y="388" width="456" height="92" rx="14" fill="#f3f3f3" stroke="#111"/><text x="50" y="422" font-size="17" font-family="monospace" fill="#111">Lat: '+esc(data.lat)+' / Lon: '+esc(data.lon)+'</text><text x="50" y="451" font-size="15" fill="#111">Accuracy: '+esc(data.accuracy)+' / Group: '+esc(data.group)+'</text><text x="50" y="472" font-size="11" font-family="monospace" fill="#333">'+esc(data.time)+' / '+esc(String(data.node).slice(-18))+'</text>'+text+'<text x="260" y="690" text-anchor="middle" font-size="11" fill="#666">QR payload is local-only. No network. No external library. Mask '+qr.mask+'.</text></svg>';}
+  function svg(data){Ethics.canOperate('qr:render',{group:data&&data.group});EthicalGateAudit.note('SOSCard.svg','qr-sos-card',{group:data&&data.group});data=data||makeData();var qr=QREncoder.encode(data.payload);var qrSvg=QREncoder.svg(qr,5).replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'');var lines=['EN: Show this card to a rescuer or passerby.','KO: 구조자에게 이 화면을 보여주세요.','AR: أظهر هذه البطاقة للمساعدة.','BN: সাহায্যের জন্য এই কার্ডটি দেখান.'];var text=lines.map(function(line,i){return '<text x="36" y="'+(510+i*27)+'" font-size="15" fill="#111">'+esc(line)+'</text>';}).join('');return '<svg xmlns="http://www.w3.org/2000/svg" width="520" height="720" viewBox="0 0 520 720"><rect width="520" height="720" fill="#fff"/><text x="260" y="78" text-anchor="middle" font-size="72" font-weight="700" fill="#c00000">SOS</text><text x="260" y="112" text-anchor="middle" font-size="18" fill="#111">VitalGuard CBT 1.7.2 (Test V7.2) local QR rescue card</text><g transform="translate(122 132)">'+qrSvg+'</g><rect x="32" y="388" width="456" height="92" rx="14" fill="#f3f3f3" stroke="#111"/><text x="50" y="422" font-size="17" font-family="monospace" fill="#111">Lat: '+esc(data.lat)+' / Lon: '+esc(data.lon)+'</text><text x="50" y="451" font-size="15" fill="#111">Accuracy: '+esc(data.accuracy)+' / Group: '+esc(data.group)+'</text><text x="50" y="472" font-size="11" font-family="monospace" fill="#333">'+esc(data.time)+' / '+esc(String(data.node).slice(-18))+'</text>'+text+'<text x="260" y="690" text-anchor="middle" font-size="11" fill="#666">QR payload is local-only. No network. No external library. Mask '+qr.mask+'.</text></svg>';}
   function dataUrl(data){var body=svg(data);return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(body);}
-  function generate(){Ethics.canOperate('qr:generate',{operatorGesture:true});EthicalGateAudit.note('SOSCard.generate','qr-card-generate',{});var data=makeData(),url=dataUrl(data);lastUrl=url;log('field','CBT 1.7.1 (Test V7.1) real QR SOS card generated','good');SwarmBus.emit('qr:generated',{data:Ethics.sanitize(data,{})});return {url:url,data:data,svg:svg(data),payload:data.payload};}
+  function generate(){Ethics.canOperate('qr:generate',{operatorGesture:true});EthicalGateAudit.note('SOSCard.generate','qr-card-generate',{});var data=makeData(),url=dataUrl(data);lastUrl=url;log('field','CBT 1.7.2 (Test V7.2) real QR SOS card generated','good');SwarmBus.emit('qr:generated',{data:Ethics.sanitize(data,{})});return {url:url,data:data,svg:svg(data),payload:data.payload};}
   function download(){Ethics.canOperate('qr:download',{operatorGesture:true});EthicalGateAudit.note('SOSCard.download','qr-card-download',{});var card=generate();var a=document.createElement('a');a.href=card.url;a.download='VitalGuard_CBT_1_7_1_Test_V7_1_QR_SOS_Card_'+Date.now()+'.svg';a.click();return card;}
   return {generate:generate,download:download,makeData:makeData,svg:svg,compactData:compactData};
 });
@@ -1609,7 +1609,7 @@ var DebugMode=registerModule('DebugMode',function(){
   var active=false,source='storage';
   function queryRequested(){try{var q=new URLSearchParams(location.search||'');return q.get('debug')==='1'||q.get('vgdebug')==='1'||q.get('vitalguard_debug')==='1';}catch(e){return /(?:\?|&)debug=1(?:&|$)/.test(location.search||'');}}
   function restore(){var urlOn=queryRequested();active=urlOn||SafeStorage.getItem(STORE_PREFIX+'debug_mode')==='1';source=urlOn?'url:?debug=1':'storage';if(urlOn){Ethics.canOperate('debug:enable-url');SafeStorage.setItem(STORE_PREFIX+'debug_mode','1');EthicalGateAudit.note('DebugMode.restore','url-debug-enabled',{source:source});log('sys','Sanitized DebugMode enabled by ?debug=1 URL parameter','warn');}return active;}
-  function set(on){active=!!on;source='operator-toggle';SafeStorage.setItem(STORE_PREFIX+'debug_mode',active?'1':'0');log('sys','Closed Beta 1.7.1 (Test V7.1) DebugMode '+(active?'enabled':'disabled'),active?'warn':'good');SwarmBus.emit('debug:update',snapshot());return active;}
+  function set(on){active=!!on;source='operator-toggle';SafeStorage.setItem(STORE_PREFIX+'debug_mode',active?'1':'0');log('sys','Closed Beta 1.7.2 (Test V7.2) DebugMode '+(active?'enabled':'disabled'),active?'warn':'good');SwarmBus.emit('debug:update',snapshot());return active;}
   function toggle(){return set(!active);}
   function isActive(){return active;}
   function snapshot(){return Ethics.sanitize({active:active,source:source,version:APP_VERSION,testVersion:TEST_VERSION,displayVersion:APP_DISPLAY_VERSION,mode:VG6.state.mode,buildMode:VG6.state.buildMode,queue:SosQueueV6.stats(),gateCount:EthicalGateAudit.snapshot().length,modules:Object.keys(VG6.modules),ble:{scanning:VG6.state.ble.scanning,mode:VG6.state.ble.scanMode,duty:VG6.state.ble.dutyMode,error:VG6.state.ble.lastError},audio:{contextState:VG6.state.audio.contextState,rxPackets:VG6.state.audio.rxPackets,demodulator:VG6.state.audio.demodulator,crcPass:VG6.state.audio.crcPass,crcFail:VG6.state.audio.crcFail,birdCallFrames:VG6.state.audio.birdCallFrames},idle:IdleTimeout&&IdleTimeout.status?IdleTimeout.status():null,power:VG6.state.power,logs:VG6.state.logs.slice(-12)},{});}
@@ -1626,7 +1626,7 @@ var HighContrastMode=registerModule('HighContrastMode',function(){
 
 var IdleTimeout=registerModule('IdleTimeout',function(){
   /*
-  Closed Beta 1.7.1 (Test V7.1) idle policy.
+  Closed Beta 1.7.2 (Test V7.2) idle policy.
   Default is 30-minute best-effort auto-wipe, not merely radio safe-mode.
   Limitation: this only clears browser-accessible state and owned buffers.
   It cannot guarantee forensic erasure of OS caches, crash snapshots, flash
@@ -1647,7 +1647,7 @@ var IdleTimeout=registerModule('IdleTimeout',function(){
 
 var KeyboardShortcuts=registerModule('KeyboardShortcuts',function(){
   var deleteHits=[];
-  function install(){document.addEventListener('keydown',function(e){var key=String(e.key||'').toLowerCase();if(!(e.ctrlKey&&e.shiftKey))return;if(key==='s'){e.preventDefault();var payload={type:PACKET.SOS_QUERY,mode:'RESCUE',message:'Closed Beta 1.7.1 (Test V7.1) keyboard SOS queued',group:VG6.state.groupId,at:U.now(),ttl:15};SosQueueV6.enqueue(payload,{kind:'SOS_QUERY',priority:96,reason:'operator keyboard shortcut',channel:'auto'});SosQueueV6.flush(4);SosStats.recordSos('sent');log('field','Keyboard shortcut queued SOS','warn');}else if(key==='h'){e.preventDefault();HighContrastMode.toggle();}else if(key==='d'){e.preventDefault();DebugMode.toggle();}else if(key==='delete'){e.preventDefault();var now=U.now();deleteHits=deleteHits.filter(function(t){return now-t<6000;});deleteHits.push(now);log('ethics','Emergency wipe shortcut hit '+deleteHits.length+'/3','warn');if(deleteHits.length>=3){deleteHits=[];DataWiper.wipe('keyboard-ctrl-shift-delete-v1.7.0');}}});return true;}
+  function install(){document.addEventListener('keydown',function(e){var key=String(e.key||'').toLowerCase();if(!(e.ctrlKey&&e.shiftKey))return;if(key==='s'){e.preventDefault();var payload={type:PACKET.SOS_QUERY,mode:'RESCUE',message:'Closed Beta 1.7.2 (Test V7.2) keyboard SOS queued',group:VG6.state.groupId,at:U.now(),ttl:15};SosQueueV6.enqueue(payload,{kind:'SOS_QUERY',priority:96,reason:'operator keyboard shortcut',channel:'auto'});SosQueueV6.flush(4);SosStats.recordSos('sent');log('field','Keyboard shortcut queued SOS','warn');}else if(key==='h'){e.preventDefault();HighContrastMode.toggle();}else if(key==='d'){e.preventDefault();DebugMode.toggle();}else if(key==='delete'){e.preventDefault();var now=U.now();deleteHits=deleteHits.filter(function(t){return now-t<6000;});deleteHits.push(now);log('ethics','Emergency wipe shortcut hit '+deleteHits.length+'/3','warn');if(deleteHits.length>=3){deleteHits=[];DataWiper.wipe('keyboard-ctrl-shift-delete-v1.7.0');}}});return true;}
   return {install:install};
 });
 
@@ -1656,7 +1656,7 @@ var V62Panel=registerModule('V62Panel',function(){
   function renderDebug(){var box=Dom.byId('vg62-debug-list');if(!box)return;Dom.clear(box);var snap=DebugMode.snapshot();Dom.setText('vg62-stat-debug',DebugMode.isActive()?'on':'off');Dom.setText('vg62-debug-pill',DebugMode.isActive()?'on':'off');if(!DebugMode.isActive()){box.textContent='Debug mode is off. Add ?debug=1 to the local file URL or press Ctrl+Shift+D to enable sanitized local debug.';return;}box.textContent=JSON.stringify(snap,null,2);}
   function renderIdle(){var st=IdleTimeout.status();Dom.setText('vg62-stat-idle',Math.ceil(st.remainingMs/60000)+'m');Dom.setText('vg62-idle-pill','auto-wipe in '+Math.ceil(st.remainingMs/60000)+'m');}
   function render(){renderQueue();renderDebug();renderIdle();MiniChart.draw('vg62-mini-chart-svg');}
-  function bind(){function on(id,fn){var b=Dom.byId(id);if(b&&!b.dataset.v62Bound){b.dataset.v62Bound='1';b.addEventListener('click',fn);}}on('vg62-generate-qr',function(){var out=SOSCard.generate();var img=Dom.byId('vg6-sos-card-img');var status=Dom.byId('vg6-sos-card-status');if(img){img.src=out.url;img.classList.remove('vg6-hidden');}if(status)status.textContent='CBT 1.7.1 (Test V7.1) real QR SOS card ready. Payload '+out.payload.length+' bytes.';render();});on('vg62-queue-sos',function(){var payload={type:PACKET.SOS_QUERY,mode:'RESCUE',message:'CBT 1.7.1 (Test V7.1) priority SOS queued by operator',group:VG6.state.groupId,at:U.now(),ttl:15};SosQueueV6.enqueue(payload,{kind:'SOS_QUERY',priority:98,reason:'operator panel',channel:'auto'});SosStats.recordSos('sent');render();});on('vg62-flush-queue',function(){SosQueueV6.flush(8);render();});on('vg62-toggle-debug',function(){DebugMode.toggle();render();});on('vg62-toggle-contrast',function(){HighContrastMode.toggle();render();});on('vg62-save-idle',function(){IdleTimeout.setMinutes(Dom.byId('vg62-idle-minutes').value);render();});on('vg62-reset-idle',function(){IdleTimeout.touch();render();});on('vg62-export-debug',function(){DebugMode.exportJson();});SwarmBus.on('queue:update',render);SwarmBus.on('debug:update',render);SwarmBus.on('idle:tick',render);SwarmBus.on('chart:update',function(){MiniChart.draw('vg62-mini-chart-svg');});return true;}
+  function bind(){function on(id,fn){var b=Dom.byId(id);if(b&&!b.dataset.v62Bound){b.dataset.v62Bound='1';b.addEventListener('click',fn);}}on('vg62-generate-qr',function(){var out=SOSCard.generate();var img=Dom.byId('vg6-sos-card-img');var status=Dom.byId('vg6-sos-card-status');if(img){img.src=out.url;img.classList.remove('vg6-hidden');}if(status)status.textContent='CBT 1.7.2 (Test V7.2) real QR SOS card ready. Payload '+out.payload.length+' bytes.';render();});on('vg62-queue-sos',function(){var payload={type:PACKET.SOS_QUERY,mode:'RESCUE',message:'CBT 1.7.2 (Test V7.2) priority SOS queued by operator',group:VG6.state.groupId,at:U.now(),ttl:15};SosQueueV6.enqueue(payload,{kind:'SOS_QUERY',priority:98,reason:'operator panel',channel:'auto'});SosStats.recordSos('sent');render();});on('vg62-flush-queue',function(){SosQueueV6.flush(8);render();});on('vg62-toggle-debug',function(){DebugMode.toggle();render();});on('vg62-toggle-contrast',function(){HighContrastMode.toggle();render();});on('vg62-save-idle',function(){IdleTimeout.setMinutes(Dom.byId('vg62-idle-minutes').value);render();});on('vg62-reset-idle',function(){IdleTimeout.touch();render();});on('vg62-export-debug',function(){DebugMode.exportJson();});SwarmBus.on('queue:update',render);SwarmBus.on('debug:update',render);SwarmBus.on('idle:tick',render);SwarmBus.on('chart:update',function(){MiniChart.draw('vg62-mini-chart-svg');});return true;}
   return {bind:bind,render:render};
 });
 
@@ -1688,7 +1688,7 @@ var FieldMatrix=registerModule('FieldMatrix',function(){
 
 var VirtualFieldTest=registerModule('VirtualFieldTest',function(){
   /*
-  Closed Beta 1.7.1 (Test V7.1) virtual field-test harness.
+  Closed Beta 1.7.2 (Test V7.2) virtual field-test harness.
   This module does not certify hardware performance. It creates repeatable,
   reviewer-visible scenario records that expose assumptions before real drills.
   */
@@ -1752,22 +1752,22 @@ var SelfTest=registerModule('SelfTest',function(){
     ok('V7 native-script SOS languages present',function(){return !!Dom.byId('vg6-sos-language')&&Dom.byId('vg6-sos-language').querySelector('option[value=bn]')&&Dom.byId('vg6-sos-language').querySelector('option[value=ur]');});
     ok('V7 visual and tactile modules registered',function(){return !!FlashBeacon&&!!VibrationBeacon&&!!SOSCard;});
 
-    ok('CBT 1.7.1 (Test V7.1) QR encoder creates real matrix and ECC',function(){var r=QREncoder.selfTest();return r&&r.ok;});
-    ok('CBT 1.7.1 (Test V7.1) SOS priority queue works',function(){var before=SosQueueV6.stats().depth;var it=SosQueueV6.enqueue({type:PACKET.STATUS,msg:'self-test'}, {kind:'STATUS',priority:10,reason:'self-test',expiresMs:1000});var after=SosQueueV6.stats().depth;return !!it&&after>=before;});
-    ok('CBT 1.7.1 (Test V7.1) ethics gates recorded for critical functions',function(){EthicalGateAudit.note('SelfTest.gate','self-test',{});return EthicalGateAudit.snapshot().length>0;});
-    ok('CBT 1.7.1 (Test V7.1) policy snapshot exposes consent gates',function(){var p=Ethics.policySnapshot();return p.operatorConsent.indexOf('audit:export')>=0&&p.passiveConsent.indexOf('ble:scan:passive')>=0;});
-    ok('CBT 1.7.1 (Test V7.1) no canvas chart renderer',function(){return document.querySelectorAll('can'+'vas').length===0&&!!Dom.byId('vg62-mini-chart-svg');});
+    ok('CBT 1.7.2 (Test V7.2) QR encoder creates real matrix and ECC',function(){var r=QREncoder.selfTest();return r&&r.ok;});
+    ok('CBT 1.7.2 (Test V7.2) SOS priority queue works',function(){var before=SosQueueV6.stats().depth;var it=SosQueueV6.enqueue({type:PACKET.STATUS,msg:'self-test'}, {kind:'STATUS',priority:10,reason:'self-test',expiresMs:1000});var after=SosQueueV6.stats().depth;return !!it&&after>=before;});
+    ok('CBT 1.7.2 (Test V7.2) ethics gates recorded for critical functions',function(){EthicalGateAudit.note('SelfTest.gate','self-test',{});return EthicalGateAudit.snapshot().length>0;});
+    ok('CBT 1.7.2 (Test V7.2) policy snapshot exposes consent gates',function(){var p=Ethics.policySnapshot();return p.operatorConsent.indexOf('audit:export')>=0&&p.passiveConsent.indexOf('ble:scan:passive')>=0;});
+    ok('CBT 1.7.2 (Test V7.2) no canvas chart renderer',function(){return document.querySelectorAll('can'+'vas').length===0&&!!Dom.byId('vg62-mini-chart-svg');});
     ok('V7 acoustic frame builder validates CRC',function(){var r=Acoustic.selfTest();return r&&r.ok&&r.crcPass;});
     ok('V7 acoustic TDMA slot scheduler is bounded',function(){var r=Acoustic.selfTest();return r&&r.slot>=0&&r.slot<r.tdmaSlots;});
     ok('V7 acoustic status exposes Goertzel/FFT demodulator',function(){return Acoustic.selfTest().demodulator==='Goertzel+FFT V7';});
-    ok('CBT 1.7.1 (Test V7.1) virtual field scenario suite registered',function(){return !!VirtualFieldTest&&VirtualFieldTest.status().scenarios>=6;});
+    ok('CBT 1.7.2 (Test V7.2) virtual field scenario suite registered',function(){return !!VirtualFieldTest&&VirtualFieldTest.status().scenarios>=6;});
 
     VG6.state.testResults=results;VG6.state.lastSelfTestAt=U.now();log('sys','Self-test completed '+results.filter(function(r){return r.ok;}).length+'/'+results.length,'good');SwarmBus.emit('test:results',results);return results;}
   return {run:run};
 });
 
 var PWA=registerModule('PWA',function(){
-  function createManifest(){try{var manifest={name:'VitalGuard CBT 1.7.1 (Test V7.1) Local Rescue Mesh',short_name:'VG7 Test Mesh',start_url:location.href,display:'standalone',background_color:'#030705',theme_color:'#06100c',description:'Single-file local-only rescue mesh audit core'};var blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});var url=URL.createObjectURL(blob);VG6.state.objectUrls.push(url);var link=document.createElement('link');link.rel='manifest';link.href=url;document.head.appendChild(link);VG6.state.pwa.manifest='created';log('sys','Same-file manifest created; service worker remains an explicit single-file limitation','good');}catch(e){VG6.state.pwa.manifest='failed';}}
+  function createManifest(){try{var manifest={name:'VitalGuard CBT 1.7.2 (Test V7.2) Local Rescue Mesh',short_name:'VG7 Test Mesh',start_url:location.href,display:'standalone',background_color:'#030705',theme_color:'#06100c',description:'Single-file local-only rescue mesh audit core'};var blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});var url=URL.createObjectURL(blob);VG6.state.objectUrls.push(url);var link=document.createElement('link');link.rel='manifest';link.href=url;document.head.appendChild(link);VG6.state.pwa.manifest='created';log('sys','Same-file manifest created; service worker remains an explicit single-file limitation','good');}catch(e){VG6.state.pwa.manifest='failed';}}
   return {createManifest:createManifest};
 });
 
@@ -1779,7 +1779,7 @@ var UI=registerModule('UI',function(){
   function renderAI(results){var box=Dom.byId('vg6-ai-list');if(!box)return;Dom.clear(box);(results||VG6.state.testResults.filter(function(r){return /Q-|Bandit|k-|RLS|Thompson|Genetic|PSO|Annealing|Bayesian|Isolation/.test(r.name);})).forEach(function(r){box.appendChild(Dom.item(r.name,r.error||'local algorithm check',r.ok?'pass':'fail',r.ok?'vg6-good':'vg6-bad'));});}
   function renderField(){var box=Dom.byId('vg6-field-list');if(!box)return;Dom.clear(box);if(!VG6.state.fieldTests.length){box.appendChild(Dom.item('No field evidence yet','Run the Field Matrix after a real device check or controlled drill.','pending','vg6-warn'));return;}VG6.state.fieldTests.slice(-8).forEach(function(r){box.appendChild(Dom.item(r.label,r.note,r.status,r.status==='pass'?'vg6-good':(r.status==='unsupported'?'vg6-bad':'vg6-warn')));});}
   function renderTests(){var box=Dom.byId('vg6-test-results');if(!box)return;Dom.clear(box);if(!VG6.state.testResults.length){box.appendChild(Dom.item('Self-tests not run','Use Run Self Tests before field deployment.','pending','vg6-warn'));return;}VG6.state.testResults.forEach(function(r){box.appendChild(Dom.item(r.name,r.error||'check completed',r.ok?'pass':'fail',r.ok?'vg6-good':'vg6-bad'));});}
-  function renderManual(){var box=Dom.byId('vg6-manual-box');if(!box)return;if(box.dataset.ready)return;box.dataset.ready='1';var sections=[['Reviewer note','CBT 1.7.1 (Test V7.1) is a field-ready audit core, not a certified rescue product. It improves local detection and coordination probability but does not guarantee rescue.'],['Deployment checklist','Use posted deployments, dedicated Android/desktop hardware, external power, operator training, calibration walks, deletion drills, no-egress checks, virtual scenario checks, and conservative claims.'],['V7.1 virtual field tests','The VirtualFieldTest module records controlled scenario evidence for forest, cornfield, remote-road, urban false-positive, water-adjacent, and acoustic-noise assumptions. It is not a substitute for hardware evidence.'],['Passive scan consent','Accept-all BLE scanning is dual-use. CBT 1.7.1 (Test V7.1) requires an operator consent modal before passive scanning and keeps fingerprints limited to 30 minutes.'],['Acoustic survival fallback','CBT 1.7.1 (Test V7.1) uses audible FSK by default for iOS Safari compatibility, checks AudioContext state, and never persists raw audio.'],['Visual/tactile fallback','Camera flash Morse and vibration Morse are explicit, local fallback channels for final approach. They require device support and user activation.'],['BLE transmit limitation','Browser Web Bluetooth usually does not provide reliable advertisement transmit. Use a native wrapper for real TX, or use GATT/acoustic fallback.'],['Deletion limitation','The wipe function clears browser-accessible state and overwrites typed arrays, but JavaScript cannot guarantee forensic erasure of browser or OS internals.'],['Privacy rule','No persistent identity, no cloud, no biometrics, no personal profile, no raw audio persistence, and no export of raw detection history.']];sections.forEach(function(s){var h=document.createElement('h3');h.textContent=s[0];var p=document.createElement('p');p.textContent=s[1];box.appendChild(h);box.appendChild(p);});}
+  function renderManual(){var box=Dom.byId('vg6-manual-box');if(!box)return;if(box.dataset.ready)return;box.dataset.ready='1';var sections=[['Reviewer note','CBT 1.7.2 (Test V7.2) is a field-ready audit core, not a certified rescue product. It improves local detection and coordination probability but does not guarantee rescue.'],['Deployment checklist','Use posted deployments, dedicated Android/desktop hardware, external power, operator training, calibration walks, deletion drills, no-egress checks, virtual scenario checks, and conservative claims.'],['V7.2 virtual field tests','The VirtualFieldTest module records controlled scenario evidence for forest, cornfield, remote-road, urban false-positive, water-adjacent, and acoustic-noise assumptions. It is not a substitute for hardware evidence.'],['Passive scan consent','Accept-all BLE scanning is dual-use. CBT 1.7.2 (Test V7.2) requires an operator consent modal before passive scanning and keeps fingerprints limited to 30 minutes.'],['Acoustic survival fallback','CBT 1.7.2 (Test V7.2) uses audible FSK by default for iOS Safari compatibility, checks AudioContext state, and never persists raw audio.'],['Visual/tactile fallback','Camera flash Morse and vibration Morse are explicit, local fallback channels for final approach. They require device support and user activation.'],['BLE transmit limitation','Browser Web Bluetooth usually does not provide reliable advertisement transmit. Use a native wrapper for real TX, or use GATT/acoustic fallback.'],['Deletion limitation','The wipe function clears browser-accessible state and overwrites typed arrays, but JavaScript cannot guarantee forensic erasure of browser or OS internals.'],['Privacy rule','No persistent identity, no cloud, no biometrics, no personal profile, no raw audio persistence, and no export of raw detection history.']];sections.forEach(function(s){var h=document.createElement('h3');h.textContent=s[0];var p=document.createElement('p');p.textContent=s[1];box.appendChild(h);box.appendChild(p);});}
   function renderMap(){var edges=Dom.byId('vg6-mesh-edges'),nodes=Dom.byId('vg6-mesh-nodes'),tracks=Dom.byId('vg6-mesh-tracks');if(!edges||!nodes||!tracks)return;Dom.clear(edges);Dom.clear(nodes);Dom.clear(tracks);var nodeArr=Array.from(VG6.state.nodes.values());for(var i=0;i<nodeArr.length;i++)for(var j=i+1;j<nodeArr.length;j++){var a=nodeArr[i],b=nodeArr[j];edges.appendChild(Dom.svg('line',{x1:a.x||320,y1:a.y||148,x2:b.x||320,y2:b.y||148,stroke:'rgba(86,238,149,.14)','stroke-width':'1'}));}nodeArr.forEach(function(n){nodes.appendChild(Dom.svg('circle',{cx:n.x||320,cy:n.y||148,r:n.local?8:6,fill:n.local?'#56ee95':'#72dcff',opacity:n.local?'1':'.78'}));});VG6.state.tracks.forEach(function(t){if(!t.estimate)return;tracks.appendChild(Dom.svg('circle',{cx:t.estimate.x,cy:t.estimate.y,r:10+Math.round(t.concern*10),fill:t.level>=3?'#ff7184':(t.level>=2?'#ffd36f':'#56ee95'),opacity:'.34'}));tracks.appendChild(Dom.svg('circle',{cx:t.estimate.x,cy:t.estimate.y,r:4,fill:t.level>=3?'#ff7184':(t.level>=2?'#ffd36f':'#56ee95')}));});}
   function renderCompass(){var b=Navigator.bearingToTarget();var arrow=Dom.byId('vg6-compass-arrow');if(!b){Dom.setText('vg6-nav-distance','-- m');Dom.setText('vg6-nav-bearing','bearing -- deg / confidence --');return;}if(arrow)arrow.style.transform='rotate('+((b.bearing-(VG6.state.heading||0)+360)%360)+'deg)';Dom.setText('vg6-nav-distance',b.distance+' m');Dom.setText('vg6-nav-bearing','bearing '+Math.round(b.bearing)+' deg / confidence '+b.confidence.toFixed(2));}
   function applyBuildMode(){var mode=VG6.state.buildMode;document.querySelectorAll('#vg6-root .vg6-experimental').forEach(function(el){if(mode==='clean'||mode==='field')el.classList.add('vg6-hidden');else el.classList.remove('vg6-hidden');});}
@@ -1808,15 +1808,15 @@ var UI=registerModule('UI',function(){
     ur:['کیا آپ راستہ بھول گئے ہیں؟','اگر آپ کو مدد چاہیے تو اس ریسکیو نوڈ کے قریب رہیں۔ بیکن کی آواز سنیں۔ مدد کا انتظار کریں۔ دور نہ جائیں۔'],
     sw:['Je, umepotea?','Ukihitaji msaada, kaa karibu na nodi hii ya uokoaji. Sikiliza ishara ya sauti. Subiri msaada. Usisogee mbali.']};var lang=Dom.byId('vg6-sos-language').value;var entry=dict[lang]||dict.en;var box=Dom.byId('vg6-sos-board');Dom.clear(box);box.setAttribute('dir',['ar','ur','fa','he'].indexOf(lang)>=0?'rtl':'ltr');box.classList.remove('vg6-rtl','vg6-ltr');box.classList.add(['ar','ur','fa','he'].indexOf(lang)>=0?'vg6-rtl':'vg6-ltr');var b=document.createElement('b');b.textContent=entry[0];b.style.fontSize='28px';b.style.lineHeight='1.3';var p=document.createElement('p');p.textContent=entry[1];p.style.fontSize='15px';p.style.lineHeight='1.5';p.style.marginTop='12px';box.appendChild(b);box.appendChild(p);}
   function saveConfig(){VG6.state.groupId=Dom.byId('vg6-group-id').value||'sector-alpha';VG6.state.ttl=Number(Dom.byId('vg6-ttl').value)||DEFAULT_TTL;VG6.state.config.tdmaSlots=Number(Dom.byId('vg6-tdma-slots').value)||8;VG6.state.config.measuredPower=Number(Dom.byId('vg6-measured-power').value)||-59;VG6.state.config.pathLoss=Number(Dom.byId('vg6-path-loss').value)||3.2;Storage.put('config',{id:'local',state:Ethics.sanitize({groupId:VG6.state.groupId,ttl:VG6.state.ttl,role:VG6.state.role,profile:VG6.state.profile,identityMode:VG6.state.identityMode,config:VG6.state.config},{})}).catch(function(){});log('sys','Local configuration saved','good');}
-  function broadcastSos(){EthicalGateAudit.note('UI.broadcastSos','operator-sos',{});var payload={type:PACKET.SOS_QUERY,mode:'RESCUE',message:'Are you lost? Tap or approach rescue node if help is needed.',group:VG6.state.groupId,at:U.now(),ttl:15};SosQueueV6.enqueue(payload,{kind:'SOS_QUERY',priority:99,reason:'operator broadcast button',channel:'auto',expiresMs:RETENTION.alertMs});SosQueueV6.flush(8);Acoustic.wakeAudio().then(function(){return Acoustic.playBeacon('sos');}).catch(function(){});SosStats.recordSos('sent');SosStats.recordRescue();VG6.state.mode='ALERT';log('ble','SOS query queued through CBT 1.7.1 (Test V7.1) priority queue and available transports','warn');}
+  function broadcastSos(){EthicalGateAudit.note('UI.broadcastSos','operator-sos',{});var payload={type:PACKET.SOS_QUERY,mode:'RESCUE',message:'Are you lost? Tap or approach rescue node if help is needed.',group:VG6.state.groupId,at:U.now(),ttl:15};SosQueueV6.enqueue(payload,{kind:'SOS_QUERY',priority:99,reason:'operator broadcast button',channel:'auto',expiresMs:RETENTION.alertMs});SosQueueV6.flush(8);Acoustic.wakeAudio().then(function(){return Acoustic.playBeacon('sos');}).catch(function(){});SosStats.recordSos('sent');SosStats.recordRescue();VG6.state.mode='ALERT';log('ble','SOS query queued through CBT 1.7.2 (Test V7.2) priority queue and available transports','warn');}
   function exportAudit(){Ethics.canOperate('audit:export',{operatorGesture:true});var payload=Ethics.sanitize({version:APP_VERSION,copyright:'© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI',license:'M-Corp Ethical AI License (Hippocratic 3.0 derivative)',licenseScope:'civilian, agricultural, humanitarian use ONLY',exportedAt:U.now(),manifest:ETHICAL_MANIFEST,capabilities:Capability.audit(),sosStats:SosStats.snapshot(),buildMode:VG6.state.buildMode,cleanAuditScope:VG6.state.buildMode==='clean'?'BLE proximity, local-only state, deletion, ethics, field evidence; experimental acoustic lab excluded from clean claims.':'Full field view may include experimental acoustic fallback; treat acoustic results as field evidence only.',guard:NetworkGuard.status(),watchdog:Watchdog.status(),fieldTests:VG6.state.fieldTests,tests:VG6.state.testResults,logs:VG6.state.logs.slice(-80),v7:{displayVersion:APP_DISPLAY_VERSION,testVersion:TEST_VERSION,queue:SosQueueV6.stats(),operations:Ethics.listOperations(),policy:Ethics.policySnapshot(),safeStorage:SafeStorage.policy(),gates:EthicalGateAudit.snapshot(),debug:DebugMode.snapshot(),idle:IdleTimeout.status(),acoustic:Acoustic.status?Acoustic.status():null,acousticSelfTest:Acoustic.selfTest?Acoustic.selfTest():null,qr:QREncoder.selfTest(),chart:MiniChart.snapshot()},v62Compatibility:{queue:SosQueueV6.stats(),qr:QREncoder.selfTest()},limitations:['single-file service worker not guaranteed','browser BLE advertisement TX requires native bridge','deletion is browser best-effort','RSSI location is approximate','detection is probabilistic','experimental acoustic fallback is separate from clean audit core']},{});var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='VitalGuard_CBT_1_7_1_Test_V7_1_sanitized_audit_'+Date.now()+'.json';a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);log('field','Sanitized audit export created','good');}
-  function startCore(){Ethics.canOperate('core:start');VG6.state.started=true;Capability.audit();Power.start();Trust.restore();PWA.createManifest();NetworkGuard.install();Watchdog.start();log('sys','VitalGuard CBT 1.7.1 (Test V7.1) core started','good');var v5=V5ToV6Migration.detectV5Data();if(v5.localStorageKeys>0)log('sys','V5.0 data detected: '+v5.localStorageKeys+' keys. Migration tools are available through console API.','warn');}
+  function startCore(){Ethics.canOperate('core:start');VG6.state.started=true;Capability.audit();Power.start();Trust.restore();PWA.createManifest();NetworkGuard.install();Watchdog.start();log('sys','VitalGuard CBT 1.7.2 (Test V7.2) core started','good');var v5=V5ToV6Migration.detectV5Data();if(v5.localStorageKeys>0)log('sys','V5.0 data detected: '+v5.localStorageKeys+' keys. Migration tools are available through console API.','warn');}
   var renderQueued=false,lastRenderAt=0;function requestRender(){if(renderQueued)return;var delay=Math.max(0,200-(U.now()-lastRenderAt));renderQueued=true;setTimeout(function(){renderQueued=false;lastRenderAt=U.now();renderAll();},delay);}SwarmBus.on('log:new',function(){renderLog();});SwarmBus.on('rescue:track-updated',requestRender);SwarmBus.on('mesh:nodes-changed',requestRender);SwarmBus.on('field:record',requestRender);SwarmBus.on('test:results',requestRender);SwarmBus.on('ai:suite',renderAI);SwarmBus.on('power:update',requestRender);SwarmBus.on('stats:sos-update',requestRender);SwarmBus.on('ble:scan-started',requestRender);SwarmBus.on('ble:scan-stopped',requestRender);setInterval(function(){updateStatus();renderCompass();renderStats();},1000);
   return {bind:bind,renderAll:renderAll,renderAI:renderAI};
 });
 
 function boot(){
-  NetworkGuard.install();Watchdog.start();Capability.audit();DebugMode.restore();HighContrastMode.apply();IdleTimeout.install();KeyboardShortcuts.install();MiniChart.start();Ethics.installIntegrity([Ethics.sanitize,DataWiper.clearMemory,NetworkGuard.install,PacketCodec.encode,Heartbeat.encode,Storage.put,BLE.sendPacket,SosQueueV6.enqueue,QREncoder.encode]);UI.bind();V62Panel.bind();UI.renderAll();var meter=Dom.byId('vg6-boot-meter'),text=Dom.byId('vg6-boot-text');var steps=['ethical manifest verified','runtime network guard armed','recursive sanitizer ready','ephemeral identity ready','watchdog worker ready','field matrix ready','CBT 1.7.1 (Test V7.1) ready'];steps.forEach(function(label,i){setTimeout(function(){if(meter)meter.style.width=Math.round((i+1)/steps.length*100)+'%';if(text)text.textContent=label;if(i===steps.length-1)log('sys','VitalGuard CBT 1.7.1 (Test V7.1) boot complete','good');},160+i*180);});
+  NetworkGuard.install();Watchdog.start();Capability.audit();DebugMode.restore();HighContrastMode.apply();IdleTimeout.install();KeyboardShortcuts.install();MiniChart.start();Ethics.installIntegrity([Ethics.sanitize,DataWiper.clearMemory,NetworkGuard.install,PacketCodec.encode,Heartbeat.encode,Storage.put,BLE.sendPacket,SosQueueV6.enqueue,QREncoder.encode]);UI.bind();V62Panel.bind();UI.renderAll();var meter=Dom.byId('vg6-boot-meter'),text=Dom.byId('vg6-boot-text');var steps=['ethical manifest verified','runtime network guard armed','recursive sanitizer ready','ephemeral identity ready','watchdog worker ready','field matrix ready','CBT 1.7.2 (Test V7.2) ready'];steps.forEach(function(label,i){setTimeout(function(){if(meter)meter.style.width=Math.round((i+1)/steps.length*100)+'%';if(text)text.textContent=label;if(i===steps.length-1)log('sys','VitalGuard CBT 1.7.2 (Test V7.2) boot complete','good');},160+i*180);});
 }
 window.VitalGuardClosedBeta17TestV7={runSelfTests:function(){return SelfTest.run();},runFieldMatrix:function(){return FieldMatrix.run();},runVirtualFieldTest:function(){return VirtualFieldTest.run();},status:function(){return {version:APP_VERSION,displayVersion:APP_DISPLAY_VERSION,testVersion:TEST_VERSION,guard:NetworkGuard.status(),watchdog:Watchdog.status(),modules:Object.keys(VG6.modules),fieldTests:VG6.state.fieldTests.length,virtualField:VirtualFieldTest.status(),queue:SosQueueV6.stats(),qr:QREncoder.selfTest(),acoustic:Acoustic.selfTest?Acoustic.selfTest():null,gates:EthicalGateAudit.snapshot().length};}};window.VitalGuardClosedBeta171TestV71=window.VitalGuardClosedBeta17TestV7;
 boot();
