@@ -552,7 +552,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Status and boot
 
-| DOM ID | Review use |
+| DOM ID | review |
 |---|---|
 | `vg6-node-id` | UI element or rendered container |
 | `vg6-boot-meter` | status display |
@@ -587,7 +587,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Configuration
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-build-mode` | configuration or operator input |
 | `vg6-role` | configuration or operator input |
@@ -605,7 +605,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Core controls
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-save-config` | operator control |
 | `vg6-rotate-id` | operator control |
@@ -620,7 +620,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x BLE, rescue, SOS
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-start-protocol-scan` | operator control |
 | `vg6-start-passive-scan` | operator control |
@@ -640,7 +640,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Acoustic, visual, tactile
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-play-beacon` | operator control |
 | `vg6-rescuer-beacon` | UI element or rendered container |
@@ -657,7 +657,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x QR, queue, debug, idle
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg62-panel` | UI element or rendered container |
 | `vg62-panel-pill` | status display |
@@ -684,7 +684,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Field evidence and tests
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-run-ai-suite` | operator control |
 | `vg6-auto-tune` | UI element or rendered container |
@@ -698,7 +698,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Maps, navigation, logs, modules
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-mesh-svg` | rendered container |
 | `vg6-mesh-edges` | UI element or rendered container |
@@ -715,7 +715,7 @@ The artifact contains 130 DOM IDs. The groups below are intended for quick UI bi
 
 ### 11.x Other UI
 
-| DOM ID | Review use |
+| DOM ID | Review |
 |---|---|
 | `vg6-scoped-style` | UI element or rendered container |
 | `vg6-root` | UI element or rendered container |
