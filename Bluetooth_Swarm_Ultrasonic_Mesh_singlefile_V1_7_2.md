@@ -1,4 +1,4 @@
-# VitalGuard Bluetooth Swarm + Ultrasonic Mesh / Code Map / Morgan J(Gyu-min Jeon)
+# VitalGuard Bluetooth Swarm + Ultrasonic Mesh MVP / Code Map / Morgan J(Gyu-min Jeon)
 
 **Target artifact:** `Bluetooth_Swarm_Ultrasonic_Mesh_singlefile_V1_7_2.html`
 **Build identity:** Closed Beta 1.7.2 / Test V7.2
