@@ -23,7 +23,6 @@ This manual does not certify rescue performance, medical use, law-enforcement us
 | Document title | VitalGuard Bluetooth Swarm + Ultrasonic Mesh — V2.0 Neutral Auditor Manual / Code Map |
 | Target artifact | `Bluetooth_Swarm_Ultrasonic_Mesh_singlefile_V1_7_2.html` |
 | Build identity | Closed Beta 1.7.2 / Test V7.2 |
-| Manual version | V2.0 |
 | Audience | security reviewers, maintainers, field-test coordinators, and deployment operators |
 | Distribution model | single-file HTML, inline scoped CSS, inline vanilla JavaScript, zero external dependency |
 | License context | M-Corp Ethical AI License, Hippocratic 3.0 derivative, civilian/agricultural/humanitarian use only |
