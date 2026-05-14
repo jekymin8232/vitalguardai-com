@@ -128,7 +128,7 @@ The two files describe VitalGuard as the following structure:
 
 ### 4.4 Recommended Safety Test Cases
 
-| ID | Purpose | Procedure Summary | Passing Criteria |
+| ID | Purpose | Procedure Summary | Real-world field testing has not yet been conducted |
 |---|---|---|---|
 | SP-01 | Audible FSK decode | Transmit and receive at 1 m / 5 m / 10 m in an authorized lab | Submit CRC pass rate and PER |
 | SP-02 | Near-ultrasonic validation | Transmit/receive primarily on Android devices and confirm iOS limitations | Clearly document supported and unsupported devices |
