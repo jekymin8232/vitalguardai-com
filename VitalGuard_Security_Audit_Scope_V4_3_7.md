@@ -1,4 +1,4 @@
-# VitalGuard — OTF Security Lab Audit Scope v2.5 | Application V4.3.7
+# VitalGuard — OTF Security Lab Audit Scope | Application V4.3.7
 
 **VitalGuard**
 
