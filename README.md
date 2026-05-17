@@ -1,4 +1,5 @@
 <img width="420" height="289" alt="Vibranium Shield" src="https://github.com/user-attachments/assets/80473f1d-2fdb-483f-91b3-2557449b8fab" />
+     
      "Captain America"
      He is an ordinary human being. What made him a Captain was his convictions and philosophy.
      “Heroes who save the world do not charge money to protect the vulnerable. True heroes protect people freely.”
