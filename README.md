@@ -1,3 +1,5 @@
+
+<img width="420" height="289" alt="Vibranium Shield" src="https://github.com/user-attachments/assets/80473f1d-2fdb-483f-91b3-2557449b8fab" />
 > **This “Pet Safety Leash” UI is a neutral demo skin for everyday usability testing.**  
 > Under the hood, it is an **Offline Bluetooth Swarm Network** built for zero‑infrastructure disaster response.  
 > When internet and grid power collapse to zero—wildfires, floods, hurricanes—devices self‑organize and keep operating.  
