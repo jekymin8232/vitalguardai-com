@@ -2,7 +2,6 @@
      
      "Captain America"
      He is an ordinary human being. What made him a Captain was his convictions and philosophy.
-     “Heroes who save the world do not charge money to protect the vulnerable. True heroes protect people freely.”
 
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
