@@ -1,3 +1,5 @@
+<img width="420" height="289" alt="Vibranium Shield" src="https://github.com/user-attachments/assets/80473f1d-2fdb-483f-91b3-2557449b8fab" />
+
      "Captain America"
      He is an ordinary human being. What made him a Captain was his convictions and philosophy.
      “Heroes who save the world do not charge money to protect the vulnerable. True heroes protect people freely.”
@@ -13,8 +15,6 @@
 8. Simplicity, standardization, and modularity must be prioritized.
 9. The system must be accessible and understandable to non-specialists.
 10. The AI must not collect unnecessary data, and if any data is stored, users must be able to delete it easily at any time.
-
-<img width="420" height="289" alt="Vibranium Shield" src="https://github.com/user-attachments/assets/80473f1d-2fdb-483f-91b3-2557449b8fab" />
 
 > **This “Pet Safety Leash” UI is a neutral demo skin for everyday usability testing.**  
 > Under the hood, it is an **Offline Bluetooth Swarm Network** built for zero‑infrastructure disaster response.  
