@@ -1,15 +1,15 @@
-# VitalGuard — OTF Security Lab Audit Scope | Application V4.3.7
+# VitalGuard — OTF Security Lab Audit Scope | Application V4.3.8
 
 **VitalGuard**
 
 **Security Audit Scope & Engagement Brief**
 
-Application Artifact: VitalGuard AI V4.3.7
+Application Artifact: VitalGuard AI V4.3.8
 
 | **Document type** | Formal security audit scope and engagement brief |
 | --- | --- |
 | **Intended reviewer** | OTF Security Lab independent security audit partner |
-| **Application version** | V4.3.7 |
+| **Application version** | V4.3.8 |
 | **Primary audit artifact** | VitalGuard_AI_complete_V43_7.html |
 | **Confidentiality** | Responsible disclosure and limited audit-use handling |
 
@@ -19,7 +19,7 @@ Application Artifact: VitalGuard AI V4.3.7
 
 VitalGuard AI is a single-file, offline-first humanitarian technology demonstration intended for low-connectivity and outage-prone environments. The application presents strong user-facing claims: no cloud dependency, no telemetry, local-only storage, user-controlled deletion, Bluetooth proximity monitoring, and optional encrypted backup. Those claims are appropriate for independent security verification because the intended users may include people operating in high-risk or resource-constrained settings.
 
-The audit goal is not a broad feature QA cycle. The goal is to produce a precise security verdict for the V4.3.7 artifact: which claims are supported, which are supported only under defined execution contexts, and which require remediation or clearer user guidance.
+The audit goal is not a broad feature QA cycle. The goal is to produce a precise security verdict for the V4.3.8 artifact: which claims are supported, which are supported only under defined execution contexts, and which require remediation or clearer user guidance.
 
 ---
 
@@ -27,16 +27,16 @@ The audit goal is not a broad feature QA cycle. The goal is to produce a precise
 
 | **Frozen artifact name** | VitalGuard_AI_complete_V43_7.html |
 | --- | --- |
-| **APP_VERSION** | 4.3.7 (declared in source at line 710) |
+| **APP_VERSION** | 4.3.8 (declared in source at line 710) |
 | **File size** | 440,577 bytes (430.3 KiB) |
 | **Line count** | 9,997 |
 | **Architecture** | Single-file HTML with inline CSS and JavaScript; no build system; no external script imports in the submitted artifact |
 | **Persistence identifiers** | DB_NAME = VitalGuardAI_V41; DB_VERSION = 2; LS_PREFIX = vg41_ |
-| **Scope boundary** | Only this V4.3.7 artifact is in scope unless a replacement artifact is explicitly frozen with a new hash |
+| **Scope boundary** | Only this V4.3.8 artifact is in scope unless a replacement artifact is explicitly frozen with a new hash |
 
 ### Artifact observations to validate
 
-| **Area** | **Observed in V4.3.7 source** | **Audit implication** |
+| **Area** | **Observed in V4.3.8 source** | **Audit implication** |
 | --- | --- | --- |
 | CSP and browser controls | CSP meta includes connect-src 'none', object-src 'none', base-uri 'none', frame-ancestors 'none', and form-action 'none' at line 8; referrer and nosniff controls appear at lines 9-10. | Verify runtime enforcement in local and hosted contexts; assess residual risk from required unsafe-inline usage. |
 | Permissions surface | Permissions-Policy permits geolocation, microphone, bluetooth, and motion sensors for self at line 11. | Verify permissions are user-initiated, disclosed, and not triggered during passive launch. |
@@ -49,7 +49,7 @@ The audit goal is not a broad feature QA cycle. The goal is to produce a precise
 
 ## 3. Core Audit Questions
 
-Does the V4.3.7 artifact generate any application-initiated network egress during normal use, PWA install, offline operation, backup/export/import, SOS, BLE monitoring, or diagnostics?
+Does the V4.3.8 artifact generate any application-initiated network egress during normal use, PWA install, offline operation, backup/export/import, SOS, BLE monitoring, or diagnostics?
 
 Are local storage, reset, factory reset, and optional auto-wipe paths accurate, complete, and clearly described as guaranteed versus best-effort?
 
@@ -69,7 +69,7 @@ Are ethics and non-abuse controls represented accurately as integrity and audita
 
 ### WP0 — Artifact Freeze and Threat Model Alignment
 
-**Objective:** Establish one unambiguous V4.3.7 target and agree how each security claim will be evaluated across execution contexts.
+**Objective:** Establish one unambiguous V4.3.8 target and agree how each security claim will be evaluated across execution contexts.
 
 #### Review tasks:
 
@@ -81,7 +81,7 @@ Define whether zero-egress means no application-authored external traffic, no th
 
 Separate source-level findings, browser-runtime findings, and deployment-layer findings in all conclusions.
 
-**Expected evidence:** A kickoff note that freezes the V4.3.7 artifact and maps every test to a security claim.
+**Expected evidence:** A kickoff note that freezes the V4.3.8 artifact and maps every test to a security claim.
 
 ---
 
@@ -347,6 +347,6 @@ A final claim verdict table using: Supported, Supported with caveats, Partially 
 
 ## 9. Summary
 
-The V4.3.7 scope is intentionally narrow and audit-friendly: one frozen single-file artifact, a fixed hash, clear execution contexts, and claim-based work packages. The audit should verify the strongest user-facing statements first: no telemetry/no cloud egress, local-only storage, deletion behavior, sensitive API prompts, encrypted backup safety, and resilience against malicious local inputs. Findings should be tied to the exact artifact and should distinguish source issues from browser or deployment-layer behavior.
+The V4.3.8 scope is intentionally narrow and audit-friendly: one frozen single-file artifact, a fixed hash, clear execution contexts, and claim-based work packages. The audit should verify the strongest user-facing statements first: no telemetry/no cloud egress, local-only storage, deletion behavior, sensitive API prompts, encrypted backup safety, and resilience against malicious local inputs. Findings should be tied to the exact artifact and should distinguish source issues from browser or deployment-layer behavior.
 
 This structure gives the security reviewer a practical path to validate VitalGuard AI without scope drift, while preserving the technical precision required for high-risk humanitarian use cases.
