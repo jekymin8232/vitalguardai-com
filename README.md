@@ -1,6 +1,6 @@
 <img width="420" height="289" alt="Captain America" src="https://github.com/user-attachments/assets/e18b02d3-9a38-49bc-8de6-b03988588987" />
 
-     "Captain America"
+     "Only the righteous are worthy of wielding the Vibranium Shield"
      He is an ordinary human being. What made him a Captain was his convictions and philosophy.
 
 **The following 10 principles are non-negotiable in my AI design philosophy:**
