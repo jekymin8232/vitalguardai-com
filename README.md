@@ -1,4 +1,4 @@
-[M](https://mcorpai.org/)
+**mcorpai.org**
 Cockroach Intelligence can operate using low-cost solar power and discarded smartphones, making it highly aligned with the Environmental dimension of ESG. By repurposing existing devices and minimizing energy consumption, it helps reduce electronic waste and dependence on large-scale infrastructure. At the same time, because its core purpose is to help save lives in disaster and survival scenarios, it can also contribute meaningful Social Impact. M-Corp is a non-Western ESG certification framework developed by Koreans to recognize practical, ethical, and humanitarian technologies.
      
      "Only the righteous are worthy of wielding the Vibranium Shield"
