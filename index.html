@@ -94,16 +94,18 @@ The reason I became an AI architect was ultimately to protect the nephew I love.
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- CSP Note: 'unsafe-inline' is required because VitalGuard AI is a single-file offline application.
-     All JavaScript and CSS are inline by architectural design (zero external dependencies).
-     connect-src 'none' blocks ALL network requests, mitigating inline-script risk. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; manifest-src 'self' blob:; object-src 'none'; frame-src 'none'; child-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; navigate-to 'self' blob: data:; trusted-types vitalguard-html; require-trusted-types-for 'script'">
+<!-- CSP Note: V4.3.8-END remains single-file and zero-dependency, but the main script is nonce-authorized.
+     Inline event attributes were removed and replaced by strict data-vg-on* action dispatch.
+     connect-src 'none' blocks network egress; worker-src 'none' disables Blob/Worker execution by default.
+     Hosted deployments should also send CSP, Permissions-Policy, X-Content-Type-Options, and frame-ancestors as HTTP response headers. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; script-src 'self' 'nonce-vg43end'; script-src-elem 'self' 'nonce-vg43end'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; worker-src 'none'; manifest-src 'self' blob:; object-src 'none'; frame-src 'none'; child-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; navigate-to 'self' blob: data:; trusted-types vitalguard-html; require-trusted-types-for 'script'">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=(self), bluetooth=(self), accelerometer=(self), gyroscope=(self), magnetometer=(self), camera=(), payment=(), usb=()">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="theme-color" content="#c0392b">
-<title>VitalGuard AI v4.3.8 — Infrastructure‑Independent Survival Framework</title>
+<title>VitalGuard AI v4.3.8-END — Audit-Hardened Offline Survival Framework</title>
+<meta name="security-hardening" content="V4.3.8-END: nonce CSP, script-src-attr none, no inline event attributes, no exposed original network handles, encrypted backup default, bounded import, redacted diagnostics, no service worker by default">
 <link rel="manifest" id="pwa-manifest">
 <style>
      /* Ethical AI project website: VitalguardAi.com and luckyvicky.org and mcorpai.org (AI Necklace for Child Safety) 
@@ -177,7 +179,7 @@ The following 10 principles are non-negotiable in my AI design philosophy:
 9. The system must be accessible and understandable to non-specialists.
 10. The AI must not collect unnecessary data, and if any data is stored, users must be able to delete it easily at any time.
 
-     Technology is not the most important thing. Philosophy matters more.
+     Technology is not the most important thing. Philosophy matters more. 
    ============================================================ */
 :root{--bg-primary:#0d1117;--bg-secondary:#161b22;--bg-card:#1c2333;--bg-elevated:#21283b;--text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;--accent-red:#c0392b;--accent-green:#2ecc71;--accent-yellow:#f1c40f;--accent-orange:#e67e22;--accent-blue:#3498db;--zone-safe:#2ecc71;--zone-caution:#f1c40f;--zone-warning:#e67e22;--zone-danger:#e74c3c;--zone-lost:#9b59b6;--border-color:#30363d;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--shadow-soft:0 2px 12px rgba(0,0,0,.3);--tr-fast:.15s ease;--tr-norm:.3s ease;--font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--font-mono:'Courier New',Courier,monospace}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -396,15 +398,15 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
     <div class="header-mission" id="i18n_app_mission">Runs fully offline. No cloud. No telemetry. GDPR‑friendly by design.</div>
     <div class="header-disclaimer" id="i18n_app_disclaimer">Demo skin: “Pet Safety Leash” using Bluetooth proximity (not GPS). Built to keep working when networks fail.</div>
     <div class="header-links">
-      <a class="header-link" href="#" onclick="Legal.open();return false;" rel="noopener noreferrer nofollow" id="i18n_github_link">Source Notice</a>
+      <a class="header-link" href="#" data-vg-onclick="Legal.open();return false;" rel="noopener noreferrer nofollow" id="i18n_github_link">Source Notice</a>
       <span class="header-link-sep">·</span>
-      <a class="header-link" href="#" onclick="Help.open();return false;" id="i18n_help_link">Help</a>
+      <a class="header-link" href="#" data-vg-onclick="Help.open();return false;" id="i18n_help_link">Help</a>
       <span class="header-link-sep">·</span>
-      <a class="header-link" href="#" onclick="Legal.open();return false;" id="i18n_about_link">About</a>
+      <a class="header-link" href="#" data-vg-onclick="Legal.open();return false;" id="i18n_about_link">About</a>
       <span class="header-link-sep">·</span>
-      <a class="header-link" href="#" onclick="Lang.open();return false;" id="i18n_lang_link">Language</a>
+      <a class="header-link" href="#" data-vg-onclick="Lang.open();return false;" id="i18n_lang_link">Language</a>
       <span class="header-link-sep">·</span>
-      <select id="langSelect" class="lang-select" aria-label="Language" title="Language" onchange="try{I18N.setLang(this.value);}catch(e){}" oninput="try{I18N.setLang(this.value);}catch(e){}">
+      <select id="langSelect" class="lang-select" aria-label="Language" title="Language" data-vg-onchange="try{I18N.setLang(this.value);}catch(e){}" data-vg-oninput="try{I18N.setLang(this.value);}catch(e){}">
         <option value="en">English</option>
         <option value="ko">한국어</option>
         <option value="ar">العربية</option>
@@ -431,8 +433,8 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
         </ul>
       </div>
       <div class="actions">
-        <button class="btn btn-secondary btn-sm" id="i18n_firstrun_ok" onclick="App.dismissFirstRun()">Got it</button>
-        <button class="btn btn-sm btn-secondary" id="i18n_firstrun_help" onclick="Help.open()">Open Help</button>
+        <button class="btn btn-secondary btn-sm" id="i18n_firstrun_ok" data-vg-onclick="App.dismissFirstRun()">Got it</button>
+        <button class="btn btn-sm btn-secondary" id="i18n_firstrun_help" data-vg-onclick="Help.open()">Open Help</button>
       </div>
     </div>
 
@@ -470,15 +472,15 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 <div id="empty-state" class="empty-state">
       <div class="empty-icon">🛡️</div>
       <div class="empty-text" id="i18n_empty_text">No demo tags registered yet.<br>Add a cheap BLE key‑finder tag to run the offline proximity demo.</div>
-      <button class="btn-add" onclick="Wizard.open()" id="i18n_empty_btn">+ Add Demo Tag</button>
+      <button class="btn-add" data-vg-onclick="Wizard.open()" id="i18n_empty_btn">+ Add Demo Tag</button>
     </div>
 
     <div id="dash-controls" class="hidden">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
         <div class="section-title" style="margin-bottom:0">🐾 My Pets</div>
         <div style="display:flex;gap:4px">
-          <button class="btn btn-sm btn-secondary" id="btn-mode-all" onclick="App.setTrackMode('all')" style="font-size:.65rem">Track All</button>
-          <button class="btn btn-sm btn-secondary" id="btn-mode-focus" onclick="App.setTrackMode('focus')" style="font-size:.65rem">Focus</button>
+          <button class="btn btn-sm btn-secondary" id="btn-mode-all" data-vg-onclick="App.setTrackMode('all')" style="font-size:.65rem">Track All</button>
+          <button class="btn btn-sm btn-secondary" id="btn-mode-focus" data-vg-onclick="App.setTrackMode('focus')" style="font-size:.65rem">Focus</button>
         </div>
       </div>
 
@@ -497,8 +499,8 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 
       <div class="card" style="margin-top:10px">
         <div style="display:flex;gap:8px">
-          <button class="btn btn-secondary" id="btn-scan-toggle" style="flex:1" onclick="App.toggleMonitoring()">▶ Start Monitoring</button>
-          <button class="btn btn-secondary" id="btn-demo-toggle" style="flex:1" onclick="App.toggleDemo()">🧪 Demo</button>
+          <button class="btn btn-secondary" id="btn-scan-toggle" style="flex:1" data-vg-onclick="App.toggleMonitoring()">▶ Start Monitoring</button>
+          <button class="btn btn-secondary" id="btn-demo-toggle" style="flex:1" data-vg-onclick="App.toggleDemo()">🧪 Demo</button>
         </div>
         <div style="margin-top:10px;font-size:.7rem;color:var(--text-muted);line-height:1.5">
           Tip: Monitoring works best when the screen stays on. In emergencies, use SOS Finder or Emergency Mode.
@@ -514,7 +516,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
     <div id="pet-list"></div>
 
     <div id="dash-controls2" class="hidden">
-      <button class="btn-add" onclick="Wizard.open()">+ Add New Pet</button>
+      <button class="btn-add" data-vg-onclick="Wizard.open()">+ Add New Pet</button>
     </div>
   </div>
 
@@ -534,15 +536,15 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
       <div id="sos-snapshot" class="card" style="font-size:.8rem;line-height:1.6"></div>
 
       <div style="display:flex;gap:8px;margin-top:10px">
-        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="SOS.saveLocation()">📍 Save Location</button>
-        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="SOS.shareMessage()">📤 Share Alert</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="SOS.saveLocation()">📍 Save Location</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="SOS.shareMessage()">📤 Share Alert</button>
       </div>
 
       <div class="card" style="margin-top:12px;text-align:center">
         <div style="font-size:.7rem;color:var(--text-muted);margin-bottom:8px">Hold 2 seconds for full pet alarm</div>
         <button class="btn btn-primary" style="font-size:1.1rem;padding:16px 30px;border-radius:50px"
-          ontouchstart="SOS.holdStart()" ontouchend="SOS.holdEnd()"
-          onmousedown="SOS.holdStart()" onmouseup="SOS.holdEnd()"
+          data-vg-ontouchstart="SOS.holdStart()" data-vg-ontouchend="SOS.holdEnd()"
+          data-vg-onmousedown="SOS.holdStart()" data-vg-onmouseup="SOS.holdEnd()"
         >🚨 SOS ALARM</button>
       </div>
 
@@ -551,7 +553,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
         <div style="font-size:.78rem;color:var(--text-secondary);line-height:1.5">
           For personal safety (siren + strobe + QR contact card). Works even without internet.
         </div>
-        <button class="btn btn-secondary" style="margin-top:10px;width:100%" onclick="Emergency.open()">Open Emergency Mode</button>
+        <button class="btn btn-secondary" style="margin-top:10px;width:100%" data-vg-onclick="Emergency.open()">Open Emergency Mode</button>
       </div>
 
       <div id="sos-focus-banner" class="hidden" style="margin-top:10px;padding:10px;background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.3);border-radius:var(--radius-sm);font-size:.72rem;color:var(--accent-blue);text-align:center">
@@ -571,18 +573,18 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
     <div class="section-title">⚙️ Settings</div>
 
     <div class="card">
-      <div class="setting-row"><span style="font-size:.82rem">🔊 Sound</span><div class="toggle" id="toggle-sound" onclick="Settings.toggle('sound')"></div></div>
-      <div class="setting-row"><span style="font-size:.82rem">📳 Vibration</span><div class="toggle" id="toggle-vibrate" onclick="Settings.toggle('vibrate')"></div></div>
-      <div class="setting-row"><span style="font-size:.82rem">🔔 Notifications</span><div class="toggle" id="toggle-notif" onclick="Settings.toggleNotif()"></div></div>
+      <div class="setting-row"><span style="font-size:.82rem">🔊 Sound</span><div class="toggle" id="toggle-sound" data-vg-onclick="Settings.toggle('sound')"></div></div>
+      <div class="setting-row"><span style="font-size:.82rem">📳 Vibration</span><div class="toggle" id="toggle-vibrate" data-vg-onclick="Settings.toggle('vibrate')"></div></div>
+      <div class="setting-row"><span style="font-size:.82rem">🔔 Notifications</span><div class="toggle" id="toggle-notif" data-vg-onclick="Settings.toggleNotif()"></div></div>
       <div id="notif-hint" class="hidden" style="font-size:.72rem;color:var(--accent-orange);margin-top:8px">Enable notifications in browser settings if denied.</div>
-      <div class="setting-row"><span style="font-size:.82rem">⚡ High Alert Mode</span><div class="toggle" id="toggle-highalert" onclick="Settings.toggle('highAlert')"></div></div>
+      <div class="setting-row"><span style="font-size:.82rem">⚡ High Alert Mode</span><div class="toggle" id="toggle-highalert" data-vg-onclick="Settings.toggle('highAlert')"></div></div>
 
       <div style="margin-top:12px">
         <div style="font-size:.75rem;color:var(--text-secondary);margin-bottom:6px">Performance</div>
         <div class="perf-select">
-          <div class="perf-opt" id="perf-saver" onclick="Settings.setPerf('saver')">Saver</div>
-          <div class="perf-opt active" id="perf-balanced" onclick="Settings.setPerf('balanced')">Balanced</div>
-          <div class="perf-opt" id="perf-fast" onclick="Settings.setPerf('fast')">Fast</div>
+          <div class="perf-opt" id="perf-saver" data-vg-onclick="Settings.setPerf('saver')">Saver</div>
+          <div class="perf-opt active" id="perf-balanced" data-vg-onclick="Settings.setPerf('balanced')">Balanced</div>
+          <div class="perf-opt" id="perf-fast" data-vg-onclick="Settings.setPerf('fast')">Fast</div>
         </div>
         <div style="font-size:.68rem;color:var(--text-muted);line-height:1.45;margin-top:6px">
           Saver reduces battery use. Fast increases responsiveness (may use more CPU/battery).
@@ -595,21 +597,21 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 
       <div class="setting-row">
         <span style="font-size:.82rem">🧠 Voice Recall (play your voice on CAUTION)</span>
-        <div class="toggle" id="toggle-voiceRecall" onclick="Settings.toggle('voiceRecall')"></div>
+        <div class="toggle" id="toggle-voiceRecall" data-vg-onclick="Settings.toggle('voiceRecall')"></div>
       </div>
       <div style="font-size:.72rem;color:var(--text-muted);line-height:1.45;margin-top:6px">
         Example: Record “Come here!” and it will play when your pet enters CAUTION zone (best effort).
       </div>
       <div class="voice-row">
-        <button class="btn btn-secondary btn-sm" onclick="VoiceRecall.record5s()">🎙 Record 5s</button>
-        <button class="btn btn-secondary btn-sm" onclick="VoiceRecall.play()">▶ Play</button>
+        <button class="btn btn-secondary btn-sm" data-vg-onclick="VoiceRecall.record5s()">🎙 Record 5s</button>
+        <button class="btn btn-secondary btn-sm" data-vg-onclick="VoiceRecall.play()">▶ Play</button>
       </div>
 
       <div class="divider"></div>
 
       <div class="setting-row">
         <span style="font-size:.82rem">🗣 Voice Announcer (TTS)</span>
-        <div class="toggle" id="toggle-tts" onclick="Settings.toggle('tts')"></div>
+        <div class="toggle" id="toggle-tts" data-vg-onclick="Settings.toggle('tts')"></div>
       </div>
       <div style="font-size:.72rem;color:var(--text-muted);line-height:1.45;margin-top:6px">
         Speaks zone changes (requires device voices). If blocked, use sound/vibration instead.
@@ -619,7 +621,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 
       <div class="setting-row">
         <span style="font-size:.82rem">🎧 Audio Keepalive (prevents suspension)</span>
-        <div class="toggle" id="toggle-keepAlive" onclick="Settings.toggle('keepAlive')"></div>
+        <div class="toggle" id="toggle-keepAlive" data-vg-onclick="Settings.toggle('keepAlive')"></div>
       </div>
       <div style="font-size:.72rem;color:var(--text-muted);line-height:1.45;margin-top:6px">
         Uses a near-silent audio signal to keep monitoring alive on some devices. May slightly increase battery usage.
@@ -630,7 +632,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
           <span style="font-size:.78rem;color:var(--text-secondary)">Master volume</span>
           <span id="volumeVal" style="font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono)">70%</span>
         </div>
-        <input id="volumeSlider" class="slider-mini" type="range" min="0" max="100" value="70" oninput="Settings.setVolume(this.value)">
+        <input id="volumeSlider" class="slider-mini" type="range" min="0" max="100" value="70" data-vg-oninput="Settings.setVolume(this.value)">
       </div>
     </div>
 
@@ -639,7 +641,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
       <div style="font-size:.78rem;color:var(--text-secondary);line-height:1.5">
         Personal siren + strobe + QR contact card. Configure once, then activate quickly when needed.
       </div>
-      <button class="btn btn-secondary" style="margin-top:10px;width:100%" onclick="Emergency.open()">Configure / Activate</button>
+      <button class="btn btn-secondary" style="margin-top:10px;width:100%" data-vg-onclick="Emergency.open()">Configure / Activate</button>
     </div>
 
     <div class="card">
@@ -649,36 +651,36 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 
     <div class="card">
       <div class="section-title" style="font-size:.8rem;margin-bottom:8px">💾 Backup & Data</div>
-      <button class="btn btn-secondary btn-block" onclick="DataManager.exportAll()">⬇️ Export Backup (JSON)</button>
-      <input type="file" id="import-input" accept="application/json" style="display:none" onchange="DataManager.handleImport(event)">
-      <button class="btn btn-secondary btn-block" style="margin-top:8px" onclick="DataManager.importFile()">⬆️ Import Backup</button>
-      <button class="btn btn-secondary btn-block" style="margin-top:8px" onclick="Diag.open()">🧪 Diagnostics</button>
-      <button class="btn btn-danger-outline btn-block" style="margin-top:10px" onclick="Settings.resetApp()">🗑️ RESET ALL DATA</button>
+      <button class="btn btn-secondary btn-block" data-vg-onclick="DataManager.exportAll()">🔐 Export Encrypted Backup</button>
+      <input type="file" id="import-input" accept="application/json" style="display:none" data-vg-onchange="DataManager.handleImport(event)">
+      <button class="btn btn-secondary btn-block" style="margin-top:8px" data-vg-onclick="DataManager.importFile()">⬆️ Import Backup</button>
+      <button class="btn btn-secondary btn-block" style="margin-top:8px" data-vg-onclick="Diag.open()">🧪 Diagnostics</button>
+      <button class="btn btn-danger-outline btn-block" style="margin-top:10px" data-vg-onclick="Settings.resetApp()">🗑️ RESET ALL DATA</button>
       <div style="font-size:.7rem;color:var(--text-muted);margin-top:10px;line-height:1.45">
-        Backups stay on your device. No cloud. No tracking. You can delete everything anytime.
+        Encrypted backups stay on your device. No cloud. No tracking. You can delete everything anytime.
       </div>
     </div>
 
     <div class="card">
       <div class="section-title" style="font-size:.8rem;margin-bottom:8px">📚 Guides</div>
-      <button class="btn btn-secondary btn-block" onclick="Help.open()">Open Help</button>
-      <button class="btn btn-secondary btn-block" style="margin-top:8px" onclick="Legal.open()">About & Legal</button>
+      <button class="btn btn-secondary btn-block" data-vg-onclick="Help.open()">Open Help</button>
+      <button class="btn btn-secondary btn-block" style="margin-top:8px" data-vg-onclick="Legal.open()">About & Legal</button>
     </div>
   </div>
 
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
-    <button class="bnav-btn active" data-tab="home" onclick="Nav.go('home')"><span class="bnav-icon">🏠</span><span>Home</span></button>
-    <button class="bnav-btn" data-tab="sos" onclick="Nav.go('sos')"><span class="bnav-icon">🚨</span><span>SOS</span></button>
-    <button class="bnav-btn" data-tab="tips" onclick="Nav.go('tips')"><span class="bnav-icon">📋</span><span>Tips</span></button>
-    <button class="bnav-btn" data-tab="settings" onclick="Nav.go('settings')"><span class="bnav-icon">⚙️</span><span>Settings</span></button>
+    <button class="bnav-btn active" data-tab="home" data-vg-onclick="Nav.go('home')"><span class="bnav-icon">🏠</span><span>Home</span></button>
+    <button class="bnav-btn" data-tab="sos" data-vg-onclick="Nav.go('sos')"><span class="bnav-icon">🚨</span><span>SOS</span></button>
+    <button class="bnav-btn" data-tab="tips" data-vg-onclick="Nav.go('tips')"><span class="bnav-icon">📋</span><span>Tips</span></button>
+    <button class="bnav-btn" data-tab="settings" data-vg-onclick="Nav.go('settings')"><span class="bnav-icon">⚙️</span><span>Settings</span></button>
   </nav>
 
   <!-- WIZARD OVERLAY -->
   <div id="wizard-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title" id="wizard-title">Add Demo Tag Wizard</div>
-      <button class="overlay-close" onclick="Wizard.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Wizard.close()">✕</button>
     </div>
     <div class="overlay-body">
       <div class="step-pills">
@@ -695,7 +697,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
           <div id="scan-status" style="font-size:.75rem;color:var(--text-muted)">Starting scan...</div>
-          <button class="btn btn-sm btn-secondary" onclick="Wizard.rescan()">🔄 Rescan</button>
+          <button class="btn btn-sm btn-secondary" data-vg-onclick="Wizard.rescan()">🔄 Rescan</button>
         </div>
         <div id="scan-list" style="margin-top:10px"></div>
       </div>
@@ -710,8 +712,8 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
           <div style="font-size:.72rem;color:var(--text-muted)">Signal drop</div>
           <div id="verify-delta" style="font-size:2rem;font-weight:900;margin:6px 0">0</div>
           <div id="verify-status" style="font-size:.8rem;color:var(--text-muted)">Waiting for movement...</div>
-          <button class="btn btn-success btn-block hidden" id="btn-verified" style="margin-top:12px" onclick="Wizard.goStep3()">✅ Verified</button>
-          <button class="btn btn-secondary btn-block" id="btn-skip-verify" style="margin-top:12px" onclick="Wizard.skipVerify()">Skip</button>
+          <button class="btn btn-success btn-block hidden" id="btn-verified" style="margin-top:12px" data-vg-onclick="Wizard.goStep3()">✅ Verified</button>
+          <button class="btn btn-secondary btn-block" id="btn-skip-verify" style="margin-top:12px" data-vg-onclick="Wizard.skipVerify()">Skip</button>
         </div>
 
         <div class="card">
@@ -720,14 +722,14 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
             For better distance estimates (still approximate): record RSSI at known distances.
           </div>
           <div style="display:flex;gap:8px;margin-top:10px">
-            <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Wizard.recordCalib(1)">Record 1m</button>
-            <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Wizard.recordCalib(10)">Record 10m</button>
+            <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Wizard.recordCalib(1)">Record 1m</button>
+            <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Wizard.recordCalib(10)">Record 10m</button>
           </div>
           <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:.72rem;color:var(--text-muted)">
             <span>1m: <span id="calib-1m">--</span></span>
             <span>10m: <span id="calib-10m">--</span></span>
           </div>
-          <button class="btn btn-sm btn-secondary" style="margin-top:10px;width:100%" onclick="Wizard.clearCalib()">Clear calibration</button>
+          <button class="btn btn-sm btn-secondary" style="margin-top:10px;width:100%" data-vg-onclick="Wizard.clearCalib()">Clear calibration</button>
         </div>
       </div>
 
@@ -746,7 +748,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
             <input id="input-name" type="text" placeholder="My Pet" style="width:100%;margin-top:6px;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:var(--bg-elevated);color:var(--text-primary);font-size:.9rem">
           </div>
 
-          <button class="btn btn-primary btn-block" id="btn-wiz-save" style="margin-top:14px" onclick="Wizard.save()">✅ Save</button>
+          <button class="btn btn-primary btn-block" id="btn-wiz-save" style="margin-top:14px" data-vg-onclick="Wizard.save()">✅ Save</button>
         </div>
       </div>
     </div>
@@ -756,7 +758,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <div id="detail-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title" id="detail-title">Pet</div>
-      <button class="overlay-close" onclick="Detail.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Detail.close()">✕</button>
     </div>
     <div class="overlay-body" id="detail-body"></div>
   </div>
@@ -765,7 +767,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <div id="help-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title" id="i18n_help_title">Help</div>
-      <button class="overlay-close" onclick="Help.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Help.close()">✕</button>
     </div>
     <div class="overlay-body" id="help-body"></div>
   </div>
@@ -774,7 +776,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <div id="legal-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title" id="i18n_legal_title">About</div>
-      <button class="overlay-close" onclick="Legal.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Legal.close()">✕</button>
     </div>
     <div class="overlay-body" id="legal-body"></div>
   </div>
@@ -783,7 +785,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <div id="lang-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title" id="i18n_lang_title">Language</div>
-      <button class="overlay-close" onclick="Lang.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Lang.close()">✕</button>
     </div>
     <div class="overlay-body">
       <div class="card" style="margin-top:0">
@@ -792,13 +794,13 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
           This changes UI text only. Bluetooth behavior and offline processing remain the same.
         </div>
         <div class="lang-grid" style="margin-top:12px">
-          <button class="btn btn-secondary" data-lang="en" onclick="Lang.choose('en')">English</button>
-          <button class="btn btn-secondary" data-lang="ko" onclick="Lang.choose('ko')">한국어</button>
-          <button class="btn btn-secondary" data-lang="ar" onclick="Lang.choose('ar')">العربية</button>
-          <button class="btn btn-secondary" data-lang="ja" onclick="Lang.choose('ja')">日本語</button>
-          <button class="btn btn-secondary" data-lang="fr" onclick="Lang.choose('fr')">Français</button>
-          <button class="btn btn-secondary" data-lang="zh-TW" onclick="Lang.choose('zh-TW')">繁體中文(台灣)</button>
-          <button class="btn btn-secondary" data-lang="es" onclick="Lang.choose('es')">Español</button>
+          <button class="btn btn-secondary" data-lang="en" data-vg-onclick="Lang.choose('en')">English</button>
+          <button class="btn btn-secondary" data-lang="ko" data-vg-onclick="Lang.choose('ko')">한국어</button>
+          <button class="btn btn-secondary" data-lang="ar" data-vg-onclick="Lang.choose('ar')">العربية</button>
+          <button class="btn btn-secondary" data-lang="ja" data-vg-onclick="Lang.choose('ja')">日本語</button>
+          <button class="btn btn-secondary" data-lang="fr" data-vg-onclick="Lang.choose('fr')">Français</button>
+          <button class="btn btn-secondary" data-lang="zh-TW" data-vg-onclick="Lang.choose('zh-TW')">繁體中文(台灣)</button>
+          <button class="btn btn-secondary" data-lang="es" data-vg-onclick="Lang.choose('es')">Español</button>
         </div>
       </div>
     </div>
@@ -808,7 +810,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <div id="diag-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title">Diagnostics</div>
-      <button class="overlay-close" onclick="Diag.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Diag.close()">✕</button>
     </div>
     <div class="overlay-body" id="diag-body"></div>
   </div>
@@ -817,13 +819,13 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <div id="emg-overlay" class="overlay">
     <div class="overlay-header">
       <div class="overlay-title">Emergency Mode</div>
-      <button class="overlay-close" onclick="Emergency.close()">✕</button>
+      <button class="overlay-close" data-vg-onclick="Emergency.close()">✕</button>
     </div>
     <div class="overlay-body" id="emg-body"></div>
   </div>
 
   <!-- SOS ACTIVE SCREEN -->
-  <div id="sos-active" class="sos-active" onclick="SOS.deactivate()">
+  <div id="sos-active" class="sos-active" data-vg-onclick="SOS.deactivate()">
     <div id="sos-strobe-area" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.2"></div>
     <div class="sos-active-text">🚨 SOS<br><span id="sos-active-name">PET</span></div>
     <div style="font-size:.75rem;color:#fff;opacity:.8">Tap screen to stop</div>
@@ -842,16 +844,16 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
       </div>
       <div style="display:flex;gap:10px;width:100%;max-width:360px;margin-top:12px">
         <a id="emg-call" class="btn btn-primary" style="flex:1;text-decoration:none;text-align:center" href="#">📞 Call</a>
-        <button class="btn btn-secondary" style="flex:1" onclick="Emergency.share()">📤 Share</button>
+        <button class="btn btn-secondary" style="flex:1" data-vg-onclick="Emergency.share()">📤 Share</button>
       </div>
-      <button class="btn btn-danger-outline" style="margin-top:14px" onclick="Emergency.deactivate()">Stop Siren</button>
+      <button class="btn btn-danger-outline" style="margin-top:14px" data-vg-onclick="Emergency.deactivate()">Stop Siren</button>
       <div style="margin-top:10px;font-size:.7rem;color:rgba(255,255,255,.75)">Tip: If Shake SOS is enabled, shaking your phone will activate Emergency.</div>
     </div>
   </div>
 
 </div>
 
-<script>
+<script nonce="vg43end">
 
 /* ============================================================
    VitalGuard AI v4.3.8
@@ -880,11 +882,96 @@ var Sanitizer = window.Sanitizer || {
 };
 window.Sanitizer = Sanitizer;
 
+/* ----------------------------- V4.3.8-END ACTION DISPATCHER -----------------------------
+   Replaces inline event attributes with data-vg-on* tokens.
+   Executes only a single allowlisted first-party method call; never eval/new Function. */
+const VitalGuardActionPolicy = (function(){
+  const allowed = Object.freeze({
+    App:Object.freeze(['dismissFirstRun','setTrackMode','toggleDemo','toggleMonitoring','focusFromChip']),
+    DataManager:Object.freeze(['exportAll','importFile','handleImport']),
+    Detail:Object.freeze(['aiFeedback','applySuggestion','close','open','resetQ','setLeash','suggestAI','toggleAI','updateThreshold']),
+    Diag:Object.freeze(['close','copy','download','open']),
+    Emergency:Object.freeze(['close','copyPhone','deactivate','open','requestMotionPermission','saveFromUI','share','toggleShake','holdStart','holdEnd']),
+    ErrorShield:Object.freeze(['clear']), Help:Object.freeze(['close','open']), I18N:Object.freeze(['setLang']), Lang:Object.freeze(['choose','close','open']), Legal:Object.freeze(['close','open']), Nav:Object.freeze(['go']),
+    ResetCenter:Object.freeze(['close','factory','hard','open','soft']), SOS:Object.freeze(['deactivate','saveLocation','selectPet','shareMessage','holdStart','holdEnd']), SafeMode:Object.freeze(['disable']),
+    Settings:Object.freeze(['removePet','resetApp','setPerf','toggle','toggleNotif','toggleV40','setVolume']), V40UI:Object.freeze(['exportEncrypted','showPitch']), VGHardening:Object.freeze(['runCoachAction']),
+    VoiceRecall:Object.freeze(['play','record5s']), Wizard:Object.freeze(['clearCalib','close','goStep3','open','pickIcon','recordCalib','rescan','save','selectCandidate','skipVerify'])
+  });
+  function rootFor(ns){
+    const roots={};
+    try{ roots.App=App; }catch(_){}
+    try{ roots.DataManager=DataManager; }catch(_){}
+    try{ roots.Detail=Detail; }catch(_){}
+    try{ roots.Diag=Diag; }catch(_){}
+    try{ roots.Emergency=Emergency; }catch(_){}
+    try{ roots.Help=Help; }catch(_){}
+    try{ roots.I18N=I18N; }catch(_){}
+    try{ roots.Lang=Lang; }catch(_){}
+    try{ roots.Legal=Legal; }catch(_){}
+    try{ roots.Nav=Nav; }catch(_){}
+    try{ roots.SOS=SOS; }catch(_){}
+    try{ roots.Settings=Settings; }catch(_){}
+    try{ roots.VoiceRecall=VoiceRecall; }catch(_){}
+    try{ roots.Wizard=Wizard; }catch(_){}
+    roots.ResetCenter=window.ResetCenter||null; roots.SafeMode=window.SafeMode||null; roots.ErrorShield=window.ErrorShield||null; roots.V40UI=window.V40UI||null; roots.VGHardening=window.VGHardening||null;
+    return roots[ns]||null;
+  }
+  function normalize(action){
+    let s=String(action==null?'':action).trim().replace(/&quot;|&#34;/g,'"').replace(/&#39;|&apos;/g,"'").replace(/\\'/g,"'").replace(/\\"/g,'"');
+    const m=s.match(/^try\s*\{\s*([\s\S]*?)\s*\}\s*catch\s*\(\s*\w+\s*\)\s*\{\s*\}\s*;?$/); if(m) s=m[1].trim();
+    s=s.replace(/;\s*return\s+false\s*;?\s*$/i,'').replace(/;\s*$/,'').trim();
+    return s;
+  }
+  function splitArgs(text){
+    const out=[]; let cur='', q=null, esc=false; text=String(text||'');
+    for(let i=0;i<text.length;i++){ const ch=text[i]; if(esc){cur+=ch; esc=false; continue;} if(ch==='\\'){cur+=ch; esc=true; continue;} if(q){cur+=ch; if(ch===q) q=null; continue;} if(ch==="'"||ch==='"'){q=ch; cur+=ch; continue;} if(ch===','){out.push(cur.trim()); cur=''; continue;} cur+=ch; }
+    if(q) return null; if(cur.trim()||text.trim()) out.push(cur.trim()); return out;
+  }
+  function parseAtom(tok, el, ev){
+    tok=String(tok||'').trim(); if(!tok) return {ok:false};
+    if(tok==='this.value') return {ok:true,value:(el&&'value' in el)?String(el.value).slice(0,128):''};
+    if(tok==='event') return {ok:true,value:ev};
+    if(tok==='true') return {ok:true,value:true}; if(tok==='false') return {ok:true,value:false}; if(tok==='null') return {ok:true,value:null};
+    if(/^-?\d+(?:\.\d+)?$/.test(tok)) return {ok:true,value:Number(tok)};
+    if(/^'(?:[^'\\]|\\.)*'$/.test(tok) || /^"(?:[^"\\]|\\.)*"$/.test(tok)){ const v=tok.slice(1,-1).replace(/\\'/g,"'").replace(/\\"/g,'"').replace(/\\\\/g,'\\'); if(v.length>120||/[<>`]/.test(v)) return {ok:false}; return {ok:true,value:v}; }
+    return {ok:false};
+  }
+  function parse(action, el, ev){
+    const s=normalize(action); if(!s||s.length>220||/[<>`=]/.test(s)) return null;
+    if(/constructor|prototype|__proto__|eval\s*\(|Function\s*\(|import\s*\(|fetch\s*\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|indexedDB|document\.cookie|document\.write|window\.open|location\s*=/i.test(s)) return null;
+    const m=s.match(/^([A-Za-z_$][\w$]*)\.([A-Za-z_$][\w$]*)\(([\s\S]*)\)$/); if(!m) return null;
+    const ns=m[1], method=m[2], argsText=m[3].trim();
+    if(!Object.prototype.hasOwnProperty.call(allowed,ns) || allowed[ns].indexOf(method)<0) return null;
+    const args=[]; if(argsText){ const parts=splitArgs(argsText); if(!parts||parts.length>4) return null; for(const p of parts){ const a=parseAtom(p,el,ev); if(!a.ok) return null; args.push(a.value); } }
+    return {ns,method,args};
+  }
+  function isAllowedAction(action){ return !!parse(action,null,null); }
+  function invoke(action, el, ev){ const p=parse(action,el,ev); if(!p) return false; const root=rootFor(p.ns); const fn=root&&root[p.method]; if(typeof fn!=='function') return false; try{ fn.apply(root,p.args); return true; }catch(e){ try{console.warn('[VitalGuard ActionPolicy] action failed safely:',p.ns+'.'+p.method,e);}catch(_){} return false; } }
+  return Object.freeze({normalize,parse,isAllowedAction,invoke});
+})();
+window.VitalGuardActionPolicy = VitalGuardActionPolicy;
+
+const VitalGuardActionDispatcher = (function(){
+  const events=['click','change','input','mousedown','mouseup','touchstart','touchend'];
+  function handle(type,ev){
+    const attr='data-vg-on'+type;
+    const el=ev.target&&ev.target.closest?ev.target.closest('['+attr+']'):null;
+    if(!el) return;
+    const action=el.getAttribute(attr)||'';
+    if(!VitalGuardActionPolicy.isAllowedAction(action)){ try{el.removeAttribute(attr);}catch(_){}; if(ev.preventDefault)ev.preventDefault(); if(ev.stopPropagation)ev.stopPropagation(); try{console.warn('[VitalGuard ActionPolicy] blocked unapproved action:',action);}catch(_){} return; }
+    if(type==='click'||/return\s+false/i.test(action)){ if(ev.preventDefault)ev.preventDefault(); }
+    if(!VitalGuardActionPolicy.invoke(action,el,ev)){ if(ev.preventDefault)ev.preventDefault(); if(ev.stopPropagation)ev.stopPropagation(); }
+  }
+  events.forEach(type=>document.addEventListener(type, ev=>handle(type,ev), true));
+  return Object.freeze({events,handle});
+})();
+window.VitalGuardActionDispatcher = VitalGuardActionDispatcher;
+
 const VitalGuardTrustedTypesGuard = (function(){
   const guard = {supported:false, policy:null, sinkPatch:false, blockedAttrs:0, blockedUrls:0, neutralizedHTML:0, blockedWrites:0};
   const rxScriptTag = new RegExp('<\\s*scr'+'ipt\\b[\\s\\S]*?<\\s*\\/\\s*scr'+'ipt\\s*>','gi');
   const rxBlockedTags = new RegExp('<\\s*\\/?\\s*(?:iframe|object|embed|applet|base|meta|link)\\b[^>]*>','gi');
-  const rxBadAttrs = /\s+on(?!click\b|change\b|input\b|mousedown\b|mouseup\b|touchstart\b|touchend\b)\w+\s*=/gi;
+  const rxBadAttrs = /\s+on\w+\s*=/gi;
   const rxBadAttrUrl = /\b(href|src|action|formaction|xlink:href)\s*=\s*(['"])\s*(?:https?:|m(?:ailto):|s(?:ms):|t(?:el):|j(?:avascript):)/gi;
   function neutralizeHTML(input){
     let html = String(input==null ? '' : input);
@@ -894,6 +981,10 @@ const VitalGuardTrustedTypesGuard = (function(){
                .replace(/<\s*form\b[^>]*>/gi, '<div data-vg-blocked-form="1">')
                .replace(/<\s*\/\s*form\s*>/gi, '</div>')
                .replace(rxBadAttrs, ' data-vg-blocked-on=')
+               .replace(/\s+(data-vg-on(?:click|change|input|mousedown|mouseup|touchstart|touchend))\s*=\s*(['"])(.*?)/gi, function(m,n,q,v){
+                 try{ if(window.VitalGuardActionPolicy && VitalGuardActionPolicy.isAllowedAction(v)) return ' '+n+'='+q+v+q; }catch(_){}
+                 guard.blockedAttrs++; return ' data-vg-blocked-action='+q+'1'+q;
+               })
                .replace(rxBadAttrUrl, '$1=$2#')
                .replace(/j(?:avascript)\s*:/gi, 'blocked-javascript:');
     if(html !== before) guard.neutralizedHTML++;
@@ -955,7 +1046,7 @@ const VitalGuardTrustedTypesGuard = (function(){
     }catch(_){ }
     return false;
   }
-  const allowedEvents = new Set(['onclick','onchange','oninput','onmousedown','onmouseup','ontouchstart','ontouchend']);
+  const vgActionAttrs = new Set(['data-vg-onclick','data-vg-onchange','data-vg-oninput','data-vg-onmousedown','data-vg-onmouseup','data-vg-ontouchstart','data-vg-ontouchend']);
   guard.scrubNode = function(root){
     try{
       const nodes = [];
@@ -966,7 +1057,8 @@ const VitalGuardTrustedTypesGuard = (function(){
         Array.from(el.attributes).forEach(function(a){
           const n = String(a.name||'').toLowerCase();
           const v = String(a.value||'');
-          if(n.indexOf('on') === 0 && !allowedEvents.has(n)){ el.removeAttribute(a.name); guard.blockedAttrs++; return; }
+          if(n.indexOf('on') === 0){ el.removeAttribute(a.name); guard.blockedAttrs++; return; }
+          if(vgActionAttrs.has(n)){ let ok=false; try{ ok=!!(window.VitalGuardActionPolicy && VitalGuardActionPolicy.isAllowedAction(v)); }catch(_){} if(!ok){ el.removeAttribute(a.name); guard.blockedAttrs++; return; } }
           if((n === 'href' || n === 'src' || n === 'action' || n === 'formaction' || n === 'xlink:href') && !isAllowedUrl(v)){
             if(n === 'action' || n === 'formaction') el.removeAttribute(a.name); else el.setAttribute(a.name, '#');
             guard.blockedUrls++;
@@ -985,7 +1077,7 @@ const VitalGuardTrustedTypesGuard = (function(){
             if(m.addedNodes) Array.from(m.addedNodes).forEach(function(n){ guard.scrubNode(n); });
           });
         });
-        mo.observe(document.documentElement, {subtree:true, childList:true, attributes:true, attributeFilter:['href','src','action','formaction','onclick','onload','onerror','onmouseover','onfocus','style']});
+        mo.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
         guard.observer = mo;
       }catch(_){ }
     };
@@ -997,7 +1089,6 @@ const VitalGuardTrustedTypesGuard = (function(){
   try{
     const shareKey = 'sh'+'are';
     if(navigator && typeof navigator[shareKey] === 'function'){
-      try{ navigator.__vg_original_os_share__ = navigator[shareKey].bind(navigator); }catch(_){}
       Object.defineProperty(navigator, shareKey, {
         configurable:true,
         value:function(){
@@ -5643,7 +5734,7 @@ const Wizard = {
       const safeName = _vgE(c.name || '⟨Unknown Tag⟩');              // HTML-escape ad name
       const safeScore = Number(c.score) || 0;                        // force numeric type
       return `
-        <div class="scan-item ${sel?'selected':''}" onclick="Wizard.selectCandidate('${safeId}')">
+        <div class="scan-item ${sel?'selected':''}" data-vg-onclick="Wizard.selectCandidate('${safeId}')">
           <div>
             <div class="scan-item-name">${safeName}</div>
             <div class="scan-item-id">${displayId}</div>
@@ -5756,7 +5847,7 @@ const Wizard = {
 
   _buildIconPicker(){
     $('icon-picker').innerHTML = ICONS.map(ic=>`
-      <div class="icon-opt ${ic===this.chosenIcon?'selected':''}" onclick="Wizard.pickIcon('${ic}')">${ic}</div>
+      <div class="icon-opt ${ic===this.chosenIcon?'selected':''}" data-vg-onclick="Wizard.pickIcon('${ic}')">${ic}</div>
     `).join('');
   },
 
@@ -5967,7 +6058,7 @@ const SOS = {
       App.pets.map(p=>`
         <button class="btn btn-sm ${this.targetPet && this.targetPet.id===p.id ? 'btn-success':'btn-secondary'}"
           style="margin:0 4px 4px 0"
-          onclick="SOS.selectPet('${_vgI(p.id)}')"
+          data-vg-onclick="SOS.selectPet('${_vgI(p.id)}')"
         >${_vgE(p.icon)} ${_vgE(p.name)}</button>
       `).join('');
   },
@@ -6044,7 +6135,7 @@ const Emergency = {
         <textarea id="emg-medical" rows="3" placeholder="Allergies, conditions, etc."
           style="width:100%;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:var(--bg-elevated);color:var(--text-primary);font-size:.9rem;resize:vertical">${(this.data.medical||'')}</textarea>
 
-        <button class="btn btn-secondary btn-block" style="margin-top:12px" onclick="Emergency.saveFromUI()">💾 Save Profile</button>
+        <button class="btn btn-secondary btn-block" style="margin-top:12px" data-vg-onclick="Emergency.saveFromUI()">💾 Save Profile</button>
       </div>
 
       <div class="card">
@@ -6054,16 +6145,16 @@ const Emergency = {
           If enabled, shaking your phone can activate Emergency (best effort; may need permission on iOS).
         </div>
         <div style="display:flex;gap:8px;margin-top:10px">
-          <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Emergency.toggleShake()">Toggle</button>
-          <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Emergency.requestMotionPermission()">iOS Permission</button>
+          <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Emergency.toggleShake()">Toggle</button>
+          <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Emergency.requestMotionPermission()">iOS Permission</button>
         </div>
       </div>
 
       <div class="card" style="text-align:center">
         <div style="font-size:.7rem;color:var(--text-muted);margin-bottom:8px">Hold 2 seconds to activate</div>
         <button class="btn btn-primary" style="font-size:1.05rem;padding:14px 26px;border-radius:50px"
-          ontouchstart="Emergency.holdStart()" ontouchend="Emergency.holdEnd()"
-          onmousedown="Emergency.holdStart()" onmouseup="Emergency.holdEnd()"
+          data-vg-ontouchstart="Emergency.holdStart()" data-vg-ontouchend="Emergency.holdEnd()"
+          data-vg-onmousedown="Emergency.holdStart()" data-vg-onmouseup="Emergency.holdEnd()"
         >🛡 ACTIVATE EMERGENCY</button>
       </div>
 
@@ -6147,7 +6238,7 @@ const Emergency = {
       callEl.href = '#';
       callEl.setAttribute('role','button');
       callEl.textContent = phoneSan ? '📋 Copy Phone' : '📋 No Phone';
-      callEl.onclick = function(e){ if(e) e.preventDefault(); VitalGuardCopyTextOnly(phoneSan, 'Emergency phone'); return false; };
+      this._copyPhoneSan = phoneSan; callEl.removeAttribute('onclick'); callEl.setAttribute('data-vg-onclick','Emergency.copyPhone()');
     }
 
     // Arm shake detection
@@ -6291,7 +6382,7 @@ const Detail = {
         <div class="warning-legal" style="margin-top:10px">
           <p><strong>⚠ Signal ambiguous</strong> — multiple tags look similar.</p>
           <p style="font-size:.75rem">Fix: Bring tag close → Re-verify signature. This improves matching and prevents false alerts.</p>
-          <button class="btn btn-secondary btn-sm" style="margin-top:8px" onclick="Wizard.open('${p.id}')">Re-verify Tag</button>
+          <button class="btn btn-secondary btn-sm" style="margin-top:8px" data-vg-onclick="Wizard.open('${p.id}')">Re-verify Tag</button>
         </div>
       `:''}
 
@@ -6321,24 +6412,24 @@ const Detail = {
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
           <span style="font-size:.78rem">Voice Recall</span>
-          <div class="toggle ${Settings.prefs.voiceRecall?'on':''}" onclick="Settings.toggle('voiceRecall')"></div>
+          <div class="toggle ${Settings.prefs.voiceRecall?'on':''}" data-vg-onclick="Settings.toggle('voiceRecall')"></div>
         </div>
         <div class="voice-row">
-          <button class="btn btn-secondary btn-sm" onclick="VoiceRecall.record5s()">🎙 Record 5s</button>
-          <button class="btn btn-secondary btn-sm" onclick="VoiceRecall.play()">▶ Play</button>
+          <button class="btn btn-secondary btn-sm" data-vg-onclick="VoiceRecall.record5s()">🎙 Record 5s</button>
+          <button class="btn btn-secondary btn-sm" data-vg-onclick="VoiceRecall.play()">▶ Play</button>
         </div>
       </div>
 
       <div class="section-title" style="font-size:.8rem">🎚 Invisible Leash Distance</div>
       <div class="leash-row">
-        ${Object.keys(LEASH_PRESETS).map(k=>`<div class="leash-btn ${p.leashPreset===k?'active':''}" onclick="Detail.setLeash('${k}')">${k}</div>`).join('')}
-        <div class="leash-btn ${p.leashPreset==='custom'?'active':''}" onclick="Detail.setLeash('custom')">Custom</div>
+        ${Object.keys(LEASH_PRESETS).map(k=>`<div class="leash-btn ${p.leashPreset===k?'active':''}" data-vg-onclick="Detail.setLeash('${k}')">${k}</div>`).join('')}
+        <div class="leash-btn ${p.leashPreset==='custom'?'active':''}" data-vg-onclick="Detail.setLeash('custom')">Custom</div>
       </div>
 
       <div id="custom-thresholds" style="margin-top:12px">
-        <div class="slider-row"><label>Caution</label><input type="range" min="-90" max="-40" value="${p.thresholds.cautionEnter}" oninput="Detail.updateThreshold('cautionEnter',this.value)"><span class="val" id="dt-caution">${p.thresholds.cautionEnter} dBm</span></div>
-        <div class="slider-row"><label>Warning</label><input type="range" min="-98" max="-55" value="${p.thresholds.warningEnter}" oninput="Detail.updateThreshold('warningEnter',this.value)"><span class="val" id="dt-warning">${p.thresholds.warningEnter} dBm</span></div>
-        <div class="slider-row"><label>Danger</label><input type="range" min="-100" max="-70" value="${p.thresholds.dangerEnter}" oninput="Detail.updateThreshold('dangerEnter',this.value)"><span class="val" id="dt-danger">${p.thresholds.dangerEnter} dBm</span></div>
+        <div class="slider-row"><label>Caution</label><input type="range" min="-90" max="-40" value="${p.thresholds.cautionEnter}" data-vg-oninput="Detail.updateThreshold('cautionEnter',this.value)"><span class="val" id="dt-caution">${p.thresholds.cautionEnter} dBm</span></div>
+        <div class="slider-row"><label>Warning</label><input type="range" min="-98" max="-55" value="${p.thresholds.warningEnter}" data-vg-oninput="Detail.updateThreshold('warningEnter',this.value)"><span class="val" id="dt-warning">${p.thresholds.warningEnter} dBm</span></div>
+        <div class="slider-row"><label>Danger</label><input type="range" min="-100" max="-70" value="${p.thresholds.dangerEnter}" data-vg-oninput="Detail.updateThreshold('dangerEnter',this.value)"><span class="val" id="dt-danger">${p.thresholds.dangerEnter} dBm</span></div>
       </div>
 
       <div class="divider"></div>
@@ -6347,11 +6438,11 @@ const Detail = {
       <div class="card">
         <div class="setting-row">
           <span style="font-size:.78rem">Behavior Fingerprint</span>
-          <div class="toggle ${p.aiToggles.behavior?'on':''}" onclick="Detail.toggleAI('behavior')"></div>
+          <div class="toggle ${p.aiToggles.behavior?'on':''}" data-vg-onclick="Detail.toggleAI('behavior')"></div>
         </div>
         <div class="setting-row">
           <span style="font-size:.78rem">Q-Learning Coach (suggest thresholds)</span>
-          <div class="toggle ${p.aiToggles.qlearn?'on':''}" onclick="Detail.toggleAI('qlearn')"></div>
+          <div class="toggle ${p.aiToggles.qlearn?'on':''}" data-vg-onclick="Detail.toggleAI('qlearn')"></div>
         </div>
 
         <div style="margin-top:10px;font-size:.75rem;color:var(--text-secondary);line-height:1.5">
@@ -6359,14 +6450,14 @@ const Detail = {
           Congestion: <strong>${congestion.toUpperCase()}</strong> (${BLE.advPerSec} adv/s)
         </div>
 
-        <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" onclick="Detail.suggestAI()">✨ Suggest Adjustment</button>
+        <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" data-vg-onclick="Detail.suggestAI()">✨ Suggest Adjustment</button>
 
         <div id="ai-suggestion" style="margin-top:10px;font-size:.75rem;color:var(--text-muted);line-height:1.5"></div>
         <div id="ai-feedback" class="hidden" style="margin-top:10px">
           <div style="font-size:.72rem;color:var(--text-secondary);margin-bottom:6px">Was this suggestion helpful?</div>
           <div style="display:flex;gap:8px">
-            <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Detail.aiFeedback(true)">👍 Helpful</button>
-            <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Detail.aiFeedback(false)">👎 False alarm</button>
+            <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Detail.aiFeedback(true)">👍 Helpful</button>
+            <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Detail.aiFeedback(false)">👎 False alarm</button>
           </div>
         </div>
       </div>
@@ -6378,7 +6469,7 @@ const Detail = {
         Strength: <strong>${strength}/8</strong><br>
         ${sigLines.length ? sigLines.join('<br>') : 'No signature captured'}
         <div style="margin-top:10px">
-          <button class="btn btn-secondary btn-sm" onclick="Wizard.open('${p.id}')">Re-verify Tag</button>
+          <button class="btn btn-secondary btn-sm" data-vg-onclick="Wizard.open('${p.id}')">Re-verify Tag</button>
         </div>
       </div>
 
@@ -6463,8 +6554,8 @@ const Detail = {
         <strong>${msg}</strong><br>
         <span style="color:var(--text-muted)">Tap “Apply” to update thresholds.</span>
         <div style="display:flex;gap:8px;margin-top:10px">
-          <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Detail.applySuggestion()">Apply</button>
-          <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Detail.resetQ()">Reset AI</button>
+          <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Detail.applySuggestion()">Apply</button>
+          <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Detail.resetQ()">Reset AI</button>
         </div>
       </div>
     `;
@@ -6677,7 +6768,7 @@ const Settings = {
           <span style="font-size:1.2rem">${_vgE(p.icon)}</span> <strong>${_vgE(p.name)}</strong>
           <div style="font-size:.65rem;color:var(--text-muted)">ID: ${_vgE(p.rescueId)} | Added ${new Date(p.createdAt).toLocaleDateString()}</div>
         </div>
-        <button class="btn btn-danger-outline btn-sm" onclick="Settings.removePet('${_vgI(p.id)}')">Remove</button>
+        <button class="btn btn-danger-outline btn-sm" data-vg-onclick="Settings.removePet('${_vgI(p.id)}')">Remove</button>
       </div>
     `).join('');
   },
@@ -6703,123 +6794,18 @@ const Settings = {
 /* ----------------------------- DATA MANAGER ----------------------------- */
 const DataManager = {
   async exportAll(){
-    const hasVoice = !!(await Store.getBlob(VoiceRecall.key));
-    const includeVoice = hasVoice ? await ConfirmModal.ask('Include Voice Recall audio in backup? (file will be larger)') : false;
-    let voiceBase64=null;
-
-    if(includeVoice){
-      const blob=await Store.getBlob(VoiceRecall.key);
-      if(blob){
-        voiceBase64 = await new Promise(res=>{
-          const fr=new FileReader();
-          fr.onload=()=>res(fr.result);
-          fr.onerror=()=>res(null);
-          fr.readAsDataURL(blob);
-        });
-      }
-    }
-
-    const data={
-      appVersion:APP_VERSION,
-      schemaVersion:SCHEMA_VERSION,
-      exported:new Date().toISOString(),
-      pets:App.pets.map(p=>p.toJSON()),
-      settings:Settings.prefs,
-      voiceRecall: voiceBase64 ? {included:true, dataUrl:voiceBase64} : {included:false}
-    };
-
-    const blob=new Blob([safeJson(data)], {type:'application/json'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url;
-    a.download='vitalguard-ai-v4.3.8-backup-'+Date.now()+'.json';
-    a.click();
-    URL.revokeObjectURL(url);
-    Toast.show('Backup exported!');
+    if(window.VitalGuardEncryptedExport){ return window.VitalGuardEncryptedExport(); }
+    try{ Toast.show('Encrypted backup module is still loading. Try again.'); }catch(_){}
   },
 
   importFile(){ $('import-input').click(); },
 
   async handleImport(ev){
-    const file=ev.target.files && ev.target.files[0];
-    if(!file) return;
-
-    try{
-      const text=await file.text();
-      const data=JSON.parse(text);
-      if(!data.pets || !Array.isArray(data.pets)) throw new Error('Invalid backup');
-
-      const merge = (App.pets.length>0) ? await ConfirmModal.ask('Merge with existing pets?\nCancel = Replace all',{okText:'Merge',cancelText:'Replace'}) : true;
-
-      if(!merge){
-        App.pets=[];
-        await Security.fullWipe();
-        await Store.init();
-      }
-
-      let imported=0;
-      const ALLOWED_PET_KEYS = new Set(['id','name','icon','leashPreset','signature','rescueId','createdAt','thresholds','distanceCalib','aiToggles','aiState','alertHistory','ambiguousCount','lastAmbiguousMs','alertPrefs','leashDistanceM','disabled','lostEvents']);
-      for(const pd of data.pets){
-        // M3: Schema validation — sanitize all fields, strip unknowns
-        if(!pd || typeof pd !== 'object') continue;
-        if(pd.id) pd.id=_vgI(pd.id);
-        else continue; // skip pets without ID
-        pd.name = Sanitizer.name(pd.name);
-        pd.icon = Sanitizer.icon(pd.icon);
-        if(pd.rescueId) pd.rescueId = String(pd.rescueId).replace(/[^A-Z0-9-]/gi,'').slice(0,12);
-        if(pd.leashPreset && typeof pd.leashPreset==='string') pd.leashPreset = pd.leashPreset.replace(/[^0-9m]/g,'').slice(0,5);
-        if(pd.createdAt && typeof pd.createdAt!=='number') pd.createdAt = Date.now();
-        // Remove unexpected fields (allowlist)
-        for(const k of Object.keys(pd)){
-          if(!ALLOWED_PET_KEYS.has(k)) delete pd[k];
-        }
-        if(App.pets.find(p=>p.id===pd.id)) continue;
-        const pet=new Pet(pd);
-        App.pets.push(pet);
-        await Store.savePet(pet);
-        imported++;
-      }
-
-      if(data.settings){
-        // Import known settings only
-        const keys=['sound','vibrate','notifWanted','highAlert','perfMode','voiceRecall','tts','keepAlive','autoWipeOnClose','useScanFilters','screenAwake','autoOptimize','largeText','highContrast','reduceMotion','volume'];
-        for(const k of keys){
-          if(k in data.settings){
-            Settings.prefs[k]=data.settings[k];
-            await Store.saveSetting(k, data.settings[k]);
-          }
-        }
-        perfProfile = PERF_PROFILES[Settings.prefs.perfMode] || PERF_PROFILES.balanced;
-        Settings._updateToggles();
-        Settings._updatePerfUI();
-        Settings._updateVolumeUI();
-        App.resetTimers();
-      }
-
-      if(data.voiceRecall && data.voiceRecall.included && data.voiceRecall.dataUrl){
-        // restore voice clip
-        try{
-          const parts=data.voiceRecall.dataUrl.split(',');
-          const meta=parts[0]||'';
-          const b64=parts[1]||'';
-          const mime=(meta.match(/data:(.*?);base64/)||[])[1]||'audio/webm';
-          const bin=atob(b64);
-          const u8=new Uint8Array(bin.length);
-          for(let i=0;i<bin.length;i++) u8[i]=bin.charCodeAt(i);
-          const blob=new Blob([u8], {type:mime});
-          await Store.saveBlob(VoiceRecall.key, blob);
-        }catch(e){}
-      }
-
-      App.render();
-      Toast.show(imported+' pet(s) imported');
-
-    }catch(e){
-      Toast.show('Import failed: '+(e.message||'unknown'));
-    }
-
-    ev.target.value='';
+    if(window.VitalGuardHardenedImport){ return window.VitalGuardHardenedImport(ev); }
+    try{ Toast.show('Import guard is still loading. Try again.'); }catch(_){}
+    try{ if(ev && ev.target) ev.target.value=''; }catch(_){}
   }
+
 };
 
 /* ----------------------------- HELP (expanded) ----------------------------- */
@@ -6963,8 +6949,8 @@ const Diag = {
       </div>
 
       <div style="display:flex;gap:8px;margin:10px 0">
-        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.copy()">📋 Copy</button>
-        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.download()">⬇️ Download</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.copy()">📋 Copy</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.download()">⬇️ Download</button>
       </div>
 
       <pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4">${safeJson(snap)}</pre>
@@ -7393,7 +7379,7 @@ const App = {
     row.classList.remove('hidden');
     row.innerHTML = this.pets.map(p=>{
       const active = (this.trackMode==='focus' && this.focusPetId===p.id);
-      return `<div class="pet-chip ${active?'active':''}" onclick="App.focusFromChip('${_vgI(p.id)}')"> ${_vgE(p.icon)} ${_vgE(p.name)}</div>`;
+      return `<div class="pet-chip ${active?'active':''}" data-vg-onclick="App.focusFromChip('${_vgI(p.id)}')"> ${_vgE(p.icon)} ${_vgE(p.name)}</div>`;
     }).join('');
   },
 
@@ -7504,7 +7490,7 @@ const App = {
         const amb = p.ambiguousCount>0 && (now-p.lastAmbiguousMs)<60000;
 
         return `
-          <div class="pet-card zone-${z}" onclick="Detail.open('${p.id}')">
+          <div class="pet-card zone-${z}" data-vg-onclick="Detail.open('${p.id}')">
             <div class="pet-icon-circle">${_vgE(p.icon)}</div>
             <div class="pet-details">
               <div class="pet-name">${_vgE(p.name)}</div>
@@ -7546,10 +7532,7 @@ const App = {
 
   /* ----------------------------- PWA ----------------------------- */
   registerPWA(){
-    if(!('serviceWorker' in navigator)) return;
-
     const startUrl = location.href;
-
     const manifest = {
       name: "VitalGuard AI v"+APP_VERSION,
       short_name: "VitalGuard AI",
@@ -7557,68 +7540,19 @@ const App = {
       display: "standalone",
       background_color: "#0d1117",
       theme_color: "#c0392b",
-      description: "Life‑Saving Offline AI Demo — Bluetooth proximity + tiny on‑device AI (no cloud).",
+      description: "Life-saving offline AI demo — Bluetooth proximity + tiny on-device AI (no cloud).",
       icons: [
         {src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='40' fill='%23c0392b'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='120'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E", sizes:"192x192", type:"image/svg+xml"},
         {src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Crect width='512' height='512' rx='96' fill='%23c0392b'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='340'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E", sizes:"512x512", type:"image/svg+xml"}
-      ]
+      ],
+      vitalguardSecurity:{serviceWorker:"disabled-by-default", workerSrc:"none", networkEgress:"blocked"}
     };
-
-    const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
-    const url = URL.createObjectURL(blob);
-    const link = document.getElementById('pwa-manifest');
-    if(link) link.setAttribute('href', url);
-
-    const swCode = `
-      const CACHE='vitalguard-ai-${APP_VERSION}-cache';
-      const START_URL=${JSON.stringify(startUrl)};
-
-      self.addEventListener('install', e=>{
-        // Note: initial cache fill requires fetching START_URL once (same-origin).
-        // We intentionally do NOT implement any cache->network fallback in fetch handler.
-        self.skipWaiting();
-        e.waitUntil(
-          caches.open(CACHE).then(c=>c.addAll([START_URL])).catch(()=>{})
-        );
-      });
-
-      self.addEventListener('activate', e=>{
-        e.waitUntil((async()=>{
-          try{
-            const keys = await caches.keys();
-            await Promise.all(keys.map(k=>k!==CACHE ? caches.delete(k) : 0));
-          }catch(e){}
-          try{ await self.clients.claim(); }catch(e){}
-        })());
-      });
-
-      self.addEventListener('fetch', e=>{
-        // v4.3.8 SECURITY: cache-only. Never fall back to network.
-        if(e.request.method!=='GET') return;
-
-        // For external links, allow normal browser navigation (user-initiated).
-        try{
-          const url = new URL(e.request.url);
-          if(url.origin !== self.location.origin) return;
-        }catch(err){}
-
-        e.respondWith(
-          caches.match(e.request).then(r=>{
-            if(r) return r;
-
-            // Navigation fallback: serve START_URL if cached
-            if(e.request.mode==='navigate'){
-              return caches.match(START_URL);
-            }
-
-            return new Response('Offline (cache only)', {status:503, headers:{'Content-Type':'text/plain'}});
-          }).catch(()=>new Response('Offline', {status:503}))
-        );
-      });
-    `;
-    const swBlob = new Blob([swCode], {type:'text/javascript'});
-    const swUrl = URL.createObjectURL(swBlob);
-    navigator.serviceWorker.register(swUrl).catch(()=>{});
+    try{
+      const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const link = document.getElementById('pwa-manifest');
+      if(link) link.setAttribute('href', url);
+    }catch(e){}
   },
 
   setupInstallBanner(){
@@ -8329,7 +8263,7 @@ const App = {
         <div id="reset-overlay" class="overlay">
           <div class="overlay-header">
             <div class="overlay-title">Reset / Initialize</div>
-            <button class="overlay-close" onclick="ResetCenter.close()">✕</button>
+            <button class="overlay-close" data-vg-onclick="ResetCenter.close()">✕</button>
           </div>
           <div class="overlay-body" id="reset-body"></div>
         </div>
@@ -8364,7 +8298,7 @@ const App = {
           <div style="font-size:.78rem;color:var(--text-secondary);line-height:1.55">
             Clears temporary state: scan timers, recent errors, UI cache. Keeps pets, signatures, and calibration.
           </div>
-          <button class="btn btn-secondary btn-block" style="margin-top:10px" onclick="ResetCenter.soft()">Soft Reset</button>
+          <button class="btn btn-secondary btn-block" style="margin-top:10px" data-vg-onclick="ResetCenter.soft()">Soft Reset</button>
         </div>
 
         <div class="card">
@@ -8372,7 +8306,7 @@ const App = {
           <div style="font-size:.78rem;color:var(--text-secondary);line-height:1.55">
             Deletes pets, signatures, alerts, AI learning, and settings. You will need to re-add tags.
           </div>
-          <button class="btn btn-danger-outline btn-block" style="margin-top:10px" onclick="ResetCenter.hard()">Hard Reset</button>
+          <button class="btn btn-danger-outline btn-block" style="margin-top:10px" data-vg-onclick="ResetCenter.hard()">Hard Reset</button>
         </div>
 
         <div class="card">
@@ -8380,7 +8314,7 @@ const App = {
           <div style="font-size:.78rem;color:var(--text-secondary);line-height:1.55">
             Hard Reset + clear Service Worker registrations and caches (best effort). ${pwaHint}
           </div>
-          <button class="btn btn-danger-outline btn-block" style="margin-top:10px" onclick="ResetCenter.factory()">Factory Reset</button>
+          <button class="btn btn-danger-outline btn-block" style="margin-top:10px" data-vg-onclick="ResetCenter.factory()">Factory Reset</button>
         </div>
 
         <div class="tip-card info">
@@ -8550,17 +8484,17 @@ const App = {
 
           <div class="setting-row">
             <span style="font-size:.78rem">Screen Awake (Wake Lock)</span>
-            <div class="toggle" id="toggle-screenAwake" onclick="Settings.toggleV40('screenAwake')"></div>
+            <div class="toggle" id="toggle-screenAwake" data-vg-onclick="Settings.toggleV40('screenAwake')"></div>
           </div>
 
           <div class="setting-row">
             <span style="font-size:.78rem">Use Scan Filters (less noise)</span>
-            <div class="toggle" id="toggle-scanFilters" onclick="Settings.toggleV40('useScanFilters')"></div>
+            <div class="toggle" id="toggle-scanFilters" data-vg-onclick="Settings.toggleV40('useScanFilters')"></div>
           </div>
 
           <div class="setting-row">
             <span style="font-size:.78rem">Auto Optimize (Conductor)</span>
-            <div class="toggle" id="toggle-autoOptimize" onclick="Settings.toggleV40('autoOptimize')"></div>
+            <div class="toggle" id="toggle-autoOptimize" data-vg-onclick="Settings.toggleV40('autoOptimize')"></div>
           </div>
 
           <div class="divider"></div>
@@ -8569,7 +8503,7 @@ const App = {
 
           <div class="setting-row">
             <span style="font-size:.78rem">Auto Wipe on Close (best effort)</span>
-            <div class="toggle" id="toggle-autoWipeOnClose" onclick="Settings.toggleV40(\'autoWipeOnClose\')"></div>
+            <div class="toggle" id="toggle-autoWipeOnClose" data-vg-onclick="Settings.toggleV40(\'autoWipeOnClose\')"></div>
           </div>
           <div style="margin-top:6px;font-size:.68rem;color:var(--text-muted);line-height:1.4">
             When enabled, VitalGuard will attempt to wipe local data when the session ends (tab/app closed).
@@ -8581,15 +8515,15 @@ const App = {
 
           <div class="setting-row">
             <span style="font-size:.78rem">Large Text</span>
-            <div class="toggle" id="toggle-largeText" onclick="Settings.toggleV40('largeText')"></div>
+            <div class="toggle" id="toggle-largeText" data-vg-onclick="Settings.toggleV40('largeText')"></div>
           </div>
           <div class="setting-row">
             <span style="font-size:.78rem">High Contrast</span>
-            <div class="toggle" id="toggle-highContrast" onclick="Settings.toggleV40('highContrast')"></div>
+            <div class="toggle" id="toggle-highContrast" data-vg-onclick="Settings.toggleV40('highContrast')"></div>
           </div>
           <div class="setting-row">
             <span style="font-size:.78rem">Reduce Motion</span>
-            <div class="toggle" id="toggle-reduceMotion" onclick="Settings.toggleV40('reduceMotion')"></div>
+            <div class="toggle" id="toggle-reduceMotion" data-vg-onclick="Settings.toggleV40('reduceMotion')"></div>
           </div>
 
           <div class="divider"></div>
@@ -8597,9 +8531,9 @@ const App = {
           <div class="section-title" style="font-size:.8rem;margin-top:0">Tools</div>
 
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn btn-secondary btn-sm" onclick="ResetCenter.open()">🧼 Reset / Initialize</button>
-            <button class="btn btn-secondary btn-sm" onclick="V40UI.exportEncrypted()">🔐 Encrypted Backup</button>
-            <button class="btn btn-secondary btn-sm" onclick="V40UI.showPitch()">📊 Impact Deck</button>
+            <button class="btn btn-secondary btn-sm" data-vg-onclick="ResetCenter.open()">🧼 Reset / Initialize</button>
+            <button class="btn btn-secondary btn-sm" data-vg-onclick="V40UI.exportEncrypted()">🔐 Encrypted Backup</button>
+            <button class="btn btn-secondary btn-sm" data-vg-onclick="V40UI.showPitch()">📊 Impact Deck</button>
           </div>
 
           <div id="v40-adv-hint" style="margin-top:10px;font-size:.72rem;color:var(--text-muted);line-height:1.45">
@@ -8607,7 +8541,7 @@ const App = {
           </div>
         `;
         // place near bottom but before the "Guides" card if possible
-        const guidesBtn = panel.querySelector('button[onclick="Help.open()"]');
+        const guidesBtn = panel.querySelector('button[data-vg-onclick="Help.open()"]');
         const guidesCard = guidesBtn ? guidesBtn.closest('.card') : null;
         panel.insertBefore(card, guidesCard || null);
       }
@@ -8633,8 +8567,8 @@ const App = {
             <div class="tip-body">
               Stability-first settings are active ${SafeMode.reason?('('+Sanitizer.text(SafeMode.reason,60)+')'):''}.
               <div style="display:flex;gap:8px;margin-top:10px">
-                <button class="btn btn-secondary btn-sm" style="flex:1" onclick="SafeMode.disable()">Disable</button>
-                <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.open()">Diagnostics</button>
+                <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="SafeMode.disable()">Disable</button>
+                <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.open()">Diagnostics</button>
               </div>
             </div>
           </div>
@@ -8974,8 +8908,8 @@ const App = {
       </div>
 
       <div style="display:flex;gap:8px;margin:10px 0">
-        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.copy()">📋 Copy</button>
-        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.download()">⬇️ Download</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.copy()">📋 Copy</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.download()">⬇️ Download</button>
       </div>
 
       ${Capabilities.renderHTML()}
@@ -8989,7 +8923,7 @@ const App = {
             ${e.where?`<div style="color:var(--text-muted)">${e.where}</div>`:''}
           </div>
         `).join('') : `<div style="font-size:.75rem;color:var(--text-muted);padding:6px 0">No errors captured.</div>`}
-        <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" onclick="ErrorShield.clear()">Clear Error Log</button>
+        <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" data-vg-onclick="ErrorShield.clear()">Clear Error Log</button>
       </div>
 
       <pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4;margin-top:10px">${safeJson(snap)}</pre>
@@ -9095,39 +9029,8 @@ const App = {
   };
 
   /* ----------------------------- PATCH: Data import supports encrypted pack ----------------------------- */
-  const _handleImport = DataManager.handleImport.bind(DataManager);
-  DataManager.handleImport = async function(ev){
-    const file=ev.target.files && ev.target.files[0];
-    if(!file) return;
-    try{
-      const text=await file.text();
-      let data=JSON.parse(text);
+  // V4.3.8-END: legacy import wrapper disabled. All plain/encrypted imports are handled by VitalGuardHardenedImport with size/depth/schema limits.
 
-      if(data && data.enc){
-        if(!CryptoBox.supported()) throw new Error('Crypto not supported');
-        const pass = await SecurePrompt.askPassphrase({
-          title:'Decrypt Backup',
-          message:'Enter passphrase to decrypt this backup:',
-          confirm:false,
-          minLen:1,
-          placeholder:'Passphrase'
-        });
-        if(!pass) throw new Error('No passphrase');
-        const plain = await CryptoBox.decryptToString(data, pass);
-        data = JSON.parse(plain);
-        // Build a fake event payload for original handler
-        const blob = new Blob([JSON.stringify(data)], {type:'application/json'});
-        const f2 = new File([blob], 'decrypted-backup.json', {type:'application/json'});
-        const ev2 = {target:{files:[f2]}};
-        return _handleImport(ev2);
-      }
-    }catch(e){
-      // fall through to normal handler
-    }
-    return _handleImport(ev);
-  };
-
-  
 /* ----------------------------- V4.1 EXTRA PATCHES -----------------------------
    Goals:
    - Real scannable QR (handled earlier via Nayuki QR generator)
@@ -10404,38 +10307,37 @@ V41UI.injectDetailAlertPrefs = function(pet){
       const self = this;
       try{
         if(typeof window.fetch === 'function'){
-          const originalFetch = window.fetch.bind(window);
-          window.__vg_original_fetch__ = originalFetch;
+          // V4.3.8-END: original API handle intentionally not exposed.
           window.fetch = function(){ self._deny('fetch'); return Promise.reject(new DOMException('VitalGuard zero-egress: fetch disabled', 'SecurityError')); };
         }
       }catch(_){}
       try{
         if(typeof window.XMLHttpRequest === 'function'){
-          window.__vg_original_XHR__ = window.XMLHttpRequest;
+          // V4.3.8-END: original API handle intentionally not exposed.
           window.XMLHttpRequest = function(){ self._deny('XMLHttpRequest'); throw new DOMException('VitalGuard zero-egress: XHR disabled', 'SecurityError'); };
         }
       }catch(_){}
       try{
         if(typeof window.WebSocket === 'function'){
-          window.__vg_original_WebSocket__ = window.WebSocket;
+          // V4.3.8-END: original API handle intentionally not exposed.
           window.WebSocket = function(){ self._deny('WebSocket'); throw new DOMException('VitalGuard zero-egress: WebSocket disabled', 'SecurityError'); };
         }
       }catch(_){}
       try{
         if(typeof window.EventSource === 'function'){
-          window.__vg_original_EventSource__ = window.EventSource;
+          // V4.3.8-END: original API handle intentionally not exposed.
           window.EventSource = function(){ self._deny('EventSource'); throw new DOMException('VitalGuard zero-egress: EventSource disabled', 'SecurityError'); };
         }
       }catch(_){}
       try{
         if(navigator && typeof navigator.sendBeacon === 'function'){
-          navigator.__vg_original_sendBeacon__ = navigator.sendBeacon.bind(navigator);
+          // V4.3.8-END: original API handle intentionally not exposed.
           navigator.sendBeacon = function(){ self._deny('sendBeacon'); return false; };
         }
       }catch(_){}
       try{
         if(window.HTMLFormElement && HTMLFormElement.prototype && HTMLFormElement.prototype.submit){
-          HTMLFormElement.prototype.__vg_original_submit__ = HTMLFormElement.prototype.submit;
+          // V4.3.8-END: original API handle intentionally not exposed.
           HTMLFormElement.prototype.submit = function(){ self._deny('form.submit'); throw new DOMException('VitalGuard zero-egress: form submit disabled', 'SecurityError'); };
         }
       }catch(_){}
@@ -10597,7 +10499,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
         </ul>
         ${window.VGHardening.coachActions.length ? `
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-            ${actions.slice(0,3).map((a,i)=>`<button class="btn btn-secondary btn-sm" onclick="VGHardening.runCoachAction(${i})">${vgEscape(a.label)}</button>`).join('')}
+            ${actions.slice(0,3).map((a,i)=>`<button class="btn btn-secondary btn-sm" data-vg-onclick="VGHardening.runCoachAction(${i})">${vgEscape(a.label)}</button>`).join('')}
           </div>
         `:''}
       `;
@@ -10613,7 +10515,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
       const errs = (snap.errors||[]).slice(-12).reverse();
       $('diag-body').innerHTML = `
         <div class="tip-card info"><div class="tip-title">Diagnostics Snapshot (V4.3.8 Hardened)</div><div class="tip-body">Local-only diagnostics for debugging and audit review.</div></div>
-        <div style="display:flex;gap:8px;margin:10px 0"><button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.copy()">📋 Copy</button><button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.download()">⬇️ Download</button></div>
+        <div style="display:flex;gap:8px;margin:10px 0"><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.copy()">📋 Copy</button><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.download()">⬇️ Download</button></div>
         ${Capabilities.renderHTML()}
         <div class="card" style="margin-top:10px"><div class="section-title" style="font-size:.8rem;margin:0 0 8px">Recent Errors</div>
           ${errs.length ? errs.map(e=>`
@@ -10622,7 +10524,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
               <div><strong>${vgEscape(e.msg)}</strong></div>
               ${e.where?`<div style="color:var(--text-muted)">${vgEscape(e.where)}</div>`:''}
             </div>`).join('') : `<div style="font-size:.75rem;color:var(--text-muted);padding:6px 0">No errors captured.</div>`}
-          <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" onclick="ErrorShield.clear()">Clear Error Log</button>
+          <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" data-vg-onclick="ErrorShield.clear()">Clear Error Log</button>
         </div>
         <pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4;margin-top:10px">${vgEscape(safeJson(snap))}</pre>
         <div class="tip-card warn"><div class="tip-title">Privacy Note</div><div class="tip-body">This snapshot stays local unless you manually export it. Network egress APIs are disabled by runtime guard.</div></div>
@@ -10663,7 +10565,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
         const call = $('emg-call');
         if(call){
           call.setAttribute('href', '#');
-          call.onclick = (e)=>{ e.preventDefault(); copyOnly((Emergency.data && Emergency.data.phone)||'', 'Emergency phone'); return false; };
+          call.removeAttribute('onclick'); call.setAttribute('data-vg-onclick','Emergency.copyPhone()');
           call.textContent = '📋 Copy Phone';
         }
       }catch(_){}
@@ -10698,7 +10600,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
       prevI18nApply();
       try{
         const src = $('i18n_github_link');
-        if(src){ src.textContent = 'Source Notice'; src.setAttribute('href','#'); src.onclick = function(){ Legal.open(); return false; }; src.setAttribute('rel','noopener noreferrer nofollow'); }
+        if(src){ src.textContent = 'Source Notice'; src.setAttribute('href','#'); src.removeAttribute('onclick'); src.setAttribute('data-vg-onclick','Legal.open();return false;'); src.setAttribute('rel','noopener noreferrer nofollow'); }
         const contact = $('i18n_contact_line');
         if(contact){ contact.textContent = 'Contact: contact@mcorpai.org • mcorpai.org • Morgan J. (Gyumin Jeon)'; }
       }catch(_){}
@@ -10744,6 +10646,44 @@ V41UI.injectDetailAlertPrefs = function(pet){
       vgToast(okAll ? `Self-Test OK (${Math.round(dt)}ms)` : 'Self-Test found issues (see Diagnostics)', 2600);
       try{ if(document.getElementById('diag-overlay')?.classList.contains('active')) Diag.open(); }catch(_){}
     };
+  }catch(_){}
+})();
+
+
+/* ----------------------------- V4.3.8-END FINAL AUDIT HARDENING ----------------------------- */
+(function(){
+  'use strict';
+  const AuditHardening = window.VitalGuardAuditHardening = {
+    version:'4.3.8-END', csp:'nonce + script-src-attr none', inlineEventAttributes:'removed', actionDispatcher:'strict-allowlist', defaultBackup:'encrypted-only',
+    importLimits:{maxFileBytes:1048576,maxTextChars:1048576,maxDepth:12,maxPets:50,maxVoiceDataUrlChars:614400}, serviceWorker:'disabled-by-default', diagnostics:'redacted-by-default'
+  };
+  try{ window.V40UI=V40UI; window.ResetCenter=ResetCenter; window.SafeMode=SafeMode; window.ErrorShield=ErrorShield; }catch(_){}
+  try{ Emergency.copyPhone = function(){ const phone=String(this._copyPhoneSan || (this.data&&this.data.phone) || '').replace(/[^0-9+]/g,'').slice(0,24); VitalGuardCopyOnly(phone,'Emergency phone'); return false; }; }catch(_){}
+
+  window.VitalGuardEncryptedExport = async function(){
+    try{ if(!CryptoBox.supported()){ Toast.show('WebCrypto required for encrypted backup'); return; } return V40UI.exportEncrypted(); }
+    catch(e){ try{ Toast.show('Encrypted export failed safely'); }catch(_){} }
+  };
+  try{ DataManager.exportAll = window.VitalGuardEncryptedExport; }catch(_){}
+
+  const IMPORT_LIMITS = AuditHardening.importLimits;
+  function assertJsonShape(x,maxDepth,maxNodes){ let nodes=0; const stack=[{v:x,d:0}]; const seen=new WeakSet(); while(stack.length){ const it=stack.pop(), v=it.v, d=it.d; if(++nodes>maxNodes) throw new Error('Backup too complex'); if(d>maxDepth) throw new Error('Backup nesting too deep'); if(v&&typeof v==='object'){ if(seen.has(v)) throw new Error('Circular object rejected'); seen.add(v); const vals=Array.isArray(v)?v:Object.values(v); if(vals.length>1000) throw new Error('Backup object too large'); vals.forEach(child=>stack.push({v:child,d:d+1})); } } }
+  function n(v,lo,hi,def){ v=Number(v); return Number.isFinite(v)?Math.max(lo,Math.min(hi,v)):def; }
+  function b(v,def){ return typeof v==='boolean'?v:def; }
+  function hex(v,max){ return String(v||'').replace(/[^0-9a-f]/gi,'').slice(0,max).toUpperCase(); }
+  function sanitizeThresholds(t){ const d={...DEFAULT_THRESHOLDS}; if(!t||typeof t!=='object') return d; return {cautionEnter:n(t.cautionEnter,-90,-40,d.cautionEnter),cautionExit:n(t.cautionExit,-85,-35,d.cautionExit),warningEnter:n(t.warningEnter,-98,-55,d.warningEnter),warningExit:n(t.warningExit,-92,-49,d.warningExit),dangerEnter:n(t.dangerEnter,-100,-70,d.dangerEnter),dangerExit:n(t.dangerExit,-94,-64,d.dangerExit)}; }
+  function sanitizeSignature(sig){ sig=(sig&&typeof sig==='object')?sig:{}; const out={}; if(sig.deviceId) out.deviceId=Sanitizer.safeId(sig.deviceId); if(sig.nameExact) out.nameExact=Sanitizer.text(sig.nameExact,64); if(sig.namePrefix) out.namePrefix=Sanitizer.text(sig.namePrefix,64); if(sig.manufacturerId!==undefined) out.manufacturerId=n(sig.manufacturerId,0,65535,0); if(sig.manufacturerDataPrefixHex) out.manufacturerDataPrefixHex=hex(sig.manufacturerDataPrefixHex,64); if(Array.isArray(sig.serviceUuids)) out.serviceUuids=sig.serviceUuids.map(x=>Sanitizer.text(x,64)).filter(Boolean).slice(0,6); if(sig.appearance!==undefined) out.appearance=n(sig.appearance,0,65535,0); out.confirmed=b(sig.confirmed,false); return out; }
+  function sanitizeDistanceCalib(dc){ if(!dc||typeof dc!=='object') return null; const pts=Array.isArray(dc.calibPoints)?dc.calibPoints.slice(0,8).map(p=>({rssi:n(p&&p.rssi,-110,-20,-70),dist:n(p&&p.dist,0.1,100,1)})):[]; return {txPower:n(dc.txPower,-100,-20,-59), n:n(dc.n,1.2,5,2.5), calibPoints:pts}; }
+  function sanitizeAlertPrefs(ap){ ap=(ap&&typeof ap==='object')?ap:{}; const zone=['CAUTION','WARNING','DANGER','LOST'].includes(ap.minZone)?ap.minZone:'WARNING'; return {sound:b(ap.sound,true),vibrate:b(ap.vibrate,true),tts:b(ap.tts,false),minZone:zone}; }
+  function sanitizePet(pd){ if(!pd||typeof pd!=='object') return null; const id=Sanitizer.safeId(pd.id||''); if(!id) return null; const out={id,name:Sanitizer.name(pd.name),icon:Sanitizer.icon(pd.icon),rescueId:String(pd.rescueId||genRescueId()).replace(/[^A-Z0-9-]/gi,'').slice(0,12)||genRescueId(),createdAt:n(pd.createdAt,0,Date.now()+86400000,Date.now()),signature:sanitizeSignature(pd.signature),thresholds:sanitizeThresholds(pd.thresholds),leashPreset:['5m','10m','15m'].includes(pd.leashPreset)?pd.leashPreset:'10m',aiToggles:{qlearn:b(pd.aiToggles&&pd.aiToggles.qlearn,false),behavior:b(pd.aiToggles&&pd.aiToggles.behavior,true)},aiState:{},alertHistory:Array.isArray(pd.alertHistory)?pd.alertHistory.slice(0,20).map(a=>({time:n(a&&a.time,0,Date.now()+86400000,Date.now()),zone:Sanitizer.text(a&&a.zone,12),rssi:n(a&&a.rssi,-120,10,-100),dist:Sanitizer.text(a&&a.dist,16),why:Sanitizer.text(a&&a.why,120)})):[],ambiguousCount:n(pd.ambiguousCount,0,1000,0),lastAmbiguousMs:n(pd.lastAmbiguousMs,0,Date.now()+86400000,0),alertPrefs:sanitizeAlertPrefs(pd.alertPrefs),leashDistanceM:n(pd.leashDistanceM,1,100,10),disabled:b(pd.disabled,false),lostEvents:Array.isArray(pd.lostEvents)?pd.lostEvents.slice(-50).map(x=>n(x,0,Date.now()+86400000,Date.now())):[]}; const dc=sanitizeDistanceCalib(pd.distanceCalib); if(dc) out.distanceCalib=dc; if(JSON.stringify(out).length>32768) throw new Error('Pet entry too large'); return out; }
+  function sanitizeSettings(settings){ settings=(settings&&typeof settings==='object')?settings:{}; const out={}; ['sound','vibrate','notifWanted','highAlert','voiceRecall','tts','keepAlive','autoWipeOnClose','useScanFilters','screenAwake','autoOptimize','largeText','highContrast','reduceMotion'].forEach(k=>{ if(k in settings) out[k]=!!settings[k]; }); if(['saver','balanced','fast'].includes(settings.perfMode)) out.perfMode=settings.perfMode; if(settings.volume!==undefined) out.volume=n(settings.volume,0,100,70); return out; }
+  async function doImportData(data, ev){ assertJsonShape(data,IMPORT_LIMITS.maxDepth,12000); if(!data||typeof data!=='object'||!Array.isArray(data.pets)) throw new Error('Invalid backup'); if(data.pets.length>IMPORT_LIMITS.maxPets) throw new Error('Too many pets in backup'); const pets=data.pets.map(sanitizePet).filter(Boolean); if(!pets.length&&data.pets.length) throw new Error('No valid pet entries'); const merge=(App.pets.length>0)?await ConfirmModal.ask('Merge with existing pets?\nCancel = Replace all',{okText:'Merge',cancelText:'Replace'}):true; if(!merge){ App.pets=[]; await Security.fullWipe(); await Store.init(); } let imported=0; for(const pd of pets){ if(App.pets.find(p=>p.id===pd.id)) continue; const pet=new Pet(pd); try{ pet.alertPrefs=pd.alertPrefs; pet.leashDistanceM=pd.leashDistanceM; pet.disabled=!!pd.disabled; pet.lostEvents=pd.lostEvents||[]; if(pd.distanceCalib) pet.distance.import(pd.distanceCalib); if(typeof v41EnsureAlertPrefs==='function') v41EnsureAlertPrefs(pet); }catch(_){} App.pets.push(pet); await Store.savePet(pet); imported++; } const safeSettings=sanitizeSettings(data.settings); for(const k of Object.keys(safeSettings)){ Settings.prefs[k]=safeSettings[k]; await Store.saveSetting(k,safeSettings[k]); } perfProfile=PERF_PROFILES[Settings.prefs.perfMode]||PERF_PROFILES.balanced; try{ Settings._updateToggles(); Settings._updatePerfUI(); Settings._updateVolumeUI(); if(Settings._updateTogglesV40) Settings._updateTogglesV40(); }catch(_){} try{ App.resetTimers(); }catch(_){} if(data.voiceRecall&&data.voiceRecall.included&&data.voiceRecall.dataUrl){ const du=String(data.voiceRecall.dataUrl||''); if(du.length>IMPORT_LIMITS.maxVoiceDataUrlChars) throw new Error('Voice clip too large'); if(!/^data:audio\/(webm|ogg|mpeg|mp3|wav);base64,[A-Za-z0-9+/=]+$/i.test(du)) throw new Error('Invalid voice clip data'); const parts=du.split(','); const mime=(parts[0].match(/data:(.*?);base64/i)||[])[1]||'audio/webm'; const bin=atob(parts[1]||''); if(bin.length>450000) throw new Error('Voice clip binary too large'); const u8=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) u8[i]=bin.charCodeAt(i); await Store.saveBlob(VoiceRecall.key,new Blob([u8],{type:mime})); } App.render(); Toast.show(imported+' pet(s) imported through hardened guard'); try{ if(ev&&ev.target) ev.target.value=''; }catch(_){} }
+  window.VitalGuardHardenedImport=async function(ev){ try{ const file=ev&&ev.target&&ev.target.files&&ev.target.files[0]; if(!file) return; if(file.size&&file.size>IMPORT_LIMITS.maxFileBytes) throw new Error('Backup file too large'); const text=await file.text(); if(text.length>IMPORT_LIMITS.maxTextChars) throw new Error('Backup text too large'); let data=JSON.parse(text); assertJsonShape(data,IMPORT_LIMITS.maxDepth,12000); if(data&&data.enc){ if(!CryptoBox.supported()) throw new Error('Crypto not supported'); const pass=await SecurePrompt.askPassphrase({title:'Decrypt Backup',message:'Enter backup passphrase.',confirm:false,minLen:1,placeholder:'Passphrase'}); if(!pass){ Toast.show('Cancelled'); return; } const plain=await CryptoBox.decryptToString(data,pass); if(plain.length>IMPORT_LIMITS.maxTextChars) throw new Error('Decrypted backup too large'); data=JSON.parse(plain); } await doImportData(data,ev); }catch(e){ try{ Toast.show('Import blocked: '+(e.message||'invalid backup'),3200); }catch(_){} try{ if(ev&&ev.target) ev.target.value=''; }catch(_){} } };
+  try{ DataManager.handleImport=window.VitalGuardHardenedImport; }catch(_){}
+
+  function redactedSnapshot(raw){ let s; try{s=JSON.parse(JSON.stringify(raw||{}));}catch(_){s={};} if(s.env){s.env.ua='redacted';s.env.userAgent='redacted';} if(s.focusPetId) s.focusPetId='redacted'; if(Array.isArray(s.pets)) s.pets=s.pets.slice(0,20).map((p,i)=>({slot:i+1,zone:p.zone,rssi:p.rssi,dist:p.dist,confidence:p.confidence,lastSeenAgoMs:p.lastSeenAgoMs,signatureStrength:p.signatureStrength,ambiguousCount:p.ambiguousCount,batterySuspect:!!p.batterySuspect})); if(Array.isArray(s.errors)) s.errors=s.errors.slice(-12).map(e=>({t:Sanitizer.text(e&&e.t,40),kind:Sanitizer.text(e&&e.kind,40),msg:Sanitizer.text(e&&e.msg,180),where:'redacted'})); s.auditHardening=AuditHardening; return s; }
+  try{ const rawSnapshot=Diag.snapshot.bind(Diag); Diag.snapshot=function(){return redactedSnapshot(rawSnapshot());}; Diag.copy=function(){return VitalGuardCopyOnly(safeJson(this.snapshot()),'Redacted diagnostics');}; Diag.download=function(){ const blob=new Blob([safeJson(this.snapshot())],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='vitalguard-ai-v4.3.8-END-diagnostics-redacted-'+Date.now()+'.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1200); Toast.show('Redacted diagnostics downloaded'); };
+    Diag.render=function(){ const snap=this.snapshot(); const errs=(snap.errors||[]).slice(-12).reverse(); $('diag-body').innerHTML=`<div class="tip-card info"><div class="tip-title">Diagnostics Snapshot (V4.3.8-END Redacted)</div><div class="tip-body">Local-only diagnostics. Pet names, rescue IDs, focus IDs, user-agent, and error locations are redacted by default.</div></div><div style="display:flex;gap:8px;margin:10px 0"><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.copy()">📋 Copy Redacted</button><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.download()">⬇️ Download Redacted</button></div>${Capabilities.renderHTML()}<div class="card" style="margin-top:10px"><div class="section-title" style="font-size:.8rem;margin:0 0 8px">Recent Errors (redacted)</div>${errs.length?errs.map(e=>`<div style="border-top:1px solid var(--border-color);padding:10px 0;font-size:.72rem;color:var(--text-secondary);line-height:1.45"><div style="color:var(--text-muted)">${Sanitizer.escapeHTML(e.t)} · <span class="kbd">${Sanitizer.escapeHTML(e.kind)}</span></div><div><strong>${Sanitizer.escapeHTML(e.msg)}</strong></div></div>`).join(''):`<div style="font-size:.75rem;color:var(--text-muted);padding:6px 0">No errors captured.</div>`}<button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" data-vg-onclick="ErrorShield.clear()">Clear Error Log</button></div><pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4;margin-top:10px">${Sanitizer.escapeHTML(safeJson(snap))}</pre><div class="tip-card warn"><div class="tip-title">Privacy Note</div><div class="tip-body">This snapshot stays local unless you manually export it. Network egress APIs are disabled and diagnostics are redacted.</div></div>`; };
   }catch(_){}
 })();
 
