@@ -2,7 +2,7 @@
 
 <img width="358" height="237" alt="1" src="https://github.com/user-attachments/assets/1ed6d48d-46cc-4ede-8736-9496dec6280b" />
 
-## It is cowardly for someone who wields a sword to blame the blacksmith who forged a strong shield.
+### It is cowardly for someone who wields a sword to blame the blacksmith who forged a strong shield.
 
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
