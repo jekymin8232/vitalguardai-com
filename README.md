@@ -1,3 +1,5 @@
+## True cypherpunks trust vanilla code and minimal dependencies.
+
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
 2. Transparency must be fully guaranteed.
