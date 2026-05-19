@@ -1,5 +1,5 @@
 ## True cypherpunks forge their own tools.
-
+<img width="264" height="269" alt="1" src="https://github.com/user-attachments/assets/b8e26719-aa04-47a8-9d36-3d3aa99e91ea" />
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
 2. Transparency must be fully guaranteed.
