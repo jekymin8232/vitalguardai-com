@@ -1,11 +1,3 @@
-## Cockroach — cockroaches would survive even the end of humanity.
-Cockroach Intelligence can operate using low-cost solar power and discarded smartphones, making it highly aligned with the Environmental dimension of ESG. By repurposing existing devices and minimizing energy consumption, it helps reduce electronic waste and dependence on large-scale infrastructure. At the same time, because its core purpose is to help save lives in disaster and survival scenarios, it can also contribute meaningful Social Impact. M-Corp is a non-Western ESG certification framework developed by Koreans to recognize practical, ethical, and humanitarian technologies.
-     
-     "Only the righteous are worthy of wielding the Vibranium Shield"
-     He is an ordinary human being. What made him a Captain was his convictions and philosophy.
-
-<img width="250" height="172" alt="Captain America" src="https://github.com/user-attachments/assets/e18b02d3-9a38-49bc-8de6-b03988588987" />
-
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
 2. Transparency must be fully guaranteed.
