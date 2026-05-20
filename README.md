@@ -18,6 +18,10 @@
 
 **The AI I develop is not designed for the wealthy. It is designed for the socially vulnerable, the poor, and those most in need.**
 
+The AI I develop is not a black-box AI designed to replace human jobs. It is a white-box AI designed to create jobs and opportunities for people living in poverty.
+
+White-box AI is built through the contributions of many individuals, allowing fair and legitimate compensation to be distributed to those in need. Even something as simple as typing “Hello, World!” can become a meaningful contribution that enables people in low-income environments to receive legal payment for their work.
+
 All academic contributions worldwide are provided completely free of charge. If these contributions are recognized as meaningful ethical and humanitarian work, I believe that a public nomination for the Nobel Peace Prize would also be justified. Moral authority can help save even more lives. I have also already developed a refugee self-sufficiency model — an AI system designed to help refugees achieve self-reliance within refugee camps themselves, without requiring relocation to other countries. A sovereign AI system that refugees can directly operate means that refugee communities themselves can become self-sustaining.
 
 > **This “Pet Safety Leash” UI is a neutral demo skin for everyday usability testing.**  
