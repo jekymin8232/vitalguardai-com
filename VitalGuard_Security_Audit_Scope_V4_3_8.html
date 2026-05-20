@@ -43,10 +43,8 @@ table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td
 </head>
 <body>
 <div class="wrap">
-<div class="badge ok">VitalGuard AI V4.3.8-END</div>
+<div class="badge ok">VitalGuard AI V4.3.8</div>
 <h1>VitalGuard AI V4.3.8 Security Audit Scope & OTF Engagement Brief</h1>
-<p class="subtitle">Application artifact: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded source reviewed: <span class="mono">VitalGuard_AI_complete_V43_8(9).html</span> · Prepared for independent OTF-style security review · Updated 2026-05-20 KST</p>
-
 <div class="toc"><strong>Table of Contents</strong>
 <ul>
 <li><a href="#purpose">1. Purpose and Audit Goal</a></li>
@@ -63,7 +61,7 @@ table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td
 <h2 id="purpose">1. Purpose and Audit Goal</h2>
 <p><strong>VitalGuard AI V4.3.8-END</strong> is a single-file, offline-first humanitarian technology demonstration intended for low-connectivity, outage-prone, and off-grid contexts. The application makes strong user-facing claims: no cloud dependency, no telemetry, local-only storage, user-controlled deletion, Bluetooth proximity monitoring, encrypted backup, copy-only sharing, redacted diagnostics, and disabled worker/service-worker behavior by default.</p>
 <p>The audit goal is to produce a precise security verdict for the frozen V4.3.8 artifact: which claims are supported, which are supported only under defined browser/deployment contexts, and which require remediation or clearer user guidance.</p>
-<div class="note"><strong>Version-specific note.</strong> V4.3.8 is materially different from the earlier V4.3.7 scope: the security posture now centers on nonce CSP, <span class="mono">script-src-attr 'none'</span>, strict <span class="mono">data-vg-on*</span> dispatch, Trusted Types / sink scrubbing, runtime network API kill-switches, encrypted-only default backup, bounded import, redacted diagnostics, and service worker disabled by default.</div>
+<div class="note"><strong> note.</strong> the security posture now centers on nonce CSP, <span class="mono">script-src-attr 'none'</span>, strict <span class="mono">data-vg-on*</span> dispatch, Trusted Types / sink scrubbing, runtime network API kill-switches, encrypted-only default backup, bounded import, redacted diagnostics, and service worker disabled by default.</div>
 
 <h2 id="artifact">2. Primary Audit Artifact</h2>
 <table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
@@ -138,9 +136,6 @@ table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td
 <li>A final claim verdict table using: Supported, Supported with caveats, Partially supported, Not supported, or Not applicable.</li>
 </ul>
 
-<h2 id="summary">9. Summary</h2>
-<p>The V4.3.8 scope is intentionally narrow and audit-friendly: one frozen single-file artifact, a fixed SHA-256, clear execution contexts, and claim-based work packages. The audit should verify the strongest user-facing statements first: no telemetry/no cloud egress, local-only storage, deletion behavior, sensitive API permission flows, encrypted backup/import safety, DOM/action hardening, diagnostics redaction, and resilience against malicious local inputs.</p>
-<div class="footer">Prepared from canonical source: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded copy reviewed: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · SHA-256 <span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></div>
 </div>
 </body>
 </html>
