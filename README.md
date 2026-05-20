@@ -28,6 +28,8 @@ In other words, when wealthy individuals or organizations donate to white-box AI
 
 Fair compensation is not just about money — it can also restore dignity, strengthen self-esteem, and give people a meaningful sense of purpose and participation in society.
 
+**Massive data centers are often an inefficient use of resources.** They consume enormous amounts of money just to maintain infrastructure and server operations. If even a fraction of that investment were redirected toward building white-box AI, tens of thousands of people living in poverty could directly benefit from it.
+
 All academic contributions worldwide are provided completely free of charge. If these contributions are recognized as meaningful ethical and humanitarian work, I believe that a public nomination for the Nobel Peace Prize would also be justified. Moral authority can help save even more lives. 
 
 I have also already developed a refugee self-sufficiency model — an AI system designed to help refugees achieve self-reliance within refugee camps themselves, without requiring relocation to other countries. A sovereign AI system that refugees can directly operate means that refugee communities themselves can become self-sustaining.
