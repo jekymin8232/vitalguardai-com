@@ -1,0 +1,588 @@
+<!--
+============================================================
+[
+Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI | VitalGuard AI V4.3.8
+SPDX-License-Identifier: Apache-2.0
+Licensed under the Apache License, Version 2.0.
+OTF/FOSS-ready notice: permissive open-source licensing with no field-of-use restrictions.
+Zero External Dependencies | 100% Offline | Vanilla CSS/JS
+]
+
+OTF Comment Title:
+1. VitalGuard AI V4.3.8 Code Manual & Code Map — Security Reviewer Navigation Guide
+
+Document Role:
+Maps the single-file application structure, module boundaries, security line map, storage/action indexes, and reviewer checklist for the V4.3.8 artifact.
+============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VitalGuard AI V4.3.8 Code Manual & Code Map — Security Reviewer Navigation Guide</title>
+<style>
+:root{--ink:#111827;--muted:#4b5563;--muted2:#6b7280;--border:#d1d5db;--bg:#ffffff;--bg2:#f7f8fb;--accent:#1d4ed8;--ok:#047857;--warn:#b45309;--bad:#b91c1c;--codebg:#f3f6ff;--code:#111827;--card:#ffffff;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif;line-height:1.55;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 18px 80px;}
+h1{font-size:2rem;line-height:1.18;margin:0 0 8px;} h2{font-size:1.35rem;margin:34px 0 10px;border-bottom:2px solid var(--border);padding-bottom:7px;} h3{font-size:1.08rem;margin:22px 0 8px;} h4{margin:16px 0 6px;}
+p{margin:9px 0;} a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.subtitle{color:var(--muted);margin:0 0 18px;} .small{font-size:.88rem;color:var(--muted);} .muted{color:var(--muted2);} .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+.badge{display:inline-block;border:1px solid rgba(29,78,216,.25);background:rgba(29,78,216,.08);color:var(--accent);border-radius:999px;padding:3px 9px;font-size:.78rem;font-weight:700;margin:2px 4px 2px 0;}
+.badge.ok{border-color:rgba(4,120,87,.25);background:rgba(4,120,87,.08);color:var(--ok);} .badge.warn{border-color:rgba(180,83,9,.25);background:rgba(180,83,9,.08);color:var(--warn);} .badge.bad{border-color:rgba(185,28,28,.25);background:rgba(185,28,28,.08);color:var(--bad);}
+.card{border:1px solid var(--border);border-radius:13px;padding:13px 14px;background:var(--card);margin:12px 0;} .note{background:#fff7ed;border:1px solid #fed7aa;color:#431407;border-radius:13px;padding:12px 14px;margin:12px 0;} .okbox{background:#ecfdf5;border:1px solid #a7f3d0;color:#064e3b;border-radius:13px;padding:12px 14px;margin:12px 0;} .warnbox{background:#fef2f2;border:1px solid #fecaca;color:#7f1d1d;border-radius:13px;padding:12px 14px;margin:12px 0;}
+.toc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;} .toc ul{columns:2;margin:8px 0 0 18px;} @media(max-width:760px){.toc ul{columns:1;}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;} @media(max-width:840px){.grid{grid-template-columns:1fr;}}
+.kbd{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:.78rem;background:#eef2ff;border:1px solid #c7d2fe;border-radius:999px;padding:1px 7px;margin:1px 3px 1px 0;white-space:nowrap;color:#1e3a8a;}
+pre{background:var(--codebg);border:1px solid #d8e4ff;border-radius:12px;padding:12px;overflow:auto;white-space:pre-wrap;} code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;} pre code{color:var(--code);font-size:.86rem;}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td{border:1px solid var(--border);padding:8px 9px;vertical-align:top;} th{background:var(--bg2);text-align:left;} tr:nth-child(even) td{background:#fcfcfd;}
+.pagebreak{page-break-before:always;} .footer{margin-top:36px;padding-top:14px;border-top:1px dashed var(--border);font-size:.88rem;color:var(--muted2);} .tight li{margin:4px 0;} .module{border:1px solid var(--border);border-radius:13px;padding:12px 13px;background:#fff;margin:12px 0;} .module h3{margin:0 0 4px;}.cols{columns:3;column-gap:24px;} @media(max-width:840px){.cols{columns:2;}} @media(max-width:560px){.cols{columns:1;}}
+@page{size:A4;margin:17mm;} @media print{.wrap{max-width:none;padding:0}.toc{page-break-after:always} a{color:inherit;text-decoration:none} table{font-size:.85rem} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="badge ok">VitalGuard AI V4.3.8-END</div>
+<h1>VitalGuard AI V4.3.8 Code Manual & Code Map</h1>
+<p class="subtitle">Canonical source: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded source reviewed: <span class="mono">VitalGuard_AI_complete_V43_8(9).html</span> · Updated: 2026-05-20 KST · Author: Morgan J. · Prepared for OTF/security vendor review</p>
+<div class="note"><strong>Purpose of this document</strong><br>1) Explain the structure, flow, security controls, and responsibilities of the major logic blocks inside the single-file HTML application; 2) let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors; 3) summarize the V4.3.8-END hardening changes that differ from the prior V4.3.7 code map.</div>
+
+<div class="toc"><strong>Table of Contents</strong>
+<ul>
+<li><a href="#overview">1. Overview</a></li>
+<li><a href="#artifact">2. Artifact Metadata</a></li>
+<li><a href="#hardening">3. V4.3.8-END Hardening Summary</a></li>
+<li><a href="#howto">4. Execution, Permissions, and Offline Rules</a></li>
+<li><a href="#flow">5. Core Flow</a></li>
+<li><a href="#data">6. Data Model and Storage Map</a></li>
+<li><a href="#modules">7. Module Directory</a></li>
+<li><a href="#security-lines">8. Security Line Map</a></li>
+<li><a href="#actions">9. Action Dispatch Allowlist</a></li>
+<li><a href="#prefs">10. Settings / Storage Key Index</a></li>
+<li><a href="#deepdive">11. Module Deep Dive</a></li>
+<li><a href="#domid">12. DOM ID Index</a></li>
+<li><a href="#audit">13. Audit Checklist</a></li>
+</ul></div>
+
+<h2 id="overview">1. Overview</h2>
+<p><strong>VitalGuard AI</strong> is a single-file, infrastructure-independent, offline-first safety framework. Its core loop uses Web Bluetooth BLE scanning to collect tag RSSI values, then applies filtering and interpretation layers such as Kalman smoothing, distance estimation, decision hysteresis, per-pet alert preferences, and lightweight on-device learning to determine zones and trigger local alerts, guidance, and SOS workflows.</p>
+<p>V4.3.8-END is strongly security-oriented. It is not just a text/version update: the runtime now contains CSP-compatible action dispatch, Trusted Types/sink protections, runtime network egress kill-switches, encrypted-only default backup, bounded import, copy-only sharing, redacted diagnostics, and service-worker-off-by-default behavior.</p>
+
+<h2 id="artifact">2. Artifact Metadata</h2>
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td>Submitted source filename</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span> <span class="small">(latest uploaded copy reviewed: <span class="mono">VitalGuard_AI_complete_V43_8(9).html</span>)</span></td></tr>
+<tr><td>Canonical audit artifact</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span> / V4.3.8-END</td></tr>
+<tr><td>APP_VERSION</td><td><span class="mono">4.3.8</span> at source line 1004</td></tr>
+<tr><td>SHA-256</td><td><span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></td></tr>
+<tr><td>File size</td><td>486,861 bytes (475.5 KiB)</td></tr>
+<tr><td>Line count</td><td>10,576</td></tr>
+<tr><td>Architecture</td><td>Single-file HTML with inline CSS and one nonce-authorized inline script; no external script imports detected.</td></tr>
+<tr><td>Persistence identifiers</td><td><span class="mono">DB_NAME=VitalGuardAI_V41</span>; <span class="mono">DB_VERSION=2</span>; <span class="mono">LS_PREFIX=vg41_</span>; <span class="mono">SCHEMA_VERSION=2</span></td></tr>
+</tbody></table>
+<h3>Static inspection summary</h3>
+<table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody>
+<tr><td>Script tags</td><td>1; nonce-authorized script tags: 1; external script tags: 0</td></tr>
+<tr><td>Raw inline event attributes</td><td>{&#x27;onclick&#x27;: 0, &#x27;onchange&#x27;: 0, &#x27;oninput&#x27;: 0, &#x27;onmousedown&#x27;: 0, &#x27;onmouseup&#x27;: 0, &#x27;ontouchstart&#x27;: 0, &#x27;ontouchend&#x27;: 0} → total 0</td></tr>
+<tr><td>data-vg action attributes</td><td>129</td></tr>
+<tr><td>External href/src surfaces</td><td>external href protocols: 0; external src URLs: 0</td></tr>
+<tr><td>Service worker registration</td><td>0 serviceWorker.register occurrences; 0 importScripts occurrences</td></tr>
+<tr><td>Network primitive occurrences</td><td>fetch: lines [794, 10165, 10167, 10167, 10167]; XMLHttpRequest: lines [794, 10171, 10173, 10173]; WebSocket: lines [794, 10177, 10179, 10179, 10179]; EventSource: lines [794, 10183, 10185, 10185, 10185]; sendBeacon: lines [794, 10189, 10191, 10191]</td></tr>
+<tr><td>CryptoBox parameters</td><td>PBKDF2-SHA-256 iterations 600000; AES-GCM-256; salt 16 bytes; IV 12 bytes; output it=600000</td></tr>
+<tr><td>Import limits</td><td>maxFileBytes 1,048,576; maxTextChars 1,048,576; maxDepth 12; maxPets 50; maxVoiceDataUrlChars 614,400</td></tr>
+</tbody></table>
+
+<h2 id="hardening">3. V4.3.8-END Security Hardening Summary</h2>
+<div class="grid">
+<div class="card"><h3>Nonce CSP + no inline event attrs</h3><p>The app has one nonce-authorized inline script and no raw inline event attributes. UI actions use <span class="mono">data-vg-on*</span> tokens routed through <span class="mono">VitalGuardActionPolicy</span>.</p></div>
+<div class="card"><h3>Trusted Types / HTML sink scrubber</h3><p>HTML written through dynamic sinks is neutralized for script tags, blocked elements, event attributes, unsafe URLs, forms, and javascript: URLs. A mutation observer scrubs inserted nodes.</p></div>
+<div class="card"><h3>Runtime zero-egress guard</h3><p>In addition to <span class="mono">connect-src 'none'</span>, the final hardening layer disables fetch, XHR, WebSocket, EventSource, sendBeacon, and form.submit.</p></div>
+<div class="card"><h3>External navigation blocked</h3><p>External http(s), mailto, tel, sms, and window.open surfaces are blocked or replaced with copy-only behavior.</p></div>
+<div class="card"><h3>Encrypted backup default</h3><p><span class="mono">DataManager.exportAll</span> is overridden by <span class="mono">VitalGuardEncryptedExport</span>. CryptoBox uses PBKDF2-SHA-256 with 600000 iterations and AES-GCM-256.</p></div>
+<div class="card"><h3>Bounded import + redacted diagnostics</h3><p>Imports have file/text/depth/pet/voice size limits and schema sanitizers. Diagnostics redact pet identifiers, focus IDs, UA, and error locations by default.</p></div>
+</div>
+
+<h2 id="howto">4. Execution, Permissions, and Offline Rules</h2>
+<ul class="tight">
+<li><strong>Recommended runtime:</strong> HTTPS or localhost for Web Bluetooth and PWA behavior. <span class="mono">file://</span> may work for UI review but Bluetooth/service features can be browser-restricted.</li>
+<li><strong>Zero egress:</strong> V4.3.8 claims should be tested as application-authored network egress. Hosted platforms may inject/request resources outside the artifact; report those as deployment-context findings.</li>
+<li><strong>PWA:</strong> manifest generation remains; service worker registration is intentionally absent/disabled by default.</li>
+<li><strong>Permissions:</strong> Bluetooth, geolocation, microphone, motion sensors, notifications, clipboard, and wake lock must be user-triggered and fail safely.</li>
+</ul>
+
+<h2 id="flow">5. Core Flow</h2>
+<pre><code>DOMContentLoaded / guarded bootstrap
+  └─ App.init()
+       ├─ Store.init()
+       ├─ Settings.load()
+       ├─ Emergency.load()
+       ├─ ErrorShield / SafeMode / ConductorAI / WakeLock hooks
+       ├─ render + timers
+       ├─ registerPWA()  // manifest only, no service worker registration
+       └─ optional BLE.startScan('track') if monitoringWanted
+
+advertisementreceived
+  └─ BLE._handler → App.onAdvertisement(event)
+       ├─ routeAdvertisement(event, App.pets, now)
+       ├─ matchScore() selects pet signature or rejects ambiguous packets
+       ├─ Pet.processRssi() applies Kalman, thresholds, hysteresis, zone
+       ├─ App.triggerAlert() local-only alert path
+       └─ App.render() / SOS.updateHC() / Detail.render()</code></pre>
+
+<h2 id="data">6. Data Model and Storage Map</h2>
+<div class="grid">
+<div class="card"><h3>IndexedDB object stores</h3><p><span class="kbd">pets</span> <span class="kbd">settings</span> <span class="kbd">ai</span> <span class="kbd">alerts</span> <span class="kbd">blobs</span></p><p class="small">Database: <span class="mono">VitalGuardAI_V41</span>; version: <span class="mono">2</span>.</p></div>
+<div class="card"><h3>localStorage fallback/prefix</h3><p><span class="mono">vg41_</span> prefix for fallback pet/settings/AI/blob data and first-run/install flags. Language keys include <span class="mono">vg_lang_v41</span> and legacy <span class="mono">vg_lang_v412</span>.</p></div>
+<div class="card"><h3>Encrypted backup format</h3><p><span class="mono">{enc:true, v:1, alg:'AES-GCM', it:600000, salt:'b64', iv:'b64', ct:'b64'}</span></p><p class="small">PBKDF2-SHA-256, AES-GCM-256, salt 16 bytes, IV 12 bytes.</p></div>
+<div class="card"><h3>Import constraints</h3><p>1 MiB file/text limit, depth 12, max 50 pets, voice data URL 614,400 chars, per-pet serialized output max 32,768 chars.</p></div>
+</div>
+
+<h2 id="modules">7. Module Directory</h2>
+<p class="small">Use Ctrl+F on the banner text or line number. Patch blocks near the end can override earlier behavior and therefore determine final runtime behavior.</p>
+<table><thead><tr><th>Line</th><th>Module banner / search keyword</th><th>Role</th><th>Function hints</th></tr></thead><tbody>
+<tr><td><span class="mono">721</span></td><td><span class="mono">V4.3.8 EARLY SECURITY GUARD</span></td><td>Defense-in-depth bootstrap guard: sanitizer defaults, action-policy dispatch, Trusted Types policy, HTML sink scrubber, mutation scrubber, document.write blocker, and copy-only share override.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">1050</span></td><td><span class="mono">UTILS</span></td><td>Small utilities for DOM lookup, clamping, median RSSI, rescue IDs, time formatting, JSON, and clock access.</td><td><span class="kbd">median</span> <span class="kbd">genRescueId</span> <span class="kbd">fmtAgo</span> <span class="kbd">safeJson</span> <span class="kbd">nowMs</span></td></tr>
+<tr><td><span class="mono">1078</span></td><td><span class="mono">OPEN SOURCE MANIFEST</span></td><td>Apache-2.0 / FOSS notice with no field-of-use restrictions and public-interest guidelines.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">1093</span></td><td><span class="mono">OPEN SOURCE NOTICE GUARD (Runtime Integrity)</span></td><td>Runtime integrity checker for FOSS/license/manifest fields, exposed to diagnostics.</td><td><span class="kbd">validate</span> <span class="kbd">getSummary</span></td></tr>
+<tr><td><span class="mono">1157</span></td><td><span class="mono">STATE</span></td><td>Global runtime state used by the scan/render loop.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">1161</span></td><td><span class="mono">AUDIO ENGINE (Web Audio API)</span></td><td>Local-only audio alerts, siren, and keepalive oscillator. No network behavior.</td><td><span class="kbd">ensure</span> <span class="kbd">setVolume01</span> <span class="kbd">alertForZone</span> <span class="kbd">startEmergencySiren</span> <span class="kbd">stopEmergencySiren</span> <span class="kbd">startKeepAlive</span> <span class="kbd">stopKeepAlive</span></td></tr>
+<tr><td><span class="mono">1278</span></td><td><span class="mono">TOAST</span></td><td>Transient local UI messages.</td><td><span class="kbd">show</span></td></tr>
+<tr><td><span class="mono">1294</span></td><td><span class="mono">I18N (7 Languages)</span></td><td>Language dictionaries and localized HTML for seven languages, including RTL Arabic.</td><td><span class="kbd">currentDict</span> <span class="kbd">t</span> <span class="kbd">setLang</span> <span class="kbd">getLang</span> <span class="kbd">apply</span> <span class="kbd">init</span></td></tr>
+<tr><td><span class="mono">3129</span></td><td><span class="mono">V4.3.8 SECURITY HELPERS (global scope)</span></td><td>Container section for SecurePrompt, ConfirmModal, Security.fullWipe, and local storage helpers.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">3131</span></td><td><span class="mono">v4.3.6 SECURITY PATCH: SecurePrompt (replaces prompt() for secrets)</span></td><td>Secure modal for passphrases/text input, with reveal toggle, confirmation option, cancellation, keyboard behavior.</td><td><span class="kbd">ensure</span> <span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">cancel</span> <span class="kbd">submit</span> <span class="kbd">askPassphrase</span> <span class="kbd">askText</span></td></tr>
+<tr><td><span class="mono">3332</span></td><td><span class="mono">v4.2.5 SECURITY PATCH: ConfirmModal (replaces confirm())</span></td><td>Custom confirmation modal used for destructive and sensitive flows instead of browser confirm().</td><td><span class="kbd">_ensure</span> <span class="kbd">addEventListener</span> <span class="kbd">_resolve</span> <span class="kbd">ask</span></td></tr>
+<tr><td><span class="mono">3389</span></td><td><span class="mono">v4.3.6 SECURITY PATCH: Auto-wipe &amp; full wipe helpers</span></td><td>Best-effort full wipe path for IndexedDB, app localStorage keys, Cache Storage, and service worker registrations.</td><td><span class="kbd">fullWipe</span> <span class="kbd">maybeAutoWipeOnClose</span> <span class="kbd">safeLocalStorageSet</span> <span class="kbd">sort</span> <span class="kbd">forEach</span> <span class="kbd">_vgE</span> <span class="kbd">replace</span> <span class="kbd">_vgI</span></td></tr>
+<tr><td><span class="mono">3463</span></td><td><span class="mono">STORAGE</span></td><td>IndexedDB-first store with localStorage fallback for pets, settings, AI state, alerts, blobs, and reset flows.</td><td><span class="kbd">init</span> <span class="kbd">savePet</span> <span class="kbd">getAllPets</span> <span class="kbd">_lsPets</span> <span class="kbd">deletePet</span> <span class="kbd">clearAll</span> <span class="kbd">saveSetting</span> <span class="kbd">getSetting</span> <span class="kbd">saveAI</span> <span class="kbd">getAI</span></td></tr>
+<tr><td><span class="mono">3646</span></td><td><span class="mono">SIGNAL FILTER (KALMAN)</span></td><td>Kalman RSSI smoothing with adaptive measurement noise.</td><td><span class="kbd">constructor</span> <span class="kbd">update</span> <span class="kbd">getVelocity</span> <span class="kbd">reset</span></td></tr>
+<tr><td><span class="mono">3681</span></td><td><span class="mono">DISTANCE ESTIMATOR (V20)</span></td><td>RSSI-to-distance approximation and calibration points.</td><td><span class="kbd">constructor</span> <span class="kbd">estimate</span> <span class="kbd">addCalibration</span> <span class="kbd">_recalc</span> <span class="kbd">export</span> <span class="kbd">import</span></td></tr>
+<tr><td><span class="mono">3717</span></td><td><span class="mono">Q-LEARNING LITE (V20/V35)</span></td><td>Lightweight local learning for threshold widening/narrowing suggestions.</td><td><span class="kbd">constructor</span> <span class="kbd">_key</span> <span class="kbd">_getQ</span> <span class="kbd">chooseAction</span> <span class="kbd">update</span> <span class="kbd">applyAction</span> <span class="kbd">export</span> <span class="kbd">import</span> <span class="kbd">reset</span></td></tr>
+<tr><td><span class="mono">3777</span></td><td><span class="mono">BEHAVIORAL FINGERPRINT</span></td><td>Local behavioral signal window and movement/anomaly heuristics.</td><td><span class="kbd">constructor</span> <span class="kbd">addReading</span> <span class="kbd">getFeatures</span> <span class="kbd">classify</span></td></tr>
+<tr><td><span class="mono">3810</span></td><td><span class="mono">RING BUFFER</span></td><td>Small bounded buffers for RSSI, scan-rate, alert, and error history.</td><td><span class="kbd">constructor</span> <span class="kbd">push</span> <span class="kbd">data</span> <span class="kbd">length</span> <span class="kbd">last</span> <span class="kbd">clear</span> <span class="kbd">slice</span></td></tr>
+<tr><td><span class="mono">3821</span></td><td><span class="mono">PET MODEL</span></td><td>Core per-pet model: signature, thresholds, RSSI processing, zone stability, alerts, export serialization.</td><td><span class="kbd">constructor</span> <span class="kbd">getMinInterval</span> <span class="kbd">ingestRaw</span> <span class="kbd">_effectiveThresholds</span> <span class="kbd">processRssi</span> <span class="kbd">markLost</span> <span class="kbd">_addAlert</span> <span class="kbd">getLastSeenText</span> <span class="kbd">signatureStrength</span> <span class="kbd">toJSON</span></td></tr>
+<tr><td><span class="mono">4060</span></td><td><span class="mono">QR GENERATOR (V4.1: Standard QR)</span></td><td>Embedded QR generator used for emergency and rescue-pack payloads.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">4877</span></td><td><span class="mono">Constructor and fields</span></td><td>Module or patch section. Use the banner text as a stable Ctrl+F anchor in the source.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">4904</span></td><td><span class="mono">Constructor and fields</span></td><td>Module or patch section. Use the banner text as a stable Ctrl+F anchor in the source.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">4986</span></td><td><span class="mono">VOICE RECALL (V20)</span></td><td>Microphone capture and local IndexedDB blob storage/playback for voice recall.</td><td><span class="kbd">hasClip</span> <span class="kbd">record5s</span> <span class="kbd">play</span> <span class="kbd">clear</span></td></tr>
+<tr><td><span class="mono">5058</span></td><td><span class="mono">VOICE ANNOUNCER (TTS)</span></td><td>SpeechSynthesis announcements for zone changes.</td><td><span class="kbd">supported</span> <span class="kbd">speak</span> <span class="kbd">zoneMessage</span></td></tr>
+<tr><td><span class="mono">5094</span></td><td><span class="mono">BLE MATCHING</span></td><td>BLE advertisement signature scoring and route selection.</td><td><span class="kbd">_mfgPrefixHexFromEvent</span> <span class="kbd">matchScore</span> <span class="kbd">routeAdvertisement</span></td></tr>
+<tr><td><span class="mono">5183</span></td><td><span class="mono">BLE ENGINE (V35 hardened + V40 fixes)</span></td><td>Web Bluetooth scan engine, filters, restart protection, congestion tracking, and scan health.</td><td><span class="kbd">checkSupport</span> <span class="kbd">_resetCounters</span> <span class="kbd">markAdv</span> <span class="kbd">congestionLevel</span> <span class="kbd">_buildTrackFilters</span> <span class="kbd">startScan</span> <span class="kbd">stopScan</span> <span class="kbd">restartScan</span></td></tr>
+<tr><td><span class="mono">5380</span></td><td><span class="mono">WIZARD (V35 + V40 signature hardening)</span></td><td>User-initiated tag registration/reverify flow with scan consent and bounded registration scan.</td><td><span class="kbd">isOpen</span> <span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">_showStep</span> <span class="kbd">_startScan</span> <span class="kbd">_startDemoScan</span> <span class="kbd">handleAdv</span> <span class="kbd">_tagLikelihood</span> <span class="kbd">_renderCandidates</span> <span class="kbd">selectCandidate</span></td></tr>
+<tr><td><span class="mono">5797</span></td><td><span class="mono">SOS MODULE (V35)</span></td><td>SOS finder, saved local location, lost-pet alert copy, hot/cold search UI, and pet selection.</td><td><span class="kbd">holdStart</span> <span class="kbd">holdEnd</span> <span class="kbd">activate</span> <span class="kbd">deactivate</span> <span class="kbd">_startStrobe</span> <span class="kbd">updateHC</span> <span class="kbd">updateSnapshot</span> <span class="kbd">saveLocation</span> <span class="kbd">shareMessage</span> <span class="kbd">renderPetSelect</span></td></tr>
+<tr><td><span class="mono">5935</span></td><td><span class="mono">EMERGENCY MODE (V20)</span></td><td>Personal emergency profile, siren/strobe, QR contact card, shake trigger, and copy-only emergency sharing after hardening.</td><td><span class="kbd">load</span> <span class="kbd">save</span> <span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">render</span> <span class="kbd">saveFromUI</span> <span class="kbd">toggleShake</span> <span class="kbd">requestMotionPermission</span> <span class="kbd">holdStart</span> <span class="kbd">holdEnd</span></td></tr>
+<tr><td><span class="mono">6167</span></td><td><span class="mono">PET DETAIL OVERLAY (expanded)</span></td><td>Per-pet details, thresholds, charts, AI suggestions, and injected V4.1 controls.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">render</span> <span class="kbd">setLeash</span> <span class="kbd">updateThreshold</span> <span class="kbd">toggleAI</span> <span class="kbd">suggestAI</span> <span class="kbd">applySuggestion</span> <span class="kbd">aiFeedback</span> <span class="kbd">resetQ</span></td></tr>
+<tr><td><span class="mono">6457</span></td><td><span class="mono">NAV</span></td><td>Panel switching for Home/SOS/Tips/Settings.</td><td><span class="kbd">go</span></td></tr>
+<tr><td><span class="mono">6492</span></td><td><span class="mono">SETTINGS</span></td><td>Global toggles, notification permission flow, performance profile, volume, pet management, and reset entry.</td><td><span class="kbd">load</span> <span class="kbd">_updateToggles</span> <span class="kbd">_updatePerfUI</span> <span class="kbd">_updateVolumeUI</span> <span class="kbd">toggle</span> <span class="kbd">toggleNotif</span> <span class="kbd">setPerf</span> <span class="kbd">setVolume</span> <span class="kbd">renderPetList</span> <span class="kbd">removePet</span></td></tr>
+<tr><td><span class="mono">6650</span></td><td><span class="mono">DATA MANAGER</span></td><td>V4.3.8 encrypted-export and hardened-import entrypoints. Legacy plain export is not the default.</td><td><span class="kbd">exportAll</span> <span class="kbd">importFile</span> <span class="kbd">handleImport</span></td></tr>
+<tr><td><span class="mono">6667</span></td><td><span class="mono">HELP (expanded)</span></td><td>Help placeholder/section boundary.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">6668</span></td><td><span class="mono">HELP (i18n)</span></td><td>Localized help overlay renderer.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">_content</span></td></tr>
+<tr><td><span class="mono">6685</span></td><td><span class="mono">ABOUT / LEGAL (i18n)</span></td><td>Localized About/Legal overlay renderer.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">_content</span></td></tr>
+<tr><td><span class="mono">6702</span></td><td><span class="mono">LANGUAGE MENU</span></td><td>Language chooser overlay and select synchronization.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">choose</span> <span class="kbd">_syncUI</span></td></tr>
+<tr><td><span class="mono">6732</span></td><td><span class="mono">DIAGNOSTICS (Download JSON)</span></td><td>Diagnostics snapshot/copy/download, later redacted by V4.3.8-END hardening.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">snapshot</span> <span class="kbd">render</span> <span class="kbd">copy</span> <span class="kbd">download</span></td></tr>
+<tr><td><span class="mono">6841</span></td><td><span class="mono">META-COGNITIVE COACH (Idea Amplifier)</span></td><td>Local tips/action suggestions based on scan and environment state.</td><td><span class="kbd">compute</span> <span class="kbd">render</span></td></tr>
+<tr><td><span class="mono">6913</span></td><td><span class="mono">APP CORE</span></td><td>Application boot, timers, rendering, monitoring, demo mode, advertisement handling, and alerts.</td><td><span class="kbd">init</span> <span class="kbd">initFirstRunBanner</span> <span class="kbd">dismissFirstRun</span> <span class="kbd">resetTimers</span> <span class="kbd">toggleMonitoring</span> <span class="kbd">toggleDemo</span> <span class="kbd">_startDemo</span> <span class="kbd">_stopDemo</span> <span class="kbd">_demoTick</span> <span class="kbd">setTrackMode</span></td></tr>
+<tr><td><span class="mono">7389</span></td><td><span class="mono">PWA</span></td><td>Blob-based manifest generation only; service worker registration is disabled by default in V4.3.8.</td><td><span class="kbd">registerPWA</span> <span class="kbd">setupInstallBanner</span></td></tr>
+<tr><td><span class="mono">7456</span></td><td><span class="mono">SAFE TEXT / SANITIZER</span></td><td>Sanitizer methods for names, phone numbers, text, icons, HTML escaping, and safe IDs.</td><td><span class="kbd">name</span> <span class="kbd">phone</span> <span class="kbd">text</span> <span class="kbd">icon</span> <span class="kbd">escapeHTML</span> <span class="kbd">replace</span> <span class="kbd">safeId</span> <span class="kbd">sleep</span> <span class="kbd">downloadText</span></td></tr>
+<tr><td><span class="mono">7498</span></td><td><span class="mono">ERROR SHIELD (Crash-safe logging)</span></td><td>Local error ring buffer with bounded persistence.</td><td><span class="kbd">load</span> <span class="kbd">_schedulePersist</span> <span class="kbd">capture</span> <span class="kbd">hook</span> <span class="kbd">clear</span></td></tr>
+<tr><td><span class="mono">7567</span></td><td><span class="mono">CAPABILITY MATRIX</span></td><td>Browser capability detection and badge rendering.</td><td><span class="kbd">battery</span> <span class="kbd">computeSync</span> <span class="kbd">badgeHTML</span> <span class="kbd">renderHTML</span></td></tr>
+<tr><td><span class="mono">7633</span></td><td><span class="mono">ACCESSIBILITY (UX)</span></td><td>Large text, high contrast, reduced motion CSS and toggles.</td><td><span class="kbd">apply</span> <span class="kbd">injectCSS</span></td></tr>
+<tr><td><span class="mono">7662</span></td><td><span class="mono">WAKE LOCK (Monitoring keep-awake)</span></td><td>Screen wake-lock manager for monitoring mode.</td><td><span class="kbd">request</span> <span class="kbd">release</span> <span class="kbd">hookVisibility</span></td></tr>
+<tr><td><span class="mono">7696</span></td><td><span class="mono">AI PACK v4.1</span></td><td>Local kNN, RLS calibrator, isolation forest-lite, and AI attach/import helpers.</td><td><span class="kbd">constructor</span> <span class="kbd">_dist</span> <span class="kbd">add</span> <span class="kbd">predict</span> <span class="kbd">export</span> <span class="kbd">import</span> <span class="kbd">reset</span> <span class="kbd">update</span> <span class="kbd">params</span> <span class="kbd">_randInt</span></td></tr>
+<tr><td><span class="mono">7980</span></td><td><span class="mono">CONDUCTOR AI (Self-heal / UX suggestions)</span></td><td>Local self-heal / optimization suggestions, battery-aware safe mode, and coach input.</td><td><span class="kbd">init</span> <span class="kbd">refreshBattery</span> <span class="kbd">batteryInfo</span> <span class="kbd">compute</span> <span class="kbd">tick</span> <span class="kbd">enable</span> <span class="kbd">disable</span> <span class="kbd">load</span></td></tr>
+<tr><td><span class="mono">8113</span></td><td><span class="mono">RESET / INITIALIZE CENTER</span></td><td>Reset/factory-reset UI and Security.fullWipe integration.</td><td><span class="kbd">ensureUI</span> <span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">render</span> <span class="kbd">soft</span> <span class="kbd">_confirmHard</span> <span class="kbd">hard</span> <span class="kbd">factory</span></td></tr>
+<tr><td><span class="mono">8267</span></td><td><span class="mono">ENCRYPTED BACKUP (AES-GCM)</span></td><td>PBKDF2-SHA-256 + AES-GCM backup encryption/decryption helper.</td><td><span class="kbd">supported</span> <span class="kbd">_b64</span> <span class="kbd">_u8</span> <span class="kbd">_deriveKey</span> <span class="kbd">encryptString</span> <span class="kbd">decryptToString</span></td></tr>
+<tr><td><span class="mono">8321</span></td><td><span class="mono">V40 UI INJECTION</span></td><td>Backward-compatible UI injection layer for advanced settings, reset center, backup, diagnostics, and cards.</td><td><span class="kbd">inject</span> <span class="kbd">renderSafeBanner</span> <span class="kbd">exportEncrypted</span> <span class="kbd">showPitch</span></td></tr>
+<tr><td><span class="mono">8496</span></td><td><span class="mono">PATCH: Settings (new prefs + toggles)</span></td><td>Extends Settings with scan filters, screen awake, auto optimize, auto wipe, and accessibility toggles.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8575</span></td><td><span class="mono">PATCH: BLE filters toggle</span></td><td>Allows scan-filter behavior to be toggled globally.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8582</span></td><td><span class="mono">PATCH: Pet AI attach + safe sanitize</span></td><td>Sanitizes pet data and attaches/export local AI state.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8618</span></td><td><span class="mono">PATCH: Detail feedback =&gt; kNN learning + extra explain</span></td><td>Feedback hook for local kNN learning and explanatory detail UI.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8666</span></td><td><span class="mono">PATCH: Wizard + Emergency sanitize</span></td><td>Sanitizes wizard and emergency-profile inputs before save.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8686</span></td><td><span class="mono">PATCH: App init / monitoring =&gt; wake lock + conductor + error shield</span></td><td>Wraps boot/monitoring with ErrorShield, SafeMode, ConductorAI, WakeLock, and sanitized pet upgrade.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8741</span></td><td><span class="mono">PATCH: Diagnostics (capabilities + error log + battery)</span></td><td>Adds capabilities, safe-mode, error, and battery fields to diagnostics before final redaction layer.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8808</span></td><td><span class="mono">PATCH: Coach card (tips + one-tap actions)</span></td><td>Coach card rendering and action suggestions before final action-registry hardening.</td><td><span class="kbd">register</span> <span class="kbd">run</span> <span class="kbd">map</span> <span class="kbd">forEach</span> <span class="kbd">addEventListener</span></td></tr>
+<tr><td><span class="mono">8859</span></td><td><span class="mono">PATCH: Legal / About (VitalGuard Demo)</span></td><td>Legal/About content replacement using localized HTML.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8875</span></td><td><span class="mono">PATCH: SOS snapshot sanitize</span></td><td>Sanitizes pet name/icon before SOS snapshot rendering.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8887</span></td><td><span class="mono">PATCH: Data import supports encrypted pack</span></td><td>In V4.3.8-END this legacy wrapper is disabled; hardened import owns plain/encrypted flows.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8890</span></td><td><span class="mono">V4.1 EXTRA PATCHES</span></td><td>V4.1 feature pack: QR, RLS calibration, Rescue Pack, per-pet alerts, max active pets, stability fixes.</td><td><span class="kbd">v41ZoneRank</span> <span class="kbd">v41EnsureAlertPrefs</span></td></tr>
+<tr><td><span class="mono">8921</span></td><td><span class="mono">Lost flip counter fix (batterySuspect)</span></td><td>Battery-suspect heuristic and lost-event pruning.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8965</span></td><td><span class="mono">Per-pet alerts (sound/vibrate/tts + min zone)</span></td><td>Per-pet alert preferences and zone threshold gating.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8993</span></td><td><span class="mono">Max 10 active pets: enforce + disable overflow</span></td><td>Caps active pets for stability and disables overflow on import/restore.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">9014</span></td><td><span class="mono">Leash distance slider (2m–15m) in Detail -&gt; auto thresholds</span></td><td>Per-pet leash distance control and automatic threshold derivation.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">9103</span></td><td><span class="mono">Calibration Pro (RLS) UI (Wizard + Detail)</span></td><td>RLS calibration UI and model state wiring.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">9541</span></td><td><span class="mono">Per-pet alerts UI in Detail</span></td><td>Detail overlay controls for per-pet sound/vibrate/TTS/min-zone.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">9628</span></td><td><span class="mono">Rescue Pack (share/import) for SOS panel</span></td><td>Offline rescue pack generation, QR/code display, import and copy-only sharing after hardening.</td><td><span class="kbd">b64urlEncodeUtf8</span> <span class="kbd">b64urlDecodeUtf8</span> <span class="kbd">crc32</span> <span class="kbd">crcHex</span></td></tr>
+<tr><td><span class="mono">9957</span></td><td><span class="mono">Patch Detail.render to inject v4.1 UI blocks</span></td><td>Injects V4.1 UI blocks into detail render; final layer wraps async order.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">9968</span></td><td><span class="mono">Patch V40UI.inject to include v4.1 injections</span></td><td>Ensures V4.1 wizard/SOS UI injections during V40 injection.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">9978</span></td><td><span class="mono">Diagnostics: implement missing Run Self-Test button</span></td><td>Adds self-test; final layer overrides to avoid undefined variables/navigation side effects.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">10072</span></td><td><span class="mono">Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents)</span></td><td>Persists and restores per-pet V4.1 fields.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">10144</span></td><td><span class="mono">V4.3.8 FINAL HARDENING LAYER</span></td><td>Runtime egress kill-switch, external navigation guard, copy-only sharing, alert and detail fixes, action-registry coach, rescue pack hardening, self-test fix.</td><td><span class="kbd">assertJsonShape</span> <span class="kbd">n</span> <span class="kbd">b</span> <span class="kbd">hex</span> <span class="kbd">sanitizeThresholds</span> <span class="kbd">sanitizeSignature</span> <span class="kbd">sanitizeDistanceCalib</span> <span class="kbd">sanitizeAlertPrefs</span> <span class="kbd">sanitizePet</span> <span class="kbd">sanitizeSettings</span></td></tr>
+<tr><td><span class="mono">10546</span></td><td><span class="mono">FINAL: boot once</span></td><td>Pre-init UI injection guard.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">10552</span></td><td><span class="mono">V4.3.8 GUARDED BOOTSTRAP</span></td><td>Single boot guard and safe boot failure handling.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">10572</span></td><td><span class="mono">END OF VITALGUARD AI v4.3.8</span></td><td>End marker.</td><td><span class="muted">—</span></td></tr>
+</tbody></table>
+
+<h2 id="security-lines">8. Security Line Map</h2>
+<table><thead><tr><th>Control</th><th>Source lines</th><th>Review note</th></tr></thead><tbody>
+<tr><td>License / SPDX metadata</td><td><span class="mono">21-22</span></td><td>Apache-2.0 and SPDX identifier metadata.</td></tr>
+<tr><td>CSP</td><td><span class="mono">23-27</span></td><td>Nonce-authorized single inline script, script-src-attr none, connect-src none, worker-src none, Trusted Types, frame/form/base/object restrictions.</td></tr>
+<tr><td>Permissions-Policy</td><td><span class="mono">30</span></td><td>Allows geolocation/microphone/bluetooth/motion for self; disables camera/payment/USB.</td></tr>
+<tr><td>Security hardening meta</td><td><span class="mono">34</span></td><td>Summarizes V4.3.8-END hardening: nonce CSP, no inline event attributes, encrypted backup default, bounded import, redacted diagnostics, no service worker by default.</td></tr>
+<tr><td>APP_VERSION and storage constants</td><td><span class="mono">1004-1010</span></td><td>APP_VERSION 4.3.8; DB_NAME VitalGuardAI_V41; DB_VERSION 2; LS_PREFIX vg41_.</td></tr>
+<tr><td>Action policy/dispatcher</td><td><span class="mono">738-820</span></td><td>Strict allowlist for data-vg-on* actions, no eval/new Function, validated primitive args.</td></tr>
+<tr><td>Trusted Types / DOM guard</td><td><span class="mono">823-956</span></td><td>Trusted Types policy, HTML neutralization, sink patching, MutationObserver scrubber, document.write and share override.</td></tr>
+<tr><td>Security.fullWipe</td><td><span class="mono">3389-3452</span></td><td>Best-effort wipe of Store, IndexedDB database, app caches, and service worker registrations.</td></tr>
+<tr><td>BLE scan consent/timeout</td><td><span class="mono">5400-5457</span></td><td>Registration scan asks for user consent and auto-stops after 30 seconds.</td></tr>
+<tr><td>DataManager entrypoints</td><td><span class="mono">6650-6665</span></td><td>Exports/imports are delegated to encrypted/hardened final functions.</td></tr>
+<tr><td>PWA manifest only</td><td><span class="mono">7389-7412</span></td><td>Blob manifest generation; service worker registration is absent/disabled by default.</td></tr>
+<tr><td>CryptoBox</td><td><span class="mono">8267-8319</span></td><td>PBKDF2-SHA-256 with 600,000 iterations and AES-GCM-256.</td></tr>
+<tr><td>Legacy import wrapper disabled</td><td><span class="mono">8887-8889</span></td><td>All plain/encrypted imports handled by VitalGuardHardenedImport.</td></tr>
+<tr><td>Runtime network guard</td><td><span class="mono">10155-10203</span></td><td>fetch, XHR, WebSocket, EventSource, sendBeacon, and form.submit disabled/blocked.</td></tr>
+<tr><td>External navigation guard</td><td><span class="mono">10205-10246</span></td><td>Blocks external http(s), mailto, tel, sms navigation/window opening in zero-egress mode.</td></tr>
+<tr><td>Copy-only sharing</td><td><span class="mono">10248-10284</span></td><td>SOS and Emergency sharing copy text locally instead of OS/network share.</td></tr>
+<tr><td>Rescue pack hardening</td><td><span class="mono">10431-10449</span></td><td>Size, expiry, version, and schema/text sanitization for decoded rescue packs.</td></tr>
+<tr><td>Audit hardening object</td><td><span class="mono">10509-10515</span></td><td>Exposes final hardening metadata: encrypted-only default, import limits, serviceWorker disabled, diagnostics redacted.</td></tr>
+<tr><td>Hardened import</td><td><span class="mono">10525-10538</span></td><td>Depth/size/node limits, pet/settings/schema sanitizers, voice data limits, encrypted pack handling.</td></tr>
+<tr><td>Redacted diagnostics</td><td><span class="mono">10540-10542</span></td><td>Redacts UA, focus ID, pet identifiers, error locations, and attaches audit hardening metadata.</td></tr>
+<tr><td>Guarded bootstrap</td><td><span class="mono">10552-10570</span></td><td>Single boot guard and safe boot failure handling.</td></tr>
+</tbody></table>
+
+<h2 id="actions">9. Action Dispatch Allowlist</h2>
+<p>The action dispatcher permits only explicit first-party namespace/method calls. Arguments are limited to short strings, numbers, booleans, null, <span class="mono">this.value</span>, or the event object. It blocks constructor/prototype/eval/Function/import/network/storage/cookie/document.write/window.open/location assignment patterns before dispatch.</p>
+<table><thead><tr><th>Namespace</th><th>Allowed methods</th></tr></thead><tbody>
+<tr><td><span class="mono">App</span></td><td><span class="kbd">dismissFirstRun</span> <span class="kbd">setTrackMode</span> <span class="kbd">toggleDemo</span> <span class="kbd">toggleMonitoring</span> <span class="kbd">focusFromChip</span></td></tr>
+<tr><td><span class="mono">DataManager</span></td><td><span class="kbd">exportAll</span> <span class="kbd">importFile</span> <span class="kbd">handleImport</span></td></tr>
+<tr><td><span class="mono">Detail</span></td><td><span class="kbd">aiFeedback</span> <span class="kbd">applySuggestion</span> <span class="kbd">close</span> <span class="kbd">open</span> <span class="kbd">resetQ</span> <span class="kbd">setLeash</span> <span class="kbd">suggestAI</span> <span class="kbd">toggleAI</span> <span class="kbd">updateThreshold</span></td></tr>
+<tr><td><span class="mono">Diag</span></td><td><span class="kbd">close</span> <span class="kbd">copy</span> <span class="kbd">download</span> <span class="kbd">open</span></td></tr>
+<tr><td><span class="mono">Emergency</span></td><td><span class="kbd">close</span> <span class="kbd">copyPhone</span> <span class="kbd">deactivate</span> <span class="kbd">open</span> <span class="kbd">requestMotionPermission</span> <span class="kbd">saveFromUI</span> <span class="kbd">share</span> <span class="kbd">toggleShake</span> <span class="kbd">holdStart</span> <span class="kbd">holdEnd</span></td></tr>
+<tr><td><span class="mono">ErrorShield</span></td><td><span class="kbd">clear</span></td></tr>
+<tr><td><span class="mono">Help</span></td><td><span class="kbd">close</span> <span class="kbd">open</span></td></tr>
+<tr><td><span class="mono">I18N</span></td><td><span class="kbd">setLang</span></td></tr>
+<tr><td><span class="mono">Lang</span></td><td><span class="kbd">choose</span> <span class="kbd">close</span> <span class="kbd">open</span></td></tr>
+<tr><td><span class="mono">Legal</span></td><td><span class="kbd">close</span> <span class="kbd">open</span></td></tr>
+<tr><td><span class="mono">Nav</span></td><td><span class="kbd">go</span></td></tr>
+<tr><td><span class="mono">ResetCenter</span></td><td><span class="kbd">close</span> <span class="kbd">factory</span> <span class="kbd">hard</span> <span class="kbd">open</span> <span class="kbd">soft</span></td></tr>
+<tr><td><span class="mono">SOS</span></td><td><span class="kbd">deactivate</span> <span class="kbd">saveLocation</span> <span class="kbd">selectPet</span> <span class="kbd">shareMessage</span> <span class="kbd">holdStart</span> <span class="kbd">holdEnd</span></td></tr>
+<tr><td><span class="mono">SafeMode</span></td><td><span class="kbd">disable</span></td></tr>
+<tr><td><span class="mono">Settings</span></td><td><span class="kbd">removePet</span> <span class="kbd">resetApp</span> <span class="kbd">setPerf</span> <span class="kbd">toggle</span> <span class="kbd">toggleNotif</span> <span class="kbd">toggleV40</span> <span class="kbd">setVolume</span></td></tr>
+<tr><td><span class="mono">V40UI</span></td><td><span class="kbd">exportEncrypted</span> <span class="kbd">showPitch</span></td></tr>
+<tr><td><span class="mono">VGHardening</span></td><td><span class="kbd">runCoachAction</span></td></tr>
+<tr><td><span class="mono">VoiceRecall</span></td><td><span class="kbd">play</span> <span class="kbd">record5s</span></td></tr>
+<tr><td><span class="mono">Wizard</span></td><td><span class="kbd">clearCalib</span> <span class="kbd">close</span> <span class="kbd">goStep3</span> <span class="kbd">open</span> <span class="kbd">pickIcon</span> <span class="kbd">recordCalib</span> <span class="kbd">rescan</span> <span class="kbd">save</span> <span class="kbd">selectCandidate</span> <span class="kbd">skipVerify</span></td></tr>
+</tbody></table>
+
+<h2 id="prefs">10. Settings / Storage Key Index</h2>
+<table><thead><tr><th>Key</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><span class="mono">sound</span></td><td>Global sound alerts.</td></tr>
+<tr><td><span class="mono">vibrate</span></td><td>Haptic/vibration alerts.</td></tr>
+<tr><td><span class="mono">notifWanted</span></td><td>User intent for browser notifications.</td></tr>
+<tr><td><span class="mono">highAlert</span></td><td>Tighter alert thresholds.</td></tr>
+<tr><td><span class="mono">perfMode</span></td><td>saver / balanced / fast runtime profile.</td></tr>
+<tr><td><span class="mono">voiceRecall</span></td><td>Voice recall playback on CAUTION.</td></tr>
+<tr><td><span class="mono">tts</span></td><td>SpeechSynthesis announcements.</td></tr>
+<tr><td><span class="mono">keepAlive</span></td><td>Near-silent audio keepalive.</td></tr>
+<tr><td><span class="mono">autoWipeOnClose</span></td><td>Best-effort pagehide full wipe.</td></tr>
+<tr><td><span class="mono">volume</span></td><td>Master alert/siren volume.</td></tr>
+<tr><td><span class="mono">useScanFilters</span></td><td>BLE scan filter toggle.</td></tr>
+<tr><td><span class="mono">screenAwake</span></td><td>Wake Lock toggle.</td></tr>
+<tr><td><span class="mono">autoOptimize</span></td><td>ConductorAI self-heal suggestions.</td></tr>
+<tr><td><span class="mono">largeText</span></td><td>Accessibility large text.</td></tr>
+<tr><td><span class="mono">highContrast</span></td><td>Accessibility high contrast.</td></tr>
+<tr><td><span class="mono">reduceMotion</span></td><td>Accessibility reduced motion.</td></tr>
+<tr><td><span class="mono">monitoringWanted</span></td><td>Persisted monitoring preference.</td></tr>
+<tr><td><span class="mono">safeMode</span></td><td>Conductor/SafeMode state.</td></tr>
+<tr><td><span class="mono">emg_name / emg_phone / emg_medical / emg_shake</span></td><td>Emergency profile settings.</td></tr>
+<tr><td><span class="mono">vg_lang_v41</span></td><td>I18N language selection key outside LS_PREFIX.</td></tr>
+<tr><td><span class="mono">vg_lang_v412</span></td><td>Legacy language key reference.</td></tr>
+</tbody></table>
+
+<h2 id="deepdive">11. Module Deep Dive</h2>
+<p class="small">Selected security-critical and reviewer-critical modules with opening code snapshots. For full review, use the module directory above.</p>
+<div class="module"><h3><code>V4.3.8 EARLY SECURITY GUARD</code> <span class="badge">line 721</span></h3><p class="small"><strong>Role:</strong> Defense-in-depth bootstrap guard: sanitizer defaults, action-policy dispatch, Trusted Types policy, HTML sink scrubber, mutation scrubber, document.write blocker, and copy-only share override.</p><pre><code>/* ----------------------------- V4.3.8 EARLY SECURITY GUARD -----------------------------
+   Defense-in-depth for single-file/offline mode.
+   - Trusted Types policy for Chromium/Edge; harmless on unsupported browsers.
+   - HTML sink scrubber for innerHTML/insertAdjacentHTML/Range fragments.
+   - copy-only data flow available before later modules load.
+   - OS share, document.write, and external active URL attributes are blocked/neutralized.
+*/
+var Sanitizer = window.Sanitizer || {
+  name:function(s){ s=String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim().replace(/[&lt;&gt;`]/g,&#x27;&#x27;); return (s||&#x27;My Pet&#x27;).slice(0,28); },
+  phone:function(s){ return String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim().replace(/[^0-9+\-\s]/g,&#x27;&#x27;).slice(0,24); },
+  text:function(s,max){ max=max||220; return String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim().replace(/[&lt;&gt;`]/g,&#x27;&#x27;).slice(0,max); },
+  icon:function(s){ s=String((s===undefined||s===null)?&#x27;🐶&#x27;:s); return (typeof ICONS!==&#x27;undefined&#x27; &amp;&amp; ICONS.includes &amp;&amp; ICONS.includes(s)) ? s : &#x27;🐶&#x27;; },
+  escapeHTML:function(s){ if(s==null)return&#x27;&#x27;; return String(s).replace(/[&amp;&lt;&gt;&#x27;&quot;]/g,function(c){return{&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;}[c]||c;}); },
+  safeId:function(s){ return String(s==null?&#x27;&#x27;:s).replace(/[^a-zA-Z0-9_-]/g,&#x27;&#x27;).slice(0,64); }
+};
+window.Sanitizer = Sanitizer;</code></pre></div><div class="module"><h3><code>OPEN SOURCE MANIFEST</code> <span class="badge">line 1078</span></h3><p class="small"><strong>Role:</strong> Apache-2.0 / FOSS notice with no field-of-use restrictions and public-interest guidelines.</p><pre><code>/* ----------------------------- OPEN SOURCE MANIFEST ----------------------------- */
+/* v4.3.8 OTF/FOSS PATCH (M-1): Object.freeze applied at both outer and array level.
+   Prevents runtime tampering of the open-source notice by injected code or malicious extensions.
+   Outer freeze blocks property reassignment; inner freeze blocks array mutation. */
+const ETHICAL_MANIFEST = Object.freeze({
+  version: APP_VERSION,
+  license: &#x27;Apache-2.0&#x27;,
+  licenseName: &#x27;Apache License 2.0&#x27;,
+  spdx: &#x27;Apache-2.0&#x27;,
+  purpose: &#x27;Life‑saving offline AI demo (no cloud, no telemetry)&#x27;,
+  fieldOfUseRestrictions: Object.freeze([]),
+  publicInterestGuidelines: Object.freeze([&#x27;privacy_preserving&#x27;,&#x27;humanitarian_ready&#x27;,&#x27;agricultural_resilience&#x27;,&#x27;disaster_continuity&#x27;,&#x27;offline_first&#x27;,&#x27;no_telemetry_by_default&#x27;]),
+  principles: Object.freeze([&#x27;minimize_hallucinations&#x27;,&#x27;transparency&#x27;,&#x27;accessibility&#x27;,&#x27;no_data_exploitation&#x27;,&#x27;low_resource&#x27;,&#x27;no_liability&#x27;,&#x27;affordable&#x27;,&#x27;simplicity&#x27;,&#x27;non_specialist&#x27;,&#x27;allow_deletion&#x27;])
+});
+
+/* ----------------------------- OPEN SOURCE NOTICE GUARD (Runtime Integrity) ----------------------------- */</code></pre></div><div class="module"><h3><code>OPEN SOURCE NOTICE GUARD (Runtime Integrity)</code> <span class="badge">line 1093</span></h3><p class="small"><strong>Role:</strong> Runtime integrity checker for FOSS/license/manifest fields, exposed to diagnostics.</p><pre><code>/* ----------------------------- OPEN SOURCE NOTICE GUARD (Runtime Integrity) ----------------------------- */
+/* Validates ETHICAL_MANIFEST integrity at boot and exposes status for diagnostics.
+   DEFENSE_LEVEL: STRONG (4 checks: manifest, Apache-2.0/SPDX, no field-of-use restrictions, principles list) */
+const EthicalGuard = {
+  status: &#x27;UNCHECKED&#x27;,
+  details: [],
+
+  validate(){
+    this.details = [];
+    let pass = true;
+
+    // Check 1: Manifest exists and has required fields
+    if(!ETHICAL_MANIFEST || typeof ETHICAL_MANIFEST !== &#x27;object&#x27;){
+      this.details.push(&#x27;FAIL: ETHICAL_MANIFEST missing or corrupted&#x27;);
+      pass = false;
+    } else {</code></pre></div><div class="module"><h3><code>V4.3.8 SECURITY HELPERS (global scope)</code> <span class="badge">line 3129</span></h3><p class="small"><strong>Role:</strong> Container section for SecurePrompt, ConfirmModal, Security.fullWipe, and local storage helpers.</p><pre><code>/* ---- V4.3.8 SECURITY HELPERS (global scope) ---- */
+
+/* ---- v4.3.6 SECURITY PATCH: SecurePrompt (replaces prompt() for secrets) ---- */
+const SecurePrompt = (()=&gt; {
+  let backdrop=null;
+  let resolver=null;
+
+  function ensure(){
+    if(backdrop) return;
+    const wrap=document.createElement(&#x27;div&#x27;);
+    wrap.id=&#x27;sp-backdrop&#x27;;
+    wrap.className=&#x27;sp-backdrop&#x27;;
+    wrap.innerHTML = `
+      &lt;div class=&quot;sp-dialog&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;sp-title&quot;&gt;
+        &lt;div class=&quot;sp-title&quot; id=&quot;sp-title&quot;&gt;Secure Input&lt;/div&gt;
+        &lt;div class=&quot;sp-msg&quot; id=&quot;sp-msg&quot;&gt;&lt;/div&gt;</code></pre></div><div class="module"><h3><code>v4.3.6 SECURITY PATCH: SecurePrompt (replaces prompt() for secrets)</code> <span class="badge">line 3131</span></h3><p class="small"><strong>Role:</strong> Secure modal for passphrases/text input, with reveal toggle, confirmation option, cancellation, keyboard behavior.</p><pre><code>/* ---- v4.3.6 SECURITY PATCH: SecurePrompt (replaces prompt() for secrets) ---- */
+const SecurePrompt = (()=&gt; {
+  let backdrop=null;
+  let resolver=null;
+
+  function ensure(){
+    if(backdrop) return;
+    const wrap=document.createElement(&#x27;div&#x27;);
+    wrap.id=&#x27;sp-backdrop&#x27;;
+    wrap.className=&#x27;sp-backdrop&#x27;;
+    wrap.innerHTML = `
+      &lt;div class=&quot;sp-dialog&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;sp-title&quot;&gt;
+        &lt;div class=&quot;sp-title&quot; id=&quot;sp-title&quot;&gt;Secure Input&lt;/div&gt;
+        &lt;div class=&quot;sp-msg&quot; id=&quot;sp-msg&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;sp-fields&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;sp-hint&quot; id=&quot;sp-hint&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;</code></pre></div><div class="module"><h3><code>v4.2.5 SECURITY PATCH: ConfirmModal (replaces confirm())</code> <span class="badge">line 3332</span></h3><p class="small"><strong>Role:</strong> Custom confirmation modal used for destructive and sensitive flows instead of browser confirm().</p><pre><code>/* ---- v4.2.5 SECURITY PATCH: ConfirmModal (replaces confirm()) ---- */
+/* Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI
+   SPDX-License-Identifier: Apache-2.0 */
+const ConfirmModal = {
+  _bd: null,
+  _resolver: null,
+
+  _ensure(){
+    if(this._bd) return;
+    const d=document.createElement(&#x27;div&#x27;);
+    d.className=&#x27;sp-backdrop&#x27;;
+    d.innerHTML=`
+      &lt;div class=&quot;sp-dialog&quot; role=&quot;alertdialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;cm-title&quot; aria-describedby=&quot;cm-msg&quot;&gt;
+        &lt;div class=&quot;sp-title&quot; id=&quot;cm-title&quot;&gt;Confirm&lt;/div&gt;
+        &lt;div class=&quot;sp-msg&quot; id=&quot;cm-msg&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;sp-actions&quot;&gt;</code></pre></div><div class="module"><h3><code>v4.3.6 SECURITY PATCH: Auto-wipe &amp; full wipe helpers</code> <span class="badge">line 3389</span></h3><p class="small"><strong>Role:</strong> Best-effort full wipe path for IndexedDB, app localStorage keys, Cache Storage, and service worker registrations.</p><pre><code>/* ---- v4.3.6 SECURITY PATCH: Auto-wipe &amp; full wipe helpers ---- */
+const Security = {
+  // Full wipe: localStorage + IndexedDB + Cache Storage + Service Worker registrations (best effort)
+  async fullWipe(){
+    try{ await Store.clearAll(); }catch(e){}
+    try{
+      if(&#x27;indexedDB&#x27; in window){
+        await new Promise(res=&gt;{
+          try{
+            const req=indexedDB.deleteDatabase(DB_NAME);
+            req.onsuccess=()=&gt;res();
+            req.onerror=()=&gt;res();
+            req.onblocked=()=&gt;res();
+          }catch(e){ res(); }
+        });
+      }</code></pre></div><div class="module"><h3><code>STORAGE</code> <span class="badge">line 3463</span></h3><p class="small"><strong>Role:</strong> IndexedDB-first store with localStorage fallback for pets, settings, AI state, alerts, blobs, and reset flows.</p><pre><code>/* ----------------------------- STORAGE ----------------------------- */
+const Store = {
+  db: null,
+
+  async init() {
+    return new Promise(resolve=&gt;{
+      try{
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = e =&gt; {
+          const db = e.target.result;
+          if(!db.objectStoreNames.contains(&#x27;pets&#x27;)) db.createObjectStore(&#x27;pets&#x27;,{keyPath:&#x27;id&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;settings&#x27;)) db.createObjectStore(&#x27;settings&#x27;,{keyPath:&#x27;key&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;ai&#x27;)) db.createObjectStore(&#x27;ai&#x27;,{keyPath:&#x27;key&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;alerts&#x27;)) db.createObjectStore(&#x27;alerts&#x27;,{keyPath:&#x27;id&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;blobs&#x27;)) db.createObjectStore(&#x27;blobs&#x27;,{keyPath:&#x27;key&#x27;});
+        };</code></pre></div><div class="module"><h3><code>BLE MATCHING</code> <span class="badge">line 5094</span></h3><p class="small"><strong>Role:</strong> BLE advertisement signature scoring and route selection.</p><pre><code>/* ----------------------------- BLE MATCHING ----------------------------- */
+function _mfgPrefixHexFromEvent(event){
+  try{
+    if(!event.manufacturerData) return null;
+    let pref=null;
+    event.manufacturerData.forEach((v,k)=&gt;{
+      if(pref) return;
+      const u8=new Uint8Array(v.buffer, v.byteOffset, Math.min(v.byteLength,2));
+      pref=[...u8].map(b=&gt;b.toString(16).padStart(2,&#x27;0&#x27;)).join(&#x27;&#x27;).toUpperCase();
+    });
+    return pref;
+  }catch(e){
+    return null;
+  }
+}
+</code></pre></div><div class="module"><h3><code>BLE ENGINE (V35 hardened + V40 fixes)</code> <span class="badge">line 5183</span></h3><p class="small"><strong>Role:</strong> Web Bluetooth scan engine, filters, restart protection, congestion tracking, and scan health.</p><pre><code>/* ----------------------------- BLE ENGINE (V35 hardened + V40 fixes) ----------------------------- */
+const BLE = {
+  scanning:false,
+  scanReq:null,
+  _handler:null,
+  supported:false,
+
+  // restart protection
+  restartCount:0,
+  restartWindowStart:0,
+  restartInProgress:false,
+  lastRestartMs:0,
+  lastRestartReason:&#x27;&#x27;,
+
+  // scan mode
+  lastScanMode:&#x27;track&#x27;,</code></pre></div><div class="module"><h3><code>WIZARD (V35 + V40 signature hardening)</code> <span class="badge">line 5380</span></h3><p class="small"><strong>Role:</strong> User-initiated tag registration/reverify flow with scan consent and bounded registration scan.</p><pre><code>/* ----------------------------- WIZARD (V35 + V40 signature hardening) ----------------------------- */
+const Wizard = {
+  mode:&#x27;add&#x27;, // &#x27;add&#x27; | &#x27;reverify&#x27;
+  targetPetId:null,
+
+  candidates:{},
+  selectedId:null,
+  selectedSig:null,
+  baselineRssi:null,
+  verified:false,
+  chosenIcon:&#x27;🐶&#x27;,
+
+  scanTimer:null,
+  verifyTimer:null,
+
+  calib:{}, // {1:rssi,10:rssi}</code></pre></div><div class="module"><h3><code>DATA MANAGER</code> <span class="badge">line 6650</span></h3><p class="small"><strong>Role:</strong> V4.3.8 encrypted-export and hardened-import entrypoints. Legacy plain export is not the default.</p><pre><code>/* ----------------------------- DATA MANAGER ----------------------------- */
+const DataManager = {
+  async exportAll(){
+    if(window.VitalGuardEncryptedExport){ return window.VitalGuardEncryptedExport(); }
+    try{ Toast.show(&#x27;Encrypted backup module is still loading. Try again.&#x27;); }catch(_){}
+  },
+
+  importFile(){ $(&#x27;import-input&#x27;).click(); },
+
+  async handleImport(ev){
+    if(window.VitalGuardHardenedImport){ return window.VitalGuardHardenedImport(ev); }
+    try{ Toast.show(&#x27;Import guard is still loading. Try again.&#x27;); }catch(_){}
+    try{ if(ev &amp;&amp; ev.target) ev.target.value=&#x27;&#x27;; }catch(_){}
+  }
+
+};</code></pre></div><div class="module"><h3><code>PWA</code> <span class="badge">line 7389</span></h3><p class="small"><strong>Role:</strong> Blob-based manifest generation only; service worker registration is disabled by default in V4.3.8.</p><pre><code>  /* ----------------------------- PWA ----------------------------- */
+  registerPWA(){
+    const startUrl = location.href;
+    const manifest = {
+      name: &quot;VitalGuard AI v&quot;+APP_VERSION,
+      short_name: &quot;VitalGuard AI&quot;,
+      start_url: startUrl,
+      display: &quot;standalone&quot;,
+      background_color: &quot;#0d1117&quot;,
+      theme_color: &quot;#c0392b&quot;,
+      description: &quot;Life-saving offline AI demo — Bluetooth proximity + tiny on-device AI (no cloud).&quot;,
+      icons: [
+        {src:&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;192&#x27; height=&#x27;192&#x27;%3E%3Crect width=&#x27;192&#x27; height=&#x27;192&#x27; rx=&#x27;40&#x27; fill=&#x27;%23c0392b&#x27;/%3E%3Ctext x=&#x27;50%25&#x27; y=&#x27;54%25&#x27; dominant-baseline=&#x27;middle&#x27; te …
+        {src:&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;512&#x27; height=&#x27;512&#x27;%3E%3Crect width=&#x27;512&#x27; height=&#x27;512&#x27; rx=&#x27;96&#x27; fill=&#x27;%23c0392b&#x27;/%3E%3Ctext x=&#x27;50%25&#x27; y=&#x27;54%25&#x27; dominant-baseline=&#x27;middle&#x27; te …
+      ],
+      vitalguardSecurity:{serviceWorker:&quot;disabled-by-default&quot;, workerSrc:&quot;none&quot;, networkEgress:&quot;blocked&quot;}</code></pre></div><div class="module"><h3><code>SAFE TEXT / SANITIZER</code> <span class="badge">line 7456</span></h3><p class="small"><strong>Role:</strong> Sanitizer methods for names, phone numbers, text, icons, HTML escaping, and safe IDs.</p><pre><code>  /* ----------------------------- SAFE TEXT / SANITIZER ----------------------------- */
+  const Sanitizer = {
+    // Remove risky characters while keeping names readable (prevents HTML injection from user input/import).
+    name(s){
+      s = String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim();
+      s = s.replace(/[&lt;&gt;`]/g,&#x27;&#x27;);
+      if(!s) return &#x27;My Pet&#x27;;
+      return s.slice(0, 28);
+    },
+    phone(s){
+      s = String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim();
+      // allow digits + + - space
+      s = s.replace(/[^0-9+\-\s]/g,&#x27;&#x27;);
+      return s.slice(0, 24);
+    },
+    text(s, max=220){</code></pre></div><div class="module"><h3><code>ENCRYPTED BACKUP (AES-GCM)</code> <span class="badge">line 8267</span></h3><p class="small"><strong>Role:</strong> PBKDF2-SHA-256 + AES-GCM backup encryption/decryption helper.</p><pre><code>  /* ----------------------------- ENCRYPTED BACKUP (AES-GCM) ----------------------------- */
+  const CryptoBox = {
+    supported(){
+      return !!(window.crypto &amp;&amp; crypto.subtle &amp;&amp; window.TextEncoder &amp;&amp; window.TextDecoder);
+    },
+    _b64(u8){
+      let s=&#x27;&#x27;;
+      for(let i=0;i&lt;u8.length;i++) s+=String.fromCharCode(u8[i]);
+      return btoa(s);
+    },
+    _u8(b64){
+      const bin=atob(b64);
+      const u8=new Uint8Array(bin.length);
+      for(let i=0;i&lt;bin.length;i++) u8[i]=bin.charCodeAt(i);
+      return u8;
+    },</code></pre></div><div class="module"><h3><code>V40 UI INJECTION</code> <span class="badge">line 8321</span></h3><p class="small"><strong>Role:</strong> Backward-compatible UI injection layer for advanced settings, reset center, backup, diagnostics, and cards.</p><pre><code>  /* ----------------------------- V40 UI INJECTION ----------------------------- */
+  const V40UI = {
+    injected:false,
+
+    inject(){
+      if(this.injected) return;
+      this.injected=true;
+
+      Accessibility.injectCSS();
+      ResetCenter.ensureUI();
+
+      // Inject Advanced toggles card into Settings panel (UX)
+      const panel=$(&#x27;panel-settings&#x27;);
+      if(panel &amp;&amp; !document.getElementById(&#x27;v40-advanced-card&#x27;)){
+        const card=document.createElement(&#x27;div&#x27;);
+        card.className=&#x27;card&#x27;;</code></pre></div><div class="module"><h3><code>V4.3.8 FINAL HARDENING LAYER</code> <span class="badge">line 10144</span></h3><p class="small"><strong>Role:</strong> Runtime egress kill-switch, external navigation guard, copy-only sharing, alert and detail fixes, action-registry coach, rescue pack hardening, self-test fix.</p><pre><code>/* ----------------------------- V4.3.8 FINAL HARDENING LAYER -----------------------------
+   Purpose: eliminate low-grade audit findings by adding runtime egress blocks,
+   fixing V4.1 add-on edge bugs, and removing external-navigation behavior.
+   Version string remains 4.3.8 by design. */
+(function(){
+  &#x27;use strict&#x27;;
+
+  function vgToast(msg, dur){ try{ Toast.show(msg, dur||2200); }catch(_){} }
+  function vgEscape(s){ try{ return _vgE(s); }catch(_){ return String(s==null?&#x27;&#x27;:s).replace(/[&amp;&lt;&gt;&#x27;&quot;]/g, c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;}[c])); } }
+  function vgSafeZone(z){ return (z &amp;&amp; ZONE_ORDER[z] !== undefined) ? z : &#x27;SAFE&#x27;; }
+
+  // 1) Runtime network egress kill-switch. CSP is primary; this is defense-in-depth.
+  const RuntimeNetworkGuard = {
+    blocked: 0,
+    _deny(api){
+      this.blocked++;</code></pre></div><div class="module"><h3><code>V4.3.8 GUARDED BOOTSTRAP</code> <span class="badge">line 10552</span></h3><p class="small"><strong>Role:</strong> Single boot guard and safe boot failure handling.</p><pre><code>/* ----------------------------- V4.3.8 GUARDED BOOTSTRAP ----------------------------- */
+(function(){
+  try{
+    if(window.__VITALGUARD_BOOTED__) return;
+    window.__VITALGUARD_BOOTED__ = true;
+    const boot = ()=&gt;{
+      try{
+        if(typeof App !== &#x27;undefined&#x27; &amp;&amp; App &amp;&amp; typeof App.init === &#x27;function&#x27;){
+          App.init().catch(e=&gt;{
+            try{ console.error(&#x27;[VitalGuard] boot failed:&#x27;, e); }catch(_){}
+            try{ Toast.show(&#x27;VitalGuard boot failed safely. Open Diagnostics.&#x27;, 4200); }catch(_){}
+          });
+        }
+      }catch(e){ try{ console.error(&#x27;[VitalGuard] boot exception:&#x27;, e); }catch(_){} }
+    };
+    if(document.readyState === &#x27;loading&#x27;) document.addEventListener(&#x27;DOMContentLoaded&#x27;, boot, {once:true});</code></pre></div>
+
+<h2 id="domid">12. DOM ID Index</h2>
+<p class="small">Extracted static DOM IDs and template IDs. Dynamic runtime may create additional transient nodes; use this as a navigation map, not a complete DOM proof.</p>
+<div class="cols"><div><code>ai-feedback</code></div><div><code>ai-suggestion</code></div><div><code>app</code></div><div><code>btn-demo-toggle</code></div><div><code>btn-mode-all</code></div><div><code>btn-mode-focus</code></div><div><code>btn-scan-toggle</code></div><div><code>btn-skip-verify</code></div><div><code>btn-verified</code></div><div><code>btn-wiz-save</code></div><div><code>calib-10m</code></div><div><code>calib-1m</code></div><div><code>cm-cancel</code></div><div><code>cm-msg</code></div><div><code>cm-ok</code></div><div><code>cm-title</code></div><div><code>coach-body</code></div><div><code>coach-card</code></div><div><code>congestionBadge</code></div><div><code>custom-thresholds</code></div><div><code>dash-controls</code></div><div><code>dash-controls2</code></div><div><code>detail-alerts</code></div><div><code>detail-body</code></div><div><code>detail-overlay</code></div><div><code>detail-title</code></div><div><code>diag-body</code></div><div><code>diag-overlay</code></div><div><code>diag-pre</code></div><div><code>dt-caution</code></div><div><code>dt-danger</code></div><div><code>dt-warning</code></div><div><code>emergency-active</code></div><div><code>emg-active-name</code></div><div><code>emg-active-sub</code></div><div><code>emg-body</code></div><div><code>emg-call</code></div><div><code>emg-medical</code></div><div><code>emg-name</code></div><div><code>emg-overlay</code></div><div><code>emg-phone</code></div><div><code>emg-qr</code></div><div><code>emg-strobe</code></div><div><code>empty-state</code></div><div><code>first-run-banner</code></div><div><code>fr-proto</code></div><div><code>hc-arrow</code></div><div><code>hc-rssi</code></div><div><code>hc-text</code></div><div><code>help-body</code></div><div><code>help-overlay</code></div><div><code>i18n_about_link</code></div><div><code>i18n_app_disclaimer</code></div><div><code>i18n_app_mission</code></div><div><code>i18n_app_sub</code></div><div><code>i18n_app_title</code></div><div><code>i18n_badge_ble</code></div><div><code>i18n_badge_gdpr</code></div><div><code>i18n_badge_offline</code></div><div><code>i18n_badge_tiny</code></div><div><code>i18n_contact_line</code></div><div><code>i18n_empty_btn</code></div><div><code>i18n_empty_text</code></div><div><code>i18n_firstrun_body</code></div><div><code>i18n_firstrun_help</code></div><div><code>i18n_firstrun_ok</code></div><div><code>i18n_firstrun_title</code></div><div><code>i18n_github_link</code></div><div><code>i18n_help_link</code></div><div><code>i18n_help_title</code></div><div><code>i18n_hero_body</code></div><div><code>i18n_hero_pillars</code></div><div><code>i18n_hero_title</code></div><div><code>i18n_install_sub</code></div><div><code>i18n_install_title</code></div><div><code>i18n_lang_link</code></div><div><code>i18n_lang_note</code></div><div><code>i18n_lang_subtitle</code></div><div><code>i18n_lang_title</code></div><div><code>i18n_legal_title</code></div><div><code>i18n_tips_title</code></div><div><code>icon-picker</code></div><div><code>import-input</code></div><div><code>input-name</code></div><div><code>installBanner</code></div><div><code>installBtn</code></div><div><code>installDismiss</code></div><div><code>lang-overlay</code></div><div><code>langSelect</code></div><div><code>legal-body</code></div><div><code>legal-overlay</code></div><div><code>notif-hint</code></div><div><code>panel-home</code></div><div><code>panel-settings</code></div><div><code>panel-sos</code></div><div><code>panel-tips</code></div><div><code>perf-</code></div><div><code>perf-balanced</code></div><div><code>perf-fast</code></div><div><code>perf-saver</code></div><div><code>pet-chips</code></div><div><code>pet-list</code></div><div><code>pwa-manifest</code></div><div><code>reset-body</code></div><div><code>reset-overlay</code></div><div><code>safe-banner</code></div><div><code>scan-health-fill</code></div><div><code>scan-health-meta</code></div><div><code>scan-health-row</code></div><div><code>scan-list</code></div><div><code>scan-status</code></div><div><code>scan-status-bar</code></div><div><code>settings-pet-list</code></div><div><code>sos-active</code></div><div><code>sos-active-name</code></div><div><code>sos-content</code></div><div><code>sos-focus-banner</code></div><div><code>sos-no-pets</code></div><div><code>sos-pet-select</code></div><div><code>sos-snapshot</code></div><div><code>sos-strobe-area</code></div><div><code>sp-1</code></div><div><code>sp-2</code></div><div><code>sp-3</code></div><div><code>sp-backdrop</code></div><div><code>sp-cancel</code></div><div><code>sp-confirm</code></div><div><code>sp-fields</code></div><div><code>sp-hint</code></div><div><code>sp-input</code></div><div><code>sp-msg</code></div><div><code>sp-ok</code></div><div><code>sp-title</code></div><div><code>tipsI18n</code></div><div><code>toggle-autoOptimize</code></div><div><code>toggle-autoWipeOnClose</code></div><div><code>toggle-highContrast</code></div><div><code>toggle-highalert</code></div><div><code>toggle-keepAlive</code></div><div><code>toggle-largeText</code></div><div><code>toggle-notif</code></div><div><code>toggle-reduceMotion</code></div><div><code>toggle-scanFilters</code></div><div><code>toggle-screenAwake</code></div><div><code>toggle-sound</code></div><div><code>toggle-tts</code></div><div><code>toggle-vibrate</code></div><div><code>toggle-voiceRecall</code></div><div><code>v40-a11y-style</code></div><div><code>v40-adv-hint</code></div><div><code>v40-advanced-card</code></div><div><code>v40-ai-explain</code></div><div><code>v41-ap-minzone</code></div><div><code>v41-ap-sound</code></div><div><code>v41-ap-tts</code></div><div><code>v41-ap-vibrate</code></div><div><code>v41-calibpro-clear</code></div><div><code>v41-calibpro-dist</code></div><div><code>v41-calibpro-dist-label</code></div><div><code>v41-calibpro-list</code></div><div><code>v41-calibpro-preview</code></div><div><code>v41-calibpro-record</code></div><div><code>v41-calibpro-stats</code></div><div><code>v41-dcalib-apply-leash</code></div><div><code>v41-dcalib-clear</code></div><div><code>v41-dcalib-dist</code></div><div><code>v41-dcalib-dist-label</code></div><div><code>v41-dcalib-list</code></div><div><code>v41-dcalib-record</code></div><div><code>v41-dcalib-stats</code></div><div><code>v41-leash-apply</code></div><div><code>v41-leash-m</code></div><div><code>v41-leash-m-label</code></div><div><code>v41-rp-assist</code></div><div><code>v41-rp-code</code></div><div><code>v41-rp-copy</code></div><div><code>v41-rp-generate</code></div><div><code>v41-rp-import</code></div><div><code>v41-rp-qr</code></div><div><code>v41-rp-share</code></div><div><code>v41-rp-sms</code></div><div><code>v41-rp-start</code></div><div><code>v41-rp-stop</code></div><div><code>verify-delta</code></div><div><code>verify-status</code></div><div><code>vg3SecondHook</code></div><div><code>vgHero</code></div><div><code>vgact_</code></div><div><code>volumeSlider</code></div><div><code>volumeVal</code></div><div><code>wiz-step-1</code></div><div><code>wiz-step-2</code></div><div><code>wiz-step-3</code></div><div><code>wizard-overlay</code></div><div><code>wizard-title</code></div></div>
+
+<h2 id="audit">13. Audit Checklist</h2>
+<div class="grid">
+<div class="card"><h3>Zero-egress</h3><ul class="tight"><li>Capture DevTools network at launch and every feature path.</li><li>Confirm fetch/XHR/WebSocket/EventSource/sendBeacon are blocked.</li><li>Confirm no service worker is registered.</li><li>Attribute any hosted platform requests separately.</li></ul></div>
+<div class="card"><h3>DOM/action security</h3><ul class="tight"><li>Inject payloads into pet names, BLE names, rescue packs, backups, emergency fields, diagnostics.</li><li>Verify action dispatch blocks unapproved method calls and unsafe args.</li><li>Verify Trusted Types behavior on Chromium and fallback behavior elsewhere.</li></ul></div>
+<div class="card"><h3>Backup/import</h3><ul class="tight"><li>Test wrong passphrase, truncated packs, oversized files, deep objects, too many pets, hostile settings, hostile voice data.</li><li>Verify encrypted-only default export and no plaintext secret leakage.</li><li>Check merge/replace and partial failure paths.</li></ul></div>
+<div class="card"><h3>Storage/wipe</h3><ul class="tight"><li>Populate all stores and test soft reset, hard reset, factory reset, auto-wipe, crash/reopen.</li><li>Inspect IndexedDB, localStorage, Cache Storage, service worker registrations, object URLs, downloads, clipboard, browser history.</li></ul></div>
+<div class="card"><h3>BLE/privacy</h3><ul class="tight"><li>Test registration consent and 30-second auto-stop.</li><li>Test crowded BLE and malicious advertisement names.</li><li>Assess scan restart timing, local radio detectability, focus mode, filters vs accept-all.</li></ul></div>
+<div class="card"><h3>ML/state/diagnostics</h3><ul class="tight"><li>Import adversarial ML state and verify reset recovery.</li><li>Confirm diagnostics redaction and self-test behavior.</li><li>Verify error logs are bounded and locally stored.</li></ul></div>
+</div>
+
+<div class="footer">Prepared from canonical source: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded copy reviewed: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · SHA-256 <span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></div>
+</div>
+</body>
+</html>

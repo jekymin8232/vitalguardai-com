@@ -1,0 +1,146 @@
+<!--
+============================================================
+[
+Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI | VitalGuard AI V4.3.8
+SPDX-License-Identifier: Apache-2.0
+Licensed under the Apache License, Version 2.0.
+OTF/FOSS-ready notice: permissive open-source licensing with no field-of-use restrictions.
+Zero External Dependencies | 100% Offline | Vanilla CSS/JS
+]
+
+OTF Comment Title:
+2. VitalGuard AI V4.3.8 Security Audit Scope & OTF Engagement Brief
+
+Document Role:
+Defines the V4.3.8 audit goal, artifact boundary, validation questions, work packages, priority order, out-of-scope boundaries, and reporting requirements.
+============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VitalGuard AI V4.3.8 Security Audit Scope & OTF Engagement Brief</title>
+<style>
+:root{--ink:#111827;--muted:#4b5563;--muted2:#6b7280;--border:#d1d5db;--bg:#ffffff;--bg2:#f7f8fb;--accent:#1d4ed8;--ok:#047857;--warn:#b45309;--bad:#b91c1c;--codebg:#f3f6ff;--code:#111827;--card:#ffffff;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif;line-height:1.55;font-size:15px;}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 18px 80px;}
+h1{font-size:2rem;line-height:1.18;margin:0 0 8px;} h2{font-size:1.35rem;margin:34px 0 10px;border-bottom:2px solid var(--border);padding-bottom:7px;} h3{font-size:1.08rem;margin:22px 0 8px;} h4{margin:16px 0 6px;}
+p{margin:9px 0;} a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.subtitle{color:var(--muted);margin:0 0 18px;} .small{font-size:.88rem;color:var(--muted);} .muted{color:var(--muted2);} .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+.badge{display:inline-block;border:1px solid rgba(29,78,216,.25);background:rgba(29,78,216,.08);color:var(--accent);border-radius:999px;padding:3px 9px;font-size:.78rem;font-weight:700;margin:2px 4px 2px 0;}
+.badge.ok{border-color:rgba(4,120,87,.25);background:rgba(4,120,87,.08);color:var(--ok);} .badge.warn{border-color:rgba(180,83,9,.25);background:rgba(180,83,9,.08);color:var(--warn);} .badge.bad{border-color:rgba(185,28,28,.25);background:rgba(185,28,28,.08);color:var(--bad);}
+.card{border:1px solid var(--border);border-radius:13px;padding:13px 14px;background:var(--card);margin:12px 0;} .note{background:#fff7ed;border:1px solid #fed7aa;color:#431407;border-radius:13px;padding:12px 14px;margin:12px 0;} .okbox{background:#ecfdf5;border:1px solid #a7f3d0;color:#064e3b;border-radius:13px;padding:12px 14px;margin:12px 0;} .warnbox{background:#fef2f2;border:1px solid #fecaca;color:#7f1d1d;border-radius:13px;padding:12px 14px;margin:12px 0;}
+.toc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;} .toc ul{columns:2;margin:8px 0 0 18px;} @media(max-width:760px){.toc ul{columns:1;}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;} @media(max-width:840px){.grid{grid-template-columns:1fr;}}
+.kbd{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:.78rem;background:#eef2ff;border:1px solid #c7d2fe;border-radius:999px;padding:1px 7px;margin:1px 3px 1px 0;white-space:nowrap;color:#1e3a8a;}
+pre{background:var(--codebg);border:1px solid #d8e4ff;border-radius:12px;padding:12px;overflow:auto;white-space:pre-wrap;} code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;} pre code{color:var(--code);font-size:.86rem;}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td{border:1px solid var(--border);padding:8px 9px;vertical-align:top;} th{background:var(--bg2);text-align:left;} tr:nth-child(even) td{background:#fcfcfd;}
+.pagebreak{page-break-before:always;} .footer{margin-top:36px;padding-top:14px;border-top:1px dashed var(--border);font-size:.88rem;color:var(--muted2);} .tight li{margin:4px 0;} .module{border:1px solid var(--border);border-radius:13px;padding:12px 13px;background:#fff;margin:12px 0;} .module h3{margin:0 0 4px;}.cols{columns:3;column-gap:24px;} @media(max-width:840px){.cols{columns:2;}} @media(max-width:560px){.cols{columns:1;}}
+@page{size:A4;margin:17mm;} @media print{.wrap{max-width:none;padding:0}.toc{page-break-after:always} a{color:inherit;text-decoration:none} table{font-size:.85rem} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="badge ok">VitalGuard AI V4.3.8-END</div>
+<h1>VitalGuard AI V4.3.8 Security Audit Scope & OTF Engagement Brief</h1>
+<p class="subtitle">Application artifact: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded source reviewed: <span class="mono">VitalGuard_AI_complete_V43_8(9).html</span> · Prepared for independent OTF-style security review · Updated 2026-05-20 KST</p>
+
+<div class="toc"><strong>Table of Contents</strong>
+<ul>
+<li><a href="#purpose">1. Purpose and Audit Goal</a></li>
+<li><a href="#artifact">2. Primary Audit Artifact</a></li>
+<li><a href="#observations">3. Artifact Observations to Validate</a></li>
+<li><a href="#questions">4. Core Audit Questions</a></li>
+<li><a href="#packages">5. Proposed Work Packages</a></li>
+<li><a href="#priority">6. Recommended Priority Order</a></li>
+<li><a href="#outofscope">7. Suggested Out-of-Scope Boundaries</a></li>
+<li><a href="#reporting">8. Reporting Requirements</a></li>
+<li><a href="#summary">9. Summary</a></li>
+</ul></div>
+
+<h2 id="purpose">1. Purpose and Audit Goal</h2>
+<p><strong>VitalGuard AI V4.3.8-END</strong> is a single-file, offline-first humanitarian technology demonstration intended for low-connectivity, outage-prone, and off-grid contexts. The application makes strong user-facing claims: no cloud dependency, no telemetry, local-only storage, user-controlled deletion, Bluetooth proximity monitoring, encrypted backup, copy-only sharing, redacted diagnostics, and disabled worker/service-worker behavior by default.</p>
+<p>The audit goal is to produce a precise security verdict for the frozen V4.3.8 artifact: which claims are supported, which are supported only under defined browser/deployment contexts, and which require remediation or clearer user guidance.</p>
+<div class="note"><strong>Version-specific note.</strong> V4.3.8 is materially different from the earlier V4.3.7 scope: the security posture now centers on nonce CSP, <span class="mono">script-src-attr 'none'</span>, strict <span class="mono">data-vg-on*</span> dispatch, Trusted Types / sink scrubbing, runtime network API kill-switches, encrypted-only default backup, bounded import, redacted diagnostics, and service worker disabled by default.</div>
+
+<h2 id="artifact">2. Primary Audit Artifact</h2>
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td>Source file reviewed</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span></td></tr>
+<tr><td>Canonical audit artifact</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span> / V4.3.8-END</td></tr>
+<tr><td>APP_VERSION</td><td><span class="mono">4.3.8</span> at source line 1004</td></tr>
+<tr><td>SHA-256</td><td><span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></td></tr>
+<tr><td>File size</td><td>486,861 bytes (475.5 KiB)</td></tr>
+<tr><td>Line count</td><td>10,576</td></tr>
+<tr><td>Architecture</td><td>Single-file HTML with inline CSS and one nonce-authorized inline script; no external script imports detected.</td></tr>
+<tr><td>Persistence identifiers</td><td><span class="mono">DB_NAME=VitalGuardAI_V41</span>; <span class="mono">DB_VERSION=2</span>; <span class="mono">LS_PREFIX=vg41_</span>; <span class="mono">SCHEMA_VERSION=2</span></td></tr>
+</tbody></table>
+<p class="small">Line references in this document refer to the source file <span class="mono">VitalGuard_AI_complete_V43_8.html</span>. If line endings or formatting are normalized, use the stable Ctrl+F banners shown in the code map.</p>
+
+<h2 id="observations">3. Artifact Observations to Validate</h2>
+<table><thead><tr><th>Area</th><th>Observed in V4.3.8 source</th><th>Audit implication</th></tr></thead><tbody>
+<tr><td>CSP and browser controls</td><td>Line 27 uses nonce script policy, <span class="mono">connect-src none</span>, <span class="mono">script-src-attr none</span>, <span class="mono">worker-src none</span>, Trusted Types, blocked frames/forms/base/object, and no-referrer/nosniff appears at lines 28-29.</td><td>Validate runtime enforcement in file, localhost, HTTPS, and hosted header contexts; check that generated HTML remains compatible with Trusted Types and the single-file architecture.</td></tr>
+<tr><td>Permissions surface</td><td>Line 30 allows geolocation, microphone, Bluetooth, accelerometer, gyroscope, and magnetometer for self; camera/payment/USB are disabled.</td><td>Verify all sensitive API calls are user-initiated, denied-permission safe, disclosed, and not triggered during passive launch.</td></tr>
+<tr><td>Inline event hardening</td><td>Raw inline event attribute count is 0; <span class="mono">data-vg-on*</span> action tokens are used 129 times and routed through a strict allowlist at lines 738-820.</td><td>Audit action-parser grammar, namespace/method allowlist, argument validation, event delegation, and injected action tokens.</td></tr>
+<tr><td>Trusted Types / DOM sinks</td><td>Lines 823-956 create a Trusted Types policy, patch innerHTML / insertAdjacentHTML / Range fragments, scrub dangerous tags/attributes/URLs, observe mutations, and disable document.write.</td><td>Confirm that all intended HTML content still renders while attacker-controlled strings are neutralized.</td></tr>
+<tr><td>Network egress controls</td><td>CSP blocks connect-src; final runtime guard at lines 10155-10203 overrides fetch, XHR, WebSocket, EventSource, sendBeacon, and form.submit. Static search found no serviceWorker.register calls.</td><td>Instrument network traffic; distinguish application-authored egress from browser/platform/deployment noise.</td></tr>
+<tr><td>PWA / worker posture</td><td>PWA section at lines 7389-7412 generates a manifest only; metadata says service worker is disabled by default and worker-src is none.</td><td>Verify app install behavior, manifest blob URL behavior, and absence of worker creation/registration in all contexts.</td></tr>
+<tr><td>Backup and import</td><td>DataManager routes export/import to hardened functions at lines 6650-6665; CryptoBox uses PBKDF2-SHA-256 with 600000 iterations, 16-byte salt, 12-byte IV, and AES-GCM-256 at lines 8267-8319; import limits/sanitizers are declared at lines 10512-10538.</td><td>Review encrypted-only export default, malformed encrypted packs, schema limits, merge/replace behavior, and partial-state safety.</td></tr>
+<tr><td>Diagnostics and privacy</td><td>Final redaction layer at lines 10540-10542 redacts UA, focus IDs, pet names/rescue IDs, and error locations by default.</td><td>Confirm diagnostics do not reveal sensitive identifiers unless intentionally changed by an auditor/deployer.</td></tr>
+<tr><td>Open-source notice / ethics posture</td><td>The older ethical manifest has been refactored into Apache-2.0/FOSS open-source notice and public-interest guidelines; no field-of-use restriction array entries are present.</td><td>Verify claim wording: integrity/notice controls are auditability mechanisms, not universal runtime abuse prevention.</td></tr>
+</tbody></table>
+
+<h2 id="questions">4. Core Audit Questions</h2>
+<ol class="tight">
+<li>Does the artifact generate any application-initiated network egress during normal launch, tag registration, BLE monitoring, SOS, geolocation save, voice tools, encrypted backup/export/import, diagnostics, PWA install, or offline restart?</li>
+<li>Does the CSP and runtime network guard actually prevent fetch/XHR/WebSocket/EventSource/sendBeacon/form submission, and are browser/platform/deployment requests correctly separated from application-authored traffic?</li>
+<li>Are all HTML/event/action flows compatible with <span class="mono">script-src-attr 'none'</span> and strict <span class="mono">data-vg-on*</span> dispatch without enabling eval/new Function or unsafe dynamic code?</li>
+<li>Can attacker-controlled strings from BLE advertisements, backups, rescue packs, QR payloads, emergency fields, diagnostics, or i18n/help/legal content reach the DOM unsafely?</li>
+<li>Are encrypted backups, rescue packs, and import/merge/replace flows robust against malformed input, oversized data, schema abuse, voice-blob abuse, state poisoning, and partial restore failures?</li>
+<li>Are IndexedDB, localStorage fallback keys, blobs, Cache Storage, reset/factory reset, auto-wipe-on-close, and browser residuals accurately described as guaranteed versus best effort?</li>
+<li>Are Bluetooth, geolocation, microphone, motion sensors, notification, clipboard, wake lock, and speech synthesis only invoked through clear user action and safe permission flows?</li>
+<li>Do on-device ML components and persisted model state resist poisoning, leakage, resource exhaustion, or alert suppression within realistic browser constraints?</li>
+<li>Are open-source/FOSS and public-interest controls represented accurately as notice/integrity/auditability mechanisms rather than absolute abuse-prevention guarantees?</li>
+</ol>
+
+<h2 id="packages">5. Proposed Work Packages</h2>
+<div class="card"><h3>WP0 — Artifact freeze and claim alignment</h3><p>Record exact filename, SHA-256, byte size, line count, browser/runtime assumptions, and the intended meaning of “zero egress” for local, localhost, HTTPS, and hosted deployments.</p></div><div class="card"><h3>WP1 — Zero-egress and network runtime verification</h3><p>Search source for network primitives; instrument launch, BLE scan, SOS, geolocation, voice, backup/import, diagnostics, install, and offline restart; verify RuntimeNetworkGuard and CSP behavior.</p></div><div class="card"><h3>WP2 — CSP, Trusted Types, action dispatch, and DOM sink security</h3><p>Review nonce CSP, script-src-attr none, Trusted Types policy, mutation scrubber, action allowlist, blocked URL protocols, document.write block, and injected HTML compatibility.</p></div><div class="card"><h3>WP3 — Sensitive browser API surface</h3><p>Map Web Bluetooth, geolocation, microphone/getUserMedia, notifications, clipboard, wake lock, motion events, and speech synthesis; verify clear user action, denial handling, and local-only behavior.</p></div><div class="card"><h3>WP4 — Local persistence, reset, factory reset, and auto-wipe</h3><p>Review IndexedDB, localStorage fallback, blob storage, full wipe, reset center, auto-wipe-on-pagehide, cache deletion, service worker unregister calls, and residual browser artifacts.</p></div><div class="card"><h3>WP5 — BLE privacy, matching safety, and radio-side detectability</h3><p>Review requestLEScan filters/fallback, registration scan 30-second consent flow, matching thresholds, collision handling, crowded BLE behavior, scan restart jitter, and nearby adversary detectability.</p></div><div class="card"><h3>WP6 — Encrypted backup, hardened import, and Rescue Pack</h3><p>Review CryptoBox, encrypted-only default export, import size/depth/schema limits, voice clip limits, rescue pack expiry/schema, copy-only sharing, and state poisoning resistance.</p></div><div class="card"><h3>WP7 — DOM injection and UI spoofing</h3><p>Inject hostile payloads through pet names, BLE names, emergency profile fields, backups, rescue packs, diagnostics, i18n strings, QR payloads, and coach actions.</p></div><div class="card"><h3>WP8 — On-device ML and model-state risk</h3><p>Review KalmanRSSI, QLearningLite, KNNLite, IsolationForestLite, RLSCalibrator, BehavioralFingerprint, and import/reset behavior for poisoning, leakage, and resource exhaustion.</p></div><div class="card"><h3>WP9 — Diagnostics, observability, and error safety</h3><p>Validate redacted diagnostics, self-test, ErrorShield behavior, crash-safe logs, clipboard/download exports, and claim language around local-only diagnostics.</p></div><div class="card"><h3>WP10 — Open-source/FOSS notice and non-abuse claim language</h3><p>Confirm Apache-2.0 / SPDX metadata, public-interest guidance, no field-of-use restrictions, manifest integrity diagnostics, and non-overstated user-facing claims.</p></div>
+
+<h2 id="priority">6. Recommended Priority Order</h2>
+<table><thead><tr><th>Priority</th><th>Work package</th><th>Why it matters</th><th>Suggested depth</th></tr></thead><tbody>
+<tr><td>1</td><td>WP0 / WP1</td><td>Artifact freeze and zero-egress remain the primary trust claims.</td><td>Deep static review + dynamic network instrumentation</td></tr>
+<tr><td>2</td><td>WP2 / WP7</td><td>Nonce CSP, action dispatch, Trusted Types, and DOM sink hardening are the main V4.3.8 security delta.</td><td>Deep source review + adversarial payload testing</td></tr>
+<tr><td>3</td><td>WP6</td><td>Encrypted backup, import guard, and rescue pack are high-value state and data entry points.</td><td>Crypto review + malformed/oversized/state-poisoning tests</td></tr>
+<tr><td>4</td><td>WP4</td><td>Residual local data risk directly affects high-risk users and local-only claims.</td><td>Deep storage/reset/delete testing</td></tr>
+<tr><td>5</td><td>WP3 / WP5</td><td>Sensitive browser APIs and BLE radio behavior define practical privacy exposure.</td><td>Permission-flow tests + BLE radio scenarios</td></tr>
+<tr><td>6</td><td>WP8 / WP9</td><td>ML state and diagnostics are local but security-relevant for leakage and poisoning.</td><td>Targeted review + reset/recovery tests</td></tr>
+<tr><td>7</td><td>WP10</td><td>FOSS/notice controls must be precise and not overstated.</td><td>Claim-language and integrity review</td></tr>
+</tbody></table>
+
+<h2 id="outofscope">7. Suggested Out-of-Scope Boundaries</h2>
+<ul class="tight">
+<li>General UX polish, branding, visual design, copy editing, or non-security product feedback unless it affects security claims.</li>
+<li>BLE range accuracy as a product-quality metric, animal-safety validation, or certification of life-critical reliability.</li>
+<li>Backend, server, build pipeline, repository, or infrastructure review outside the frozen single-file artifact, except where hosted runtime behavior affects zero-egress, CSP, or browser security claims.</li>
+<li>Future revisions, prior V4.2.x/V4.3.7 revisions, or delta comparison except where the V4.3.7 documents are used to confirm that this V4.3.8 scope was updated correctly.</li>
+<li>Commercial, fundraising, governance, or organizational review beyond technical claims that affect user safety, security, privacy, or FOSS compatibility.</li>
+</ul>
+
+<h2 id="reporting">8. Reporting Requirements</h2>
+<p>For each material finding, the report should include:</p>
+<ul class="tight">
+<li>Affected artifact name, SHA-256, execution context, browser/OS, and exact reproduction steps.</li>
+<li>Classification as source-level, runtime-level, deployment-context-dependent, or user-action-dependent.</li>
+<li>Security claim affected, realistic impact, exploitability, and recommended severity.</li>
+<li>Evidence, including static source references, DevTools/network captures, CSP violation logs, storage snapshots, permission prompts, adversarial payloads, or import files.</li>
+<li>Concrete remediation guidance and retest steps with expected passing behavior.</li>
+<li>A final claim verdict table using: Supported, Supported with caveats, Partially supported, Not supported, or Not applicable.</li>
+</ul>
+
+<h2 id="summary">9. Summary</h2>
+<p>The V4.3.8 scope is intentionally narrow and audit-friendly: one frozen single-file artifact, a fixed SHA-256, clear execution contexts, and claim-based work packages. The audit should verify the strongest user-facing statements first: no telemetry/no cloud egress, local-only storage, deletion behavior, sensitive API permission flows, encrypted backup/import safety, DOM/action hardening, diagnostics redaction, and resilience against malicious local inputs.</p>
+<div class="footer">Prepared from canonical source: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded copy reviewed: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · SHA-256 <span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></div>
+</div>
+</body>
+</html>
