@@ -1,85 +1,85 @@
 # Ten Principles of Ethical AI
 
-AI는 무엇보다도 법적 안전성과 윤리적 신뢰성이 보장되어야 합니다.  
-이를 위해 저는 프로젝트의 기반으로 **‘윤리적 AI의 10대 원칙 (Ten Principles of Ethical AI)’** 을 수립하고 적용했습니다.  
-이 원칙들은 타협의 대상이 아닙니다.
+Above all, AI must guarantee legal safety and ethical trustworthiness.  
+To achieve this, I established and applied the **Ten Principles of Ethical AI** as the foundation of this project.  
+These principles are non-negotiable.
 
 ---
 
-## 1. Minimize hallucinations
+## 1. Minimize Hallucinations
 
-Incorrect outputs in sensitive domains—child protection, healthcare, disaster response—can have immediate and severe consequences.
-
----
-
-## 2. Ensure transparency
-
-Traditional AI operates as a black box, where even leading experts cannot explain hallucinations. Open-source code and architecture are essential to earn trust.
+Incorrect outputs in sensitive domains—such as child protection, healthcare, and disaster response—can have immediate and severe consequences.
 
 ---
 
-## 3. Guarantee accessibility in low-income settings
+## 2. Ensure Transparency
 
-Open-source AI must be simple, so that anyone can examine, adapt, and improve it. This is vital for sustainability in the field.
-
----
-
-## 4. Eliminate data exploitation
-
-AI must not rely on unnecessary data collection or centralized servers, which can trigger legal disputes. A serverless design offers freedom from such risks and reassures NGOs.
+Traditional AI often operates as a black box, where even leading experts cannot fully explain hallucinations. Open-source code and transparent architecture are essential to earn trust.
 
 ---
 
-## 5. Operate in low-resource environments
+## 3. Guarantee Accessibility in Low-Income Environments
 
-AI should run on portable solar power and refurbished smartphones, ensuring deployment in the most fragile contexts.
-
----
-
-## 6. Remove legal liability
-
-Even minimal exposure to litigation makes adoption impossible. Designs must protect NGOs and international organizations from multimillion-dollar lawsuits.
+Open-source AI must remain simple enough for anyone to inspect, adapt, and improve. This is critical for long-term sustainability in the field.
 
 ---
 
-## 7. Be free of charge and lightweight
+## 4. Eliminate Data Exploitation
 
-Free access enables adoption in communities with no income, while also ensuring that international institutions bear no financial or legal liability.
-
----
-
-## 8. Emphasize simplicity and standardization
-
-Life-saving AI requires reliable statistics and probabilistic analysis, not complex reasoning that increases hallucination risk.
+AI must not depend on unnecessary data collection or centralized servers that may trigger legal disputes. A serverless architecture reduces these risks and provides reassurance to NGOs and humanitarian organizations.
 
 ---
 
-## 9. Be non-specialist friendly
+## 5. Operate in Low-Resource Environments
 
-Most NGO personnel are not programmers. Code should be straightforward, well-commented, and easy to adapt in the field.
-
----
-
-## 10. Collect no data and allow simple deletion
-
-Users must be able to erase the AI and its data at any time. Ease of deletion means freedom from responsibility.
+AI should function on portable solar power systems and refurbished smartphones, ensuring deployment even in the most fragile environments.
 
 ---
 
-## International Alignment
+## 6. Remove Legal Liability Risks
 
-Finally, what matters more than performance is alignment with international norms.
-
-AI must embed GDPR, UNCRC, and CRPD principles from the design stage and ensure that no liability is transferred to international organizations.
-
-Only under these conditions can the global community confidently deploy AI in the field.
+Even minimal exposure to litigation can prevent adoption entirely. AI systems must be designed to protect NGOs and international organizations from multimillion-dollar legal risks.
 
 ---
 
-## Author
+## 7. Be Free of Charge and Lightweight
+
+Free access enables deployment in communities with little or no income, while also ensuring that international organizations do not inherit unnecessary financial or legal burdens.
+
+---
+
+## 8. Emphasize Simplicity and Standardization
+
+Life-saving AI requires reliable statistical and probabilistic analysis—not unnecessarily complex reasoning systems that increase hallucination risks.
+
+---
+
+## 9. Be Non-Specialist Friendly
+
+Most NGO personnel are not programmers. Code should therefore be straightforward, well-commented, and easy to adapt directly in the field.
+
+---
+
+## 10. Collect No Data and Allow Simple Deletion
+
+Users must be able to erase both the AI system and its data at any time. Ease of deletion means freedom from long-term responsibility and liability.
+
+---
+
+# International Alignment
+
+More important than raw performance is alignment with international norms and humanitarian principles.
+
+AI systems must embed principles from GDPR, UNCRC, and CRPD from the design stage onward, while ensuring that no legal liability is transferred to international organizations.
+
+Only under these conditions can the global community confidently deploy AI in real-world humanitarian environments.
+
+---
+
+# Author
 
 **Gyumin Jeon (Morgan J.)**  
-Independent Developer, Ethical AI Project
+Independent Developer — Ethical AI Project
 
 Website: https://mcorpai.org/  
 Contact: contact@mcorpai.org
