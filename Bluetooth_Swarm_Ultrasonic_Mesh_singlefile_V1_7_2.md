@@ -42,7 +42,6 @@ This manual does not certify rescue performance, medical use, law-enforcement us
 | Line count | 1,763 lines |
 | Inline CSS size | 14,224 bytes |
 | Inline JavaScript size | 189,391 bytes |
-| SHA-256 | `ac56864d935d175686dcdec7fa8364203650651b43ca5d17c69e42ca321814f0` |
 | Registered modules | 41 |
 | DOM IDs | 130 |
 | External script tags | 0 |
