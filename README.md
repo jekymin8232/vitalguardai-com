@@ -16,9 +16,9 @@
 9. The system must be accessible and understandable to non-specialists.
 10. The AI must not collect unnecessary data, and if any data is stored, users must be able to delete it easily at any time.
 
-All academic contributions worldwide are provided completely free of charge. If these contributions are recognized as meaningful ethical and humanitarian work, I believe that a public nomination for the Nobel Peace Prize would also be justified. Moral authority can help save even more lives. I have also already developed a refugee self-sufficiency model — an AI system designed to help refugees achieve self-reliance within refugee camps themselves, without requiring relocation to other countries. A sovereign AI system that refugees can directly operate means that refugee communities themselves can become self-sustaining.
+**The AI I develop is not designed for the wealthy. It is designed for the socially vulnerable, the poor, and those most in need.**
 
-The AI I develop is not designed for the wealthy. It is designed for the socially vulnerable, the poor, and those most in need.
+All academic contributions worldwide are provided completely free of charge. If these contributions are recognized as meaningful ethical and humanitarian work, I believe that a public nomination for the Nobel Peace Prize would also be justified. Moral authority can help save even more lives. I have also already developed a refugee self-sufficiency model — an AI system designed to help refugees achieve self-reliance within refugee camps themselves, without requiring relocation to other countries. A sovereign AI system that refugees can directly operate means that refugee communities themselves can become self-sustaining.
 
 > **This “Pet Safety Leash” UI is a neutral demo skin for everyday usability testing.**  
 > Under the hood, it is an **Offline Bluetooth Swarm Network** built for zero‑infrastructure disaster response.  
