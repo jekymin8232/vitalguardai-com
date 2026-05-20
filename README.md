@@ -32,7 +32,7 @@ Fair compensation is not just about money — it can also restore dignity, stren
 
 All academic contributions worldwide are provided completely free of charge. If these contributions are recognized as meaningful ethical and humanitarian work, I believe that a public nomination for the Nobel Peace Prize would also be justified. Moral authority can help save even more lives. 
 
-I have also already developed a refugee self-sufficiency model — an AI system designed to help refugees achieve self-reliance within refugee camps themselves, without requiring relocation to other countries. A sovereign AI system that refugees can directly operate means that refugee communities themselves can become self-sustaining.
+I have also already developed a refugee self-sufficiency model**McorpAi** — an AI system designed to help refugees achieve self-reliance within refugee camps themselves, without requiring relocation to other countries. A sovereign AI system that refugees can directly operate means that refugee communities themselves can become self-sustaining.
 
 > **This “Pet Safety Leash” UI is a neutral demo skin for everyday usability testing.**  
 > Under the hood, it is an **Offline Bluetooth Swarm Network** built for zero‑infrastructure disaster response.  
