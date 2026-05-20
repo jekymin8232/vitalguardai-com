@@ -16,8 +16,6 @@
 9. The system must be accessible and understandable to non-specialists.
 10. The AI must not collect unnecessary data, and if any data is stored, users must be able to delete it easily at any time.
 
-## I am a white-box AI architect. “I deeply respect open-source culture.”
-
 **The AI I develop is not designed for the wealthy. It is designed for the socially vulnerable, the poor, and those most in need.**
 
 The AI I develop is not a black-box AI designed to replace human jobs. It is a white-box AI designed to create jobs and opportunities for people living in poverty.
