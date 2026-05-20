@@ -1,9 +1,20 @@
-<!-- 
+<!--
 ============================================================
 © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI | VitalGuard AI V4.3.8
-Apache License 2.0 — Permissive Open-Source License with Explicit Patent Grant
-Allows free use, modification, distribution, commercial deployment, and humanitarian adaptation by individuals, NGOs, companies, and governments.
+M-Corp Ethical AI License — Hippocratic 3.0 Derivative
+Exclusively for civilian, agricultural, and humanitarian use.
+Military, surveillance, and coercive-tracking use prohibited.
+See ETHICAL_MANIFEST (frozen) and EthicalGuard runtime enforcement
+(boot validation + 30-second periodic re-validation).
 Zero External Dependencies | 100% Offline | Vanilla CSS/JS
+------------------------------------------------------------
+© 2026 Morgan J. (전규민) | M-Corp Ethical AI | VitalGuard AI V4.3.8
+M-Corp 윤리적 AI 라이선스 (Hippocratic 3.0 파생 라이선스)
+오직 민간·농업·인도주의 목적에 한해 사용 가능
+군사·감시·강제추적 용도 사용 금지
+ETHICAL_MANIFEST (Object.freeze) 및 EthicalGuard 런타임 강제 적용
+(부팅 시 무결성 검증 + 30초 주기 재검증)
+외부 의존성 0 | 100% 오프라인 | 바닐라 CSS/JS
 ============================================================
 
 Given enough eyeballs, all bugs are shallow. — Eric S. Raymond
@@ -8278,7 +8289,7 @@ const App = {
       const enc=new TextEncoder();
       const baseKey = await crypto.subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey']);
       return crypto.subtle.deriveKey(
-        {name:'PBKDF2', salt, iterations:120000, hash:'SHA-256'},
+        {name:'PBKDF2', salt, iterations:600000, hash:'SHA-256'},
         baseKey,
         {name:'AES-GCM', length:256},
         false,
@@ -8295,7 +8306,7 @@ const App = {
         enc:true,
         v:1,
         alg:'AES-GCM',
-        it:120000,
+        it:600000,
         salt:this._b64(salt),
         iv:this._b64(iv),
         ct:this._b64(new Uint8Array(ct))
