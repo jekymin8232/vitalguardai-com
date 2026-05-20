@@ -1,20 +1,4 @@
-<!--
-============================================================
-[
-Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI | VitalGuard AI V4.3.8
-SPDX-License-Identifier: Apache-2.0
-Licensed under the Apache License, Version 2.0.
-OTF/FOSS-ready notice: permissive open-source licensing with no field-of-use restrictions.
-Zero External Dependencies | 100% Offline | Vanilla CSS/JS
-]
 
-OTF Comment Title:
-1. VitalGuard AI V4.3.8 Code Manual & Code Map — Security Reviewer Navigation Guide
-
-Document Role:
-Maps the single-file application structure, module boundaries, security line map, storage/action indexes, and reviewer checklist for the V4.3.8 artifact.
-============================================================
--->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,16 +27,16 @@ table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td
 </head>
 <body>
 <div class="wrap">
-<div class="badge ok">VitalGuard AI V4.3.8-END</div>
+<div class="badge ok">VitalGuard AI V4.3.8</div>
 <h1>VitalGuard AI V4.3.8 Code Manual & Code Map</h1>
-<p class="subtitle">Canonical source: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded source reviewed: <span class="mono">VitalGuard_AI_complete_V43_8(9).html</span> · Updated: 2026-05-20 KST · Author: Morgan J. · Prepared for OTF/security vendor review</p>
-<div class="note"><strong>Purpose of this document</strong><br>1) Explain the structure, flow, security controls, and responsibilities of the major logic blocks inside the single-file HTML application; 2) let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors; 3) summarize the V4.3.8-END hardening changes that differ from the prior V4.3.7 code map.</div>
+  
+<div class="note"><strong>Purpose of this document</strong><br>1) Explain the structure, flow, security controls, and responsibilities of the major logic blocks inside the single-file HTML application; 2) let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors; </div>
 
 <div class="toc"><strong>Table of Contents</strong>
 <ul>
 <li><a href="#overview">1. Overview</a></li>
 <li><a href="#artifact">2. Artifact Metadata</a></li>
-<li><a href="#hardening">3. V4.3.8-END Hardening Summary</a></li>
+<li><a href="#hardening">3. V4.3.8 Hardening Summary</a></li>
 <li><a href="#howto">4. Execution, Permissions, and Offline Rules</a></li>
 <li><a href="#flow">5. Core Flow</a></li>
 <li><a href="#data">6. Data Model and Storage Map</a></li>
@@ -67,12 +51,12 @@ table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td
 
 <h2 id="overview">1. Overview</h2>
 <p><strong>VitalGuard AI</strong> is a single-file, infrastructure-independent, offline-first safety framework. Its core loop uses Web Bluetooth BLE scanning to collect tag RSSI values, then applies filtering and interpretation layers such as Kalman smoothing, distance estimation, decision hysteresis, per-pet alert preferences, and lightweight on-device learning to determine zones and trigger local alerts, guidance, and SOS workflows.</p>
-<p>V4.3.8-END is strongly security-oriented. It is not just a text/version update: the runtime now contains CSP-compatible action dispatch, Trusted Types/sink protections, runtime network egress kill-switches, encrypted-only default backup, bounded import, copy-only sharing, redacted diagnostics, and service-worker-off-by-default behavior.</p>
+<p>V4.3.8 is strongly security-oriented. It is not just a text/version update: the runtime now contains CSP-compatible action dispatch, Trusted Types/sink protections, runtime network egress kill-switches, encrypted-only default backup, bounded import, copy-only sharing, redacted diagnostics, and service-worker-off-by-default behavior.</p>
 
 <h2 id="artifact">2. Artifact Metadata</h2>
 <table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
 <tr><td>Submitted source filename</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span> <span class="small">(latest uploaded copy reviewed: <span class="mono">VitalGuard_AI_complete_V43_8(9).html</span>)</span></td></tr>
-<tr><td>Canonical audit artifact</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span> / V4.3.8-END</td></tr>
+<tr><td>Canonical audit artifact</td><td><span class="mono">VitalGuard_AI_complete_V43_8.html</span> / V4.3.8 </td></tr>
 <tr><td>APP_VERSION</td><td><span class="mono">4.3.8</span> at source line 1004</td></tr>
 <tr><td>SHA-256</td><td><span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></td></tr>
 <tr><td>File size</td><td>486,861 bytes (475.5 KiB)</td></tr>
@@ -92,7 +76,7 @@ table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;} th,td
 <tr><td>Import limits</td><td>maxFileBytes 1,048,576; maxTextChars 1,048,576; maxDepth 12; maxPets 50; maxVoiceDataUrlChars 614,400</td></tr>
 </tbody></table>
 
-<h2 id="hardening">3. V4.3.8-END Security Hardening Summary</h2>
+<h2 id="hardening">3. V4.3.8 Security Hardening Summary</h2>
 <div class="grid">
 <div class="card"><h3>Nonce CSP + no inline event attrs</h3><p>The app has one nonce-authorized inline script and no raw inline event attributes. UI actions use <span class="mono">data-vg-on*</span> tokens routed through <span class="mono">VitalGuardActionPolicy</span>.</p></div>
 <div class="card"><h3>Trusted Types / HTML sink scrubber</h3><p>HTML written through dynamic sinks is neutralized for script tags, blocked elements, event attributes, unsafe URLs, forms, and javascript: URLs. A mutation observer scrubs inserted nodes.</p></div>
@@ -177,7 +161,7 @@ advertisementreceived
 <tr><td><span class="mono">6668</span></td><td><span class="mono">HELP (i18n)</span></td><td>Localized help overlay renderer.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">_content</span></td></tr>
 <tr><td><span class="mono">6685</span></td><td><span class="mono">ABOUT / LEGAL (i18n)</span></td><td>Localized About/Legal overlay renderer.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">_content</span></td></tr>
 <tr><td><span class="mono">6702</span></td><td><span class="mono">LANGUAGE MENU</span></td><td>Language chooser overlay and select synchronization.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">choose</span> <span class="kbd">_syncUI</span></td></tr>
-<tr><td><span class="mono">6732</span></td><td><span class="mono">DIAGNOSTICS (Download JSON)</span></td><td>Diagnostics snapshot/copy/download, later redacted by V4.3.8-END hardening.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">snapshot</span> <span class="kbd">render</span> <span class="kbd">copy</span> <span class="kbd">download</span></td></tr>
+<tr><td><span class="mono">6732</span></td><td><span class="mono">DIAGNOSTICS (Download JSON)</span></td><td>Diagnostics snapshot/copy/download, later redacted by V4.3.8 hardening.</td><td><span class="kbd">open</span> <span class="kbd">close</span> <span class="kbd">snapshot</span> <span class="kbd">render</span> <span class="kbd">copy</span> <span class="kbd">download</span></td></tr>
 <tr><td><span class="mono">6841</span></td><td><span class="mono">META-COGNITIVE COACH (Idea Amplifier)</span></td><td>Local tips/action suggestions based on scan and environment state.</td><td><span class="kbd">compute</span> <span class="kbd">render</span></td></tr>
 <tr><td><span class="mono">6913</span></td><td><span class="mono">APP CORE</span></td><td>Application boot, timers, rendering, monitoring, demo mode, advertisement handling, and alerts.</td><td><span class="kbd">init</span> <span class="kbd">initFirstRunBanner</span> <span class="kbd">dismissFirstRun</span> <span class="kbd">resetTimers</span> <span class="kbd">toggleMonitoring</span> <span class="kbd">toggleDemo</span> <span class="kbd">_startDemo</span> <span class="kbd">_stopDemo</span> <span class="kbd">_demoTick</span> <span class="kbd">setTrackMode</span></td></tr>
 <tr><td><span class="mono">7389</span></td><td><span class="mono">PWA</span></td><td>Blob-based manifest generation only; service worker registration is disabled by default in V4.3.8.</td><td><span class="kbd">registerPWA</span> <span class="kbd">setupInstallBanner</span></td></tr>
@@ -201,7 +185,7 @@ advertisementreceived
 <tr><td><span class="mono">8808</span></td><td><span class="mono">PATCH: Coach card (tips + one-tap actions)</span></td><td>Coach card rendering and action suggestions before final action-registry hardening.</td><td><span class="kbd">register</span> <span class="kbd">run</span> <span class="kbd">map</span> <span class="kbd">forEach</span> <span class="kbd">addEventListener</span></td></tr>
 <tr><td><span class="mono">8859</span></td><td><span class="mono">PATCH: Legal / About (VitalGuard Demo)</span></td><td>Legal/About content replacement using localized HTML.</td><td><span class="muted">—</span></td></tr>
 <tr><td><span class="mono">8875</span></td><td><span class="mono">PATCH: SOS snapshot sanitize</span></td><td>Sanitizes pet name/icon before SOS snapshot rendering.</td><td><span class="muted">—</span></td></tr>
-<tr><td><span class="mono">8887</span></td><td><span class="mono">PATCH: Data import supports encrypted pack</span></td><td>In V4.3.8-END this legacy wrapper is disabled; hardened import owns plain/encrypted flows.</td><td><span class="muted">—</span></td></tr>
+<tr><td><span class="mono">8887</span></td><td><span class="mono">PATCH: Data import supports encrypted pack</span></td><td>In V4.3.8 this legacy wrapper is disabled; hardened import owns plain/encrypted flows.</td><td><span class="muted">—</span></td></tr>
 <tr><td><span class="mono">8890</span></td><td><span class="mono">V4.1 EXTRA PATCHES</span></td><td>V4.1 feature pack: QR, RLS calibration, Rescue Pack, per-pet alerts, max active pets, stability fixes.</td><td><span class="kbd">v41ZoneRank</span> <span class="kbd">v41EnsureAlertPrefs</span></td></tr>
 <tr><td><span class="mono">8921</span></td><td><span class="mono">Lost flip counter fix (batterySuspect)</span></td><td>Battery-suspect heuristic and lost-event pruning.</td><td><span class="muted">—</span></td></tr>
 <tr><td><span class="mono">8965</span></td><td><span class="mono">Per-pet alerts (sound/vibrate/tts + min zone)</span></td><td>Per-pet alert preferences and zone threshold gating.</td><td><span class="muted">—</span></td></tr>
@@ -225,7 +209,7 @@ advertisementreceived
 <tr><td>License / SPDX metadata</td><td><span class="mono">21-22</span></td><td>Apache-2.0 and SPDX identifier metadata.</td></tr>
 <tr><td>CSP</td><td><span class="mono">23-27</span></td><td>Nonce-authorized single inline script, script-src-attr none, connect-src none, worker-src none, Trusted Types, frame/form/base/object restrictions.</td></tr>
 <tr><td>Permissions-Policy</td><td><span class="mono">30</span></td><td>Allows geolocation/microphone/bluetooth/motion for self; disables camera/payment/USB.</td></tr>
-<tr><td>Security hardening meta</td><td><span class="mono">34</span></td><td>Summarizes V4.3.8-END hardening: nonce CSP, no inline event attributes, encrypted backup default, bounded import, redacted diagnostics, no service worker by default.</td></tr>
+<tr><td>Security hardening meta</td><td><span class="mono">34</span></td><td>Summarizes V4.3.8 hardening: nonce CSP, no inline event attributes, encrypted backup default, bounded import, redacted diagnostics, no service worker by default.</td></tr>
 <tr><td>APP_VERSION and storage constants</td><td><span class="mono">1004-1010</span></td><td>APP_VERSION 4.3.8; DB_NAME VitalGuardAI_V41; DB_VERSION 2; LS_PREFIX vg41_.</td></tr>
 <tr><td>Action policy/dispatcher</td><td><span class="mono">738-820</span></td><td>Strict allowlist for data-vg-on* actions, no eval/new Function, validated primitive args.</td></tr>
 <tr><td>Trusted Types / DOM guard</td><td><span class="mono">823-956</span></td><td>Trusted Types policy, HTML neutralization, sink patching, MutationObserver scrubber, document.write and share override.</td></tr>
@@ -582,7 +566,5 @@ const DataManager = {
 <div class="card"><h3>ML/state/diagnostics</h3><ul class="tight"><li>Import adversarial ML state and verify reset recovery.</li><li>Confirm diagnostics redaction and self-test behavior.</li><li>Verify error logs are bounded and locally stored.</li></ul></div>
 </div>
 
-<div class="footer">Prepared from canonical source: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · Latest uploaded copy reviewed: <span class="mono">VitalGuard_AI_complete_V43_8.html</span> · SHA-256 <span class="mono">b945650563acfeb179620f6f372c5386731e1f2eead947ca5a2bd35ab48d2feb</span></div>
-</div>
 </body>
 </html>
