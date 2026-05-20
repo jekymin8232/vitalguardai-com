@@ -20,7 +20,7 @@ https://github.com/jekymin8232/vitalguardai-com
 <meta charset="UTF-8">
 <meta name="license" content="Apache-2.0">
 <meta name="spdx-license-identifier" content="Apache-2.0">
-<!-- CSP Note: V4.3.8-END remains single-file and zero-dependency, but the main script is nonce-authorized.
+<!-- CSP Note: v4.3.8 remains single-file and zero-dependency, but the main script is nonce-authorized.
      Inline event attributes were removed and replaced by strict data-vg-on* action dispatch.
      connect-src 'none' blocks network egress; worker-src 'none' disables Blob/Worker execution by default.
      Hosted deployments should also send CSP, Permissions-Policy, X-Content-Type-Options, and frame-ancestors as HTTP response headers. -->
@@ -30,8 +30,8 @@ https://github.com/jekymin8232/vitalguardai-com
 <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=(self), bluetooth=(self), accelerometer=(self), gyroscope=(self), magnetometer=(self), camera=(), payment=(), usb=()">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="theme-color" content="#c0392b">
-<title>VitalGuard AI v4.3.8-END — Audit-Hardened Offline Survival Framework</title>
-<meta name="security-hardening" content="V4.3.8-END: nonce CSP, script-src-attr none, no inline event attributes, no exposed original network handles, encrypted backup default, bounded import, redacted diagnostics, no service worker by default">
+<title>VitalGuard AI v4.3.8 — Audit-Hardened Offline Survival Framework</title>
+<meta name="security-hardening" content="v4.3.8: nonce CSP, script-src-attr none, no inline event attributes, no exposed original network handles, encrypted backup default, bounded import, redacted diagnostics, no service worker by default">
 <link rel="manifest" id="pwa-manifest">
 <style>
 :root{--bg-primary:#0d1117;--bg-secondary:#161b22;--bg-card:#1c2333;--bg-elevated:#21283b;--text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;--accent-red:#c0392b;--accent-green:#2ecc71;--accent-yellow:#f1c40f;--accent-orange:#e67e22;--accent-blue:#3498db;--zone-safe:#2ecc71;--zone-caution:#f1c40f;--zone-warning:#e67e22;--zone-danger:#e74c3c;--zone-lost:#9b59b6;--border-color:#30363d;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--shadow-soft:0 2px 12px rgba(0,0,0,.3);--tr-fast:.15s ease;--tr-norm:.3s ease;--font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--font-mono:'Courier New',Courier,monospace}
@@ -735,7 +735,7 @@ var Sanitizer = window.Sanitizer || {
 };
 window.Sanitizer = Sanitizer;
 
-/* ----------------------------- V4.3.8-END ACTION DISPATCHER -----------------------------
+/* ----------------------------- v4.3.8 ACTION DISPATCHER -----------------------------
    Replaces inline event attributes with data-vg-on* tokens.
    Executes only a single allowlisted first-party method call; never eval/new Function. */
 const VitalGuardActionPolicy = (function(){
@@ -8885,7 +8885,7 @@ const App = {
   };
 
   /* ----------------------------- PATCH: Data import supports encrypted pack ----------------------------- */
-  // V4.3.8-END: legacy import wrapper disabled. All plain/encrypted imports are handled by VitalGuardHardenedImport with size/depth/schema limits.
+  // v4.3.8: legacy import wrapper disabled. All plain/encrypted imports are handled by VitalGuardHardenedImport with size/depth/schema limits.
 
 /* ----------------------------- V4.1 EXTRA PATCHES -----------------------------
    Goals:
@@ -10163,37 +10163,37 @@ V41UI.injectDetailAlertPrefs = function(pet){
       const self = this;
       try{
         if(typeof window.fetch === 'function'){
-          // V4.3.8-END: original API handle intentionally not exposed.
+          // v4.3.8: original API handle intentionally not exposed.
           window.fetch = function(){ self._deny('fetch'); return Promise.reject(new DOMException('VitalGuard zero-egress: fetch disabled', 'SecurityError')); };
         }
       }catch(_){}
       try{
         if(typeof window.XMLHttpRequest === 'function'){
-          // V4.3.8-END: original API handle intentionally not exposed.
+          // v4.3.8: original API handle intentionally not exposed.
           window.XMLHttpRequest = function(){ self._deny('XMLHttpRequest'); throw new DOMException('VitalGuard zero-egress: XHR disabled', 'SecurityError'); };
         }
       }catch(_){}
       try{
         if(typeof window.WebSocket === 'function'){
-          // V4.3.8-END: original API handle intentionally not exposed.
+          // v4.3.8: original API handle intentionally not exposed.
           window.WebSocket = function(){ self._deny('WebSocket'); throw new DOMException('VitalGuard zero-egress: WebSocket disabled', 'SecurityError'); };
         }
       }catch(_){}
       try{
         if(typeof window.EventSource === 'function'){
-          // V4.3.8-END: original API handle intentionally not exposed.
+          // v4.3.8: original API handle intentionally not exposed.
           window.EventSource = function(){ self._deny('EventSource'); throw new DOMException('VitalGuard zero-egress: EventSource disabled', 'SecurityError'); };
         }
       }catch(_){}
       try{
         if(navigator && typeof navigator.sendBeacon === 'function'){
-          // V4.3.8-END: original API handle intentionally not exposed.
+          // v4.3.8: original API handle intentionally not exposed.
           navigator.sendBeacon = function(){ self._deny('sendBeacon'); return false; };
         }
       }catch(_){}
       try{
         if(window.HTMLFormElement && HTMLFormElement.prototype && HTMLFormElement.prototype.submit){
-          // V4.3.8-END: original API handle intentionally not exposed.
+          // v4.3.8: original API handle intentionally not exposed.
           HTMLFormElement.prototype.submit = function(){ self._deny('form.submit'); throw new DOMException('VitalGuard zero-egress: form submit disabled', 'SecurityError'); };
         }
       }catch(_){}
@@ -10506,7 +10506,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
 })();
 
 
-/* ----------------------------- V4.3.8-END FINAL AUDIT HARDENING ----------------------------- */
+/* ----------------------------- v4.3.8 FINAL AUDIT HARDENING ----------------------------- */
 (function(){
   'use strict';
   const AuditHardening = window.VitalGuardAuditHardening = {
@@ -10538,8 +10538,8 @@ V41UI.injectDetailAlertPrefs = function(pet){
   try{ DataManager.handleImport=window.VitalGuardHardenedImport; }catch(_){}
 
   function redactedSnapshot(raw){ let s; try{s=JSON.parse(JSON.stringify(raw||{}));}catch(_){s={};} if(s.env){s.env.ua='redacted';s.env.userAgent='redacted';} if(s.focusPetId) s.focusPetId='redacted'; if(Array.isArray(s.pets)) s.pets=s.pets.slice(0,20).map((p,i)=>({slot:i+1,zone:p.zone,rssi:p.rssi,dist:p.dist,confidence:p.confidence,lastSeenAgoMs:p.lastSeenAgoMs,signatureStrength:p.signatureStrength,ambiguousCount:p.ambiguousCount,batterySuspect:!!p.batterySuspect})); if(Array.isArray(s.errors)) s.errors=s.errors.slice(-12).map(e=>({t:Sanitizer.text(e&&e.t,40),kind:Sanitizer.text(e&&e.kind,40),msg:Sanitizer.text(e&&e.msg,180),where:'redacted'})); s.auditHardening=AuditHardening; return s; }
-  try{ const rawSnapshot=Diag.snapshot.bind(Diag); Diag.snapshot=function(){return redactedSnapshot(rawSnapshot());}; Diag.copy=function(){return VitalGuardCopyOnly(safeJson(this.snapshot()),'Redacted diagnostics');}; Diag.download=function(){ const blob=new Blob([safeJson(this.snapshot())],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='vitalguard-ai-v4.3.8-END-diagnostics-redacted-'+Date.now()+'.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1200); Toast.show('Redacted diagnostics downloaded'); };
-    Diag.render=function(){ const snap=this.snapshot(); const errs=(snap.errors||[]).slice(-12).reverse(); $('diag-body').innerHTML=`<div class="tip-card info"><div class="tip-title">Diagnostics Snapshot (V4.3.8-END Redacted)</div><div class="tip-body">Local-only diagnostics. Pet names, rescue IDs, focus IDs, user-agent, and error locations are redacted by default.</div></div><div style="display:flex;gap:8px;margin:10px 0"><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.copy()">📋 Copy Redacted</button><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.download()">⬇️ Download Redacted</button></div>${Capabilities.renderHTML()}<div class="card" style="margin-top:10px"><div class="section-title" style="font-size:.8rem;margin:0 0 8px">Recent Errors (redacted)</div>${errs.length?errs.map(e=>`<div style="border-top:1px solid var(--border-color);padding:10px 0;font-size:.72rem;color:var(--text-secondary);line-height:1.45"><div style="color:var(--text-muted)">${Sanitizer.escapeHTML(e.t)} · <span class="kbd">${Sanitizer.escapeHTML(e.kind)}</span></div><div><strong>${Sanitizer.escapeHTML(e.msg)}</strong></div></div>`).join(''):`<div style="font-size:.75rem;color:var(--text-muted);padding:6px 0">No errors captured.</div>`}<button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" data-vg-onclick="ErrorShield.clear()">Clear Error Log</button></div><pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4;margin-top:10px">${Sanitizer.escapeHTML(safeJson(snap))}</pre><div class="tip-card warn"><div class="tip-title">Privacy Note</div><div class="tip-body">This snapshot stays local unless you manually export it. Network egress APIs are disabled and diagnostics are redacted.</div></div>`; };
+  try{ const rawSnapshot=Diag.snapshot.bind(Diag); Diag.snapshot=function(){return redactedSnapshot(rawSnapshot());}; Diag.copy=function(){return VitalGuardCopyOnly(safeJson(this.snapshot()),'Redacted diagnostics');}; Diag.download=function(){ const blob=new Blob([safeJson(this.snapshot())],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='vitalguard-ai-v4.3.8-diagnostics-redacted-'+Date.now()+'.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1200); Toast.show('Redacted diagnostics downloaded'); };
+    Diag.render=function(){ const snap=this.snapshot(); const errs=(snap.errors||[]).slice(-12).reverse(); $('diag-body').innerHTML=`<div class="tip-card info"><div class="tip-title">Diagnostics Snapshot (v4.3.8 Redacted)</div><div class="tip-body">Local-only diagnostics. Pet names, rescue IDs, focus IDs, user-agent, and error locations are redacted by default.</div></div><div style="display:flex;gap:8px;margin:10px 0"><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.copy()">📋 Copy Redacted</button><button class="btn btn-secondary btn-sm" style="flex:1" data-vg-onclick="Diag.download()">⬇️ Download Redacted</button></div>${Capabilities.renderHTML()}<div class="card" style="margin-top:10px"><div class="section-title" style="font-size:.8rem;margin:0 0 8px">Recent Errors (redacted)</div>${errs.length?errs.map(e=>`<div style="border-top:1px solid var(--border-color);padding:10px 0;font-size:.72rem;color:var(--text-secondary);line-height:1.45"><div style="color:var(--text-muted)">${Sanitizer.escapeHTML(e.t)} · <span class="kbd">${Sanitizer.escapeHTML(e.kind)}</span></div><div><strong>${Sanitizer.escapeHTML(e.msg)}</strong></div></div>`).join(''):`<div style="font-size:.75rem;color:var(--text-muted);padding:6px 0">No errors captured.</div>`}<button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" data-vg-onclick="ErrorShield.clear()">Clear Error Log</button></div><pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4;margin-top:10px">${Sanitizer.escapeHTML(safeJson(snap))}</pre><div class="tip-card warn"><div class="tip-title">Privacy Note</div><div class="tip-body">This snapshot stays local unless you manually export it. Network egress APIs are disabled and diagnostics are redacted.</div></div>`; };
   }catch(_){}
 })();
 
