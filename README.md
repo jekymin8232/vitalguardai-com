@@ -1,4 +1,5 @@
 # Ten Principles of Ethical AI
+**https://doi.org/10.5281/zenodo.20319524**
 
 Above all, AI must guarantee legal safety and ethical trustworthiness.  
 To achieve this, I established and applied the **Ten Principles of Ethical AI** as the foundation of this project.  
