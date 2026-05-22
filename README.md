@@ -1,4 +1,4 @@
-## Freedom is not free. Burnout among open-source developers is a very serious issue.
+### Freedom is not free. Burnout among open-source developers is a very serious issue.
 There is a saying in Republic of Korea:
 
 **“If you pay a blacksmith poorly, you will receive poor tools. If you compensate the blacksmith fairly, you will receive good tools.”**
