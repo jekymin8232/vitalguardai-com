@@ -1,4 +1,5 @@
 There is a saying in Korea:
+
 **“If you pay a blacksmith poorly, you will receive poor tools. If you compensate the blacksmith fairly, you will receive good tools.”**
 
 Freedom does not mean forcing people to work without compensation. It means providing fair and legitimate compensation for their work. Open-source software is not truly “free” in the sense of having no cost. When society treats open-source as something that should exist without sustainable support or fair compensation, supply-chain attacks and long-term security risks become difficult to avoid.
