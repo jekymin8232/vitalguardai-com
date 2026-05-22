@@ -9,6 +9,7 @@ When society treats open-source as something that should exist without sustainab
 supply-chain attacks and long-term security risks become difficult to avoid.
 
 **“Free” often comes with an unsustainable and overwhelming burden of responsibility.**
+
 **Exchanging human lives for the illusion of “free” is deeply irresponsible.**
 
 # Ten Principles of Ethical AI
