@@ -1,3 +1,4 @@
+# Freedom is not free.
 There is a saying in Republic of Korea:
 
 **“If you pay a blacksmith poorly, you will receive poor tools. If you compensate the blacksmith fairly, you will receive good tools.”**
@@ -11,8 +12,6 @@ supply-chain attacks and long-term security risks become difficult to avoid.
 **“Free” often comes with an unsustainable and overwhelming burden of responsibility.**
 
 **Exchanging human lives for the illusion of “free” is deeply irresponsible.**
-
-## Freedom is not free.
 
 # Ten Principles of Ethical AI
 **Offline AI Technical Documentation (53 Pages Total) https://doi.org/10.5281/zenodo.20319524**
