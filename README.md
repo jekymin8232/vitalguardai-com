@@ -1,4 +1,4 @@
-There is a saying in Korea:
+There is a saying in Republic of Korea:
 
 **“If you pay a blacksmith poorly, you will receive poor tools. If you compensate the blacksmith fairly, you will receive good tools.”**
 
