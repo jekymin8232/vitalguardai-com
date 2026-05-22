@@ -5,6 +5,7 @@ There is a saying in Korea:
 Freedom does not mean forcing people to work without compensation. It means providing fair and legitimate compensation for their work. Open-source software is not truly “free” in the sense of having no cost. When society treats open-source as something that should exist without sustainable support or fair compensation, supply-chain attacks and long-term security risks become difficult to avoid.
 
 **“Free” often comes with an unsustainable and overwhelming burden of responsibility.**
+**Exchanging human lives for the illusion of “free” is deeply irresponsible.**
 
 # Ten Principles of Ethical AI
 **Offline AI Technical Documentation (53 Pages Total) https://doi.org/10.5281/zenodo.20319524**
