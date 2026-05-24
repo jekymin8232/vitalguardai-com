@@ -254,7 +254,7 @@ Sections 1-A, 1-B, and 3-B above are all encapsulated inside this single IIFE. T
 
 The approximately 3,700-line high-priority surface concentrates in three tight blocks: the **Anti-Injection core (lines 721–949)**, the **Zero-Egress enforcement layer (lines 10,149–10,239)**, and the **AES-GCM CryptoBox plus schema-validation boundary (lines 8,260–8,320 and 10,505–10,531)**. We confirm **zero external CDNs or external domains** across the entire 10,569-line file.
 
-We would welcome particular scrutiny of the following three areas, which represent our own highest uncertainty:
+Particular scrutiny of the following three areas would be especially welcome, as they represent the project’s highest areas of uncertainty:
 
 1. **Regex-based HTML neutralisation (line 822)** — resistance to mutation XSS and parser-context confusion.
 2. **Action-policy parser (line 785)** — resistance to allowlist bypass via argument-boundary manipulation or homoglyph substitution.
