@@ -22,7 +22,6 @@ My hope is straightforward: to continue this work in a stable and sustainable wa
 - GDPR-compliant by design (no data collection, instant deletion)
 - Designed for refugees, low-income communities, and fragile contexts
 - Runs on refurbished smartphones and solar power
-- Under review: OTF Security Lab (#21441) · NLnet Foundation (2026-02-033)
 
 ---
 
