@@ -63,14 +63,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 ---
 
-## License
-
-[M-Corp Ethical AI License (Hippocratic 3.0 Derivative)](https://mcorpai.org/)
-> For civilian, agricultural, and humanitarian use only.
-> Military and surveillance use is strictly prohibited.
-
----
-
 ## Contact
 
 - 🌐 [mcorpai.org](https://mcorpai.org)
