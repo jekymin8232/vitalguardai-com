@@ -18,13 +18,13 @@
 
 | WP | Domain | Core Line Range | Est. Volume | Priority |
 |----|--------|----------------|-------------|----------|
-| **WP1** | Zero-Egress — network isolation, outbound suppression | **10,149–10,239** + 787 | ~120 lines | 🔴 Highest |
-| **WP2 / WP7** | Anti-Injection — Trusted Types + data-vg-on dispatcher | **721–949** | ~230 lines | 🔴 Highest |
-| **WP6** | Data Sovereignty — AES-GCM CryptoBox + schema validation | **8,260–8,320** + **10,505–10,531** | ~120 lines | 🟠 High |
-| Secondary | Core signal filters — Kalman / Distance / Q-Learning | **3,639–3,814** | ~175 lines | 🟡 Medium |
-| Secondary | AI anomaly detection — IsolationForest / KNN / RLS | **7,720–7,945** | ~225 lines | 🟡 Medium |
-| Secondary | BLE scan filters / permission boundary | **5,200–5,310** | ~110 lines | 🟠 High |
-| Secondary | Final Hardening Layer (IIFE container) | **10,137–10,560** | ~420 lines | 🟠 High |
+| **WP1** | Zero-Egress — network isolation, outbound suppression | **10,149–10,239** + 787 | ~120 lines | Highest |
+| **WP2 / WP7** | Anti-Injection — Trusted Types + data-vg-on dispatcher | **721–949** | ~230 lines | Highest |
+| **WP6** | Data Sovereignty — AES-GCM CryptoBox + schema validation | **8,260–8,320** + **10,505–10,531** | ~120 lines | High |
+| Secondary | Core signal filters — Kalman / Distance / Q-Learning | **3,639–3,814** | ~175 lines | Medium |
+| Secondary | AI anomaly detection — IsolationForest / KNN / RLS | **7,720–7,945** | ~225 lines | Medium |
+| Secondary | BLE scan filters / permission boundary | **5,200–5,310** | ~110 lines | High |
+| Secondary | Final Hardening Layer (IIFE container) | **10,137–10,560** | ~420 lines | High |
 
 > **Bottom line:**
 > 1. **Zero external CDNs or external domains.** A full-file sweep found no active external resources — `cdn`, `cloudflare`, `googleapis`, `jsdelivr`, `unpkg`, and equivalent patterns all return zero hits. The line 672 Cloudflare script conflict noted in the earlier V42.3 review has been resolved; line 672 in V43.8 is ordinary Emergency-overlay HTML.
