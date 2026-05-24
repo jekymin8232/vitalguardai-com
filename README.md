@@ -76,5 +76,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 *© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI*
 
+**“This is the actual duty room where I lived for ten years. Everything I have shared is true.”**
 <img width="602" height="451" alt="hell(2)" src="https://github.com/user-attachments/assets/034dbf12-4875-488b-a192-c9328fafc2cc" />
 
