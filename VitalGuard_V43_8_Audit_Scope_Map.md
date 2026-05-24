@@ -10,7 +10,7 @@
 ---
 
 > **A note on this document.**
-> This scope map was produced by the development team before engaging an external vendor. It identifies, line by line, every area we consider security-sensitive — including the areas where we are least confident. We believe a security audit is most productive when the team being audited discloses its own uncertainty first, rather than waiting for a vendor to find it. All CTRL+F search strings in this document are verbatim extracts from the live source file; paste them directly into a text editor to jump to the exact location.
+> A note on this document. This scope map was prepared by the project maintainer prior to engaging an external vendor. It identifies, line by line, every area considered security-sensitive — including the parts where uncertainty is highest. I believe a security audit is most effective when the project itself discloses its own uncertainties first, rather than waiting for an external vendor to discover them independently. All CTRL+F search strings in this document are verbatim extracts from the live source file; paste them directly into a text editor to jump to the exact location.
 
 ---
 
