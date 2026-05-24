@@ -7,7 +7,7 @@ I am an open-source developer based in South Korea.
 
 I grew up in a financially difficult environment. The photo below shows the modest space where I currently work. Many meaningful open-source efforts begin under constrained circumstances, and over time I have come to see those constraints not as obstacles, but as part of the discipline itself.
 
-<img width="756" height="1008" alt="숙직실(1)" src="https://github.com/user-attachments/assets/d815de00-33af-48ab-92a7-c44e7f8f1228" />
+<img width="378" height="504" alt="숙직실(1)" src="https://github.com/user-attachments/assets/d815de00-33af-48ab-92a7-c44e7f8f1228" />
 
 
 My hope is straightforward: to continue this work in a stable and sustainable way over the long term.
