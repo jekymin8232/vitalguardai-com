@@ -67,7 +67,7 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 - 🌐 [mcorpai.org](https://mcorpai.org)
 - 📧 [contact@mcorpai.org](mailto:contact@mcorpai.org)
-- 🇰🇷 Seoul, South Korea
+- **An open-source and white-box AI developer based in the Republic of Korea**
 
 ---
 
