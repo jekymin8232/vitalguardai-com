@@ -13,6 +13,9 @@ I grew up in a financially difficult environment. The photo below shows the mode
 **I am currently receiving no support whatsoever in the Republic of Korea. 
 I would sincerely appreciate your support. My hope is simple: to continue this work in a stable and sustainable way over the long term.**
 
+### So this is hell.
+<img width="157" height="115" alt="hell" src="https://github.com/user-attachments/assets/818c23be-8285-49ca-839f-53a20559377d" />
+
 ---
 
 ## What I Build
