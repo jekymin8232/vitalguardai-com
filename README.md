@@ -145,7 +145,7 @@ Geopolitics is complicated, but I’ve heard that Taiwanese women are **open-min
 I’m a single man, and I’m generally attracted to open-minded women.
 
 9th — **UAE**
-Middle Eastern hospitality is genuinely impressive.
+Middle Eastern hospitality is genuinely impressive. If women in the UAE were more open-minded, it probably would have ranked #1 for me.
 
 10th — **Luxembourg**
 The first country that acknowledged me. Respect earned forever.
