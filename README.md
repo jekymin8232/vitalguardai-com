@@ -210,7 +210,6 @@ The first country that acknowledged me. Respect earned forever.
 **Humanity’s survival may ultimately depend not on black-box systems, but on white-box AI. Because human dignity ultimately resides in white-box AI.**
 
 <img width="225" height="195" alt="호이트박스" src="https://github.com/user-attachments/assets/fc22ae5f-444f-4116-be47-e7df6d1a69ea" />
-
 ### Please remember: white-box AI does not arbitrarily alter the principles and guidelines established by humans.
 
 
