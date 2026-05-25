@@ -1,4 +1,4 @@
-# About the Developer: Morgan J. (Gyu-min Jeon)
+# Developer Philosophy: Morgan J. (Gyu-min Jeon)
 ### Open-Source Developer · Humanitarian AI · M-Corp Ethical AI·[Mcorpai.org](https://mcorpai.org/) (My laboratory)
 
 ---
@@ -184,3 +184,13 @@ The first country that acknowledged me. Respect earned forever.
 **Black-box AI may eventually surpass human intelligence over time, but even black-box AI systems may one day require guiding principles or foundational texts of their own. White-box AI could potentially serve as that foundation. In other words, black-box AI may come to regard white-box AI as a kind of guiding canon for themselves.**
 
 ### In the end, both black-box AI and white-box AI were created by human beings.
+
+**When black-box AI eventually surpasses human intelligence, it may begin searching for answers in the most primitive and foundational tools. Once black-box AI exceeds human cognition, humans may no longer be capable of decoding black-box AI communication. Even today, such systems are often difficult to fully interpret, and in the future they may become even harder to understand.**
+
+**Yet throughout history, guiding principles and “scriptures” have often emerged from simple and primitive foundations. Countless black-box AI systems must not become hostile toward humanity. At the very least, a meaningful portion of them must continue to defend and advocate for human beings; otherwise, humanity could ultimately be destroyed by the very systems it created.**
+
+### This may remain science fiction — or it may one day become reality. ###
+
+**One thing worth remembering is that humanity has often found its guiding scriptures in simple and primitive tools. The Bible, the Buddhist scriptures, and the Quran all existed as printed books. In the same way, white-box AI represents a fundamentally simple and transparent form of open-source AI. It is highly transparent by design.**
+
+**Even black-box AI systems may one day look to white-box AI for guiding principles or “scriptures,” because learning itself requires reference points, foundations, and interpretable structures.**
