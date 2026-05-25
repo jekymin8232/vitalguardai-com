@@ -29,3 +29,6 @@
 ### The Thing (Great Seal bug)
 **As AI continues to advance, malicious code also becomes increasingly sophisticated and evolves rapidly. When the attack surface is too broad, it becomes difficult to have confidence that the code is truly secure.**
 
+## Is there any guarantee that malicious code can be detected with 100% certainty?
+
+
