@@ -86,6 +86,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 **This is especially true for IT developers, who often value privacy and are highly sensitive to their working and living environments. Conditions like these are not desirable from a human rights perspective either. Moreover, the Republic of Korea is a liberal democracy.**
 
 ## Freedom is not free. 
-## A liberal democracy begins with treating people with dignity and respect.
+### A liberal democracy begins with treating people with dignity and respect.
 
 
