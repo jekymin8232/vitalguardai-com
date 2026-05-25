@@ -80,6 +80,7 @@ I hope to collaborate with people and institutions that value openness, democrat
 ---
 
 ## What I Build : https://mcorpai.org 
+**I have carried this work forward entirely on my own, without any form of support from the Republic of Korea. I do not owe any institutional debt or obligation to the Republic of Korea.**
 ### Technical Paper: https://zenodo.org/records/20319524
 
 **VitalGuard AI** — a fully offline, serverless humanitarian AI system built in a single vanilla HTML/JS file with zero external dependencies.
@@ -91,7 +92,5 @@ I hope to collaborate with people and institutions that value openness, democrat
 - Dependency-free offline AI can operate even in environments with no power or communications infrastructure at all. This makes it applicable to wildfire monitoring, locust swarm prevention, African agriculture, landslide and flood response, and backup infrastructure for various disaster scenarios. Most importantly, it is extremely low-cost.
 - It is so low-cost that the AI can operate even without any communications infrastructure at all, using only simple solar equipment and discarded smartphones.
 - Because it utilizes discarded smartphones, it can receive very strong ESG scores in the Environmental category. In addition, since it is an AI technology that can be deployed in low-income countries, it also carries significant social impact.
-
-**I have carried this work forward entirely on my own, without any form of support from the Republic of Korea. I do not owe any institutional debt or obligation to the Republic of Korea.**
 
 
