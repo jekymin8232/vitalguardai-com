@@ -1,3 +1,5 @@
+**Let me ask the opposite question: is there any guarantee that malicious code can be detected with 100% certainty? Wouldn’t it be far more efficient to verify that the code is inherently safe instead? “If the code cannot be verified as safe, then it should be treated as malicious.” Wouldn’t that ultimately be a far more trustworthy standard for software security?**
+
 # Developer Philosophy: Morgan J. (Gyu-min Jeon)
 ### Open-Source Developer · Humanitarian AI · M-Corp Ethical AI·[Mcorpai.org](https://mcorpai.org/) 
 **My personal laboratory :https://github.com/henrymorgan10/mcorpai-org**
