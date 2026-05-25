@@ -152,3 +152,6 @@ If women in the UAE were more open-minded, it probably would have ranked #1 for 
 10th — **Luxembourg**
 The first country that acknowledged me. Respect earned forever.
 
+<img width="500" height="334" alt="freedom" src="https://github.com/user-attachments/assets/3bf61db4-16a9-4f66-bbdd-a91869c2f240" />
+# FREEDOMMMMM~~
+
