@@ -97,5 +97,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 **I would greatly welcome the opportunity to obtain permanent residency in a Western country that values freedom and liberal democratic principles. ESG initiatives can make a significant contribution to the long-term strategic interests of Western countries.**
 
 # ESG will become increasingly important as time goes on.
+### As more people around the world lose jobs to black-box AI systems, ESG will increasingly become a matter of national competitiveness. ESG is fundamentally about people-centered governance and management.
 
 
