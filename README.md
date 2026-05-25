@@ -82,6 +82,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 <img width="602" height="451" alt="hell(2)" src="https://github.com/user-attachments/assets/034dbf12-4875-488b-a192-c9328fafc2cc" />
 
 ### Everyone wants to be treated with dignity and respect. 
-**This is especially true for IT developers, who often value privacy and are highly sensitive to their working and living environments. Conditions like these are not desirable from a human rights perspective either.**
+**This is especially true for IT developers, who often value privacy and are highly sensitive to their working and living environments. Conditions like these are not desirable from a human rights perspective either. Moreover, the Republic of Korea is a liberal democracy.**
 
 
