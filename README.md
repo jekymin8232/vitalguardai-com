@@ -79,7 +79,7 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 ---
 
-## What I Build
+## What I Build : https://mcorpai.org/
 
 **VitalGuard AI** — a fully offline, serverless humanitarian AI system built in a single vanilla HTML/JS file with zero external dependencies.
 
