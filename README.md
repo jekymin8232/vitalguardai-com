@@ -168,3 +168,5 @@ The first country that acknowledged me. Respect earned forever.
 ## Even John D. Rockefeller, once the richest man in the world, could not overcome the passage of time. ##
 **What matters most is leaving behind systems that genuinely benefit human civilization. Black-box AI may make life more convenient for humanity, but that does not necessarily make it a benevolent system. White-box AI may not always maximize convenience, but it has the potential to become a life-saving and genuinely beneficial system. In the end, what matters most is leaving behind systems that truly help humanity.**
 
+**Black-box AI can be seen as a form of technological greed. It demands more data centers, more money, and ever-increasing amounts of resources. Humanity must learn to coexist with both people and the planet. Humans cannot possess everything. We must live alongside animals, nature, and countless other forms of life in balance and coexistence.**
+
