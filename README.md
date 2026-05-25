@@ -15,9 +15,8 @@
 ## Architecture is even more important than coding itself.
 **Anyone can create a beach — all it takes is piling up enough sand. But only a very small number of people are capable of building a proper bathroom within that beach. To truly find the pearl (malicious code), the pearl must be lost inside the bathroom, not across the endless shoreline.**
 
-**As AI continues to advance, malicious code also becomes increasingly sophisticated and evolves rapidly. When the attack surface is too broad, it becomes difficult to have confidence that the code is truly secure.**
-
 <img width="152" height="150" alt="1" src="https://github.com/user-attachments/assets/69a9970c-df33-4d1e-9fb1-aeec2b7c85a3" />
 
 ### The Thing
+**As AI continues to advance, malicious code also becomes increasingly sophisticated and evolves rapidly. When the attack surface is too broad, it becomes difficult to have confidence that the code is truly secure.**
 
