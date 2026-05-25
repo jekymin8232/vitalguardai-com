@@ -176,7 +176,7 @@ The first country that acknowledged me. Respect earned forever.
 
 **Paradoxically, one of the highest ESG virtues may be something closer to “small-scale craftsmanship” or “human-centered production.” It creates more jobs, preserves human dignity, and places value on people rather than treating them as disposable components of efficiency.**
 
-<img width="512" height="332" alt="1" src="https://github.com/user-attachments/assets/7e44be08-c279-491a-97bb-0084fad159e8" />
+<img width="409" height="265" alt="1" src="https://github.com/user-attachments/assets/7e44be08-c279-491a-97bb-0084fad159e8" />
 
 **Doesn’t everyone want something carefully and lovingly crafted by hand, stitch by stitch, by a grandfather or master artisan? Objects made directly by human hands are often what become true luxury goods.**
 
