@@ -99,5 +99,16 @@ I hope to collaborate with people and institutions that value openness, democrat
 # ESG will become increasingly important as time goes on.
 ### As more people around the world lose jobs to black-box AI systems, ESG will increasingly become a matter of national competitiveness. ESG is fundamentally about people-centered governance and management. The value of engineers and architects who design white-box AI systems will continue to grow, because white-box AI helps protect and save human lives.
 
+**If a technology helps save human lives, it deserves the highest possible ESG evaluation.**
+
+**Environment:**
+White-box AI produces no large-scale infrastructure pollution and can operate on refurbished or discarded smartphones, significantly reducing electronic waste and energy consumption.
+
+**Social:**
+White-box AI is open-source and designed for broad public benefit. Because it does not rely on massive centralized data centers, resources can instead be directed toward supporting people and communities through real human employment and local participation. It is a model built around coexistence rather than concentration.
+
+**Governance:**
+White-box AI is not designed around monopoly or closed control. It is intended to remain transparent, accessible, and fair, so that everyone can use, examine, improve, and benefit from it equally.
+
 
 
