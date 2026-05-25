@@ -119,33 +119,33 @@ White-box AI is not designed around monopoly or closed control. It is intended t
 
 ## Country Favorability Rankings (Joke Edition)
 
-1st — United States
+1st — **United States**
 When I think of America, I think of freedom.
 
-2nd — United Kingdom
+2nd — **United Kingdom**
 They may have caused some trouble in the old days, but they’ve clearly had a solid redemption arc since then.
 
-3rd — Australia
+3rd — **Australia**
 Honestly, Australia would rank higher if the insects were slightly less terrifying.
 
-4th — Japan
+4th — **Japan**
 Japanese women are famously beautiful.
 
-5th — Norway
+5th — **Norway**
 Norway believes even disliking the Nobel Peace Prize should be protected as freedom.
 
-6th — Denmark
+6th — **Denmark**
 Come on… it’s Denmark. No explanation needed.
 
-7th — Canada
+7th — **Canada**
 Wait… isn’t Canada the country with kangaroos?
 
-8th — Taiwan
+8th — **Taiwan**
 Geopolitics is complicated. But I’ve heard Taiwanese women are very beautiful.
 
-9th — UAE
+9th — **UAE**
 Middle Eastern hospitality is genuinely impressive.
 
-10th — Luxembourg
+10th — **Luxembourg**
 The first country that acknowledged me. Respect earned forever.
 
