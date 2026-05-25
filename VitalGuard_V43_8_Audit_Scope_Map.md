@@ -1,4 +1,4 @@
-# Precision-Mapped, Self-Disclosed Attack Surface: Why This Codebase Is Ready for Adversarial Review
+# Required Reading: Precision-Mapped Attack Surface for Adversarial Review
 ## VitalGuard AI v4.3.8 — Security Audit Scope Map
 ### High-Priority ~3,700 Lines · WP1 / WP2 / WP6 / WP7
 
