@@ -118,7 +118,7 @@ White-box AI is not designed around monopoly or closed control. It is intended t
 
 
 ## Country Favorability Rankings. Top 10 Countries for Immigration.
-<img width="240" height="133" alt="보랏" src="https://github.com/user-attachments/assets/8172c431-efbd-404e-b0f2-2c9f71e6454d" />
+<img width="312" height="173" alt="보랏" src="https://github.com/user-attachments/assets/8172c431-efbd-404e-b0f2-2c9f71e6454d" />
 
 1st — **United States**
 When I think of America, I think of freedom.
