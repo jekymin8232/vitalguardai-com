@@ -110,5 +110,6 @@ White-box AI is open-source and designed for broad public benefit. Because it do
 **Governance:**
 White-box AI is not designed around monopoly or closed control. It is intended to remain transparent, accessible, and fair, so that everyone can use, examine, improve, and benefit from it equally.
 
+### ESG will become a key pillar of national competitiveness.
 
 
