@@ -211,6 +211,6 @@ The first country that acknowledged me. Respect earned forever.
 
 <img width="225" height="195" alt="호이트박스" src="https://github.com/user-attachments/assets/fc22ae5f-444f-4116-be47-e7df6d1a69ea" />
 
-**Please remember: white-box AI does not arbitrarily alter the principles and guidelines established by humans.**
+**Please remember: white-box AI does not arbitrarily alter the principles and guidelines established by humans. When humans become more comfortable, it often means jobs are being eliminated; when things remain inconvenient for humans, it often means people are still being employed.**
 
 
