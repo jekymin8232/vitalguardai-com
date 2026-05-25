@@ -28,6 +28,7 @@ I would sincerely appreciate your support. My hope is simple: to continue this w
 - GDPR-compliant by design (no data collection, instant deletion)
 - Designed for refugees, low-income communities, and fragile contexts
 - Runs on refurbished smartphones and solar power
+- Dependency-free offline AI can operate even in environments with no power or communications infrastructure at all. This makes it applicable to wildfire monitoring, locust swarm prevention, African agriculture, landslide and flood response, and backup infrastructure for various disaster scenarios. Most importantly, it is extremely low-cost.
 
 ---
 
