@@ -3,7 +3,7 @@
 
 ---
 
-I am an open-source developer based in South Korea.
+**I am an open-source developer based in Republic of Korea.**
 
 I grew up in a financially difficult environment. The photo below shows the modest space where I currently work. Many meaningful open-source efforts begin under constrained circumstances, and over time I have come to see those constraints not as obstacles, but as part of the discipline itself.
 
