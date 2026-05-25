@@ -3,7 +3,7 @@
 
 ---
 
-**I am an open-source developer based in Republic of Korea. Personally, I am fond of philosophy, particularly qualitative utilitarianism.**
+**I am an open-source developer based in Republic of Korea. Personally, I am fond of philosophy, particularly qualitative utilitarianism. I am a philosopher of code.**
 
 I grew up in a financially difficult environment. The photo below shows the modest space where I currently work. Many meaningful open-source efforts begin under constrained circumstances, and over time I have come to see those constraints not as obstacles, but as part of the discipline itself.
 
