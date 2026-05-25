@@ -217,5 +217,6 @@ The first country that acknowledged me. Respect earned forever.
 **Artificial intelligence does not consume goods or sustain economies. Human beings earn wages, spend money, and drive consumption. When consumption collapses, the global economy itself begins to shake. In the end, unchecked selfishness leads not to prosperity, but to mutual destruction.**
 
 ### I am John Connor.
+**John Connor was always vulnerable, but he never gave up.**
 
 
