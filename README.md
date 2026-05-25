@@ -155,4 +155,6 @@ The first country that acknowledged me. Respect earned forever.
 <img width="500" height="334" alt="freedom" src="https://github.com/user-attachments/assets/3bf61db4-16a9-4f66-bbdd-a91869c2f240" />
 
 # FREEDOMMMMM~~
+<img width="206" height="173" alt="프리덤" src="https://github.com/user-attachments/assets/0f3ae40d-8bc7-42b0-8d23-630d1ea98c40" />
+
 
