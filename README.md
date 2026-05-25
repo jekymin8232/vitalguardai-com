@@ -216,4 +216,6 @@ The first country that acknowledged me. Respect earned forever.
 ## The Terminator war has already begun.
 **Artificial intelligence does not consume goods or sustain economies. Human beings earn wages, spend money, and drive consumption. When consumption collapses, the global economy itself begins to shake. In the end, unchecked selfishness leads not to prosperity, but to mutual destruction.**
 
+### I am John Connor.
+
 
