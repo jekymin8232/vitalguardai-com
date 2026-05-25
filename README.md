@@ -13,10 +13,8 @@ I grew up in a financially difficult environment. The photo below shows the mode
 **I am currently receiving no support whatsoever in the Republic of Korea. 
 I would sincerely appreciate your support. My hope is simple: to continue this work in a stable and sustainable way over the long term.**
 
-### So this is hell! Hello? Is anyone there?
+### So this is hell! Hello? Is anyone there? ###
 <img width="180" height="132" alt="hell" src="https://github.com/user-attachments/assets/818c23be-8285-49ca-839f-53a20559377d" />
-
----
 
 **Without any form of support, it becomes extremely difficult to sustainably develop and maintain open-source software. Supply-chain attacks often emerge when developers become exhausted and ultimately give up on the projects they maintain.**
 
