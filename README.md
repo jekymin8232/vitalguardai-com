@@ -12,6 +12,7 @@
 ### Can you find a lost pearl on a vast beach? 
 **Malicious code continues to evolve with each passing day. The simpler the system is, the easier it becomes to find the pearl. It is like searching for a pearl inside a bathroom rather than across a vast beach. What truly matters is having someone capable of designing the “bathroom” correctly from the very beginning.** 
 
-### Architecture is even more important than coding itself.
+## Architecture is even more important than coding itself.
+**Anyone can create a beach — all it takes is piling up enough sand. But only a very small number of people are capable of building a proper bathroom within that beach. To truly find the pearl (malicious code), the pearl must be lost inside the bathroom, not across the endless shoreline.**
 
 
