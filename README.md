@@ -9,6 +9,8 @@
 
 **Without philosophy in code, developers inevitably become dependent on libraries and NPM ecosystems, because the focus ultimately shifts toward making money as quickly as possible. Without philosophy in code, there is no long-term sustainability, because burnout eventually becomes unavoidable.**
 
+## Burnout is an extremely serious issue for developers.
+
 I grew up in a financially difficult environment. The photo below shows the modest space where I currently work. Many meaningful open-source efforts begin under constrained circumstances, and over time I have come to see those constraints not as obstacles, but as part of the discipline itself.
 
 <img width="304" height="406" alt="숙직실(1)" src="https://github.com/user-attachments/assets/d815de00-33af-48ab-92a7-c44e7f8f1228" />
@@ -209,6 +211,6 @@ The first country that acknowledged me. Respect earned forever.
 
 <img width="225" height="195" alt="호이트박스" src="https://github.com/user-attachments/assets/fc22ae5f-444f-4116-be47-e7df6d1a69ea" />
 
-**Please remember: white-box AI does not arbitrarily alter the principles and guidelines established by humans.**
+### Please remember: white-box AI does not arbitrarily alter the principles and guidelines established by humans.
 
 
