@@ -180,3 +180,4 @@ The first country that acknowledged me. Respect earned forever.
 
 **Doesn’t everyone want something carefully and lovingly crafted by hand, stitch by stitch, by a grandfather or master artisan? Objects made directly by human hands are often what become true luxury goods.**
 
+### What truly matters is not productivity, but human dignity.
