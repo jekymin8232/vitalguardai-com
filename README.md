@@ -119,9 +119,7 @@ White-box AI is not designed around monopoly or closed control. It is intended t
 ## Country Favorability Rankings. Top 10 Countries for Immigration.
 <img width="343" height="190" alt="보랏" src="https://github.com/user-attachments/assets/8172c431-efbd-404e-b0f2-2c9f71e6454d" />
 
-**The richest man in the world, Elon Musk, may have more money than me, but I believe my sense of humor is world-class.**
-**I have a good sense of humor, because without humor, the pain of life becomes unbearable.**
-**I may not have much money, but I’ve got plenty of humor.**
+**The richest man in the world, Elon Musk, may have a lot of money, but his sense of humor is basically zero. Meanwhile, I believe my sense of humor is world-class. Without humor, the pain of life becomes unbearable. I may be poor, but I’ve got plenty of humor.**
 
 1st — **United States**
 When I think of America, I think of freedom.
