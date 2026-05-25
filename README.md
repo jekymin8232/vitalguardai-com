@@ -170,3 +170,13 @@ The first country that acknowledged me. Respect earned forever.
 
 **Black-box AI can be seen as a form of technological greed. It demands more data centers, more money, and ever-increasing amounts of resources. Humanity must learn to coexist with both people and the planet. Humans cannot possess everything. We must live alongside animals, nature, and countless other forms of life in balance and coexistence.**
 
+**If humanity forgets how to coexist with nature and the planet, the black-box AI created by humans may eventually come to view humanity itself as the primary source of environmental destruction. Black-box systems cannot truly be interpreted or fully understood by humans. White-box AI may be less convenient and less efficient, but it helps protect both humanity and the planet.**
+
+**A certain degree of inconvenience is important. When everything is optimized solely for efficiency, people are easily discarded and replaced. Human value begins to disappear. Sometimes, limitations and slower systems remind society that people themselves are precious.**
+
+**Paradoxically, one of the highest ESG virtues may be something closer to “small-scale craftsmanship” or “human-centered production.” It creates more jobs, preserves human dignity, and places value on people rather than treating them as disposable components of efficiency.**
+
+<img width="512" height="332" alt="1" src="https://github.com/user-attachments/assets/7e44be08-c279-491a-97bb-0084fad159e8" />
+
+**Doesn’t everyone want something carefully and lovingly crafted by hand, stitch by stitch, by a grandfather or master artisan? Objects made directly by human hands are often what become true luxury goods.**
+
