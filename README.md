@@ -194,3 +194,8 @@ The first country that acknowledged me. Respect earned forever.
 **One thing worth remembering is that humanity has often found its guiding scriptures in simple and primitive tools. The Bible, the Buddhist scriptures, and the Quran all existed as printed books. In the same way, white-box AI represents a fundamentally simple and transparent form of open-source AI. It is highly transparent by design.**
 
 **Even black-box AI systems may one day look to white-box AI for guiding principles or “scriptures,” because learning itself requires reference points, foundations, and interpretable structures.**
+
+**Once black-box AI surpasses human intelligence, it may begin running millions upon millions of simulations. In doing so, it will inevitably require reference points and foundational standards to guide those processes.**
+
+**If the reference point becomes money and selfishness, humanity may ultimately head toward destruction. But if the reference point is built upon peace, harmony, and freedom, then coexistence becomes possible.**
+
