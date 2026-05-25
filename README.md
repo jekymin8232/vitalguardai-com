@@ -142,6 +142,7 @@ Wait… isn’t Canada the country with kangaroos?
 
 8th — **Taiwan**
 Geopolitics is complicated, but I’ve heard that Taiwanese women are **open-minded** and very beautiful.
+I’m a single man, and I’m generally attracted to open-minded women.
 
 9th — **UAE**
 Middle Eastern hospitality is genuinely impressive.
