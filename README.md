@@ -6,7 +6,7 @@
 
 **I do not rely on libraries or the NPM ecosystem, because they can become vulnerable to supply-chain attacks. In the end, I believe the safest technology is a system designed directly by an architect who takes full responsibility for their own code to the very end.**
 
-**If you blame others, you can never truly fix the problem. Taking full responsibility ultimately means having the power to correct and improve it yourself.**
+**If you blame others, you can never truly fix the problem. Taking full responsibility ultimately means having the power to correct and improve it yourself. NPM ecosystems tend to diffuse responsibility, making rapid fixes and direct accountability far more difficult.**
 
 ### Supply-chain attacks occur because responsibility becomes too fragmented and diffused.
 **The safest technology is a simple, unified architecture where the designer can take full responsibility for the entire system. Conversely, the most dangerous technologies are those in which responsibility is fragmented and the systems themselves are excessively complex. When systems become too complex, you no longer know where malicious code may be hiding. It becomes like searching for a pearl on a vast beach.**
