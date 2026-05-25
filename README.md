@@ -79,7 +79,8 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 ---
 
-## What I Build : https://mcorpai.org Technical Paper: https://zenodo.org/records/20319524
+## What I Build : https://mcorpai.org 
+### Technical Paper: https://zenodo.org/records/20319524
 
 **VitalGuard AI** — a fully offline, serverless humanitarian AI system built in a single vanilla HTML/JS file with zero external dependencies.
 
