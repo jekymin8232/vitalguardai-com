@@ -29,6 +29,8 @@ I would sincerely appreciate your support. My hope is simple: to continue this w
 - Designed for refugees, low-income communities, and fragile contexts
 - Runs on refurbished smartphones and solar power
 - Dependency-free offline AI can operate even in environments with no power or communications infrastructure at all. This makes it applicable to wildfire monitoring, locust swarm prevention, African agriculture, landslide and flood response, and backup infrastructure for various disaster scenarios. Most importantly, it is extremely low-cost.
+- It is so low-cost that the AI can operate even without any communications infrastructure at all, using only simple solar equipment and discarded smartphones.
+- Because it utilizes discarded smartphones, it can receive very strong ESG scores in the Environmental category. In addition, since it is an AI technology that can be deployed in low-income countries, it also carries significant social impact.
 
 ---
 
