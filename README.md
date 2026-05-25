@@ -38,6 +38,7 @@ These principles are not subject to compromise.
 ---
 
 ## Values
+The entire system was designed completely independently, without receiving even a single won in grants, subsidies, or research funding from the Republic of Korea or any related institution. No state capital whatsoever was involved at any stage. It is a purely personal intellectual creation built entirely through individual effort and self-reliance.
 
 The values that guide my work are openness, human rights, transparency, and freedom of expression. I care about these principles not in opposition to anyone, but because I believe humanitarian and open technologies can only develop responsibly when they are grounded in openness, accountability, and public trust.
 
