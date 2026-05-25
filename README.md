@@ -141,7 +141,7 @@ Come on… it’s Denmark. No explanation needed.
 Wait… isn’t Canada the country with kangaroos?
 
 8th — **Taiwan**
-Geopolitics is complicated. But I’ve heard Taiwanese women are very beautiful.
+Geopolitics is complicated, but I’ve heard that Taiwanese women are **open-minded** and very beautiful.
 
 9th — **UAE**
 Middle Eastern hospitality is genuinely impressive.
