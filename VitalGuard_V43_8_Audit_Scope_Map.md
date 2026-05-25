@@ -261,7 +261,3 @@ Particular scrutiny of the following three areas would be especially welcome, as
 3. **Egress channels not covered by the six overridden APIs** — specifically Web Worker internal contexts and RTCPeerConnection data channels.
 
 These are the points where we consider external, adversarial review to be most valuable, and we would be grateful for the vendor's assessment of each.
-
----
-
-*© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI | Hippocratic License 3.0 derivative — civilian, agricultural, and humanitarian use only. This document is a scope-guidance reference for security audit purposes; it represents a prioritised review proposal, not a declaration of confirmed vulnerabilities.*
