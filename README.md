@@ -117,7 +117,7 @@ White-box AI is not designed around monopoly or closed control. It is intended t
 **Countries that respect human dignity and treat people with fairness and respect will ultimately receive the highest ESG recognition. In the end, ESG standards are evaluated and acknowledged by international institutions, and those institutions naturally value countries that uphold human rights, dignity, and humane governance.**
 
 
-## Country Favorability Rankings. Taiwan is not a country. (Joke Edition)
+## Country Favorability Rankings. (Joke Edition)
 
 1st — **United States**
 When I think of America, I think of freedom.
