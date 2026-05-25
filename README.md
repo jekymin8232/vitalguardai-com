@@ -163,5 +163,5 @@ The first country that acknowledged me. Respect earned forever.
 
 <img width="262" height="157" alt="Elon Musk" src="https://github.com/user-attachments/assets/d8275482-259b-4fd8-b9d4-4aabd6203973" />
 
-**He was bullied during his school years. Vivian Jenna Wilson dislikes him. In my view, he has had a deeply negative impact on many people’s lives. He may be the richest man in the world, but he’s probably also the least funny.**
+**He was bullied during his school years. Vivian Jenna Wilson dislikes him. In my view, he has had a deeply negative impact on many people’s lives. He has been divorced three times. Why would one of the richest people in the world get divorced? He may be the richest man in the world, but he’s probably also the least funny.**
 
