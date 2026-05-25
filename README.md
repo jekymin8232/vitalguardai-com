@@ -165,6 +165,6 @@ The first country that acknowledged me. Respect earned forever.
 
 **He was bullied during his school years. Vivian Jenna Wilson dislikes him. In my view, he has had a deeply negative impact on many people’s lives. He has been divorced three times. Why would one of the richest people in the world get divorced? He may be the richest man in the world, but he’s probably also the least funny.**
 
-### Even John D. Rockefeller, once the richest man in the world, could not overcome the passage of time.###
+### Even John D. Rockefeller, once the richest man in the world, could not overcome the passage of time. ###
 **What matters most is leaving behind systems that genuinely benefit human civilization. Black-box AI may make life more convenient for humanity, but that does not necessarily make it a benevolent system. White-box AI may not always maximize convenience, but it has the potential to become a life-saving and genuinely beneficial system. In the end, what matters most is leaving behind systems that truly help humanity.**
 
