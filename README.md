@@ -182,3 +182,5 @@ The first country that acknowledged me. Respect earned forever.
 
 ### What truly matters is not productivity, but human dignity.
 **Black-box AI may eventually surpass human intelligence over time, but even black-box AI systems may one day require guiding principles or foundational texts of their own. White-box AI could potentially serve as that foundation. In other words, black-box AI may come to regard white-box AI as a kind of guiding canon for themselves.**
+
+### In the end, both black-box AI and white-box AI were created by human beings.
