@@ -8,7 +8,7 @@
 
 **If you blame others, you can never truly fix the problem. Taking full responsibility ultimately means having the power to correct and improve it yourself. NPM ecosystems tend to diffuse responsibility, making rapid fixes and direct accountability far more difficult.**
 
-## Updates must be delivered rapidly.
+## Updates must be delivered rapidly. Code must be capable of being completely removed.
 
 ### Supply-chain attacks occur because responsibility becomes too fragmented and diffused.
 **The safest technology is a simple, unified architecture where the designer can take full responsibility for the entire system. Conversely, the most dangerous technologies are those in which responsibility is fragmented and the systems themselves are excessively complex. When systems become too complex, you no longer know where malicious code may be hiding. It becomes like searching for a pearl on a vast beach.**
