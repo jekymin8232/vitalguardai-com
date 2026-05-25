@@ -200,4 +200,5 @@ The first country that acknowledged me. Respect earned forever.
 **If the reference point becomes money and selfishness, humanity may ultimately head toward destruction. But if the reference point is built upon peace, harmony, and freedom, then coexistence becomes possible.**
 
 ### Humanity’s survival may ultimately depend not on black-box systems, but on white-box AI.
+### Because human dignity ultimately resides in white-box AI.
 
