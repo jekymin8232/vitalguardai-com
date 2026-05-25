@@ -10,4 +10,4 @@
 **The safest technology is a simple, unified architecture where the designer can take full responsibility for the entire system. Conversely, the most dangerous technologies are those in which responsibility is fragmented and the systems themselves are excessively complex. When systems become too complex, you no longer know where malicious code may be hiding. It becomes like searching for a pearl on a vast beach.**
 
 ## Can you find a lost pearl on a vast beach? 
-## Malicious code continues to evolve with each passing day.
+### Malicious code continues to evolve with each passing day.
