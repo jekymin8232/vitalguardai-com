@@ -5,7 +5,7 @@
 
 **I am an open-source developer based in Republic of Korea. Personally, I am fond of philosophy, particularly qualitative utilitarianism.** 
 
-## I am a philosopher of code. 
+### I am a philosopher of code. 
 
 **Without philosophy in code, developers inevitably become dependent on libraries and NPM ecosystems, because the focus ultimately shifts toward making money as quickly as possible. Without philosophy in code, there is no long-term sustainability, because burnout eventually becomes unavoidable.**
 
