@@ -26,7 +26,7 @@
 
 <img width="152" height="150" alt="1" src="https://github.com/user-attachments/assets/69a9970c-df33-4d1e-9fb1-aeec2b7c85a3" />
 
-### The Thing (Great Seal bug)
+### The Thing (Great Seal bug): I can only consider it safe if I can verify it with my own eyes.
 **As AI continues to advance, malicious code also becomes increasingly sophisticated and evolves rapidly. When the attack surface is too broad, it becomes difficult to have confidence that the code is truly secure.**
 
 ## Is there any guarantee that malicious code can be detected with 100% certainty?
