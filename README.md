@@ -93,6 +93,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 - It is so low-cost that the AI can operate even without any communications infrastructure at all, using only simple solar equipment and discarded smartphones.
 - Because it utilizes discarded smartphones, it can receive very strong ESG scores in the Environmental category. In addition, since it is an AI technology that can be deployed in low-income countries, it also carries significant social impact.
 
-**I would greatly welcome the opportunity to obtain permanent residency in a Western country that values freedom and liberal democratic principles.**
+**I would greatly welcome the opportunity to obtain permanent residency in a Western country that values freedom and liberal democratic principles. ESG initiatives can make a significant contribution to the long-term strategic interests of Western countries.**
 
 
