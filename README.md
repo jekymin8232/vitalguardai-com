@@ -96,4 +96,6 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 **I would greatly welcome the opportunity to obtain permanent residency in a Western country that values freedom and liberal democratic principles. ESG initiatives can make a significant contribution to the long-term strategic interests of Western countries.**
 
+# ESG will become increasingly important as time goes on.
+
 
