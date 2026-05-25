@@ -6,4 +6,5 @@
 
 **I do not rely on libraries or the NPM ecosystem, because they can become vulnerable to supply-chain attacks. In the end, I believe the safest technology is a system designed directly by an architect who takes full responsibility for their own code to the very end.**
 
-### Supply-chain attacks occur because responsibility becomes too fragmented and diffused.
+### Supply-chain attacks occur because responsibility becomes too fragmented and diffused.###
+**The safest technology is a simple, unified architecture where the designer can take full responsibility for the entire system.**
