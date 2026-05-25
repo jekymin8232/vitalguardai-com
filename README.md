@@ -159,5 +159,6 @@ The first country that acknowledged me. Respect earned forever.
 
 **The richest man in the world, Elon Musk, may have a lot of money, but his sense of humor is basically zero. Meanwhile, I believe my sense of humor is world-class. Without humor, the pain of life becomes unbearable. I may be poor, but I’ve got plenty of humor.**
 
+### There’s no need to envy Elon Musk. He may be the richest man in the world, but he’s probably also the least funny.
 
-
+<img width="262" height="157" alt="Elon Musk" src="https://github.com/user-attachments/assets/d8275482-259b-4fd8-b9d4-4aabd6203973" />
