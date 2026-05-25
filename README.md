@@ -111,6 +111,7 @@ White-box AI is open-source and designed for broad public benefit. Because it do
 White-box AI is not designed around monopoly or closed control. It is intended to remain transparent, accessible, and fair, so that everyone can use, examine, improve, and benefit from it equally.
 
 ### ESG will become a key pillar of national competitiveness.
+**International institutions tend to be skeptical of black-box AI systems because they lack transparency and accountability. As a result, they are more likely to adopt white-box AI systems that can be audited, understood, and trusted.**
 **Countries that respect human dignity and treat people with fairness and respect will ultimately receive the highest ESG recognition. In the end, ESG standards are evaluated and acknowledged by international institutions, and those institutions naturally value countries that uphold human rights, dignity, and humane governance.**
 
 
