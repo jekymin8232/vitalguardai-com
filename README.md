@@ -20,20 +20,6 @@ I would sincerely appreciate your support. My hope is simple: to continue this w
 
 ---
 
-## What I Build
-
-**VitalGuard AI** — a fully offline, serverless humanitarian AI system built in a single vanilla HTML/JS file with zero external dependencies.
-
-- 100% offline · zero egress · zero external libraries
-- GDPR-compliant by design (no data collection, instant deletion)
-- Designed for refugees, low-income communities, and fragile contexts
-- Runs on refurbished smartphones and solar power
-- Dependency-free offline AI can operate even in environments with no power or communications infrastructure at all. This makes it applicable to wildfire monitoring, locust swarm prevention, African agriculture, landslide and flood response, and backup infrastructure for various disaster scenarios. Most importantly, it is extremely low-cost.
-- It is so low-cost that the AI can operate even without any communications infrastructure at all, using only simple solar equipment and discarded smartphones.
-- Because it utilizes discarded smartphones, it can receive very strong ESG scores in the Environmental category. In addition, since it is an AI technology that can be deployed in low-income countries, it also carries significant social impact.
-
----
-
 ## Ten Principles of Ethical AI
 
 These principles are not subject to compromise.
@@ -90,5 +76,19 @@ I hope to collaborate with people and institutions that value openness, democrat
 
 ## Freedom is not free. 
 ### A liberal democracy begins with treating people with dignity and respect.
+
+---
+
+## What I Build
+
+**VitalGuard AI** — a fully offline, serverless humanitarian AI system built in a single vanilla HTML/JS file with zero external dependencies.
+
+- 100% offline · zero egress · zero external libraries
+- GDPR-compliant by design (no data collection, instant deletion)
+- Designed for refugees, low-income communities, and fragile contexts
+- Runs on refurbished smartphones and solar power
+- Dependency-free offline AI can operate even in environments with no power or communications infrastructure at all. This makes it applicable to wildfire monitoring, locust swarm prevention, African agriculture, landslide and flood response, and backup infrastructure for various disaster scenarios. Most importantly, it is extremely low-cost.
+- It is so low-cost that the AI can operate even without any communications infrastructure at all, using only simple solar equipment and discarded smartphones.
+- Because it utilizes discarded smartphones, it can receive very strong ESG scores in the Environmental category. In addition, since it is an AI technology that can be deployed in low-income countries, it also carries significant social impact.
 
 
