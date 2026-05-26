@@ -44,6 +44,8 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_
 
 **Cockroach-survival intelligence can be used in environments facing permanent shutdown conditions, such as deserts, natural disasters, and other extreme situations. Not every region on Earth has access to ChatGPT, Gemini, or Claude AI.**
 
+<img width="128" height="80" alt="미국과 일본" src="https://github.com/user-attachments/assets/a6779c2b-0c35-402d-b2e4-439116a465af" />
+
 The collapse of human-made infrastructure is not uncommon, even in highly advanced countries such as the United States and Japan. Humanity has still not overcome natural disasters such as hurricanes, earthquakes, and tsunamis. Human civilization remains vulnerable to natural disasters. That is a clear and undeniable fact. Cockroaches survive until the very end.
 
 <img width="198" height="124" alt="바퀴벌레" src="https://github.com/user-attachments/assets/f6b67c52-fa25-49f3-a92e-b908c85fc4bf" />
