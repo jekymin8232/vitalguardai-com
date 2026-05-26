@@ -58,4 +58,5 @@ What survives in the worst environments is not human-level intelligence, but coc
 
 Cockroach-survival intelligence can demonstrate a high level of intelligence using only minimal resources. The “high-level intelligence” referred to here does not mean generative artificial intelligence, but survival-oriented intelligence.
 
+**Cockroaches are not stupid. They have survived on Earth far longer than humans have**
 
