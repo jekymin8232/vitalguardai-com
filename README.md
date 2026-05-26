@@ -4,7 +4,7 @@
 ### Is there any guarantee that malicious code can be detected with 100% certainty?
 ### “If code cannot be verified as safe, then it should be treated as malicious.”
 ### Open-Source Developer · Humanitarian AI · M-Corp Ethical AI | [Mcorpai.org](https://mcorpai.org/) 
-### Research Technical Paper: https://doi.org/10.5281/zenodo.20319524
+**Research Technical Paper: https://doi.org/10.5281/zenodo.20319524**
 
 **My personal laboratory :https://github.com/henrymorgan10/mcorpai-org**
 
