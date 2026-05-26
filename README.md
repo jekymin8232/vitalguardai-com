@@ -1,8 +1,6 @@
 **Let me ask the opposite question: is there any guarantee that malicious code can be detected with 100% certainty? Wouldn’t it be far more efficient to verify that the code is inherently safe instead? “If the code cannot be verified as safe, then it should be treated as malicious.” Wouldn’t that ultimately be a far more trustworthy standard for software security?**
 
 # Developer Philosophy: Morgan J. (Gyu-min Jeon)
-**Is there any guarantee that malicious code can be detected with 100% certainty?**
-**“If code cannot be verified as safe, then it should be treated as malicious.”**
 
 **I do not rely on libraries or the NPM ecosystem, because they can become vulnerable to supply-chain attacks. In the end, I believe the safest technology is a system designed directly by an architect who takes full responsibility for their own code to the very end.**
 
