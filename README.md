@@ -51,3 +51,5 @@ The collapse of human-made infrastructure is not uncommon, even in highly advanc
 <img width="198" height="124" alt="바퀴벌레" src="https://github.com/user-attachments/assets/f6b67c52-fa25-49f3-a92e-b908c85fc4bf" />
 
 What survives in the worst environments is not human-level intelligence, but cockroach-survival intelligence. Because cockroach-survival intelligence is lightweight enough to fit on a single sheet of paper. In other words, even when everything is reduced to zero, the AI can still continue to operate.
+
+**In an environment where everything has collapsed to zero, ChatGPT, Gemini, and Claude AI can no longer operate.**
