@@ -56,3 +56,6 @@ What survives in the worst environments is not human-level intelligence, but coc
 
 **In an environment where everything has collapsed to zero, ChatGPT, Gemini, and Claude AI can no longer operate.**
 
+Cockroach-survival intelligence can demonstrate a high level of intelligence using only minimal resources. The “high-level intelligence” referred to here does not mean generative artificial intelligence, but survival-oriented intelligence.
+
+
