@@ -38,7 +38,7 @@
 
 **A cockroach-survival intelligent AI that remains fully operational even in environments with 0% internet, 0% cellular infrastructure, and 0% external power — capable of real-time local computation and customization, while still running on older 2019-era smartphones.**
 
-### Cockroach-Survival Intelligence MVP v1.0
+## Cockroach-Survival Intelligence MVP v1.0
 
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0.html
 
