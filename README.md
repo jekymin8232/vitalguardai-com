@@ -42,6 +42,10 @@
 
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0.html
 
+## Cockroach-Survival Intelligence MVP v3.0
+
+https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V3_0_UltrasonicMorse.html
+
 **Cockroach-survival intelligence can be used in environments facing permanent shutdown conditions, such as deserts, natural disasters, and other extreme situations. Not every region on Earth has access to ChatGPT, Gemini, or Claude AI.**
 
 <img width="128" height="80" alt="미국과 일본" src="https://github.com/user-attachments/assets/a6779c2b-0c35-402d-b2e4-439116a465af" />
