@@ -100,7 +100,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 <img width="503" height="351" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
 
-**This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind? Even the great Muhammad would likely have felt anger in the face of such suffering.**
+**This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind?**
 
 **I built cockroach-survival AI with only $100, and I believe it has the potential to save countless lives. Cockroaches have survived far longer than humans. This AI also does not require a data center and is designed to continue operating even in environments where power grids and communication infrastructure have completely collapsed.**
 
