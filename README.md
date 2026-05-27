@@ -138,7 +138,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 <img width="331" height="452" alt="최악이다" src="https://github.com/user-attachments/assets/d54ebe5b-6abf-4b86-882e-7e9a63aef7b7" />
 
 ### Even Bill Gates would likely have struggled in an environment like this.
-<img width="210" height="213" alt="빌게이츠" src="https://github.com/user-attachments/assets/374ad1af-aefb-4c88-8f1d-e534f986a9ea" />
+<img width="342" height="234" alt="빌게이츠도 힘들다" src="https://github.com/user-attachments/assets/dc40b802-2503-4998-abec-6eba01bbb499" />
+
 
 
 
