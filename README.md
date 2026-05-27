@@ -139,6 +139,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 ### Even Bill Gates would likely have struggled in an environment like this.
 <img width="342" height="234" alt="빌게이츠도 힘들다" src="https://github.com/user-attachments/assets/dc40b802-2503-4998-abec-6eba01bbb499" />
+**I worked here for no less than ten years.**
 
 **There was even a time when Bill Gates reportedly ended up at a police station due to severe stress and burnout.**
 
