@@ -1,4 +1,5 @@
 # The Great $100.
+### My Perspective on Code
 **Some people spend $100 on champagne. Others use $100 to build an AI that saves lives. What matters more than money is the ability to design and architect code. Design and architectural ability cannot be bought with money, because it is a talent. I am not saying that I am exceptional. Everyone has a field in which they excel. When someone becomes truly outstanding in one area, they become world-class. Personally, I like the football player Emmanuel Adebayor. He is a player from Togo. Talent has nothing to do with nationality.**
 
 <img width="308" height="182" alt="엠바누엘 아데바요르" src="https://github.com/user-attachments/assets/87d126b6-1222-434b-a694-232d73e6e591" />
