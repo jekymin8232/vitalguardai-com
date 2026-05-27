@@ -144,5 +144,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **There was even a time when Bill Gates reportedly ended up at a police station due to severe stress and burnout.**
 
+**And I am now in my mid-40s. South Korea may have abandoned me, but the talent I possess can still be used for another 55 years, because human life can reach 100 years. From this point on, I want to work for people all around the world. People around the world will recognize and value the abilities I have, because humanity is great, and there are many people who possess the generosity to respect others regardless of their background.**
+
+
 
 
