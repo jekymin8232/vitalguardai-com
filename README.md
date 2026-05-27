@@ -92,7 +92,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 **“Yes. I can leave South Korea behind. The reason is not for my own benefit, but because I want to use the abilities I have for work that can help people around the world. If talent is left to decay and go unused, then one must be willing to leave even their homeland behind. Only then can more lives be saved.”**
 
 ## If you want to be respected yourself, you must first respect others.
-### When talented people are mistreated, they become disillusioned. Because human beings are not gods. In the end, earning people’s trust comes from treating them with kindness and respect.
+**When talented people are mistreated, they become disillusioned. Because human beings are not gods. In the end, earning people’s trust comes from treating them with kindness and respect.**
 ### I created cockroach-survival AI because, in many ways, I see myself as a cockroach survivor.
 **People can truly become good friends only when they treat one another with kindness and respect. After enduring severe hardship for over ten years, burnout becomes almost inevitable. Burnout brings profound suffering because it slowly consumes a person’s soul.**
 
