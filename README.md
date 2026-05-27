@@ -1,6 +1,7 @@
 # The Great $100.
 ### My Perspective on Code “A football is fair to everyone. Code is fair to everyone as well.”
 ### In football, fundamentals are essential. In coding, vanilla fundamentals matter just as much.
+**The more flashy football becomes, the more it can reveal a lack of true fundamentals. Football is not a circus. The same applies to code. The more flashy and unnecessarily complex code becomes, the wider its attack surface grows**
 ### World-class players are built on strong fundamentals.
 **Some people spend $100 on champagne. Others use $100 to build an AI that saves lives. What matters more than money is the ability to design and architect code. Design and architectural ability cannot be bought with money, because it is a talent. I am not saying that I am exceptional. Everyone has a field in which they excel. When someone becomes truly outstanding in one area, they become world-class. Personally, I like the football player Emmanuel Adebayor. He is a player from Togo. Talent has nothing to do with nationality.**
 
