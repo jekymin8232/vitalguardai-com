@@ -71,5 +71,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ### I am an AI researcher maintaining a fully independent position.
 **Although I am a developer from South Korea, I will work for the public good of people around the world. There can be no diplomatic conflict with South Korea. I have not received even a single dollar of support from the Korean government. I am a fully independent researcher and have carried out all of my work without assistance from South Korea. I owe nothing to the Korean government. I did all of this entirely on my own.**
 
+### I do not work for South Korea. I work for people around the world.
+
 
 
