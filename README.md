@@ -67,4 +67,9 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ### An AI designed to save lives does not require a data center. It can be implemented using nothing more than a single sheet of paper.
 **Even advanced countries can face situations where everything falls to zero. When all systems collapse, conventional big-tech AI systems stop functioning. To save lives in critical moments, the technology must be easy to operate locally and highly maintainable. By the time emergency responders arrive, it may already be too late.**
 
+## Contact: contact@mcorpai.org 
+### I am an AI researcher operating in the most fully independent form possible.
+**Although I am a developer from South Korea, I will work for the benefit of people around the world. There can be no diplomatic conflict with South Korea. I have not received even a single dollar of support from the Korean government. I am a fully independent researcher and have carried out all of my work without assistance from South Korea. I owe nothing to the Korean government.**
+
+
 
