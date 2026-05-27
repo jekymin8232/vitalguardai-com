@@ -91,7 +91,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **“Yes. I can leave South Korea behind. The reason is not for my own benefit, but because I want to use the abilities I have for work that can help people around the world. If talent is left to decay and go unused, then one must be willing to leave even their homeland behind. Only then can more lives be saved.”**
 
-## “Whoever believes in Allah and the Last Day should honor their guest.”
+## Whoever believes in Allah and the Last Day should honor their guest.
 
 <img width="503" height="351" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
 
