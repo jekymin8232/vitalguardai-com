@@ -101,6 +101,10 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **South Korea may invest $100 billion to build big-tech AI, but in the end, what truly matters is human dignity. This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind? Even the great Muhammad would likely have felt anger in the face of such suffering.**
 
+**I built cockroach-survival AI with only $100, and I believe it has the potential to save countless lives. Cockroaches have survived far longer than humans. This AI also does not require a data center and is designed to continue operating even in environments where power grids and communication infrastructure have completely collapsed.**
+
+**Ultimately, humanoid AI may fail where cockroach-survival AI endures. Cockroaches can survive even in places where everyone else has given up.**
+
 
 
 
