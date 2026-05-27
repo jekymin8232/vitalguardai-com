@@ -74,9 +74,18 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ## I do not work for South Korea. I work for people around the world.
 **I received no support from anyone and continued my AI research while working as a contract employee. My monthly salary is approximately $1,500. Considering that South Korea’s GDP per capita is around $36,000, a contract worker earning $1,500 per month is often left with barely $100 after basic living expenses.**
 
-**Even with only $100 remaining each month, I refused to give up on AI research. In truth, burnout had already become inevitable. Yet I still chose not to quit, because I believe that economic hardship can sometimes allow a person to genuinely understand and connect with the suffering of refugees and the poor.**
+**Even with only $100 remaining each month, I refused to give up on AI research. In truth, burnout had already become inevitable.Burnout leads to a devastating sense of helplessness, resentment toward life itself, and even deep disillusionment with South Korea. I am neither Jesus nor the Buddha. I cannot simply overcome this kind of suffering without struggle, because I am only human.**
+
+**Yet I still chose not to quit, because I believe that economic hardship can sometimes allow a person to genuinely understand and connect with the suffering of refugees and the poor.**
 
 **A person earning $10 million a year cannot truly understand the hardships faced by the impoverished and displaced.**
+
+**Some people may ask me, “Can you abandon South Korea?”**
+
+**My answer is very simple.**
+
+**“Yes. I can leave South Korea behind. The reason is not for my own benefit, but because I want to use the abilities I have for work that can help people around the world. If talent is left to decay and go unused, then one must be willing to leave even their homeland behind. Only then can more lives be saved.”**
+
 
 
 
