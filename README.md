@@ -4,7 +4,7 @@
 
 **What I mean here is not the bricklayers (coders), but the architects (designers and system architects) Flashiness can easily collapse, but simplicity remains strong even after a thousand years. What matters most is the ability to design from the ground up. A simple architectural style does not mean the design itself is simple.**
 
-### My Perspective on Code “A football is fair to everyone. Code is fair to everyone as well.”
+### I enjoy football theory. “A football is fair to everyone. Code is fair to everyone as well.”
 **Football and code have something in common. Even people from poor backgrounds can become excellent at football and coding. Football and code are fair to everyone, and they are open to everyone as well.**
 ### In football, fundamentals are essential. In coding, vanilla fundamentals matter just as much.
 **The more flashy football becomes, the more it can reveal a lack of true fundamentals. Football is not a circus. The same applies to code. The more flashy and unnecessarily complex code becomes, the wider its attack surface grows. In football, scoring goals is important, but preventing goals is just as important. The same applies to code. Defensive design is extremely important in software engineering.**
