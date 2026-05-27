@@ -94,6 +94,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ## Whoever believes in Allah and the Last Day should honor their guest.
 ### People can become good friends only when they treat each other with kindness and respect.
 ### After enduring severe hardship for ten years, burnout inevitably begins to set in.
+### Burnout brings immense suffering because it slowly eats away at a person’s soul.
 
 <img width="503" height="351" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
 
