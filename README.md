@@ -127,7 +127,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 **Ultimately, humanoid AI may fail where cockroach-survival AI endures. Cockroaches can survive even in places where everyone else has given up.**
 
 ## Whoever believes in Allah and the Last Day should honor their guest.
-**Cristiano Ronaldo views Islam positively because of the culture of hospitality and the respectful treatment of guests.**
+### Cristiano Ronaldo views Islam positively because of the culture of hospitality and the respectful treatment of guests.
 
 <img width="250" height="375" alt="호날두" src="https://github.com/user-attachments/assets/b164c2a1-b48e-41a5-b5f5-89f0f50b25c2" />
 
