@@ -1,6 +1,6 @@
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
-**Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years.**
+**Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing.**
 ### My Perspective on Code “A football is fair to everyone. Code is fair to everyone as well.”
 **Football and code have something in common. Even people from poor backgrounds can become excellent at football and coding. Football and code are fair to everyone, and they are open to everyone as well.**
 ### In football, fundamentals are essential. In coding, vanilla fundamentals matter just as much.
