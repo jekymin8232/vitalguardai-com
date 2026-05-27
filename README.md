@@ -99,7 +99,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 <img width="503" height="351" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
 
-**This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind? Even the great Muhammad would likely have felt anger in the face of such suffering.**
+**South Korea may invest $100 billion to build big-tech AI, but in the end, what truly matters is human dignity. This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind? Even the great Muhammad would likely have felt anger in the face of such suffering.**
 
 
 
