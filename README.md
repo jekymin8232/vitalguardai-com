@@ -78,6 +78,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **I am neither Jesus nor the Buddha. I respect and admire Muhammad, and I believe Islam is a truly great religion. One of the reasons is the strong tradition of hospitality and respect shown toward guests, which I find deeply admirable. In my view, a religion that sincerely honors and treats guests with kindness reflects a great moral value.**
 
+## Burnout brings an endless sense of despair.
 ### I cannot simply overcome this kind of suffering without struggle, because I am only human.
 ### I am only a fragile human being.
 
