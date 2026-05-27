@@ -9,6 +9,8 @@
 ## I like Emmanuel Adebayor.
 **He grew up in extreme poverty and spent his childhood living in a home without electricity or even a proper toilet. He could not even walk properly until the age of four.**
 
+**I am not a special person. Some people are talented at football, some are talented at design and engineering, and others are gifted in art. Every person has their own field in which they excel, and anyone can become world-class in their own way.**
+
 **Let me ask the opposite question: is there any guarantee that malicious code can be detected with 100% certainty? Wouldn’t it be far more efficient to verify that the code is inherently safe instead? “If the code cannot be verified as safe, then it should be treated as malicious.” Wouldn’t that ultimately be a far more trustworthy standard for software security?**
 
 # Developer Philosophy: Morgan J. (Gyu-min Jeon)
