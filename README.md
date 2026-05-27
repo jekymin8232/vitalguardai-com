@@ -93,9 +93,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 ## Whoever believes in Allah and the Last Day should honor their guest.
 ### I created cockroach-survival AI because, in many ways, I see myself as a cockroach survivor.
-**People can become good friends only when they treat each other with kindness and respect.**
-**After enduring severe hardship for ten years, burnout inevitably begins to set in.**
-**Burnout brings immense suffering because it slowly eats away at a person’s soul.**
+**People can truly become good friends only when they treat one another with kindness and respect. After enduring severe hardship for over ten years, burnout becomes almost inevitable. Burnout brings profound suffering because it slowly consumes a person’s soul.**
 
 <img width="503" height="351" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
 
