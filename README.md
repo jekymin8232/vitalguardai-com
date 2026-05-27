@@ -148,6 +148,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 # Humanity is strong and great. We can do it.
 <img width="396" height="259" alt="아기" src="https://github.com/user-attachments/assets/065dbf82-f84d-488b-9ee9-608776591f6c" />
+
 ### Humanity possesses something that AI does not: an indomitable spirit.
 
 
