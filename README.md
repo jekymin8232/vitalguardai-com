@@ -26,9 +26,6 @@
 ## Is there any guarantee that malicious code can be detected with certainty?
 ### Any code that cannot be directly inspected and verified with my own eyes should be treated as potentially malicious. Only then can true security be guaranteed.
 
-
-
-
 ## Open-Source Developer · Humanitarian AI · M-Corp Ethical AI | [Mcorpai.org](https://mcorpai.org/) 
 **My email address is available in my personal laboratory.**
 
@@ -79,6 +76,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 **I am neither Jesus nor the Buddha. I respect and admire Muhammad, and I believe Islam is a truly great religion. One of the reasons is the strong tradition of hospitality and respect shown toward guests, which I find deeply admirable. In my view, a religion that sincerely honors and treats guests with kindness reflects a great moral value.**
 
 ### Guests should be treated well, because any guest can become a friend.
+### A meaningful connection and a bitter relationship can be separated by only the smallest difference.
 
 ## Burnout brings an endless sense of despair.
 ### I cannot simply overcome this kind of suffering without struggle, because I am only human.
