@@ -4,6 +4,8 @@
 
 **What I mean here is not the bricklayers (coders), but the architects (designers and system architects)**
 
+**Flashiness can easily collapse, but simplicity remains strong even after a thousand years.**
+
 ### My Perspective on Code “A football is fair to everyone. Code is fair to everyone as well.”
 **Football and code have something in common. Even people from poor backgrounds can become excellent at football and coding. Football and code are fair to everyone, and they are open to everyone as well.**
 ### In football, fundamentals are essential. In coding, vanilla fundamentals matter just as much.
