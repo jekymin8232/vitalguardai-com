@@ -74,7 +74,11 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ## I do not work for South Korea. I work for people around the world.
 **I received no support from anyone and continued my AI research while working as a contract employee. My monthly salary is approximately $1,500. Considering that South Korea’s GDP per capita is around $36,000, a contract worker earning $1,500 per month is often left with barely $100 after basic living expenses.**
 
-**Even with only $100 remaining each month, I refused to give up on AI research. In truth, burnout had already become inevitable.Burnout leads to a devastating sense of helplessness, resentment toward life itself, and even deep disillusionment with South Korea. I am neither Jesus nor the Buddha. I cannot simply overcome this kind of suffering without struggle, because I am only human.**
+**Even with only $100 remaining each month, I refused to give up on AI research. In truth, burnout had already become inevitable.Burnout leads to a devastating sense of helplessness, resentment toward life itself, and even deep disillusionment with South Korea.**
+
+**I am neither Jesus nor the Buddha. I respect and admire Muhammad, and I believe Islam is a truly great religion. One of the reasons is the strong tradition of hospitality and respect shown toward guests, which I find deeply admirable. In my view, a religion that sincerely honors and treats guests with kindness reflects a great moral value.**
+
+### I cannot simply overcome this kind of suffering without struggle, because I am only human.
 
 **Yet I still chose not to quit, because I believe that economic hardship can sometimes allow a person to genuinely understand and connect with the suffering of refugees and the poor.**
 
