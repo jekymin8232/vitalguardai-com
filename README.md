@@ -134,8 +134,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ## Emmanuel Adebayor is one of Togo’s greatest football players. 
 ### A poor country is not necessarily small-minded, and a wealthy country is not necessarily great in character. Every nation is shaped by the kind of leaders it has. In that regard, all countries are the same.
 
-
-
+## Burnout is inevitable. Even Bill Gates would likely have struggled in an environment like this.
+<img width="331" height="452" alt="최악이다" src="https://github.com/user-attachments/assets/d54ebe5b-6abf-4b86-882e-7e9a63aef7b7" />
 
 
 
