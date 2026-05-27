@@ -1,4 +1,5 @@
 # The Great $100 "Fundamentals matter most"
+## Fundamentals never collapse.
 ### My Perspective on Code “A football is fair to everyone. Code is fair to everyone as well.”
 **Football and code have something in common. Even people from poor backgrounds can become excellent at football and coding. Football and code are fair to everyone, and they are open to everyone as well.**
 ### In football, fundamentals are essential. In coding, vanilla fundamentals matter just as much.
