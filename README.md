@@ -1,3 +1,6 @@
+# “The Great $100.”
+### Some people spend $100 on champagne. Others use $100 to build an AI that saves lives.
+
 **Let me ask the opposite question: is there any guarantee that malicious code can be detected with 100% certainty? Wouldn’t it be far more efficient to verify that the code is inherently safe instead? “If the code cannot be verified as safe, then it should be treated as malicious.” Wouldn’t that ultimately be a far more trustworthy standard for software security?**
 
 # Developer Philosophy: Morgan J. (Gyu-min Jeon)
@@ -111,9 +114,6 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **Ultimately, humanoid AI may fail where cockroach-survival AI endures. Cockroaches can survive even in places where everyone else has given up.**
 
-### “The Great $100.”
-
-## Some people spend $100 on champagne. Others use $100 to build an AI that saves lives.
 
 
 
