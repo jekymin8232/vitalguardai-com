@@ -111,6 +111,10 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **Ultimately, humanoid AI may fail where cockroach-survival AI endures. Cockroaches can survive even in places where everyone else has given up.**
 
+### “The Great $100.”
+
+## Some people spend $100 on champagne. Others use $100 to build an AI that saves lives.
+
 
 
 
