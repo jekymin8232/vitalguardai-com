@@ -80,7 +80,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ### Guests should be treated well, because any guest can become a friend.
 ### A meaningful connection and a bitter relationship can be separated by only the smallest difference.
 
-## Burnout brings an endless sense of despair.
+# Burnout brings an endless sense of despair.
 ### I cannot simply overcome this kind of suffering without struggle, because I am only human.
 ### I am only a fragile human being.
 
