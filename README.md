@@ -146,7 +146,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **And I am now in my mid-40s. South Korea may have abandoned me, but the talent I possess can still be used for another 55 years, because human life can reach 100 years. From this point on, I want to work for people all around the world. People around the world will recognize and value the abilities I have, because humanity is great, and there are many people who possess the generosity to respect others regardless of their background.**
 
-### Humanity is strong and great. We can do it.
+# Humanity is strong and great. We can do it.
 
 
 
