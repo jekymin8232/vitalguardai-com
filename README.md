@@ -71,7 +71,13 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ### I am an AI researcher maintaining a fully independent position.
 **Although I am a developer from South Korea, I will work for the public good of people around the world. There can be no diplomatic conflict with South Korea. I have not received even a single dollar of support from the Korean government. I am a fully independent researcher and have carried out all of my work without assistance from South Korea. I owe nothing to the Korean government. I did all of this entirely on my own.**
 
-### I do not work for South Korea. I work for people around the world.
+## I do not work for South Korea. I work for people around the world.
+**I received no support from anyone and continued my AI research while working as a contract employee. My monthly salary is approximately $1,500. Considering that South Korea’s GDP per capita is around $36,000, a contract worker earning $1,500 per month is often left with barely $100 after basic living expenses.**
+
+**Even with only $100 remaining each month, I refused to give up on AI research. In truth, burnout had already become inevitable. Yet I still chose not to quit, because I believe that economic hardship can sometimes allow a person to genuinely understand and connect with the suffering of refugees and the poor.**
+
+**A person earning $10 million a year cannot truly understand the hardships faced by the impoverished and displaced.**
+
 
 
 
