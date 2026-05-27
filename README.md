@@ -8,7 +8,7 @@
 
 <img width="308" height="182" alt="엠바누엘 아데바요르" src="https://github.com/user-attachments/assets/87d126b6-1222-434b-a694-232d73e6e591" />
 
-## I like Emmanuel Adebayor.
+## I like Emmanuel Adebayor. I like Emmanuel Adebayor more than Son Heung-min.
 **He grew up in extreme poverty and spent his childhood living in a home without electricity or even a proper toilet. He could not even walk properly until the age of four.**
 
 **Some people are talented at football, some are talented at design and engineering, and others are gifted in art. Every person has their own field in which they excel, and anyone can become world-class in their own way.**
