@@ -75,6 +75,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 # I am not a god. I was not born in a manger.
 ### Developing AI with only $100 sounds almost impossible.
+### However, I built an AI with only $100.
 
 **I am neither Jesus nor the Buddha. I respect and admire Muhammad, and I believe Islam is a truly great religion. One of the reasons is the strong tradition of hospitality and respect shown toward guests, which I find deeply admirable. In my view, a religion that sincerely honors and treats guests with kindness reflects a great moral value.**
 
