@@ -129,7 +129,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ## Whoever believes in Allah and the Last Day should honor their guest.
 **Cristiano Ronaldo views Islam positively because of the culture of hospitality and the respectful treatment of guests.**
 
-<img width="500" height="750" alt="호날두" src="https://github.com/user-attachments/assets/b164c2a1-b48e-41a5-b5f5-89f0f50b25c2" />
+<img width="250" height="375" alt="호날두" src="https://github.com/user-attachments/assets/b164c2a1-b48e-41a5-b5f5-89f0f50b25c2" />
 
 
 
