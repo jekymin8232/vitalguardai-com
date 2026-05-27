@@ -150,9 +150,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 <img width="396" height="259" alt="아기" src="https://github.com/user-attachments/assets/065dbf82-f84d-488b-9ee9-608776591f6c" />
 
 ### Humanity possesses something that AI does not: an indomitable spirit.
-**Humanity’s indomitable spirit has the power to build a better civilization. This is because it is an innate ability possessed by human beings. Humanity must move forward together. If someone falls behind, we must move forward together with them. That is what civilization truly means.**
-
-### Humanity has always moved forward by pioneering new frontiers. Now, we must pioneer a future of coexistence.
+**Humanity’s indomitable spirit has the power to build a better civilization. This is because it is an innate ability possessed by human beings. Humanity must move forward together. If someone falls behind, we must move forward together with them. That is what civilization truly means. Humanity has always moved forward by pioneering new frontiers. Now, we must pioneer a future of coexistence.**
 
 
 
