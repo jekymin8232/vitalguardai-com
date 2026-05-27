@@ -91,9 +91,9 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **“Yes. I can leave South Korea behind. The reason is not for my own benefit, but because I want to use the abilities I have for work that can help people around the world. If talent is left to decay and go unused, then one must be willing to leave even their homeland behind. Only then can more lives be saved.”**
 
-<img width="348" height="270" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
+<img width="503" height="351" alt="1" src="https://github.com/user-attachments/assets/675544d2-5241-41ed-baeb-b36020407bb4" />
 
-### This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind? Even the great Muhammad would likely have felt anger in the face of such suffering.
+**This place is the foundation of my life, where I earn $1,500 a month. Is there anyone who has the right to cast stones at me? Is there anyone who would resent my decision to leave South Korea behind? Even the great Muhammad would likely have felt anger in the face of such suffering.**
 
 
 
