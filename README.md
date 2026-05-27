@@ -3,7 +3,7 @@
 
 <img width="441" height="260" alt="엠바누엘 아데바요르" src="https://github.com/user-attachments/assets/87d126b6-1222-434b-a694-232d73e6e591" />
 
-## I like Emmanuel Adebayor.
+# I like Emmanuel Adebayor.
 **He grew up in extreme poverty and spent his childhood living in a home without electricity or even a proper toilet. He could not even walk properly until the age of four.**
 
 **Let me ask the opposite question: is there any guarantee that malicious code can be detected with 100% certainty? Wouldn’t it be far more efficient to verify that the code is inherently safe instead? “If the code cannot be verified as safe, then it should be treated as malicious.” Wouldn’t that ultimately be a far more trustworthy standard for software security?**
