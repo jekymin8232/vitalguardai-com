@@ -192,5 +192,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ### Talent capable of saving the world is worth far more than just $1,500 a month.
 ### Do you think burnout will happen or not?
 
+**South Korea will likely deny it while presenting various statistics and data. Talented people are better off working in the United States or Europe, because the United States and Europe do not deny these realities. Truly advanced countries do not deny reality. They acknowledge it.**
+
 
 
