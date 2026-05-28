@@ -277,5 +277,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **A massive vision worth $100 billion is easy to fail, but a small vision worth $1,000 is far less likely to fail.**
 
+### I am not a coder. I am an architect.
+
 
 
