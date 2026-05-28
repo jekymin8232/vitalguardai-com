@@ -48,7 +48,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 <img width="222" height="234" alt="로빈후드" src="https://github.com/user-attachments/assets/c68319b7-a791-47c1-8301-693eb5bcabc0" />
 
-### Robin Hood is not the villain. The real villains are the newly rich who never learned how to give back.
+### Robin Hood is not the villain. The real villains are the newly rich who never learned to give back.
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
