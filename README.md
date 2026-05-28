@@ -1,4 +1,4 @@
-## GitHub believes in freedom of expression.
+# GitHub believes in freedom of expression.
 **Why are people willing to spend so much on the pets they love, yet unwilling to invest in the code they depend on?
 What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World."**
 
