@@ -27,7 +27,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **Even the miracle of the loaves and fishes was not a free lunch. Judas betrayed his teacher for thirty pieces of silver. In many ways, that was an ancient form of a supply chain attack.**
 
-**‘Free’ ultimately means that no one takes responsibility.**
+**People should not become too obsessed with free things. There is no such thing as a truly free lunch in this world. ‘Free’ ultimately means that no one takes responsibility.**
 
 ### “The Devil Wears Prada.”
 
