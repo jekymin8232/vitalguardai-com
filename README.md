@@ -1,5 +1,5 @@
 **Why are people willing to spend so much on the pets they love, yet unwilling to invest in the code they depend on?
-What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World.**
+What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World."**
 
 <img width="190" height="213" alt="치와아ㅗ" src="https://github.com/user-attachments/assets/0a07d9b0-cf95-4dd8-bc6b-97fc6f35b09a" />
 
