@@ -1,6 +1,7 @@
 ### A Purely Personal Statement on Burnout: Reflections on Supply Chain Attacks
 I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha, and Muhammad — were truly able to overcome it.**
 
+## Open-source developers are not unpaid laborers.
 **Open-source developers are not saints. They need to make a living too. They also have families they love, and they too have the right to live a good life. Supply chain attacks will become more and more frequent, because “free” comes with a heavy responsibility. In the end, those who rely on free software must also bear the responsibility that comes with using it.**
 
 ### There is one famous saying known throughout history:
