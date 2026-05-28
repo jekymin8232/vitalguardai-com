@@ -35,6 +35,8 @@ What is the name of your beloved pet? Is it Poppy? The code you created is nothi
 
 **For reference, even if you deposit $1 billion in Switzerland, they may not pay you interest — they may charge you fees instead. Why? Because Swiss vaults are trusted for their security. The newly rich try to save money and end up losing $10 billion to hacking, while the truly wealthy willingly pay a $100 million fee to protect $100 billion.**
 
+# Supply chain attacks will become even more frequent.
+
 ### As AI advances, supply chain attacks will become easier and more frequent.
 **“El Dorado, the island of gold, is supply chain attacks. Black hat hackers will never overlook it.”**
 
