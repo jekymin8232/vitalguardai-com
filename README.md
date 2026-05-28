@@ -4,7 +4,7 @@
 
 ### There is one famous saying known throughout history:
 
-### “There is no such thing as a truly free lunch.”
+## “There is no such thing as a truly free lunch.”
 
 **Only after losing a billion dollars to a supply chain attack do people finally realize that there is no such thing as a free lunch.**
 
