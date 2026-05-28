@@ -35,6 +35,8 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **For reference, even if you deposit $1 billion in Switzerland, they may not pay you interest — they may charge you fees instead. Why? Because Swiss vaults are trusted for their security. The newly rich try to save money and end up losing $10 billion to hacking, while the truly wealthy willingly pay a $100 million fee to protect $100 billion.**
 
+### As AI continues to advance, supply chain attacks will inevitably become easier and more frequent.
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
