@@ -202,6 +202,10 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **For example, if AI-driven efficiency leads to the mass dismissal of workers, there will eventually be fewer people left to consume and participate in the economy. AI itself does not consume. When the people capable of consumption disappear, the entire system ultimately collapses together.**
 
+**AI is an excellent tool. The real problem arises when it is abused by capitalists. Consumption is driven by human beings, not by AI. If the people who consume disappear, profits will ultimately decline as well, and in the end, even capitalists may be remembered by history as those responsible for the consequences.**
+
+### A delicious pie grows bigger when it is shared together.
+
 
 
 
