@@ -2,6 +2,7 @@
 What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World.**
 
 <img width="190" height="213" alt="치와아ㅗ" src="https://github.com/user-attachments/assets/0a07d9b0-cf95-4dd8-bc6b-97fc6f35b09a" />
+
 **People easily spend $100 on the pets they love, yet hesitate to spend even $1 on the code they depend on.**
 
 ### A Purely Personal Statement on Burnout: Reflections on Supply Chain Attacks
