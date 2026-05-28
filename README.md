@@ -24,6 +24,8 @@ What is the name of your beloved pet? Is it Poppy? The code you created is nothi
 # The Devil Wears Prada.
 ### If you do not respect people, the consequences will eventually return to you in full. If a devil that refuses to respect people meets destruction, it is ultimately the result of its own actions.
 
+<img width="157" height="212" alt="처키" src="https://github.com/user-attachments/assets/80506962-75a9-4f59-9d05-340b53b8b34e" />
+
 ## Justice always prevails.
 ### The devil drains even the souls of developers. But in the end, it is the devil that falls.
 
