@@ -2,13 +2,13 @@
 **Why are people willing to spend so much on the pets they love, yet unwilling to invest in the code they depend on?
 What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World."**
 
-<img width="152" height="171" alt="치와아ㅗ" src="https://github.com/user-attachments/assets/0a07d9b0-cf95-4dd8-bc6b-97fc6f35b09a" />
+<img width="182" height="205" alt="치와아ㅗ" src="https://github.com/user-attachments/assets/0a07d9b0-cf95-4dd8-bc6b-97fc6f35b09a" />
 
 ### Grrr... woof woof woof!
 
 **People easily spend $100 on the pets they love, yet hesitate to spend even $1 on the code they depend on. Just as your beloved pet is precious, your code is precious too. Please love and care for your code. Please don't turn the code you love into abandoned code like a stray dog.**
 
-<img width="163" height="85" alt="유기견" src="https://github.com/user-attachments/assets/589f33d9-967c-4066-8ef1-751e3b97c132" />
+<img width="195" height="102" alt="유기견" src="https://github.com/user-attachments/assets/589f33d9-967c-4066-8ef1-751e3b97c132" />
 
 ## A Personal Statement on Burnout: Reflections on Supply Chain Attacks
 I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha, and Muhammad — were truly able to overcome it.**
@@ -20,7 +20,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 ### “There is no such thing as a truly free lunch.”
 **The reality of “free” is that, in the end, no one is truly responsible for maintaining it. Only after losing a billion dollars to a supply chain attack do people finally realize that there is no such thing as a free lunch. Even Jesus Christ, Muhammad, and the Buddha did not believe in free lunches, because every free lunch ultimately carries a heavy price.**
 
-<img width="241" height="254" alt="예수 그리스도" src="https://github.com/user-attachments/assets/7a9c8197-6e8d-4a14-8a2d-e06efaaffe79" />
+<img width="156" height="165" alt="예수 그리스도" src="https://github.com/user-attachments/assets/7a9c8197-6e8d-4a14-8a2d-e06efaaffe79" />
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
