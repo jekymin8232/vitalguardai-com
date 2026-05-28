@@ -244,7 +244,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 **AI is an excellent tool. The real problem arises when it is abused by capitalists. Consumption is driven by human beings, not by AI. If the people who consume disappear, profits will ultimately decline as well, and in the end, even capitalists may be remembered by history as those responsible for the consequences.**
 
 ### A delicious pie grows bigger when it is shared together.
+<img width="183" height="275" alt="로빈후드" src="https://github.com/user-attachments/assets/113a18be-89f5-4e5c-80e5-c83c1090c427" />
 
-
+### A world filled with Robin Hoods is never a truly good world.
 
 
