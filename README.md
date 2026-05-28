@@ -253,5 +253,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **You are already wealthy. Do you wish to become richer than Rockefeller? If so, respect the people who drive consumption. In the end, it is people who consume.**
 
+**The more wealthy people there are, the stronger purchasing power becomes. If you want to become even wealthier, you must help create more wealthy people.**
+
 
 
