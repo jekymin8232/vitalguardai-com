@@ -31,6 +31,8 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **The devil that exploits developer burnout may one day cry out after causing billions of dollars in damage through supply chain attacks, yet no one will ultimately dress the devil in Prada. Supply chain attacks will likely become more frequent in the future, because from a security engineering perspective, attacks are often relatively easy, while defense is extremely difficult.**
 
+**Supply chain attacks can be as easy as picking up fallen apples from the ground, while defending against them can be as difficult as reaching for fresh apples high up in a tall tree without a ladder.**
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
