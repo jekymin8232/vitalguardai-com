@@ -255,5 +255,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **The more wealthy people there are, the stronger purchasing power becomes. If you want to become even wealthier, you must help create more wealthy people.**
 
+**Population growth is not necessarily a misfortune — it can be a blessing. As the population increases, the chances of extraordinary geniuses being born also rise, and those geniuses may help turn Earth into a more blessed and prosperous world.**
+
 
 
