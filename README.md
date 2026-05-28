@@ -40,8 +40,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 <img width="139" height="211" alt="인디아나 존스" src="https://github.com/user-attachments/assets/2903f61e-fc40-43e1-acd4-fcd1e7fb52f2" />
 
-### The true Indiana Joneses are black hat hackers.
-### They are drawn to dangerous adventures. Because the rewards are undeniable.
+### The true Indiana Joneses are black hat hackers. They are drawn to dangerous adventures. Because the rewards are undeniable.
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
