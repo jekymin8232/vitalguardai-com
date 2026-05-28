@@ -21,7 +21,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 ### “There is no such thing as a truly free lunch.”
 **The reality of “free” is that, in the end, no one is truly responsible for maintaining it. Only after losing a billion dollars to a supply chain attack do people finally realize that there is no such thing as a free lunch. Even Jesus Christ and the Buddha did not believe in free lunches, because every free lunch ultimately carries a heavy price.**
 
-## “The Devil Wears Prada.”
+# The Devil Wears Prada.
 ### If you do not respect people, the consequences will eventually return to you in full.
 
 **The devil that exploits developer burnout may one day cry out after causing billions of dollars in damage through supply chain attacks, yet no one will ultimately dress the devil in Prada. Supply chain attacks will likely become more frequent in the future, because from a security engineering perspective, attacks are often relatively easy, while defense is extremely difficult.**
