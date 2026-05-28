@@ -56,7 +56,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 <img width="152" height="224" alt="일론머스크" src="https://github.com/user-attachments/assets/5bdb4cb6-d518-4026-8452-f15f2aa2182c" />
 
-**Personally, I admire Elon Musk because there is a lot to learn from him.**
+**Personally, I admire Elon Musk because there is a lot to learn from him. Elon Musk, You are my role model.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
