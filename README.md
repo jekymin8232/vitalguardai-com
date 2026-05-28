@@ -12,7 +12,7 @@ What is the name of your beloved pet? Is it Poppy? The code you created is nothi
 <img width="214" height="112" alt="유기견" src="https://github.com/user-attachments/assets/589f33d9-967c-4066-8ef1-751e3b97c132" />
 
 ## A Personal Statement on Burnout: Reflections on Supply Chain Attacks
-I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha — were truly able to overcome it.**
+**I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha — were truly able to overcome it.**
 
 ### "Freedom is not free" Open-source developers are not unpaid laborers. 
 **Open-source developers are not saints. They need to make a living too. They also have families they love, and they too have the right to live a good life. Supply chain attacks will become more and more frequent, because “free” comes with a heavy responsibility. In the end, those who rely on free software must also bear the responsibility that comes with using it. Open-source code is not simply an act of goodwill — it comes with profound responsibility.**
@@ -22,8 +22,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 **The reality of “free” is that, in the end, no one is truly responsible for maintaining it. Only after losing a billion dollars to a supply chain attack do people finally realize that there is no such thing as a free lunch. Even Jesus Christ and the Buddha did not believe in free lunches, because every free lunch ultimately carries a heavy price.**
 
 # The Devil Wears Prada.
-### If you do not respect people, the consequences will eventually return to you in full.
-### If a devil that refuses to respect people meets destruction, it is ultimately the result of its own actions.
+### If you do not respect people, the consequences will eventually return to you in full. If a devil that refuses to respect people meets destruction, it is ultimately the result of its own actions.
 
 **The devil that exploits developer burnout may one day cry out after causing billions of dollars in damage through supply chain attacks, yet no one will ultimately dress the devil in Prada. Supply chain attacks will likely become more frequent in the future, because from a security engineering perspective, attacks are often relatively easy, while defense is extremely difficult.**
 
