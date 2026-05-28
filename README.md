@@ -38,6 +38,11 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 ### As AI advances, supply chain attacks will become easier and more frequent.
 **“El Dorado, the island of gold, is supply chain attacks. Black hat hackers will never overlook it.”**
 
+<img width="279" height="423" alt="인디아나 존스" src="https://github.com/user-attachments/assets/2903f61e-fc40-43e1-acd4-fcd1e7fb52f2" />
+
+### The true Indiana Joneses are black hat hackers.
+### They are drawn to dangerous adventures. Because the rewards are undeniable.
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
