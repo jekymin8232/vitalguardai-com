@@ -1,6 +1,6 @@
 **A purely personal statement about burnout. I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha, and Muhammad — were truly able to overcome it.**
 
-**Open-source developers are not saints. They need to make a living too.**
+**Open-source developers are not saints. They need to make a living too. They also have families they love, and they too have the right to live a good life.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
