@@ -202,6 +202,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **There is no free lunch in this world. Lavish hospitality at a five-star hotel may leave behind debt, but a simple meal in a humble rural village leaves behind lasting happiness.**
 
+**Emotional debt can make people feel uncomfortable. When you place someone under emotional obligation, they become the debtor and you become the creditor. Once the debtor feels the debt has been repaid, they may never wish to see the creditor again. In many cases, it is better not to burden others with a sense of obligation or pressure. That is how genuine friendships can grow.**
+
 ## Emmanuel Adebayor is one of Togo’s greatest football players. 
 ### A poor country is not necessarily small-minded, and a wealthy country is not necessarily great in character. Every nation is shaped by the kind of leaders it has. In that regard, all countries are the same.
 
