@@ -50,9 +50,9 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 ## All humanity has the right to live in happiness.
 ### Robin Hood is not the villain. The real villains are the rich who never learned to give back.
-**Greed and selfishness lead to destruction. Every empire in history has ultimately fallen because of greed. Human civilization can achieve true prosperity only when people coexist and thrive together. All humanity must prosper together. Every human being is equal, and every human life is precious. The newly rich should learn how to love, not just how to pursue sex. Sexual desire may satisfy the body, but it cannot satisfy the soul. The newly rich should also learn how to give back to society. That is how their children learn to respect humanity and care for others. You can tell a lot about children by looking at their parents.** 
+**Greed and selfishness lead to destruction. Every empire in history has ultimately fallen because of greed. Human civilization can achieve true prosperity only when people coexist and thrive together. All humanity must prosper together. Every human being is equal, and every human life is precious. The newly rich should learn how to love, not just how to pursue sex. Sexual desire may satisfy the body, but it cannot satisfy the soul. The newly rich should also learn how to give back to society. That is how their children learn to respect humanity and care for others.** 
 
-**The children of the newly rich should not learn about sexual desire before they learn compassion and respect for others.**
+**The children of the newly rich should not learn about sexual desire before they learn compassion and respect for others. You can tell a lot about children by looking at their parents.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
