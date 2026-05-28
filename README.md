@@ -196,6 +196,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 <img width="250" height="375" alt="호날두" src="https://github.com/user-attachments/assets/b164c2a1-b48e-41a5-b5f5-89f0f50b25c2" />
 
+**A South Korean YouTuber once traveled through rural areas of Pakistan. Watching local people offer tea and snacks to a complete stranger from East Asia made me feel that Pakistan is a country with genuine manners and hospitality. They expected nothing in return from the Asian traveler. A country that treats its guests well is a country that understands respect and courtesy. This should not be denied.**
+
 ## Emmanuel Adebayor is one of Togo’s greatest football players. 
 ### A poor country is not necessarily small-minded, and a wealthy country is not necessarily great in character. Every nation is shaped by the kind of leaders it has. In that regard, all countries are the same.
 
