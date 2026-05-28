@@ -188,5 +188,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **Humanity may have different religions and cultures, but we are all one family. The ability to feel joy and sorrow is something all human beings share. We must move forward together for shared prosperity. That is the true meaning of civilization.**
 
+### The kind of talent that can save the world is worth far more than $1,500.
+
 
 
