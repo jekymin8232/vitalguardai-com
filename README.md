@@ -35,7 +35,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **For reference, even if you deposit $1 billion in Switzerland, they may not pay you interest — they may charge you fees instead. Why? Because Swiss vaults are trusted for their security. The newly rich try to save money and end up losing $10 billion to hacking, while the truly wealthy willingly pay a $100 million fee to protect $100 billion.**
 
-### As AI continues to advance, supply chain attacks will inevitably become easier and more frequent.
+### As AI advances, supply chain attacks will become easier and more frequent.
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
