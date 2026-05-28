@@ -1,5 +1,4 @@
-### A purely personal statement about burnout. I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life.
-
+**A purely personal statement about burnout. I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life.**
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
