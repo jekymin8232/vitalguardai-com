@@ -24,7 +24,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **Even the miracle of the loaves and fishes was not a free lunch.**
 
-**“‘Free’ ultimately means that no one takes responsibility.”**
+**‘Free’ ultimately means that no one takes responsibility.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
