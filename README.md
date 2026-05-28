@@ -41,7 +41,10 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 <img width="166" height="253" alt="인디아나 존스" src="https://github.com/user-attachments/assets/2903f61e-fc40-43e1-acd4-fcd1e7fb52f2" />
 
 ## Indiana Jones and the Island of Gold, El Dorado.
-**The true Indiana Joneses are black hat hackers. They are drawn to dangerous adventures. Because the rewards are undeniable. Supply chain attacks can steal billions of dollars without guns or knives, making them an extremely low-risk form of crime for attackers. Above all, it is extremely difficult to even identify who stole the billions of dollars. As AI continues to advance, supply chain attacks will become far easier, more sophisticated, and much harder to detect.**
+**The true Indiana Joneses are black hat hackers. They are drawn to dangerous adventures. Because the rewards are undeniable. Supply chain attacks can steal billions of dollars without guns or knives, making them an extremely low-risk form of crime for attackers. Above all, it is extremely difficult to even identify who stole the billions of dollars. As AI continues to advance, supply chain attacks will become far easier, more sophisticated, and much harder to detect. As AI continues to advance, supply chain attacks may no longer require an entire team of hackers. Even a single individual could potentially carry them out. In time, such capabilities may become accessible even to ordinary people.**
+
+## a gold rush mentality
+**“If $10 million were deposited into their bank account and no one would ever know, what percentage of the world’s population would choose to journey to El Dorado, the island of gold?”**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
