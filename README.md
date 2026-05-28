@@ -1,6 +1,4 @@
-**“Cockroach-Survival AI” Technical Documentation** https://vitalguardai.com/Code_Manual_Code_Map_V43_8.html 
-
-**The text below is a declaration explaining the mindset and philosophy behind why this AI was created.**
+**“Cockroach-Survival AI” Technical Documentation https://vitalguardai.com/Code_Manual_Code_Map_V43_8.html The text below is a declaration explaining the mindset and philosophy behind why this AI was created.**
 
 **GitHub respects freedom of expression.**
 
