@@ -1,7 +1,7 @@
-Why are people willing to spend so much on the pets they love, yet unwilling to invest in the code they depend on?
-What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World.
+**Why are people willing to spend so much on the pets they love, yet unwilling to invest in the code they depend on?
+What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World.**
 
-<img width="240" height="271" alt="치와아ㅗ" src="https://github.com/user-attachments/assets/0a07d9b0-cf95-4dd8-bc6b-97fc6f35b09a" />
+<img width="144" height="162" alt="치와아ㅗ" src="https://github.com/user-attachments/assets/0a07d9b0-cf95-4dd8-bc6b-97fc6f35b09a" />
 
 ### A Purely Personal Statement on Burnout: Reflections on Supply Chain Attacks
 I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha, and Muhammad — were truly able to overcome it.**
