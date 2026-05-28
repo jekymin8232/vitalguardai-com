@@ -25,6 +25,8 @@ What is the name of your beloved pet? Is it Poppy? The code you created is nothi
 ### If you do not respect people, the consequences will eventually return to you in full. If a devil that refuses to respect people meets destruction, it is ultimately the result of its own actions.
 
 ## Justice always prevails.
+### The devil drains even the souls of developers. But in the end, it is the devil that falls.
+
 **The devil that exploits developer burnout may one day cry out after causing billions of dollars in damage through supply chain attacks, yet no one will ultimately dress the devil in Prada. Supply chain attacks will likely become more frequent in the future, because from a security engineering perspective, attacks are often relatively easy, while defense is extremely difficult.**
 
 **Supply chain attacks can be as easy as picking up fallen apples from the ground, while defending against them can be as difficult as reaching for fresh apples high up in a tall tree without a ladder.**
