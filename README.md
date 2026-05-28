@@ -49,7 +49,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 <img width="222" height="234" alt="로빈후드" src="https://github.com/user-attachments/assets/c68319b7-a791-47c1-8301-693eb5bcabc0" />
 
 ### Robin Hood is not the villain. The real villains are the rich who never learned to give back.
-**Greed and selfishness lead to destruction. Every empire in history has ultimately fallen because of greed. Human civilization can achieve true prosperity only when people coexist and thrive together.**
+**Greed and selfishness lead to destruction. Every empire in history has ultimately fallen because of greed. Human civilization can achieve true prosperity only when people coexist and thrive together. All humanity must prosper together. Every human being is equal, and every human life is precious.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
