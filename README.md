@@ -27,6 +27,10 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **‘Free’ ultimately means that no one takes responsibility.**
 
+### “The Devil Wears Prada.”
+
+**The devil that exploits developer burnout may one day cry out after causing billions of dollars in damage through supply chain attacks, yet no one will ultimately dress the devil in Prada. Supply chain attacks will likely become more frequent in the future, because from a security engineering perspective, attacks are often relatively easy, while defense is extremely difficult.**
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
