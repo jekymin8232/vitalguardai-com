@@ -2,6 +2,9 @@
 
 **Open-source developers are not saints. They need to make a living too. They also have families they love, and they too have the right to live a good life. Supply chain attacks will become more and more frequent, because “free” comes with a heavy responsibility. In the end, those who rely on free software must also bear the responsibility that comes with using it.**
 
+**There is one famous saying known throughout history:**
+**“There is no such thing as a truly free lunch.”**
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
