@@ -22,7 +22,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 <img width="156" height="165" alt="예수 그리스도" src="https://github.com/user-attachments/assets/7a9c8197-6e8d-4a14-8a2d-e06efaaffe79" />
 
-### the miracle of the loaves and fishes
+**Even the miracle of the loaves and fishes was not a free lunch.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
