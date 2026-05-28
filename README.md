@@ -54,6 +54,10 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **The children of the newly rich should not learn about sexual desire before they learn compassion and respect for others. You can tell a lot about children by looking at their parents.**
 
+<img width="152" height="224" alt="일론머스크" src="https://github.com/user-attachments/assets/5bdb4cb6-d518-4026-8452-f15f2aa2182c" />
+
+**Personally, I admire Elon Musk because there is a lot to learn from him.**
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
