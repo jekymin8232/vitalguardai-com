@@ -41,7 +41,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 <img width="166" height="253" alt="인디아나 존스" src="https://github.com/user-attachments/assets/2903f61e-fc40-43e1-acd4-fcd1e7fb52f2" />
 
 ## Indiana Jones and the Island of Gold, El Dorado.
-### The true Indiana Joneses are black hat hackers. They are drawn to dangerous adventures. Because the rewards are undeniable. Supply chain attacks can steal billions of dollars without guns or knives, making them an extremely low-risk form of crime for attackers. Above all, it is extremely difficult to even identify who stole the billions of dollars.
+**The true Indiana Joneses are black hat hackers. They are drawn to dangerous adventures. Because the rewards are undeniable. Supply chain attacks can steal billions of dollars without guns or knives, making them an extremely low-risk form of crime for attackers. Above all, it is extremely difficult to even identify who stole the billions of dollars. As AI continues to advance, supply chain attacks will become far easier, more sophisticated, and much harder to detect.**
 
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
