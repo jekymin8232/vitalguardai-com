@@ -265,7 +265,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **Wealthy people should invest far more in education in poorer countries. The next great genius may be living in poverty today.**
 
-### “For a Glorious Civilization”
+## For a Glorious Civilization
 
 **Cockroach-survival AI can survive even in the desert. Elon Musk dreams of developing Mars, but deserts on Earth are far easier to pioneer first. Deserts are not dead land.**
 
