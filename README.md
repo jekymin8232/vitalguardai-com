@@ -33,6 +33,8 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **Supply chain attacks can be as easy as picking up fallen apples from the ground, while defending against them can be as difficult as reaching for fresh apples high up in a tall tree without a ladder.**
 
+**For reference, even if you deposit $1 billion in Switzerland, they may not pay you interest — they may charge you fees instead. Why? Because Swiss vaults are trusted for their security.**
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
