@@ -190,6 +190,7 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 ### South Korea is not North Korea. South Korea’s GDP per capita is $36,000. 
 ### Talent capable of saving the world is worth far more than just $1,500 a month.
+### Do you think burnout will happen or not?
 
 
 
