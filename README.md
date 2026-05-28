@@ -25,9 +25,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 **Even Jesus Christ did not believe in taking things for free.**
 
-**Even the miracle of the loaves and fishes was not a free lunch.**
-
-**Judas betrayed his teacher for thirty pieces of silver. In many ways, that was an ancient form of a supply chain attack.**
+**Even the miracle of the loaves and fishes was not a free lunch. Judas betrayed his teacher for thirty pieces of silver. In many ways, that was an ancient form of a supply chain attack.**
 
 **‘Free’ ultimately means that no one takes responsibility.**
 
