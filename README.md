@@ -247,5 +247,5 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 <img width="183" height="275" alt="로빈후드" src="https://github.com/user-attachments/assets/113a18be-89f5-4e5c-80e5-c83c1090c427" />
 
 ## A world filled with Robin Hoods is never a truly good world.
-
+**Robin Hood is not the villain. The real villains are the greedy newly rich who never learned to give back.**
 
