@@ -1,7 +1,4 @@
-**GitHub respects freedom of expression. Freedom is the most important thing in the world.**
-
-**Freedom of expression, economic freedom, and physical freedom — all forms of freedom are precious.**
-
+**GitHub respects freedom of expression. Freedom is the most important thing in the world.Freedom of expression, economic freedom, and physical freedom — all forms of freedom are precious.**
 ## Why Does Software Fall Into Maintenance Hell?
 **Why are people willing to spend so much on the pets they love, yet unwilling to invest in the code they depend on?
 What is the name of your beloved pet? Is it Poppy? The code you created is nothing more than “Hello, World."**
