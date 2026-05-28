@@ -46,6 +46,10 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 ## a gold rush mentality
 **If $10 million were deposited into their bank account and no one would ever know, what percentage of the world’s population would choose to journey to El Dorado, the island of gold? There are nearly 9 billion people in the world, and many feel little to no guilt about taking and spending the wealth of the rich. They would likely see themselves as Robin Hood. Robin Hood cannot simply be seen as a villain. He is, above all, poor. If the newly rich had given generously to society, they would never have become Robin Hood figures. Robin Hood never steals from the poor.**
 
+<img width="222" height="234" alt="로빈후드" src="https://github.com/user-attachments/assets/c68319b7-a791-47c1-8301-693eb5bcabc0" />
+
+### Robin Hood is not the villain. The real villains are the newly rich who never learned how to give back.
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
