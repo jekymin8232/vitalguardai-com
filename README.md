@@ -3,6 +3,7 @@
 **Open-source developers are not saints. They need to make a living too. They also have families they love, and they too have the right to live a good life. Supply chain attacks will become more and more frequent, because “free” comes with a heavy responsibility. In the end, those who rely on free software must also bear the responsibility that comes with using it.**
 
 **There is one famous saying known throughout history:**
+
 **“There is no such thing as a truly free lunch.”**
 
 # The Great $100 "Fundamentals matter most"
