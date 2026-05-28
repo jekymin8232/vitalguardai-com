@@ -200,6 +200,8 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **The human heart is often more deeply moved by a simple cup of tea and a few snacks in a humble rural village than by luxurious treatment at a five-star hotel.**
 
+**There is no free lunch in this world. Lavish hospitality at a five-star hotel may leave behind debt, but a simple meal in a humble rural village leaves behind lasting happiness.**
+
 ## Emmanuel Adebayor is one of Togo’s greatest football players. 
 ### A poor country is not necessarily small-minded, and a wealthy country is not necessarily great in character. Every nation is shaped by the kind of leaders it has. In that regard, all countries are the same.
 
