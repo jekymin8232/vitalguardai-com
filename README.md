@@ -196,5 +196,12 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 ### A truly advanced country does not deny reality — it works to improve it.
 
+**There is a delicious pie. This pie can only grow when it is shared fairly and supported by proper compensation. If people try to monopolize the pie for their own gain, the pie will shrink, and in the end, everyone will suffer together.**
+
+**Coexistence and mutual prosperity are what matter most. Those who fall behind should be helped forward, and those who are wealthy should be willing to give back. That is how the delicious pie grows twofold, fivefold, tenfold, or even a hundredfold. When one person monopolizes the pie, everyone ultimately collapses together.**
+
+**For example, if AI-driven efficiency leads to the mass dismissal of workers, there will eventually be fewer people left to consume and participate in the economy. AI itself does not consume. When the people capable of consumption disappear, the entire system ultimately collapses together.**
+
+
 
 
