@@ -273,5 +273,9 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **Humanity can only achieve a glorious civilization by learning to pioneer and cultivate the deserts.**
 
+**Pioneering the desert does not have to begin with a grand vision. It can start with something traditional and small, such as simple agriculture. Cockroach-survival AI does not require enormous amounts of money. It can begin with nothing more than a single smartphone.**
+
+**A massive vision worth $100 billion is easy to fail, but a small vision worth $1,000 is far less likely to fail.**
+
 
 
