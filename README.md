@@ -249,3 +249,9 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 ## A world filled with Robin Hoods is never a truly good world.
 **Robin Hood is not the villain. The real villains are the greedy newly rich who never learned to give back. How many people do you think the greedy newly rich have harmed on their way to becoming wealthy? A world filled with Robin Hoods is not a good world. A good world is one filled with wealthy people who understand the virtue of sharing and giving back.**
 
+**AI does not consume. People do. If today’s wealthy want to become even wealthier, they must respect people, not just AI. Only then will purchasing power grow, allowing even greater prosperity.**
+
+**You are already wealthy. Do you wish to become richer than Rockefeller? If so, respect the people who drive consumption. In the end, it is people who consume.**
+
+
+
