@@ -38,7 +38,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 ### As AI advances, supply chain attacks will become easier and more frequent.
 **“El Dorado, the island of gold, is supply chain attacks. Black hat hackers will never overlook it.”**
 
-<img width="279" height="423" alt="인디아나 존스" src="https://github.com/user-attachments/assets/2903f61e-fc40-43e1-acd4-fcd1e7fb52f2" />
+<img width="139" height="211" alt="인디아나 존스" src="https://github.com/user-attachments/assets/2903f61e-fc40-43e1-acd4-fcd1e7fb52f2" />
 
 ### The true Indiana Joneses are black hat hackers.
 ### They are drawn to dangerous adventures. Because the rewards are undeniable.
