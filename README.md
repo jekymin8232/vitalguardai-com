@@ -257,5 +257,6 @@ Cockroach-survival intelligence can demonstrate a high level of intelligence usi
 
 **Population growth is not necessarily a misfortune — it can be a blessing. As the population increases, the chances of extraordinary geniuses being born also rise, and those geniuses may help turn Earth into a more blessed and prosperous world.**
 
+**Wealthy people should invest far more in education in poorer countries. The next great genius may be living in poverty today.**
 
 
