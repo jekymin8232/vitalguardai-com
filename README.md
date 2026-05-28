@@ -5,7 +5,7 @@ What is the name of your beloved pet? Is it Poppy? The code you created is nothi
 
 **People easily spend $100 on the pets they love, yet hesitate to spend even $1 on the code they depend on.**
 
-## A Purely Personal Statement on Burnout: Reflections on Supply Chain Attacks
+## A Personal Statement on Burnout: Reflections on Supply Chain Attacks
 I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha, and Muhammad — were truly able to overcome it.**
 
 ### "Freedom is not free" Open-source developers are not unpaid laborers. 
