@@ -8,7 +8,7 @@ What is the name of your beloved pet? Is it Poppy? The code you created is nothi
 
 **People easily spend $100 on the pets they love, yet hesitate to spend even $1 on the code they depend on. Just as your beloved pet is precious, your code is precious too. Please love and care for your code. Please don't turn the code you love into abandoned code like a stray dog.**
 
-<img width="195" height="102" alt="유기견" src="https://github.com/user-attachments/assets/589f33d9-967c-4066-8ef1-751e3b97c132" />
+<img width="214" height="112" alt="유기견" src="https://github.com/user-attachments/assets/589f33d9-967c-4066-8ef1-751e3b97c132" />
 
 ## A Personal Statement on Burnout: Reflections on Supply Chain Attacks
 I am nothing more than a fragile human being. But if you give up, you may end up living weakly for the rest of your life. Even if someone has great talent, burnout can come when they are unable to put that talent to use. Every supply chain attack that exists in the world ultimately targets developer burnout. It is like the whisper of a devil. The devil’s whisper is sweet. Perhaps only three people in history — Jesus Christ, the Buddha, and Muhammad — were truly able to overcome it.**
