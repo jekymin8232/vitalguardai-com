@@ -20,6 +20,8 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 ### “There is no such thing as a truly free lunch.”
 **The reality of “free” is that, in the end, no one is truly responsible for maintaining it. Only after losing a billion dollars to a supply chain attack do people finally realize that there is no such thing as a free lunch. Even Jesus Christ, Muhammad, and the Buddha did not believe in free lunches, because every free lunch ultimately carries a heavy price.**
 
+<img width="241" height="254" alt="예수 그리스도" src="https://github.com/user-attachments/assets/7a9c8197-6e8d-4a14-8a2d-e06efaaffe79" />
+
 # The Great $100 "Fundamentals matter most"
 ### Strong fundamentals never break down, no matter how much time passes.
 **Flashy techniques can collapse easily, but strong fundamentals endure. Building solid fundamentals is one of the core principles of design. Strong fundamentals can still be useful even after 100 years. Just as Roman architecture built a thousand years ago still stands today without collapsing. If the architects of ancient Rome were alive today, their value would likely be worth billions of dollars.** 
