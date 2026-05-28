@@ -23,9 +23,7 @@ I am nothing more than a fragile human being. But if you give up, you may end up
 
 <img width="171" height="181" alt="예수 그리스도" src="https://github.com/user-attachments/assets/7a9c8197-6e8d-4a14-8a2d-e06efaaffe79" />
 
-**Judas betrayed his teacher for thirty pieces of silver. In many ways, that was an ancient form of a supply chain attack.**
-
-**There is no such thing as a truly free lunch in this world. ‘Free’ ultimately means that no one takes responsibility.**
+**Judas betrayed his teacher for thirty pieces of silver. In many ways, that was an ancient form of a supply chain attack. There is no such thing as a truly free lunch in this world. ‘Free’ ultimately means that no one takes responsibility.**
 
 ### “The Devil Wears Prada.”
 
