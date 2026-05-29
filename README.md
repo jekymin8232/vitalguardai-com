@@ -79,6 +79,8 @@ If everyone is celebrating, someone must still stand watch.
 
 While others cheered for Korea's victories, I chose to serve and help defend the nation.
 
+<img width="300" height="168" alt="911" src="https://github.com/user-attachments/assets/4a6ac5d3-2584-4095-90f6-a13c712cd105" />
+
 ### My Republic of Korea Army service number was 02-71021175.
 
 ### I served in the 2nd Infantry Division of the Republic of Korea Army.
