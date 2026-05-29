@@ -44,6 +44,8 @@ I believe this is because South Korean politicians are cowardly.
 
 **Do not seek power for its own sake. Focus on the people you are meant to serve.**
 
+**Don't live like a monkey; live with the dignity and wisdom of a human being.**
+
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
 ### For information about the developer, please click the link below.
