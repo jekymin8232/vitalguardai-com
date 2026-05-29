@@ -81,6 +81,8 @@ This is simply a metaphor and a thought experiment about the value of open discu
 
 Of course, freedom can have its drawbacks and unintended consequences. However, those drawbacks should not be used as a justification for suppressing freedom.
 
+**Our Republic of Korea should be a model free and democratic nation.**
+
 ## Even imagination should not be controlled.
 
 I do not consider South Korean politicians to be particularly admirable. In my view, they tend to welcome words they like to hear, while in some cases using state authority to discourage or suppress speech they do not like to hear.
