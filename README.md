@@ -20,6 +20,8 @@
 
 **Once again, for now, please take this simply as an interesting hypothesis. No one can truly know what the future holds.**
 
+## The Spirit of Sharing
+
 **AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
 
 **AI should provide opportunities for everyone, especially for those who are poor. Everyone deserves a fair chance because we are all equal.**
