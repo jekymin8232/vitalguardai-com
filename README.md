@@ -1,4 +1,4 @@
-### AI Developer Profile
+### White-box AI Developer Profile
 
 In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side. 
 
