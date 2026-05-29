@@ -63,6 +63,10 @@ The story suggests that people often need a way to express concerns and speak op
 
 But what happens if the bamboo grove is cut down?
 
+South Korea once lost almost everything during the large-scale war known as the Korean War (1950–1953).
+
+### "Freedom is not free."
+
 This is simply a metaphor and a thought experiment about the value of open discussion in society.
 
 ## Even imagination should not be controlled.
