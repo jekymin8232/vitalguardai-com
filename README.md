@@ -5,8 +5,8 @@ In my view, South Korea cannot be described as a completely free society. Rather
 Freedom of expression in South Korea is somewhat limited. For example, content moderation and censorship do exist on online communities in practice.
 
 For reference, adults in South Korea generally do not have legal access to most online pornography. This is not to say that I personally like or consume pornography; I mention it only as an example of the extent of content regulation and censorship in the country.
-For information about the developer, please click the link below.
 
+For information about the developer, please click the link below.
 https://github.com/jekymin8232/mcorpai-net/blob/main/README.md
 
 **The following 10 principles are non-negotiable in my AI design philosophy:**
