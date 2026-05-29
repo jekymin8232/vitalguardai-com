@@ -14,6 +14,8 @@
 
 **If AI surpasses human intelligence, black-box systems may one day need their own scriptures. White-box AI is likely to become such a scripture. In other words, through white-box systems, future AI may be able to analyze and understand why humans created AI and what intentions and values were embedded in its design.**
 
+**Because black-box systems are already difficult for humans to interpret, if AI were ever to exceed human intelligence, we might eventually have to rely on something like a scripture—a transparent record of human values, intentions, and reasoning—to persuade or communicate with them.**
+
 **Of course, for now, please take this simply as an interesting thought experiment. No one truly knows what the future holds.**
 
 **AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
