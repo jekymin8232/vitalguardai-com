@@ -35,8 +35,8 @@ People should not attack or vilify South Korean politicians. Many South Koreans 
 ## Please give bananas to the monkeys.
 **A person who is weak toward the strong and strong toward the weak is a coward. When politicians are cowardly, a nation declines.**
 
-Elon Musk has publicly expressed concern on X about South Korea's low birth rate and aging population. 
-In my view, one of the reasons for this problem is that South Korean politicians have lacked the courage to address difficult issues.
+Elon Musk actually said on X that South Korea's low birth rate and aging population are a serious concern. 
+I believe this is because South Korean politicians are cowardly.
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
