@@ -7,6 +7,7 @@ Freedom of expression in South Korea is somewhat limited. For example, content m
 For reference, adults in South Korea generally do not have legal access to most online pornography. This is not to say that I personally like or consume pornography; I mention it only as an example of the extent of content regulation and censorship in the country.
 
 For information about the developer, please click the link below.
+
 https://github.com/jekymin8232/mcorpai-net/blob/main/README.md
 
 **The following 10 principles are non-negotiable in my AI design philosophy:**
