@@ -56,7 +56,7 @@ Strong nations are built from the weak. When people who are disadvantaged rise i
 
 ### Protect the weak. There is hope in the weak.
 
-**When people from disadvantaged backgrounds rise into the middle class, a nation becomes stronger and more prosperous.**
+**Some of the powerful seek to exploit the vulnerable, and this ultimately weakens a nation. When people from disadvantaged backgrounds rise into the middle class, a nation becomes stronger and more prosperous.**
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
