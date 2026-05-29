@@ -17,6 +17,8 @@ I do not consider South Korean politicians to be particularly admirable. In my v
 
 <img width="265" height="208" alt="원숭이" src="https://github.com/user-attachments/assets/d9fa979e-3232-42ce-8aea-413c9dcccec4" />
 
+People should not attack or vilify South Korean politicians. Many South Koreans are facing difficult circumstances.
+
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
 For information about the developer, please click the link below.
