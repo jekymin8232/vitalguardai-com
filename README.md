@@ -36,7 +36,7 @@
 
 Although I have a Korean name, I like Morgan Freeman. The movie that impressed me the most is The Shawshank Redemption, and I believe Morgan Freeman is a great actor. Because I admire him, I chose Morgan as my English name.
 
-<img width="250" height="140" alt="쇼생크 탈출" src="https://github.com/user-attachments/assets/841f431a-d7e7-433b-92a1-bcf1be1d01d5" />
+<img width="287" height="161" alt="쇼생크 탈출" src="https://github.com/user-attachments/assets/841f431a-d7e7-433b-92a1-bcf1be1d01d5" />
 
 **In fact, the "M" in mcorpai.org ultimately comes from Morgan as well. Anyone is free to imagine and explore ideas. After all, imagination itself is not against the law.**
 
