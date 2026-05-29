@@ -85,6 +85,8 @@ Of course, freedom can have its drawbacks and unintended consequences. However, 
 
 **Only by doing so can we avoid placing burdens on our allies.**
 
+Historically, Korea has been known as the "Land of Courtesy in the East." It has long been recognized for its strong tradition of respect, civility, and etiquette, and many Koreans take pride in striving to uphold those values.
+
 ## Even imagination should not be controlled.
 
 I do not consider South Korean politicians to be particularly admirable. In my view, they tend to welcome words they like to hear, while in some cases using state authority to discourage or suppress speech they do not like to hear.
