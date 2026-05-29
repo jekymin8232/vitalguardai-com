@@ -41,7 +41,7 @@ Although I have a Korean name, I like Morgan Freeman. The movie that impressed m
 
 **In fact, the "M" in mcorpai.org ultimately comes from Morgan as well. Anyone is free to imagine and explore ideas. After all, imagination itself is not against the law.**
 
-Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.
+**Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.**
 
 In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side.  
 
