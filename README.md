@@ -1,5 +1,6 @@
 ## A Cyberpunk Manifesto for the Future "The spirit of sharing"
 ### Please don't be my friend. 
+**I have spent my entire life in low-paying, non-permanent employment, and the uncertainty often feels as though a knife is being held to my throat.**
 ### White-Box AI Developer Profile — Morgan J. (Personal Website: [mcorpai.org](https://mcorpai.org/))
 
 **I do not design black-box AI systems because black-box models inherently restrict transparency and freedom.**
