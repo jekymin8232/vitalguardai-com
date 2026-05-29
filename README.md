@@ -1,5 +1,5 @@
 ### Even imagination should not be controlled.
-**My GitHub README is my personal space, and my free will cannot be taken away from me. I'm not some remarkable or glamorous person. I'm in my mid-40s now, just a regular middle-aged guy with a beer belly.**
+**My GitHub README is my personal space, and my free will cannot be taken away from me. I'm not some remarkable or glamorous person. I'm in my mid-40s now, just a regular middle-aged guy with a beer belly. For the record, I wasn't popular with women even in my twenties, because I was ugly.**
 ## A Cyberpunk Manifesto for the Future "The spirit of sharing"
 
 ### Please don't be my friend!
