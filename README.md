@@ -50,7 +50,7 @@ From a speculative and creative perspective, South Korea remains in a state of c
 
 I am concerned that if regulation or monitoring of online communities becomes too extensive, people may become hesitant to speak openly even during serious situations. In such an environment, important information, public concerns, or warning signs could be discussed less openly than they otherwise would be. This possibility raises concerns about transparency and the free exchange of information during critical moments.
 
-**This is purely a hypothesis and an exercise of creative imagination.**
+## This is purely a hypothesis and an exercise of creative imagination.
 
 South Korea remains in a state of confrontation with North Korea, so active public discussion can be important.
 
