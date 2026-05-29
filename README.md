@@ -52,7 +52,7 @@ Strong nations are built from the weak. When people who are disadvantaged rise i
 
 <img width="185" height="278" alt="라이언 일병구하기" src="https://github.com/user-attachments/assets/a28276c4-34c9-4e9b-aba3-2696c29f2942" />
 
-**Saving Private Ryan**
+### Saving Private Ryan
 
 ### Protect the weak. There is hope in the weak.
 
