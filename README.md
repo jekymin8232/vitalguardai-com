@@ -36,8 +36,6 @@ Although I have a Korean name, I like Morgan Freeman. The movie that impressed m
 
 **In fact, the "M" in mcorpai.org ultimately comes from Morgan as well. Anyone is free to imagine and explore ideas. After all, imagination itself is not against the law.**
 
-### Even imagination should not be controlled.
-
 Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.
 
 In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side.  
@@ -51,6 +49,8 @@ From a speculative and creative perspective, South Korea remains in a state of c
 I am concerned that if regulation or monitoring of online communities becomes too extensive, people may become hesitant to speak openly even during serious situations. In such an environment, important information, public concerns, or warning signs could be discussed less openly than they otherwise would be. This possibility raises concerns about transparency and the free exchange of information during critical moments.
 
 **This is purely a hypothesis and an exercise of creative imagination.**
+
+## Even imagination should not be controlled.
 
 I do not consider South Korean politicians to be particularly admirable. In my view, they tend to welcome words they like to hear, while in some cases using state authority to discourage or suppress speech they do not like to hear.
 
