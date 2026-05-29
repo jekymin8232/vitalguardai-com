@@ -63,6 +63,8 @@ The story suggests that people often need a way to express concerns and speak op
 
 ### But what happens if the bamboo grove is cut down?
 
+**What if no one could hear 'The King Has Donkey Ears'?**
+
 **South Korea once lost almost everything during the large-scale war known as the Korean War (1950–1953).**
 
 <img width="300" height="168" alt="911" src="https://github.com/user-attachments/assets/a7169973-e394-4984-9634-79fa33dc55b8" />
