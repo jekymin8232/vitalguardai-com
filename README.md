@@ -7,6 +7,8 @@
 
 **AI should provide opportunities for everyone, especially for those who are poor. Everyone deserves a fair chance because we are all equal.**
 
+**AI should be a tool for all of humanity, not a privilege reserved only for those who have money.**
+
 Although I have a Korean name, I like Morgan Freeman. The movie that impressed me the most is The Shawshank Redemption, and I believe Morgan Freeman is a great actor. Because I admire him, I chose Morgan as my English name.
 
 **In fact, the "M" in mcorpai.org ultimately comes from Morgan as well.**
