@@ -6,6 +6,8 @@
 
 **Black-box systems are difficult for humans to verify and control. Even if malicious code is hidden inside them, users may never know it exists.**
 
+**If AI evolves mainly in a black-box form, the future may become increasingly uncertain and risky. Hidden malicious code or harmful behavior could exist within these systems, yet detecting and verifying it may prove extremely difficult.**
+
 **AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
 
 **AI should provide opportunities for everyone, especially for those who are poor. Everyone deserves a fair chance because we are all equal.**
