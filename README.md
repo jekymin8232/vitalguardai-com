@@ -129,7 +129,7 @@ When freedom of expression is restricted and individual freedoms are limited, pe
 
 ### For information about the developer, please click the link below.
 
-https://github.com/jekymin8232/mcorpai-net/blob/main/README.md
+### https://github.com/jekymin8232/mcorpai-net/blob/main/README.md
 
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
