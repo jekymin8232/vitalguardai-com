@@ -3,6 +3,8 @@
 
 Although I have a Korean name, I like Morgan Freeman. The movie that impressed me the most is The Shawshank Redemption, and I believe Morgan Freeman is a great actor. Because I admire him, I chose Morgan as my English name.
 
+**In fact, the "M" in mcorpai.org ultimately comes from Morgan as well.**
+
 Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.
 
 In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side. 
