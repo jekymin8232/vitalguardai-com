@@ -10,7 +10,7 @@
 
 **Black-box systems are often too complex. There may be limits to what human beings can fully understand, analyze, and verify.**
 
-## All AI systems should be interpretable by human beings.
+## White-Box AI "All AI systems should be interpretable by human beings."
 
 **If AI surpasses human intelligence, black-box systems may one day need their own scriptures. White-box AI is likely to become such a scripture. In other words, through white-box systems, future AI may be able to analyze and understand why humans created AI and what intentions and values were embedded in its design.**
 
