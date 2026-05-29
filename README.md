@@ -1,3 +1,5 @@
+**South Korea often appears to prioritize laws and regulations over individual freedom.**
+
 South Korean politicians tend to place a strong emphasis on the use of state authority. 
 In my view, South Korea cannot be described as a completely free society. 
 Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side.
