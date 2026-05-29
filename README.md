@@ -4,9 +4,9 @@ Freedom of expression, bodily autonomy, freedom of speech, and freedom of consci
 
 In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side. 
 
-Freedom of expression in South Korea is somewhat limited. For example, content moderation and censorship do exist on online communities in practice.
-
 For reference, adults in South Korea generally do not have legal access to most online pornography. This is not to say that I personally like or consume pornography; I mention it only as an example of the extent of content regulation and censorship in the country.
+
+Freedom of expression in South Korea is somewhat limited. For example, content moderation and censorship do exist on online communities in practice.
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
