@@ -52,6 +52,16 @@ I am concerned that if regulation or monitoring of online communities becomes to
 
 **This is purely a hypothesis and an exercise of creative imagination.**
 
+South Korea remains in a state of confrontation with North Korea, so active public discussion can be important.
+
+Many Koreans know the folktale *"The King Has Donkey Ears"* (from the legend of King Midas). Unable to keep the king's secret any longer, a barber whispers it into a bamboo grove.
+
+The story suggests that people often need a way to express concerns and speak openly.
+
+But what happens if the bamboo grove is cut down?
+
+This is simply a metaphor and a thought experiment about the value of open discussion in society.
+
 ## Even imagination should not be controlled.
 
 I do not consider South Korean politicians to be particularly admirable. In my view, they tend to welcome words they like to hear, while in some cases using state authority to discourage or suppress speech they do not like to hear.
