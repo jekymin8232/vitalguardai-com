@@ -45,11 +45,6 @@ VitalGuard AI is a **single-file, offline-first** continuity demo that keeps **l
 
 ## Release integrity (recommended for restricted environments)
 
-Integrity verification commands:
-- macOS: `shasum -a 256 VitalGuard_AI_complete_V42_1.html`
-- Linux: `sha256sum VitalGuard_AI_complete_V42_1.html`
-- Windows (PowerShell): `Get-FileHash .\VitalGuard_AI_complete_V42_1.html -Algorithm SHA256`
-
 Why this matters:
 - **Single audited artifact:** reduces runtime supply-chain exposure and "what exactly ran?" ambiguity.
 - **Tamper-evident distribution:** reviewers can record the hash in a change-control memo (and optionally attach a digital signature) before use.
