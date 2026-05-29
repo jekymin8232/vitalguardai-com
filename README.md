@@ -12,6 +12,10 @@
 
 ## All AI systems should be interpretable by human beings.
 
+**If AI surpasses human intelligence, black-box systems may one day need their own scriptures. White-box AI is likely to become such a scripture. In other words, through white-box systems, future AI may be able to analyze and understand why humans created AI and what intentions and values were embedded in its design.**
+
+**Of course, for now, please take this simply as an interesting thought experiment. No one truly knows what the future holds.**
+
 **AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
 
 **AI should provide opportunities for everyone, especially for those who are poor. Everyone deserves a fair chance because we are all equal.**
