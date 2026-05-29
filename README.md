@@ -1,7 +1,8 @@
 ## A Cyberpunk Manifesto for the Future "The spirit of sharing"
 ### Please don't be my friend. 
 **I have spent my entire life in low-paying, non-permanent employment, and the uncertainty often feels as though a knife is being held to my throat. I often have dreams where I fall from a cliff. In my dream, I begged for help, but no one came to save me. I am now in my mid-40s. I am still struggling financially, but I have never stopped trying to improve my situation.**
-### White-Box AI Developer Profile — Morgan J. (Personal Website: [mcorpai.org](https://mcorpai.org/))
+
+### White-Box AI Developer and Independent Developer Profile — Morgan J. (Personal Website: [mcorpai.org](https://mcorpai.org/))
 
 **I became a white-box AI developer because of the values of sharing and helping others that have shaped my life. If I had grown up living a more comfortable and prosperous life, I might have chosen a different path and become a black-box AI developer instead. In my view, black-box AI systems can be used in ways that enable control, exclusion, or exploitation, which is one of the reasons I prefer the white-box approach.**
 
