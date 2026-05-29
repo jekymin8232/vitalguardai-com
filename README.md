@@ -16,7 +16,7 @@ Although I have a Korean name, I like Morgan Freeman. The movie that impressed m
 
 Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.
 
-In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side. 
+In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side.  
 
 For reference, adults in South Korea generally do not have legal access to most online pornography. This is not to say that I personally like or consume pornography; I mention it only as an example of the extent of content regulation and censorship in the country.
 
@@ -36,7 +36,9 @@ People should not attack or vilify South Korean politicians. Many South Koreans 
 **A person who is weak toward the strong and strong toward the weak is a coward. When politicians are cowardly, a nation declines.**
 
 Elon Musk actually said on X that South Korea's low birth rate and aging population are a serious concern. 
-I believe this is because South Korean politicians are cowardly.
+I believe this is because South Korean politicians are cowardly. 
+
+**This is because they seek power, but avoid the responsibility that should accompany it.**
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
