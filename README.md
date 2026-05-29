@@ -1,4 +1,4 @@
-## White-box AI Developer Profile
+## White-Box AI Developer Profile
 
 Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.
 
