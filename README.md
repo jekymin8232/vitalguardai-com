@@ -16,7 +16,9 @@
 
 **Because vanilla code is often the simplest and most transparent form of software, black-box AI systems may one day look to white-box systems built on vanilla code as a way of understanding their own origins and identity.**
 
-**Of course, for now, please take this simply as an interesting hypothesis. No one can truly know what the future holds.**
+**Anthropologists often trace human origins by studying how people lived in ancient times. Likewise, this is a hypothesis that a black-box AI, when seeking to understand its own origins and identity among countless layers of dependencies, might look to the simplest and purest code as a reference point.**
+
+**Once again, for now, please take this simply as an interesting hypothesis. No one can truly know what the future holds.**
 
 **AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
 
