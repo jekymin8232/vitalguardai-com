@@ -46,6 +46,10 @@ I believe this is because South Korean politicians are cowardly.
 
 **Don't live like a monkey; live with the dignity and wisdom of a human being.**
 
+Handle the strong however you choose, but I hope you will be gentle toward the weak. That is how a nation achieves lasting progress.
+
+Strong nations are built from the weak. When people who are disadvantaged rise into the middle class and eventually become prosperous, that nation will inevitably become a great power.
+
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
 ### For information about the developer, please click the link below.
