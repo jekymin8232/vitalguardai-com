@@ -1,7 +1,3 @@
-## I’m just a blacksmith forging tools
-
-<img width="358" height="237" alt="1" src="https://github.com/user-attachments/assets/1ed6d48d-46cc-4ede-8736-9496dec6280b" />
-
 **The following 10 principles are non-negotiable in my AI design philosophy:**
 1. Hallucinations must be minimized.
 2. Transparency must be fully guaranteed.
