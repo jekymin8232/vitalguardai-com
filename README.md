@@ -61,7 +61,7 @@ Many Koreans know the folktale *"The King Has Donkey Ears"* (from the legend of 
 
 The story suggests that people often need a way to express concerns and speak openly.
 
-But what happens if the bamboo grove is cut down?
+### But what happens if the bamboo grove is cut down?
 
 **South Korea once lost almost everything during the large-scale war known as the Korean War (1950–1953).**
 
