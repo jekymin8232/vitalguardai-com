@@ -65,6 +65,18 @@ But what happens if the bamboo grove is cut down?
 
 South Korea once lost almost everything during the large-scale war known as the Korean War (1950–1953).
 
+<img width="300" height="168" alt="911" src="https://github.com/user-attachments/assets/a7169973-e394-4984-9634-79fa33dc55b8" />
+
+I enlisted in the Republic of Korea Army in May 2002 and served on the front line with the 2nd Infantry Division.
+
+In the aftermath of the September 11 attacks, I worried that instability could spread and eventually affect the Korean Peninsula. 
+
+For that reason, I volunteered for military service and did not delay my enlistment.
+
+I never even had the chance to enjoy the excitement of the 2002 FIFA World Cup. I believed that protecting my country came first. 
+
+If everyone is celebrating, someone must still stand watch. While others cheered for Korea's victories, I chose to serve and help defend the nation.
+
 <img width="307" height="230" alt="쇼생크 탈출" src="https://github.com/user-attachments/assets/a89a5cbe-5111-4877-a87a-f732b01bdd9d" />
 
 # Freedom is not free.
