@@ -39,6 +39,7 @@ Elon Musk actually said on X that South Korea's low birth rate and aging populat
 I believe this is because South Korean politicians are cowardly. 
 
 **This is because they seek power, but avoid the responsibility that should accompany it.**
+**Even if you can only afford two meals a day instead of three, you should never live as a coward.**
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
