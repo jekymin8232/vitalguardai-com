@@ -51,7 +51,7 @@ Freedom of expression in South Korea is somewhat limited. For example, content m
 
 From a speculative and creative perspective, South Korea remains in a state of confrontation with North Korea. Over the years, there have been numerous periods of tension and friction between the two sides, and online communities have often become highly active during such times.
 
-## This is purely a hypothesis and an exercise of creative imagination.
+### This is purely a hypothesis and an exercise of creative imagination.
 
 I am concerned that if regulation or monitoring of online communities becomes too extensive, people may become hesitant to speak openly even during serious situations. In such an environment, important information, public concerns, or warning signs could be discussed less openly than they otherwise would be. This possibility raises concerns about transparency and the free exchange of information during critical moments.
 
