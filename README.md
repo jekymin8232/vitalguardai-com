@@ -33,6 +33,7 @@ I do not consider South Korean politicians to be particularly admirable. In my v
 People should not attack or vilify South Korean politicians. Many South Koreans are facing difficult circumstances.
 
 ## Please give bananas to the monkeys.
+**A person who is weak toward the strong and strong toward the weak is a coward.**
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
