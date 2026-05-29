@@ -10,6 +10,8 @@ Freedom of expression in South Korea is somewhat limited. For example, content m
 
 I do not consider South Korean politicians to be particularly admirable. In my view, they tend to welcome words they like to hear, while in some cases using state authority to discourage or suppress speech they do not like to hear.
 
+**If you want to make South Korean politicians happy, try praising them. They will likely appreciate it very much.**
+
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
 For information about the developer, please click the link below.
