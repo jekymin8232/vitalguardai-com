@@ -50,6 +50,8 @@ Handle the strong however you choose, but I hope you will be gentle toward the w
 
 Strong nations are built from the weak. When people who are disadvantaged rise into the middle class and eventually become prosperous, that nation will inevitably become a great power.
 
+### Protect the weak. There is hope in the weak.
+
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
 ### For information about the developer, please click the link below.
