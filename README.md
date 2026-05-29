@@ -1,3 +1,4 @@
+**A Cyberpunk Manifesto for the Future**
 ### Please don't be my friend. 
 ### White-Box AI Developer Profile — Morgan J. (Personal Website: [mcorpai.org](https://mcorpai.org/))
 
