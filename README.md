@@ -1,5 +1,5 @@
 ### Please don't be my friend. 
-### White-Box AI Developer Profile: Morgan J. (Personal Website [morganai.org)](https://mcorpai.org/)
+### White-Box AI Developer Profile — Morgan J. (Personal Website: [morganai.org](https://mcorpai.org/))
 
 Although I have a Korean name, I like Morgan Freeman. The movie that impressed me the most is The Shawshank Redemption, and I believe Morgan Freeman is a great actor. Because I admire him, I chose Morgan as my English name.
 
