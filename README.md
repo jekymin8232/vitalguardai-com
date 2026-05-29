@@ -1,5 +1,7 @@
 ### White-box AI Developer Profile
 
+Freedom of expression, bodily autonomy, freedom of speech, and freedom of conscience are all precious. Every form of freedom is valuable and deserves to be respected.
+
 In my view, South Korea cannot be described as a completely free society. Rather, it is a somewhat complex and often contradictory country where authoritarian tendencies and individual freedoms coexist side by side. 
 
 Freedom of expression in South Korea is somewhat limited. For example, content moderation and censorship do exist on online communities in practice.
