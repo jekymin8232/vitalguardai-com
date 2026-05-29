@@ -35,8 +35,6 @@ VitalGuard AI is a **single-file, offline-first** continuity demo that keeps **l
 |---|---|
 | Document | VitalGuard AI README (Executive + Audit Notes) |
 | Release artifact | `VitalGuard_AI_complete_V42_1.html` (single-file offline demo) |
-| Version | v4.2 |
-| Release date | 2026-02-17 |
 | Owner | Morgan J. (Gyumin Jeon) |
 | Contact | contact@mcorpai.org (mcorpai.org) |
 | Classification | Unclassified - For external review |
