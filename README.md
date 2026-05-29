@@ -4,4 +4,5 @@ Rather, it is a somewhat complex and often contradictory country where authorita
 For information about the developer, please click the link below.
 
 **Please click only if you value and cherish freedom.**
+
 https://github.com/jekymin8232/mcorpai-net/blob/main/README.md
