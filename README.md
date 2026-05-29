@@ -32,11 +32,11 @@ I do not consider South Korean politicians to be particularly admirable. In my v
 
 People should not attack or vilify South Korean politicians. Many South Koreans are facing difficult circumstances.
 
-### Please give bananas to the monkeys.
+## Please give bananas to the monkeys.
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
-For information about the developer, please click the link below.
+### For information about the developer, please click the link below.
 
 https://github.com/jekymin8232/mcorpai-net/blob/main/README.md
 
