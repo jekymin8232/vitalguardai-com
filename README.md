@@ -75,7 +75,9 @@ If freedom is lost, society may ultimately have to pay trillions of dollars to r
 
 ### South Korea should not become a burden on the United States and Europe.
 
-This is simply a metaphor and a thought experiment about the value of open discussion in society.
+This is simply a metaphor and a thought experiment about the value of open discussion in society. One thing is certain: once freedom is lost, it is very difficult to regain.
+
+Of course, freedom can have its drawbacks and unintended consequences. However, those drawbacks should not be used as a justification for suppressing freedom.
 
 ## Even imagination should not be controlled.
 
