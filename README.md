@@ -5,6 +5,8 @@
 
 **AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
 
+**AI should provide opportunities for everyone, especially for those who are poor. Everyone deserves a fair chance because we are all equal.**
+
 Although I have a Korean name, I like Morgan Freeman. The movie that impressed me the most is The Shawshank Redemption, and I believe Morgan Freeman is a great actor. Because I admire him, I chose Morgan as my English name.
 
 **In fact, the "M" in mcorpai.org ultimately comes from Morgan as well.**
