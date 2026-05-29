@@ -1,4 +1,5 @@
 ## A Cyberpunk Manifesto for the Future "The spirit of sharing"
+### Even imagination should not be controlled.
 ### Please don't be my friend. 
 **My GitHub README is my personal space, and my free will cannot be taken away from me. I have spent my entire life in low-paying, non-permanent employment, and the uncertainty often feels as though a knife is being held to my throat. I often have dreams where I fall from a cliff. In my dream, I begged for help, but no one came to save me. I am now in my mid-40s. I am still facing significant financial difficulties, but I have never stopped striving to improve my situation.**
 
