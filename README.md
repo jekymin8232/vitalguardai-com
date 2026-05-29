@@ -73,6 +73,8 @@ The unfortunate reality is that the United States and Europe are already exhaust
 
 If freedom is lost, society may ultimately have to pay trillions of dollars to regain or protect it. In that sense, freedom is closely tied to economic prosperity.
 
+### South Korea should not become a burden on the United States and Europe.
+
 This is simply a metaphor and a thought experiment about the value of open discussion in society.
 
 ## Even imagination should not be controlled.
