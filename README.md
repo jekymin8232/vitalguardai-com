@@ -1,6 +1,10 @@
 ### Please don't be my friend. 
 ### White-Box AI Developer Profile — Morgan J. (Personal Website: [mcorpai.org](https://mcorpai.org/))
 
+**I do not design black-box AI systems because black-box models inherently restrict transparency and freedom.**
+
+**AI should be accessible to everyone on equal terms. This is one of my core principles. It is unfair for people to face discrimination in access to AI simply because they are poor. I am a designer and architect of white-box AI systems.**
+
 Although I have a Korean name, I like Morgan Freeman. The movie that impressed me the most is The Shawshank Redemption, and I believe Morgan Freeman is a great actor. Because I admire him, I chose Morgan as my English name.
 
 **In fact, the "M" in mcorpai.org ultimately comes from Morgan as well.**
