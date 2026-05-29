@@ -71,6 +71,8 @@ The United States and Europe have already paid trillions of dollars in the pursu
 
 The unfortunate reality is that the United States and Europe are already exhausted by many of the challenges they have faced. As a result, they may be reluctant to commit additional trillions of dollars to new efforts.
 
+If freedom is lost, society may ultimately have to pay trillions of dollars to regain or protect it. In that sense, freedom is closely tied to economic prosperity.
+
 This is simply a metaphor and a thought experiment about the value of open discussion in society.
 
 ## Even imagination should not be controlled.
