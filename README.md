@@ -75,7 +75,9 @@ For that reason, I volunteered for military service and did not delay my enlistm
 
 I never even had the chance to enjoy the excitement of the 2002 FIFA World Cup. I believed that protecting my country came first. 
 
-If everyone is celebrating, someone must still stand watch. While others cheered for Korea's victories, I chose to serve and help defend the nation.
+If everyone is celebrating, someone must still stand watch. 
+
+While others cheered for Korea's victories, I chose to serve and help defend the nation.
 
 <img width="307" height="230" alt="쇼생크 탈출" src="https://github.com/user-attachments/assets/a89a5cbe-5111-4877-a87a-f732b01bdd9d" />
 
