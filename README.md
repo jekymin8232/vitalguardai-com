@@ -83,6 +83,8 @@ Of course, freedom can have its drawbacks and unintended consequences. However, 
 
 **Our Republic of Korea should be a model free and democratic nation.**
 
+**Only by doing so can we avoid placing burdens on our allies.**
+
 ## Even imagination should not be controlled.
 
 I do not consider South Korean politicians to be particularly admirable. In my view, they tend to welcome words they like to hear, while in some cases using state authority to discourage or suppress speech they do not like to hear.
