@@ -12,9 +12,9 @@ I do not consider South Korean politicians to be particularly admirable. In my v
 
 **If you want to make South Korean politicians happy, try praising them. They will likely appreciate it very much.**
 
-<img width="265" height="208" alt="원숭이" src="https://github.com/user-attachments/assets/d9fa979e-3232-42ce-8aea-413c9dcccec4" />
-
 **This is much like giving a banana to a monkey. Monkeys are happy when you give them bananas.**
+
+<img width="265" height="208" alt="원숭이" src="https://github.com/user-attachments/assets/d9fa979e-3232-42ce-8aea-413c9dcccec4" />
 
 When freedom of expression is restricted and individual freedoms are limited, people cannot fully realize and express their creative potential.
 
