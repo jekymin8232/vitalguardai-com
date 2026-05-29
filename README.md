@@ -83,6 +83,12 @@ While others cheered for Korea's victories, I chose to serve and help defend the
 
 ### I served in the 2nd Infantry Division of the Republic of Korea Army.
 
+### What were South Korean politicians doing in 2002?
+
+### Were they watching the World Cup matches?
+
+### Did they witness South Korea's historic run to the World Cup semifinals?
+
 <img width="307" height="230" alt="쇼생크 탈출" src="https://github.com/user-attachments/assets/a89a5cbe-5111-4877-a87a-f732b01bdd9d" />
 
 # Freedom is not free.
