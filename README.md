@@ -65,7 +65,7 @@ But what happens if the bamboo grove is cut down?
 
 South Korea once lost almost everything during the large-scale war known as the Korean War (1950–1953).
 
-### "Freedom is not free."
+## "Freedom is not free."
 
 The United States and Europe have already paid trillions of dollars in the pursuit and defense of freedom.
 
