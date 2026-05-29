@@ -50,7 +50,9 @@ Handle the strong however you choose, but I hope you will be gentle toward the w
 
 Strong nations are built from the weak. When people who are disadvantaged rise into the middle class and eventually become prosperous, that nation will inevitably become a great power.
 
-<img width="232" height="348" alt="라이언 일병구하기" src="https://github.com/user-attachments/assets/a28276c4-34c9-4e9b-aba3-2696c29f2942" />
+<img width="185" height="278" alt="라이언 일병구하기" src="https://github.com/user-attachments/assets/a28276c4-34c9-4e9b-aba3-2696c29f2942" />
+
+**Saving Private Ryan**
 
 ### Protect the weak. There is hope in the weak.
 
