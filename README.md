@@ -1,4 +1,5 @@
 # VitalGuard Integrated Modular Code V3.0
+### Even when all other systems stop working, offline AI can save lives.
 
 > A single-file, **zero-dependency**, **100% offline**, **no-auto-render** source bundle that packages four humanitarian survival-AI artifacts and exposes a small, explicit runtime kernel for inspecting, extracting, and re-using their modules.
 
