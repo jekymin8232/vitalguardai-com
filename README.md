@@ -32,6 +32,8 @@
 
 ## Overview
 
+**Apache License 2.0: The entire architecture is fully open source, allowing anyone to inspect, modify, customize, and use it free of charge.**
+
 `VitalGuard Integrated Modular Code V3.0` is a **container and toolkit**, not an application that runs on load.
 
 It stores four separate humanitarian-AI source artifacts as inert, Base64-encoded payloads, and ships a tiny runtime kernel (`window.VitalGuardIntegratedV30`) that lets a developer:
