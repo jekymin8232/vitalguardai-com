@@ -281,10 +281,6 @@ Each embedded payload is pinned in the manifest so it can be verified independen
 - **Audio features** (bridge broadcast, acoustic Morse/ultrasonic) require a user gesture to start the Web Audio context, per browser autoplay policy.
 - Older / refurbished devices are explicitly a target environment.
 
-## Ethical use
-
-This project is intended **strictly for civilian, agricultural, and humanitarian purposes** (Hippocratic-3.0-derivative terms). It is built for life-safety, disaster response, and survival scenarios under infrastructure collapse, and is not designed or licensed for military or surveillance use.
-
 ## Maintainer
 
 **Morgan J.**
