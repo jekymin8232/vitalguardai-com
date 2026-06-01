@@ -1,9 +1,23 @@
-<!-- 
+<!--
 ============================================================
-© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI | VitalGuard AI V4.3.8
-Apache License 2.0 — Permissive Open-Source License with Explicit Patent Grant
-Allows free use, modification, distribution, commercial deployment, and humanitarian adaptation by individuals, NGOs, companies, and governments.
+Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI | VitalGuard AI V4.3.8
+SPDX-License-Identifier: Apache-2.0
+Licensed under the Apache License, Version 2.0.
+OTF/FOSS-ready notice: permissive open-source licensing with no field-of-use restrictions.
+Public-interest safety note: designed for privacy-preserving, humanitarian, agricultural,
+disaster-resilience, and offline continuity deployments; no cloud or telemetry by default.
 Zero External Dependencies | 100% Offline | Vanilla CSS/JS
+------------------------------------------------------------
+Copyright © 2026 Morgan J. (전규민) | McorpAI | VitalGuard AI V4.3.8
+SPDX-License-Identifier: Apache-2.0
+Apache License 2.0에 따라 배포됩니다.
+OTF/FOSS 친화 고지: 용도 제한 없는 표준 허용형 오픈소스 라이선스입니다.
+공익 안전 노트: 프라이버시 보호, 인도주의, 농업, 재난 회복탄력성,
+오프라인 연속성 배포를 지향하며 기본값은 클라우드/텔레메트리 없음입니다.
+외부 의존성 0 | 100% 오프라인 | 바닐라 CSS/JS
+------------------------------------------------------------
+Third-party notice: Project Nayuki QR Code generator remains under the MIT License
+as included inline below.
 ============================================================
 
 Given enough eyeballs, all bugs are shallow. — Eric S. Raymond
@@ -17,6 +31,8 @@ https://github.com/jekymin8232/vitalguardai-com
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="license" content="Apache-2.0">
+<meta name="spdx-license-identifier" content="Apache-2.0">
 <!-- CSP Note: V4.3.8-END remains single-file and zero-dependency, but the main script is nonce-authorized.
      Inline event attributes were removed and replaced by strict data-vg-on* action dispatch.
      connect-src 'none' blocks network egress; worker-src 'none' disables Blob/Worker execution by default.
@@ -709,7 +725,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
    VitalGuard AI v4.3.8
    - Merged: V20 feature richness + V35 engine hardening + V38 UI ideas
    - Vanilla HTML/CSS/JS, single-file, offline-first.
-   - Ethical AI License: Hippocratic 3.0 Derivative (Humanitarian use only)
+   - License: Apache-2.0 (permissive FOSS; no field-of-use restrictions)
    ============================================================ */
 
 'use strict';
@@ -831,7 +847,7 @@ const VitalGuardTrustedTypesGuard = (function(){
                .replace(/<\s*form\b[^>]*>/gi, '<div data-vg-blocked-form="1">')
                .replace(/<\s*\/\s*form\s*>/gi, '</div>')
                .replace(rxBadAttrs, ' data-vg-blocked-on=')
-               .replace(/\s+(data-vg-on(?:click|change|input|mousedown|mouseup|touchstart|touchend))\s*=\s*(['"])(.*?)/gi, function(m,n,q,v){
+               .replace(/\s+(data-vg-on(?:click|change|input|mousedown|mouseup|touchstart|touchend))\s*=\s*(['"])(.*?)\2/gi, function(m,n,q,v){
                  try{ if(window.VitalGuardActionPolicy && VitalGuardActionPolicy.isAllowedAction(v)) return ' '+n+'='+q+v+q; }catch(_){}
                  guard.blockedAttrs++; return ' data-vg-blocked-action='+q+'1'+q;
                })
@@ -1072,21 +1088,24 @@ function safeJson(obj) {
 }
 function nowMs(){ return Date.now(); }
 
-/* ----------------------------- ETHICAL MANIFEST ----------------------------- */
-/* v4.3.8 SECURITY PATCH (M-1): Object.freeze applied at both outer and array level.
-   Prevents runtime tampering of the ethical manifest by injected code or malicious extensions.
+/* ----------------------------- OPEN SOURCE MANIFEST ----------------------------- */
+/* v4.3.8 OTF/FOSS PATCH (M-1): Object.freeze applied at both outer and array level.
+   Prevents runtime tampering of the open-source notice by injected code or malicious extensions.
    Outer freeze blocks property reassignment; inner freeze blocks array mutation. */
 const ETHICAL_MANIFEST = Object.freeze({
   version: APP_VERSION,
-  license: 'Hippocratic 3.0 Derivative',
+  license: 'Apache-2.0',
+  licenseName: 'Apache License 2.0',
+  spdx: 'Apache-2.0',
   purpose: 'Life‑saving offline AI demo (no cloud, no telemetry)',
-  prohibited: Object.freeze(['weaponization','coercive_tracking','data_exploitation','oppression','border_enforcement']),
+  fieldOfUseRestrictions: Object.freeze([]),
+  publicInterestGuidelines: Object.freeze(['privacy_preserving','humanitarian_ready','agricultural_resilience','disaster_continuity','offline_first','no_telemetry_by_default']),
   principles: Object.freeze(['minimize_hallucinations','transparency','accessibility','no_data_exploitation','low_resource','no_liability','affordable','simplicity','non_specialist','allow_deletion'])
 });
 
-/* ----------------------------- ETHICAL GUARD (Runtime Enforcement) ----------------------------- */
+/* ----------------------------- OPEN SOURCE NOTICE GUARD (Runtime Integrity) ----------------------------- */
 /* Validates ETHICAL_MANIFEST integrity at boot and exposes status for diagnostics.
-   DEFENSE_LEVEL: STRONG (3 checks: manifest integrity, prohibited list, principles list) */
+   DEFENSE_LEVEL: STRONG (4 checks: manifest, Apache-2.0/SPDX, no field-of-use restrictions, principles list) */
 const EthicalGuard = {
   status: 'UNCHECKED',
   details: [],
@@ -1103,16 +1122,23 @@ const EthicalGuard = {
       this.details.push('OK: ETHICAL_MANIFEST present');
     }
 
-    // Check 2: Prohibited list integrity (must contain all 5 items)
-    const requiredProhibited = ['weaponization','coercive_tracking','data_exploitation','oppression','border_enforcement'];
-    if(!Array.isArray(ETHICAL_MANIFEST.prohibited) || requiredProhibited.some(r => !ETHICAL_MANIFEST.prohibited.includes(r))){
-      this.details.push('FAIL: prohibited list incomplete or tampered');
+    // Check 2: SPDX / license declaration integrity
+    if(ETHICAL_MANIFEST.license !== 'Apache-2.0' || ETHICAL_MANIFEST.spdx !== 'Apache-2.0'){
+      this.details.push('FAIL: Apache-2.0 / SPDX declaration missing or altered');
       pass = false;
     } else {
-      this.details.push('OK: prohibited list intact ('+ETHICAL_MANIFEST.prohibited.length+' items)');
+      this.details.push('OK: Apache-2.0 SPDX license declared');
     }
 
-    // Check 3: Principles list integrity (must contain all 10 items)
+    // Check 3: No field-of-use restrictions in the software license
+    if(!Array.isArray(ETHICAL_MANIFEST.fieldOfUseRestrictions) || ETHICAL_MANIFEST.fieldOfUseRestrictions.length !== 0){
+      this.details.push('FAIL: field-of-use restrictions should remain empty for OTF/FOSS compatibility');
+      pass = false;
+    } else {
+      this.details.push('OK: no field-of-use restrictions declared');
+    }
+
+    // Check 4: Principles list integrity (must contain all 10 items)
     if(!Array.isArray(ETHICAL_MANIFEST.principles) || ETHICAL_MANIFEST.principles.length < 10){
       this.details.push('FAIL: principles list incomplete (expected 10+)');
       pass = false;
@@ -1120,17 +1146,9 @@ const EthicalGuard = {
       this.details.push('OK: principles list intact ('+ETHICAL_MANIFEST.principles.length+' items)');
     }
 
-    // Check 4: License string present
-    if(!ETHICAL_MANIFEST.license || !String(ETHICAL_MANIFEST.license).includes('Hippocratic')){
-      this.details.push('FAIL: license declaration missing or altered');
-      pass = false;
-    } else {
-      this.details.push('OK: Hippocratic license declared');
-    }
-
     this.status = pass ? 'PASS' : 'TAMPERED';
     if(!pass){
-      console.error('[EthicalGuard] MANIFEST INTEGRITY FAILURE:', this.details.filter(d=>d.startsWith('FAIL')));
+      console.error('[EthicalGuard] OPEN SOURCE NOTICE INTEGRITY FAILURE:', this.details.filter(d=>d.startsWith('FAIL')));
     }
     return pass;
   },
@@ -1141,8 +1159,10 @@ const EthicalGuard = {
       defenseLevel: 'STRONG',
       checks: this.details.length,
       license: ETHICAL_MANIFEST.license,
-      prohibited: ETHICAL_MANIFEST.prohibited.length,
-      principles: ETHICAL_MANIFEST.principles.length
+      spdx: ETHICAL_MANIFEST.spdx,
+      fieldOfUseRestrictions: ETHICAL_MANIFEST.fieldOfUseRestrictions.length,
+      principles: ETHICAL_MANIFEST.principles.length,
+      publicInterestGuidelines: ETHICAL_MANIFEST.publicInterestGuidelines.length
     };
   }
 };
@@ -1152,9 +1172,8 @@ let perfProfile = PERF_PROFILES.balanced;
 let globalLastProcessMs = 0;
 
 /* ----------------------------- AUDIO ENGINE (Web Audio API) ----------------------------- */
-/* © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
-   M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
-   Exclusively for civilian, agricultural, and humanitarian use.
+/* Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI
+   SPDX-License-Identifier: Apache-2.0
    Zero External Dependencies | 100% Offline | Vanilla JS */
 const AudioEngine = {
   ctx: null,
@@ -2551,9 +2570,9 @@ const I18N = (function(){
         </div>
 
         <div class="tip-card warn">
-          <div class="tip-title">Ethical use</div>
+          <div class="tip-title">Open-source license</div>
           <div class="tip-body">
-            Exclusively for civilian, agricultural, and humanitarian use (privacy‑first, local‑only).
+            Licensed under <strong>Apache-2.0</strong>. Public-interest and humanitarian deployment is encouraged, but the software license itself does not impose field-of-use restrictions.
           </div>
         </div>
 
@@ -2622,9 +2641,9 @@ const I18N = (function(){
         </div>
 
         <div class="tip-card warn">
-          <div class="tip-title">윤리적 사용</div>
+          <div class="tip-title">오픈소스 라이선스</div>
           <div class="tip-body">
-            인도주의 목적에 한함. 군사용/감시용 사용은 윤리 라이선스로 금지합니다.
+            <strong>Apache-2.0</strong>으로 배포됩니다. 인도주의·공익 배포를 지향하지만, 소프트웨어 라이선스 자체에는 특정 사용 분야를 금지하는 용도 제한 조항을 두지 않습니다.
           </div>
         </div>
 
@@ -2682,8 +2701,8 @@ const I18N = (function(){
         </div>
 
         <div class="tip-card warn">
-          <div class="tip-title">استخدام أخلاقي</div>
-          <div class="tip-body">للاستخدام الإنساني فقط. يُحظر الاستخدام العسكري أو للمراقبة وفقًا للترخيص الأخلاقي.</div>
+          <div class="tip-title">ترخيص مفتوح المصدر</div>
+          <div class="tip-body">مرخّص بموجب <strong>Apache-2.0</strong>. يُشجَّع الاستخدام الإنساني والمصلحة العامة، لكن الترخيص البرمجي لا يفرض قيودًا على مجال الاستخدام.</div>
         </div>
 
         <div class="divider"></div>
@@ -2733,7 +2752,7 @@ const I18N = (function(){
         <h3>プライバシー / GDPR</h3>
         <div class="tip-card info"><div class="tip-title">データ収集なし</div><div class="tip-body">デモは分析や個人情報を送信しません。エクスポートは任意で、全消去できます。</div></div>
 
-        <div class="tip-card warn"><div class="tip-title">倫理的利用</div><div class="tip-body">人道目的のみ。軍事/監視用途は禁止（倫理ライセンス）。</div></div>
+        <div class="tip-card warn"><div class="tip-title">オープンソース・ライセンス</div><div class="tip-body"><strong>Apache-2.0</strong> で配布されています。人道・公益目的の利用を推奨しますが、ソフトウェアライセンス自体は利用分野の制限を課しません。</div></div>
 
         <div class="divider"></div>
 
@@ -2782,7 +2801,7 @@ const I18N = (function(){
         <h3>Vie privée / RGPD</h3>
         <div class="tip-card info"><div class="tip-title">Aucune collecte</div><div class="tip-body">Aucune donnée n’est envoyée à des serveurs. Export sur action de l’utilisateur, suppression possible.</div></div>
 
-        <div class="tip-card warn"><div class="tip-title">Usage éthique</div><div class="tip-body">Usage humanitaire uniquement. Usage militaire/Monitoring interdit par la licence.</div></div>
+        <div class="tip-card warn"><div class="tip-title">Licence open source</div><div class="tip-body">Distribué sous <strong>Apache-2.0</strong>. Les usages humanitaires et d’intérêt public sont encouragés, mais la licence logicielle n’impose pas de restriction de domaine d’utilisation.</div></div>
 
         <div class="divider"></div>
 
@@ -2831,7 +2850,7 @@ const I18N = (function(){
         <h3>隱私 / GDPR</h3>
         <div class="tip-card info"><div class="tip-title">不收集資料</div><div class="tip-body">示範不會把資料送到伺服器。匯出需使用者操作，亦可隨時全刪。</div></div>
 
-        <div class="tip-card warn"><div class="tip-title">倫理使用</div><div class="tip-body">僅限人道用途。軍事/監控用途由倫理授權禁止。</div></div>
+        <div class="tip-card warn"><div class="tip-title">開源授權</div><div class="tip-body">以 <strong>Apache-2.0</strong> 授權散布。鼓勵人道與公益部署，但軟體授權本身不加入特定使用領域限制。</div></div>
 
         <div class="divider"></div>
 
@@ -2880,7 +2899,7 @@ const I18N = (function(){
         <h3>Privacidad / GDPR</h3>
         <div class="tip-card info"><div class="tip-title">Sin recopilación</div><div class="tip-body">No se envía información a servidores. Exportación solo con acción del usuario y borrado disponible.</div></div>
 
-        <div class="tip-card warn"><div class="tip-title">Uso ético</div><div class="tip-body">Solo uso humanitario. Prohibido uso militar o de vigilancia por licencia ética.</div></div>
+        <div class="tip-card warn"><div class="tip-title">Licencia de código abierto</div><div class="tip-body">Distribuido bajo <strong>Apache-2.0</strong>. Se fomenta el uso humanitario y de interés público, pero la licencia de software no impone restricciones de campo de uso.</div></div>
 
         <div class="divider"></div>
 
@@ -3324,8 +3343,8 @@ const SecurePrompt = (()=> {
 })();
 
 /* ---- v4.2.5 SECURITY PATCH: ConfirmModal (replaces confirm()) ---- */
-/* © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
-   Hippocratic 3.0 Derivative — civilian, agricultural, humanitarian use only. */
+/* Copyright © 2026 Morgan J. (Gyu-min Jeon) | McorpAI
+   SPDX-License-Identifier: Apache-2.0 */
 const ConfirmModal = {
   _bd: null,
   _resolver: null,
@@ -6977,13 +6996,13 @@ const App = {
       Security.maybeAutoWipeOnClose();
     });
 
-    // Ethical Manifest runtime validation (boot)
+    // Open-source notice runtime validation (boot)
     EthicalGuard.validate();
     if(EthicalGuard.status !== 'PASS'){
-      console.warn('[VitalGuard] EthicalGuard check: ' + EthicalGuard.status);
+      console.warn('[VitalGuard] OpenSourceGuard check: ' + EthicalGuard.status);
     }
 
-    // v4.3.8 SECURITY PATCH (M-2): periodic re-validation of the ethical manifest.
+    // v4.3.8 OTF/FOSS PATCH (M-2): periodic re-validation of the open-source notice.
     // Purpose: detect runtime tampering of ETHICAL_MANIFEST by injected/malicious code.
     // Interval chosen as 30s (not 10s) to avoid battery drain on low-end Android devices.
     // The validate() pass is lightweight (4 field checks, no crypto).
@@ -6993,7 +7012,7 @@ const App = {
           const prev = EthicalGuard.status;
           EthicalGuard.validate();
           if(EthicalGuard.status !== 'PASS' && prev === 'PASS'){
-            console.error('[VitalGuard] MANIFEST TAMPERING DETECTED at runtime');
+            console.error('[VitalGuard] OPEN SOURCE NOTICE TAMPERING DETECTED at runtime');
             // Hardening option (kept inactive by default — respects user autonomy / Morgan J principle #4):
             // App.monitoringWanted = false;
             // try{ BLE.stopScan && BLE.stopScan(); }catch(_){}
@@ -8278,7 +8297,7 @@ const App = {
       const enc=new TextEncoder();
       const baseKey = await crypto.subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey']);
       return crypto.subtle.deriveKey(
-        {name:'PBKDF2', salt, iterations:120000, hash:'SHA-256'},
+        {name:'PBKDF2', salt, iterations:600000, hash:'SHA-256'},
         baseKey,
         {name:'AES-GCM', length:256},
         false,
@@ -8295,7 +8314,7 @@ const App = {
         enc:true,
         v:1,
         alg:'AES-GCM',
-        it:120000,
+        it:600000,
         salt:this._b64(salt),
         iv:this._b64(iv),
         ct:this._b64(new Uint8Array(ct))
