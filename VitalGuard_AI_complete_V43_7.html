@@ -5,7 +5,7 @@
 <!-- CSP Note: 'unsafe-inline' is required because VitalGuard AI is a single-file offline application.
      All JavaScript and CSS are inline by architectural design (zero external dependencies).
      connect-src 'none' blocks ALL network requests, mitigating inline-script risk. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; manifest-src 'self' blob:; object-src 'none'; frame-src 'none'; child-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; navigate-to 'self' blob: data:">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; manifest-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=(self), bluetooth=(self), accelerometer=(self), gyroscope=(self), magnetometer=(self), camera=(), payment=(), usb=()">
@@ -14,6 +14,15 @@
 <title>VitalGuard AI v4.3.7 — Infrastructure‑Independent Survival Framework</title>
 <link rel="manifest" id="pwa-manifest">
 <style>
+/* ============================================================
+   VitalGuard AI v4.3.7 — MASTER STYLESHEET
+   © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+   https://mcorpai.org | contact@mcorpai.org
+   Managed by: https://mcorpai.org
+   M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
+   Exclusively for civilian, agricultural, and humanitarian use.
+   Zero External Dependencies | 100% Offline | Vanilla CSS/JS
+   ============================================================ */
 :root{--bg-primary:#0d1117;--bg-secondary:#161b22;--bg-card:#1c2333;--bg-elevated:#21283b;--text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;--accent-red:#c0392b;--accent-green:#2ecc71;--accent-yellow:#f1c40f;--accent-orange:#e67e22;--accent-blue:#3498db;--zone-safe:#2ecc71;--zone-caution:#f1c40f;--zone-warning:#e67e22;--zone-danger:#e74c3c;--zone-lost:#9b59b6;--border-color:#30363d;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--shadow-soft:0 2px 12px rgba(0,0,0,.3);--tr-fast:.15s ease;--tr-norm:.3s ease;--font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--font-mono:'Courier New',Courier,monospace}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-text-size-adjust:100%}
@@ -231,7 +240,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
     <div class="header-mission" id="i18n_app_mission">Runs fully offline. No cloud. No telemetry. GDPR‑friendly by design.</div>
     <div class="header-disclaimer" id="i18n_app_disclaimer">Demo skin: “Pet Safety Leash” using Bluetooth proximity (not GPS). Built to keep working when networks fail.</div>
     <div class="header-links">
-      <a class="header-link" href="#" onclick="Legal.open();return false;" rel="noopener noreferrer nofollow" id="i18n_github_link">Source Notice</a>
+      <a class="header-link" href="https://github.com/jekymin8232/luckyvicky-homepage" target="_blank" rel="noopener" id="i18n_github_link">GitHub Source</a>
       <span class="header-link-sep">·</span>
       <a class="header-link" href="#" onclick="Help.open();return false;" id="i18n_help_link">Help</a>
       <span class="header-link-sep">·</span>
@@ -286,7 +295,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
       <div id="i18n_hero_body" style="font-size:.82rem;color:var(--text-secondary);line-height:1.6">
         VitalGuard AI v4.3.7 is a single‑file, offline‑first continuity toolkit combining Bluetooth beacon proximity and lightweight on‑device logic—designed to operate during outages and off‑grid deployments, with data kept on‑device by default (no cloud retention unless you export).
       </div>
-      <div class="small" id="i18n_contact_line" style="margin-top:10px;opacity:.85;text-align:center">Contact: contact@mcorpai.org • mcorpai.org </div>
+      <div class="small" id="i18n_contact_line" style="margin-top:10px;opacity:.85;text-align:center">Contact: <a href="mailto:contact@mcorpai.org">contact@mcorpai.org</a> • mcorpai.org </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px">
         <span class="badge ok" id="i18n_badge_offline">100% Offline</span>
         <span class="badge ok" id="i18n_badge_gdpr">GDPR‑friendly</span>
@@ -5593,8 +5602,7 @@ const SOS = {
     }
     if(this.savedLocation){
       m+='Owner location: '+this.savedLocation.lat.toFixed(5)+', '+this.savedLocation.lon.toFixed(5)+'\n';
-      m+='Coordinates: '+this.savedLocation.lat.toFixed(5)+', '+this.savedLocation.lon.toFixed(5)+'\n';
-      m+='Map lookup: copy the coordinates manually into a trusted local/offline map app.\n';
+      m+='Map: https://maps.google.com/?q='+this.savedLocation.lat+','+this.savedLocation.lon+'\n';
     }
     m+='\nSent via VitalGuard AI (mcorpai.org)\nNOT GPS — Bluetooth proximity only';
 
@@ -5978,7 +5986,7 @@ const Detail = {
         <div class="leash-btn ${p.leashPreset==='custom'?'active':''}" onclick="Detail.setLeash('custom')">Custom</div>
       </div>
 
-      <div id="custom-thresholds" style="margin-top:12px">
+      <div style="margin-top:12px">
         <div class="slider-row"><label>Caution</label><input type="range" min="-90" max="-40" value="${p.thresholds.cautionEnter}" oninput="Detail.updateThreshold('cautionEnter',this.value)"><span class="val" id="dt-caution">${p.thresholds.cautionEnter} dBm</span></div>
         <div class="slider-row"><label>Warning</label><input type="range" min="-98" max="-55" value="${p.thresholds.warningEnter}" oninput="Detail.updateThreshold('warningEnter',this.value)"><span class="val" id="dt-warning">${p.thresholds.warningEnter} dBm</span></div>
         <div class="slider-row"><label>Danger</label><input type="range" min="-100" max="-70" value="${p.thresholds.dangerEnter}" oninput="Detail.updateThreshold('dangerEnter',this.value)"><span class="val" id="dt-danger">${p.thresholds.dangerEnter} dBm</span></div>
@@ -6401,7 +6409,7 @@ const DataManager = {
       }
 
       let imported=0;
-      const ALLOWED_PET_KEYS = new Set(['id','name','icon','leashPreset','signature','rescueId','createdAt','thresholds','distanceCalib','aiToggles','aiState','alertHistory','ambiguousCount','lastAmbiguousMs','alertPrefs','leashDistanceM','disabled','lostEvents']);
+      const ALLOWED_PET_KEYS = new Set(['id','name','icon','leashPreset','signature','rescueId','createdAt','distCal','aiState','alertPrefs','leashDistanceM','disabled','lostEvents']);
       for(const pd of data.pets){
         // M3: Schema validation — sanitize all fields, strip unknowns
         if(!pd || typeof pd !== 'object') continue;
@@ -8842,7 +8850,7 @@ function v41EnsureAlertPrefs(p){
 
       if(Settings.prefs.sound && prefs.sound) AudioEngine.alertForZone(to);
       if(Settings.prefs.vibrate && prefs.vibrate && navigator.vibrate) navigator.vibrate([200,120,200]);
-      if(Settings.prefs.tts && prefs.tts) VoiceAnnouncer.speak(`${pet.name} ${String(to||pet.zone?.stable||'status').toLowerCase()}`);
+      if(Settings.prefs.tts && prefs.tts) VoiceAnnouncer.say(`${pet.name} ${to.toLowerCase()}`);
     }catch(e){
       console.warn('v4.1 triggerAlert patch failed:', e);
       return _origTrigger(pet, from, to);
@@ -8962,42 +8970,6 @@ V41UI.injectDetailMetersLeash = function(pet){
 
 /* -------- Calibration Pro (RLS) UI (Wizard + Detail) -------- */
 (function(){
-  // V4.3.7 HARDENING: compatibility shims for V4.1 add-on code.
-  // These prevent load-time crashes when the base wizard does not expose reset()/selectedCandidate().
-  if(typeof Wizard.reset !== 'function'){
-    Wizard.reset = function(){
-      this.candidates = {};
-      this.selectedId = null;
-      this.selectedSig = null;
-      this.baselineRssi = null;
-      this.verified = false;
-      this.calib = {};
-      this.calibPro = { points: [], rls: new RLSCalibrator() };
-    };
-  }
-  if(typeof Wizard.selectedCandidate !== 'function'){
-    Wizard.selectedCandidate = function(){
-      const id = this.selectedId;
-      const c = id && this.candidates ? this.candidates[id] : null;
-      if(!c) return null;
-      const samples = c.rssiSamples && Array.isArray(c.rssiSamples.data) ? c.rssiSamples.data : [];
-      const recent = samples.length ? samples.slice(-4) : [];
-      const rssi = recent.length ? median(recent) : (samples.length ? median(samples) : NaN);
-      return Object.assign({}, c, { rssi, med:rssi });
-    };
-  }
-  if(typeof Wizard._basicCalibRssi !== 'function'){
-    Wizard._basicCalibRssi = function(dist){
-      const c = this.calib || {};
-      const direct = c[dist];
-      const legacy = c[String(dist)+'m'];
-      const pick = (direct !== undefined) ? direct : legacy;
-      if(typeof pick === 'number') return pick;
-      if(pick && typeof pick.rssi === 'number') return pick.rssi;
-      return NaN;
-    };
-  }
-
   // Extend Wizard with Calibration Pro state
   Wizard._ensureCalibPro = function(){
     if(!this.calibPro || typeof this.calibPro !== 'object') this.calibPro = { points: [], rls: new RLSCalibrator() };
@@ -9051,10 +9023,8 @@ V41UI.injectDetailMetersLeash = function(pet){
         }
       }else{
         const tmp = new DistanceEstimator();
-        const r1 = this._basicCalibRssi ? this._basicCalibRssi(1) : NaN;
-        const r10 = this._basicCalibRssi ? this._basicCalibRssi(10) : NaN;
-        if(Number.isFinite(r1)) tmp.addCalibration(r1, 1);
-        if(Number.isFinite(r10)) tmp.addCalibration(r10, 10);
+        if(this.calib['1m'] && Number.isFinite(this.calib['1m'].rssi)) tmp.addCalibration(this.calib['1m'].rssi, 1);
+        if(this.calib['10m'] && Number.isFinite(this.calib['10m'].rssi)) tmp.addCalibration(this.calib['10m'].rssi, 10);
         tx = tmp.txPower;
         n = tmp.n;
       }
@@ -9072,14 +9042,7 @@ V41UI.injectDetailMetersLeash = function(pet){
   };
 
   // Reset pro state when wizard resets
-  const _wizReset = (typeof Wizard.reset === 'function') ? Wizard.reset.bind(Wizard) : function(){
-    Wizard.candidates = {};
-    Wizard.selectedId = null;
-    Wizard.selectedSig = null;
-    Wizard.baselineRssi = null;
-    Wizard.verified = false;
-    Wizard.calib = {};
-  };
+  const _wizReset = Wizard.reset.bind(Wizard);
   Wizard.reset = function(){
     _wizReset();
     this.calibPro = { points: [], rls: new RLSCalibrator() };
@@ -9120,9 +9083,8 @@ V41UI.injectDetailMetersLeash = function(pet){
       }
 
       let pet;
-      if(this.mode === 'reverify'){
-        pet = (this.targetPetId && App.pets.find(x=>x.id===this.targetPetId)) || this.petRef || null;
-        if(!pet){ Toast.show('Pet not found for re-verify.', 2200); return; }
+      if(this.mode === 'reverify' && this.petRef){
+        pet = this.petRef;
         pet.name = name;
         pet.icon = icon;
         pet.signature = signature;
@@ -9136,10 +9098,8 @@ V41UI.injectDetailMetersLeash = function(pet){
 
       // Basic calibration points (1m, 10m)
       pet.distance = pet.distance || new DistanceEstimator();
-      const basicR1 = this._basicCalibRssi ? this._basicCalibRssi(1) : NaN;
-      const basicR10 = this._basicCalibRssi ? this._basicCalibRssi(10) : NaN;
-      if(Number.isFinite(basicR1)) pet.distance.addCalibration(basicR1, 1);
-      if(Number.isFinite(basicR10)) pet.distance.addCalibration(basicR10, 10);
+      if(this.calib['1m'] && Number.isFinite(this.calib['1m'].rssi)) pet.distance.addCalibration(this.calib['1m'].rssi, 1);
+      if(this.calib['10m'] && Number.isFinite(this.calib['10m'].rssi)) pet.distance.addCalibration(this.calib['10m'].rssi, 10);
 
       // Pro calibration (RLS): needs 3+ samples for stability
       const cp = this.calibPro;
@@ -9166,7 +9126,7 @@ V41UI.injectDetailMetersLeash = function(pet){
         }
       }
 
-      await Store.savePet(pet);
+      Store.savePet(pet);
       App.render();
 
       this.close();
@@ -9180,7 +9140,7 @@ V41UI.injectDetailMetersLeash = function(pet){
   /* Wizard UI injection */
   V41UI.injectWizardCalibPro = function(){
     try{
-      const step2 = document.getElementById('wiz-step-2');
+      const step2 = document.getElementById('wizard-step-2');
       if(!step2) return;
       if(document.getElementById('v41-calibpro-wizard')) return;
 
@@ -9576,7 +9536,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
     const json = b64urlDecodeUtf8(b64);
     const want = crcHex(crc32(json));
     if(crc && crc !== want) throw new Error('Checksum mismatch (code may be corrupted)');
-    const pack = JSON.parse(json);
+    const pack = safeParseJson(json);
     if(!pack || pack.v !== 1) throw new Error('Unsupported pack version');
     return pack;
   };
@@ -9875,6 +9835,17 @@ V41UI.injectDetailAlertPrefs = function(pet){
         const rssi = tx - 10*n*Math.log10(d);
         rls.update(d, rssi);
       });
+      card.querySelector('#v41-rp-sms').addEventListener('click', ()=>{
+        try{
+          if(!codeEl.value.trim()){ generate(); }
+          const text = encodeURIComponent(codeEl.value.trim());
+          // NOTE: SMS URL schemes vary by platform; this works on most mobile browsers.
+          window.location.href = `sms:?&body=${text}`;
+        }catch(e){
+          Toast.show('SMS not supported on this device.', 2400);
+        }
+      });
+
       const p = rls.params();
       const ok = Math.abs(p.txPower - tx) < 6 && Math.abs(p.n - n) < 0.8;
       results.push({test:'RLS', ok, detail:`tx ${p.txPower.toFixed(1)} n ${p.n.toFixed(2)}`});
@@ -9905,7 +9876,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
         pets.push(p);
       }
       // fake advertisement event (name matches only one)
-      const fakeEv = { device:{id:'x', name:'TAG3_ABC'}, manufacturerData:null, serviceData:null, uuids:[] };
+      const fakeEv = { device:{id:'x'}, name:'TAG3_ABC', manufacturerData:null, serviceData:null, uuids:[] };
       const t1 = performance.now();
       for(let k=0;k<200;k++){
         pets.forEach(p=>matchScore(fakeEv, p.signature));
@@ -10007,395 +9978,10 @@ V41UI.injectDetailAlertPrefs = function(pet){
 })();
 
 
-/* ----------------------------- V4.3.7 FINAL HARDENING LAYER -----------------------------
-   Purpose: eliminate low-grade audit findings by adding runtime egress blocks,
-   fixing V4.1 add-on edge bugs, and removing external-navigation behavior.
-   Version string remains 4.3.7 by design. */
-(function(){
-  'use strict';
-
-  function vgToast(msg, dur){ try{ Toast.show(msg, dur||2200); }catch(_){} }
-  function vgEscape(s){ try{ return _vgE(s); }catch(_){ return String(s==null?'':s).replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); } }
-  function vgSafeZone(z){ return (z && ZONE_ORDER[z] !== undefined) ? z : 'SAFE'; }
-
-  // 1) Runtime network egress kill-switch. CSP is primary; this is defense-in-depth.
-  const RuntimeNetworkGuard = {
-    blocked: 0,
-    _deny(api){
-      this.blocked++;
-      try{ console.warn('[VitalGuard NetworkGuard] blocked:', api); }catch(_){}
-    },
-    install(){
-      const self = this;
-      try{
-        if(typeof window.fetch === 'function'){
-          const originalFetch = window.fetch.bind(window);
-          window.__vg_original_fetch__ = originalFetch;
-          window.fetch = function(){ self._deny('fetch'); return Promise.reject(new DOMException('VitalGuard zero-egress: fetch disabled', 'SecurityError')); };
-        }
-      }catch(_){}
-      try{
-        if(typeof window.XMLHttpRequest === 'function'){
-          window.__vg_original_XHR__ = window.XMLHttpRequest;
-          window.XMLHttpRequest = function(){ self._deny('XMLHttpRequest'); throw new DOMException('VitalGuard zero-egress: XHR disabled', 'SecurityError'); };
-        }
-      }catch(_){}
-      try{
-        if(typeof window.WebSocket === 'function'){
-          window.__vg_original_WebSocket__ = window.WebSocket;
-          window.WebSocket = function(){ self._deny('WebSocket'); throw new DOMException('VitalGuard zero-egress: WebSocket disabled', 'SecurityError'); };
-        }
-      }catch(_){}
-      try{
-        if(typeof window.EventSource === 'function'){
-          window.__vg_original_EventSource__ = window.EventSource;
-          window.EventSource = function(){ self._deny('EventSource'); throw new DOMException('VitalGuard zero-egress: EventSource disabled', 'SecurityError'); };
-        }
-      }catch(_){}
-      try{
-        if(navigator && typeof navigator.sendBeacon === 'function'){
-          navigator.__vg_original_sendBeacon__ = navigator.sendBeacon.bind(navigator);
-          navigator.sendBeacon = function(){ self._deny('sendBeacon'); return false; };
-        }
-      }catch(_){}
-      try{
-        if(window.HTMLFormElement && HTMLFormElement.prototype && HTMLFormElement.prototype.submit){
-          HTMLFormElement.prototype.__vg_original_submit__ = HTMLFormElement.prototype.submit;
-          HTMLFormElement.prototype.submit = function(){ self._deny('form.submit'); throw new DOMException('VitalGuard zero-egress: form submit disabled', 'SecurityError'); };
-        }
-      }catch(_){}
-    }
-  };
-  RuntimeNetworkGuard.install();
-  window.VitalGuardRuntimeNetworkGuard = RuntimeNetworkGuard;
-
-  // 2) External navigation guard: blocks http(s)/mailto/tel/sms navigation from the app shell.
-  const ExternalNavigationGuard = {
-    blocked: 0,
-    isAllowedHref(href){
-      if(!href) return true;
-      const raw = String(href).trim();
-      if(raw === '#' || raw.startsWith('#')) return true;
-      if(raw.startsWith('blob:') || raw.startsWith('data:')) return true;
-      try{
-        const u = new URL(raw, location.href);
-        if(u.protocol === 'file:') return true;
-        if((u.protocol === 'http:' || u.protocol === 'https:') && u.origin === location.origin) return true;
-      }catch(_){}
-      return false;
-    },
-    install(){
-      document.addEventListener('click', (e)=>{
-        try{
-          const a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-          if(!a) return;
-          const href = a.getAttribute('href') || '';
-          if(!this.isAllowedHref(href)){
-            this.blocked++;
-            e.preventDefault();
-            e.stopPropagation();
-            vgToast('External navigation blocked by zero-egress mode. Copy data manually if needed.', 3000);
-          }
-        }catch(_){}
-      }, true);
-      try{
-        const originalOpen = window.open ? window.open.bind(window) : null;
-        window.open = function(url, target, features){
-          if(!url || ExternalNavigationGuard.isAllowedHref(url)) return originalOpen ? originalOpen(url, target, features) : null;
-          ExternalNavigationGuard.blocked++;
-          vgToast('External window blocked by zero-egress mode.', 2200);
-          return null;
-        };
-      }catch(_){}
-    }
-  };
-  ExternalNavigationGuard.install();
-  window.VitalGuardExternalNavigationGuard = ExternalNavigationGuard;
-
-  // 3) Disable OS share-sheet egress by app-level override: copy-only sharing.
-  async function copyOnly(text, label){
-    const value = String(text || '');
-    try{
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        await navigator.clipboard.writeText(value);
-        vgToast((label||'Data')+' copied locally. Share manually if you choose.', 2400);
-        return true;
-      }
-    }catch(_){}
-    vgToast('Clipboard unavailable. Select and copy manually.', 2400);
-    return false;
-  }
-  window.VitalGuardCopyOnly = copyOnly;
-
-  try{
-    SOS.shareMessage = function(){
-      const p=this.targetPet || (App.pets.length?App.pets[0]:null);
-      let m='LOST PET ALERT\n';
-      if(p){
-        m+='Name: '+String(p.name||'Pet')+'\nRescue ID: '+String(p.rescueId||'')+'\nLast signal: '+p.getLastSeenText(nowMs())+'\nStatus: '+vgSafeZone(p.zone && p.zone.stable)+'\nApprox distance: ~'+Number(p.distMeters||0).toFixed(1)+'m\n';
-      }
-      if(this.savedLocation){
-        m+='Owner coordinates: '+Number(this.savedLocation.lat).toFixed(5)+', '+Number(this.savedLocation.lon).toFixed(5)+'\n';
-        m+='Map lookup: copy coordinates manually into a trusted local/offline map app.\n';
-      }
-      m+='\nSent via VitalGuard AI (mcorpai.org)\nNOT GPS — Bluetooth proximity only';
-      copyOnly(m, 'Lost pet alert');
-    };
-  }catch(_){}
-
-  try{
-    Emergency.share = function(){
-      const text = `EMERGENCY\nName: ${this.data.name||'N/A'}\nPhone: ${this.data.phone||'N/A'}\nInfo: ${this.data.medical||''}\nSent via VitalGuard AI`;
-      copyOnly(text, 'Emergency info');
-    };
-  }catch(_){}
-
-  // 4) Fix per-pet alert patch to work with original one-argument App.triggerAlert(pet) calls.
-  try{
-    App._alertCooldown = App._alertCooldown || new Map();
-    App.triggerAlert = async function(pet, from, to){
-      try{
-        if(this.demoMode || !pet || pet.disabled) return;
-        v41EnsureAlertPrefs(pet);
-        const zone = vgSafeZone(to || (pet.zone && pet.zone.stable) || 'SAFE');
-        const prefs = pet.alertPrefs || V41_DEFAULT_ALERT_PREFS;
-        const minRank = v41ZoneRank(prefs.minZone || 'WARNING');
-        if(v41ZoneRank(zone) < minRank) return;
-
-        const key = `${pet.id||'pet'}:${zone}`;
-        const now = nowMs();
-        const last = this._alertCooldown.get(key) || 0;
-        if(now - last < ALERT_COOLDOWN_MS) return;
-        this._alertCooldown.set(key, now);
-
-        if(Settings.prefs.sound && prefs.sound) AudioEngine.alertForZone(zone);
-        if(Settings.prefs.voiceRecall && zone === 'CAUTION') VoiceRecall.play({silentFail:true});
-        if(Settings.prefs.vibrate && prefs.vibrate && navigator.vibrate){
-          if(zone==='WARNING') navigator.vibrate([160,80,160,80,220]);
-          else if(zone==='DANGER') navigator.vibrate([220,80,220,80,220,120,360]);
-          else if(zone==='LOST') navigator.vibrate([400,200,400,200,600]);
-          else navigator.vibrate([120,80,120]);
-        }
-        if(Settings.prefs.tts && prefs.tts) VoiceAnnouncer.speak(`${pet.name||'Pet'} ${zone.toLowerCase()}`);
-        if(Settings.prefs.notifWanted && 'Notification' in window && Notification.permission==='granted'){
-          try{ new Notification('VitalGuard AI: '+(pet.name||'Pet'), {body:`${zone} — ~${Number(pet.distMeters||0).toFixed(1)}m (approx)`}); }catch(_){}
-        }
-      }catch(e){ try{ console.warn('V4.3.7 hardened triggerAlert failed:', e); }catch(_){} }
-    };
-  }catch(_){}
-
-  // 5) Final async Detail.render wrapper so injected V4.1 UI runs after the base DOM is actually painted.
-  try{
-    const previousRender = Detail.render.bind(Detail);
-    Detail.render = async function(p){
-      const ret = await previousRender(p);
-      const activePet = p || this.pet;
-      try{ V41UI.injectDetailMetersLeash(activePet); }catch(_){}
-      try{ V41UI.injectDetailAlertPrefs(activePet); }catch(_){}
-      try{ V41UI.injectDetailCalibPro(activePet); }catch(_){}
-      return ret;
-    };
-  }catch(_){}
-
-  // 6) Replace Coach.render function-string injection with an action registry.
-  try{
-    window.VGHardening = window.VGHardening || {};
-    window.VGHardening.coachActions = [];
-    window.VGHardening.runCoachAction = function(i){
-      try{
-        const fn = window.VGHardening.coachActions[Number(i)];
-        if(typeof fn === 'function') fn();
-      }catch(e){ vgToast('Action failed safely.', 1800); }
-    };
-    Coach.render = function(){
-      const res=this.compute();
-      const tips=res.tips||[];
-      const actions=res.actions||[];
-      const card=$('coach-card');
-      const body=$('coach-body');
-      if(!card || !body) return;
-      if(!tips.length && !actions.length){ card.style.display='none'; return; }
-      window.VGHardening.coachActions = actions.slice(0,3).map(a=>a.fn).filter(fn=>typeof fn==='function');
-      body.innerHTML = `
-        <ul style="margin-left:18px;line-height:1.6">
-          ${tips.slice(0,6).map(t=>'<li>'+vgEscape(t.t)+'</li>').join('')}
-        </ul>
-        ${window.VGHardening.coachActions.length ? `
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-            ${actions.slice(0,3).map((a,i)=>`<button class="btn btn-secondary btn-sm" onclick="VGHardening.runCoachAction(${i})">${vgEscape(a.label)}</button>`).join('')}
-          </div>
-        `:''}
-      `;
-      card.style.display='block';
-    };
-  }catch(_){}
-
-  // 7) Diagnostics render sanitization.
-  try{
-    const prevSnapshot = Diag.snapshot.bind(Diag);
-    Diag.render = function(){
-      const snap=prevSnapshot();
-      const errs = (snap.errors||[]).slice(-12).reverse();
-      $('diag-body').innerHTML = `
-        <div class="tip-card info"><div class="tip-title">Diagnostics Snapshot (V4.3.7 Hardened)</div><div class="tip-body">Local-only diagnostics for debugging and audit review.</div></div>
-        <div style="display:flex;gap:8px;margin:10px 0"><button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.copy()">📋 Copy</button><button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.download()">⬇️ Download</button></div>
-        ${Capabilities.renderHTML()}
-        <div class="card" style="margin-top:10px"><div class="section-title" style="font-size:.8rem;margin:0 0 8px">Recent Errors</div>
-          ${errs.length ? errs.map(e=>`
-            <div style="border-top:1px solid var(--border-color);padding:10px 0;font-size:.72rem;color:var(--text-secondary);line-height:1.45">
-              <div style="color:var(--text-muted)">${vgEscape(e.t)} · <span class="kbd">${vgEscape(e.kind)}</span></div>
-              <div><strong>${vgEscape(e.msg)}</strong></div>
-              ${e.where?`<div style="color:var(--text-muted)">${vgEscape(e.where)}</div>`:''}
-            </div>`).join('') : `<div style="font-size:.75rem;color:var(--text-muted);padding:6px 0">No errors captured.</div>`}
-          <button class="btn btn-secondary btn-sm" style="margin-top:10px;width:100%" onclick="ErrorShield.clear()">Clear Error Log</button>
-        </div>
-        <pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4;margin-top:10px">${vgEscape(safeJson(snap))}</pre>
-        <div class="tip-card warn"><div class="tip-title">Privacy Note</div><div class="tip-body">This snapshot stays local unless you manually export it. Network egress APIs are disabled by runtime guard.</div></div>
-      `;
-    };
-  }catch(_){}
-
-  // 8) Rescue Pack share/SMS become copy-only; no sms: or OS share navigation.
-  try{
-    const prevInjectSOS = V41UI.injectSOSRescuePack.bind(V41UI);
-    V41UI.injectSOSRescuePack = function(){
-      prevInjectSOS();
-      try{
-        const card = document.getElementById('v41-rescuepack-card');
-        if(!card || card.__vg_hardened) return;
-        card.__vg_hardened = true;
-        const codeEl = card.querySelector('#v41-rp-code');
-        const genBtn = card.querySelector('#v41-rp-generate');
-        const ensureCode = ()=>{ if(codeEl && !codeEl.value.trim() && genBtn) genBtn.click(); return codeEl ? codeEl.value.trim() : ''; };
-        const shareBtn = card.querySelector('#v41-rp-share');
-        const smsBtn = card.querySelector('#v41-rp-sms');
-        if(shareBtn){ shareBtn.replaceWith(shareBtn.cloneNode(true)); }
-        if(smsBtn){ smsBtn.replaceWith(smsBtn.cloneNode(true)); }
-        const share2 = card.querySelector('#v41-rp-share');
-        const sms2 = card.querySelector('#v41-rp-sms');
-        if(share2) share2.addEventListener('click', ()=>copyOnly(ensureCode(), 'Rescue Pack'));
-        if(sms2) sms2.addEventListener('click', ()=>copyOnly(ensureCode(), 'Rescue Pack for SMS'));
-      }catch(_){}
-    };
-  }catch(_){}
-
-  // 9) Emergency call link becomes copy-only in zero-egress mode.
-  try{
-    const prevActivate = Emergency.activate.bind(Emergency);
-    Emergency.activate = async function(){
-      await prevActivate();
-      try{
-        const call = $('emg-call');
-        if(call){
-          call.setAttribute('href', '#');
-          call.onclick = (e)=>{ e.preventDefault(); copyOnly((Emergency.data && Emergency.data.phone)||'', 'Emergency phone'); return false; };
-          call.textContent = '📋 Copy Phone';
-        }
-      }catch(_){}
-    };
-  }catch(_){}
-
-  // 10) Harden decoded rescue packs: size, expiry, schema and text sanitization.
-  try{
-    const prevDecode = SOS.decodeRescuePack.bind(SOS);
-    SOS.decodeRescuePack = function(code){
-      if(!code || String(code).length > 8192) throw new Error('Rescue Pack too large');
-      const pack = prevDecode(code);
-      if(!pack || pack.v !== 1) throw new Error('Unsupported pack version');
-      if(pack.e && Number(pack.e) < nowMs()) throw new Error('Rescue Pack expired');
-      pack.p = pack.p || {};
-      pack.p.n = Sanitizer.name(pack.p.n || 'Rescue Target');
-      pack.p.i = Sanitizer.icon(pack.p.i || '🐾');
-      pack.p.r = Sanitizer.text(pack.p.r || 'UNKNOWN', 32);
-      pack.s = pack.s || {};
-      if(pack.s.np) pack.s.np = Sanitizer.text(pack.s.np, 32);
-      if(pack.s.ne) pack.s.ne = Sanitizer.text(pack.s.ne, 64);
-      if(pack.s.mf) pack.s.mf = String(pack.s.mf).replace(/[^0-9A-Fa-f]/g,'').slice(0,16).toUpperCase();
-      if(Array.isArray(pack.s.sv)) pack.s.sv = pack.s.sv.map(x=>Sanitizer.text(x, 64)).slice(0,6);
-      return pack;
-    };
-  }catch(_){}
-
-  // 11) Ensure source/contact labels are non-clickable external surfaces after i18n re-renders.
-  try{
-    const prevI18nApply = I18N.apply.bind(I18N);
-    I18N.apply = function(){
-      prevI18nApply();
-      try{
-        const src = $('i18n_github_link');
-        if(src){ src.textContent = 'Source Notice'; src.setAttribute('href','#'); src.onclick = function(){ Legal.open(); return false; }; src.setAttribute('rel','noopener noreferrer nofollow'); }
-        const contact = $('i18n_contact_line');
-        if(contact){ contact.textContent = 'Contact: contact@mcorpai.org • mcorpai.org • Morgan J. (Gyumin Jeon)'; }
-      }catch(_){}
-    };
-  }catch(_){}
-
-  // 12) Self-test sanity override: no undefined local variables, no navigation side effects.
-  try{
-    Diag.runQuickTest = function(){
-      const results = [];
-      const t0 = performance.now();
-      try{
-        const qr = qrcodegen.QrCode.encodeText('VG-SELFTEST', qrcodegen.QrCode.Ecc.MEDIUM);
-        results.push({test:'QR', ok:true, detail:`version ${qr.version} size ${qr.size}`});
-      }catch(e){ results.push({test:'QR', ok:false, detail:String(e)}); }
-      try{
-        const rls = new RLSCalibrator();
-        const tx = -59, n = 2.2;
-        [2,3,5,8,10,12].forEach(d=>rls.update(d, tx - 10*n*Math.log10(d)));
-        const p = rls.params();
-        results.push({test:'RLS', ok:Math.abs(p.txPower - tx) < 6 && Math.abs(p.n - n) < 0.8, detail:`tx ${p.txPower.toFixed(1)} n ${p.n.toFixed(2)}`});
-      }catch(e){ results.push({test:'RLS', ok:false, detail:String(e)}); }
-      try{
-        const pet = App.pets && App.pets[0] ? App.pets[0] : null;
-        if(pet && SOS.buildRescuePack){
-          const code = SOS.encodeRescuePack(SOS.buildRescuePack(pet));
-          const pack = SOS.decodeRescuePack(code);
-          results.push({test:'RescuePack', ok:!!(pack && pack.p && pack.p.r === pet.rescueId), detail:'encode/decode'});
-        }else results.push({test:'RescuePack', ok:true, detail:'skipped (no pets)'});
-      }catch(e){ results.push({test:'RescuePack', ok:false, detail:String(e)}); }
-      try{
-        const pets=[];
-        for(let i=0;i<10;i++) pets.push(new Pet({name:'T'+i, icon:'🐾', signature:{namePrefix:'TAG'+i}}));
-        const fakeEv = { device:{id:'x', name:'TAG3_ABC'}, manufacturerData:null, serviceData:null, uuids:[] };
-        const t1 = performance.now();
-        for(let k=0;k<200;k++) pets.forEach(p=>matchScore(fakeEv, p.signature));
-        const ms = performance.now() - t1;
-        results.push({test:'Perf', ok:ms < 50, detail:`matchScore loop ~${ms.toFixed(1)}ms`});
-      }catch(e){ results.push({test:'Perf', ok:false, detail:String(e)}); }
-      const dt = performance.now() - t0;
-      const okAll = results.every(r=>r.ok);
-      Diag._lastSelfTest = { time:new Date().toISOString(), ok:okAll, dtMs:Math.round(dt), results };
-      vgToast(okAll ? `Self-Test OK (${Math.round(dt)}ms)` : 'Self-Test found issues (see Diagnostics)', 2600);
-      try{ if(document.getElementById('diag-overlay')?.classList.contains('active')) Diag.open(); }catch(_){}
-    };
-  }catch(_){}
-})();
-
 /* ----------------------------- FINAL: boot once ----------------------------- */
   // Ensure injection is ready even if Settings tab opened before init
   try{ V40UI.inject(); }catch(e){}
 
-})();
-
-/* ----------------------------- V4.3.7 GUARDED BOOTSTRAP ----------------------------- */
-(function(){
-  try{
-    if(window.__VITALGUARD_BOOTED__) return;
-    window.__VITALGUARD_BOOTED__ = true;
-    const boot = ()=>{
-      try{
-        if(typeof App !== 'undefined' && App && typeof App.init === 'function'){
-          App.init().catch(e=>{
-            try{ console.error('[VitalGuard] boot failed:', e); }catch(_){}
-            try{ Toast.show('VitalGuard boot failed safely. Open Diagnostics.', 4200); }catch(_){}
-          });
-        }
-      }catch(e){ try{ console.error('[VitalGuard] boot exception:', e); }catch(_){} }
-    };
-    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true});
-    else boot();
-  }catch(e){ try{ console.error('[VitalGuard] guarded bootstrap failed:', e); }catch(_){} }
 })();
 
 /* --- END OF VITALGUARD AI v4.3.7 ----------------------------------------------- */
