@@ -15,21 +15,26 @@ Given enough eyeballs, all bugs are shallow. — Eric S. Raymond
 Reference:
 https://mcorpai.net   [miniGit, no tracking · Size 186KB]
 =========================================================
-miniGit is a zero-dependency tool designed to eliminate the tracking risks associated with traditional Git platforms.
-Built for activists and users operating in high-risk environments, miniGit is a fully offline source-management tool under 200 KB in size.
 
-Unlike GitHub, it requires no server, no account, and leaves no remote commit history. It enables local source-code review, hash verification, 
-static suspicious-code scanning, and offline file transfer via Bluetooth and ultrasonic communication.
+miniGit is a zero-dependency, memory-only tool designed to eliminate the tracking risks associated with traditional Git platforms. Built specifically for activists, journalists, and users operating in high-risk environments, miniGit is a fully offline source-management tool packed into a single file under 200 KB.
 
-If the tool is too heavy, it becomes impractical for high-risk activists to use.
+Heavy applications are impractical in high-risk, low-bandwidth scenarios. By staying ultra-lightweight, miniGit ensures rapid deployment.
+
+Unlike GitHub, it requires no server, no account, and leaves no remote commit history. All features are executed locally within the browser, including:
+- Local source-code review & diffing
+- Cryptographic hash verification
+- Static suspicious-code scanning
+- Offline file transfer (via Bluetooth and Ultrasonic FSK communication)
+
 No Server. No Account. No Tracking.
 
-When used in Incognito Mode, miniGit is designed to leave only minimal local traces.
+Because all snapshots and histories are strictly in-memory, closing the tab permanently destroys the session data. When combined with Incognito/Private Mode, miniGit is designed to leave zero local traces.
 
-Please check mcorpai.net
-miniGit is a research prototype and is not a finalized version.
+License: M-Corp Ethical AI License (Hippocratic 3.0 derived). Strictly restricted to civilian, agricultural, and humanitarian purposes. 
 
-miniGit demonstrates that a practical source-management tool with sufficient functionality can be built without any external dependencies.
+Note: miniGit is a research prototype and is not a guaranteed forensic eraser. Please check mcorpai.net for more details.
+
+miniGit demonstrates that a highly practical, secure source-management tool can be built entirely without external dependencies.
 
 -->
 
