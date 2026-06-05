@@ -67,6 +67,35 @@ changes can be more easily identified through file-size comparison and hash veri
 Of course, a small file size alone does not guarantee security. 
 However, minimizing code size and eliminating external dependencies can help improve verifiability and reduce supply-chain risks.
 
+=======================================================================================================
+https://mcorpai.net/ — Proof-of-Concept (PoC) and Early MVP for Fully Offline Ultrasonic Communication
+=======================================================================================================
+
+To the best of my knowledge, this may be among the first implementations of a fully offline, 
+zero-dependency communication architecture that enables nearby users to exchange simple messages through ultrasonic acoustic signaling without relying on cellular networks, 
+Wi-Fi infrastructure, cloud services, external libraries, or centralized servers.
+
+From a security perspective, the approach differs fundamentally from conventional wireless communication systems. Technologies such as Bluetooth, Wi-Fi, 
+and cellular networks inherently generate radio-frequency (RF) emissions and associated metadata that can potentially be monitored, correlated, or analyzed by third parties. 
+Ultrasonic communication, by contrast, operates through short-range acoustic transmission and does not require the emission of conventional RF communication signals for message delivery.
+
+The primary objective is not anonymity, which no technology can guarantee, but rather metadata minimization, attack-surface reduction, and infrastructure independence. 
+By eliminating external dependencies and centralized communication channels, the architecture reduces reliance on third-party services while minimizing opportunities 
+for large-scale data collection and network-based monitoring.
+
+The implementation is intentionally designed as a self-contained, single-file architecture with zero external dependencies. This improves transparency, auditability, 
+software supply-chain resilience, and long-term maintainability. Security researchers can inspect the entire codebase without requiring package managers, external frameworks, 
+remote APIs, or third-party runtime components.
+
+In high-risk environments where communication infrastructure may be disrupted, censored, monitored, or completely unavailable, 
+ultrasonic signaling can provide an alternative low-infrastructure communication channel for short-range message exchange. This design philosophy prioritizes offline survivability, 
+operational resilience, and user autonomy under adverse conditions.
+
+While further peer review and security analysis are encouraged, 
+the architecture demonstrates that meaningful local communication capabilities can be implemented with an extremely small trust base, minimal external assumptions, 
+and a substantially reduced attack surface compared with conventional network-dependent systems.
+
+
 -->
 
 <!DOCTYPE html>
