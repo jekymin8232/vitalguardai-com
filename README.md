@@ -1,4 +1,4 @@
-# Erase the Trace.
+# Leave No Trace.
 > ### The safest network is a completely offline system that is connected to no network.
 > VitalGuard AI operates autonomously even on a single very old floppy disk.
 > **Introducing VitalGuard AI 🌍 — AI That Can Save Lives When Everything Else Stops Working.**
