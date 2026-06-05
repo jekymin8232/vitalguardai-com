@@ -1,5 +1,5 @@
 # Leave No Trace.
-**Transparency and Security — The source code is openly available, allowing anyone to use, inspect, audit, and verify it.**
+**Transparency and Security — The source code is openly available for anyone to use, inspect, audit, and verify.**
 > ### The safest network is a completely offline system that is connected to no network.
 > VitalGuard AI operates autonomously even on a single very old floppy disk.
 > **Introducing VitalGuard AI 🌍 — AI That Can Save Lives When Everything Else Stops Working.**
