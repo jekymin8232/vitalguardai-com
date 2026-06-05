@@ -1,4 +1,6 @@
 # Leave No Trace. Fully Customizable
+**With zero external dependencies, it can be customized freely to meet specific needs.**
+
 **Transparency and Security — The source code is openly available for anyone to use, inspect, audit, and verify.**
 > ### The safest network is a completely offline system that is connected to no network.
 > VitalGuard AI operates autonomously even on a single very old floppy disk.
