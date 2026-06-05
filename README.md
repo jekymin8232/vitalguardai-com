@@ -1,4 +1,4 @@
-**Introducing VitalGuard AI — AI That Can Save Lives When Everything Else Stops Working.**
+**Introducing VitalGuard AI 🌍 AI That Can Save Lives When Everything Else Stops Working.**
 
 **To learn more about the vision and technology behind VitalGuard AI, please visit [mcorpai.com.](https://mcorpai.com/)**
 
