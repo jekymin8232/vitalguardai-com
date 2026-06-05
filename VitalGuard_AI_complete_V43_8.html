@@ -1,47 +1,47 @@
 <!--
-In the production version, all comments can be stripped out, and the application can be extensively refactored and redesigned to align with the specified requirements.
+In the production version, all comments can be removed, and the application can be refactored or redesigned as needed to meet specific requirements.
 
-Even when all other systems stop working, offline AI can save lives.
+Even when conventional infrastructure becomes unavailable, offline AI may provide useful capabilities in disrupted environments.
 
-Offline AI can be applied in any shutdown environment. 
-Its potential use cases extend beyond communication infrastructure failures to include natural-disaster scenarios, remote and disconnected regions, 
-and even AI-assisted solutions for challenges such as desert greening and environmental restoration. 
-This architecture also underwent an initial review by the Government of Luxembourg in November 2025.  
+Potential use cases include communication outages, natural-disaster scenarios, remote or disconnected regions, 
+and other situations where access to centralized services is limited. This architecture also underwent an initial review by the Government of Luxembourg in November 2025.
 
 Copyright © 2026 Morgan J. (Gyu-min Jeon) | https://mcorpai.org/ | VitalGuardAI.com V4.3.8
-Given enough eyeballs, all bugs are shallow. — Eric S. Raymond
 
+"Given enough eyeballs, all bugs are shallow."
+— Eric S. Raymond
 
 =========================================================
-Reference:
-https://mcorpai.net   [miniGit, no tracking · Size 186KB]
-=========================================================
+Reference Material
+https://mcorpai.net   [miniGit · Size 186KB]
+============================================
 
-miniGit is a zero-dependency, memory-only tool designed to eliminate the tracking risks associated with traditional Git platforms. 
-Built specifically for activists, journalists, and users operating in high-risk environments, miniGit is a fully offline source-management tool packed into a single file under 200 KB.
+miniGit is a zero-dependency, memory-only research prototype designed to explore offline source-management approaches for users operating in privacy-sensitive or high-risk environments.
 
-Heavy applications are impractical in high-risk, low-bandwidth scenarios. By staying ultra-lightweight, miniGit ensures rapid deployment.
+Implemented as a single file under 200 KB, miniGit operates entirely offline and executes locally within the browser.
 
-Unlike GitHub, it requires no server, no account, and leaves no remote commit history. All features are executed locally within the browser, including:
-- Local source-code review & diffing
-- Cryptographic hash verification
-- Static suspicious-code scanning
-- Offline file transfer (via Bluetooth and Ultrasonic FSK communication)
+Key capabilities include:
 
-No Server. No Account. No Tracking.
+* Local source-code review and diffing
+* Cryptographic hash verification
+* Static suspicious-code scanning
+* Offline file transfer using Bluetooth and Ultrasonic FSK communication
 
-Because all snapshots and histories are strictly in-memory, closing the tab permanently destroys the session data. When combined with Incognito/Private Mode, 
-miniGit is designed to leave zero local traces.
+miniGit does not require a server, user account, or remote repository.
 
-Note: miniGit is a research prototype and is not a guaranteed forensic eraser. Please check mcorpai.net for more details.
+All snapshots and histories are maintained in memory only. Closing the browser tab destroys the active session data. When used with Incognito or Private Browsing modes, the tool is intended to minimize local persistence.
 
-miniGit demonstrates that a highly practical, secure source-management tool can be built entirely without external dependencies.
+Note: miniGit is a research prototype and should not be considered a forensic-erasure tool or a guarantee of anonymity.
 
-For reference only, https://mcorpai.net 
-This material is provided solely for reference and is not part of the audit scope. 
-This sample version is provided to illustrate the architecture's flexibility and its ability to support a variety of design approaches, extensions, and future implementations.
+This reference project demonstrates how lightweight source-management functionality can be implemented without external dependencies.
 
+For reference only: https://mcorpai.net
 
+This material is provided solely for reference and is not part of the audit scope.
+
+The referenced project is included only as an example of the architecture's flexibility and its potential to support different design approaches, extensions, and future implementations.
+
+No review, validation, or assessment of the referenced project is requested as part of this audit.
 -->
 
 <!DOCTYPE html>
