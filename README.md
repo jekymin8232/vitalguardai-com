@@ -5,7 +5,7 @@
 > Built with an offline-first philosophy, VitalGuard AI aims to provide resilient and accessible AI capabilities on simple, widely available hardware, helping support disaster response, > humanitarian operations, remote communities, and other challenging environments where connectivity cannot be guaranteed.
 > To learn more about the vision and technology behind VitalGuard AI, please visit [mcorpai.com.](http://mcorpai.com/)
 
-**The highest level of security is a completely offline system.**
+### The highest level of security is a completely offline system.
 
 # VitalGuard Integrated Modular Code V3.0 MVP
 ### Even when all other systems stop working, offline AI can save lives.
