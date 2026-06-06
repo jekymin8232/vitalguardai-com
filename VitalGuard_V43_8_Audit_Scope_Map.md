@@ -6,7 +6,7 @@
 
 From a security and architectural standpoint, a full audit of all 10,000 lines is unlikely to provide significant additional value. A focused review of the core security-critical code paths should be more than sufficient.
 
-**For a comprehensive overview of the architecture, module organization, and code structure, please refer to the full Code Map available at:**
+**For a complete code and architecture overview, please refer to the Code Map:**
 
 https://vitalguardai.com/Code_Manual_Code_Map_V43_8.html
 
