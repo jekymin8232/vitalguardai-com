@@ -5,7 +5,7 @@
 **File:** `VitalGuard_AI_complete_V43_8.html`
 **Total lines:** 10,569 · **Size:** 475 KB
 **Analysis date:** 2026-05-24
-**Prepared by:** Claude (Anthropic) + Morgan J. (Gyu-min Jeon), M-Corp Ethical AI
+**Prepared by:** Morgan J. (Gyu-min Jeon), M-Corp Ethical AI
 
 ---
 
