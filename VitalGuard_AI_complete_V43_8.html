@@ -7,6 +7,35 @@ I am willing to fully cooperate with any requests, reviews, audits, or other req
 
 In real open source, you have the right to control your own destiny. — Linus Torvalds
 
+I have also developed an experimental ultrasonic communication capability. 
+However, recognizing that some security reviewers or vendors may prefer to evaluate the core platform without additional communication features, 
+I have intentionally excluded this functionality from the current submission.
+
+Depending on reviewer feedback and project requirements, ultrasonic communication could be incorporated in future versions. 
+If such functionality is not desired, I would be more than willing to keep it excluded from future releases.
+
+A demonstration of the technology can be found at:
+
+https://mcorpai.net/
+
+While Chrome supports Bluetooth communication via the Web Bluetooth API, 
+Safari currently does not. To address this limitation and provide an infrastructure-independent fallback communication channel, 
+I developed an experimental ultrasonic communication capability.
+
+Ultrasonic communication is designed for highly localized, short-range communication and may be more difficult to detect, 
+monitor, or trace than conventional radio-frequency (RF) communication methods. Messages can be represented using Morse code, 
+compact numeric signaling, or fully customizable user-defined encoding schemes.
+
+This approach may be particularly useful for activists and other at-risk users operating within restricted or controlled environments where discreet, 
+infrastructure-independent communication is desirable.
+
+I intentionally excluded the ultrasonic communication feature from the current submission 
+because it may represent a relatively unfamiliar form of short-range networking for some security reviewers and vendors. 
+My concern was that introducing an additional and unconventional communication mechanism at this stage could complicate the evaluation process 
+or create unnecessary uncertainty during the Security Lab review. To avoid any possibility that the ultrasonic feature might negatively impact the assessment 
+of the core platform, I chose to focus this submission on the primary architecture and capabilities. The ultrasonic functionality can always be evaluated separately 
+or incorporated in future versions if there is interest in doing so.
+
 I would be sincerely and deeply grateful for the opportunity to have my project undergo a Security Review.
 I have poured an enormous amount of time, effort, and commitment into this project, and I can honestly and confidently say that I have done my very best.
 
