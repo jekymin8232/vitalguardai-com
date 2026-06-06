@@ -97,6 +97,22 @@ the architecture demonstrates that meaningful local communication capabilities c
 and a substantially reduced attack surface compared with conventional network-dependent systems.
 
 
+Unlike conventional RF-based communications, ultrasonic signaling has inherently limited propagation characteristics. 
+Radio-frequency transmissions can penetrate walls and travel from hundreds of meters to several kilometers, potentially allowing signals to be collected by distant monitoring systems. 
+In contrast, ultrasonic signals experience significant attenuation in air and typically operate only over short ranges, 
+often within a few meters to several meters depending on environmental conditions.
+
+Due to these physical properties, ultrasonic communication generally has a much smaller collection footprint. Signals are less likely to propagate through walls, 
+and interception often requires an observer to be physically close to the communicating devices. 
+This creates a favorable asymmetry in collection costs, 
+where obtaining the signal may require substantially greater proximity and effort compared to many conventional wireless technologies.
+
+In the current prototype, messages are transmitted using compact numeric signaling formats rather than human-readable text. As a result, 
+even if a transmission is detected, understanding its meaning may require additional contextual knowledge, protocol awareness, or access to the communicating endpoints.
+
+While no communication method can guarantee complete security, ultrasonic communication may provide an additional low-profile, 
+RF-independent channel that can be valuable in high-risk environments where minimizing long-range signal exposure is desirable.
+
 -->
 
 <!DOCTYPE html>
