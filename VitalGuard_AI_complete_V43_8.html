@@ -1,46 +1,77 @@
 <!--
 
-Apache 2.0 - Completely Free and Open Source
+# Apache 2.0 – Completely Free and Open Source
 
-As an open-source developer, acceptance into the OTF Security Lab would be a significant step toward building a sustainable and independent future for this project. 
-I am willing to fully cooperate with any requests, reviews, audits, or other requirements that may help facilitate the evaluation process.
+As an independent open-source developer, I believe that acceptance into the OTF Security Lab would be an important step toward strengthening the security, reliability, 
+and long-term sustainability of this project.
 
-In real open source, you have the right to control your own destiny. — Linus Torvalds
+I am fully prepared to cooperate with any requests, technical reviews, security assessments, code audits, 
+documentation requirements, or other evaluation processes that may assist reviewers and vendors during the Security Lab assessment.
 
-I have also developed an experimental ultrasonic communication capability. 
-However, recognizing that some security reviewers or vendors may prefer to evaluate the core platform without additional communication features, 
-I have intentionally excluded this functionality from the current submission.
+> “In real open source, you have the right to control your own destiny.”
+>
+> — Linus Torvalds
 
-Depending on reviewer feedback and project requirements, ultrasonic communication could be incorporated in future versions. 
-If such functionality is not desired, I would be more than willing to keep it excluded from future releases.
+## Experimental Ultrasonic Communication Capability
 
-A demonstration of the technology can be found at:
+In addition to the core platform, I have developed an experimental ultrasonic communication capability as a research prototype.
+
+However, I recognize that some reviewers and security vendors may prefer to evaluate the core platform independently, 
+without introducing additional communication mechanisms that are outside the primary scope of the current submission.
+
+For this reason, I have intentionally excluded the ultrasonic communication functionality from the version submitted for Security Lab review.
+
+My objective is to ensure that the evaluation remains focused on the primary architecture, security model, 
+and core capabilities of the platform without introducing unnecessary complexity or uncertainty during the assessment process.
+
+Depending on reviewer feedback and project requirements, the ultrasonic communication capability could be evaluated separately or incorporated into future versions. 
+If reviewers determine that such functionality is outside the desired scope, I would be fully willing to keep it excluded from future releases.
+
+## Background
+
+While Chrome supports Bluetooth communication through the Web Bluetooth API, Safari currently does not provide equivalent support.
+
+As part of my research into infrastructure-independent communication methods, 
+I developed an experimental ultrasonic communication capability that can serve as an alternative short-range communication channel 
+when conventional browser-based Bluetooth functionality is unavailable.
+
+The prototype is designed for highly localized communication between nearby devices and supports multiple signaling approaches, including Morse-code-based signaling, 
+compact numeric signaling, and customizable user-defined encoding schemes.
+
+The primary objective of this research is not anonymity or guaranteed security, which no communication technology can provide, 
+but rather the exploration of infrastructure-independent communication methods that reduce reliance on conventional networking technologies and external services.
+
+A demonstration of this research prototype can be found at:
+
 Ultrasonic Communication MVP
 
-For your reference https://mcorpai.net/
+For reference:
 
-While Chrome supports Bluetooth communication via the Web Bluetooth API, 
-Safari currently does not. To address this limitation and provide an infrastructure-independent fallback communication channel, 
-I developed an experimental ultrasonic communication capability.
+https://mcorpai.net/
 
-Ultrasonic communication is designed for highly localized, short-range communication and may be more difficult to detect, 
-monitor, or trace than conventional radio-frequency (RF) communication methods. Messages can be represented using Morse code, 
-compact numeric signaling, or fully customizable user-defined encoding schemes.
+## Security Lab Submission Scope
 
-This approach may be particularly useful for activists and other at-risk users operating within restricted or controlled environments where discreet, 
-infrastructure-independent communication is desirable.
+The ultrasonic communication capability is intentionally excluded from the current submission 
+because it represents an experimental and relatively unconventional communication mechanism.
 
-I intentionally excluded the ultrasonic communication feature from the current submission 
-because it may represent a relatively unfamiliar form of short-range networking for some security reviewers and vendors. 
-My concern was that introducing an additional and unconventional communication mechanism at this stage could complicate the evaluation process 
-or create unnecessary uncertainty during the Security Lab review. To avoid any possibility that the ultrasonic feature might negatively impact the assessment 
-of the core platform, I chose to focus this submission on the primary architecture and capabilities. The ultrasonic functionality can always be evaluated separately 
-or incorporated in future versions if there is interest in doing so.
+My concern was that including an additional research component at this stage could complicate the review process 
+or divert attention from the core platform itself.
 
-I would be sincerely and deeply grateful for the opportunity to have my project undergo a Security Review.
-I have poured an enormous amount of time, effort, and commitment into this project, and I can honestly and confidently say that I have done my very best.
+To avoid any possibility that the assessment of the primary architecture might be influenced by an unrelated experimental feature, 
+I chose to focus this submission exclusively on the core platform and its primary functionality.
 
-My goal is to build a truly free, sustainable, and independent future for this project.
+Should there be interest in reviewing the ultrasonic communication capability in the future, it can be evaluated independently as a separate research component.
+
+## Closing
+
+I would be sincerely grateful for the opportunity to have this project undergo a professional Security Review through the OTF Security Lab.
+
+A significant amount of time, effort, and personal commitment has gone into the development of this project. 
+Independent security review and expert feedback would be invaluable in helping improve its quality, 
+security posture, and long-term usefulness for the communities it aims to serve.
+
+My goal is to build a project that remains free, open, transparent, sustainable, 
+and independent while providing practical value to users operating in challenging environments.
 
 -->
 
