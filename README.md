@@ -22,9 +22,15 @@ Such cooperation could create mutual benefits for all parties involved. Your org
 
 I believe that partnerships built on shared goals, transparency, and public benefit have the potential to create sustainable and impactful outcomes. If there is interest, I would be pleased to explore whether a small-scale collaborative AI research initiative could serve as a foundation for broader future cooperation.
 
-<img width="183" height="131" alt="1" src="https://github.com/user-attachments/assets/5d43e91d-5449-4306-b826-379935a08ee1" />
+<img width="91" height="65" alt="1" src="https://github.com/user-attachments/assets/5d43e91d-5449-4306-b826-379935a08ee1" />
 
 **The Republic of Korea, as a liberal democratic nation, has a longstanding tradition of supporting humanitarian international cooperation and stands ready to engage constructively in initiatives that advance shared public-interest goals.**
+
+If providing annual funding of several hundred thousand dollars is difficult for your organization, there may be alternative approaches worth exploring.
+
+For example, if the collaboration can generate positive ESG (Environmental, Social, and Governance) outcomes that can be reflected in your organization's reports and public-impact initiatives, it may be possible to attract support from Korean companies or other institutional partners.
+
+In such a framework, your organization would not necessarily be required to bear the full financial burden. Instead, your primary role could be to facilitate international cooperation, while additional support could potentially be secured through local partnerships and broader stakeholder engagement.
 
 ---
 
