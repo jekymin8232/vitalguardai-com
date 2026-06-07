@@ -24,7 +24,7 @@ I believe that partnerships built on shared goals, transparency, and public bene
 
 <img width="250" height="89" alt="1" src="https://github.com/user-attachments/assets/e2c47fbb-594b-43ac-b028-e4f8c68a9fea" />
 
-The Republic of Korea is firmly committed to the principles of freedom, democracy, and human rights, which form the foundation of its society and governance.
+### The Republic of Korea is a leading example of international cooperation.
 
 The Republic of Korea is a globally respected democracy and is widely regarded as one of Asia's leading democratic nations.
 
