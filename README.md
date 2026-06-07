@@ -1,5 +1,17 @@
 **Freedom is not free. Likewise, keeping a project alive requires ongoing time, effort, and resources.**
 
+I would welcome the opportunity to collaborate with your organization. However, long-term cooperation requires a sustainable framework. Open-source developers face the same practical realities as any other professionals, and sustaining a project over time requires adequate support. Without a sustainable model, even the most dedicated developers can eventually face burnout.
+
+For me, this is not solely about financial compensation. It is about ensuring that the project can continue to be maintained, improved, and supported over the long term.
+
+As a developer based in the Republic of Korea, I am fortunate to be in a country that actively invests in AI talent, innovation, and international cooperation. South Korea has a strong tradition of working constructively with international partners on projects that serve the public interest and support humanitarian goals.
+
+For this reason, I would respectfully encourage your organization to explore potential institutional cooperation with the relevant Korean authorities, such as the commercial, trade, or economic sections of the Embassy of the Republic of Korea in your country, or other appropriate Korean organizations.
+
+Such an approach could provide a transparent and sustainable framework for collaboration while reducing the burden on any single organization. It may also create opportunities for broader cooperation, knowledge sharing, and long-term project sustainability without requiring your organization to directly assume responsibility for supporting an individual developer.
+
+I believe that institutional cooperation can often achieve more durable and impactful outcomes than informal arrangements, and I would be pleased to explore any opportunities for constructive collaboration that benefit all parties involved.
+
 # Leave No Trace. Fully Customizable
 **You're in control of the development. With zero external dependencies, it can be customized freely to meet specific needs. Transparency and Security — The source code is openly available for anyone to use, inspect, audit, and verify.**
 
