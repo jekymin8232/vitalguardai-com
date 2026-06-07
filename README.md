@@ -1,3 +1,5 @@
+**Freedom is not free. Likewise, keeping a project alive requires ongoing time, effort, and resources.**
+
 # Leave No Trace. Fully Customizable
 **You're in control of the development. With zero external dependencies, it can be customized freely to meet specific needs. Transparency and Security — The source code is openly available for anyone to use, inspect, audit, and verify.**
 
