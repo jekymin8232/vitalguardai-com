@@ -1,3 +1,5 @@
+Regarding potential collaboration: https://github.com/jekymin8232/mcorpai-com
+
 # VitalGuard Integrated Modular Code V3.0 MVP
 
 > A single-file, **zero-dependency**, **100% offline**, **no-auto-render** source bundle that packages four humanitarian survival-AI artifacts and exposes a small, explicit runtime kernel for inspecting, extracting, and re-using their modules.
