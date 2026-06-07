@@ -22,6 +22,10 @@ Such cooperation could create mutual benefits for all parties involved. Your org
 
 I believe that partnerships built on shared goals, transparency, and public benefit have the potential to create sustainable and impactful outcomes. If there is interest, I would be pleased to explore whether a small-scale collaborative AI research initiative could serve as a foundation for broader future cooperation.
 
+<img width="183" height="131" alt="1" src="https://github.com/user-attachments/assets/5d43e91d-5449-4306-b826-379935a08ee1" />
+
+**The Republic of Korea, as a liberal democratic nation, has a longstanding tradition of supporting humanitarian international cooperation and stands ready to engage constructively in initiatives that advance shared public-interest goals.**
+
 ---
 
 # Leave No Trace. Fully Customizable
