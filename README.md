@@ -22,6 +22,8 @@ Such cooperation could create mutual benefits for all parties involved. Your org
 
 I believe that partnerships built on shared goals, transparency, and public benefit have the potential to create sustainable and impactful outcomes. If there is interest, I would be pleased to explore whether a small-scale collaborative AI research initiative could serve as a foundation for broader future cooperation.
 
+---
+
 # Leave No Trace. Fully Customizable
 **You're in control of the development. With zero external dependencies, it can be customized freely to meet specific needs. Transparency and Security — The source code is openly available for anyone to use, inspect, audit, and verify.**
 
