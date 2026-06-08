@@ -8,7 +8,7 @@ From a security and architectural standpoint, a full audit of all 10,000 lines i
 
 **For a complete code and architecture overview, please refer to the Code Map:**
 
-https://vitalguardai.com/Code_Manual_Code_Map_V43_8.html
+https://github.com/jekymin8232/vitalguardai-com/blob/main/Code_Manual_Code_Map_V43_8.md
 
 
 If you have any questions or requests, I would be happy to cooperate at any time.
