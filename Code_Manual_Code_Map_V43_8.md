@@ -282,8 +282,6 @@ The action dispatcher permits only explicit first-party namespace/method calls. 
 
 ## 9. Module Deep Dive
 
-Selected security-critical and reviewer-critical modules with opening code snapshots. For full review, use the module directory above.
-
 
 ---
 
