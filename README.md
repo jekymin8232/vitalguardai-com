@@ -4,7 +4,7 @@ Freedom is not free.
 Someone must invest the time, effort, and resources required to sustain it.
 
 Regarding potential collaboration:
-https://github.com/jekymin8232/mcorpai-com
+https://mcorpai.org/
 
 # VitalGuard Integrated Modular Code V3.0 MVP
 **The AI That Still Works When Everything Else Stops. Maximum Security. VitalGuard AI.**
