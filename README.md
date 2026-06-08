@@ -1,9 +1,9 @@
 Freedom is not free.
 — Walter Hitchcock
 
-Freedom can only endure when someone is willing to invest the time, effort, and resources needed to sustain it.
+Someone must invest the time, effort, and resources required to sustain it.
 
-For potential collaboration:
+Regarding potential collaboration:
 https://github.com/jekymin8232/mcorpai-com
 
 # VitalGuard Integrated Modular Code V3.0 MVP
