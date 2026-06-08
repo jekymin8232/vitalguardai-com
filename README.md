@@ -1,4 +1,4 @@
-"Freedom is not free." — Walter Hitchcock
+**"Freedom is not free." — Walter Hitchcock**
 
 Regarding potential collaboration: https://github.com/jekymin8232/mcorpai-com
 
