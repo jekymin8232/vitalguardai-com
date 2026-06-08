@@ -7,7 +7,7 @@ version: "4.3.8 Line-corrected revision"
 
 # VitalGuard AI V4.3.8 Code Manual & Code Map
 >
-> Explain the structure, flow, security controls, and responsibilities of the major logic blocks inside the single-file HTML application; 2) let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors;
+> let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors;
 
 **Table of Contents**
 
