@@ -8,7 +8,6 @@ version: "4.3.8 Line-corrected revision"
 # VitalGuard AI V4.3.8 Code Manual & Code Map
 
 > **Purpose of this document** **[Line-corrected revision]**  
-> All line numbers in this revision were re-measured directly against the submitted artifact (SHA-256 f7f6c90b…c38b71, 10,570 lines). A prior copy carried a +6 line offset and a non-matching hash; both are corrected here.  
 >
 > 1) Explain the structure, flow, security controls, and responsibilities of the major logic blocks inside the single-file HTML application; 2) let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors;
 
