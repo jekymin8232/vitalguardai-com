@@ -1,5 +1,3 @@
-                                                                                                                                                  |
-
 ## 1. V4.3.8 Security Hardening Summary
 
 
