@@ -1,42 +1,6 @@
----
-title: "VitalGuard AI V4.3.8 Code Manual & Code Map"
-version: "4.3.8 Line-corrected revision"
----
+                                                                                                                                                  |
 
-> **VitalGuard AI V4.3.8**
-
-# VitalGuard AI V4.3.8 Code Manual & Code Map
->
-> let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors;
-
-## 1. Overview
-
-**VitalGuard AI** is a single-file, infrastructure-independent, offline-first safety framework. Its core loop uses Web Bluetooth BLE scanning to collect tag RSSI values, then applies filtering and interpretation layers such as Kalman smoothing, distance estimation, decision hysteresis, per-pet alert preferences, and lightweight on-device learning to determine zones and trigger local alerts, guidance, and SOS workflows.
-
-V4.3.8 is strongly security-oriented. It is not just a text/version update: the runtime now contains CSP-compatible action dispatch, Trusted Types/sink protections, runtime network egress kill-switches, encrypted-only default backup, bounded import, copy-only sharing, redacted diagnostics, and service-worker-off-by-default behavior.
-
-## 2. Artifact Metadata
-
-| Field                     | Value                                                                                                                                                                              |
-|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Submitted source filename | `VitalGuard_AI_complete_V43_8.html` (SHA-256 below recomputed against this exact submitted artifact)                            |                                     
-| Architecture              | Single-file HTML with inline CSS and one nonce-authorized inline script; no external script imports detected.                                                                      |
-| Persistence identifiers   | `DB_NAME=VitalGuardAI_V41`; `DB_VERSION=2`; `LS_PREFIX=vg41\_`; `SCHEMA_VERSION=2` |
-
-### Static inspection summary
-
-| Check                         | Result                                                                                                                                                                                                                                                             |
-|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Script tags                   | 1; nonce-authorized script tags: 1; external script tags: 0                                                                                                                                                                                                        |
-| Raw inline event attributes   | {'onclick': 0, 'onchange': 0, 'oninput': 0, 'onmousedown': 0, 'onmouseup': 0, 'ontouchstart': 0, 'ontouchend': 0} → total 0                                                                                                                                        |
-| data-vg action attributes     | 129                                                                                                                                                                                                                                                                |
-| External href/src surfaces    | external href protocols: 0; external src URLs: 0                                                                                                                                                                                                                   |
-| Service worker registration   | 0 serviceWorker.register occurrences; 0 importScripts occurrences                                                                                                                                                                                                  |
-| Network primitive occurrences | fetch: lines \[788, 10159, 10161, 10161, 10161\]; XMLHttpRequest: lines \[788, 10165, 10167, 10167\]; WebSocket: lines \[788, 10171, 10173, 10173, 10173\]; EventSource: lines \[788, 10177, 10179, 10179, 10179\]; sendBeacon: lines \[788, 10183, 10185, 10185\] |
-| CryptoBox parameters          | PBKDF2-SHA-256 iterations 600000; AES-GCM-256; salt 16 bytes; IV 12 bytes; output it=600000                                                                                                                                                                        |
-| Import limits                 | maxFileBytes 1,048,576; maxTextChars 1,048,576; maxDepth 12; maxPets 50; maxVoiceDataUrlChars 614,400                                                                                                                                                              |
-
-## 3. V4.3.8 Security Hardening Summary
+## 1. V4.3.8 Security Hardening Summary
 
 
 ---
@@ -87,14 +51,14 @@ External http(s), mailto, tel, sms, and window.open surfaces are blocked or repl
 Imports have file/text/depth/pet/voice size limits and schema sanitizers. Diagnostics redact pet identifiers, focus IDs, UA, and error locations by default.
 
 
-## 4. Execution, Permissions, and Offline Rules
+## 2. Execution, Permissions, and Offline Rules
 
 - **Recommended runtime:** HTTPS or localhost for Web Bluetooth and PWA behavior. `file://` may work for UI review but Bluetooth/service features can be browser-restricted.
 - **Zero egress:** V4.3.8 claims should be tested as application-authored network egress. Hosted platforms may inject/request resources outside the artifact; report those as deployment-context findings.
 - **PWA:** manifest generation remains; service worker registration is intentionally absent/disabled by default.
 - **Permissions:** Bluetooth, geolocation, microphone, motion sensors, notifications, clipboard, and wake lock must be user-triggered and fail safely.
 
-## 5. Core Flow
+## 3. Core Flow
 
     DOMContentLoaded / guarded bootstrap
       └─ App.init()
@@ -114,7 +78,7 @@ Imports have file/text/depth/pet/voice size limits and schema sanitizers. Diagno
            ├─ App.triggerAlert() local-only alert path
            └─ App.render() / SOS.updateHC() / Detail.render()
 
-## 6. Data Model and Storage Map
+## 4. Data Model and Storage Map
 
 
 ---
@@ -153,7 +117,7 @@ PBKDF2-SHA-256, AES-GCM-256, salt 16 bytes, IV 12 bytes.
 1 MiB file/text limit, depth 12, max 50 pets, voice data URL 614,400 chars, per-pet serialized output max 32,768 chars.
 
 
-## 7. Module Directory
+## 5. Module Directory
 
 Use Ctrl+F on the banner text or line number. Patch blocks near the end can override earlier behavior and therefore determine final runtime behavior.
 
@@ -238,7 +202,7 @@ Use Ctrl+F on the banner text or line number. Patch blocks near the end can over
 | `10546` | `V4.3.8 GUARDED BOOTSTRAP`                                                                    | Single boot guard and safe boot failure handling.                                                                                                                                                | —                                                                                                                                                                                                                                                                                                                                                                  |
 | `10566` | `END OF VITALGUARD AI v4.3.8`                                                                 | End marker.                                                                                                                                                                                      | —                                                                                                                                                                                                                                                                                                                                                                  |
 
-## 8. Security Line Map
+## 6. Security Line Map
 
 | Control                           | Source lines                          | Review note                                                                                                                                                       |
 |-----------------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -264,7 +228,7 @@ Use Ctrl+F on the banner text or line number. Patch blocks near the end can over
 | Redacted diagnostics              | `10534-10536` | Redacts UA, focus ID, pet identifiers, error locations, and attaches audit hardening metadata.                                                                    |
 | Guarded bootstrap                 | `10546-10566` | Single boot guard and safe boot failure handling.                                                                                                                 |
 
-## 9. Action Dispatch Allowlist
+## 7. Action Dispatch Allowlist
 
 The action dispatcher permits only explicit first-party namespace/method calls. Arguments are limited to short strings, numbers, booleans, null, `this.value`, or the event object. It blocks constructor/prototype/eval/Function/import/network/storage/cookie/document.write/window.open/location assignment patterns before dispatch.
 
@@ -290,7 +254,7 @@ The action dispatcher permits only explicit first-party namespace/method calls. 
 | `VoiceRecall` | `play` `record5s`                                                                                                                                                                                                                                                                                                  |
 | `Wizard`      | `clearCalib` `close` `goStep3` `open` `pickIcon` `recordCalib` `rescan` `save` `selectCandidate` `skipVerify`              |
 
-## 10. Settings / Storage Key Index
+## 8. Settings / Storage Key Index
 
 | Key                                                                      | Meaning                                        |
 |--------------------------------------------------------------------------|------------------------------------------------|
@@ -316,7 +280,7 @@ The action dispatcher permits only explicit first-party namespace/method calls. 
 | `vg_lang_v41`                                    | I18N language selection key outside LS_PREFIX. |
 | `vg_lang_v412`                                   | Legacy language key reference.                 |
 
-## 11. Module Deep Dive
+## 9. Module Deep Dive
 
 Selected security-critical and reviewer-critical modules with opening code snapshots. For full review, use the module directory above.
 
