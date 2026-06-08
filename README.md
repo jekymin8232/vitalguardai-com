@@ -12,7 +12,7 @@ Also researching ultra-lightweight ultrasonic technology: [miniGit, no tracking 
 
 [For reference: miniGit] https://mcorpai.net/
 
-Local miniGit · zero-dependency · offline · no tracking 
+Local miniGit · zero-dependency · offline · no tracking · The Most Secure Git Platform
 
 "I hope you'll also take a look at miniGit, which offers a variety of features."
 
