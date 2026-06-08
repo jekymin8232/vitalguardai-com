@@ -9,7 +9,9 @@ https://mcorpai.org/
 Collaboration is open to anyone, anywhere in the world.
 
 Also researching ultra-lightweight ultrasonic technology: [miniGit, no tracking · Size 186KB]
+
 [For reference: miniGit] https://mcorpai.net/
+
 "I hope you'll also take a look at miniGit, which offers a variety of features."
 
 # VitalGuard Integrated Modular Code V3.0 MVP
