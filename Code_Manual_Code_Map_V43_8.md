@@ -1,5 +1,5 @@
 ---
-title: "VitalGuard AI V4.3.8 Code Manual & Code Map — Security Reviewer Navigation Guide"
+title: "VitalGuard AI V4.3.8 Code Manual & Code Map"
 version: "4.3.8 Line-corrected revision"
 ---
 
