@@ -12,7 +12,9 @@ Also researching ultra-lightweight ultrasonic technology: [miniGit, no tracking 
 
 [For reference: miniGit] https://mcorpai.net/
 
-Local miniGit · zero-dependency · offline · no tracking "I hope you'll also take a look at miniGit, which offers a variety of features."
+Local miniGit · zero-dependency · offline · no tracking 
+
+"I hope you'll also take a look at miniGit, which offers a variety of features."
 
 # VitalGuard Integrated Modular Code V3.0 MVP
 **The AI That Still Works When Everything Else Stops. Maximum Security. VitalGuard AI.**
