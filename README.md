@@ -6,6 +6,8 @@ Someone must invest the time, effort, and resources required to sustain it.
 Regarding potential collaboration:
 https://mcorpai.org/
 
+Collaboration is open to anyone, anywhere in the world.
+
 # VitalGuard Integrated Modular Code V3.0 MVP
 **The AI That Still Works When Everything Else Stops. Maximum Security. VitalGuard AI.**
 
