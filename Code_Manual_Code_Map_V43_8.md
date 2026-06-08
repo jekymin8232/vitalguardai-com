@@ -36,8 +36,7 @@ V4.3.8 is strongly security-oriented. It is not just a text/version update: the 
 
 | Field                     | Value                                                                                                                                                                              |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Submitted source filename | `VitalGuard_AI_complete_V43_8.html` (SHA-256 below recomputed against this exact submitted artifact)                            |
-| SHA-256                   | `f7f6c90b03d1ea238efa21e22c6fdf6a2e3e198f1f4daabfd9f5566fa0c38b71`                                                                                                                   
+| Submitted source filename | `VitalGuard_AI_complete_V43_8.html` (SHA-256 below recomputed against this exact submitted artifact)                            |                                     
 | Architecture              | Single-file HTML with inline CSS and one nonce-authorized inline script; no external script imports detected.                                                                      |
 | Persistence identifiers   | `DB_NAME=VitalGuardAI_V41`; `DB_VERSION=2`; `LS_PREFIX=vg41\_`; `SCHEMA_VERSION=2` |
 
