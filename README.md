@@ -1,5 +1,4 @@
-Freedom is not free.
-— Walter Hitchcock
+The lighter the code, the safer the system—because transparency is security.
 
 Someone must invest the time, effort, and resources required to sustain it.
 
