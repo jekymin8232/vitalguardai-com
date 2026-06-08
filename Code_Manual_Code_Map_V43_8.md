@@ -9,23 +9,6 @@ version: "4.3.8 Line-corrected revision"
 >
 > let a new reviewer find the right module quickly using stable Ctrl+F banners and line anchors;
 
-**Table of Contents**
-
-- [1. Overview](#overview)
-- [2. Artifact Metadata](#artifact)
-- [3. V4.3.8 Hardening Summary](#hardening)
-- [4. Execution, Permissions, and Offline Rules](#howto)
-- [5. Core Flow](#flow)
-- [6. Data Model and Storage Map](#data)
-- [7. Module Directory](#modules)
-- [8. Security Line Map](#security-lines)
-- [9. Action Dispatch Allowlist](#actions)
-- [10. Settings / Storage Key Index](#prefs)
-- [11. Module Deep Dive](#deepdive)
-- [12. DOM ID Index](#domid)
-- [13. Audit Checklist](#audit)
-
-
 ## 1. Overview
 
 **VitalGuard AI** is a single-file, infrastructure-independent, offline-first safety framework. Its core loop uses Web Bluetooth BLE scanning to collect tag RSSI values, then applies filtering and interpretation layers such as Kalman smoothing, distance estimation, decision hysteresis, per-pet alert preferences, and lightweight on-device learning to determine zones and trigger local alerts, guidance, and SOS workflows.
