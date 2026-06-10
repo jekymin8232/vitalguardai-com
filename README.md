@@ -16,6 +16,8 @@ Local miniGit · zero-dependency · offline · no tracking · The Most Secure Gi
 
 "I hope you'll also take a look at miniGit, which offers a variety of features."
 
+I am always open to providing an improved and updated version of the miniGit source code whenever needed or requested.
+
 # VitalGuard Integrated Modular Code V3.0 MVP
 **The AI That Still Works When Everything Else Stops. Maximum Security. VitalGuard AI.**
 
