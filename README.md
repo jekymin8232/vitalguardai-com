@@ -44,7 +44,7 @@ Many commercial products and services benefit greatly from open-source software,
 
 Ultimately, the sustainability of open source depends on more than technology alone. It also depends on creating an environment where developers can continue their research and development efforts in a stable, sustainable, and independent manner. Only then can open-source innovation continue to thrive and deliver long-term value to society.
 
-I deeply understand the importance of self-reliance. Public institutions and support programs can provide valuable opportunities for new ideas and research to grow, but ultimately every project must build its own long-term sustainability. I believe this is essential for open-source innovation to thrive.
+For open-source development to remain sustainable, developers must have a path toward self-reliance. Public institutions and support programs can provide valuable opportunities for new ideas and research to grow, but ultimately every project must build its own long-term sustainability. I believe this is essential for open-source innovation to thrive.
 
 Guided by these principles, my goal is to build an independent, sustainable, and impactful open-source project that can continue serving people for many years to come.
 
