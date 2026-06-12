@@ -18,7 +18,7 @@ Local miniGit · zero-dependency · offline · no tracking · The Most Secure Gi
 
 I am always open to providing an improved and updated version of the miniGit source code whenever needed or requested.
 
-## The Potential of Zero-Dependency Offline AI ""Natural disasters can happen to anyone."
+## The Potential of Zero-Dependency Offline AI "Natural disasters can happen to anyone."
 
 I believe offline AI technology has significant potential for future development.
 
