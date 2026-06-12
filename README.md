@@ -34,6 +34,16 @@ Open source software may be free, but research and development are not. Develope
 
 While financial support for developers is important, I believe it is equally important to create an environment in which developers can sustainably continue their work and remain independent. With this in mind, I am carefully exploring long-term pathways that can help establish a stable foundation for my research and international contributions, including options such as O-1 and EB-1A.
 
+As the saying goes, "There is no such thing as a free lunch." The open-source ecosystem is sustained by someone's time, effort, and long-term dedication.
+
+I believe that one of the underlying causes of some supply chain security issues is the reality that many developers do not receive sufficient recognition or sustainable support for their work. Maintaining and securing open-source projects requires significant time, expertise, and ongoing commitment. Yet in many cases, developers are expected to carry this responsibility without adequate compensation, resources, or acknowledgment. Over time, this can lead to fatigue, discouragement, and ultimately burnout.
+
+Most open-source developers begin their projects out of a genuine desire to contribute to the community. However, for an ecosystem to remain sustainable, it is important to recognize not only the software itself, but also the people who build, maintain, and secure it.
+
+Many commercial products and services benefit greatly from open-source software, yet the contributions of the developers who make these foundations possible are often overlooked. I believe that a healthy open-source ecosystem requires investment not only in code, but also in the people behind it.
+
+Ultimately, the sustainability of open source depends on more than technology alone. It also depends on creating an environment where developers can continue their research and development efforts in a stable, sustainable, and independent manner. Only then can open-source innovation continue to thrive and deliver long-term value to society.
+
 I deeply understand the importance of self-reliance. Public institutions and support programs can provide valuable opportunities for new ideas and research to grow, but ultimately every project must build its own long-term sustainability. I believe this is essential for open-source innovation to thrive.
 
 Guided by these principles, my goal is to build an independent, sustainable, and impactful open-source project that can continue serving people for many years to come.
