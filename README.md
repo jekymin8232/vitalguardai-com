@@ -18,6 +18,27 @@ Local miniGit · zero-dependency · offline · no tracking · The Most Secure Gi
 
 I am always open to providing an improved and updated version of the miniGit source code whenever needed or requested.
 
+## The Potential of Zero-Dependency Offline AI
+
+I believe offline AI technology has significant potential for future development.
+
+Many activists working in high-risk regions operate in environments without reliable internet infrastructure or sufficient technical resources, while facing a wide range of security threats. Infrastructure failures are not limited to high-risk regions; they can also occur as a result of natural disasters and other emergencies. For this reason, I believe truly dependency-free offline AI has the potential to save lives in many different situations.
+
+My goal is to continue researching offline AI technologies that can be used safely under these challenging conditions and to make them openly available through transparent open-source development so that anyone can freely benefit from them.
+
+I do not hold a master's degree or a Ph.D. After graduating from high school, I began studying and researching offline AI technologies independently. To this day, I continue my work as an independent developer and researcher.
+
+Conducting research and development alone as an independent developer is not easy. Like many independent researchers, I must also balance my work with the realities of earning a living. Nevertheless, I remain committed to advancing this research over the long term and developing technologies that can provide meaningful and practical benefits to more people.
+
+Open source software may be free, but research and development are not. Developers are highly vulnerable to burnout, and I am no exception. Building a sustainable foundation for research and contributing to international collaboration are among my long-term goals.
+
+While financial support for developers is important, I believe it is equally important to create an environment in which developers can sustainably continue their work and remain independent. With this in mind, I am carefully exploring long-term pathways that can help establish a stable foundation for my research and international contributions, including options such as O-1 and EB-1A.
+
+I deeply understand the importance of self-reliance. Public institutions and support programs can provide valuable opportunities for new ideas and research to grow, but ultimately every project must build its own long-term sustainability. I believe this is essential for open-source innovation to thrive.
+
+Guided by these principles, my goal is to build an independent, sustainable, and impactful open-source project that can continue serving people for many years to come.
+
+
 # VitalGuard Integrated Modular Code V3.0 MVP
 **The AI That Still Works When Everything Else Stops. Maximum Security. VitalGuard AI.**
 
