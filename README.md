@@ -40,7 +40,7 @@ I believe that one of the underlying causes of some supply chain security issues
 
 ### Freedom Is Not Free
 
-Freedom is not free.
+**If we take "free" for granted, the consequences are often paid by you, your customers, and society as a whole. Supply chain attacks and even wars have one thing in common: they become more likely when no one is truly accountable.**
 
 Freedom of expression, freedom of speech, freedom of movement, and even the freedom of conscience and spirit are all precious. These freedoms have been preserved through the sacrifices, efforts, and dedication of countless people.
 
