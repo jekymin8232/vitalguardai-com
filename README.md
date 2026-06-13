@@ -38,6 +38,28 @@ As the saying goes, "There is no such thing as a free lunch." The open-source ec
 
 I believe that one of the underlying causes of some supply chain security issues is the reality that many developers do not receive sufficient recognition or sustainable support for their work. Maintaining and securing open-source projects requires significant time, expertise, and ongoing commitment. Yet in many cases, developers are expected to carry this responsibility without adequate compensation, resources, or acknowledgment. Over time, this can lead to fatigue, discouragement, and ultimately burnout.
 
+**Freedom Is Not Free**
+
+Freedom is not free.
+
+Freedom of expression, freedom of speech, freedom of movement, and even the freedom of conscience and spirit are all precious. These freedoms have been preserved through the sacrifices, efforts, and dedication of countless people.
+
+As someone from a small country, I do not claim to understand the internal realities of the United States. However, speaking very cautiously, I sometimes wonder whether one reason the United States expresses strong frustrations toward other nations or raises concerns about trade and tariffs is that it feels the freedom and international order it has helped protect—at enormous financial cost and significant sacrifice—are increasingly being taken for granted.
+
+The United States has spent trillions of dollars and borne immense burdens in the name of protecting freedom and maintaining global stability. For that reason, it may be understandable that some Americans feel frustrated when others treat freedom as if it were something that came without cost.
+
+My homeland, the Republic of Korea, did not enjoy the level of freedom it has today only a few generations ago. It is difficult to deny that the freedoms we enjoy today were made possible not only through the efforts and sacrifices of the Korean people, but also through the support of the United States and the broader international community.
+
+Sometimes, I wonder whether one of America's messages to the world is simply this:
+
+**"Do not take freedom for granted."**
+
+Of course, I am not an American. I do not fully understand the complexities of American society, politics, or national interests. Therefore, these thoughts are merely the personal observations of an East Asian outsider, and they may very well be mistaken.
+
+However, there is one thing I have learned. Only those who have experienced severe burnout can truly understand its weight.
+
+In that sense, I sometimes view America's strong posture not solely through the lens of economics or politics, but as a possible expression of fatigue from a nation that has carried immense responsibilities for a very long time. Whether that interpretation is correct or not, I believe it is worth remembering that freedom has never been free, and that every generation must decide how much it is willing to contribute to preserving it.
+
 Most open-source developers begin their projects out of a genuine desire to contribute to the community. However, for an ecosystem to remain sustainable, it is important to recognize not only the software itself, but also the people who build, maintain, and secure it.
 
 Many commercial products and services benefit greatly from open-source software, yet the contributions of the developers who make these foundations possible are often overlooked. I believe that a healthy open-source ecosystem requires investment not only in code, but also in the people behind it.
@@ -47,7 +69,6 @@ Ultimately, the sustainability of open source depends on more than technology al
 For open-source development to remain sustainable, developers must have a path toward self-reliance. Public institutions and support programs can provide valuable opportunities for new ideas and research to grow, but ultimately every project must build its own long-term sustainability. I believe this is essential for open-source innovation to thrive.
 
 Guided by these principles, my goal is to build an independent, sustainable, and impactful open-source project that can continue serving people for many years to come.
-
 
 # VitalGuard Integrated Modular Code V3.0 MVP
 **The AI That Still Works When Everything Else Stops. Maximum Security. VitalGuard AI.**
