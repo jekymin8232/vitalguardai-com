@@ -34,7 +34,7 @@ Open source software may be free, but research and development are not. Develope
 
 While financial support for developers is important, I believe it is equally important to create an environment in which developers can sustainably continue their work and remain independent. With this in mind, I am carefully exploring long-term pathways that can help establish a stable foundation for my research and international contributions, including options such as O-1 and EB-1A.
 
-I believe that obtaining EB-1A status could help establish a sustainable and self-reliant foundation that would enable me to continue my independent research and development efforts over the long term.
+I believe that obtaining EB-1A status could help establish a sustainable and self-reliant foundation that would enable me to continue my independent research and development efforts over the long term. Because I do not have a university degree, the EB-1A pathway is particularly important for me as a means of pursuing my long-term research and development goals.
 
 **As the saying goes, "There is no such thing as a free lunch." The open-source ecosystem is sustained by someone's time, effort, and long-term dedication.**
 
