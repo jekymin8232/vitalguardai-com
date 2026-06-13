@@ -44,7 +44,7 @@ I believe that one of the underlying causes of some supply chain security issues
 
 **If we take "free" for granted, the consequences are often paid by you, your customers, and society as a whole. Supply chain attacks and even wars have one thing in common: they become more likely when no one is truly accountable.**
 
-### Even the Terminator knew that nothing comes without a cost.
+### Even the Terminator knew that everything comes with a price.
 
 <img width="360" height="188" alt="1" src="https://github.com/user-attachments/assets/480acedb-0cf1-4d20-a668-a83ffc057257" />
 
