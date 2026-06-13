@@ -1,5 +1,5 @@
 # Invest in people, not GPUs.
-### Large-scale AI invests in GPUs. Offline AI invests in people. GPUs don't grow. People do.
+### Large-scale AI invests in GPUs. Offline AI invests in people. People grow. GPUs don't.
 **Offline AI empowers people. Because it requires no server infrastructure, no cloud services, and no data centers, resources can be directed toward the people who build, maintain, and improve the technology. In the long run, AI that invests in people may be the most valuable AI of all.**
 
 ### The lighter the code, the safer the system—because transparency is security.
