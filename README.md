@@ -48,7 +48,7 @@ I believe that one of the underlying causes of some supply chain security issues
 
 <img width="360" height="188" alt="1" src="https://github.com/user-attachments/assets/480acedb-0cf1-4d20-a668-a83ffc057257" />
 
-Freedom of expression, freedom of speech, freedom of movement, and even the freedom of conscience and spirit are all precious. These freedoms have been preserved through the sacrifices, efforts, and dedication of countless people.
+**Freedom of expression, freedom of speech, freedom of movement, and even the freedom of conscience and spirit are all precious. These freedoms have been preserved through the sacrifices, efforts, and dedication of countless people.**
 
 As someone from a small country, I do not claim to understand the internal realities of the United States. However, speaking very cautiously, I sometimes wonder whether one reason the United States expresses strong frustrations toward other nations or raises concerns about trade and tariffs is that it feels the freedom and international order it has helped protect—at enormous financial cost and significant sacrifice—are increasingly being taken for granted.
 
