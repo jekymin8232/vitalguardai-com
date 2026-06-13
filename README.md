@@ -34,6 +34,8 @@ Open source software may be free, but research and development are not. Develope
 
 While financial support for developers is important, I believe it is equally important to create an environment in which developers can sustainably continue their work and remain independent. With this in mind, I am carefully exploring long-term pathways that can help establish a stable foundation for my research and international contributions, including options such as O-1 and EB-1A.
 
+I believe that obtaining O-1 and EB-1A status could provide one of the viable paths toward establishing a sustainable, self-reliant foundation for my long-term research and development work.
+
 As the saying goes, "There is no such thing as a free lunch." The open-source ecosystem is sustained by someone's time, effort, and long-term dedication.
 
 I believe that one of the underlying causes of some supply chain security issues is the reality that many developers do not receive sufficient recognition or sustainable support for their work. Maintaining and securing open-source projects requires significant time, expertise, and ongoing commitment. Yet in many cases, developers are expected to carry this responsibility without adequate compensation, resources, or acknowledgment. Over time, this can lead to fatigue, discouragement, and ultimately burnout.
