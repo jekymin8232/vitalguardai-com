@@ -56,7 +56,7 @@ The United States has spent trillions of dollars and borne immense burdens in th
 
 My homeland, the Republic of Korea, did not enjoy the level of freedom it has today only a few generations ago. It is difficult to deny that the freedoms we enjoy today were made possible not only through the efforts and sacrifices of the Korean people, but also through the support of the United States and the broader international community.
 
-Sometimes, I wonder whether one of America's messages to the world is simply this:
+**Sometimes, I wonder whether one of America's messages to the world is simply this:**
 
 <img width="587" height="250" alt="1" src="https://github.com/user-attachments/assets/e49e3c48-fc1f-462b-9982-59941f66c0e2" />
 
