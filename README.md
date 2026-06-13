@@ -58,7 +58,7 @@ Sometimes, I wonder whether one of America's messages to the world is simply thi
 
 <img width="587" height="250" alt="1" src="https://github.com/user-attachments/assets/e49e3c48-fc1f-462b-9982-59941f66c0e2" />
 
-### "Do not take freedom for granted. The price of "free" is destruction."
+# "Do not take freedom for granted. The price of "free" is destruction."
 
 Of course, I am not an American. I do not fully understand the complexities of American society, politics, or national interests. Therefore, these thoughts are merely the personal observations of an East Asian outsider, and they may very well be mistaken.
 
