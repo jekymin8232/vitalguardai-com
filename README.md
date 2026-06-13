@@ -63,7 +63,7 @@ My homeland, the Republic of Korea, did not enjoy the level of freedom it has to
 # There is no such thing as a free lunch.
 ### Do not take freedom for granted. Nothing is truly free, and the cost can be devastating.
 
-**A lack of accountability creates the conditions for both supply chain attacks and conflict.**
+**Supply chain attacks and wars often share one common cause: a lack of accountability.**
 
 Of course, I am not an American. I do not fully understand the complexities of American society, politics, or national interests. Therefore, these thoughts are merely the personal observations of an East Asian outsider, and they may very well be mistaken.
 
