@@ -38,7 +38,7 @@ As the saying goes, "There is no such thing as a free lunch." The open-source ec
 
 I believe that one of the underlying causes of some supply chain security issues is the reality that many developers do not receive sufficient recognition or sustainable support for their work. Maintaining and securing open-source projects requires significant time, expertise, and ongoing commitment. Yet in many cases, developers are expected to carry this responsibility without adequate compensation, resources, or acknowledgment. Over time, this can lead to fatigue, discouragement, and ultimately burnout.
 
-**Freedom Is Not Free**
+### Freedom Is Not Free
 
 Freedom is not free.
 
@@ -52,7 +52,7 @@ My homeland, the Republic of Korea, did not enjoy the level of freedom it has to
 
 Sometimes, I wonder whether one of America's messages to the world is simply this:
 
-**"Do not take freedom for granted."**
+### "Do not take freedom for granted."
 
 Of course, I am not an American. I do not fully understand the complexities of American society, politics, or national interests. Therefore, these thoughts are merely the personal observations of an East Asian outsider, and they may very well be mistaken.
 
