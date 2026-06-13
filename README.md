@@ -1,3 +1,5 @@
+**Offline AI empowers people. Because it requires no server infrastructure, no cloud services, and no data centers, resources can be directed toward the people who build, maintain, and improve the technology. In the long run, AI that invests in people may be the most valuable AI of all.**
+
 ### The lighter the code, the safer the system—because transparency is security.
 
 Someone must invest the time, effort, and resources required to sustain it.
