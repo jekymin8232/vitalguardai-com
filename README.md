@@ -66,7 +66,7 @@ However, there is one thing I have learned. Only those who have experienced seve
 
 In that sense, I sometimes view America's strong posture not solely through the lens of economics or politics, but as a possible expression of fatigue from a nation that has carried immense responsibilities for a very long time. Whether that interpretation is correct or not, I believe it is worth remembering that freedom has never been free, and that every generation must decide how much it is willing to contribute to preserving it.
 
-Most open-source developers begin their projects out of a genuine desire to contribute to the community. However, for an ecosystem to remain sustainable, it is important to recognize not only the software itself, but also the people who build, maintain, and secure it.
+**Most open-source developers begin their projects out of a genuine desire to contribute to the community. However, for an ecosystem to remain sustainable, it is important to recognize not only the software itself, but also the people who build, maintain, and secure it.**
 
 Many commercial products and services benefit greatly from open-source software, yet the contributions of the developers who make these foundations possible are often overlooked. I believe that a healthy open-source ecosystem requires investment not only in code, but also in the people behind it.
 
