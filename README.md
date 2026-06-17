@@ -23,7 +23,9 @@ There is no such thing as a free lunch.
 
 Even when a meal is given away for free, the chef is still paid.
 
-Michelin recognizes excellence in cuisine:
+<img width="380" height="254" alt="1" src="https://github.com/user-attachments/assets/2413ded1-56f9-472d-a67a-3e84b098c9d1" />
+
+## Michelin recognizes excellence in cuisine:
 
 ⭐ One Star — A very good restaurant in its category.
 
