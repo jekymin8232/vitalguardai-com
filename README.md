@@ -37,6 +37,8 @@ Of course, tastes differ, and many people enjoy British food. But the quality of
 
 To be honest, British food is the best. After all, nothing tastes better than a free meal.
 
+I wouldn't marry a British woman, because I don't want to spend the rest of my life eating British food.
+
 ⭐ One Star — A very good restaurant in its category.
 
 ⭐⭐ Two Stars — Excellent cooking, worth a detour.
