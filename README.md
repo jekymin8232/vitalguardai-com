@@ -39,6 +39,8 @@ To be honest, British food is the best. After all, nothing tastes better than a 
 
 I wouldn't marry a British woman, because I don't want to spend the rest of my life eating British food.
 
+I'm sorry if that sounded rude. Besides, you weren't planning on marrying an East Asian anyway, right?
+
 ⭐ One Star — A very good restaurant in its category.
 
 ⭐⭐ Two Stars — Excellent cooking, worth a detour.
