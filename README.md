@@ -19,7 +19,7 @@ However, free software is not free to create.
 
 Every line of code represents human effort. Behind every secure system are developers, researchers, auditors, maintainers, and countless hours of work.
 
-## There is no such thing as a free lunch.
+### There is no such thing as a free lunch.
 
 Even when a meal is given away for free, the chef is still paid.
 
