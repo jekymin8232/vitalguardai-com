@@ -5,6 +5,6 @@ Technology may be offered for free, but human effort is never truly free. When p
 
 **If you want an enemy, expect them to work for free.**
 
-### If you want a friend, treat people well.
+## If you want a friend, treat people well.
 ### If you want an enemy, expect them to work for free.
 
