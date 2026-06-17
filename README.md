@@ -23,7 +23,7 @@ There is no such thing as a free lunch.
 
 Even when a meal is given away for free, the chef is still paid.
 
-<img width="26" height="177" alt="1" src="https://github.com/user-attachments/assets/2413ded1-56f9-472d-a67a-3e84b098c9d1" />
+<img width="266" height="177" alt="1" src="https://github.com/user-attachments/assets/427af52f-170c-4adb-9cba-cc54860dab12" />
 
 ## Michelin recognizes excellence in cuisine:
 
@@ -32,6 +32,8 @@ What would you like to be served?
 British food, or some of the finest Korean cuisine?
 
 Of course, tastes differ, and many people enjoy British food. But the quality of the meal often reflects the care, skill, and investment behind it.
+
+**Oh, you like British food? Great—it's free. We'll happily serve you nothing but British food for the rest of your life.**
 
 ⭐ One Star — A very good restaurant in its category.
 
