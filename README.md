@@ -43,6 +43,8 @@ I'm sorry if that sounded rude. Besides, you weren't planning on marrying an Eas
 
 ### What would you like for lunch?
 
+💀 Free Meal: British Food
+
 ⭐ One Star — A very good restaurant in its category.
 
 ⭐⭐ Two Stars — Excellent cooking, worth a detour.
