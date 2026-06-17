@@ -68,3 +68,6 @@ Then invest in the people who build it.
 Because GPUs don't grow.
 
 People do.
+
+# Invest in people.
+### In the end, all that remains is people.
