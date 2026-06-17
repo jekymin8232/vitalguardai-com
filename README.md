@@ -4,6 +4,3 @@
 Technology may be offered for free, but human effort is never truly free. When people are exploited for too long, resentment inevitably grows, because human beings are not saints.**
 
 **Nothing creates resentment faster than taking someone's time and effort for granted.** 
-
-**The greatest nations are those that respect others.**
-
