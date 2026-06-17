@@ -5,3 +5,5 @@ Technology may be offered for free, but human effort is never truly free. When p
 
 **Nothing creates resentment faster than taking someone's time and effort for granted.** 
 
+**The best thing you can do is treat others with respect.**
+
