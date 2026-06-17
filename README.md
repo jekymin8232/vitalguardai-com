@@ -51,6 +51,8 @@ I'm sorry if that sounded rude. Besides, you weren't planning on marrying an Eas
 
 ⭐⭐⭐ Three Stars — Exceptional cuisine, worth a special journey.
 
+⭐⭐⭐⭐ Korean food? Oh yeah~~~ We'll serve you with the utmost care and dedication.
+
 If this is true for food, it is even more true for software.
 
 Do you want cheap code?
