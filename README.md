@@ -41,6 +41,8 @@ I wouldn't marry a British woman, because I don't want to spend the rest of my l
 
 I'm sorry if that sounded rude. Besides, you weren't planning on marrying an East Asian anyway, right?
 
+### There is no such thing as a free lunch.
+
 ⭐ One Star — A very good restaurant in its category.
 
 ⭐⭐ Two Stars — Excellent cooking, worth a detour.
