@@ -26,7 +26,9 @@ Even when a meal is given away for free, the chef is still paid.
 Michelin recognizes excellence in cuisine:
 
 ⭐ One Star — A very good restaurant in its category.
+
 ⭐⭐ Two Stars — Excellent cooking, worth a detour.
+
 ⭐⭐⭐ Three Stars — Exceptional cuisine, worth a special journey.
 
 If this is true for food, it is even more true for software.
