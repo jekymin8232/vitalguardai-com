@@ -15,3 +15,11 @@
 **Offering support to those who are struggling is not merely an act of generosity. It is a commitment to the belief that every person deserves a chance at a better life.**
 
 **In the end, people are our most valuable resource. Treat them with dignity and respect.**
+
+## An AI That Survives When Everything Else Fails
+
+**VitalGuard AI is one of the lightest AI systems ever built, yet it is designed with security as a top priority and can operate even in environments with little or no infrastructure.**
+
+**Most importantly, it carries the potential to help save lives when natural disasters cause critical infrastructure to collapse.**
+
+**My goal is to build technology that remains useful when everything else fails.**
