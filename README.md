@@ -1,4 +1,4 @@
-## Freedom is not free.
+# Freedom is not free.
 
 **If you want a friend, treat people well. If you want an enemy, expect them to work for free.**
 
