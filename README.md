@@ -1,4 +1,4 @@
-### I am highly resilient to burnout, take full responsibility for my code, and remain committed to continuously improving it.
+**I am highly resilient to burnout, take full responsibility for my code, and remain committed to continuously improving it.**
 
 **If you want a friend, treat people well. If you want an enemy, expect them to work for free.**
 
