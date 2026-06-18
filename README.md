@@ -28,5 +28,5 @@
 
 **Cutting-edge AI requires massive infrastructure, energy, and investment. A survival-focused AI, however, can run on a $50 used smartphone and a $10 solar panel.**
 
-**In a disaster zone, reliability may matter far more than benchmark scores.**
+**When infrastructure collapses, benchmark scores become secondary. What matters most is whether an AI can be adapted on the spot, trusted through transparency, and continue operating when everything else stops working.**
 
