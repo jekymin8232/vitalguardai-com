@@ -31,3 +31,4 @@
 **When infrastructure collapses, benchmark scores become secondary. What matters most is whether an AI can be adapted on the spot, trusted through transparency, and continue operating when everything else stops working.**
 
 ### If people cannot see how an AI works, they cannot truly customize it, verify it, or trust it.
+### Respect people first. AI is secondary.
