@@ -31,4 +31,11 @@
 **When infrastructure collapses, benchmark scores become secondary. What matters most is whether an AI can be adapted on the spot, trusted through transparency, and continue operating when everything else stops working.**
 
 ### If people cannot see how an AI works, they cannot truly customize it, verify it, or trust it.
-### Respect people first. AI is secondary.
+## Respect people first. AI is secondary.
+**I am pursuing an EB-1A visa for a simple reason.**
+
+**For a Korean developer, obtaining an EB-1A can provide the independence needed to focus on long-term innovation.**
+
+**World-class offline XAI is not built through short-term survival. It is built through sustained research, stability, and the freedom to pursue a clear vision over many years.**
+
+**That is why I believe self-reliance is a prerequisite for creating truly world-class offline XAI.**
