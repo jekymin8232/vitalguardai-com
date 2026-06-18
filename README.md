@@ -23,3 +23,10 @@
 **Most importantly, it carries the potential to help save lives when natural disasters cause critical infrastructure to collapse.**
 
 **My goal is to build technology that remains useful when everything else fails.**
+
+**Not every nation needs the world's most powerful AI. Some need AI that can keep working when everything else stops working.**
+
+**Cutting-edge AI requires massive infrastructure, energy, and investment. A survival-focused AI, however, can run on a $50 used smartphone and a $10 solar panel.**
+
+**In a disaster zone, reliability may matter far more than benchmark scores.**
+
