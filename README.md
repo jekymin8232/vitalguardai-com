@@ -32,7 +32,7 @@
 
 ### If people cannot see how an AI works, they cannot truly customize it, verify it, or trust it.
 ## Respect people first. AI is secondary.
-**I am pursuing an EB-1A visa for a simple reason.**
+**I am pursuing an EB-1A visa because I believe self-reliance is essential for long-term innovation.**
 
 **For a Korean developer, obtaining an EB-1A can provide the independence needed to focus on long-term innovation.**
 
