@@ -12,6 +12,14 @@
 
 ## The harder life becomes, the more precious people are.
 
+**Do not assume that people will volunteer their time indefinitely for free.**
+
+**Can you nominate someone for the Nobel Peace Prize simply because they spent years working without any compensation?**
+
+**No one on Earth can continue working indefinitely without support or recognition. Human beings need resources, stability, and the means to sustain their lives.**
+
+**Long-term dedication requires long-term support. Expecting endless work without any form of compensation is neither realistic nor sustainable.**
+
 **Offering support to those who are struggling is not merely an act of generosity. It is a commitment to the belief that every person deserves a chance at a better life.**
 
 **In the end, people are our most valuable resource. Treat them with dignity and respect.**
