@@ -70,3 +70,6 @@
 
 ## Governance
 **The system is built on an open-source architecture and avoids dependence on external libraries whenever possible, promoting transparency, auditability, and long-term sustainability. Even low-income countries can customize, white-label, and adapt the technology to their own needs. This enables a more equal and accessible path toward sovereign AI, allowing nations to maintain technological independence without relying exclusively on foreign platforms or massive infrastructure investments.**
+
+**Offline AI is one of the strongest solutions for data protection and privacy compliance, including regulations such as GDPR and CCPA. Because it is designed to operate without collecting unnecessary personal data from the outset, it significantly reduces privacy risks. Combined with a security-first architecture, offline AI provides a highly reliable approach to protecting user information.**
+
