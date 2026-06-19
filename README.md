@@ -1,5 +1,7 @@
 # Freedom is not free.
 
+**I have designed an AI capable of operating through virtually any shutdown scenario. However, it is still an MVP, and sustained support is essential for its continued development and improvement.**
+
 **If you want a friend, treat people well. If you want an enemy, expect them to work for free.**
 
 **There is no such thing as a free lunch.**
