@@ -59,3 +59,14 @@
 
 ## The Potential of Secure, Ultra-Lightweight Offline AI
 **Not every country has reliable infrastructure. When infrastructure is unavailable or completely collapses, offline AI is the only kind of AI that can continue operating and remain useful. It can be especially beneficial for countries that are highly vulnerable to natural disasters.**
+
+**As an architect of offline AI systems, I believe I can make a meaningful contribution to ESG goals. ESG initiatives can also provide significant benefits to national interests and long-term resilience.**
+
+## Environmental
+**Offline AI does not require large-scale data centers and can operate with minimal computational resources. It can even run on discarded or low-cost smartphones, significantly reducing energy consumption, electronic waste, and infrastructure requirements.**
+
+## Social
+**Explainable offline AI is designed with human rights protection in mind. Its transparent, white-box architecture allows people to understand, verify, and trust how it works. Unlike cloud-dependent systems, it can continue operating during network outages, infrastructure failures, and other shutdown scenarios. Most importantly, it has the potential to help save lives during natural disasters when critical infrastructure collapses.**
+
+## Governance
+**The system is built on an open-source architecture and avoids dependence on external libraries whenever possible, promoting transparency, auditability, and long-term sustainability. Even low-income countries can customize, white-label, and adapt the technology to their own needs. This enables a more equal and accessible path toward sovereign AI, allowing nations to maintain technological independence without relying exclusively on foreign platforms or massive infrastructure investments.**
