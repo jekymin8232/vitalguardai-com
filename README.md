@@ -48,6 +48,6 @@
 
 **For a Korean developer, obtaining an EB-1A can provide the independence needed to focus on long-term innovation.**
 
-**World-class offline XAI is not built through short-term survival. It is built through sustained research, stability, and the freedom to pursue a clear vision over many years.**
+**World-class XAI is not built through short-term survival. It is built through sustained research, stability, and the freedom to pursue a clear vision over many years.**
 
 **That is why I believe self-reliance is a prerequisite for creating truly world-class offline AI.**
