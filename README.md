@@ -44,15 +44,18 @@
 
 ### If people cannot see how an AI works, they cannot truly customize it, verify it, or trust it.
 ## Respect people first. AI is secondary.
-**I am pursuing an EB-1A visa because I believe self-reliance is essential for long-term innovation.**
 
-**For a Korean developer, obtaining an EB-1A can provide the independence needed to focus on long-term innovation.**
+**I am a South Korean national with no established base in the United States, and I do not speak English.**
 
-**World-class XAI is not built through short-term survival. It is built through sustained research, stability, and the freedom to pursue a clear vision over many years.**
+**I am pursuing an EB-1A visa because I believe self-reliance is essential for long-term innovation. For a Korean developer, obtaining an EB-1A can provide the independence and stability needed to focus on meaningful innovation over the long term.**
 
-**That is why I believe self-reliance is a prerequisite for creating truly world-class offline AI.**
+**World-class Explainable AI (XAI) is not created in an environment of short-term survival. It is built through sustained research, a stable foundation, and the freedom to pursue a clear vision over many years.**
 
-**Finally, it would be disappointing if an architect pursuing a world-class offline AI system could not obtain an EB-1A. Building technology at the highest level requires not only talent and dedication, but also the opportunity, recognition, and support necessary to achieve world-class results.**
+**That is why I believe self-reliance must come first in order to create truly world-class offline AI.**
+
+**Finally, it would be deeply disappointing if an architect dedicated to building a world-class offline AI system were unable to obtain an EB-1A. Developing technology at the highest level requires not only talent and dedication, but also the opportunity, recognition, and support necessary to achieve world-class results.**
+
+**Big Tech AI is primarily designed for advanced economies with abundant resources and infrastructure. Offline AI, however, has the potential to serve all of humanity, including people living in low-resource environments, underserved communities, and regions where critical infrastructure may not always be available.**
 
 ## The Potential of Secure, Ultra-Lightweight Offline AI
 **Not every country has reliable infrastructure. When infrastructure is unavailable or completely collapses, offline AI is the only kind of AI that can continue operating and remain useful. It can be especially beneficial for countries that are highly vulnerable to natural disasters.**
