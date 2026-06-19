@@ -51,3 +51,6 @@
 **World-class XAI is not built through short-term survival. It is built through sustained research, stability, and the freedom to pursue a clear vision over many years.**
 
 **That is why I believe self-reliance is a prerequisite for creating truly world-class offline AI.**
+
+**Finally, it would be disappointing if an architect pursuing a world-class offline AI system could not obtain an EB-1A. Building technology at the highest level requires not only talent and dedication, but also the opportunity, recognition, and support necessary to achieve world-class results.**
+
