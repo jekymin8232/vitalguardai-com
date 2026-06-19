@@ -54,3 +54,5 @@
 
 **Finally, it would be disappointing if an architect pursuing a world-class offline AI system could not obtain an EB-1A. Building technology at the highest level requires not only talent and dedication, but also the opportunity, recognition, and support necessary to achieve world-class results.**
 
+## The Potential of Offline AI
+**Not every country has reliable infrastructure. When infrastructure is unavailable or completely collapses, offline AI is the only kind of AI that can continue operating and remain useful.**
