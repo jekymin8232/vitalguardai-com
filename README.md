@@ -1,3 +1,5 @@
+**I believe Big Tech AI cannot fully serve all of humanity, because it demands massive amounts of resources and is often not transparent enough.**
+
 **My goal is to create a world-class offline AI system that ranks among the best in the world.**
 
 # Freedom is not free.
