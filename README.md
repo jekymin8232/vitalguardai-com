@@ -17,3 +17,9 @@ The long-term potential of offline AI is substantial. As efficiency, explainabil
 **Self-reliance is not simply a personal goal—it is a prerequisite for long-term innovation. Without the ability to sustain myself and focus fully on research and development, it is difficult to realize the full potential of this technology.**
 
 **I respectfully hope that any collaboration will recognize this reality and support a path toward genuine independence, enabling the continued development of offline AI at the highest international standards.**
+
+## Partnerships
+
+For partnership and collaboration inquiries:
+
+[M-Corp AI Contact Page](https://mcorpai.org/#contact)
