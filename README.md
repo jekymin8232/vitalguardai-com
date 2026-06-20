@@ -20,6 +20,6 @@ The long-term potential of offline AI is substantial. As efficiency, explainabil
 
 ## Partnerships
 
-For partnership and collaboration inquiries:
+**For partnership and collaboration inquiries:**
 
 [M-Corp AI Contact Page](https://mcorpai.org/#contact)
