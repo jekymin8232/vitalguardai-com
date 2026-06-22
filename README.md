@@ -31,4 +31,4 @@ As a South Korean national, I am not currently considering relocation abroad due
 
 I welcome opportunities for collaboration in any form.
 
-As a South Korean national, I am not currently considering relocation abroad due to the nature of my work and ongoing commitments. Therefore, I generally prefer remote collaboration whenever possible.
+As a South Korean national, I am not currently considering relocation abroad due to my ongoing work and commitments. Therefore, I generally prefer remote collaboration whenever possible.
