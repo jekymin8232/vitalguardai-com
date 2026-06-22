@@ -28,3 +28,7 @@ As a South Korean national, I am not currently considering relocation abroad due
 **For partnership and collaboration inquiries:**
 
 [M-Corp AI Contact Page](https://mcorpai.org/#contact)
+
+I welcome opportunities for collaboration in any form.
+
+As a South Korean national, I am not currently considering relocation abroad due to the nature of my work and ongoing commitments. Therefore, I generally prefer remote collaboration whenever possible.
