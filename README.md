@@ -18,6 +18,11 @@ The long-term potential of offline AI is substantial. As efficiency, explainabil
 
 **I respectfully hope that any collaboration will recognize this reality and support a path toward genuine independence, enabling the continued development of offline AI at the highest international standards.**
 
+I welcome opportunities for collaboration in any form.
+
+As a South Korean national, I am not currently considering relocation abroad due to the nature of my work and ongoing commitments. Therefore, I generally prefer remote collaboration whenever possible.
+
+
 ## Partnerships
 
 **For partnership and collaboration inquiries:**
