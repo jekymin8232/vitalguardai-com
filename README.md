@@ -37,7 +37,7 @@ At the same time, I remain open to relocation when it is genuinely necessary to 
 
 ## Ultrasonic Communication and Offline AI Resilience Research
 
-The ultrasonic communication module demonstrated at mcorpai.net was developed without external libraries, frameworks, or NPM dependencies. The signal-processing and communication components were implemented directly as custom modules and integrated into the project's broader offline AI architecture.
+The ultrasonic communication module demonstrated at [mcorpai.net](https://mcorpai.net/) was developed without external libraries, frameworks, or NPM dependencies. The signal-processing and communication components were implemented directly as custom modules and integrated into the project's broader offline AI architecture.
 
 While ultrasonic communication itself is not a new technology, this research explores how established acoustic signaling techniques can be combined with offline AI systems to support privacy, resilience, and infrastructure-independent operation.
 
