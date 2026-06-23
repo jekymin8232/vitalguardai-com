@@ -71,7 +71,7 @@ Beyond defense-related considerations, the same characteristics may offer broade
 
 Such capabilities may also provide value for journalists, humanitarian workers, civil society organizations, and other professionals operating in high-risk environments where reliable and privacy-conscious communication can be critical.
 
-### Ultrasonic AI Communication for Resilient Space Operations
+### Another Potential Application: Ultrasonic AI Communication for Resilient Space Operations
 
 While radio-frequency and optical communication technologies will continue to serve as the primary communication methods for space exploration, there may be value in exploring complementary communication channels that operate under different physical constraints and failure modes.
 
