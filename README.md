@@ -35,3 +35,28 @@ As a South Korean national, I am currently based in South Korea and, due to my o
 
 At the same time, I remain open to relocation when it is genuinely necessary to support a meaningful long-term collaboration or research initiative. This is not limited to any particular country. Should an appropriate visa, residency status, or other lawful immigration pathway be available, I would be pleased to consider relocation based on the nature of the opportunity, the scope of the collaboration, and its potential social, humanitarian, or technological impact.
 
+## Ultrasonic Communication and Offline AI Resilience Research
+
+The ultrasonic communication module demonstrated at mcorpai.net was developed without external libraries, frameworks, or NPM dependencies. The signal-processing and communication components were implemented directly as custom modules and integrated into the project's broader offline AI architecture.
+
+While ultrasonic communication itself is not a new technology, this research explores how established acoustic signaling techniques can be combined with offline AI systems to support privacy, resilience, and infrastructure-independent operation.
+
+The current implementation utilizes Morse-code-inspired ultrasonic signaling. Due to the physical characteristics of ultrasonic transmission, communication is generally limited to short distances and low transmission rates, typically within a range of approximately three meters. Beyond this range, signal reliability may decrease significantly depending on environmental conditions, device hardware, and background noise. Although these characteristics impose practical constraints on throughput, they may also provide advantages in situations where highly localized communication is preferable to broader wireless transmission.
+
+Unlike conventional radio-frequency technologies such as Bluetooth and Wi-Fi, ultrasonic communication is inherently affected by environmental obstacles, distance, acoustic interference, and device hardware limitations. While these characteristics reduce transmission range and throughput, they can also naturally constrain communication to a relatively small physical area. In some scenarios, this localized behavior may offer privacy and operational advantages by reducing unintended signal exposure beyond the immediate vicinity.
+
+Because ultrasonic communication can remain physically confined to a relatively small area, it may provide benefits in environments where users seek to minimize unnecessary wireless exposure or reduce reliance on external infrastructure. Rather than attempting to maximize coverage, the technology explores how short-range communication can be used to support localized information exchange under specific operational conditions.
+
+The signaling layer is designed to be adaptable and can be customized for different operational requirements, including alternative signaling formats, frequencies, transmission profiles, and environmental conditions. This flexibility enables experimentation and adaptation for diverse use cases and threat environments.
+
+Importantly, the purpose of this technology is not to replace conventional communication methods such as Bluetooth, Wi-Fi, or other networking technologies. Instead, it is intended to serve as a complementary resilience mechanism when traditional communication channels are unavailable, unreliable, restricted, monitored, or otherwise unsuitable.
+
+In particular, short-range ultrasonic communication may provide practical value in environments where Bluetooth or Wi-Fi usage is difficult, where radio-frequency communication is constrained, or where users require highly localized communication capabilities.
+
+From an internet freedom and resilience perspective, the broader objective is to expand the range of communication options available to individuals and organizations operating in restrictive, disrupted, or high-risk environments. By combining offline AI capabilities with infrastructure-independent communication methods, the project seeks to explore practical approaches that strengthen autonomy, resilience, privacy, and local control over information exchange.
+
+The project also reflects a broader design philosophy centered on simplicity, transparency, auditability, and minimal external dependencies. By avoiding complex dependency chains and implementing critical functionality directly, the project aims to make review, verification, customization, and long-term maintenance more accessible.
+
+This work should be viewed as exploratory research into resilient offline communication and offline AI systems. It is intended to complement, rather than replace, existing privacy, security, and circumvention technologies while contributing additional options for users operating under challenging conditions.
+
+
