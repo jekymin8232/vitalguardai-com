@@ -101,7 +101,7 @@ As future exploration missions move toward long-duration operations on the Moon,
 
 While radio-frequency (RF) and optical systems will remain the primary means of communication, ultrasonic communication may provide an additional layer of resilience under specific operational conditions. The broader objective is not to replace existing communication technologies, but to develop multi-layered and independent communication architectures that enhance operational continuity, redundancy, autonomy, and resilience across a wide range of environmental, technical, and infrastructure-related disruptions.
 
-The same concepts may also have relevance beyond space exploration. Communities, humanitarian organizations, journalists, civil society groups, and other users operating in infrastructure-constrained, disaster-affected, or high-risk environments may similarly benefit from resilient communication options that reduce dependence on external infrastructure and support localized information exchange.
+Communities, humanitarian organizations, journalists, civil society groups, and other users operating in infrastructure-constrained, disaster-affected, or high-risk environments may similarly benefit from resilient communication options that reduce dependence on external infrastructure and support localized information exchange.
 
 By combining offline AI capabilities with complementary communication pathways, this research seeks to explore practical approaches that strengthen resilience, privacy, autonomy, and continuity of operations while expanding the range of communication options available under challenging conditions.
 
