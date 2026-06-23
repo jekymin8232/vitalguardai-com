@@ -59,7 +59,7 @@ The project also reflects a broader design philosophy centered on simplicity, tr
 
 This work should be viewed as exploratory research into resilient offline communication and offline AI systems. It is intended to complement, rather than replace, existing privacy, security, and circumvention technologies while contributing additional options for users operating under challenging conditions.
 
-### Ultrasonic AI Communication: Exploring the Potential of Localized Communication for Resilience, Privacy, and Safety
+### Ultrasonic AI Communication: Exploring Localized Communication for Resilience, Privacy, and Safety
 
 Ultrasonic AI-enabled communication technologies may have applications in national resilience, emergency preparedness, and certain defense-related environments. Recent conflicts have demonstrated that the character of modern warfare can evolve in unexpected ways, including the re-emergence of highly localized and infrastructure-constrained operational environments.
 
