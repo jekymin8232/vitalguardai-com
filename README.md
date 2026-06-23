@@ -83,7 +83,7 @@ Unlike conventional radio-frequency communication, ultrasonic signaling is natur
 
 The integration of offline AI with ultrasonic communication introduces additional possibilities. Rather than transmitting large volumes of data, autonomous systems can process information locally and exchange only essential commands, alerts, or situational updates through low-bandwidth acoustic channels. Such an approach may reduce communication overhead while increasing operational autonomy.
 
-Potential areas for future research include:
+**Potential areas for future research include:**
 
 * Habitat-local communication networks
 * Swarm robotics coordination
