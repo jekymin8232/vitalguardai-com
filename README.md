@@ -97,4 +97,4 @@ The objective is not to replace radio-frequency or optical communication systems
 
 As future exploration missions move toward long-duration operations on the Moon, Mars, and other planetary environments, resilient communication architectures may benefit from incorporating multiple independent communication pathways. Ultrasonic AI-enabled communication represents one possible area of research within this broader pursuit of robust, autonomous, and infrastructure-resilient space systems.
 
-
+**Future lunar and Martian habitats may benefit from exploring complementary communication channels as part of a broader resilience strategy for contingency and worst-case operational scenarios.**
