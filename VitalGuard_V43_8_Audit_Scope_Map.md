@@ -15,6 +15,10 @@ If you have any questions or requests, I would be happy to cooperate at any time
 All core concepts, architectural decisions, and system designs were created by me, while AI was used solely as a tool to assist with implementation.
 Ultimately, I believe the value of a project lies not merely in the act of writing code, but in the architecture, vision, and design that form its foundation.
 
+**Research Paper**
+
+VitalGuard Offline AI (PDF) : https://mcorpai.org/VitalGuard_Offline_AI.pdf
+
 
 ---
 
