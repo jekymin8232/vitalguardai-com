@@ -1,6 +1,8 @@
 # The Potential of Offline AI
 ### Building and maintaining data centers is not always feasible in every environment.
 
+**Not every environment requires high-performance GPUs to make effective use of AI. In practice, there are many situations where a minimal, highly secure machine learning system can be more valuable than large-scale AI infrastructure.**
+
 Offline AI offers significant advantages in security, privacy, and digital sovereignty. Because it operates without requiring continuous internet connectivity or cloud infrastructure, sensitive information can remain under the direct control of users, reducing exposure to surveillance, data exploitation, and infrastructure-related risks.
 
 One of the key strengths of offline AI is its flexibility. The technology can be customized and white-labeled to meet the specific needs of local communities, NGOs, civil society organizations, and humanitarian initiatives. This enables organizations to adapt the technology to their own languages, operational requirements, and threat environments.
