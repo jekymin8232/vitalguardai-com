@@ -99,8 +99,6 @@ As future exploration missions move toward long-duration operations on the Moon,
 
 ## Expanding Communication Options for Resilience, Privacy, and Continuity
 
-Future lunar and Martian habitats may benefit from exploring complementary communication channels as part of a broader resilience strategy for contingency and worst-case operational scenarios. This principle applies equally to terrestrial and space environments.
-
 While radio-frequency (RF) and optical systems will remain the primary means of communication, ultrasonic communication may provide an additional layer of resilience under specific operational conditions. The broader objective is not to replace existing communication technologies, but to develop multi-layered and independent communication architectures that enhance operational continuity, redundancy, autonomy, and resilience across a wide range of environmental, technical, and infrastructure-related disruptions.
 
 The same concepts may also have relevance beyond space exploration. Communities, humanitarian organizations, journalists, civil society groups, and other users operating in infrastructure-constrained, disaster-affected, or high-risk environments may similarly benefit from resilient communication options that reduce dependence on external infrastructure and support localized information exchange.
