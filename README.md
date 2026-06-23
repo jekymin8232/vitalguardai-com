@@ -1,4 +1,5 @@
-## The Potential of Offline AI
+# The Potential of Offline AI
+### Building and maintaining data centers is not always feasible in every environment.
 
 Offline AI offers significant advantages in security, privacy, and digital sovereignty. Because it operates without requiring continuous internet connectivity or cloud infrastructure, sensitive information can remain under the direct control of users, reducing exposure to surveillance, data exploitation, and infrastructure-related risks.
 
