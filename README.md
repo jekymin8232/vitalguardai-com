@@ -1,7 +1,7 @@
 # The Potential of Offline AI
 ### Building and maintaining data centers is not always feasible in every environment.
 
-**Not every environment requires high-performance GPUs to make effective use of AI. In practice, there are many situations where a minimal, highly secure machine learning system can be more valuable than large-scale AI infrastructure.**
+**Not every environment requires high-performance GPUs to make effective use of AI. In many situations, a minimal, highly secure machine learning system can provide substantial practical value. High-performance AI infrastructure can be costly to deploy and maintain, and access to such capabilities remains limited in many resource-constrained environments.**
 
 Offline AI offers significant advantages in security, privacy, and digital sovereignty. Because it operates without requiring continuous internet connectivity or cloud infrastructure, sensitive information can remain under the direct control of users, reducing exposure to surveillance, data exploitation, and infrastructure-related risks.
 
