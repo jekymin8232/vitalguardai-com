@@ -3,6 +3,8 @@
 
 **Not every environment requires high-performance GPUs to make effective use of AI. In many situations, a minimal, highly secure machine learning system can provide substantial practical value. High-performance AI infrastructure can be costly to deploy and maintain, and access to such capabilities remains limited in many resource-constrained environments.**
 
+**Offline AI is designed with data sovereignty, privacy, and security as core capabilities. Protecting users' control over their data and preserving privacy are fundamental objectives of this approach.**
+
 Offline AI offers significant advantages in security, privacy, and digital sovereignty. Because it operates without requiring continuous internet connectivity or cloud infrastructure, sensitive information can remain under the direct control of users, reducing exposure to surveillance, data exploitation, and infrastructure-related risks.
 
 One of the key strengths of offline AI is its flexibility. The technology can be customized and white-labeled to meet the specific needs of local communities, NGOs, civil society organizations, and humanitarian initiatives. This enables organizations to adapt the technology to their own languages, operational requirements, and threat environments.
