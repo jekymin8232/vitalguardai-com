@@ -115,3 +115,4 @@ By combining offline AI capabilities with complementary communication pathways, 
 
 Ultimately, the goal is not to promote any single technology, but to contribute to the development of resilient, infrastructure-independent communication ecosystems that can support both civilian and scientific missions across diverse operational environments on Earth and beyond.
 
+**Offline AI can be developed and deployed by teams of just three to five people while still achieving world-class capabilities. This is possible because the foundations, architectures, and design principles required for such systems already exist.**
