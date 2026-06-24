@@ -1,3 +1,4 @@
+### Technology That Invests in People, Not Just Infrastructure
 **"AI that runs on a single sheet of paper" is not a slogan—it is a fact. Complexity weakens security and control; simplicity strengthens them. Privacy-enhancing and life-saving AI technologies do not necessarily require large-scale data centers. What matters most is sustainability.**
 
 # The Potential of Offline AI
