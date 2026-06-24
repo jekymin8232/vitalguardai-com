@@ -10,6 +10,8 @@ From a security and architectural standpoint, a full audit of all 10,000 lines i
 
 https://github.com/jekymin8232/vitalguardai-com/blob/main/Code_Manual_Code_Map_V43_8.md
 
+**I take full responsibility for the project.**
+
 If you have any questions, requests, or areas requiring clarification, I would be pleased to cooperate at any time. All core concepts, architectural decisions, and system designs were conceived and developed by me. AI was used solely as a productivity tool to assist with implementation and development. 
 
 While modern tools can accelerate coding, responsibility for the architecture, design decisions, security model, and overall direction of the project ultimately remains with its creator. My long-term goal is to build a team and continue advancing offline AI technologies. I respectfully hope that the review process will consider the project as a whole, including its architecture, technical design, and source code.
