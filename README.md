@@ -1,4 +1,5 @@
-**"AI that runs on a single sheet of paper" is not a slogan—it is a fact.**
+**"AI that runs on a single sheet of paper" is not a slogan—it is a fact. Complexity weakens security and control; simplicity strengthens them.**
+
 # The Potential of Offline AI
 ### Building and maintaining data centers is not always feasible in every environment.
 
