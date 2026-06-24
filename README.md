@@ -1,3 +1,4 @@
+**"AI that runs on a single sheet of paper" is not a slogan—it is a fact.**
 # The Potential of Offline AI
 ### Building and maintaining data centers is not always feasible in every environment.
 
