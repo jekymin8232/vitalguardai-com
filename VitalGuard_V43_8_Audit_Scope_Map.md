@@ -4,8 +4,6 @@
 
 **File:** `VitalGuard_AI_complete_V43_8.html`
 
-From a security and architectural standpoint, a full audit of all 10,000 lines is unlikely to provide significant additional value. A focused review of the core security-critical code paths should be more than sufficient.
-
 **For a complete code and architecture overview, please refer to the Code Map:**
 
 https://github.com/jekymin8232/vitalguardai-com/blob/main/Code_Manual_Code_Map_V43_8.md
