@@ -12,7 +12,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/Code_Manual_Code_Map_V
 
 If you have any questions, requests, or areas requiring clarification, I would be pleased to cooperate at any time. 
 
-**Research Paper**
+**Note: Research Paper**
 
 VitalGuard Offline AI (PDF) : https://mcorpai.org/VitalGuard_Offline_AI.pdf
 
