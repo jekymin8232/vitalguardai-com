@@ -50,13 +50,7 @@ VitalGuard AI is designed to explore this potential through a transparent, offli
 
 ## Review and Cooperation
 
-As a first-time applicant, I recognize that my proposal may not be perfect. However, I respectfully hope that the review process will consider the project as a whole, including its architecture, technical design, and source code.
-
-I am fully prepared to respond rapidly to any findings raised during the review process and to implement any necessary improvements without delay.
-
 Because the project is designed without external dependencies, I have direct control over the entire codebase. This allows me to respond quickly to feedback, address potential issues efficiently, and continuously improve the project as needed.
-
-I greatly appreciate the time and effort invested in the review process and remain committed to full cooperation throughout the evaluation.
 
 ## License
 
