@@ -8,7 +8,7 @@ Copyright (c) 2026 Morgan J. (Gyu-min Jeon) — Licensed under the Apache Licens
 
 VitalGuard_AI_complete_V43_8 (V4.3.8) was updated more than 30 times during the security audit waiting period from February to July 2026.
 
-### Note
+### Note:
 During the update period, we also developed the initial version of our ultrasonic communication technology. We will continue to do our best.
 URL: https://mcorpai.net/
 
