@@ -8,7 +8,7 @@
 **Size / lines:** 612,237 bytes · 11,582 lines
 
 **For a complete code and architecture overview, please refer to the Code Map:**
-`https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_Code_Map.md`
+https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_Code_Map.md
 
 If you have any questions, requests, or areas requiring clarification, I would be glad to cooperate at any time.
 
