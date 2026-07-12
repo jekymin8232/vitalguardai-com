@@ -22,7 +22,7 @@ If you have any questions, requests, or areas requiring clarification, I would b
 
 **You can see how much the project has improved by comparing it with the initial version.**
 
-(V 1.0) https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard%20AI_complete_V10.html
+Initial Release (v1.0, July 2025) https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard%20AI_complete_V10.html
 
 ---
 
