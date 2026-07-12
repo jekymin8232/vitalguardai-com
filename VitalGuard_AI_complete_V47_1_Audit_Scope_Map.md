@@ -2,12 +2,10 @@
 ## VitalGuard AI v4.7.1 — Security Audit Scope Map
 ### High-Priority ~900 Lines · WP1 / WP2 / WP6 / WP7 + V4.6.x Hardening Surfaces
 
-**Full source code**
-
-**VitalGuard AI V4.6.9**
+**VitalGuard AI v4.6.9 Full Source Code**
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V46_9.html
 
-**VitalGuard AI V4.7.1**
+**VitalGuard AI V4.7.1 Full Source Code**
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1.html
 
 **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
