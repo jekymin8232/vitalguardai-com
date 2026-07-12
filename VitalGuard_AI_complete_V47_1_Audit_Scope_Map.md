@@ -29,7 +29,8 @@ The potential of offline AI built entirely with pure vanilla technologies is vir
 ---
 
 > **A note on this document.**
-> **Trust comes from timely updates and thorough verification.** During the months awaiting audit assignment, the maintainer used the time to strengthen the codebase considerably; the current baseline consolidates the strongest verified controls the project has produced, so that review effort can concentrate on its most current and most defensible version. A security audit is most effective when the project discloses its own uncertainties first, rather than waiting for the vendor to discover them independently. This map identifies, line by line, every area considered security-sensitive — including the parts where uncertainty is highest. All CTRL+F strings below are verbatim extracts from the shipped source file; paste them directly into a text editor to jump to the exact location.
+> **Trust comes from timely updates and thorough verification.**
+> During the months awaiting audit assignment, the maintainer used the time to strengthen the codebase considerably; the current baseline consolidates the strongest verified controls the project has produced, so that review effort can concentrate on its most current and most defensible version. A security audit is most effective when the project discloses its own uncertainties first, rather than waiting for the vendor to discover them independently. This map identifies, line by line, every area considered security-sensitive — including the parts where uncertainty is highest. All CTRL+F strings below are verbatim extracts from the shipped source file; paste them directly into a text editor to jump to the exact location.
 
 ---
 
