@@ -9,18 +9,21 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1.html
 
 **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
+
 **Release:** V4.7.1 — the current baseline submitted for audit
+
 **Whole-file SHA-256:** `650b2cf89f029f36ba1e8e728178efda4c17e4cb1d0b9fd985119806013319c7`
+
 **Size / lines:** 612,237 bytes · 11,582 lines
 
-**For a complete code and architecture overview, please refer to the Code Map:**
+* **For a complete code and architecture overview, please refer to the Code Map:**
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_Code_Map.md
 
 If you have any questions, requests, or areas requiring clarification, I would be glad to cooperate at any time.
 
-**Research paper:** VitalGuard Offline AI (PDF) — https://mcorpai.org/VitalGuard_Offline_AI.pdf
+* **Research paper:** VitalGuard Offline AI (PDF) — https://mcorpai.org/VitalGuard_Offline_AI.pdf
 
-**You can see how much the project has improved by comparing it with the initial version.**
+* **You can see how much the project has improved by comparing it with the initial version.**
 
 Initial Release (v1.0, July 2025) https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard%20AI_complete_V10.html
 
