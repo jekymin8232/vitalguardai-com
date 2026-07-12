@@ -8,7 +8,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 * **VitalGuard AI V4.7.1 Full Source Code**
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1.html
 
-- **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
+### **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
 
 - **Release:** V4.7.1 — the current baseline submitted for audit
 
