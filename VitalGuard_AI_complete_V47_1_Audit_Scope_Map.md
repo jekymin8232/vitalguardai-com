@@ -1,5 +1,5 @@
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
-### VitalGuard AI v4.7.1 — Security Audit Scope Map
+## VitalGuard AI v4.7.1 — Security Audit Scope Map
 ### High-Priority ~900 Lines · WP1 / WP2 / WP6 / WP7 + V4.6.x Hardening Surfaces
 
 **VitalGuard AI V4.6.9**
