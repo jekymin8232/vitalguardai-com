@@ -19,7 +19,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 * **For a complete code and architecture overview, please refer to the Code Map:**
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_Code_Map.md
 
-If you have any questions, requests, or areas requiring clarification, I would be glad to cooperate at any time.
+### If you have any questions, requests, or areas requiring clarification, I would be glad to cooperate at any time.
 
 * **Research paper:** VitalGuard Offline AI (PDF) — https://mcorpai.org/VitalGuard_Offline_AI.pdf
 
@@ -27,7 +27,7 @@ If you have any questions, requests, or areas requiring clarification, I would b
 
 Initial Release (v1.0, July 2025) https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard%20AI_complete_V10.html
 
-The potential of offline AI built entirely with pure vanilla technologies is virtually limitless.
+**The potential of offline AI built entirely with pure vanilla technologies is virtually limitless.**
 
 ---
 
