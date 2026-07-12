@@ -26,6 +26,8 @@ Initial Release (v1.0, July 2025) https://github.com/jekymin8232/luckyvicky-home
 
 The potential of offline AI built entirely with pure vanilla technologies is virtually limitless.
 
+**Trust comes from timely updates and thorough verification.**
+
 ---
 
 > **A note on this document.**
