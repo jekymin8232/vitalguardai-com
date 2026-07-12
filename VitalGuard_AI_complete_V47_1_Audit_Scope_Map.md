@@ -24,6 +24,8 @@ If you have any questions, requests, or areas requiring clarification, I would b
 
 Initial Release (v1.0, July 2025) https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard%20AI_complete_V10.html
 
+The potential of offline AI built entirely with pure vanilla technologies is virtually limitless.
+
 ---
 
 > **A note on this document.**
