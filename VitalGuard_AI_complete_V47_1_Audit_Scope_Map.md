@@ -370,6 +370,12 @@ We would be grateful for the vendor's assessment of each, and we will provide an
 
 ## Closing Remarks: Open Source Vision & Sustainability Statement
 
+**Baron Morgan. 🤴**
+
+A baron is a title associated with the authority to build and govern a castle. Reducing such a figure to the role of a mere employee leaves no room for open-source innovation or long-term growth.
+
+---
+
 This project is built on the core principle of **self-reliance through zero external dependencies**.
 
 With official validation from the OTF Security Lab as a key milestone, the goal is to secure a **$100,000 global Internet freedom grant**. Building on that foundation, the project aims to leverage technology-matching funding in South Korea to establish an **Offline-First AI Security Lab** dedicated to developing resilient security technologies for environments affected by censorship, internet shutdowns, and network disruption.
