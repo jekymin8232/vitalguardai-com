@@ -1,3 +1,4 @@
+# My greatest concern is the risk of supply chain attacks.
 ### I do not rely on external libraries. I design and implement my own modules.
 
 **Many software projects do not provide comprehensive code documentation because they do not have direct control over external libraries. When a security vulnerability is discovered, responsibility for fixing the library lies with its maintainers, limiting how quickly application developers can respond.**
