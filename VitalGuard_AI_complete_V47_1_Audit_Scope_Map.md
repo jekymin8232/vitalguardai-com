@@ -1,20 +1,28 @@
-Cannot rely on OTF forever. Self-reliance is not optional but essential, and OTF security audits are critically important.
+> **"Cannot rely on OTF forever. Self-reliance is not optional but essential, and OTF security audits are critically important."**
 
-[ Preface ] VitalGuard AI v4.7.1 : Security Audit Scope Map
+# Preface: VitalGuard AI v4.7.1 — Security Audit Scope Map
 
-My greatest concern is the risk of supply chain attacks. 
+### The Core Philosophy: Eliminating Supply Chain Risks
+My greatest concern is the risk of **supply chain attacks**. 
 
-For this reason, I do not rely on external libraries; I design and implement my own modules. However, I did not design or implement a custom cryptographic algorithm. Instead, encrypted backups leverage the browser’s native Web Crypto API, deriving a 256-bit key via PBKDF2-HMAC-SHA-256 and performing authenticated encryption with AES-256-GCM.
+For this reason, this architecture relies on **zero external libraries**; all modules are custom-designed and implemented from scratch. However, to adhere to industry best practices, no custom cryptographic algorithms were invented. Instead, encrypted backups leverage the browser’s native **Web Crypto API**, deriving a 256-bit key via **PBKDF2-HMAC-SHA-256** and performing authenticated encryption with **AES-256-GCM**.
 
+---
+
+### True Transparency vs. Dependency Overreliance
 Many software projects fail to provide comprehensive code documentation because they lack direct control over external libraries. When a security vulnerability is discovered, responsibility for fixing the library lies entirely with its third-party maintainers, severely limiting how quickly application developers can respond.
 
-Can software that depends heavily on external libraries truly be fully transparent and auditable? Can reviewers understand the entire codebase at a glance? True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.
+*Can software that depends heavily on external libraries truly be fully transparent and auditable? Can reviewers understand the entire codebase at a glance?* 
 
-[ Precision-Mapped Attack Surface for Adversarial Review ]
+**True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
 
-I sincerely hope this project will undergo a genuine, independent security assessment. Passing the OTF security review and achieving official validation is essential for the project to earn global trust, stand on its own feet, and continue to grow with absolute confidence.
+---
 
-For the initial security assessment, I conducted a simulated attack using Claude Fable 5, one of today's most capable AI models. Now, to independently validate the project's security boundaries, security auditors are invited to personally conduct a thorough security audit and simulated adversarial attack.
+### Precision-Mapped Attack Surface for Adversarial Review
+
+Achieving official validation through a genuine, independent security assessment is essential for this project to earn global trust, stand on its own feet, and continue to grow with absolute confidence. Passing the **OTF security review** remains our vital milestone toward long-term self-sustainability.
+
+For the initial security baseline, a simulated attack exercise was conducted using **Claude Fable 5**, one of today's most capable AI models. Now, to independently validate these security boundaries, **security auditors are invited to personally conduct a thorough security audit and simulated adversarial attack.**
 
 ---
 
