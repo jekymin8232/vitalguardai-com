@@ -1,4 +1,5 @@
-# My greatest concern is the risk of supply chain attacks.
+# VitalGuard AI v4.7.1 — Security Audit Scope Map
+## My greatest concern is the risk of supply chain attacks.
 ### I do not rely on external libraries. I design and implement my own modules.
 
 **Many software projects do not provide comprehensive code documentation because they do not have direct control over external libraries. When a security vulnerability is discovered, responsibility for fixing the library lies with its maintainers, limiting how quickly application developers can respond.**
@@ -19,7 +20,7 @@
 > ### If you break it, a patch will be released within 24 hours. 🤴🛡️✨
 >
 
-# VitalGuard AI v4.7.1 — Security Audit Scope Map 
+# Security Audit Scope Map 
 ## Simple update process
 ### High-Priority ~900 Lines · WP1 / WP2 / WP6 / WP7 + V4.6.x Hardening Surfaces
 
