@@ -56,7 +56,8 @@ Heavy reliance on external libraries means that updates often depend on their ma
 In environments where sophisticated, state-level adversaries must be considered, every external component becomes an additional trust assumption. For this reason, I have chosen to implement as much of the core functionality as possible myself, making transparency, auditability, and verifiability fundamental principles of this project's design.
 
 
-### **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
+## **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
+https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1.html
 
 - **Release:** V4.7.1 — the current baseline submitted for audit
 
