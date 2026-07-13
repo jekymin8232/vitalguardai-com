@@ -392,4 +392,4 @@ The long-term vision is to foster a sustainable public-interest technology ecosy
 * **February 2026** — Reviewed by University College London (UCL) and the Institute of Development Studies (IDS) in the United Kingdom.
 * **Summer 2026** — Officially reviewed by the OTF Security Lab in the United States.
 
-**Baron Morgan J, Lord of the Castle 🤴**
+**Baron Morgan J 🤴, Lord of the Castle, Republic of Korea**
