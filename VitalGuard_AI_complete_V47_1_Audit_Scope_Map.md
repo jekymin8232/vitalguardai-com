@@ -372,7 +372,7 @@ We would be grateful for the vendor's assessment of each, and we will provide an
 
 # Closing Remarks: Open Source Vision & Sustainability Statement
 
-### Baron Morgan. 🤴
+### Baron Morgan. 🤴 [mcorpai.org](https://mcorpai.org/)
 
 A baron is a title associated with the authority to build and govern a castle. Reducing such a figure to the role of a mere employee leaves no room for open-source innovation or long-term growth.
 
