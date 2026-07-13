@@ -386,8 +386,6 @@ We would be grateful for the vendor's assessment of each, and we will provide an
 
 As an open-source pioneer who refuses to be confined to the structural limits of conventional employment, the mission is to expand this foundational architecture into a scalable, decentralized ecosystem—creating a secure digital haven where developers, human rights defenders, and citizens can build, collaborate, and thrive together.
 
-The long-term vision is to foster a sustainable public-interest technology ecosystem that advances digital resilience, technological independence, and global Internet freedom.
-
 ---
 
 ### ⏳ Biography & Milestones
