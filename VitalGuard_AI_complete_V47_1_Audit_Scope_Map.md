@@ -1,4 +1,4 @@
-**Self-reliance is not optional but essential, and OTF security audits are critically important.**
+**Cannot rely on OTF forever. Self-reliance is not optional but essential, and OTF security audits are critically important.**
 # [ Preface ] VitalGuard AI v4.7.1 : Security Audit Scope Map
 ## My greatest concern is the risk of supply chain attacks.
 ### I do not rely on external libraries. I design and implement my own modules.
