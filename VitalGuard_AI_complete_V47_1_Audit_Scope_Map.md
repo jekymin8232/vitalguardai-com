@@ -7,6 +7,8 @@
 
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
 
+### We need to pass the OTF security review to become self-sustaining.
+
 **I sincerely hope this project will undergo a genuine, independent security assessment. OTF security validation is essential for the project to earn trust, stand on its own, and continue to grow with confidence.**
 
 **For the initial security assessment, I conducted a simulated attack using Claude Fable 5, one of today's most capable AI models. Now, to independently validate the project's security, I hope that white-hat hackers will personally conduct a thorough security audit and simulated attack.**
