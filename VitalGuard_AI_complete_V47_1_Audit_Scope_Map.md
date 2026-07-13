@@ -1,4 +1,4 @@
-# VitalGuard AI v4.7.1 : Security Audit Scope Map (Preface)
+# VitalGuard AI v4.7.1 : Security Audit Scope Map [ Preface ]
 ## My greatest concern is the risk of supply chain attacks.
 ### I do not rely on external libraries. I design and implement my own modules.
 
