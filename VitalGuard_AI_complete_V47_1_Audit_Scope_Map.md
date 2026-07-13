@@ -24,6 +24,16 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 * **VitalGuard AI V4.7.1 Full Source Code**
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1.html
 
+* **A module I designed myself.**
+https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0_MVP.html
+
+This is the module I mentioned earlier, designed and implemented entirely by myself, and it has now evolved to version 4.3. I do not rely on external libraries; instead, I design and implement the modules I need myself.
+
+Heavy reliance on external libraries means that updates often depend on their maintainers, making it difficult to respond quickly when security vulnerabilities are discovered. In addition, the more third-party dependencies a project has, the greater its potential exposure to supply chain attacks.
+
+In environments where sophisticated, state-level adversaries must be considered, every external component becomes an additional trust assumption. For this reason, I have chosen to implement as much of the core functionality as possible myself, making transparency, auditability, and verifiability fundamental principles of this project's design.
+
+
 ### **File:** `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application
 
 - **Release:** V4.7.1 — the current baseline submitted for audit
