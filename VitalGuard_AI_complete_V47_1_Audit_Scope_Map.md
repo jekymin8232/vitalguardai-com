@@ -31,7 +31,7 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 
 ---
 
-# v4.7.1 : Security Audit Scope Map 
+# [Main Body] v4.7.1 : Security Audit Scope Map 
 ## Simple update process
 ### High-Priority ~900 Lines · WP1 / WP2 / WP6 / WP7 + V4.6.x Hardening Surfaces
 
