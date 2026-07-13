@@ -15,7 +15,7 @@
 
 >
 > ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔🗡️🏹
-> ### If you break it, a patch will be released within 24 hours. 🤴🛡️
+> ### If you break it, a patch will be released within 24 hours. 🤴🛡️✨
 >
 
 # VitalGuard AI v4.7.1 — Security Audit Scope Map 
