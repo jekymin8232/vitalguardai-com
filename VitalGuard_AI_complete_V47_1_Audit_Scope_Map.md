@@ -28,6 +28,8 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
   
 **Core Module v1.0** https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0_MVP.html
 
+### External libraries are not a universal solution.
+
 This is the module I mentioned earlier, designed and implemented entirely by myself, and it has now evolved to version 4.3. 
 
 Heavy reliance on external libraries means that updates often depend on their maintainers, making it difficult to respond quickly when security vulnerabilities are discovered. In addition, the more third-party dependencies a project has, the greater its potential exposure to supply chain attacks.
