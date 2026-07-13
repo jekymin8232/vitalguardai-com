@@ -1,3 +1,4 @@
+**Self-reliance is not optional but essential, and OTF security audits are critically important.**
 # [ Preface ] VitalGuard AI v4.7.1 : Security Audit Scope Map
 ## My greatest concern is the risk of supply chain attacks.
 ### I do not rely on external libraries. I design and implement my own modules.
@@ -8,7 +9,7 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 
 **Can software that depends heavily on external libraries truly be considered open source? Can reviewers understand the entire codebase at a glance? True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
 
-## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
+## Precision-Mapped Attack Surface for Adversarial Review
 
 ### Passing the OTF security review is essential to become self-sustaining.
 
