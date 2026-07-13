@@ -18,7 +18,7 @@
 > ### I conducted one of the most advanced Claude Fable simulation exercises currently possible. 🐉⚔️
 > ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔🗡️🏹
 > ### If you break it, a patch will be released within 24 hours. 🤴🛡️
->
+> ### Official recognition from OTF is essential for becoming self-sustaining and continuing to advance.
 
 # Security Audit Scope Map 
 ## Simple update process
