@@ -7,7 +7,7 @@
 
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
 
-### We need to pass the OTF security review to become self-sustaining.
+### Passing the OTF security review is essential to become self-sustaining.
 
 **I sincerely hope this project will undergo a genuine, independent security assessment. OTF security validation is essential for the project to earn trust, stand on its own, and continue to grow with confidence.**
 
