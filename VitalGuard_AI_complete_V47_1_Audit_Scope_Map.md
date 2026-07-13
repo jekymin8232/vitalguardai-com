@@ -21,7 +21,7 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 
 > ## 🏰 Lay siege to the castle if you dare, Baron Morgan. 🤴
 > ### I conducted one of the most advanced Claude Fable simulation exercises currently possible. 🐉⚔️
-> ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔🏹💣
+> ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔💣
 > ### If you break it, a patch will be released within 24 hours. 🤴
 > ⭐ **In authoritarian states, time is life. Third-party libraries are never fully under your control, and even a single dependency can delay critical security updates. A single dependency may pull in dozens of transitive dependencies, each expanding the attack surface.** ⭐
 > ### Official recognition from OTF is essential for becoming self-sustaining and continuing to advance. 🛡️
