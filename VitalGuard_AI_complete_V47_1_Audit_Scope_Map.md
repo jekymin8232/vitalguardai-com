@@ -66,6 +66,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 - **Size / lines:** 612,237 bytes · 11,582 lines
 
 * **For a complete code and architecture overview, please refer to the Code Map:**
+  
   https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_Code_Map.md
 
 **The potential of offline AI built entirely with pure vanilla technologies is virtually limitless.**
