@@ -372,7 +372,7 @@ We would be grateful for the vendor's assessment of each, and we will provide an
 
 # Closing Remarks: Open Source Vision & Sustainability Statement
 
-### Baron Morgan. 🤴 [mcorpai.org](https://mcorpai.org/)
+### Baron Morgan J. 🤴 [mcorpai.org](https://mcorpai.org/)
 
 A baron is a title associated with the authority to build and govern a castle. Reducing such a figure to the role of a mere employee leaves no room for open-source innovation or long-term growth.
 
@@ -393,4 +393,4 @@ The long-term vision is to foster a sustainable public-interest technology ecosy
 * **Summer 2026** — Officially reviewed by the OTF Security Lab in the United States.
 * **2027** — Expected to Achieve Self-Sufficiency.
 
-**Baron Morgan J 🤴, Lord of the Castle, Republic of Korea**
+**Baron Morgan J. 🤴, Lord of the Castle, Republic of Korea**
