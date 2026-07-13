@@ -386,10 +386,6 @@ We would be grateful for the vendor's assessment of each, and we will provide an
 
 As an open-source pioneer who refuses to be confined to the structural limits of conventional employment, the mission is to expand this foundational architecture into a scalable, decentralized ecosystem—creating a secure digital haven where developers, human rights defenders, and citizens can build, collaborate, and thrive together.
 
-This project is built on the core principle of absolute self-reliance through **zero external dependencies**.
-
-With official validation from the **OTF Security Lab** as a key technical milestone, our immediate goal is to secure a **$100,000** global Internet freedom grant. Building on that international foundation, the project aims to leverage technology-matching funding in South Korea to establish the **Offline-First AI Security Lab** dedicated to developing resilient security technologies for environments affected by censorship, internet shutdowns, and network disruption.
-
 The long-term vision is to foster a sustainable public-interest technology ecosystem that advances digital resilience, technological independence, and global Internet freedom.
 
 ---
