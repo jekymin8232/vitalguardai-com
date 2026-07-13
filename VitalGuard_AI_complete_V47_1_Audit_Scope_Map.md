@@ -27,7 +27,7 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 
 VitalGuard is entirely dependency-free and operates fully offline. This mock audit is provided openly to encourage rigorous security reviews from diverse, adversarial perspectives.
 
-### We invite security auditors to employ the most uncompromising penetration methodologies to validate these boundaries.
+### Security auditors are invited to employ the most uncompromising penetration methodologies to validate these boundaries.
 ### ⏱️ 24-Hour Remediation SLA: Should any practical exploit vector or bypass be verified, a definitive hotfix patch will be deployed within 24 hours.
 
 ⭐ **In high-risk and authoritarian environments, time dictates survival. Third-party libraries are never fully under your control; a single external dependency can pull in dozens of transitive packages, unnecessarily expanding the attack surface and dangerously delaying critical security updates.** 
