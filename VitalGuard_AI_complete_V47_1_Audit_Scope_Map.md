@@ -391,5 +391,6 @@ The long-term vision is to foster a sustainable public-interest technology ecosy
 * **November 2025** — Officially reviewed by the Government of Luxembourg.
 * **February 2026** — Reviewed by University College London (UCL) and the Institute of Development Studies (IDS) in the United Kingdom.
 * **Summer 2026** — Officially reviewed by the OTF Security Lab in the United States.
+* **2027** — Expected to Achieve Self-Sufficiency.
 
 **Baron Morgan J 🤴, Lord of the Castle, Republic of Korea**
