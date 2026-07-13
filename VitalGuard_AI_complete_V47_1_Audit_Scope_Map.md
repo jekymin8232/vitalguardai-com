@@ -26,7 +26,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 
 * **A module I designed myself.**
   
-(Core Module v1.0) https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0_MVP.html
+**Core Module v1.0** https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0_MVP.html
 
 This is the module I mentioned earlier, designed and implemented entirely by myself, and it has now evolved to version 4.3. I do not rely on external libraries; instead, I design and implement the modules I need myself.
 
