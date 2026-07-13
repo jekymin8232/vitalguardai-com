@@ -366,3 +366,5 @@ The points where external, adversarial review is considered most valuable — th
 We would be grateful for the vendor's assessment of each, and we will provide any additional context, build-environment detail, or targeted test harnesses on request.
 
 *END OF SCOPE MAP*
+
+Cannot rely on OTF indefinitely. Self-sufficiency is not optional; it is essential. However, achieving self-sufficiency requires independent security validation.
