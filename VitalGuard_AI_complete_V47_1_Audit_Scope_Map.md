@@ -21,6 +21,8 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 > ### I conducted one of the most advanced Claude Fable simulation exercises currently possible. 🐉⚔️
 > ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔🏹💣
 > ### If you break it, a patch will be released within 24 hours. 🤴
+> Using even a single third-party library can delay security updates because part of the code is outside my direct control.
+> In authoritarian states, time is life.
 > ### Official recognition from OTF is essential for becoming self-sustaining and continuing to advance. 🛡️
 
 # v4.7.1 : Security Audit Scope Map 
