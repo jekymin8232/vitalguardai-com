@@ -13,9 +13,10 @@
 
 **For the initial security assessment, I conducted a simulated attack using Claude Fable 5, one of today's most capable AI models. Now, to independently validate the project's security, I hope that white-hat hackers will personally conduct a thorough security audit and simulated attack.**
 
-### Conduct the most rigorous simulated attacks possible to validate its security.
-### If you break it, a patch will be released within 24 hours.
-
+>
+> ### Conduct the most rigorous simulated attacks possible to validate its security.
+> ### If you break it, a patch will be released within 24 hours.
+>
 
 # VitalGuard AI v4.7.1 — Security Audit Scope Map 
 ## Simple update process
