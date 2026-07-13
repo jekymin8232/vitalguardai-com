@@ -14,6 +14,8 @@
 
 * **You can see how much the project has improved by comparing it with the initial version.**
 
+* This project was independently designed and built by a single developer (myself). Although every effort has been made to ensure its quality and security, independent security review is essential to strengthen its long-term reliability and resilience.
+
 Initial Release (v1.0, July 2025) https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard%20AI_complete_V10.html
 
 * **VitalGuard AI v4.6.9 Full Source Code**
