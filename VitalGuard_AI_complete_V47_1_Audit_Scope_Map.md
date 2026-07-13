@@ -17,7 +17,7 @@
 > ## 🏰🛡️ Castle Siege 🤴
 > ### I conducted one of the most advanced Claude Fable simulation exercises currently possible. 🐉⚔️
 > ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔🗡️🏹
-> ### If you break it, a patch will be released within 24 hours. 🤴🛡️✨
+> ### If you break it, a patch will be released within 24 hours. 🤴🛡️
 >
 
 # Security Audit Scope Map 
