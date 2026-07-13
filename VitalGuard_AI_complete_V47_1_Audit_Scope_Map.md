@@ -368,13 +368,15 @@ The points where external, adversarial review is considered most valuable — th
 
 We would be grateful for the vendor's assessment of each, and we will provide any additional context, build-environment detail, or targeted test harnesses on request.
 
+---
+
 # Closing Remarks: Open Source Vision & Sustainability Statement
 
-**Baron Morgan. 🤴**
+### Baron Morgan. 🤴
 
 A baron is a title associated with the authority to build and govern a castle. Reducing such a figure to the role of a mere employee leaves no room for open-source innovation or long-term growth.
 
-When a baron becomes a count, the open-source castle expands, creating space for many more people to build, collaborate, and thrive together.
+**When a baron becomes a count, the open-source castle expands, creating space for many more people to build, collaborate, and thrive together.**
 
 ---
 
