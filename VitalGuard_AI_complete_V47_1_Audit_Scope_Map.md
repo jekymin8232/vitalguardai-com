@@ -368,7 +368,7 @@ The points where external, adversarial review is considered most valuable — th
 
 We would be grateful for the vendor's assessment of each, and we will provide any additional context, build-environment detail, or targeted test harnesses on request.
 
-## Open Source Vision & Sustainability Statement
+## Closing Remarks: Open Source Vision & Sustainability Statement
 
 This project is built on the core principle of **self-reliance through zero external dependencies**.
 
