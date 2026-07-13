@@ -12,8 +12,6 @@ For this reason, this architecture relies on **zero external libraries**; all mo
 ### True Transparency vs. Dependency Overreliance
 Many software projects fail to provide comprehensive code documentation because they lack direct control over external libraries. When a security vulnerability is discovered, responsibility for fixing the library lies entirely with its third-party maintainers, severely limiting how quickly application developers can respond.
 
-*Can software that depends heavily on external libraries truly be fully transparent and auditable? Can reviewers understand the entire codebase at a glance?* 
-
 **True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
 
 ---
