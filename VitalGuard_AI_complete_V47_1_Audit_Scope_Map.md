@@ -20,7 +20,7 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 ---
 
 > ## 🏰 Lay siege to the castle if you dare, Baron Morgan. 🤴
-> ### I conducted one of the most advanced Claude Fable simulation exercises currently possible. 🐉⚔️
+> ### This reference document represents an advanced, LLM-assisted static analysis and adversarial threat modeling exercise.
 > ⭐ **Claude Fable 5 Simulated Security Audit (Reference Only)** [VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit_EN.md](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit_EN.md)
 >
 > VitalGuard is completely dependency-free and operates entirely offline. It is provided solely as a reference to encourage a security review from a different perspective.
