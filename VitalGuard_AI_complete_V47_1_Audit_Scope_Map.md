@@ -386,4 +386,10 @@ With official validation from the OTF Security Lab as a key milestone, the goal 
 
 The long-term vision is to foster a sustainable public-interest technology ecosystem that advances digital resilience, technological independence, and Internet freedom.
 
+**Biography**
+
+* **November 2025** — Officially reviewed by the Government of Luxembourg.
+* **February 2026** — Reviewed by University College London (UCL) and the Institute of Development Studies (IDS) in the United Kingdom.
+* **Summer 2026** — Officially reviewed by the OTF Security Lab in the United States.
+
 **Baron Morgan J, Lord of the Castle 🤴**
