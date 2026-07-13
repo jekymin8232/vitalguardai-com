@@ -2,6 +2,8 @@
 ## My greatest concern is the risk of supply chain attacks.
 ### I do not rely on external libraries. I design and implement my own modules.
 
+I did not design or implement a custom cryptographic algorithm. Instead, encrypted backups use the browser’s native Web Crypto API, deriving a 256-bit key with PBKDF2-HMAC-SHA-256 and performing authenticated encryption with AES-256-GCM.
+
 **Many software projects do not provide comprehensive code documentation because they do not have direct control over external libraries. When a security vulnerability is discovered, responsibility for fixing the library lies with its maintainers, limiting how quickly application developers can respond.**
 
 **Can software that depends heavily on external libraries truly be considered open source? Can reviewers understand the entire codebase at a glance? True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
