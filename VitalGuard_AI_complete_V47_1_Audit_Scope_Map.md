@@ -35,7 +35,7 @@ For the initial security baseline, a simulated attack exercise was conducted usi
 VitalGuard is entirely dependency-free and operates fully offline. This mock audit is provided openly to encourage rigorous security reviews from diverse, adversarial perspectives.
 
 ### Security auditors are invited to employ the most uncompromising penetration methodologies to validate these boundaries.
-### ⏱️ 24-Hour Remediation SLA: Should any practical exploit vector or bypass be verified, a definitive hotfix patch will be deployed within 24 hours.
+### 24-Hour Remediation SLA: Should any practical exploit vector or bypass be verified, a definitive hotfix patch will be deployed within 24 hours.
 
 ⭐ **In high-risk and authoritarian environments, time dictates survival. Third-party libraries are never fully under your control; a single external dependency can pull in dozens of transitive packages, unnecessarily expanding the attack surface and dangerously delaying critical security updates.** 
 
