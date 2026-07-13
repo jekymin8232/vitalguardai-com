@@ -1,3 +1,5 @@
+**Many software projects do not provide comprehensive code documentation because they do not have direct control over external libraries. When a security vulnerability is discovered, responsibility for fixing the library lies with its maintainers, limiting how quickly application developers can respond.**
+
 **Can software that depends heavily on external libraries truly be considered open source? Can reviewers understand the entire codebase at a glance? True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
 
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
