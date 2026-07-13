@@ -17,7 +17,7 @@
 ### If you break it, a fix can be released within 24 hours.
 
 
-## VitalGuard AI v4.7.1 — Security Audit Scope Map (Simple update process)
+# VitalGuard AI v4.7.1 — Security Audit Scope Map (Simple update process)
 ### High-Priority ~900 Lines · WP1 / WP2 / WP6 / WP7 + V4.6.x Hardening Surfaces
 
 ### If you have any questions, requests, or areas requiring clarification, I would be glad to cooperate at any time.
