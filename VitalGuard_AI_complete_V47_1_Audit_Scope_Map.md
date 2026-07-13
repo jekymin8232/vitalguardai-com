@@ -1,4 +1,4 @@
-**Can software that relies heavily on external dependencies truly be called open source? Can reviewers inspect and understand the entire codebase at a glance? Full transparency, including open disclosure of the code's known limitations, weaknesses, and design trade-offs.**
+**Can software that depends heavily on external libraries truly be considered open source? Can reviewers understand the entire codebase at a glance? True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
 
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
 ## VitalGuard AI v4.7.1 — Security Audit Scope Map (Simple update process)
