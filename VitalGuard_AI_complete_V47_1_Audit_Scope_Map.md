@@ -17,6 +17,8 @@ I did not design or implement a custom cryptographic algorithm. Instead, encrypt
 
 **For the initial security assessment, I conducted a simulated attack using Claude Fable 5, one of today's most capable AI models. Now, to independently validate the project's security, I hope that white-hat hackers will personally conduct a thorough security audit and simulated attack.**
 
+---
+
 > ## 🏰 Lay siege to the castle if you dare, Baron Morgan. 🤴
 > ### I conducted one of the most advanced Claude Fable simulation exercises currently possible. 🐉⚔️
 > ### Conduct the most rigorous simulated attacks possible to validate its security. 🧔🏹💣
