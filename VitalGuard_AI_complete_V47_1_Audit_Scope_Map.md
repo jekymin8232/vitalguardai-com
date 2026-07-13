@@ -6,6 +6,11 @@
 **Can software that depends heavily on external libraries truly be considered open source? Can reviewers understand the entire codebase at a glance? True transparency means openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
 
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
+
+**I sincerely hope this project will undergo a genuine, independent security assessment. OTF security validation is essential for the project to earn trust, stand on its own, and continue to grow with confidence.**
+
+**For the initial security assessment, I conducted a simulated attack using Claude Fable 5, one of today's most capable AI models. Now, to independently validate the project's security, I hope that white-hat hackers will personally conduct a thorough security audit and simulated attack.**
+
 ## VitalGuard AI v4.7.1 — Security Audit Scope Map (Simple update process)
 ### High-Priority ~900 Lines · WP1 / WP2 / WP6 / WP7 + V4.6.x Hardening Surfaces
 
