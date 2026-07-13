@@ -377,10 +377,6 @@ We would be grateful for the vendor's assessment of each, and we will provide an
 
 ## 📜 Closing Remarks: Open Source Vision & Sustainability Statement
 
-**Baron Morgan J. (mcorpai.org)** — *Please collaborate to help achieve self-sufficiency.*
-
-A baron is a title associated with the authority to build and govern a castle. Reducing such a figure to the role of a mere employee leaves no room for open-source innovation or long-term growth. When a baron becomes a count, the open-source castle expands, creating space for many more people to build, collaborate, and thrive together.
-
 As an open-source pioneer who refuses to be confined to the structural limits of conventional employment, the mission is to expand this foundational architecture into a scalable, decentralized ecosystem—creating a secure digital haven where developers, human rights defenders, and citizens can build, collaborate, and thrive together.
 
 This project is built on the core principle of absolute self-reliance through **zero external dependencies**.
