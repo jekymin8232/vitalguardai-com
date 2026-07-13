@@ -1,4 +1,4 @@
-**We are committed to full transparency, including openly disclosing the code's known limitations, weaknesses, and design trade-offs.**
+**Full transparency, including open disclosure of the code's known limitations, weaknesses, and design trade-offs.**
 
 ## Required Reading: Precision-Mapped Attack Surface for Adversarial Review
 ## VitalGuard AI v4.7.1 — Security Audit Scope Map (Simple update process)
