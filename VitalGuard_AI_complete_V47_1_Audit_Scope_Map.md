@@ -30,7 +30,7 @@ For the initial security baseline, a simulated attack exercise was conducted usi
 
 ⭐ **Claude Fable 5 Simulated Security Audit (Reference Only)** [VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit_EN.md](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit_EN.md)
 
-VitalGuard is entirely dependency-free and operates fully offline. This mock audit is provided openly to encourage rigorous security reviews from diverse, adversarial perspectives.
+VitalGuard is entirely dependency-free and operates fully offline. This mock audit is provided openly to encourage rigorous security reviews from diverse, adversarial perspectives. One thing is certain: VitalGuard is fully offline, leaving attackers with an exceptionally limited attack surface. Attack vectors need to be identified from a different perspective.
 
 ### Security auditors are invited to employ the most uncompromising penetration methodologies to validate these boundaries.
 ### 24-Hour Remediation SLA: Should any practical exploit vector or bypass be verified, a definitive hotfix patch will be deployed within 24 hours.
