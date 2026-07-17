@@ -32,6 +32,8 @@ For the initial security baseline, a simulated attack exercise was conducted usi
 
 VitalGuard is entirely dependency-free and operates fully offline. This mock audit is provided openly to encourage rigorous security reviews from diverse, adversarial perspectives. One thing is certain: VitalGuard is fully offline, leaving attackers with an exceptionally limited attack surface. Attack vectors need to be identified from a different perspective.
 
+n highly dependency-driven systems—incorporating external APIs, microservices, cloud infrastructure, databases, event queues, and other distributed components—the system's logic and runtime behavior are fragmented across multiple layers. Consequently, an LLM cannot accurately simulate the entire system or perform comprehensive threat modeling from source code alone. If this remains challenging even for an LLM, it is even more difficult for human reviewers to achieve a complete and accurate analysis.
+
 ### Security auditors are invited to employ the most uncompromising penetration methodologies to validate these boundaries.
 ### 24-Hour Remediation SLA: Should any practical exploit vector or bypass be verified, a definitive hotfix patch will be deployed within 24 hours.
 
