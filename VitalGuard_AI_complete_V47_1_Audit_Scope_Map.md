@@ -103,7 +103,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 
 ---
 
-## 0. At-a-Glance — Audit Priority Map
+# 0. At-a-Glance — Audit Priority Map
 
 | WP | Domain | Core Line Range | Est. Volume | Priority |
 |----|--------|-----------------|-------------|----------|
