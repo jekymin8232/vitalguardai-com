@@ -1,4 +1,6 @@
 > **"Cannot rely on OTF forever. Self-reliance is not optional but essential, and OTF security audits are critically important."**
+>
+> Unlike conventional on-device AI, offline AI is designed to run efficiently on virtually any device, including smartphones released more than a decade ago. It does not collect, transmit, or store any personal data, providing strong privacy protection by design. Despite its extremely small footprint, it incorporates machine learning capabilities while remaining lightweight and resource-efficient. Furthermore, its architecture is fully open source, enabling complete transparency, independent verification, and community-driven development.
 
 # Preface: VitalGuard AI v4.7.1 — Security Audit Scope Map
 
