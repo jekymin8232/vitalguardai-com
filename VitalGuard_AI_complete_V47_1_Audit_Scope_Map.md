@@ -34,6 +34,8 @@ VitalGuard is entirely dependency-free and operates fully offline. This mock aud
 
 In highly dependency-driven systems—incorporating external APIs, microservices, cloud infrastructure, databases, event queues, and other distributed components—the system's logic and runtime behavior are fragmented across multiple layers. Consequently, an LLM cannot accurately simulate the entire system or perform comprehensive threat modeling from source code alone. **If this remains challenging even for an LLM, it is even more difficult for human reviewers to achieve a complete and accurate analysis.**
 
+As a result, source code fragmented across multiple components and dependencies effectively exhibits black-box characteristics, making comprehensive system analysis significantly more difficult.
+
 ### Security auditors are invited to employ the most uncompromising penetration methodologies to validate these boundaries.
 ### 24-Hour Remediation SLA: Should any practical exploit vector or bypass be verified, a definitive hotfix patch will be deployed within 24 hours.
 
