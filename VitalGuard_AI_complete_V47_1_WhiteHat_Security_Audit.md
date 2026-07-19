@@ -25,6 +25,8 @@ This review is limited to static source analysis and threat modeling. No dynamic
 
 For reference, the submitted build is V4.7.1, which, according to the code map, is a version relabel of the V4.6.9 security baseline (only the display string, CSP hashes, and documentation mapping were changed). Therefore, the security judgments in this review effectively concern the V4.6.9 logic, with only the displayed version being V4.7.1. This fact itself was confirmed through the static comparison in §5.9.
 
+**Addendum (2026-07-19) — display-string reframing, no logic change.** After this review was written, a later revision reworded only human-readable framing strings (title, hero, hook, and the help/about panel across all 7 UI languages) from disaster/pet wording to surveillance/censorship-resistance wording. No security-control logic, control flow, allowlist, or cryptographic path was altered, so every finding and conclusion in this report continues to apply unchanged. As those strings reside inside the CSP-hash-pinned main application script, the main-script CSP SHA-256 and the whole-file SHA-256 were recomputed accordingly; the code map records the updated values.
+
 **1. Executive Summary**
 
 VitalGuardAI.com v4.7.1 is a single-HTML-file, offline-first application whose security maturity has clearly improved relative to the previous generation (v4.5.4). Network egress blocking (zero-egress) is now doubly enforced via CSP and runtime stubs, the BLE tag identity model has shifted to a fail-closed structure that no longer treats advertisement metadata as authentication, and both the destructive-replace path in data import and the Rescue Pack forgery/tampering issue have been structurally redesigned.
@@ -171,7 +173,7 @@ This fail-closed design reliably eliminates the previous generation's problem of
 
 **Impact**
 
-The risk of safety misdirection (integrity) has been resolved via fail-closed design, but at the cost of introducing an availability-denial vector. In surveillance/disaster contexts, the fact that "an adversary can arbitrarily disable the target-tracking feature" can itself be treated as a safety-relevant failure. That said, since this build already disables direction guidance and prohibits standalone use for life-safety purposes, the actual harm is limited to "denial of the proximity-signal display."
+The risk of safety misdirection (integrity) has been resolved via fail-closed design, but at the cost of introducing an availability-denial vector. In surveillance/censorship contexts, the fact that "an adversary can arbitrarily disable the target-tracking feature" can itself be treated as a safety-relevant failure. That said, since this build already disables direction guidance and prohibits standalone use for life-safety purposes, the actual harm is limited to "denial of the proximity-signal display."
 
 **Recommendations**
 
