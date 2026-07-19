@@ -18,9 +18,9 @@ URL: https://mcorpai.net/
 
 | Property | Final value |
 |---|---|
-| File size | **612,237 bytes** |
-| Lines | **11,582** |
-| Whole-file SHA-256 | `650b2cf89f029f36ba1e8e728178efda4c17e4cb1d0b9fd985119806013319c7` |
+| File size | **612,492 bytes** |
+| Lines | **11,588** |
+| Whole-file SHA-256 | `cf9d5b13adf4141e966c23780e92c84dbb2f5bdaa1d6866cbe16e762160892d5` |
 | Early hardening script SHA-256, base64 | `UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=` |
 | Main application script SHA-256, base64 | `h58tQjNaPPzOCv520VVG6dBmTBbNGYqhx0s4sqqsaDk=` |
 | Stylesheet SHA-256, base64 | `4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A=` |
@@ -68,14 +68,14 @@ The functional change set below was introduced in **V4.6.9** and is carried unch
 
 | ID | Priority | Internal change | Final anchor |
 |---|---|---|---:|
-| **VG469-01** | P0 | Passphrase checks now reject repeated characters, repeated phrases, repeated normalized words, project/common terms, predictable sequences, and low-variety values before the four-word approval path. Four sufficiently long **distinct** normalized words are required. | `11178` |
-| **VG469-02** | P0 | Destructive-write generation guard, serialized drain, pet-deletion tombstones, reset blocking, and post-reset re-enable prevent a delayed slider/threshold write from restoring deleted or wiped data. | vault `10562`; persistence `11447` |
-| **VG469-03** | P1 | A successful post-boot vault unlock or migration runs one serialized rehydration path for settings, emergency data, pets, V4.1 fields, monitoring intent, timers, rendering, and scan restart. | UI `10925`; bridge `11490` |
-| **VG469-04** | P1 | Duplicate exact local BLE device bindings fail closed in routing, are rejected during registration, and are disabled/stripped during normalization until local re-registration. | routing `11026`; normalize `10889` |
-| **VG469-05** | P1 | Rescue Pack replay state is stored as bounded SHA-256 JTI hashes with expiry in a profile-local key and mirrored in the encrypted setting. Raw JTI values are not written to the local ledger. | `10819` |
-| **VG469-06** | P1 | Full wipe now includes `vg_lang_v41`, `vg_lang_v412`, `vg_rp_replay_v469`, the vault fallback, all `vg41_` records, IndexedDB stores, scoped caches, and scoped service-worker registrations where the platform permits. | `10562` |
-| **VG469-07** | P2 | Diagnostics self-test is asynchronous and awaits Rescue Pack v2 encryption/decryption. It adds passphrase-policy, QR, signal-model, and bounded performance checks without adding UI. | `11525` |
-| **VG469-08** | P1 / audit | A nonvisual capability-scope meta record and frozen runtime object align machine-readable audit evidence with implemented transport capabilities. | meta `39`; runtime `11525` |
+| **VG469-01** | P0 | Passphrase checks now reject repeated characters, repeated phrases, repeated normalized words, project/common terms, predictable sequences, and low-variety values before the four-word approval path. Four sufficiently long **distinct** normalized words are required. | `11184` |
+| **VG469-02** | P0 | Destructive-write generation guard, serialized drain, pet-deletion tombstones, reset blocking, and post-reset re-enable prevent a delayed slider/threshold write from restoring deleted or wiped data. | vault `10568`; persistence `11453` |
+| **VG469-03** | P1 | A successful post-boot vault unlock or migration runs one serialized rehydration path for settings, emergency data, pets, V4.1 fields, monitoring intent, timers, rendering, and scan restart. | UI `10931`; bridge `11496` |
+| **VG469-04** | P1 | Duplicate exact local BLE device bindings fail closed in routing, are rejected during registration, and are disabled/stripped during normalization until local re-registration. | routing `11032`; normalize `10895` |
+| **VG469-05** | P1 | Rescue Pack replay state is stored as bounded SHA-256 JTI hashes with expiry in a profile-local key and mirrored in the encrypted setting. Raw JTI values are not written to the local ledger. | `10825` |
+| **VG469-06** | P1 | Full wipe now includes `vg_lang_v41`, `vg_lang_v412`, `vg_rp_replay_v469`, the vault fallback, all `vg41_` records, IndexedDB stores, scoped caches, and scoped service-worker registrations where the platform permits. | `10568` |
+| **VG469-07** | P2 | Diagnostics self-test is asynchronous and awaits Rescue Pack v2 encryption/decryption. It adds passphrase-policy, QR, signal-model, and bounded performance checks without adding UI. | `11531` |
+| **VG469-08** | P1 / audit | A nonvisual capability-scope meta record and frozen runtime object align machine-readable audit evidence with implemented transport capabilities. | meta `45`; runtime `11531` |
 | **VG469-09** | release invariant | Version objects, diagnostics, generated filenames, release metadata, CSP hashes, and the whole-file digest carry V4.6.9 while compatibility storage names remain unchanged. | build-wide |
 
 Deliberately excluded from this hotfix: record-per-envelope vault migration, source-module decomposition, broad dead-code removal, visible product-copy changes, and new UI controls.
@@ -160,49 +160,49 @@ Rescue Pack replay check
 
 | Line | Module / anchor | Responsibility |
 |---:|---|---|
-| 33 | Content-Security-Policy meta | Exact inline authorization, zero network connection source, Trusted Types requirement. |
-| 39 | Capability-scope meta | Nonvisual implemented/not-implemented transport statement. |
-| 46 | Early hardening core | Frame fail-close, immutable egress stubs, WebRTC/worker blocking, prototype freeze, bounded invariant checks. |
-| 135 | Inline stylesheet | Byte-identical to V4.6.9 (stylesheet CSP hash unchanged). |
-| 814 | Main application script | All application and hardening modules. |
-| 851 | Action dispatcher | Strict first-party allowlist; no `eval`/`Function`; identifier-boundary deny patterns. |
-| 1115 | CONFIG | Release, schema, storage, timing, thresholds, and profiles. |
-| 1193 | `genLocalIdSuffix()` | Cryptographic local record-ID suffixes. |
-| 1419 | Toast | Visual notifications and ARIA live semantics. |
-| 1439 | I18N | Seven local dictionaries and Arabic RTL. |
-| 3481 | ConfirmModal | Safe destructive focus and cancel semantics. |
-| 3580 | Storage facade | IndexedDB-first API and bounded fallback. |
-| 3744 | Kalman filter | RSSI smoothing. |
-| 3778 | Distance estimator | Approximate RSSI-to-distance and calibration. |
-| 3918 | Pet model | Per-tag state, thresholds, histories, serialization. |
-| 5189 | BLE matching | Base advertisement scoring. |
-| 5222 | BLE engine | Advertisement scanning, restart/congestion/health. |
-| 5419 | Wizard | Registration, verification, calibration. |
-| 5841 | SOS | Signal review, alarm, Rescue Pack entry points. |
-| 5978 | Emergency | Local siren, strobe, contact card. |
-| 6531 | Settings | Preferences, performance, volume, pet management. |
-| 6689 | Data manager | Hardened import/export entry points. |
-| 6771 | Diagnostics | Redacted local diagnostics and self-test entry. |
-| 6952 | App core | Initialization, rendering, monitoring and alerts. |
-| 8115 | Reset Center | Soft/hard/factory reset paths. |
-| 10441 | V455 configuration | Current crypto/storage/import limits with compatibility key names. |
-| 10485 | V455Crypto | PBKDF2, AES-GCM, AAD, base64url, SHA-256. |
-| 10562 | Encrypted local vault | Single encrypted state envelope, serialized updates, V4.6.9 write epoch. |
-| 10819 | Replay guard | Hashed bounded profile ledger plus encrypted compatibility ledger. |
-| 10925 | V455UI | Vault UI bridge and authoritative runtime rehydration. |
-| 11026 | Final BLE routing | Exact binding first; duplicate exact binding quarantine. |
-| 10889 | Binding normalization | Disables unbound and duplicated records until re-registration. |
-| 11178 | Passphrase policy | Distinct-word and weak-pattern enforcement. |
-| 11317 | Hold cancellation | All gesture interruption paths disarm SOS/Emergency timers. |
-| 11340 | Compatibility layer | Nonvisual accessibility, persistence, vault and Rescue bridges. |
-| 11351 | ModalA11y | Focus trap, inert background, restoration. |
-| 11422 | Semantics | Keyboard roles and synchronized ARIA state. |
-| 11447 | Persistence | Debounce, generation guard, tombstones, destructive coordination. |
-| 11490 | VaultBridge | Existing-flow vault access and serialized rehydration. |
-| 11508 | RescueBridge | Rescue Pack v2 behind the unchanged V4.3.8 control set. |
-| 11525 | V4.6.9 final audit hotfix (carried) | Async self-test, capability object, V4.6.9 diagnostics. |
-| 11546 | V4.6.9 release note (historical) | Internal-only hotfix scope and deferred work. |
-| 11557 | Guarded bootstrap | One-time safe App initialization. |
+| 39 | Content-Security-Policy meta | Exact inline authorization, zero network connection source, Trusted Types requirement. |
+| 45 | Capability-scope meta | Nonvisual implemented/not-implemented transport statement. |
+| 52 | Early hardening core | Frame fail-close, immutable egress stubs, WebRTC/worker blocking, prototype freeze, bounded invariant checks. |
+| 141 | Inline stylesheet | Byte-identical to V4.6.9 (stylesheet CSP hash unchanged). |
+| 820 | Main application script | All application and hardening modules. |
+| 857 | Action dispatcher | Strict first-party allowlist; no `eval`/`Function`; identifier-boundary deny patterns. |
+| 1121 | CONFIG | Release, schema, storage, timing, thresholds, and profiles. |
+| 1199 | `genLocalIdSuffix()` | Cryptographic local record-ID suffixes. |
+| 1425 | Toast | Visual notifications and ARIA live semantics. |
+| 1450 | I18N | Seven local dictionaries and Arabic RTL. |
+| 3487 | ConfirmModal | Safe destructive focus and cancel semantics. |
+| 3586 | Storage facade | IndexedDB-first API and bounded fallback. |
+| 3750 | Kalman filter | RSSI smoothing. |
+| 3784 | Distance estimator | Approximate RSSI-to-distance and calibration. |
+| 3924 | Pet model | Per-tag state, thresholds, histories, serialization. |
+| 5195 | BLE matching | Base advertisement scoring. |
+| 5228 | BLE engine | Advertisement scanning, restart/congestion/health. |
+| 5425 | Wizard | Registration, verification, calibration. |
+| 5847 | SOS | Signal review, alarm, Rescue Pack entry points. |
+| 5984 | Emergency | Local siren, strobe, contact card. |
+| 6537 | Settings | Preferences, performance, volume, pet management. |
+| 6695 | Data manager | Hardened import/export entry points. |
+| 6777 | Diagnostics | Redacted local diagnostics and self-test entry. |
+| 6958 | App core | Initialization, rendering, monitoring and alerts. |
+| 8121 | Reset Center | Soft/hard/factory reset paths. |
+| 10447 | V455 configuration | Current crypto/storage/import limits with compatibility key names. |
+| 10491 | V455Crypto | PBKDF2, AES-GCM, AAD, base64url, SHA-256. |
+| 10568 | Encrypted local vault | Single encrypted state envelope, serialized updates, V4.6.9 write epoch. |
+| 10825 | Replay guard | Hashed bounded profile ledger plus encrypted compatibility ledger. |
+| 10931 | V455UI | Vault UI bridge and authoritative runtime rehydration. |
+| 11032 | Final BLE routing | Exact binding first; duplicate exact binding quarantine. |
+| 10895 | Binding normalization | Disables unbound and duplicated records until re-registration. |
+| 11184 | Passphrase policy | Distinct-word and weak-pattern enforcement. |
+| 11323 | Hold cancellation | All gesture interruption paths disarm SOS/Emergency timers. |
+| 11346 | Compatibility layer | Nonvisual accessibility, persistence, vault and Rescue bridges. |
+| 11357 | ModalA11y | Focus trap, inert background, restoration. |
+| 11428 | Semantics | Keyboard roles and synchronized ARIA state. |
+| 11453 | Persistence | Debounce, generation guard, tombstones, destructive coordination. |
+| 11496 | VaultBridge | Existing-flow vault access and serialized rehydration. |
+| 11514 | RescueBridge | Rescue Pack v2 behind the unchanged V4.3.8 control set. |
+| 11531 | V4.6.9 final audit hotfix (carried) | Async self-test, capability object, V4.6.9 diagnostics. |
+| 11552 | V4.6.9 release note (historical) | Internal-only hotfix scope and deferred work. |
+| 11563 | Guarded bootstrap | One-time safe App initialization. |
 
 ---
 
