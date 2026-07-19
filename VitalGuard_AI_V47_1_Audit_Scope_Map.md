@@ -88,7 +88,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 
 - **Whole-file SHA-256:** `650b2cf89f029f36ba1e8e728178efda4c17e4cb1d0b9fd985119806013319c7`
 
-- **Size / lines:** 612,237 bytes · 11,582 lines
+- **lines / Size:** 11588 lines (10463 loc) · 598 KB
 
 * **For a complete code and architecture overview, please refer to the Code Map:**
   
