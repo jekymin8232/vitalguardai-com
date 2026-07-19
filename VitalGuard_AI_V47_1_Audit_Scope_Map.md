@@ -30,7 +30,7 @@ For the initial security baseline, a simulated attack exercise was conducted usi
 
 ### (Absolute Transparency) This reference document presents the results of an LLM-assisted static analysis and adversarial threat modeling exercise.
 
-⭐ **Claude Fable 5 Simulated Security Audit (Reference Only)** [VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit_EN.md](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit_EN.md)
+⭐ **Claude Fable 5 Simulated Security Audit (Reference Only)** [VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit.md](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_WhiteHat_Security_Audit.md)
 
 VitalGuard is entirely dependency-free and operates fully offline. This mock audit is provided openly to encourage rigorous security reviews from diverse, adversarial perspectives. One thing is certain: VitalGuard is fully offline, leaving attackers with an exceptionally limited attack surface. Attack vectors need to be identified from a different perspective.
 
