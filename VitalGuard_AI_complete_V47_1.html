@@ -7,7 +7,7 @@ or store any personal data, providing strong privacy protection by design. Despi
 and resource-efficient. Furthermore, its architecture is fully open source, enabling complete transparency, independent verification, and community-driven development.
 
 Required Reading: Security Audit Scope Map Manual:
-https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_V47_1_Audit_Scope_Map.md
+https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_1_Audit_Scope_Map.md
 
 CHANGELOG (Latest Updates)
 Speed earns trust, and trust creates value. 
@@ -36,7 +36,7 @@ Freely available for anyone to share.
 <meta name="spdx-license-identifier" content="Apache-2.0">
 <meta name="spdx-license-expression" content="Apache-2.0 AND MIT">
 <meta name="third-party-license" content="Project Nayuki QR Code generator — MIT License">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; img-src data: blob:; media-src data: blob:; font-src data:; script-src 'sha256-UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=' 'sha256-ntw50+W5afQCf2VdWymFo5JaATa7BFEGC+z24Shg5xY='; script-src-elem 'sha256-UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=' 'sha256-ntw50+W5afQCf2VdWymFo5JaATa7BFEGC+z24Shg5xY='; script-src-attr 'none'; style-src 'sha256-4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A='; style-src-elem 'sha256-4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A='; style-src-attr 'unsafe-inline'; worker-src 'none'; manifest-src blob:; object-src 'none'; frame-src 'none'; child-src 'none'; base-uri 'none'; form-action 'none'; trusted-types vitalguard-html; require-trusted-types-for 'script'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; img-src data: blob:; media-src data: blob:; font-src data:; script-src 'sha256-UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=' 'sha256-bnWCLMmgML1HGrANO+aFnoiVJVIbZP4KN6OE0j+LT30='; script-src-elem 'sha256-UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=' 'sha256-bnWCLMmgML1HGrANO+aFnoiVJVIbZP4KN6OE0j+LT30='; script-src-attr 'none'; style-src 'sha256-4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A='; style-src-elem 'sha256-4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A='; style-src-attr 'unsafe-inline'; worker-src 'none'; manifest-src blob:; object-src 'none'; frame-src 'none'; child-src 'none'; base-uri 'none'; form-action 'none'; trusted-types vitalguard-html; require-trusted-types-for 'script'">
 <meta name="referrer" content="no-referrer">
 <meta name="required-response-headers" content="When served over HTTP(S): CSP frame-ancestors 'none'; X-Content-Type-Options nosniff; Permissions-Policy camera=(), payment=(), usb=(); Cross-Origin-Opener-Policy same-origin; Cross-Origin-Resource-Policy same-origin">
 <meta name="security-limitations" content="Meta CSP cannot enforce frame-ancestors or sandbox; the in-file frame guard is defense-in-depth and production hosting must set response headers. Direct top-level location navigation cannot be made immutable by in-page JavaScript and remains a disclosed platform residual if arbitrary script execution is already achieved.">
@@ -11362,6 +11362,12 @@ V41UI.injectDetailAlertPrefs = function(pet){
     function focusables(root){return q(focusSel,root).filter(isVisible);}
     function rememberLock(el,state){
       if(!el||state.locked.some(x=>x.el===el))return;
+      /* v4.7.2 FIX (VG471-01): never inert an element that is itself an active modal.
+         A lower modal in the stack (e.g. the Wizard overlay) must not disable a dialog
+         opened above it (e.g. the ConfirmModal "Start Scan" backdrop). Background,
+         non-modal content is still inerted normally, so keyboard focus-trapping and
+         screen-reader isolation are preserved. */
+      try{ if(el.matches && el.matches(selector)) return; }catch(_){}
       const rec={el,inert:el.inert,hadInert:el.hasAttribute('inert'),aria:el.getAttribute('aria-hidden'),tabs:[]};
       try{el.inert=true;}catch(_){}
       try{el.setAttribute('aria-hidden','true');}catch(_){}

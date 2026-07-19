@@ -88,9 +88,11 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 
 - **Release:** V4.7.1 — the current baseline submitted for audit
 
-- **lines / Size:** 11588 lines (10463 loc) · 612,964 bytes (~599 KB)
+- **lines / Size:** 11594 lines (10464 loc) · 613,719 bytes (~600 KB)
 
 > *Revision note (2026-07-19): visible framing strings were reworded (disaster/pet → surveillance/censorship-resistance) to match the audit's mission scope; no control logic changed and the line count is unchanged (11,588), so all scope anchors below remain valid. The whole-file SHA-256 above and the main-script CSP hash in the code map were recomputed accordingly.*
+>
+> *Patch note (2026-07-19b, VG471-01): one functional fix was applied. In the Add Demo Tag wizard, the **Start Scan** dialog was unresponsive on real devices because a stacked-modal focus-trap (`ModalA11y`) set `inert` on the `ConfirmModal` backdrop opened above the wizard overlay. `rememberLock()` now never inerts an element that is itself an active modal; background inerting, the Tab trap and screen-reader isolation are preserved. This is a genuine `script[1]` logic change (+6 lines), so the main-script CSP hash and the whole-file SHA-256 were recomputed. Line anchors at or after original line **11365** are shifted **+6** (only the destructive-coordination / persistence anchors in §0 and §4-D are affected; every other anchor in this map is below 11365 and unchanged). No external dependency, network path, storage key, crypto routine, action-policy rule or egress guard was touched — the zero-egress, offline-only posture is unchanged.*
 
 
 * **For a complete code and architecture overview, please refer to the Code Map:**
@@ -121,7 +123,7 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 | **RP** | Rescue Pack replay guard — hashed bounded JTI ledger | **10,809–10,896** | ~85 lines | High |
 | **PP** | Passphrase policy — distinct-word + weak-pattern enforcement | **11,184–11,206** | ~25 lines | High |
 | **BQ** | BLE duplicate-binding quarantine — fail-closed routing | **10,895–11,066** | ~170 lines | High |
-| **DESTR** | Destructive coordination — Reset Center + persistence generation guard | **8,122–8,186**, **11,453–11,482** | ~100 lines | High |
+| **DESTR** | Destructive coordination — Reset Center + persistence generation guard | **8,122–8,186**, **11,459–11,488** | ~100 lines | High |
 | Secondary | Signal math — Kalman / distance estimator | **3,750–3,924** | ~175 lines | Medium |
 | Secondary | On-device AI — IsolationForest / KNN / RLS | **7,723–7,918** | ~195 lines | Medium |
 | Secondary | BLE scan filters / permission boundary | **5,229–5,358** | ~130 lines | High |
@@ -308,14 +310,14 @@ These controls are the most recent additions to the codebase and are therefore t
 **What to test.** Confirm that two records with the same exact local browser device ID are **never routed** and are both quarantined for local re-registration; that imported metadata cannot self-promote to a bound state without on-device re-registration; and that exact-binding is resolved before clone-candidate scoring. **Disclosed residual (important):** generic BLE advertisements are not cryptographically authenticated; advertisement-only identity is spoofable and is used only for advisory, fail-closed directional guidance — never for life-critical decisions.
 
 ### 4-D. Destructive coordination (Reset Center + persistence generation guard)
-**Lines: 8,122 – 8,186, 11,453 – 11,482**
+**Lines: 8,122 – 8,186, 11,459 – 11,488**
 
 | Item | Line | CTRL+F string |
 |------|------|---------------|
 | Reset Center | 8,122 | `const ResetCenter = {` |
 | Factory reset action | 8,181 | `data-vg-onclick="ResetCenter.factory()"` |
-| beforeClearAll (generation advance) | 11,473 | `async function beforeClearAll(){blocked=true;generation++` |
-| Frozen persistence API | 11,482 | `window.VitalGuardPersistenceV469=api` |
+| beforeClearAll (generation advance) | 11,479 | `async function beforeClearAll(){blocked=true;generation++` |
+| Frozen persistence API | 11,488 | `window.VitalGuardPersistenceV469=api` |
 
 **What to test.** Confirm full wipe removes app IndexedDB stores, all `vg41_` records, language keys (`vg_lang_v41` / `vg_lang_v412`), the replay ledger (`vg_rp_replay_v469`), and the vault fallback; that persistence is *blocked during* wipe and *unblocked after* so a fresh post-wipe session can save normally; and that no debounced write scheduled before the wipe survives it. This is the counterpart to the vault write-epoch guard in §3-B and should be tested together.
 
@@ -376,7 +378,7 @@ Reviewers performing a whitebox pass will observe internal identifiers that read
 
 ## 10. Vendor-Facing One-Page Summary
 
-The high-priority surface concentrates in a small number of tight blocks: the **first-executable Zero-Egress core (lines 52–139)**, the **allowlist action dispatcher + Trusted Types sinks (lines 857–1006)**, the **crypto core (10,491–10,566)**, the **at-rest encrypted vault (10,573–10,666)**, and the **import boundary (10,394–10,446)**. A second tier covers the V4.6.x hardening surfaces: the **replay guard (10,809–10,896)**, **passphrase policy (11,184–11,206)**, **BLE duplicate-binding quarantine (10,895–11,066)**, and **destructive coordination (8,122–8,186 + 11,453–11,482)**. The file contains **no external CDNs or domains** and **one inline MIT component** (Nayuki QR, §6).
+The high-priority surface concentrates in a small number of tight blocks: the **first-executable Zero-Egress core (lines 52–139)**, the **allowlist action dispatcher + Trusted Types sinks (lines 857–1006)**, the **crypto core (10,491–10,566)**, the **at-rest encrypted vault (10,573–10,666)**, and the **import boundary (10,394–10,446)**. A second tier covers the V4.6.x hardening surfaces: the **replay guard (10,809–10,896)**, **passphrase policy (11,184–11,206)**, **BLE duplicate-binding quarantine (10,895–11,066)**, and **destructive coordination (8,122–8,186 + 11,459–11,488)**. The file contains **no external CDNs or domains** and **one inline MIT component** (Nayuki QR, §6).
 
 The points where external, adversarial review is considered most valuable — the project's highest areas of uncertainty — are:
 

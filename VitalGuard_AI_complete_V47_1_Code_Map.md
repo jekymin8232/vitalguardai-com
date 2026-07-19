@@ -18,11 +18,15 @@ URL: https://mcorpai.net/
 
 | Property | Final value |
 |---|---|
-| File size | **612,964 bytes** |
-| Lines | **11,588** |
+| File size | **613,719 bytes** |
+| Lines | **11,594** |
 | `APP_VERSION` | `4.7.1` |
+| Whole-file SHA-256 | `02f6a2c835c956ccb7682217719561d8f5e2881bb9dac1de57763117cb70c1e9` |
+| Main-script (`script[1]`) CSP hash | `sha256-bnWCLMmgML1HGrANO+aFnoiVJVIbZP4KN6OE0j+LT30=` |
 
-> **Revision note (2026-07-19).** The visible framing strings only — the page `<title>`, header sub, hero title/body/pillars, the intro hook, and the in-app help/about copy across all 7 UI languages — were reworded from disaster/pet phrasing to surveillance- and censorship-resistance phrasing to match the funder's mission scope. **No security-control logic, module, allowlist, or defense was changed** (the audited logic is byte-for-byte the V4.6.9 baseline). The line count is unchanged at **11,588**, so every line reference in this map remains valid. Because those strings live inside the hash-pinned main application script, its CSP SHA-256 and the whole-file SHA-256 were recomputed and are reflected in the table above.
+> **Revision note (2026-07-19).** The visible framing strings only — the page `<title>`, header sub, hero title/body/pillars, the intro hook, and the in-app help/about copy across all 7 UI languages — were reworded from disaster/pet phrasing to surveillance- and censorship-resistance phrasing to match the funder's mission scope. **No security-control logic, module, allowlist, or defense was changed** (the audited logic is byte-for-byte the V4.6.9 baseline). At that relabel step the line count was unchanged at **11,588** and no anchor shifted; the later VG471-01 fix (patch note below) then added 6 lines, so anchors at or after original line 11365 are now **+6** and the current line count is **11,594**. Because those strings live inside the hash-pinned main application script, its CSP SHA-256 and the whole-file SHA-256 were recomputed and are reflected in the table above.
+
+> **Patch note (2026-07-19b) — VG471-01, one functional fix.** A reproducible defect was corrected: in the *Add Demo Tag* wizard, tapping **Start Scan** did nothing on real devices. Root cause was a stacked-modal focus-trap error in `ModalA11y` — because the `ConfirmModal` backdrop (`.sp-backdrop`, a direct `body` child) and the wizard overlay (inside `#app`) both became active in the same tick, the lower wizard overlay's `lockOutside()` set `inert` (and `aria-hidden`) on the dialog above it, disabling the **Start Scan** button. The fix makes `rememberLock()` refuse to inert any element that is itself an active modal (`selector` match); non-modal background is still inerted, so keyboard focus-trapping, background isolation and screen-reader behaviour are preserved, and the top dialog is still isolated by z-index (350) and the existing Tab trap. **This is a genuine logic change in `script[1]`** (it is no longer a byte-for-byte relabel of V4.6.9 in that one respect), so the main-script CSP hash and the whole-file SHA-256 were recomputed (see the table above). The patch adds **6 lines**; every line anchor at or after original line **11365** is therefore shifted **+6** throughout this map (anchors before 11365 are unchanged). No external dependency, network call, storage key, crypto path, action-policy rule or egress guard was touched; offline purity and the zero-egress posture are unchanged. Verified: both `<script>` blocks pass `node --check`; the three CSP hashes equal the three shipped blocks; a headless DOM harness confirms the dialog is no longer `inert`, the button now resolves, background inerting still engages while the wizard is open, and all inert state is restored on close.
 
 | Database compatibility name | `VitalGuardAI_V41` |
 | Database version | `2` |
@@ -35,13 +39,13 @@ All inline-resource hashes were recalculated from the exact final bytes, written
 
 ## 1. Release policy — version-relabel remap (no logic change)
 
-A version-relabel and documentation remap of the V4.6.9 baseline. All security control logic, defenses, ordering, and runtime behavior are byte-for-byte identical to V4.6.9 inside every executable block except for displayed version strings. Nothing was added, removed, weakened, or reordered.
+A version-relabel and documentation remap of the V4.6.9 baseline. Except for displayed version strings, the security-control logic, defenses, ordering, and runtime behavior were byte-for-byte identical to V4.6.9 inside every executable block — **with one later exception: the VG471-01 accessibility fix (2026-07-19b, see the patch note in §0), which corrects a stacked-modal focus-trap so the wizard *Start Scan* dialog is interactive.** That fix is the only functional change; nothing else was added, removed, weakened, or reordered, and no egress/crypto/action-policy surface was touched.
 
 What changed in V4.7.1, and only this:
 
 - displayed release identifier `4.6.9` → `4.7.1` in the title, `APP_VERSION`, the seven localized `app_sub`/`hero_body` strings, the static header/hero markup, the first-executable core profile string, the self-check log label, the `hardenLabels()` display value, and the generated diagnostics/backup/recovery filename prefixes;
 - a `release-lineage` meta tag and a top-of-file CHANGELOG comment stating that this is a relabel of V4.6.9;
-- the two inline **script** CSP hashes were recomputed from the new bytes (the version strings changed those two blocks); the **stylesheet is byte-identical to V4.6.9 and its CSP hash is unchanged**;
+- the inline **script** CSP hashes were recomputed from the final bytes. `script[0]` (early hardening core) is unchanged at `sha256-UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=`; `script[1]` (main application) is now `sha256-bnWCLMmgML1HGrANO+aFnoiVJVIbZP4KN6OE0j+LT30=` after the VG471-01 fix; the **stylesheet is byte-identical to V4.6.9 and its CSP hash is unchanged** (`sha256-4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A=`);
 - this Code Map's line numbers, sizes, and hashes were remapped to the new file.
 
 What was intentionally **preserved unchanged** to avoid breakage or history distortion:
@@ -68,14 +72,15 @@ The functional change set below was introduced in **V4.6.9** and is carried unch
 | ID | Priority | Internal change | Final anchor |
 |---|---|---|---:|
 | **VG469-01** | P0 | Passphrase checks now reject repeated characters, repeated phrases, repeated normalized words, project/common terms, predictable sequences, and low-variety values before the four-word approval path. Four sufficiently long **distinct** normalized words are required. | `11184` |
-| **VG469-02** | P0 | Destructive-write generation guard, serialized drain, pet-deletion tombstones, reset blocking, and post-reset re-enable prevent a delayed slider/threshold write from restoring deleted or wiped data. | vault `10568`; persistence `11453` |
-| **VG469-03** | P1 | A successful post-boot vault unlock or migration runs one serialized rehydration path for settings, emergency data, pets, V4.1 fields, monitoring intent, timers, rendering, and scan restart. | UI `10931`; bridge `11496` |
+| **VG469-02** | P0 | Destructive-write generation guard, serialized drain, pet-deletion tombstones, reset blocking, and post-reset re-enable prevent a delayed slider/threshold write from restoring deleted or wiped data. | vault `10568`; persistence `11459` |
+| **VG469-03** | P1 | A successful post-boot vault unlock or migration runs one serialized rehydration path for settings, emergency data, pets, V4.1 fields, monitoring intent, timers, rendering, and scan restart. | UI `10931`; bridge `11502` |
 | **VG469-04** | P1 | Duplicate exact local BLE device bindings fail closed in routing, are rejected during registration, and are disabled/stripped during normalization until local re-registration. | routing `11032`; normalize `10895` |
 | **VG469-05** | P1 | Rescue Pack replay state is stored as bounded SHA-256 JTI hashes with expiry in a profile-local key and mirrored in the encrypted setting. Raw JTI values are not written to the local ledger. | `10825` |
 | **VG469-06** | P1 | Full wipe now includes `vg_lang_v41`, `vg_lang_v412`, `vg_rp_replay_v469`, the vault fallback, all `vg41_` records, IndexedDB stores, scoped caches, and scoped service-worker registrations where the platform permits. | `10568` |
-| **VG469-07** | P2 | Diagnostics self-test is asynchronous and awaits Rescue Pack v2 encryption/decryption. It adds passphrase-policy, QR, signal-model, and bounded performance checks without adding UI. | `11531` |
-| **VG469-08** | P1 / audit | A nonvisual capability-scope meta record and frozen runtime object align machine-readable audit evidence with implemented transport capabilities. | meta `45`; runtime `11531` |
+| **VG469-07** | P2 | Diagnostics self-test is asynchronous and awaits Rescue Pack v2 encryption/decryption. It adds passphrase-policy, QR, signal-model, and bounded performance checks without adding UI. | `11537` |
+| **VG469-08** | P1 / audit | A nonvisual capability-scope meta record and frozen runtime object align machine-readable audit evidence with implemented transport capabilities. | meta `45`; runtime `11537` |
 | **VG469-09** | release invariant | Version objects, diagnostics, generated filenames, release metadata, CSP hashes, and the whole-file digest carry V4.6.9 while compatibility storage names remain unchanged. | build-wide |
+| **VG471-01** | P1 / fix | *Add Demo Tag* wizard **Start Scan** was dead on real devices: a stacked-modal focus-trap set `inert` on the `ConfirmModal` backdrop opened above the wizard overlay. `rememberLock()` now never inerts an element that is itself an active modal, so the top dialog stays interactive while background inerting is preserved. Recomputes the `script[1]` CSP hash and whole-file SHA-256; +6 lines (all anchors ≥ orig. 11365 shifted +6). | `ModalA11y` `11358` (fix at `11365`) |
 
 Deliberately excluded from this hotfix: record-per-envelope vault migration, source-module decomposition, broad dead-code removal, visible product-copy changes, and new UI controls.
 
@@ -194,14 +199,14 @@ Rescue Pack replay check
 | 11184 | Passphrase policy | Distinct-word and weak-pattern enforcement. |
 | 11323 | Hold cancellation | All gesture interruption paths disarm SOS/Emergency timers. |
 | 11346 | Compatibility layer | Nonvisual accessibility, persistence, vault and Rescue bridges. |
-| 11357 | ModalA11y | Focus trap, inert background, restoration. |
-| 11428 | Semantics | Keyboard roles and synchronized ARIA state. |
-| 11453 | Persistence | Debounce, generation guard, tombstones, destructive coordination. |
-| 11496 | VaultBridge | Existing-flow vault access and serialized rehydration. |
-| 11514 | RescueBridge | Rescue Pack v2 behind the unchanged V4.3.8 control set. |
-| 11531 | V4.6.9 final audit hotfix (carried) | Async self-test, capability object, V4.6.9 diagnostics. |
-| 11552 | V4.6.9 release note (historical) | Internal-only hotfix scope and deferred work. |
-| 11563 | Guarded bootstrap | One-time safe App initialization. |
+| 11357 | ModalA11y | Focus trap, inert background, restoration. **VG471-01 (2026-07-19b):** `rememberLock()` at 11365 no longer inerts an element that is itself an active modal, so a `ConfirmModal` opened above another overlay (e.g. wizard **Start Scan**) stays interactive. |
+| 11434 | Semantics | Keyboard roles and synchronized ARIA state. |
+| 11459 | Persistence | Debounce, generation guard, tombstones, destructive coordination. |
+| 11502 | VaultBridge | Existing-flow vault access and serialized rehydration. |
+| 11520 | RescueBridge | Rescue Pack v2 behind the unchanged V4.3.8 control set. |
+| 11537 | V4.6.9 final audit hotfix (carried) | Async self-test, capability object, V4.6.9 diagnostics. |
+| 11558 | V4.6.9 release note (historical) | Internal-only hotfix scope and deferred work. |
+| 11569 | Guarded bootstrap | One-time safe App initialization. |
 
 ---
 
@@ -264,7 +269,7 @@ Verified browser vectors:
 - both inline scripts passed `node --check`;
 - CSP recomputed hashes equal all three declared hashes in the shipped file;
 - stylesheet bytes and stylesheet CSP hash are identical to V4.6.9;
-- every executable-block difference versus V4.6.9 is a `v4.6.9` → `v4.7.1` display-string change and nothing else (verified by line-level diff of both `<script>` blocks and the `<style>` block);
+- every executable-block difference versus V4.6.9 is a `v4.6.9` → `v4.7.1` display-string change **plus the single VG471-01 focus-trap fix in `script[1]`** (6 inserted lines in `ModalA11y`), and nothing else (verified by line-level diff of both `<script>` blocks and the `<style>` block; the stylesheet remains byte-identical);
 - external active URL attributes: 0;
 - final-DOM `data-vg-on*` actions passing the policy parser: **106**, failures: 0;
 - whole-file SHA-256 recomputed only after the CSP was final.
@@ -273,7 +278,7 @@ Verified browser vectors:
 
 Because V4.7.1 is a version-relabel, the primary verification is that no logic changed relative to the V4.6.9 baseline that already passed the full runtime, crypto and destructive-race harnesses:
 
-- line-level diff of `script[0]`, `script[1]` and `style[0]` shows only `v4.6.9` → `v4.7.1` display strings; the stylesheet is byte-identical;
+- line-level diff of `script[0]`, `script[1]` and `style[0]` shows only `v4.6.9` → `v4.7.1` display strings **and the VG471-01 focus-trap fix in `script[1]`**; `script[0]` and the stylesheet are byte-identical to V4.6.9;
 - guarded boot path, action dispatcher allowlist, and all `V455…`/`V469…` symbols are unchanged;
 - final-DOM `data-vg-on*` actions passing the policy parser: **106**, zero policy failures;
 - repeated/common/sequential passphrase rejection and strong/multilingual acceptance;
