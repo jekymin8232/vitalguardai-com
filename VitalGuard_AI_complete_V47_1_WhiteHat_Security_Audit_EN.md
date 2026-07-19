@@ -323,16 +323,16 @@ Aligned with OTF's public reporting practice, the appropriate path is to publish
 
 | **Area** | **Anchor (lines)** | **Notes** |
 |---|---|---|
-| CSP / capability-scope meta | 33 / 39 | connect-src none, Trusted Types, capability-scope declaration |
-| Initial hardening core | 46–133 | Egress stubs, frame fail-close, prototype freezing, self-check |
-| Action dispatcher / policy | 851–912 | allowlist + hasOwnProperty + freeze (VG47-05) |
-| Trusted Types / regex sanitizer | 936–996 | rxBadAttrs regex (VG47-01) |
-| V455Crypto / legacy decryption | 10485–10517 | v=1 AAD not applied (VG47-04) |
-| Encrypted vault / write-epoch | 10562–10716 | atomicUpdate / invalidateWrites |
-| BLE identity / observe | 10740–10800 | Clone-detection blocking (VG47-02) |
-| Rescue Pack v2 / replay | 10802–10900 | AEAD + jti (VG47-07) |
-| Final BLE routing | 11026–11060 | Exact local binding required (fail-closed) |
-| Passphrase policy | 11178–11200 | Four-word / high-entropy requirement |
+| CSP / capability-scope meta | 39 / 45 | connect-src none, Trusted Types, capability-scope declaration |
+| Initial hardening core | 52–139 | Egress stubs, frame fail-close, prototype freezing, self-check |
+| Action dispatcher / policy | 857–918 | allowlist + hasOwnProperty + freeze (VG47-05) |
+| Trusted Types / regex sanitizer | 942–1002 | rxBadAttrs regex (VG47-01) |
+| V455Crypto / legacy decryption | 10491–10523 | v=1 AAD not applied (VG47-04) |
+| Encrypted vault / write-epoch | 10568–10722 | atomicUpdate / invalidateWrites |
+| BLE identity / observe | 10746–10806 | Clone-detection blocking (VG47-02) |
+| Rescue Pack v2 / replay | 10808–10906 | AEAD + jti (VG47-07) |
+| Final BLE routing | 11032–11066 | Exact local binding required (fail-closed) |
+| Passphrase policy | 11184–11206 | Four-word / high-entropy requirement |
 
 **Appendix B. Reference Practices**
 
