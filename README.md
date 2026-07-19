@@ -12,7 +12,7 @@ This project is not spaghetti code. It follows a modular architecture that is in
 
 A dedicated security audit scope map is available here:
 
-[Security Audit Scope Map](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_V43_8_Audit_Scope_Map.md)
+[Security Audit Scope Map](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_V47_1_Audit_Scope_Map.md)
 
 This document is intended to serve as a manual for security review and audit preparation.
 
