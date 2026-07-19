@@ -71,6 +71,8 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
   
 **Core Module v1.0** https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V1_0_MVP.html
 
+**Core Module v4.3** https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_Integrated_Modular_Code_V4_3_FieldPack.html
+
 ### External libraries are not a universal solution.
 
 This is the module I mentioned earlier, designed and implemented entirely by myself, and it has now evolved to version 4.3. 
