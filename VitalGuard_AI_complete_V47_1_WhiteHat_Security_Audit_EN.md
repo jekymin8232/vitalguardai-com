@@ -11,8 +11,6 @@ Based on OTF Security Lab public reporting practices · Independent · Unofficia
 | **Item** | **Value** |
 |---|---|
 | Target file | VitalGuard_AI_complete_V47_1.html |
-| File size | 612,237 bytes (11,582 lines) |
-| Full-file SHA-256 | 650b2cf8...3319c7 (requires separate-channel distribution and verification) |
 | Declared version | APP_VERSION 4.7.1 (a version relabel of the V4.6.9 security baseline) |
 | Assessment type | Static source review · White-box · Threat-model based |
 | Assessment date | 2026-07-12 |
