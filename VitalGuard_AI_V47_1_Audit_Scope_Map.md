@@ -88,8 +88,6 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete
 
 - **Release:** V4.7.1 — the current baseline submitted for audit
 
-- **Whole-file SHA-256:** `d531895bb5673b3d7d3c3576e8d39720529d178c09d06276244ea028e4fb61e6`
-
 - **lines / Size:** 11588 lines (10463 loc) · 612,964 bytes (~599 KB)
 
 > *Revision note (2026-07-19): visible framing strings were reworded (disaster/pet → surveillance/censorship-resistance) to match the audit's mission scope; no control logic changed and the line count is unchanged (11,588), so all scope anchors below remain valid. The whole-file SHA-256 above and the main-script CSP hash in the code map were recomputed accordingly.*
