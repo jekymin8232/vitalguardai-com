@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 0초 후에 target URL로 메타 리다이렉트 실행 (자바스크립트가 꺼져있을 때의 대비책) -->
+    <!-- Meta redirect as a fallback if JavaScript is disabled -->
     <meta http-equiv="refresh" content="0; url=https://mcorpai.org/">
-    <title>이동 중 - McorpAI</title>
+    <title>Redirecting - McorpAI</title>
     
-    <!-- Tailwind CSS CDN 로드 -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 부드러운 로딩 애니메이션 정의 */
+        /* Smooth loading pulse animation */
         @keyframes pulse-ring {
             0% { transform: scale(0.95); opacity: 1; }
             50% { transform: scale(1.1); opacity: 0.5; }
@@ -25,7 +25,7 @@
 
     <div class="max-w-md w-full mx-4 p-8 bg-white rounded-2xl shadow-xl border border-slate-100 text-center transition-all duration-300">
         
-        <!-- 로딩 인디케이터 -->
+        <!-- Loading Indicator -->
         <div class="flex justify-center mb-6">
             <div class="relative w-16 h-16 flex items-center justify-center">
                 <div class="absolute inset-0 rounded-full bg-blue-100 pulse-loader"></div>
@@ -36,31 +36,31 @@
             </div>
         </div>
 
-        <!-- 안내 텍스트 -->
-        <h1 class="text-2xl font-bold text-slate-900 mb-2">새로운 웹사이트로 이동합니다</h1>
-        <p class="text-slate-500 mb-6">
-            잠시 후 <span class="font-semibold text-blue-600">McorpAI</span>로 자동으로 연결됩니다.<br>
-            화면이 바뀌지 않으면 아래 버튼을 클릭해 주세요.
+        <!-- Information Texts in English -->
+        <h1 class="text-2xl font-bold text-slate-900 mb-2">Redirecting to our new site</h1>
+        <p class="text-slate-500 mb-6 text-sm leading-relaxed">
+            You will be automatically redirected to <span class="font-semibold text-blue-600">McorpAI</span> in a moment.<br>
+            If the page does not load, please click the button below.
         </p>
 
-        <!-- 수동 이동 버튼 -->
+        <!-- Manual Redirect Button -->
         <a href="https://mcorpai.org/" 
            class="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            McorpAI 바로가기
+            Proceed to McorpAI
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
         </a>
 
-        <!-- 하단 추가 정보 -->
+        <!-- Footer Information -->
         <p class="mt-6 text-xs text-slate-400">
-            VitalGuard AI는 이제 McorpAI의 새로운 플랫폼에서 계속됩니다.
+            VitalGuard AI is now part of McorpAI. Our journey continues on the new platform.
         </p>
     </div>
 
     <script>
-        // 자바스크립트를 이용한 가장 빠른 리다이렉트 실행
-        // 즉각적으로 브라우저 히스토리를 덮어씌워 뒤로가기 시 무한 리다이렉션에 갇히는 현상을 방지합니다.
+        // High-speed redirection via JS
+        // Prevents browser back button loop issues by replacing current history entry
         window.location.replace("https://mcorpai.org/");
     </script>
 </body>
