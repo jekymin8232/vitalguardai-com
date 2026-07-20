@@ -21,7 +21,6 @@ URL: https://mcorpai.net/
 | File size | **613,719 bytes** |
 | Lines | **11,594** |
 | `APP_VERSION` | `4.7.1` |
-| Whole-file SHA-256 | `02f6a2c835c956ccb7682217719561d8f5e2881bb9dac1de57763117cb70c1e9` |
 | Main-script (`script[1]`) CSP hash | `sha256-bnWCLMmgML1HGrANO+aFnoiVJVIbZP4KN6OE0j+LT30=` |
 
 > **Revision note (2026-07-19).** The visible framing strings only — the page `<title>`, header sub, hero title/body/pillars, the intro hook, and the in-app help/about copy across all 7 UI languages — were reworded from disaster/pet phrasing to surveillance- and censorship-resistance phrasing to match the funder's mission scope. **No security-control logic, module, allowlist, or defense was changed** (the audited logic is byte-for-byte the V4.6.9 baseline). At that relabel step the line count was unchanged at **11,588** and no anchor shifted; the later VG471-01 fix (patch note below) then added 6 lines, so anchors at or after original line 11365 are now **+6** and the current line count is **11,594**. Because those strings live inside the hash-pinned main application script, its CSP SHA-256 and the whole-file SHA-256 were recomputed and are reflected in the table above.
