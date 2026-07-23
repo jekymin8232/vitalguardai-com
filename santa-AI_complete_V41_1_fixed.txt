@@ -1,0 +1,50 @@
+응, 수정(정확히는 “치명적 크래시 방지 핫픽스”)는 하는 게 좋아. 지금 파일은 그대로 공개하면 브라우저에서 바로 터질 가능성이 큰 지점들이 몇 개 있어. 
+
+santa-AI_complete_V41_1
+
+꼭 고쳐야 하는(크래시/오작동) 포인트
+
+AudioEngine가 정의돼 있지 않은데 호출은 많이 됨
+첫 사용자 터치에서 AudioEngine.ensure()를 부르는 구조라, 정의가 없으면 바로 에러로 앱이 멈출 수 있어.
+
+Wizard.reset.bind(...)가 “없는 함수”에 bind를 걸어서 로딩 단계에서 즉시 크래시
+이건 실행 전에 스크립트 로딩 자체가 깨질 수 있는 타입.
+
+App.triggerAlert(pet, from, to) 패치가 기존 호출(triggerAlert(pet))과 호환이 안 됨
+결과적으로 알림이 아예 안 울리거나, _alertCooldown 같은 미정의 변수로 에러가 날 수 있어.
+
+Self-test 코드 안에 엉뚱하게 들어간 card.querySelector(...) 블록
+Diag.runQuickTest() 실행 시 정의되지 않은 변수 참조로 터질 수 있어.
+
+safeParseJson, SOS.selectedPet, Wizard.selectedCandidate 같은 보조 함수가 호출되는데 정의가 없음
+Rescue Pack import/캘리브레이션 쪽에서 바로 에러 날 수 있어.
+
+내가 “크래시 방지” 위주로 고친 파일 만들어뒀어
+
+위의 즉시 터지는 지점들만 최소 수정해서 동작 안정성 올린 버전이야(실제 BLE 스캔 품질/정확도까지 디바이스 실측 테스트는 못 했고, “실행/로딩 크래시” 위주로 막았어).
+
+수정본 HTML 다운로드
+
+수정본에 들어간 핵심 핫픽스
+
+AudioEngine 최소 구현 추가(알림 비프/사이렌/keepalive)
+
+Wizard.reset.bind 안전 처리(없는 함수면 bind 안 함)
+
+triggerAlert()를 기존 호출 방식과 호환되게 수정 + cooldown 맵 초기화
+
+Diag.runQuickTest() 안에 잘못 들어간 SMS 핸들러 블록 제거
+
+safeParseJson, SOS.selectedPet(), Wizard.selectedCandidate() 보강
+
+Rescue Assist 거리 표시(estimatedDistanceM → distMeters) 정리
+
+Hackaday 올릴 때 “코드 말고” 수정하면 좋은 것(선택)
+
+라이선스 표기: “open source”로 오해될 수 있으니 **“source-available(윤리적 사용 제한)”**처럼 솔직하게 문구 정리 추천. 
+
+santa-AI_complete_V41_1
+
+헤더 미션 문구는 Hackaday 첫인상에서 논쟁거리 될 수 있어: 프로젝트 페이지 설명으로 내리고, 앱 헤더는 “Offline BLE Pet Safety(Non-GPS)” 중심이 더 안전.
+
+원하면, 네가 원하는 방향(기능 유지 vs 단순화) 기준으로 **“Hackaday 공개용 슬림 버전(기능은 같고 코드/문구는 간결)”**도 바로 만들어줄게.
