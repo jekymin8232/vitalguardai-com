@@ -13,3 +13,5 @@
 * **Research Paper:** [Read the State-of-the-Art Research Paper on Offline AI (VitalGuard PDF)](https://mcorpai.org/VitalGuard_Offline_AI.pdf)
 * **Upcoming Milestones:** Preparing for presentation/submission at **ACM FAccT**. Open to future research collaboration with the **University of Oxford**.
 * **Standards & Compliance:** Architected to align seamlessly with ESG principles and GDPR (Privacy-by-Design).
+
+Personal Workspace: [mcorpai.org](https://mcorpai.org/)
