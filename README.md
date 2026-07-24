@@ -27,4 +27,4 @@
 
 ---
 
-Personal Workspace: [mcorpai.org](https://mcorpai.org/)
+Personal Workspace(Email Contact Information): [mcorpai.org](https://mcorpai.org/)
