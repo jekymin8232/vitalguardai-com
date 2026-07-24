@@ -11,4 +11,4 @@
 > * **What I Built:** Lightweight, zero-dependency Offline AI & acoustic/ultrasonic communication protocols that operate without cloud infrastructure, internet connectivity, or personal data collection—designed for the 6.8 billion people in resource-constrained environments.
 > * **Current Goal:** Seeking remote research partnerships, open-source collaborations, and funding to establish an independent Offline AI research lab in South Korea.
 
-**It is the world's first AI model designed to comply with ESG (Environmental, Social, and Governance) principles and the General Data Protection Regulation (GDPR).**
+**It is an AI model designed to align with ESG (Environmental, Social, and Governance) principles and the General Data Protection Regulation (GDPR).**
