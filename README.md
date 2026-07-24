@@ -1,4 +1,4 @@
-**Received an initial review from the Government of Luxembourg, UCL, and IDS.**
+**I received initial reviews from the Government of Luxembourg, UCL, IDS, and OTF.**
 
 ## [Read state-of-the-art research papers on offline AI.](https://mcorpai.org/VitalGuard_Offline_AI.pdf) 👈
 
