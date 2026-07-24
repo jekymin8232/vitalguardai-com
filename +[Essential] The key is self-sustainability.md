@@ -1,3 +1,5 @@
+<img width="640" height="360" alt="apple" src="https://github.com/user-attachments/assets/2ec81126-86c4-4de1-a982-1386dc8cab43" />
+
 ## The key is self-sustainability
 **I have led the project to initial reviews by the Government of Luxembourg, as well as by leading institutions such as UCL and IDS, in pursuit of long-term independence. However, there are still critical gaps to address: technical validation and funding.**
 
