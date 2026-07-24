@@ -4,6 +4,8 @@
 If external dependencies are high, it becomes difficult to save lives at scale. Only self-contained, “vanilla” code can truly do so — because it allows full control over every aspect of the system.
 Relying on libraries can be inherently risky, as their development and maintenance are often outside one’s direct control.
 
+**I have always aspired to be self-reliant. To me, the spirit of open source is self-reliance.**
+
 <img width="448" height="252" alt="apple" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/apple.gif" />
 
 ## Even in the worst situations, lives must be saved.
