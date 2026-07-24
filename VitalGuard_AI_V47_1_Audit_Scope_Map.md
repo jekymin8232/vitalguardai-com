@@ -1,6 +1,6 @@
-**Reference:**
+**Reference: Source Code Documentation** 
 
-**Source Code Documentation: https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_V47_1_Code_Map.md**
+https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_V47_1_Code_Map.md
 
 # Start
 
