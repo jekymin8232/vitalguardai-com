@@ -1,3 +1,5 @@
+**I truly have nothing to my name. I have faced more than 257 rejections. The only institutions that were willing to give my work a chance were the Government of Luxembourg (through its Embassy in South Korea), the United States (via OTF), and the United Kingdom, through UCL and IDS.**
+
 <img width="448" height="252" alt="apple" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/apple.gif" />
 
 ## The key is self-sustainability
