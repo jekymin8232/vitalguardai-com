@@ -1,7 +1,3 @@
-**I truly have nothing to my name. I have faced more than 257 rejections. The only institutions that were willing to give my work a chance were the Government of Luxembourg (through its Embassy in South Korea), the United States (via OTF), and the United Kingdom, through UCL and IDS.**
-
-<img width="448" height="252" alt="apple" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/apple.gif" />
-
 ## The key is self-sustainability
 **I have led the project to initial reviews by the Government of Luxembourg, as well as by leading institutions such as UCL and IDS, in pursuit of long-term independence. However, there are still critical gaps to address: technical validation and funding.**
 
@@ -11,10 +7,6 @@
 If external dependencies are high, it becomes difficult to save lives at scale. Only self-contained, “vanilla” code can truly do so — because it allows full control over every aspect of the system.
 Relying on libraries can be inherently risky, as their development and maintenance are often outside one’s direct control.
 
-## I need to be in control of everything. 
-**We don’t need elegant code. We need rugged, life-saving code — something closer to Rambo than refinement.**
-
-<img width="294" height="271" alt="lambo" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lambo.PNG" />
-
+<img width="448" height="252" alt="apple" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/apple.gif" />
 
 ## Even in the worst situations, lives must be saved.
