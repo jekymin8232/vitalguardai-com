@@ -1,4 +1,4 @@
-<img width="448" height="252" alt="apple" src="https://github.com/user-attachments/assets/2ec81126-86c4-4de1-a982-1386dc8cab43" />
+<img width="448" height="252" alt="apple" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/apple.PNG" />
 
 ## The key is self-sustainability
 **I have led the project to initial reviews by the Government of Luxembourg, as well as by leading institutions such as UCL and IDS, in pursuit of long-term independence. However, there are still critical gaps to address: technical validation and funding.**
@@ -12,7 +12,7 @@ Relying on libraries can be inherently risky, as their development and maintenan
 ## I need to be in control of everything. 
 **We don’t need elegant code. We need rugged, life-saving code — something closer to Rambo than refinement.**
 
-<img width="294" height="271" alt="lambo" src="https://github.com/user-attachments/assets/5f44e718-1c8e-4146-8737-4bb157cc0e24" />
+<img width="294" height="271" alt="lambo" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lambo.PNG" />
 
 
 ## Even in the worst situations, lives must be saved.
