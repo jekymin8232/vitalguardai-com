@@ -1,4 +1,4 @@
-## AI for the 6.8 Billion
+## Ethical AI for the 6.8 Billion (Fully GDPR-compliant and fully aligned with ESG principles.)
 **Big Tech AI is for the 2 billion with infrastructure. Offline AI is ethical AI for the remaining 6.8 billion.**
 
 > ### 💡 Executive Summary
