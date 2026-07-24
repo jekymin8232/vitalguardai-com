@@ -12,7 +12,7 @@ Relying on libraries can be inherently risky, as their development and maintenan
 ## I need to be in control of everything. 
 **We don’t need elegant code. We need rugged, life-saving code — something closer to Rambo than refinement.**
 
-<img width="368" height="339" alt="lambo" src="https://github.com/user-attachments/assets/5f44e718-1c8e-4146-8737-4bb157cc0e24" />
+<img width="294" height="271" alt="lambo" src="https://github.com/user-attachments/assets/5f44e718-1c8e-4146-8737-4bb157cc0e24" />
 
 
 ## Even in the worst situations, lives must be saved.
