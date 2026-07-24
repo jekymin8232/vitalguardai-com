@@ -21,4 +21,6 @@
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
+---
+
 Personal Workspace: [mcorpai.org](https://mcorpai.org/)
