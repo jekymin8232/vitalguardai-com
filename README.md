@@ -1,6 +1,8 @@
 ### Ethical AI for the 6.8 Billion (Fully GDPR-compliant and aligned with ESG principles.)
 **Big Tech AI is for the 2 billion with infrastructure. Offline AI is ethical AI for the remaining 6.8 billion.**
 
+---
+
 > ### 💡 Executive Summary
 > * **Who I Am:** Morgan J., a South Korean Offline AI Architect & Systems Designer focused on Privacy-by-Design and Digital Sovereignty.
 > * **What I Built:** Lightweight, zero-dependency Offline AI & acoustic/ultrasonic communication protocols that operate without cloud infrastructure, internet connectivity, or personal data collection—designed for the 6.8 billion people in resource-constrained environments.
