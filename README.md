@@ -28,3 +28,5 @@
 ---
 
 Personal Workspace(Email Contact Information): [mcorpai.org](https://mcorpai.org/)
+
+**Based in South Korea · Prefer Remote Work**
