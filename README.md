@@ -14,6 +14,8 @@
 * **Upcoming Milestones:** Preparing for presentation/submission at **ACM FAccT**. Open to future research collaboration with the **University of Oxford**.
 * **Standards & Compliance:** Architected to align seamlessly with ESG principles and GDPR (Privacy-by-Design).
 
+---
+
 **Reference: OTF Review in Progress**
 
 ![Internet Freedom](https://img.shields.io/badge/Internet%20Freedom-2e7d32?style=for-the-badge&logo=liberty&logoColor=white)
