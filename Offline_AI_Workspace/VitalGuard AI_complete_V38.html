@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#c0392b">
+<title>Santa Claus AI v3.8 — Offline Pet Safety</title>
+<link rel="manifest" id="pwa-manifest">
+<style>
+/* ============================================================
+   SANTA CLAUS AI v3.8 — MASTER STYLESHEET
+   © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+   https://mcorpai.org | contact@mcorpai.org
+   Managed by: https://mediatorsfoundation.org
+
+   M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
+   Humanitarian use only. Military/surveillance use prohibited.
+   See ETHICAL_MANIFEST in code for full terms.
+   ============================================================ */
+
+:root {
+  --bg: #1a1a2e;
+  --surface: #16213e;
+  --card: #1f2b47;
+  --accent: #e94560;
+  --safe: #2ecc71;
+  --caution: #f39c12;
+  --warning: #e67e22;
+  --danger: #e74c3c;
+  --lost: #95a5a6;
+  --text: #ecf0f1;
+  --text-muted: #7f8c8d;
+  --zone-safe: var(--safe);
+  --zone-caution: var(--caution);
+  --zone-warning: var(--warning);
+  --zone-danger: var(--danger);
+  --zone-lost: var(--lost);
+  --radius: 12px;
+  --shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* ---- LAYOUT ---- */
+#app { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
+#header {
+  padding: 12px 16px 8px;
+  text-align: center;
+  background: var(--surface);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+#header h1 { font-size: 1.1rem; letter-spacing: 1px; }
+#header h1 span.santa-icon { font-size: 1.3rem; }
+#header .subtitle { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
+#header .version-badge {
+  position: absolute; top: 8px; right: 12px;
+  font-size: 0.55rem; background: var(--accent);
+  padding: 2px 6px; border-radius: 8px; color: #fff;
+}
+
+/* Pet chips row */
+.pet-chips {
+  display: flex; gap: 8px; padding: 8px 16px;
+  overflow-x: auto; background: var(--surface);
+}
+.pet-chip {
+  flex-shrink: 0; display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 20px;
+  background: var(--card); border: 2px solid transparent;
+  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.pet-chip.active { border-color: var(--accent); background: rgba(233,69,96,0.15); }
+.pet-chip .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--lost); flex-shrink: 0;
+}
+
+/* Main scrollable area */
+#main { flex: 1; overflow-y: auto; padding: 12px 16px 100px; }
+
+/* ---- NAV BAR ---- */
+#navbar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: var(--surface);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 0 env(safe-area-inset-bottom, 8px);
+  z-index: 100;
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 2px; padding: 6px 0;
+  background: none; border: none; color: var(--text-muted);
+  font-size: 0.6rem; cursor: pointer; transition: color 0.2s;
+}
+.nav-btn.active { color: var(--accent); }
+.nav-btn .nav-icon { font-size: 1.2rem; }
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-size: 0.85rem; font-weight: 600;
+  margin-bottom: 10px; display: flex;
+  align-items: center; gap: 8px;
+}
+
+/* ---- PET CARD ---- */
+.pet-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px; border-radius: var(--radius);
+  background: var(--card); margin-bottom: 8px;
+  cursor: pointer; transition: transform 0.15s;
+  border-left: 4px solid var(--lost);
+}
+.pet-card:active { transform: scale(0.98); }
+.pet-card.zone-safe { border-left-color: var(--safe); }
+.pet-card.zone-caution { border-left-color: var(--caution); }
+.pet-card.zone-warning { border-left-color: var(--warning); }
+.pet-card.zone-danger { border-left-color: var(--danger); }
+.pet-icon-circle {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); display: flex;
+  align-items: center; justify-content: center; font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.pet-details { flex: 1; min-width: 0; }
+.pet-name { font-weight: 600; font-size: 0.9rem; }
+.pet-status-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;
+}
+.status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.pet-signal { text-align: right; flex-shrink: 0; }
+.pet-rssi { font-size: 1.1rem; font-weight: 700; font-family: monospace; }
+.trend-arrow { font-size: 0.8rem; margin-left: 2px; }
+.zone-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 10px;
+  font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+  margin-top: 4px;
+}
+.zone-badge.safe { background: rgba(46,204,113,0.2); color: var(--safe); }
+.zone-badge.caution { background: rgba(243,156,18,0.2); color: var(--caution); }
+.zone-badge.warning { background: rgba(230,126,34,0.2); color: var(--warning); }
+.zone-badge.danger { background: rgba(231,76,60,0.2); color: var(--danger); }
+.zone-badge.lost { background: rgba(149,165,166,0.2); color: var(--lost); }
+
+/* ---- RING UI (Pet Detail) ---- */
+.ring-container {
+  position: relative; width: 200px; height: 200px;
+  margin: 20px auto;
+}
+.ring-svg { width: 100%; height: 100%; }
+.ring-center-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); text-align: center;
+}
+.ring-center-text .dist { font-size: 2rem; font-weight: 700; }
+.ring-center-text .unit { font-size: 0.7rem; color: var(--text-muted); }
+
+/* ---- RSSI METER ---- */
+.rssi-meter {
+  height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1);
+  margin: 8px 0; overflow: hidden;
+}
+.rssi-meter .fill {
+  height: 100%; border-radius: 3px; transition: width 0.4s, background 0.4s;
+}
+
+/* ---- SOS ---- */
+.sos-container { text-align: center; padding: 20px 0; }
+.sos-btn {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: var(--danger); border: 4px solid rgba(231,76,60,0.4);
+  color: #fff; font-size: 1.8rem; font-weight: 700;
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(231,76,60,0.3);
+}
+.sos-btn:active { transform: scale(0.95); }
+.sos-btn.active {
+  animation: sos-pulse 1s infinite;
+  box-shadow: 0 0 50px rgba(231,76,60,0.6);
+}
+@keyframes sos-pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.hc-arrow {
+  font-size: 4rem; margin: 20px 0;
+  transition: color 0.3s;
+}
+.hc-label { font-size: 0.9rem; font-weight: 600; margin-top: 8px; }
+.hc-rssi { font-family: monospace; font-size: 1.5rem; margin-top: 4px; }
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border-radius: 8px;
+  border: none; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; color: #fff;
+}
+.btn-primary { background: var(--accent); }
+.btn-primary:active { background: #c0392b; }
+.btn-safe { background: var(--safe); color: #000; }
+.btn-outline {
+  background: transparent; border: 1px solid var(--text-muted);
+  color: var(--text);
+}
+.btn-sm { padding: 6px 12px; font-size: 0.7rem; }
+.btn-block { display: flex; width: 100%; justify-content: center; }
+
+/* ---- OVERLAY / MODAL ---- */
+.overlay {
+  position: fixed; inset: 0; background: var(--bg);
+  z-index: 200; overflow-y: auto; padding: 16px;
+  display: none; flex-direction: column;
+}
+.overlay.active { display: flex; }
+.overlay-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 12px;
+}
+.overlay-close {
+  background: none; border: none; color: var(--text);
+  font-size: 1.5rem; cursor: pointer; padding: 4px;
+}
+
+/* ---- WIZARD ---- */
+.wizard-step { display: none; text-align: center; padding: 20px 0; }
+.wizard-step.active { display: block; }
+.wizard-progress {
+  display: flex; gap: 8px; justify-content: center; margin-bottom: 20px;
+}
+.wizard-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+.wizard-dot.done { background: var(--safe); }
+.wizard-dot.current { background: var(--accent); }
+
+/* ---- SETTINGS ---- */
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.setting-label { font-size: 0.8rem; font-weight: 500; }
+.setting-desc { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
+.toggle {
+  width: 44px; height: 24px; border-radius: 12px;
+  background: rgba(255,255,255,0.15); cursor: pointer;
+  position: relative; transition: background 0.2s; flex-shrink: 0;
+}
+.toggle.active { background: var(--safe); }
+.toggle::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; transition: left 0.2s;
+}
+.toggle.active::after { left: 22px; }
+
+/* Range slider */
+input[type="range"] {
+  width: 100%; height: 4px; -webkit-appearance: none;
+  background: rgba(255,255,255,0.15); border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--accent); cursor: pointer;
+}
+
+/* ---- ALERT HISTORY ---- */
+.alert-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.78rem;
+}
+.alert-item .alert-icon { font-size: 1.2rem; flex-shrink: 0; }
+.alert-item .alert-time { font-size: 0.65rem; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+
+/* ---- VOICE RECALL ---- */
+.voice-btn {
+  width: 64px; height: 64px; border-radius: 50%;
+  border: 3px dashed var(--text-muted); background: transparent;
+  color: var(--text-muted); font-size: 1.5rem;
+  cursor: pointer; transition: all 0.3s;
+}
+.voice-btn.recording {
+  border-style: solid; border-color: var(--danger);
+  color: var(--danger); animation: rec-pulse 1s infinite;
+}
+.voice-btn.has-recording {
+  border-style: solid; border-color: var(--safe);
+  color: var(--safe);
+}
+@keyframes rec-pulse {
+  0%,100% { opacity: 1; } 50% { opacity: 0.5; }
+}
+
+/* ---- TOAST ---- */
+#toast {
+  position: fixed; bottom: 80px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(0,0,0,0.85); color: #fff;
+  padding: 10px 20px; border-radius: 20px;
+  font-size: 0.78rem; z-index: 999;
+  transition: transform 0.3s; pointer-events: none;
+  white-space: nowrap; max-width: 90vw; text-align: center;
+}
+#toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ---- INSTALL BANNER ---- */
+.install-banner {
+  display: none; align-items: center; gap: 10px;
+  padding: 10px 16px; background: linear-gradient(135deg, #1f2b47, #16213e);
+  border-bottom: 1px solid rgba(233,69,96,0.3);
+}
+.install-banner.show { display: flex; }
+.install-banner .msg { flex: 1; font-size: 0.75rem; }
+.install-banner .install-btn {
+  padding: 6px 14px; border-radius: 6px; border: none;
+  background: var(--accent); color: #fff; font-size: 0.72rem;
+  font-weight: 600; cursor: pointer;
+}
+.install-banner .dismiss-btn {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 1rem; cursor: pointer;
+}
+
+/* ---- PERFORMANCE PROFILE SELECTOR ---- */
+.profile-selector {
+  display: flex; gap: 6px; margin: 8px 0;
+}
+.profile-btn {
+  flex: 1; padding: 8px 4px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent; color: var(--text-muted);
+  font-size: 0.65rem; text-align: center; cursor: pointer;
+}
+.profile-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(233,69,96,0.1);
+}
+
+/* ---- DIAGNOSTIC PANEL ---- */
+.diag-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.72rem; padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.diag-val { font-family: monospace; color: var(--accent); }
+
+/* ---- SECTION HEADERS (inside manual/about) ---- */
+.section-h { font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+.section-p { font-size: 0.75rem; line-height: 1.5; color: var(--text-muted); margin-bottom: 8px; }
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+/* ---- PAGE VIEWS ---- */
+.page { display: none; }
+.page.active { display: block; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- INSTALL BANNER -->
+  <div class="install-banner" id="installBanner">
+    <span class="msg">🎅 Install Santa Claus AI for offline use!</span>
+    <button class="install-btn" onclick="App.installPWA()">Install</button>
+    <button class="dismiss-btn" onclick="App.dismissInstall()">✕</button>
+  </div>
+
+  <!-- HEADER -->
+  <div id="header">
+    <h1><span class="santa-icon">🎅</span> Santa Claus AI</h1>
+    <div class="subtitle">Offline AI-Powered Pet Safety · Invisible Leash</div>
+    <span class="version-badge">v3.8</span>
+  </div>
+
+  <!-- PET CHIPS -->
+  <div class="pet-chips" id="petChips"></div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main">
+
+    <!-- PAGE: HOME (Dashboard) -->
+    <div class="page active" id="page-home">
+      <div id="petList"></div>
+      <div style="text-align:center;margin-top:12px;">
+        <button class="btn btn-primary" onclick="Wizard.open()">+ Add Pet</button>
+        <button class="btn btn-outline btn-sm" style="margin-left:8px" onclick="App.toggleDemo()">
+          <span id="demoBtnLabel">▶ Demo</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PAGE: PET DETAIL -->
+    <div class="page" id="page-detail">
+      <div class="card" id="detailCard">
+        <div class="ring-container" id="ringContainer">
+          <svg class="ring-svg" viewBox="0 0 200 200" id="ringSvg">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
+            <circle cx="100" cy="100" r="90" fill="none" stroke="var(--safe)" stroke-width="12"
+              stroke-dasharray="565" stroke-dashoffset="0" stroke-linecap="round" id="ringArc"
+              transform="rotate(-90 100 100)"/>
+          </svg>
+          <div class="ring-center-text">
+            <div class="dist" id="detailDist">--</div>
+            <div class="unit">meters</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-bottom:12px;">
+          <span class="zone-badge safe" id="detailZoneBadge">SAFE</span>
+        </div>
+        <div class="rssi-meter"><div class="fill" id="detailRssiFill" style="width:50%;background:var(--safe)"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-top:4px;">
+          <span id="detailRssi">RSSI: --</span>
+          <span id="detailConf">Confidence: --%</span>
+        </div>
+        <div class="section-p" style="margin-top:10px;font-style:italic;" id="detailWhy"></div>
+      </div>
+
+      <!-- VOICE RECALL CARD -->
+      <div class="card">
+        <div class="card-title">🎙️ Voice Recall</div>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <button class="voice-btn" id="voiceBtn" onclick="VoiceRecall.toggleRecord()">🎤</button>
+          <div style="flex:1;">
+            <div class="section-p" id="voiceStatus">No recording yet. Tap to record your voice.</div>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <button class="btn btn-sm btn-outline" onclick="VoiceRecall.play()" id="voicePlayBtn" style="display:none">▶ Play</button>
+              <button class="btn btn-sm btn-outline" onclick="VoiceRecall.remove()" id="voiceRemoveBtn" style="display:none">🗑 Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESCUE ID -->
+      <div class="card">
+        <div class="card-title">🏷️ Rescue ID</div>
+        <div style="text-align:center;">
+          <div style="font-family:monospace;font-size:2rem;letter-spacing:4px;font-weight:700;" id="rescueIdDisplay">--------</div>
+          <div class="section-p">Write this code on a collar tag. Anyone who finds your pet can contact you.</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:8px;">
+        <button class="btn btn-outline btn-sm" onclick="Nav.go('home')">← Back</button>
+      </div>
+    </div>
+
+    <!-- PAGE: SOS -->
+    <div class="page" id="page-sos">
+      <div class="sos-container">
+        <div class="section-p">Select a pet, then press SOS to activate finder mode.</div>
+        <div id="sosPetSelect" style="margin:12px 0;"></div>
+        <button class="sos-btn" id="sosBtn" onclick="SOS.toggle()">SOS</button>
+        <div class="hc-arrow" id="hcArrow" style="display:none">↑</div>
+        <div class="hc-label" id="hcLabel" style="display:none">Getting warmer...</div>
+        <div class="hc-rssi" id="hcRssi" style="display:none">--</div>
+        <div id="sosGpsBtn" style="margin-top:16px;display:none;">
+          <button class="btn btn-outline btn-sm" onclick="SOS.requestGps()">📍 GPS Assist</button>
+        </div>
+        <div class="section-p" id="sosLastGps" style="margin-top:8px;display:none;"></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ALERT HISTORY -->
+    <div class="page" id="page-history">
+      <div class="card">
+        <div class="card-title">📋 Alert History</div>
+        <div id="alertHistoryList">
+          <div class="section-p" style="text-align:center;padding:20px 0;">No alerts yet.</div>
+        </div>
+        <div style="text-align:center;margin-top:12px;">
+          <button class="btn btn-sm btn-outline" onclick="AlertHistory.clear()">🗑 Clear History</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: SETTINGS -->
+    <div class="page" id="page-settings">
+      <div class="card">
+        <div class="card-title">⚙️ Settings</div>
+
+        <!-- Performance Profile -->
+        <div class="setting-label" style="margin-bottom:4px;">Performance Profile</div>
+        <div class="profile-selector" id="profileSelector">
+          <button class="profile-btn" data-profile="saver" onclick="App.setProfile('saver')">🔋 Saver</button>
+          <button class="profile-btn active" data-profile="balanced" onclick="App.setProfile('balanced')">⚖️ Balanced</button>
+          <button class="profile-btn" data-profile="fast" onclick="App.setProfile('fast')">⚡ Fast</button>
+        </div>
+
+        <!-- High Alert -->
+        <div class="setting-row">
+          <div><div class="setting-label">⚡ High Alert Mode</div>
+          <div class="setting-desc">Tighter zones for fireworks/storms</div></div>
+          <div class="toggle" id="toggleHighAlert" onclick="App.toggleHighAlert()"></div>
+        </div>
+
+        <!-- Thresholds -->
+        <div class="setting-label" style="margin-top:12px;">Zone Thresholds (dBm)</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin:4px 0 8px;">Closer to 0 = closer. Lower = farther.</div>
+        <div class="setting-row">
+          <span style="font-size:0.75rem;">🟡 Caution</span>
+          <span style="font-size:0.75rem;font-family:monospace;" id="threshCautionVal">-65</span>
+        </div>
+        <input type="range" min="-90" max="-40" value="-65" id="threshCaution" oninput="App.updateThreshold('caution',this.value)">
+        <div class="setting-row">
+          <span style="font-size:0.75rem;">🟠 Warning</span>
+          <span style="font-size:0.75rem;font-family:monospace;" id="threshWarningVal">-78</span>
+        </div>
+        <input type="range" min="-95" max="-50" value="-78" id="threshWarning" oninput="App.updateThreshold('warning',this.value)">
+        <div class="setting-row">
+          <span style="font-size:0.75rem;">🔴 Danger</span>
+          <span style="font-size:0.75rem;font-family:monospace;" id="threshDangerVal">-88</span>
+        </div>
+        <input type="range" min="-100" max="-60" value="-88" id="threshDanger" oninput="App.updateThreshold('danger',this.value)">
+      </div>
+
+      <!-- Pet Management -->
+      <div class="card">
+        <div class="card-title">🐾 Pet Management</div>
+        <div id="petMgmtList"></div>
+        <button class="btn btn-primary btn-sm btn-block" style="margin-top:8px" onclick="Wizard.open()">+ Add Pet</button>
+      </div>
+
+      <!-- Data -->
+      <div class="card">
+        <div class="card-title">💾 Data</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-outline btn-sm" onclick="App.exportData()">📤 Backup</button>
+          <button class="btn btn-outline btn-sm" onclick="App.importData()">📥 Restore</button>
+          <button class="btn btn-outline btn-sm" onclick="App.shareApp()">🔗 Share App</button>
+          <button class="btn btn-outline btn-sm" onclick="App.downloadSource()">📥 Source Code</button>
+        </div>
+      </div>
+
+      <!-- Diagnostics -->
+      <div class="card">
+        <div class="card-title">🔧 Diagnostics</div>
+        <div id="diagPanel"></div>
+      </div>
+    </div>
+
+    <!-- PAGE: MANUAL / ABOUT -->
+    <div class="page" id="page-about">
+      <div class="card">
+        <div class="card-title">📖 User Manual</div>
+        <div class="section-h">What is Santa Claus AI?</div>
+        <div class="section-p">Santa Claus AI is a free, offline pet safety system that uses Bluetooth Low Energy (BLE) signals to monitor your pet's distance. It works like an "invisible leash" — alerting you when your pet moves too far away.</div>
+
+        <div class="section-h">Quick Start</div>
+        <div class="section-p">1. Open this app on your Android phone (Chrome).<br>
+        2. Tap "+ Add Pet" to register a BLE tag.<br>
+        3. Hold your phone near the tag and follow the wizard.<br>
+        4. The app will monitor distance automatically.</div>
+
+        <div class="section-h">Zone System</div>
+        <div class="section-p">🟢 Safe — Pet is close to you.<br>
+        🟡 Caution — Pet is drifting. Voice Recall triggers.<br>
+        🟠 Warning — Pet is getting far. Vibration alert.<br>
+        🔴 Danger — Pet may be lost. Alarm + SOS available.<br>
+        ⚪ Lost — No BLE signal detected for 9+ seconds.</div>
+
+        <div class="section-h">Voice Recall (NEW in v3.8)</div>
+        <div class="section-p">Record a short voice command ("Come here, Max!"). When your pet enters the Caution zone, the recording plays automatically to call them back before the situation escalates.</div>
+
+        <div class="section-h">Alert History (NEW in v3.8)</div>
+        <div class="section-p">Every zone change and alert is logged with timestamp. Review past events to understand your pet's behavior patterns.</div>
+
+        <div class="section-h">SOS Finder</div>
+        <div class="section-p">If your pet is lost, activate SOS mode. The "Hot & Cold" indicator uses signal strength to guide you — warmer means closer, colder means farther.</div>
+
+        <div class="section-h">Performance Profiles</div>
+        <div class="section-p">🔋 Battery Saver — Scans every 3 seconds. Best for long walks.<br>
+        ⚖️ Balanced — Scans every 1.5 seconds. Default mode.<br>
+        ⚡ Fast — Scans every 0.5 seconds. Best for crowded areas.</div>
+
+        <div class="section-h">Rescue ID</div>
+        <div class="section-p">Each pet gets an 8-character code. Write it on a collar tag. If someone finds your pet, they can contact you via this unique ID.</div>
+
+        <div class="section-h">High Alert Mode</div>
+        <div class="section-p">Tighten all zone thresholds before fireworks, storms, or unfamiliar environments. All alerts trigger at closer distances.</div>
+      </div>
+
+      <!-- Legal & Ethics -->
+      <div class="card">
+        <div class="card-title">⚖️ Legal & Ethics</div>
+        <div class="section-p">© 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI<br>
+        License: Hippocratic 3.0 Derivative<br>
+        Humanitarian use only. Military/surveillance use prohibited.<br><br>
+        This app collects zero data. All AI learning happens on-device only. No servers, no accounts, no tracking. You own your data — delete the app and everything is gone.<br><br>
+        Contact: contact@mcorpai.org<br>
+        Web: https://mcorpai.org<br>
+        Managed by: https://mediatorsfoundation.org</div>
+      </div>
+
+      <!-- Partnership -->
+      <div class="card">
+        <div class="card-title">🤝 Partnership</div>
+        <div class="section-p">Santa Claus AI is an open-source humanitarian project. We welcome partnerships with animal welfare organizations, veterinary clinics, and rescue groups.<br><br>
+        If you want to distribute this app to pet owners in your community, simply share the HTML file. No installation servers needed.<br><br>
+        Academic collaborators: IDS (University of Sussex), UCL GDI Hub<br>
+        Supported by: Mediators Foundation (Mesa Sebree), Aspiration (Allen Gunn)</div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <button class="nav-btn active" data-page="home" onclick="Nav.go('home')">
+      <span class="nav-icon">🏠</span>Home
+    </button>
+    <button class="nav-btn" data-page="sos" onclick="Nav.go('sos')">
+      <span class="nav-icon">🆘</span>SOS
+    </button>
+    <button class="nav-btn" data-page="history" onclick="Nav.go('history')">
+      <span class="nav-icon">📋</span>History
+    </button>
+    <button class="nav-btn" data-page="settings" onclick="Nav.go('settings')">
+      <span class="nav-icon">⚙️</span>Settings
+    </button>
+    <button class="nav-btn" data-page="about" onclick="Nav.go('about')">
+      <span class="nav-icon">📖</span>About
+    </button>
+  </nav>
+
+</div><!-- /app -->
+
+<!-- WIZARD OVERLAY -->
+<div class="overlay" id="wizardOverlay">
+  <div class="overlay-header">
+    <span style="font-weight:600;">Add New Pet</span>
+    <button class="overlay-close" onclick="Wizard.close()">✕</button>
+  </div>
+  <div class="wizard-progress" id="wizardProgress"></div>
+
+  <div class="wizard-step active" data-step="1" id="wizStep1">
+    <div style="font-size:3rem;margin-bottom:16px;">📡</div>
+    <div class="section-h">Step 1: Scan for BLE Tags</div>
+    <div class="section-p">Make sure your BLE tag is turned on and nearby. Tap "Scan" to search.</div>
+    <button class="btn btn-primary" onclick="Wizard.scan()" id="wizScanBtn">Scan</button>
+    <div id="wizScanResults" style="margin-top:16px;"></div>
+  </div>
+
+  <div class="wizard-step" data-step="2" id="wizStep2">
+    <div style="font-size:3rem;margin-bottom:16px;">📏</div>
+    <div class="section-h">Step 2: Confirm Tag</div>
+    <div class="section-p">Move the tag away, then bring it back. We'll verify it's the right one.</div>
+    <div id="wizConfirmStatus" style="margin:16px 0;font-size:0.85rem;"></div>
+  </div>
+
+  <div class="wizard-step" data-step="3" id="wizStep3">
+    <div style="font-size:3rem;margin-bottom:16px;">🐾</div>
+    <div class="section-h">Step 3: Name Your Pet</div>
+    <div style="margin:16px 0;">
+      <input type="text" id="wizPetName" placeholder="Pet name (e.g. Max)"
+        style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);
+        background:var(--surface);color:var(--text);font-size:1rem;text-align:center;">
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0;" id="wizIconPicker"></div>
+    <button class="btn btn-safe btn-block" onclick="Wizard.finish()">✅ Done</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   SANTA CLAUS AI v3.8 — CORE ENGINE
+   © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+
+   ETHICAL_MANIFEST — DO NOT REMOVE
+   This code is licensed under the Hippocratic License 3.0
+   (Derivative). Military, surveillance, and oppressive use
+   is strictly prohibited. See: https://mcorpai.org
+   ============================================================ */
+
+// ============================================================
+// ETHICAL MANIFEST (Layer 1 — Purpose Declaration)
+// ============================================================
+const ETHICAL_MANIFEST = Object.freeze({
+  project: 'Santa Claus AI',
+  version: '3.8',
+  organization: 'M-Corp Ethical AI',
+  license: 'Hippocratic License 3.0 Derivative',
+  permitted: ['humanitarian','animal-welfare','education','research','disaster-warning'],
+  prohibited: ['military','surveillance','weapons','oppression','tracking-humans','data-harvesting'],
+  legal_basis: ['UDHR','Geneva-Convention','UNCRC','CRPD','Wassenaar','GDPR','EU-2021/821'],
+  contact: 'contact@mcorpai.org',
+  data_policy: 'ZERO collection. All processing on-device. No servers. No accounts.',
+  verify: function(){ return this.prohibited.every(p => !document.title.toLowerCase().includes(p)); }
+});
+
+// ============================================================
+// CONSTANTS & CONFIG
+// ============================================================
+const STORAGE_PREFIX = 'santa38_';
+const MAX_RESTARTS_PER_MIN = 4;
+const WATCHDOG_TIMEOUT = 9000;    // 9s → LOST
+const WATCHDOG_RESTART = 15000;   // 15s → auto restart
+const GAP_MIN = 0.08;            // multi-pet collision gap
+const ZONE_HOLD_MS = 2500;       // anti-flapping hold time
+const HIGH_ALERT_SHRINK = 10;    // dBm tighter in high alert
+
+const PROFILES = {
+  saver:    { interval: 3000,  label: 'Battery Saver' },
+  balanced: { interval: 1500,  label: 'Balanced' },
+  fast:     { interval: 500,   label: 'Fast' }
+};
+
+const ICONS = ['🐶','🐱','🐰','🐹','🐦','🐢','🐟','🦎','🐴','🐷'];
+
+// ============================================================
+// AI MODULE: Kalman RSSI Filter (Adaptive Noise)
+// ============================================================
+class KalmanRSSI {
+  constructor() { this.x = -60; this.P = 4; this.Q = 0.5; this.R = 6; this.samples = 0; }
+  update(z) {
+    this.samples++;
+    // Adaptive noise: increase R if signal is noisy
+    const innovation = z - this.x;
+    if (Math.abs(innovation) > 15) this.R = Math.min(this.R + 1, 20);
+    else this.R = Math.max(this.R - 0.3, 3);
+    const Pp = this.P + this.Q;
+    const K = Pp / (Pp + this.R);
+    this.x = this.x + K * innovation;
+    this.P = (1 - K) * Pp;
+    return this.x;
+  }
+  reset() { this.x = -60; this.P = 4; this.R = 6; this.samples = 0; }
+}
+
+// ============================================================
+// AI MODULE: Distance Estimator (Path Loss Model)
+// ============================================================
+class DistanceEstimator {
+  constructor() { this.txPower = -59; this.n = 2.5; }
+  estimate(rssi) {
+    if (rssi >= 0) return 0;
+    const ratio = (this.txPower - rssi) / (10 * this.n);
+    return Math.round(Math.pow(10, ratio) * 10) / 10;
+  }
+}
+
+// ============================================================
+// AI MODULE: Q-Learning Lite (Zone Prediction)
+// ============================================================
+class QLearningLite {
+  constructor() {
+    this.q = {};       // state-action table
+    this.lr = 0.1;     // learning rate
+    this.gamma = 0.9;  // discount factor
+    this.epsilon = 0.2;
+    this.count = 0;
+  }
+  _key(s,a) { return s + '|' + a; }
+  getQ(s,a) { return this.q[this._key(s,a)] || 0; }
+  update(s,a,r,s2) {
+    const actions = ['stay','approach','retreat'];
+    const maxQ2 = Math.max(...actions.map(a2 => this.getQ(s2, a2)));
+    const old = this.getQ(s,a);
+    this.q[this._key(s,a)] = old + this.lr * (r + this.gamma * maxQ2 - old);
+    this.count++;
+  }
+  bestAction(s) {
+    const actions = ['stay','approach','retreat'];
+    if (Math.random() < this.epsilon) return actions[Math.floor(Math.random()*3)];
+    let best = actions[0], bestVal = -Infinity;
+    for (const a of actions) { const v = this.getQ(s,a); if (v > bestVal) { bestVal = v; best = a; } }
+    return best;
+  }
+  export() { return { q: this.q, count: this.count }; }
+  import(d) { if (d) { this.q = d.q || {}; this.count = d.count || 0; } }
+}
+
+// ============================================================
+// AI MODULE: Behavioral Fingerprint
+// ============================================================
+class BehavioralFingerprint {
+  constructor() { this.history = []; this.maxLen = 30; }
+  push(rssi, zone, ts) {
+    this.history.push({ rssi, zone, ts });
+    if (this.history.length > this.maxLen) this.history.shift();
+  }
+  getTrend() {
+    if (this.history.length < 3) return 'stable';
+    const recent = this.history.slice(-5);
+    const diffs = [];
+    for (let i = 1; i < recent.length; i++) diffs.push(recent[i].rssi - recent[i-1].rssi);
+    const avg = diffs.reduce((a,b) => a+b, 0) / diffs.length;
+    if (avg > 1.5) return 'approaching';
+    if (avg < -1.5) return 'retreating';
+    return 'stable';
+  }
+  getConfidence() {
+    if (this.history.length < 5) return 50;
+    const rssis = this.history.slice(-10).map(h => h.rssi);
+    const mean = rssis.reduce((a,b) => a+b,0) / rssis.length;
+    const variance = rssis.reduce((a,b) => a + (b-mean)**2, 0) / rssis.length;
+    const std = Math.sqrt(variance);
+    return Math.round(Math.max(20, Math.min(99, 100 - std * 4)));
+  }
+}
+
+// ============================================================
+// PET OBJECT
+// ============================================================
+class Pet {
+  constructor(id, name, icon, deviceName) {
+    this.id = id;
+    this.name = name;
+    this.icon = icon || '🐶';
+    this.deviceName = deviceName || '';
+    this.addedAt = Date.now();
+
+    // AI instances (per-pet)
+    this.kalman = new KalmanRSSI();
+    this.distEst = new DistanceEstimator();
+    this.qlearn = new QLearningLite();
+    this.behavior = new BehavioralFingerprint();
+
+    // State
+    this.rawRssi = -100;
+    this.smoothedRssi = -100;
+    this.distance = 99;
+    this.lastSeen = 0;
+
+    // Zone: anti-flapping
+    this.zone = { instant: 'lost', candidate: 'lost', stable: 'lost', candidateTs: 0 };
+
+    // Rescue ID
+    this.rescueId = Pet.generateRescueId();
+
+    // Voice recall data (base64)
+    this.voiceData = null;
+  }
+
+  static generateRescueId() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let id = '';
+    for (let i = 0; i < 8; i++) id += chars[Math.floor(Math.random()*chars.length)];
+    return id;
+  }
+
+  processRssi(rssi, now) {
+    this.rawRssi = rssi;
+    this.smoothedRssi = this.kalman.update(rssi);
+    this.distance = this.distEst.estimate(this.smoothedRssi);
+    this.lastSeen = now;
+
+    // Zone calculation
+    const z = this._calcZone(this.smoothedRssi);
+    this._updateZone(z, now);
+
+    // Behavioral tracking
+    this.behavior.push(this.smoothedRssi, this.zone.stable, now);
+
+    // Q-Learning feedback
+    const prevZone = this.zone.stable;
+    const action = this.qlearn.bestAction(prevZone);
+    const reward = z === 'safe' ? 1 : z === 'caution' ? 0 : z === 'warning' ? -1 : -3;
+    this.qlearn.update(prevZone, action, reward, z);
+  }
+
+  _calcZone(rssi) {
+    const t = App.thresholds;
+    if (rssi >= t.caution) return 'safe';
+    if (rssi >= t.warning) return 'caution';
+    if (rssi >= t.danger) return 'warning';
+    return 'danger';
+  }
+
+  _updateZone(newInstant, now) {
+    this.zone.instant = newInstant;
+    if (newInstant !== this.zone.candidate) {
+      this.zone.candidate = newInstant;
+      this.zone.candidateTs = now;
+    } else if (now - this.zone.candidateTs >= ZONE_HOLD_MS) {
+      const oldStable = this.zone.stable;
+      this.zone.stable = newInstant;
+      if (oldStable !== newInstant) {
+        App.onZoneChange(this, oldStable, newInstant);
+      }
+    }
+  }
+
+  get trendArrow() {
+    const t = this.behavior.getTrend();
+    if (t === 'approaching') return '↗';
+    if (t === 'retreating') return '↘';
+    return '→';
+  }
+
+  get confidence() { return this.behavior.getConfidence(); }
+
+  get isLost() { return Date.now() - this.lastSeen > WATCHDOG_TIMEOUT; }
+
+  getLastSeenText(now) {
+    if (!this.lastSeen) return 'Never';
+    const sec = Math.floor((now - this.lastSeen) / 1000);
+    if (sec < 5) return 'Now';
+    if (sec < 60) return sec + 's ago';
+    return Math.floor(sec/60) + 'm ago';
+  }
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+const Nav = {
+  current: 'home',
+  go(page) {
+    this.current = page;
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('page-' + page);
+    if (el) el.classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.page === page);
+    });
+    if (page === 'home') App.renderPetList();
+    if (page === 'history') AlertHistory.render();
+    if (page === 'settings') App.renderSettings();
+  }
+};
+
+// ============================================================
+// VOICE RECALL (NEW in V3.8)
+// ============================================================
+const VoiceRecall = {
+  mediaRecorder: null,
+  chunks: [],
+  isRecording: false,
+
+  toggleRecord() {
+    if (this.isRecording) { this.stopRecord(); return; }
+    this.startRecord();
+  },
+
+  async startRecord() {
+    const pet = App.getActivePet();
+    if (!pet) { App.toast('Select a pet first'); return; }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.chunks = [];
+      this.mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+      this.mediaRecorder.ondataavailable = e => { if (e.data.size > 0) this.chunks.push(e.data); };
+      this.mediaRecorder.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        const blob = new Blob(this.chunks, { type: 'audio/webm' });
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          pet.voiceData = reader.result;
+          App.savePets();
+          this.updateUI(pet);
+          App.toast('Voice recorded! Will play in Caution zone.');
+        };
+        reader.readAsDataURL(blob);
+      };
+      this.mediaRecorder.start();
+      this.isRecording = true;
+      this.updateUI(pet);
+      // Auto-stop after 5 seconds
+      setTimeout(() => { if (this.isRecording) this.stopRecord(); }, 5000);
+    } catch (e) {
+      App.toast('Microphone access denied');
+    }
+  },
+
+  stopRecord() {
+    if (this.mediaRecorder && this.isRecording) {
+      this.mediaRecorder.stop();
+      this.isRecording = false;
+    }
+  },
+
+  play(petOverride) {
+    const pet = petOverride || App.getActivePet();
+    if (!pet || !pet.voiceData) return;
+    const audio = new Audio(pet.voiceData);
+    audio.play().catch(() => {});
+  },
+
+  playForAlert(pet) {
+    // Called automatically when pet enters caution zone
+    if (pet && pet.voiceData) {
+      const audio = new Audio(pet.voiceData);
+      audio.volume = 1.0;
+      audio.play().catch(() => {});
+    }
+  },
+
+  remove() {
+    const pet = App.getActivePet();
+    if (!pet) return;
+    pet.voiceData = null;
+    App.savePets();
+    this.updateUI(pet);
+    App.toast('Voice recording deleted');
+  },
+
+  updateUI(pet) {
+    const btn = document.getElementById('voiceBtn');
+    const status = document.getElementById('voiceStatus');
+    const playBtn = document.getElementById('voicePlayBtn');
+    const rmBtn = document.getElementById('voiceRemoveBtn');
+    if (!btn) return;
+
+    btn.className = 'voice-btn';
+    if (this.isRecording) {
+      btn.classList.add('recording');
+      btn.textContent = '⏹';
+      status.textContent = 'Recording... (max 5 seconds)';
+      playBtn.style.display = 'none';
+      rmBtn.style.display = 'none';
+    } else if (pet && pet.voiceData) {
+      btn.classList.add('has-recording');
+      btn.textContent = '🎤';
+      status.textContent = 'Voice recorded ✓ — Will auto-play in Caution zone.';
+      playBtn.style.display = '';
+      rmBtn.style.display = '';
+    } else {
+      btn.textContent = '🎤';
+      status.textContent = 'No recording yet. Tap to record your voice.';
+      playBtn.style.display = 'none';
+      rmBtn.style.display = 'none';
+    }
+  }
+};
+
+// ============================================================
+// ALERT HISTORY (NEW in V3.8)
+// ============================================================
+const AlertHistory = {
+  items: [],
+  MAX: 100,
+
+  load() {
+    try { this.items = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'alertHistory')) || []; }
+    catch(e) { this.items = []; }
+  },
+
+  save() {
+    localStorage.setItem(STORAGE_PREFIX + 'alertHistory', JSON.stringify(this.items.slice(0, this.MAX)));
+  },
+
+  add(petName, petIcon, fromZone, toZone) {
+    this.items.unshift({
+      pet: petName, icon: petIcon,
+      from: fromZone, to: toZone,
+      ts: Date.now()
+    });
+    if (this.items.length > this.MAX) this.items.pop();
+    this.save();
+  },
+
+  clear() {
+    this.items = [];
+    this.save();
+    this.render();
+    App.toast('Alert history cleared');
+  },
+
+  render() {
+    const el = document.getElementById('alertHistoryList');
+    if (!el) return;
+    if (this.items.length === 0) {
+      el.innerHTML = '<div class="section-p" style="text-align:center;padding:20px 0;">No alerts yet.</div>';
+      return;
+    }
+    el.innerHTML = this.items.slice(0, 50).map(item => {
+      const icon = item.to === 'safe' ? '🟢' : item.to === 'caution' ? '🟡' : item.to === 'warning' ? '🟠' : item.to === 'danger' ? '🔴' : '⚪';
+      const timeStr = new Date(item.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const dateStr = new Date(item.ts).toLocaleDateString([], { month: 'short', day: 'numeric' });
+      return `<div class="alert-item">
+        <span class="alert-icon">${item.icon}</span>
+        <span>${item.pet}: ${item.from} → ${item.to} ${icon}</span>
+        <span class="alert-time">${dateStr} ${timeStr}</span>
+      </div>`;
+    }).join('');
+  }
+};
+
+// ============================================================
+// SOS FINDER
+// ============================================================
+const SOS = {
+  active: false,
+  targetPet: null,
+  prevRssi: null,
+  gpsWatchId: null,
+
+  selectPet(id) {
+    this.targetPet = App.pets.find(p => p.id === id) || null;
+    this.renderPetSelect();
+  },
+
+  renderPetSelect() {
+    const el = document.getElementById('sosPetSelect');
+    if (!el) return;
+    el.innerHTML = App.pets.map(p => {
+      const sel = this.targetPet && this.targetPet.id === p.id;
+      return `<button class="btn btn-sm ${sel?'btn-primary':'btn-outline'}" style="margin:4px"
+        onclick="SOS.selectPet('${p.id}')">${p.icon} ${p.name}</button>`;
+    }).join('');
+  },
+
+  toggle() {
+    if (this.active) { this.stop(); return; }
+    if (!this.targetPet) { App.toast('Select a pet first'); return; }
+    this.start();
+  },
+
+  start() {
+    this.active = true;
+    this.prevRssi = null;
+    document.getElementById('sosBtn').classList.add('active');
+    document.getElementById('hcArrow').style.display = '';
+    document.getElementById('hcLabel').style.display = '';
+    document.getElementById('hcRssi').style.display = '';
+    document.getElementById('sosGpsBtn').style.display = '';
+    App.toast('SOS active — move around to find ' + this.targetPet.name);
+  },
+
+  stop() {
+    this.active = false;
+    document.getElementById('sosBtn').classList.remove('active');
+    document.getElementById('hcArrow').style.display = 'none';
+    document.getElementById('hcLabel').style.display = 'none';
+    document.getElementById('hcRssi').style.display = 'none';
+    document.getElementById('sosGpsBtn').style.display = 'none';
+    document.getElementById('sosLastGps').style.display = 'none';
+    if (this.gpsWatchId) { navigator.geolocation.clearWatch(this.gpsWatchId); this.gpsWatchId = null; }
+  },
+
+  updateHC(rssi) {
+    if (!this.active) return;
+    const arrowEl = document.getElementById('hcArrow');
+    const labelEl = document.getElementById('hcLabel');
+    const rssiEl = document.getElementById('hcRssi');
+    rssiEl.textContent = Math.round(rssi) + ' dBm';
+
+    if (this.prevRssi === null) { this.prevRssi = rssi; return; }
+    const diff = rssi - this.prevRssi;
+    if (diff > 1) {
+      arrowEl.textContent = '🔥'; arrowEl.style.color = '#e74c3c';
+      labelEl.textContent = 'Getting WARMER!';
+    } else if (diff < -1) {
+      arrowEl.textContent = '❄️'; arrowEl.style.color = '#3498db';
+      labelEl.textContent = 'Getting COLDER...';
+    } else {
+      arrowEl.textContent = '↔'; arrowEl.style.color = '#f39c12';
+      labelEl.textContent = 'Stable — keep moving';
+    }
+    this.prevRssi = rssi;
+  },
+
+  requestGps() {
+    if (!navigator.geolocation) { App.toast('GPS not available'); return; }
+    App.toast('Getting GPS position...');
+    navigator.geolocation.getCurrentPosition(pos => {
+      const el = document.getElementById('sosLastGps');
+      el.style.display = '';
+      el.textContent = '📍 ' + pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5) +
+        ' (±' + Math.round(pos.coords.accuracy) + 'm)';
+    }, () => { App.toast('GPS failed'); }, { enableHighAccuracy: true, timeout: 10000 });
+  }
+};
+
+// ============================================================
+// WIZARD (3-step pet registration)
+// ============================================================
+const Wizard = {
+  step: 1,
+  scannedDevice: null,
+  selectedIcon: '🐶',
+
+  open() {
+    this.step = 1; this.scannedDevice = null; this.selectedIcon = '🐶';
+    document.getElementById('wizardOverlay').classList.add('active');
+    this._renderStep();
+    this._renderIcons();
+  },
+
+  close() {
+    document.getElementById('wizardOverlay').classList.remove('active');
+    if (App.bleScanner) { try { App.bleScanner.stop(); } catch(e){} }
+  },
+
+  async scan() {
+    const btn = document.getElementById('wizScanBtn');
+    btn.textContent = 'Scanning...'; btn.disabled = true;
+
+    if (!navigator.bluetooth || !navigator.bluetooth.requestLEScan) {
+      // Fallback: use requestDevice
+      try {
+        const device = await navigator.bluetooth.requestDevice({
+          acceptAllDevices: true,
+          optionalServices: []
+        });
+        this.scannedDevice = { name: device.name || 'BLE Tag', id: device.id };
+        this._showScanResult();
+      } catch(e) {
+        App.toast('Scan cancelled or no device found');
+      }
+      btn.textContent = 'Scan'; btn.disabled = false;
+      return;
+    }
+
+    try {
+      const scanner = await navigator.bluetooth.requestLEScan({ acceptAllAdvertisements: true });
+      App.bleScanner = scanner;
+      const results = document.getElementById('wizScanResults');
+      results.innerHTML = '<div class="section-p">Scanning for 8 seconds...</div>';
+      const found = new Map();
+
+      navigator.bluetooth.addEventListener('advertisementreceived', ev => {
+        const name = ev.device.name || ev.device.id.slice(0,8);
+        const rssi = ev.rssi || -100;
+        if (rssi > -90) {
+          found.set(ev.device.id, { name, id: ev.device.id, rssi, device: ev.device });
+        }
+      });
+
+      setTimeout(() => {
+        scanner.stop();
+        if (found.size === 0) {
+          results.innerHTML = '<div class="section-p">No BLE tags found. Make sure the tag is on and nearby.</div>';
+        } else {
+          const sorted = [...found.values()].sort((a,b) => b.rssi - a.rssi);
+          results.innerHTML = sorted.map(d =>
+            `<div class="pet-card" onclick="Wizard.pickDevice('${d.id}','${d.name.replace(/'/g,"\\'")}')">
+              <div class="pet-icon-circle">📡</div>
+              <div class="pet-details"><div class="pet-name">${d.name}</div>
+              <div class="pet-status-row">RSSI: ${d.rssi} dBm</div></div></div>`
+          ).join('');
+        }
+        btn.textContent = 'Scan'; btn.disabled = false;
+      }, 8000);
+    } catch(e) {
+      App.toast('BLE scan failed: ' + e.message);
+      btn.textContent = 'Scan'; btn.disabled = false;
+    }
+  },
+
+  pickDevice(id, name) {
+    this.scannedDevice = { id, name };
+    this._showScanResult();
+  },
+
+  _showScanResult() {
+    document.getElementById('wizScanResults').innerHTML =
+      `<div class="pet-card zone-safe"><div class="pet-icon-circle">✅</div>
+       <div class="pet-details"><div class="pet-name">${this.scannedDevice.name}</div>
+       <div class="pet-status-row">Selected</div></div></div>`;
+    this.step = 2;
+    setTimeout(() => this._renderStep(), 500);
+    // Auto-advance step 2 after 3s
+    document.getElementById('wizConfirmStatus').textContent = 'Tag confirmed ✓';
+    setTimeout(() => { this.step = 3; this._renderStep(); }, 2000);
+  },
+
+  _renderIcons() {
+    const el = document.getElementById('wizIconPicker');
+    el.innerHTML = ICONS.map(ic =>
+      `<button class="btn btn-sm ${ic===this.selectedIcon?'btn-primary':'btn-outline'}"
+        onclick="Wizard.pickIcon('${ic}')" style="font-size:1.3rem;padding:6px 10px;">${ic}</button>`
+    ).join('');
+  },
+
+  pickIcon(ic) {
+    this.selectedIcon = ic;
+    this._renderIcons();
+  },
+
+  finish() {
+    const name = document.getElementById('wizPetName').value.trim() || 'Pet';
+    if (!this.scannedDevice) { App.toast('Please scan first'); return; }
+    const pet = new Pet(this.scannedDevice.id, name, this.selectedIcon, this.scannedDevice.name);
+    App.pets.push(pet);
+    App.savePets();
+    App.renderPetChips();
+    App.renderPetList();
+    this.close();
+    App.toast(name + ' added! 🎉');
+  },
+
+  _renderStep() {
+    document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+    const el = document.querySelector(`.wizard-step[data-step="${this.step}"]`);
+    if (el) el.classList.add('active');
+    // Progress dots
+    const prog = document.getElementById('wizardProgress');
+    prog.innerHTML = [1,2,3].map(i =>
+      `<div class="wizard-dot ${i<this.step?'done':''} ${i===this.step?'current':''}"></div>`
+    ).join('');
+  }
+};
+
+// ============================================================
+// BLE ENGINE (Advertisement-based scanning)
+// ============================================================
+const BLE = {
+  scanner: null,
+  scanning: false,
+  restartCount: 0,
+  restartTimestamps: [],
+  cooldownUntil: 0,
+
+  async start() {
+    if (this.scanning) return;
+
+    // Restart storm protection
+    const now = Date.now();
+    if (now < this.cooldownUntil) {
+      App.toast('BLE cooling down... please wait');
+      return;
+    }
+    this.restartTimestamps = this.restartTimestamps.filter(t => now - t < 60000);
+    if (this.restartTimestamps.length >= MAX_RESTARTS_PER_MIN) {
+      this.cooldownUntil = now + 30000;
+      App.toast('Too many restarts. Cooling down 30s.');
+      return;
+    }
+    this.restartTimestamps.push(now);
+
+    if (!navigator.bluetooth || !navigator.bluetooth.requestLEScan) {
+      App.toast('BLE not supported — using Demo mode');
+      App.startDemo();
+      return;
+    }
+
+    try {
+      this.scanner = await navigator.bluetooth.requestLEScan({ acceptAllAdvertisements: true });
+      this.scanning = true;
+
+      navigator.bluetooth.addEventListener('advertisementreceived', ev => {
+        const rssi = ev.rssi;
+        if (rssi === undefined || rssi === null) return;
+        const devId = ev.device.id;
+        const nowMs = Date.now();
+
+        // Match to registered pets
+        for (const pet of App.pets) {
+          if (pet.id === devId) {
+            pet.processRssi(rssi, nowMs);
+
+            // SOS hot/cold
+            if (SOS.active && SOS.targetPet && SOS.targetPet.id === pet.id) {
+              SOS.updateHC(rssi);
+            }
+          }
+        }
+      });
+
+      App.toast('BLE scanning started');
+    } catch(e) {
+      App.toast('BLE failed — starting Demo');
+      App.startDemo();
+    }
+  },
+
+  stop() {
+    if (this.scanner) { try { this.scanner.stop(); } catch(e){} }
+    this.scanning = false;
+  }
+};
+
+// ============================================================
+// MAIN APP
+// ============================================================
+const App = {
+  pets: [],
+  activePetId: null,
+  demoMode: false,
+  demoTimer: null,
+  watchdogTimer: null,
+  profile: 'balanced',
+  highAlert: false,
+  bleScanner: null,
+  deferredInstallPrompt: null,
+
+  thresholds: { caution: -65, warning: -78, danger: -88 },
+
+  // ---- INIT ----
+  init() {
+    if (!ETHICAL_MANIFEST.verify()) { document.body.innerHTML = '<h1>Ethical violation detected</h1>'; return; }
+
+    this.loadPets();
+    AlertHistory.load();
+    this.loadSettings();
+    this.renderPetChips();
+    this.renderPetList();
+    SOS.renderPetSelect();
+    this._startWatchdog();
+    this._registerPWA();
+    this._setupInstallPrompt();
+
+    console.log('🎅 Santa Claus AI v3.8 — Ready');
+    console.log('📡 AI: Kalman, DistanceEstimator, Q-Learning, BehavioralFingerprint');
+    console.log('🔒 Privacy: ZERO data collection. All on-device.');
+  },
+
+  // ---- PETS CRUD ----
+  getActivePet() {
+    return this.pets.find(p => p.id === this.activePetId) || this.pets[0] || null;
+  },
+
+  savePets() {
+    const data = this.pets.map(p => ({
+      id: p.id, name: p.name, icon: p.icon, deviceName: p.deviceName,
+      addedAt: p.addedAt, rescueId: p.rescueId, voiceData: p.voiceData,
+      qlearn: p.qlearn.export()
+    }));
+    localStorage.setItem(STORAGE_PREFIX + 'pets', JSON.stringify(data));
+  },
+
+  loadPets() {
+    try {
+      const data = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'pets')) || [];
+      this.pets = data.map(d => {
+        const p = new Pet(d.id, d.name, d.icon, d.deviceName);
+        p.addedAt = d.addedAt;
+        p.rescueId = d.rescueId || Pet.generateRescueId();
+        p.voiceData = d.voiceData || null;
+        if (d.qlearn) p.qlearn.import(d.qlearn);
+        return p;
+      });
+      if (this.pets.length > 0) this.activePetId = this.pets[0].id;
+    } catch(e) { this.pets = []; }
+  },
+
+  removePet(id) {
+    this.pets = this.pets.filter(p => p.id !== id);
+    this.savePets();
+    this.renderPetChips();
+    this.renderPetList();
+    this.renderSettings();
+  },
+
+  // ---- SETTINGS ----
+  loadSettings() {
+    try {
+      const s = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'settings'));
+      if (s) {
+        this.thresholds = s.thresholds || this.thresholds;
+        this.profile = s.profile || 'balanced';
+        this.highAlert = s.highAlert || false;
+      }
+    } catch(e) {}
+  },
+
+  saveSettings() {
+    localStorage.setItem(STORAGE_PREFIX + 'settings', JSON.stringify({
+      thresholds: this.thresholds, profile: this.profile, highAlert: this.highAlert
+    }));
+  },
+
+  setProfile(p) {
+    this.profile = p;
+    this.saveSettings();
+    document.querySelectorAll('.profile-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.profile === p);
+    });
+    App.toast('Profile: ' + PROFILES[p].label);
+  },
+
+  toggleHighAlert() {
+    this.highAlert = !this.highAlert;
+    const el = document.getElementById('toggleHighAlert');
+    el.classList.toggle('active', this.highAlert);
+    if (this.highAlert) {
+      this.thresholds.caution += HIGH_ALERT_SHRINK;
+      this.thresholds.warning += HIGH_ALERT_SHRINK;
+      this.thresholds.danger += HIGH_ALERT_SHRINK;
+    } else {
+      this.thresholds.caution -= HIGH_ALERT_SHRINK;
+      this.thresholds.warning -= HIGH_ALERT_SHRINK;
+      this.thresholds.danger -= HIGH_ALERT_SHRINK;
+    }
+    this.saveSettings();
+    this._updateThresholdUI();
+    App.toast(this.highAlert ? '⚡ High Alert ON' : 'High Alert OFF');
+  },
+
+  updateThreshold(zone, val) {
+    this.thresholds[zone] = parseInt(val);
+    document.getElementById('thresh' + zone.charAt(0).toUpperCase() + zone.slice(1) + 'Val').textContent = val;
+    this.saveSettings();
+  },
+
+  _updateThresholdUI() {
+    ['caution','warning','danger'].forEach(z => {
+      const el = document.getElementById('thresh' + z.charAt(0).toUpperCase() + z.slice(1));
+      const val = document.getElementById('thresh' + z.charAt(0).toUpperCase() + z.slice(1) + 'Val');
+      if (el) el.value = this.thresholds[z];
+      if (val) val.textContent = this.thresholds[z];
+    });
+  },
+
+  // ---- ZONE CHANGE HANDLER ----
+  onZoneChange(pet, oldZone, newZone) {
+    // Log to history
+    AlertHistory.add(pet.name, pet.icon, oldZone, newZone);
+
+    // Voice Recall: auto-play when entering caution
+    if (newZone === 'caution' && pet.voiceData) {
+      VoiceRecall.playForAlert(pet);
+    }
+
+    // Vibration alerts
+    if (navigator.vibrate) {
+      if (newZone === 'caution') navigator.vibrate([200, 800, 200]);
+      else if (newZone === 'warning') navigator.vibrate([200, 200, 200, 200, 200]);
+      else if (newZone === 'danger') navigator.vibrate([500, 100, 500, 100, 500]);
+    }
+
+    // Notification (if permission granted)
+    if (Notification.permission === 'granted' && (newZone === 'warning' || newZone === 'danger')) {
+      new Notification('🎅 Santa Claus AI', {
+        body: pet.icon + ' ' + pet.name + ' is in ' + newZone.toUpperCase() + ' zone!',
+        tag: 'santa-alert'
+      });
+    }
+  },
+
+  // ---- RENDER ----
+  renderPetChips() {
+    const el = document.getElementById('petChips');
+    if (this.pets.length === 0) { el.innerHTML = ''; return; }
+    el.innerHTML = this.pets.map(p => {
+      const z = p.isLost ? 'lost' : p.zone.stable;
+      const color = z === 'safe' ? 'var(--safe)' : z === 'caution' ? 'var(--caution)' :
+        z === 'warning' ? 'var(--warning)' : z === 'danger' ? 'var(--danger)' : 'var(--lost)';
+      return `<div class="pet-chip ${p.id===this.activePetId?'active':''}" onclick="App.selectPet('${p.id}')">
+        <span class="dot" style="background:${color}"></span>${p.icon} ${p.name}</div>`;
+    }).join('');
+  },
+
+  selectPet(id) {
+    this.activePetId = id;
+    this.renderPetChips();
+    const pet = this.getActivePet();
+    if (pet) {
+      this.renderPetDetail(pet);
+      VoiceRecall.updateUI(pet);
+      Nav.go('detail');
+    }
+  },
+
+  renderPetList() {
+    const el = document.getElementById('petList');
+    const now = Date.now();
+    if (this.pets.length === 0) {
+      el.innerHTML = '<div class="card" style="text-align:center;padding:40px 16px;">' +
+        '<div style="font-size:3rem;margin-bottom:12px;">🎅🐾</div>' +
+        '<div class="section-h">Welcome to Santa Claus AI!</div>' +
+        '<div class="section-p">Add your first pet to start monitoring.<br>You will need a BLE tag ($2-5).</div></div>';
+      return;
+    }
+    el.innerHTML = this.pets.map(pet => {
+      const z = pet.isLost ? 'lost' : pet.zone.stable;
+      const rssiDisplay = pet.isLost ? '--' : Math.round(pet.smoothedRssi);
+      const lastSeen = pet.getLastSeenText(now);
+      return `<div class="pet-card zone-${z}" onclick="App.selectPet('${pet.id}')">
+        <div class="pet-icon-circle">${pet.icon}</div>
+        <div class="pet-details">
+          <div class="pet-name">${pet.name}</div>
+          <div class="pet-status-row">
+            <div class="status-dot" style="background:var(--zone-${z})"></div>
+            <span>${pet.isLost ? 'NO SIGNAL' : pet.zone.stable.toUpperCase()}</span>
+            <span style="margin-left:auto;font-size:0.7rem;color:var(--text-muted)">${lastSeen}</span>
+          </div>
+        </div>
+        <div class="pet-signal">
+          <div class="pet-rssi">${rssiDisplay}<span class="trend-arrow">${pet.trendArrow}</span></div>
+          <span class="zone-badge ${z}">${z}</span>
+        </div>
+      </div>`;
+    }).join('');
+  },
+
+  renderPetDetail(pet) {
+    if (!pet) return;
+    const z = pet.isLost ? 'lost' : pet.zone.stable;
+    const colors = { safe:'var(--safe)', caution:'var(--caution)', warning:'var(--warning)', danger:'var(--danger)', lost:'var(--lost)' };
+    const color = colors[z] || colors.lost;
+
+    // Ring arc
+    const pct = Math.max(0, Math.min(100, (pet.smoothedRssi + 100) * 2));
+    const dashoffset = 565 - (565 * pct / 100);
+    const arc = document.getElementById('ringArc');
+    if (arc) { arc.style.stroke = color; arc.setAttribute('stroke-dashoffset', dashoffset); }
+
+    document.getElementById('detailDist').textContent = pet.isLost ? '--' : pet.distance.toFixed(1);
+    const badge = document.getElementById('detailZoneBadge');
+    badge.className = 'zone-badge ' + z;
+    badge.textContent = z.toUpperCase();
+
+    const fill = document.getElementById('detailRssiFill');
+    fill.style.width = pct + '%';
+    fill.style.background = color;
+
+    document.getElementById('detailRssi').textContent = 'RSSI: ' + (pet.isLost ? '--' : Math.round(pet.smoothedRssi));
+    document.getElementById('detailConf').textContent = 'Confidence: ' + pet.confidence + '%';
+    document.getElementById('rescueIdDisplay').textContent = pet.rescueId;
+
+    // Why text
+    const trend = pet.behavior.getTrend();
+    const why = trend === 'approaching' ? pet.name + ' is coming closer. Signal improving.' :
+      trend === 'retreating' ? pet.name + ' is moving away. Signal declining.' :
+      pet.isLost ? 'No signal detected. Check if the BLE tag is on.' :
+      'Signal is stable. ' + pet.name + ' is in the ' + z + ' zone.';
+    document.getElementById('detailWhy').textContent = why;
+
+    VoiceRecall.updateUI(pet);
+  },
+
+  renderSettings() {
+    this._updateThresholdUI();
+    const el = document.getElementById('petMgmtList');
+    el.innerHTML = this.pets.map(p =>
+      `<div class="setting-row">
+        <div><span style="font-size:1.2rem">${p.icon}</span> ${p.name}
+        <div class="setting-desc">ID: ${p.rescueId} · Added: ${new Date(p.addedAt).toLocaleDateString()}</div></div>
+        <button class="btn btn-sm" style="background:var(--danger)" onclick="if(confirm('Remove ${p.name}?'))App.removePet('${p.id}')">🗑</button>
+      </div>`
+    ).join('');
+
+    // Diagnostics
+    const diag = document.getElementById('diagPanel');
+    diag.innerHTML = [
+      ['Version', 'v3.8'],
+      ['Pets', this.pets.length],
+      ['Profile', PROFILES[this.profile].label],
+      ['High Alert', this.highAlert ? 'ON' : 'OFF'],
+      ['BLE', BLE.scanning ? 'Active' : 'Inactive'],
+      ['Demo', this.demoMode ? 'Active' : 'Off'],
+      ['Alerts Logged', AlertHistory.items.length],
+      ['Storage', STORAGE_PREFIX + '*']
+    ].map(([k,v]) => `<div class="diag-row"><span>${k}</span><span class="diag-val">${v}</span></div>`).join('');
+
+    // Profile selector
+    document.querySelectorAll('.profile-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.profile === this.profile);
+    });
+    const ha = document.getElementById('toggleHighAlert');
+    if (ha) ha.classList.toggle('active', this.highAlert);
+  },
+
+  // ---- DEMO MODE ----
+  startDemo() {
+    if (this.demoMode) return;
+    if (this.pets.length === 0) {
+      // Create demo pet
+      const p = new Pet('demo-dog-001', 'Demo Dog', '🐶', 'SimTag');
+      this.pets.push(p);
+      this.activePetId = p.id;
+      this.renderPetChips();
+      this.renderPetList();
+      SOS.renderPetSelect();
+    }
+    this.demoMode = true;
+    document.getElementById('demoBtnLabel').textContent = '⏹ Stop';
+    let tick = 0;
+    this.demoTimer = setInterval(() => {
+      const now = Date.now();
+      this.pets.forEach((pet, i) => {
+        const base = -60 - i * 8;
+        const wave = Math.sin((tick + i * 30) / 15) * 20;
+        const noise = (Math.random() - 0.5) * 6;
+        const rssi = Math.max(-100, Math.min(-30, base + wave + noise));
+        pet.processRssi(rssi, now);
+        if (SOS.active && SOS.targetPet && SOS.targetPet.id === pet.id) {
+          SOS.updateHC(rssi);
+        }
+      });
+      tick++;
+      this.renderPetList();
+      this.renderPetChips();
+      const ap = this.getActivePet();
+      if (ap && Nav.current === 'detail') this.renderPetDetail(ap);
+    }, PROFILES[this.profile].interval);
+  },
+
+  stopDemo() {
+    this.demoMode = false;
+    if (this.demoTimer) { clearInterval(this.demoTimer); this.demoTimer = null; }
+    document.getElementById('demoBtnLabel').textContent = '▶ Demo';
+  },
+
+  toggleDemo() {
+    if (this.demoMode) this.stopDemo(); else this.startDemo();
+  },
+
+  // ---- WATCHDOG ----
+  _startWatchdog() {
+    this.watchdogTimer = setInterval(() => {
+      const now = Date.now();
+      this.pets.forEach(pet => {
+        if (pet.lastSeen && now - pet.lastSeen > WATCHDOG_TIMEOUT) {
+          const oldZone = pet.zone.stable;
+          if (oldZone !== 'lost') {
+            pet.zone.stable = 'lost';
+            this.onZoneChange(pet, oldZone, 'lost');
+          }
+        }
+      });
+    }, 3000);
+  },
+
+  // ---- SHARE & INSTALL (NEW in V3.8) ----
+  shareApp() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Santa Claus AI',
+        text: 'Free offline pet safety system — invisible leash for your pets!',
+        url: window.location.href
+      }).catch(() => {});
+    } else {
+      // Fallback: copy URL
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        App.toast('Link copied to clipboard');
+      }).catch(() => { App.toast('Share not supported'); });
+    }
+  },
+
+  _setupInstallPrompt() {
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      this.deferredInstallPrompt = e;
+      document.getElementById('installBanner').classList.add('show');
+    });
+  },
+
+  installPWA() {
+    if (this.deferredInstallPrompt) {
+      this.deferredInstallPrompt.prompt();
+      this.deferredInstallPrompt.userChoice.then(result => {
+        if (result.outcome === 'accepted') App.toast('App installed! 🎉');
+        this.deferredInstallPrompt = null;
+        document.getElementById('installBanner').classList.remove('show');
+      });
+    }
+  },
+
+  dismissInstall() {
+    document.getElementById('installBanner').classList.remove('show');
+  },
+
+  // ---- DATA EXPORT/IMPORT ----
+  exportData() {
+    const data = {
+      version: '3.8',
+      exported: new Date().toISOString(),
+      pets: this.pets.map(p => ({
+        id: p.id, name: p.name, icon: p.icon, deviceName: p.deviceName,
+        addedAt: p.addedAt, rescueId: p.rescueId, voiceData: p.voiceData,
+        qlearn: p.qlearn.export()
+      })),
+      settings: { thresholds: this.thresholds, profile: this.profile, highAlert: this.highAlert },
+      alertHistory: AlertHistory.items
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'santa-ai-backup-' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    App.toast('Backup downloaded');
+  },
+
+  importData() {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = '.json';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.pets) {
+            this.pets = data.pets.map(d => {
+              const p = new Pet(d.id, d.name, d.icon, d.deviceName);
+              p.addedAt = d.addedAt; p.rescueId = d.rescueId;
+              p.voiceData = d.voiceData || null;
+              if (d.qlearn) p.qlearn.import(d.qlearn);
+              return p;
+            });
+            this.savePets();
+          }
+          if (data.settings) {
+            this.thresholds = data.settings.thresholds || this.thresholds;
+            this.profile = data.settings.profile || 'balanced';
+            this.highAlert = data.settings.highAlert || false;
+            this.saveSettings();
+          }
+          if (data.alertHistory) {
+            AlertHistory.items = data.alertHistory;
+            AlertHistory.save();
+          }
+          this.renderPetChips();
+          this.renderPetList();
+          App.toast('Data restored ✓');
+        } catch(err) { App.toast('Invalid backup file'); }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  },
+
+  downloadSource() {
+    const html = document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'santa-AI_complete_V38.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    App.toast('Source code downloaded');
+  },
+
+  // ---- PWA ----
+  _registerPWA() {
+    const manifest = {
+      name: 'Santa Claus AI',
+      short_name: 'SantaAI',
+      description: 'Offline AI-Powered Pet Safety System v3.8',
+      start_url: '.', display: 'standalone',
+      background_color: '#1a1a2e', theme_color: '#e94560',
+      icons: [{ src: 'data:image/svg+xml,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">🎅</text></svg>'
+      ), sizes: '512x512', type: 'image/svg+xml' }]
+    };
+    const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+    document.getElementById('pwa-manifest').href = URL.createObjectURL(blob);
+
+    if ('serviceWorker' in navigator) {
+      const swCode = `
+        const CACHE='santa-ai-v38';
+        self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./'])));self.skipWaiting();});
+        self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));});
+        self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));});
+      `;
+      const swBlob = new Blob([swCode], { type: 'application/javascript' });
+      navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+    }
+
+    // Request notification permission (non-blocking)
+    if ('Notification' in window && Notification.permission === 'default') {
+      // Will be asked on first zone change
+    }
+  },
+
+  // ---- TOAST ----
+  toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2500);
+  }
+};
+
+// ============================================================
+// BOOT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => App.init());
+</script>
+</body>
+</html>

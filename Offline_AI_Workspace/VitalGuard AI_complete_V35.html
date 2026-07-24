@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#c0392b">
+<title>Santa Claus AI v3.5 — Offline Pet Safety</title>
+<link rel="manifest" id="pwa-manifest">
+<style>
+/* ============================================================
+   SANTA CLAUS AI v3.5 — MASTER STYLESHEET
+   © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+   https://mcorpai.org | contact@mcorpai.org
+   Managed by: https://mediatorsfoundation.org
+   M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
+   Humanitarian use only. Military/surveillance use prohibited.
+   Zero External Dependencies | 100% Offline | Vanilla CSS/JS
+   ============================================================ */
+:root{--bg-primary:#0d1117;--bg-secondary:#161b22;--bg-card:#1c2333;--bg-elevated:#21283b;--text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;--accent-red:#c0392b;--accent-green:#2ecc71;--accent-yellow:#f1c40f;--accent-orange:#e67e22;--accent-blue:#3498db;--zone-safe:#2ecc71;--zone-caution:#f1c40f;--zone-warning:#e67e22;--zone-danger:#e74c3c;--zone-lost:#9b59b6;--border-color:#30363d;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--shadow-soft:0 2px 12px rgba(0,0,0,.3);--tr-fast:.15s ease;--tr-norm:.3s ease;--font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--font-mono:'Courier New',Courier,monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;user-select:none}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:3px}
+#app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:72px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:14px 20px 10px;text-align:center;border-bottom:1px solid var(--border-color);position:sticky;top:0;z-index:100}
+.header-logo{font-size:2rem}.header-title{font-family:'Georgia',serif;font-size:1.4rem;color:var(--accent-red);letter-spacing:1px;text-shadow:0 0 20px rgba(192,57,43,.4)}
+.header-sub{font-size:.68rem;color:var(--text-muted);margin-top:2px}
+.header-mission{font-size:.62rem;color:var(--accent-blue);margin-top:3px;font-style:italic;opacity:.85;line-height:1.3}
+.header-disclaimer{font-size:.58rem;color:var(--accent-orange);margin-top:3px;line-height:1.3;opacity:.9}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg-secondary);border-top:1px solid var(--border-color);display:flex;z-index:100;max-width:480px;margin:0 auto}
+.bnav-btn{flex:1;padding:8px 4px 6px;text-align:center;cursor:pointer;border:none;background:none;color:var(--text-muted);font-size:.63rem;font-family:var(--font-body);display:flex;flex-direction:column;align-items:center;gap:2px;transition:color var(--tr-fast)}
+.bnav-btn .bnav-icon{font-size:1.3rem}.bnav-btn.active{color:var(--accent-red)}.bnav-btn:active{opacity:.7}
+.panel{display:none;padding:16px;animation:fadeIn .25s ease}.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-color);padding:14px;margin-bottom:10px}
+.pet-card{display:flex;align-items:center;gap:12px;padding:14px;margin-bottom:10px;background:var(--bg-card);border-radius:var(--radius-md);border:2px solid var(--border-color);transition:all var(--tr-norm);cursor:pointer;position:relative}
+.pet-card:active{transform:scale(.98)}
+.pet-card.zone-safe{border-color:rgba(46,204,113,.4)}.pet-card.zone-caution{border-color:rgba(241,196,15,.5)}.pet-card.zone-warning{border-color:rgba(230,126,34,.6)}.pet-card.zone-danger{border-color:var(--zone-danger);box-shadow:0 0 15px rgba(231,76,60,.25);animation:pulseDanger 1.2s ease infinite}.pet-card.zone-lost{border-color:var(--zone-lost);opacity:.85}
+@keyframes pulseDanger{0%,100%{box-shadow:0 0 15px rgba(231,76,60,.25)}50%{box-shadow:0 0 25px rgba(231,76,60,.45)}}
+.pet-icon-circle{width:48px;height:48px;border-radius:50%;background:var(--bg-elevated);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.pet-details{flex:1;min-width:0}.pet-name{font-weight:700;font-size:.95rem;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pet-status-row{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text-secondary)}
+.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pet-signal{text-align:right;flex-shrink:0}.pet-rssi{font-size:.9rem;font-weight:600;font-family:var(--font-mono);line-height:1}
+.trend-arrow{font-size:.7rem;margin-left:2px}
+.zone-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.6rem;font-weight:700;letter-spacing:.5px;margin-top:3px;color:#000}
+.zone-badge.safe{background:var(--zone-safe)}.zone-badge.caution{background:var(--zone-caution)}.zone-badge.warning{background:var(--zone-warning)}.zone-badge.danger{background:var(--zone-danger);color:#fff}.zone-badge.lost{background:var(--zone-lost);color:#fff}
+.pet-conf{font-size:.6rem;color:var(--text-muted);margin-top:2px}
+.pet-why{font-size:.58rem;color:var(--accent-orange);margin-top:1px;font-style:italic}
+.section-title{font-size:.85rem;font-weight:700;margin-bottom:10px;color:var(--text-primary);display:flex;align-items:center;gap:6px}
+.btn{padding:10px 18px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:var(--font-body);font-size:.85rem;font-weight:600;transition:all var(--tr-fast);text-align:center}
+.btn:active{transform:scale(.96)}.btn-primary{background:var(--accent-red);color:#fff}.btn-success{background:var(--accent-green);color:#000}
+.btn-secondary{background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--border-color)}
+.btn-danger-outline{background:transparent;color:var(--zone-danger);border:1px solid var(--zone-danger);font-size:.75rem;padding:6px 12px}
+.btn-sm{font-size:.75rem;padding:6px 12px}.btn-block{width:100%}
+.btn-add{background:linear-gradient(135deg,var(--accent-red),#e74c3c);color:#fff;font-size:1rem;padding:14px;border-radius:var(--radius-md);width:100%;margin-top:8px;box-shadow:var(--shadow-soft)}
+.hidden{display:none!important}
+.text-center{text-align:center}.text-muted{color:var(--text-muted)}
+.divider{height:1px;background:var(--border-color);margin:16px 0}
+.empty-state{text-align:center;padding:40px 20px}.empty-icon{font-size:3.5rem;margin-bottom:12px}.empty-text{color:var(--text-secondary);font-size:.9rem;line-height:1.5}
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:var(--bg-elevated);color:var(--text-primary);padding:10px 20px;border-radius:var(--radius-lg);font-size:.82rem;z-index:9999;border:1px solid var(--border-color);box-shadow:var(--shadow-soft);white-space:nowrap;max-width:90%}
+/* OVERLAY */
+.overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg-primary);z-index:200;overflow-y:auto;padding:0}
+.overlay.active{display:block}.overlay-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border-color);position:sticky;top:0;background:var(--bg-primary);z-index:10}
+.overlay-title{font-weight:700;font-size:1.05rem}.overlay-close{background:none;border:none;color:var(--text-primary);font-size:1.4rem;cursor:pointer;padding:4px 8px}
+.overlay-body{padding:16px 20px 80px}
+/* WIZARD */
+.wizard-step{display:none}.wizard-step.active{display:block}
+.step-pills{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.step-pill{width:28px;height:28px;border-radius:50%;background:var(--bg-elevated);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;border:2px solid var(--border-color)}
+.step-pill.current{border-color:var(--accent-red);color:var(--accent-red)}.step-pill.done{background:var(--accent-green);color:#000;border-color:var(--accent-green)}
+.scan-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--bg-elevated);border-radius:var(--radius-sm);margin-bottom:6px;border:2px solid transparent;cursor:pointer;transition:all var(--tr-fast)}
+.scan-item.selected{border-color:var(--accent-green);background:rgba(46,204,113,.08)}
+.scan-item-name{font-weight:600;font-size:.85rem}.scan-item-id{font-size:.65rem;color:var(--text-muted);font-family:var(--font-mono)}
+.tag-score{font-size:.65rem;color:var(--accent-blue);margin-top:2px}
+.scan-item-right{text-align:right}.scan-rssi{font-size:.85rem;font-weight:600;font-family:var(--font-mono)}
+.rssi-bar-track{width:60px;height:4px;background:var(--bg-primary);border-radius:2px;margin-top:4px}
+.rssi-bar-fill{height:100%;border-radius:2px;transition:width .3s}
+.icon-picker{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0}
+.icon-opt{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border-radius:var(--radius-sm);background:var(--bg-elevated);border:2px solid transparent;cursor:pointer}
+.icon-opt.selected{border-color:var(--accent-green);background:rgba(46,204,113,.1)}
+/* SOS */
+.sos-active{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;flex-direction:column;align-items:center;justify-content:center;background:#000}
+.sos-active.active{display:flex}
+.sos-active-text{font-size:2rem;font-weight:900;color:#fff;text-align:center;padding:20px;letter-spacing:2px}
+.hc-display{text-align:center;padding:20px;background:var(--bg-card);border-radius:var(--radius-md);margin:10px 0}
+.hc-arrow{font-size:3rem;display:block;margin-bottom:8px}
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-color)}
+.toggle{width:44px;height:24px;border-radius:12px;background:var(--bg-elevated);border:1px solid var(--border-color);position:relative;cursor:pointer;transition:all var(--tr-fast);flex-shrink:0}
+.toggle::after{content:'';width:20px;height:20px;border-radius:50%;background:var(--text-muted);position:absolute;top:1px;left:1px;transition:all var(--tr-fast)}
+.toggle.on{background:var(--accent-green);border-color:var(--accent-green)}.toggle.on::after{left:22px;background:#fff}
+/* TIP CARDS */
+.tip-card{padding:14px;border-radius:var(--radius-sm);margin-bottom:10px;border-left:4px solid var(--accent-blue);background:var(--bg-card)}
+.tip-card.warn{border-left-color:var(--accent-orange)}.tip-card.danger{border-left-color:var(--zone-danger)}
+.tip-card.info{border-left-color:var(--accent-blue)}
+.tip-title{font-weight:700;font-size:.85rem;margin-bottom:4px}.tip-body{font-size:.78rem;color:var(--text-secondary);line-height:1.5}
+/* PET DETAIL OVERLAY */
+.detail-ring{width:160px;height:160px;border-radius:50%;border:6px solid var(--zone-safe);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:20px auto;transition:all .5s;position:relative}
+.detail-ring.zone-safe{border-color:var(--zone-safe);box-shadow:0 0 30px rgba(46,204,113,.2)}.detail-ring.zone-caution{border-color:var(--zone-caution);box-shadow:0 0 30px rgba(241,196,15,.3)}.detail-ring.zone-warning{border-color:var(--zone-warning);box-shadow:0 0 30px rgba(230,126,34,.3)}.detail-ring.zone-danger{border-color:var(--zone-danger);box-shadow:0 0 40px rgba(231,76,60,.4);animation:pulseDanger 1.2s ease infinite}.detail-ring.zone-lost{border-color:var(--zone-lost);box-shadow:0 0 30px rgba(155,89,182,.3)}
+.detail-dist{font-size:2rem;font-weight:900;line-height:1}.detail-unit{font-size:.7rem;color:var(--text-muted)}.detail-zone{font-size:.75rem;font-weight:700;margin-top:4px}
+.rssi-meter{height:8px;background:var(--bg-elevated);border-radius:4px;margin:8px 0;overflow:hidden}.rssi-meter-fill{height:100%;border-radius:4px;transition:width .4s,background .4s}
+.signal-bars{display:flex;gap:3px;align-items:flex-end;justify-content:center;height:20px;margin:8px 0}
+.signal-bars .bar{width:6px;border-radius:2px;background:var(--text-muted);transition:background .3s}
+.alert-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:.75rem;border-bottom:1px solid rgba(48,54,61,.5)}
+.alert-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px}
+/* LEASH PRESETS */
+.leash-row{display:flex;gap:6px;margin:8px 0}.leash-btn{flex:1;padding:8px;text-align:center;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:var(--bg-elevated);color:var(--text-secondary);cursor:pointer;font-size:.75rem;font-weight:600;transition:all var(--tr-fast)}
+.leash-btn.active{border-color:var(--accent-green);color:var(--accent-green);background:rgba(46,204,113,.08)}
+.slider-row{display:flex;align-items:center;gap:8px;margin:6px 0}
+.slider-row label{font-size:.72rem;color:var(--text-secondary);min-width:55px}
+.slider-row input[type=range]{flex:1;accent-color:var(--accent-blue)}
+.slider-row .val{font-size:.72rem;color:var(--accent-blue);min-width:50px;text-align:right;font-family:var(--font-mono)}
+/* CHARITY */
+.charity-box{background:linear-gradient(135deg,rgba(46,204,113,.08),rgba(52,152,219,.08));border:1px solid rgba(46,204,113,.25);border-radius:var(--radius-md);padding:14px;margin:10px 0;text-align:center}
+.charity-box p{font-size:.8rem;margin:4px 0}
+.highlight-box{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:14px;margin:10px 0}
+.highlight-box p{font-size:.8rem;margin:4px 0;line-height:1.5;color:var(--text-secondary)}
+.warning-legal{background:rgba(231,76,60,.06);border:1px solid rgba(231,76,60,.2);border-radius:var(--radius-md);padding:12px;margin:10px 0}
+.warning-legal p{font-size:.78rem;margin:3px 0;color:var(--text-secondary)}
+.perf-select{display:flex;gap:4px;margin:8px 0}.perf-opt{flex:1;padding:8px 4px;text-align:center;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:var(--bg-elevated);color:var(--text-muted);cursor:pointer;font-size:.68rem;font-weight:600}
+.perf-opt.active{border-color:var(--accent-blue);color:var(--accent-blue);background:rgba(52,152,219,.08)}
+.rescue-card{background:linear-gradient(135deg,rgba(192,57,43,.08),rgba(231,76,60,.05));border:2px solid rgba(192,57,43,.3);border-radius:var(--radius-md);padding:16px;margin:10px 0;text-align:center}
+.rescue-id{font-size:1.6rem;font-weight:900;font-family:var(--font-mono);letter-spacing:4px;color:var(--accent-red);margin:8px 0}
+.collapsible-header{display:flex;align-items:center;justify-content:space-between;padding:12px 0;cursor:pointer;border-bottom:1px solid var(--border-color)}
+.collapsible-header .arrow{transition:transform .2s}.collapsible-header.open .arrow{transform:rotate(90deg)}
+.collapsible-body{display:none;padding:12px 0}.collapsible-body.open{display:block}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="header">
+    <div class="header-logo">🎅</div>
+    <div class="header-title">Santa Claus AI</div>
+    <div class="header-sub">v3.5 — Offline Pet Safety | M-Corp Ethical AI</div>
+    <div class="header-mission">"Every pet deserves a guardian angel — even when you can't see them."</div>
+    <div class="header-disclaimer">Bluetooth Invisible Leash — NOT GPS. All data stays on your device.</div>
+  </header>
+
+  <!-- HOME -->
+  <div id="panel-home" class="panel active">
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon">🐾</div>
+      <div class="empty-text">No pets registered yet.<br>Add your pet with a cheap BLE tag ($2–$5).</div>
+      <button class="btn-add" onclick="Wizard.open()">+ Add New Pet</button>
+    </div>
+    <div id="dash-controls" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="section-title" style="margin-bottom:0">🐾 My Pets</div>
+        <div style="display:flex;gap:4px">
+          <button class="btn btn-sm btn-secondary" id="btn-mode-all" onclick="App.setTrackMode('all')" style="font-size:.65rem">Track All</button>
+          <button class="btn btn-sm btn-secondary" id="btn-mode-focus" onclick="App.setTrackMode('focus')" style="font-size:.65rem">Focus</button>
+        </div>
+      </div>
+      <div id="scan-status-bar" style="font-size:.68rem;color:var(--text-muted);margin-bottom:8px"></div>
+    </div>
+    <div id="pet-list"></div>
+    <div id="dash-controls2" class="hidden">
+      <button class="btn-add" onclick="Wizard.open()">+ Add New Pet</button>
+    </div>
+  </div>
+
+  <!-- SOS -->
+  <div id="panel-sos" class="panel">
+    <div id="sos-no-pets" class="text-center" style="padding:40px 0;color:var(--text-muted)">Add a pet first to use SOS Finder.</div>
+    <div id="sos-content" class="hidden">
+      <div class="section-title">🔍 SOS Pet Finder</div>
+      <div id="sos-pet-select"></div>
+      <div class="hc-display">
+        <div id="hc-arrow" class="hc-arrow">🔍</div>
+        <div id="hc-text" style="font-size:.9rem;font-weight:600;margin-bottom:4px">Select a pet to begin</div>
+        <div id="hc-rssi" style="font-size:.75rem;color:var(--text-muted);font-family:var(--font-mono)">--</div>
+      </div>
+      <div id="sos-snapshot" class="card" style="font-size:.8rem;line-height:1.6"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="SOS.saveLocation()">📍 Save Location</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="SOS.shareMessage()">📤 Share Alert</button>
+      </div>
+      <div class="card" style="margin-top:12px;text-align:center">
+        <div style="font-size:.7rem;color:var(--text-muted);margin-bottom:8px">Hold 2 seconds for full alarm</div>
+        <button class="btn btn-primary" style="font-size:1.1rem;padding:16px 30px;border-radius:50px" ontouchstart="SOS.holdStart()" ontouchend="SOS.holdEnd()" onmousedown="SOS.holdStart()" onmouseup="SOS.holdEnd()">🚨 SOS ALARM</button>
+      </div>
+      <div id="sos-focus-banner" class="hidden" style="margin-top:10px;padding:10px;background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.3);border-radius:var(--radius-sm);font-size:.72rem;color:var(--accent-blue);text-align:center">
+        🎯 Focus Mode ON — tracking only selected pet for best accuracy
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div id="panel-tips" class="panel">
+    <div class="section-title">📋 Must-Read Safety Tips</div>
+    <div class="tip-card danger"><div class="tip-title">🚫 TOXIC FOODS</div><div class="tip-body">Chocolate, grapes/raisins, xylitol (sugar-free gum), onions, garlic, macadamia nuts, alcohol, caffeine, avocado pits. Keep ALL of these away from your pet.</div></div>
+    <div class="tip-card warn"><div class="tip-title">⚡ If Your Dog Ate Something Toxic</div><div class="tip-body">Call your vet IMMEDIATELY. Do NOT induce vomiting unless instructed. Note what was eaten, how much, and when. Time is critical — especially for xylitol and chocolate.</div></div>
+    <div class="tip-card info"><div class="tip-title">✅ Safe Snacks</div><div class="tip-body">Carrots, blueberries, watermelon (seedless), plain cooked chicken, pumpkin (plain), apple slices (no seeds), green beans, sweet potato.</div></div>
+    <div class="divider"></div>
+    <div class="section-title">📡 BLE Tag Tips</div>
+    <div class="tip-card info"><div class="tip-title">🏷️ How to Buy a Tag</div><div class="tip-body">Search: "iTag", "Key Finder", or "Anti-lost BLE". Cost: $2–$5. Uses CR2032 battery (6–12 months). Waterproof case recommended for outdoor use.</div></div>
+    <div class="tip-card info"><div class="tip-title">🔋 Battery & Range</div><div class="tip-body">Typical BLE range: 10–30m (clear line of sight). Walls, metal, water, and crowds reduce range significantly. Replace battery when alerts become unreliable.</div></div>
+    <div class="tip-card warn"><div class="tip-title">📱 Important Limitations</div><div class="tip-body">This app uses Bluetooth signal strength for proximity alerts — it is NOT GPS and cannot pinpoint a location on a map. Android Chrome recommended. iOS BLE scanning is not supported due to platform policy. Screen lock may pause scanning.</div></div>
+    <div class="tip-card info"><div class="tip-title">🎆 High Alert (Fireworks/Storms)</div><div class="tip-body">Enable "High Alert" in Settings before events. Tightens boundaries and increases monitoring sensitivity.</div></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="panel-settings" class="panel">
+    <div class="section-title">⚙️ Settings</div>
+    <div class="card">
+      <div style="font-size:.78rem;font-weight:700;margin-bottom:8px">🐾 Registered Pets</div>
+      <div id="settings-pet-list"></div>
+    </div>
+    <div class="card">
+      <div style="font-size:.78rem;font-weight:700;margin-bottom:8px">🔔 Alerts</div>
+      <div class="setting-row"><span style="font-size:.82rem">Sound Alerts</span><div class="toggle on" id="toggle-sound" onclick="Settings.toggle('sound')"></div></div>
+      <div class="setting-row"><span style="font-size:.82rem">Vibration</span><div class="toggle on" id="toggle-vibrate" onclick="Settings.toggle('vibrate')"></div></div>
+      <div class="setting-row"><span style="font-size:.82rem">Desktop Notifications</span><div class="toggle" id="toggle-notif" onclick="Settings.toggleNotif()"></div></div>
+      <div id="notif-hint" class="hidden" style="font-size:.65rem;color:var(--accent-orange);padding:4px 0">Tap toggle to request permission. If denied, enable in browser settings.</div>
+    </div>
+    <div class="card">
+      <div style="font-size:.78rem;font-weight:700;margin-bottom:8px">⚡ Performance</div>
+      <div class="perf-select">
+        <div class="perf-opt" id="perf-saver" onclick="Settings.setPerf('saver')">🔋 Battery Saver</div>
+        <div class="perf-opt active" id="perf-balanced" onclick="Settings.setPerf('balanced')">⚖️ Balanced</div>
+        <div class="perf-opt" id="perf-fast" onclick="Settings.setPerf('fast')">⚡ Fast</div>
+      </div>
+      <div class="setting-row"><span style="font-size:.82rem">⚡ High Alert Mode</span><div class="toggle" id="toggle-highalert" onclick="Settings.toggle('highAlert')"></div></div>
+    </div>
+    <div class="card">
+      <div style="font-size:.78rem;font-weight:700;margin-bottom:8px">💾 Data</div>
+      <button class="btn btn-secondary btn-sm btn-block" onclick="DataManager.exportAll()" style="margin-bottom:6px">📤 Export Backup</button>
+      <button class="btn btn-secondary btn-sm btn-block" onclick="DataManager.importFile()" style="margin-bottom:6px">📥 Import Backup</button>
+      <input type="file" id="import-input" accept=".json" class="hidden" onchange="DataManager.handleImport(event)">
+      <button class="btn btn-danger-outline btn-sm btn-block" onclick="Settings.resetApp()">🗑️ Factory Reset (Santa AI data only)</button>
+    </div>
+    <div class="card">
+      <button class="btn btn-secondary btn-sm btn-block" onclick="Help.open()" style="margin-bottom:6px">📖 User Manual & Help</button>
+      <button class="btn btn-secondary btn-sm btn-block" onclick="Legal.open()" style="margin-bottom:6px">⚖️ About / Legal / Partnerships</button>
+      <button class="btn btn-secondary btn-sm btn-block" onclick="Diag.open()">🔧 Diagnostics</button>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="bnav-btn active" data-tab="home" onclick="Nav.go('home')"><span class="bnav-icon">🏠</span>Home</button>
+    <button class="bnav-btn" data-tab="sos" onclick="Nav.go('sos')"><span class="bnav-icon">🔍</span>SOS</button>
+    <button class="bnav-btn" data-tab="tips" onclick="Nav.go('tips')"><span class="bnav-icon">📋</span>Tips</button>
+    <button class="bnav-btn" data-tab="settings" onclick="Nav.go('settings')"><span class="bnav-icon">⚙️</span>Settings</button>
+  </nav>
+</div>
+
+<!-- WIZARD OVERLAY -->
+<div id="wizard-overlay" class="overlay">
+  <div class="overlay-header"><span class="overlay-title">🏷️ Add New Pet</span><button class="overlay-close" onclick="Wizard.close()">✕</button></div>
+  <div class="overlay-body">
+    <div class="step-pills"><div class="step-pill current" id="sp-1">1</div><div class="step-pill" id="sp-2">2</div><div class="step-pill" id="sp-3">3</div></div>
+    <div class="wizard-step active" id="wiz-step-1">
+      <h3 style="text-align:center;margin-bottom:8px">Step 1: Find Your Tag</h3>
+      <p style="text-align:center;font-size:.78rem;color:var(--text-secondary);margin-bottom:12px">Hold BLE tag 2–5 cm from your phone</p>
+      <div id="scan-status" style="text-align:center;font-size:.8rem;color:var(--accent-blue);margin-bottom:10px">Starting scan...</div>
+      <div id="scan-list"></div>
+      <button class="btn btn-secondary btn-sm btn-block" style="margin-top:8px" onclick="Wizard.rescan()">🔄 Re-scan</button>
+    </div>
+    <div class="wizard-step" id="wiz-step-2">
+      <h3 style="text-align:center;margin-bottom:8px">Step 2: Verify Tag</h3>
+      <p style="text-align:center;font-size:.78rem;color:var(--text-secondary);margin-bottom:12px">Move tag 2–3 meters away from phone</p>
+      <div style="text-align:center;margin:16px 0"><div style="font-size:2.5rem;font-weight:900;font-family:var(--font-mono)" id="verify-delta">0</div><div style="font-size:.72rem;color:var(--text-muted)">Signal Drop (dBm)</div></div>
+      <div id="verify-status" style="text-align:center;font-size:.82rem;margin-bottom:12px;color:var(--text-muted)">Waiting for movement...</div>
+      <button class="btn btn-success btn-block hidden" id="btn-verified" onclick="Wizard.goStep3()">✅ Confirmed — Next</button>
+      <button class="btn btn-secondary btn-sm btn-block" id="btn-skip-verify" onclick="Wizard.skipVerify()" style="margin-top:8px">Skip Verification (not recommended)</button>
+    </div>
+    <div class="wizard-step" id="wiz-step-3">
+      <h3 style="text-align:center;margin-bottom:8px">Step 3: Name Your Pet</h3>
+      <input type="text" id="input-name" placeholder="Pet name..." maxlength="20" style="width:100%;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:var(--bg-elevated);color:var(--text-primary);font-size:1rem;margin-bottom:12px;outline:none">
+      <div style="font-size:.78rem;color:var(--text-secondary);margin-bottom:6px;text-align:center">Choose an icon:</div>
+      <div id="icon-picker"></div>
+      <button class="btn btn-success btn-block" style="margin-top:16px" onclick="Wizard.save()">🎉 Save & Start Protection</button>
+    </div>
+  </div>
+</div>
+
+<!-- PET DETAIL OVERLAY -->
+<div id="detail-overlay" class="overlay">
+  <div class="overlay-header"><span class="overlay-title" id="detail-title">Pet Detail</span><button class="overlay-close" onclick="Detail.close()">✕</button></div>
+  <div class="overlay-body" id="detail-body"></div>
+</div>
+
+<!-- HELP OVERLAY -->
+<div id="help-overlay" class="overlay">
+  <div class="overlay-header"><span class="overlay-title">📖 User Manual</span><button class="overlay-close" onclick="Help.close()">✕</button></div>
+  <div class="overlay-body" id="help-body"></div>
+</div>
+
+<!-- LEGAL OVERLAY -->
+<div id="legal-overlay" class="overlay">
+  <div class="overlay-header"><span class="overlay-title">⚖️ About & Legal</span><button class="overlay-close" onclick="Legal.close()">✕</button></div>
+  <div class="overlay-body" id="legal-body"></div>
+</div>
+
+<!-- DIAGNOSTICS OVERLAY -->
+<div id="diag-overlay" class="overlay">
+  <div class="overlay-header"><span class="overlay-title">🔧 Diagnostics</span><button class="overlay-close" onclick="Diag.close()">✕</button></div>
+  <div class="overlay-body" id="diag-body"></div>
+</div>
+
+<!-- SOS ACTIVE SCREEN -->
+<div id="sos-active" class="sos-active">
+  <div id="sos-strobe-area" style="position:absolute;top:0;left:0;right:0;bottom:0"></div>
+  <div class="sos-active-text" style="position:relative;z-index:1">🚨 LOST PET ALERT 🚨<br><br><span id="sos-active-name"></span></div>
+  <button class="btn btn-secondary" style="position:relative;z-index:1;margin-top:20px" onclick="SOS.deactivate()">✕ Cancel Alarm</button>
+</div>
+
+<script>
+/* ============================================================
+   SANTA CLAUS AI v3.5 — COMPLETE JAVASCRIPT
+   © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+   M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
+   Humanitarian use only. Military/surveillance use PROHIBITED.
+   ============================================================ */
+'use strict';
+
+// --- CONSTANTS ---
+const APP_VERSION = '3.5';
+const SCHEMA_VERSION = 1;
+const DB_NAME = 'SantaAI_V35';
+const DB_VERSION = 1;
+const LS_PREFIX = 'santa35_';
+
+const ICONS = ['🐶','🐕','🦮','🐩','🐕‍🦺','🐺','🦊','🐱','🐈','🐈‍⬛','🐰','🐹','🐾','🎅','❤️','⭐'];
+const MAX_RSSI_SAMPLES = 50;
+const MAX_RESTARTS_PER_MIN = 4;
+const ALERT_COOLDOWN_MS = 8000;
+const ZONE_CONFIRM_COUNT = 4;
+const ZONE_CONFIRM_MS = 3000;
+const ZONE_ORDER = { SAFE:0, CAUTION:1, WARNING:2, DANGER:3, LOST:4 };
+
+// Performance profiles
+const PERF_PROFILES = {
+  saver:   { petInterval:1000, renderInterval:900, lostMs:12000, restartMs:18000, restartCooldown:8000 },
+  balanced:{ petInterval:500,  renderInterval:600, lostMs:9000,  restartMs:14000, restartCooldown:5000 },
+  fast:    { petInterval:250,  renderInterval:350, lostMs:6000,  restartMs:10000, restartCooldown:3000 }
+};
+
+// Default thresholds (dBm) — with hysteresis gap
+const DEFAULT_THRESHOLDS = {
+  cautionEnter:-65, cautionExit:-60,
+  warningEnter:-78, warningExit:-72,
+  dangerEnter:-88, dangerExit:-82
+};
+
+// Leash presets: approximate dBm boundaries for distance
+const LEASH_PRESETS = {
+  '5m':  {cautionEnter:-58,cautionExit:-53,warningEnter:-68,warningExit:-63,dangerEnter:-78,dangerExit:-73},
+  '10m': {cautionEnter:-65,cautionExit:-60,warningEnter:-78,warningExit:-72,dangerEnter:-88,dangerExit:-82},
+  '15m': {cautionEnter:-72,cautionExit:-67,warningEnter:-85,warningExit:-79,dangerEnter:-94,dangerExit:-88}
+};
+
+const ETHICAL_MANIFEST = {
+  version: APP_VERSION,
+  license: 'Hippocratic 3.0 Derivative',
+  purpose: 'Humanitarian pet safety for low-income families',
+  prohibited: ['military','surveillance','weapons','individual_tracking','oppression','border_militarization'],
+  principles: ['minimize_hallucinations','transparency','accessibility','no_data_exploitation','low_resource','no_liability','affordable','simplicity','non_specialist','allow_deletion']
+};
+
+// --- UTILITY ---
+const $ = id => document.getElementById(id);
+const clamp = (v,lo,hi) => Math.max(lo,Math.min(hi,v));
+function median(arr) { if(!arr.length) return 0; const s=[...arr].sort((a,b)=>a-b); const m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; }
+function genRescueId() { const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let r=''; for(let i=0;i<8;i++) r+=c[Math.floor(Math.random()*c.length)]; return r; }
+
+// --- STATE ---
+let perfProfile = PERF_PROFILES.balanced;
+let globalLastProcessMs = 0;
+const GLOBAL_THROTTLE_MS = 80;
+
+// --- TOAST ---
+const Toast = {
+  show(msg, dur=2500) {
+    const el=document.createElement('div'); el.className='toast'; el.textContent=msg;
+    document.body.appendChild(el);
+    setTimeout(()=>{el.style.opacity='0';el.style.transition='0.3s';setTimeout(()=>el.remove(),300)},dur);
+  }
+};
+
+// --- STORAGE (IndexedDB + localStorage fallback, prefix-safe) ---
+const Store = {
+  db:null,
+  async init() {
+    return new Promise(resolve=>{
+      try{
+        const req=indexedDB.open(DB_NAME,DB_VERSION);
+        req.onupgradeneeded=e=>{
+          const db=e.target.result;
+          if(!db.objectStoreNames.contains('pets')) db.createObjectStore('pets',{keyPath:'id'});
+          if(!db.objectStoreNames.contains('settings')) db.createObjectStore('settings',{keyPath:'key'});
+          if(!db.objectStoreNames.contains('ai')) db.createObjectStore('ai',{keyPath:'key'});
+          if(!db.objectStoreNames.contains('alerts')) db.createObjectStore('alerts',{keyPath:'id'});
+        };
+        req.onsuccess=e=>{this.db=e.target.result;resolve()};
+        req.onerror=()=>{console.warn('IndexedDB failed');resolve()};
+      }catch(e){resolve()}
+    });
+  },
+  async savePet(pet) {
+    const data={id:pet.id,name:pet.name,icon:pet.icon,signature:pet.signature,createdAt:pet.createdAt,rescueId:pet.rescueId,thresholds:pet.thresholds,leashPreset:pet.leashPreset,aiToggles:pet.aiToggles};
+    if(this.db){return new Promise(r=>{const tx=this.db.transaction('pets','readwrite');tx.objectStore('pets').put(data);tx.oncomplete=()=>r();tx.onerror=()=>{localStorage.setItem(LS_PREFIX+'pet_'+data.id,JSON.stringify(data));r()}})}
+    localStorage.setItem(LS_PREFIX+'pet_'+data.id,JSON.stringify(data));
+  },
+  async getAllPets() {
+    if(this.db){return new Promise(r=>{const req=this.db.transaction('pets','readonly').objectStore('pets').getAll();req.onsuccess=()=>r(req.result||[]);req.onerror=()=>r(this._lsPets())})}
+    return this._lsPets();
+  },
+  _lsPets() { const p=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(LS_PREFIX+'pet_')){try{p.push(JSON.parse(localStorage.getItem(k)))}catch(e){}}}return p },
+  async deletePet(id) {
+    if(this.db){return new Promise(r=>{const tx=this.db.transaction('pets','readwrite');tx.objectStore('pets').delete(id);tx.oncomplete=()=>r()})}
+    localStorage.removeItem(LS_PREFIX+'pet_'+id);
+  },
+  async clearAll() {
+    if(this.db){const tx=this.db.transaction(['pets','settings','ai','alerts'],'readwrite');tx.objectStore('pets').clear();tx.objectStore('settings').clear();tx.objectStore('ai').clear();tx.objectStore('alerts').clear()}
+    // SAFE: only delete our keys, NEVER localStorage.clear()
+    const toRemove=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(LS_PREFIX))toRemove.push(k)}
+    toRemove.forEach(k=>localStorage.removeItem(k));
+  },
+  async saveSetting(key,value) {
+    if(this.db){return new Promise(r=>{const tx=this.db.transaction('settings','readwrite');tx.objectStore('settings').put({key,value});tx.oncomplete=()=>r()})}
+    localStorage.setItem(LS_PREFIX+'s_'+key,JSON.stringify(value));
+  },
+  async getSetting(key,def) {
+    if(this.db){return new Promise(r=>{const req=this.db.transaction('settings','readonly').objectStore('settings').get(key);req.onsuccess=()=>r(req.result?req.result.value:def);req.onerror=()=>r(def)})}
+    const v=localStorage.getItem(LS_PREFIX+'s_'+key);return v!==null?JSON.parse(v):def;
+  },
+  async saveAI(key,data) {
+    if(this.db){return new Promise(r=>{const tx=this.db.transaction('ai','readwrite');tx.objectStore('ai').put({key,...data});tx.oncomplete=()=>r()})}
+    localStorage.setItem(LS_PREFIX+'ai_'+key,JSON.stringify(data));
+  },
+  async getAI(key) {
+    if(this.db){return new Promise(r=>{const req=this.db.transaction('ai','readonly').objectStore('ai').get(key);req.onsuccess=()=>r(req.result||null);req.onerror=()=>r(null)})}
+    const v=localStorage.getItem(LS_PREFIX+'ai_'+key);return v?JSON.parse(v):null;
+  }
+};
+
+// --- KALMAN FILTER ADVANCED (from V20, with adaptive noise) ---
+class KalmanRSSI {
+  constructor(){this.x=-70;this.v=0;this.P=[[2,0],[0,2]];this.Q=0.15;this.R=5;this.history=[];this.maxHistory=30}
+  update(z){
+    const xPred=this.x+this.v;const pPred=this.P[0][0]+this.Q;const innov=z-xPred;const K=pPred/(pPred+this.R);
+    this.x=xPred+K*innov;this.v=this.v+0.1*(innov-this.v);this.P[0][0]=(1-K)*pPred;
+    this.history.push(z);if(this.history.length>this.maxHistory)this.history.shift();
+    if(this.history.length>=5){const m=this.history.reduce((a,b)=>a+b,0)/this.history.length;const vr=this.history.reduce((a,b)=>a+(b-m)**2,0)/this.history.length;this.R=clamp(vr*0.5,1,15)}
+    return this.x;
+  }
+  getVelocity(){return this.v}
+  reset(){this.x=-70;this.v=0;this.R=5;this.history=[]}
+}
+
+// --- DISTANCE ESTIMATOR (from V20) ---
+class DistanceEstimator {
+  constructor(){this.txPower=-59;this.n=2.5;this.calibPoints=[]}
+  estimate(rssi){if(rssi>=0||isNaN(rssi))return 0;return clamp(Math.pow(10,(this.txPower-rssi)/(10*this.n)),0,100)}
+  addCalibration(rssi,dist){this.calibPoints.push({rssi,dist});this._recalc()}
+  _recalc(){
+    if(this.calibPoints.length<2)return;
+    const p1=this.calibPoints[this.calibPoints.length-2],p2=this.calibPoints[this.calibPoints.length-1];
+    if(p1.dist>0&&p2.dist>0&&p1.dist!==p2.dist){const lr=Math.log10(p2.dist/p1.dist);if(lr!==0){this.n=clamp((p1.rssi-p2.rssi)/(10*lr),1.5,4);this.txPower=p1.rssi+10*this.n*Math.log10(p1.dist)}}
+  }
+  export(){return{txPower:this.txPower,n:this.n,calibPoints:this.calibPoints}}
+  import(d){if(d){this.txPower=d.txPower||this.txPower;this.n=d.n||this.n;this.calibPoints=d.calibPoints||[]}}
+}
+
+// --- Q-LEARNING LITE (adapted from V20, simpler for stability) ---
+class QLearningLite {
+  constructor(){this.qTable={};this.lr=0.3;this.eps=0.2;this.count=0}
+  _key(zone){return zone}
+  _getQ(s){if(!this.qTable[s])this.qTable[s]={widen:0,maintain:0,narrow:0};return this.qTable[s]}
+  chooseAction(zone){const q=this._getQ(this._key(zone));if(Math.random()<this.eps){const a=['widen','maintain','narrow'];return a[Math.floor(Math.random()*3)]}return Object.entries(q).reduce((a,b)=>b[1]>a[1]?b:a,['maintain',-Infinity])[0]}
+  update(zone,isHelpful,action){
+    const s=this._key(zone);const q=this._getQ(s);const reward=isHelpful?1:-1;
+    q[action]=q[action]+this.lr*(reward-q[action]);
+    this.count++;if(this.count>50)this.lr=0.1;if(this.count>200)this.lr=0.05;
+    this.eps=Math.max(0.05,this.eps*0.995);
+  }
+  applyAction(action,thresholds){
+    const step=2;const t={...thresholds};
+    if(action==='widen'){t.cautionEnter=Math.max(-90,t.cautionEnter-step);t.warningEnter=Math.max(-98,t.warningEnter-step);t.dangerEnter=Math.max(-100,t.dangerEnter-step)}
+    else if(action==='narrow'){t.cautionEnter=Math.min(-40,t.cautionEnter+step);t.warningEnter=Math.min(-55,t.warningEnter+step);t.dangerEnter=Math.min(-70,t.dangerEnter+step)}
+    // Maintain exit thresholds relative
+    t.cautionExit=t.cautionEnter+5;t.warningExit=t.warningEnter+6;t.dangerExit=t.dangerEnter+6;
+    return t;
+  }
+  export(){return{qTable:this.qTable,count:this.count,lr:this.lr,eps:this.eps}}
+  import(d){if(d){this.qTable=d.qTable||{};this.count=d.count||0;this.lr=d.lr||0.3;this.eps=d.eps||0.2}}
+}
+
+// --- BEHAVIORAL FINGERPRINT (from V20, simplified) ---
+class BehavioralFingerprint {
+  constructor(){this.window=[];this.windowSize=60}
+  addReading(rssi){this.window.push(rssi);if(this.window.length>this.windowSize)this.window.shift()}
+  getFeatures(){
+    if(this.window.length<10)return null;
+    const w=this.window;const mean=w.reduce((a,b)=>a+b,0)/w.length;
+    const variance=w.reduce((a,b)=>a+(b-mean)**2,0)/w.length;
+    const recent=w.slice(-5);const older=w.slice(-10,-5);
+    const trendMean=recent.reduce((a,b)=>a+b,0)/recent.length;
+    const olderMean=older.length?older.reduce((a,b)=>a+b,0)/older.length:mean;
+    const trend=trendMean-olderMean;
+    return{mean,variance,trend};
+  }
+  classify(){
+    const f=this.getFeatures();if(!f)return'unknown';
+    if(f.trend<-5&&f.variance>30)return'rapid_departure';
+    if(f.trend<-3)return'moving_away';
+    if(f.trend>3)return'approaching';
+    if(f.variance>50)return'unstable';
+    return'stable';
+  }
+}
+
+// --- RING BUFFER ---
+class RingBuffer {
+  constructor(size){this.size=size;this.buf=[]}
+  push(v){this.buf.push(v);if(this.buf.length>this.size)this.buf.shift()}
+  get data(){return this.buf}get length(){return this.buf.length}get last(){return this.buf[this.buf.length-1]}
+  clear(){this.buf=[]}
+  slice(a,b){return this.buf.slice(a,b)}
+}
+
+// --- PET CLASS (Fully Isolated State + AI Modules) ---
+class Pet {
+  constructor(data){
+    this.id=data.id||'pet_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
+    this.name=data.name||'My Pet';
+    this.icon=data.icon||'🐶';
+    this.createdAt=data.createdAt||Date.now();
+    this.signature=data.signature||{};
+    this.rescueId=data.rescueId||genRescueId();
+    this.thresholds=data.thresholds||{...DEFAULT_THRESHOLDS};
+    this.leashPreset=data.leashPreset||'10m';
+    this.aiToggles=data.aiToggles||{qlearn:false,behavior:true};
+    // Runtime (NOT persisted)
+    this.kalman=new KalmanRSSI();
+    this.distance=new DistanceEstimator();
+    this.qlearn=new QLearningLite();
+    this.behavior=new BehavioralFingerprint();
+    this.rssiRing=new RingBuffer(MAX_RSSI_SAMPLES);
+    this.lastSeenMs=0;this.lastRawRssi=null;this.smoothedRssi=-100;this.lastProcessMs=0;
+    this.zone={stable:'SAFE',candidate:'SAFE',candidateCount:0,candidateSinceMs:0,lastAlertMs:0};
+    this.trendArrow='→';this.confidence=0;this.whyText='';
+    this.alertHistory=[];this.ambiguousCount=0;
+    this.distMeters=0;
+  }
+  getMinInterval(){
+    const z=this.zone.stable;
+    const base=perfProfile.petInterval;
+    if(z==='SAFE')return base*2;if(z==='CAUTION')return base*1.4;if(z==='WARNING')return base*0.7;
+    return base*0.5;
+  }
+  ingestRaw(rssi,now){this.lastSeenMs=now;this.lastRawRssi=rssi;this.behavior.addReading(rssi)}
+  processRssi(rssi,now){
+    this.lastSeenMs=now;this.lastRawRssi=rssi;this.lastProcessMs=now;
+    this.smoothedRssi=this.kalman.update(rssi);this.rssiRing.push(this.smoothedRssi);
+    this.behavior.addReading(rssi);
+    this.distMeters=this.distance.estimate(this.smoothedRssi);
+    // Confidence
+    const freshness=clamp(1-(now-this.lastSeenMs)/10000,0,1);
+    const sampleCount=clamp(this.rssiRing.length/20,0,1);
+    const f=this.behavior.getFeatures();
+    const stability=f?clamp(1-f.variance/100,0,1):0.5;
+    this.confidence=Math.round((freshness*0.3+sampleCount*0.3+stability*0.4)*100);
+    // Zone with hysteresis
+    const sr=this.smoothedRssi;const prev=this.zone.stable;let instant;
+    const t=this.thresholds;
+    if(prev==='SAFE'){instant=sr<=t.dangerEnter?'DANGER':sr<=t.warningEnter?'WARNING':sr<=t.cautionEnter?'CAUTION':'SAFE'}
+    else if(prev==='CAUTION'){instant=sr<=t.dangerEnter?'DANGER':sr<=t.warningEnter?'WARNING':sr>t.cautionExit?'SAFE':'CAUTION'}
+    else if(prev==='WARNING'){instant=sr<=t.dangerEnter?'DANGER':sr>t.warningExit?'CAUTION':'WARNING'}
+    else if(prev==='DANGER'){instant=sr>t.dangerExit?'WARNING':'DANGER'}
+    else{instant=sr<=t.dangerEnter?'DANGER':sr<=t.warningEnter?'WARNING':sr<=t.cautionEnter?'CAUTION':'SAFE'}
+    // Stabilize
+    if(instant===this.zone.candidate){this.zone.candidateCount++}else{this.zone.candidate=instant;this.zone.candidateCount=1;this.zone.candidateSinceMs=now}
+    const confirmReq=Settings.prefs.highAlert?Math.max(2,ZONE_CONFIRM_COUNT-1):ZONE_CONFIRM_COUNT;
+    const stable=this.zone.candidateCount>=confirmReq||(now-this.zone.candidateSinceMs>=ZONE_CONFIRM_MS&&this.zone.candidateCount>=2);
+    if(stable&&this.zone.candidate!==this.zone.stable){
+      const prevS=this.zone.stable;this.zone.stable=this.zone.candidate;
+      // Why text
+      if(ZONE_ORDER[this.zone.stable]>ZONE_ORDER[prevS]){
+        const vel=this.kalman.getVelocity();const beh=this.behavior.classify();
+        if(beh==='rapid_departure')this.whyText='Signal weakening fast';
+        else if(vel<-2)this.whyText='Signal declining steadily';
+        else this.whyText='Boundary threshold crossed';
+        if(now-this.zone.lastAlertMs>ALERT_COOLDOWN_MS){this.zone.lastAlertMs=now;App.triggerAlert(this);this._addAlert(now)}
+      }else{this.whyText='Signal improving'}
+    }
+    // Trend
+    if(this.rssiRing.length>=8){const recent=median(this.rssiRing.slice(-4)),older=median(this.rssiRing.slice(-8,-4)),diff=recent-older;this.trendArrow=diff>3?'↑':diff<-3?'↓':'→'}
+  }
+  markLost(now){
+    if(this.zone.stable!=='LOST'){
+      this.zone.stable='LOST';this.zone.candidate='LOST';this.zone.candidateCount=99;this.trendArrow='✕';this.whyText='No signal for '+Math.round((now-this.lastSeenMs)/1000)+'s';this.confidence=0;
+      if(now-this.zone.lastAlertMs>ALERT_COOLDOWN_MS){this.zone.lastAlertMs=now;App.triggerAlert(this);this._addAlert(now)}
+    }
+  }
+  _addAlert(now){this.alertHistory.unshift({time:now,zone:this.zone.stable,rssi:Math.round(this.smoothedRssi),dist:this.distMeters.toFixed(1),why:this.whyText});if(this.alertHistory.length>30)this.alertHistory.pop()}
+  getLastSeenText(now){if(!this.lastSeenMs)return'Never';const s=Math.round((now-this.lastSeenMs)/1000);return s<2?'Just now':s<60?s+'s ago':s<3600?Math.floor(s/60)+'m ago':'Long ago'}
+  toJSON(){return{id:this.id,name:this.name,icon:this.icon,signature:this.signature,createdAt:this.createdAt,rescueId:this.rescueId,thresholds:this.thresholds,leashPreset:this.leashPreset,aiToggles:this.aiToggles}}
+}
+
+// --- BLE ENGINE (Advertisement Scanning — V30 base + V35 fixes) ---
+const BLE = {
+  scanning:false,scanReq:null,_handler:null,
+  restartCount:0,restartWindowStart:0,restartInProgress:false,lastRestartMs:0,
+  supported:false,advPerSec:0,_advCounter:0,_advCounterStart:0,
+  checkSupport(){if(!navigator.bluetooth)return false;if(typeof navigator.bluetooth.requestLEScan!=='function')return false;if(location.protocol!=='https:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1'&&!location.protocol.startsWith('file'))return false;return true},
+  async startScan(mode){
+    if(this.scanning)return true;this.supported=this.checkSupport();if(!this.supported)return false;
+    try{
+      if(!this._handler){this._handler=e=>App.onAdvertisement(e);navigator.bluetooth.addEventListener('advertisementreceived',this._handler)}
+      const opts={acceptAllAdvertisements:true,keepRepeatedDevices:true};
+      this.scanReq=await navigator.bluetooth.requestLEScan(opts);this.scanning=true;this._advCounter=0;this._advCounterStart=Date.now();return true;
+    }catch(e){console.error('BLE scan error:',e);if(e.name==='NotAllowedError')Toast.show('Bluetooth permission denied');else Toast.show('Scan failed: '+(e.message||'Unknown'));return false}
+  },
+  stopScan(){if(this.scanReq){try{this.scanReq.stop()}catch(e){}}this.scanning=false},
+  async restartScan(){
+    if(this.restartInProgress)return;
+    const now=Date.now();
+    if(now-this.lastRestartMs<perfProfile.restartCooldown)return;
+    if(now-this.restartWindowStart>60000){this.restartCount=0;this.restartWindowStart=now}
+    if(this.restartCount>=MAX_RESTARTS_PER_MIN)return;
+    this.restartInProgress=true;this.restartCount++;this.lastRestartMs=now;
+    this.stopScan();await new Promise(r=>setTimeout(r,600));
+    await this.startScan('track');this.restartInProgress=false;
+  },
+  countAdv(){this._advCounter++;const elapsed=(Date.now()-this._advCounterStart)/1000;if(elapsed>0)this.advPerSec=Math.round(this._advCounter/elapsed*10)/10;if(elapsed>30){this._advCounter=0;this._advCounterStart=Date.now()}}
+};
+
+// --- MATCH SCORE (Advertisement → Pet, with collision protection) ---
+function matchScore(event,sig){
+  if(!sig)return 0;let score=0;const dn=event.device.name||'',di=event.device.id||'';
+  if(sig.deviceId&&di===sig.deviceId)score+=0.6;
+  if(sig.nameExact&&dn===sig.nameExact)score+=0.5;
+  else if(sig.namePrefix&&dn.toLowerCase().startsWith(sig.namePrefix.toLowerCase()))score+=0.3;
+  if(sig.serviceUuids&&event.uuids){const eu=event.uuids.map(u=>u.toString().toLowerCase());if(sig.serviceUuids.some(u=>eu.includes(u.toLowerCase())))score+=0.25}
+  if(sig.manufacturerId!==undefined&&event.manufacturerData){event.manufacturerData.forEach((v,k)=>{if(k===sig.manufacturerId)score+=0.2})}
+  if(sig.confirmed)score=Math.min(1,score*1.15);
+  return Math.min(1,score);
+}
+
+const GAP_MIN=0.08;
+const MATCH_THRESHOLD_CONFIRMED=0.40;
+const MATCH_THRESHOLD_UNCONFIRMED=0.55;
+
+function routeAdvertisement(event,pets,now){
+  if(!pets.length)return;
+  const rssi=event.rssi;if(typeof rssi!=='number'||isNaN(rssi))return;
+  const scores=pets.map(p=>({pet:p,score:matchScore(event,p.signature)})).filter(s=>s.score>0).sort((a,b)=>b.score-a.score);
+  if(scores.length===0)return;
+  const top1=scores[0];const threshold=top1.pet.signature&&top1.pet.signature.confirmed?MATCH_THRESHOLD_CONFIRMED:MATCH_THRESHOLD_UNCONFIRMED;
+  if(top1.score<threshold)return;
+  // Collision check
+  if(scores.length>=2){const top2=scores[1];const t2=top2.pet.signature&&top2.pet.signature.confirmed?MATCH_THRESHOLD_CONFIRMED:MATCH_THRESHOLD_UNCONFIRMED;if(top2.score>=t2&&(top1.score-top2.score)<GAP_MIN){top1.pet.ambiguousCount++;return}}
+  // Focus mode
+  if(App.trackMode==='focus'&&App.focusPetId&&top1.pet.id!==App.focusPetId){top1.pet.ingestRaw(rssi,now);return}
+  // Throttle per-pet
+  if(now-top1.pet.lastProcessMs<top1.pet.getMinInterval()){top1.pet.ingestRaw(rssi,now);return}
+  top1.pet.processRssi(rssi,now);
+}
+
+// --- WIZARD (Enhanced Signature) ---
+const Wizard = {
+  candidates:{},selectedId:null,selectedSig:null,baselineRssi:null,verified:false,chosenIcon:'🐶',scanTimer:null,verifyTimer:null,
+  open(){$('wizard-overlay').classList.add('active');this.candidates={};this.selectedId=null;this.selectedSig=null;this.baselineRssi=null;this.verified=false;this.chosenIcon='🐶';this._showStep(1);this._startScan();this._buildIconPicker()},
+  close(){$('wizard-overlay').classList.remove('active');clearInterval(this.scanTimer);clearInterval(this.verifyTimer);if(App.pets.length>0&&!BLE.scanning)BLE.startScan('track')},
+  _showStep(n){document.querySelectorAll('.wizard-step').forEach(el=>el.classList.remove('active'));$('wiz-step-'+n).classList.add('active');for(let i=1;i<=3;i++){const p=$('sp-'+i);p.className='step-pill';if(i<n)p.classList.add('done');else if(i===n)p.classList.add('current')}},
+  async _startScan(){$('scan-status').textContent='Starting scan...';$('scan-list').innerHTML='';this.candidates={};const ok=await BLE.startScan('register');if(!ok){$('scan-status').textContent='BLE not supported. Showing demo.';this._startDemoScan();return}$('scan-status').textContent='Scanning... Hold tag close to phone.';clearInterval(this.scanTimer);this.scanTimer=setInterval(()=>this._renderCandidates(),1000)},
+  _startDemoScan(){const dd=[{id:'demo_itag_001',name:'iTAG'},{id:'demo_finder_002',name:'Key Finder'},{id:'demo_unknown_003',name:''},{id:'demo_buds_004',name:'Galaxy Buds Pro'}];let t=0;clearInterval(this.scanTimer);this.scanTimer=setInterval(()=>{const d=dd[t%dd.length];const r=d.name==='iTAG'?-48-Math.random()*8:-65-Math.random()*25;this.handleAdv({device:{id:d.id,name:d.name},rssi:r,uuids:[]});t++;this._renderCandidates()},300)},
+  handleAdv(ev){
+    const id=ev.device.id||('unknown_'+Math.random().toString(36).slice(2,8));const name=ev.device.name||'';const rssi=ev.rssi;if(typeof rssi!=='number'||isNaN(rssi))return;
+    if(!this.candidates[id])this.candidates[id]={id,name,rssiSamples:new RingBuffer(30),firstSeen:Date.now(),lastSeen:0,uuids:ev.uuids||[],manufacturerData:null,manufacturerId:null};
+    const c=this.candidates[id];c.rssiSamples.push(rssi);c.lastSeen=Date.now();
+    if(ev.manufacturerData){c.manufacturerData=ev.manufacturerData;ev.manufacturerData.forEach((v,k)=>{c.manufacturerId=k})}
+    if(name&&!c.name)c.name=name;
+  },
+  _tagLikelihood(c){let s=0;const med=median(c.rssiSamples.data);s+=clamp((med+100)/50,0,1)*40;s+=clamp(c.rssiSamples.length/15,0,1)*25;if(c.rssiSamples.length>=5){const m=median(c.rssiSamples.data);const v=c.rssiSamples.data.reduce((a,b)=>a+(b-m)**2,0)/c.rssiSamples.length;s+=clamp(1-v/200,0,1)*15}const n=(c.name||'').toLowerCase();if(/itag|finder|anti.?lost|isearch|key|tile|nut|tag/.test(n))s+=15;if(/buds|watch|band|airpod|galaxy|pixel|bose|sony|jbl|speaker|headphone|tv|car/.test(n))s-=30;return Math.round(clamp(s,0,100))},
+  _renderCandidates(){
+    const now=Date.now();const arr=Object.values(this.candidates).filter(c=>now-c.lastSeen<6000&&c.rssiSamples.length>=2).map(c=>({...c,med:median(c.rssiSamples.data),score:this._tagLikelihood(c)})).sort((a,b)=>b.score-a.score).slice(0,8);
+    if(!arr.length){$('scan-list').innerHTML='<div class="text-center" style="color:var(--text-muted);padding:20px">No devices found yet...</div>';return}
+    $('scan-list').innerHTML=arr.map(c=>{const pct=clamp((c.med+100)*2,0,100);const col=pct>60?'var(--accent-green)':pct>30?'var(--accent-yellow)':'var(--accent-red)';const sel=this.selectedId===c.id;return`<div class="scan-item ${sel?'selected':''}" onclick="Wizard.selectCandidate('${c.id}')"><div><div class="scan-item-name">${c.name||'⟨Unknown Tag⟩'}</div><div class="scan-item-id">${c.id.length>16?c.id.slice(0,8)+'…'+c.id.slice(-4):c.id}</div><div class="tag-score">Tag likelihood: ${c.score}%</div></div><div class="scan-item-right"><div class="scan-rssi" style="color:${col}">${Math.round(c.med)} dBm</div><div class="rssi-bar-track"><div class="rssi-bar-fill" style="width:${pct}%;background:${col}"></div></div></div></div>`}).join('');
+  },
+  selectCandidate(id){
+    this.selectedId=id;const c=this.candidates[id];if(!c)return;
+    this.selectedSig={deviceId:c.id,nameExact:c.name||null,namePrefix:c.name?c.name.slice(0,Math.min(6,c.name.length)):null,serviceUuids:c.uuids&&c.uuids.length?c.uuids.map(u=>u.toString()):null,manufacturerId:c.manufacturerId!==null?c.manufacturerId:undefined,confirmed:false};
+    this._renderCandidates();setTimeout(()=>this._goStep2(),400);
+  },
+  _goStep2(){
+    this._showStep(2);const c=this.candidates[this.selectedId];if(!c)return;
+    this.baselineRssi=median(c.rssiSamples.slice(-6));this.verified=false;
+    $('verify-delta').textContent='0';$('verify-delta').style.color='var(--text-muted)';$('verify-status').textContent='Waiting for movement...';$('verify-status').style.color='var(--text-muted)';$('btn-verified').classList.add('hidden');$('btn-skip-verify').classList.remove('hidden');
+    clearInterval(this.verifyTimer);this.verifyTimer=setInterval(()=>{const cc=this.candidates[this.selectedId];if(!cc||cc.rssiSamples.length<3)return;const cur=median(cc.rssiSamples.slice(-4));const delta=this.baselineRssi-cur;$('verify-delta').textContent=Math.round(delta);if(delta>=10){$('verify-delta').style.color='var(--accent-green)';$('verify-status').textContent='Signal drop confirmed!';$('verify-status').style.color='var(--accent-green)';$('btn-verified').classList.remove('hidden');$('btn-skip-verify').classList.add('hidden');this.verified=true;clearInterval(this.verifyTimer)}else if(delta>=5){$('verify-delta').style.color='var(--accent-yellow)';$('verify-status').textContent='Keep moving further away...'}else{$('verify-delta').style.color='var(--text-muted)'}},500);
+  },
+  skipVerify(){this.verified=false;clearInterval(this.verifyTimer);this.goStep3()},
+  goStep3(){clearInterval(this.verifyTimer);if(this.selectedSig)this.selectedSig.confirmed=this.verified;this._showStep(3);$('input-name').value='';$('input-name').focus()},
+  _buildIconPicker(){$('icon-picker').innerHTML=ICONS.map(ic=>`<div class="icon-opt ${ic===this.chosenIcon?'selected':''}" onclick="Wizard.pickIcon('${ic}')">${ic}</div>`).join('')},
+  pickIcon(ic){this.chosenIcon=ic;this._buildIconPicker()},
+  rescan(){this.candidates={};this.selectedId=null;$('scan-list').innerHTML='';$('scan-status').textContent='Re-scanning...';if(!BLE.scanning)this._startScan()},
+  async save(){
+    const name=($('input-name').value||'').trim()||'My Pet';
+    const pet=new Pet({name,icon:this.chosenIcon,signature:this.selectedSig||{},createdAt:Date.now()});
+    App.addPet(pet);await Store.savePet(pet);Toast.show(name+' is now protected!');this.close();if(!BLE.scanning)BLE.startScan('track');
+  }
+};
+
+// --- AUDIO ---
+const Audio={ctx:null,_getCtx(){if(!this.ctx)try{this.ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}return this.ctx},
+  beep(freq,dur,vol){const c=this._getCtx();if(!c)return;try{const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=freq||800;g.gain.value=vol||0.3;o.start();o.stop(c.currentTime+(dur||0.2))}catch(e){}},
+  alertForZone(z){if(z==='CAUTION')this.beep(600,.15,.2);else if(z==='WARNING'){this.beep(800,.15,.3);setTimeout(()=>this.beep(800,.15,.3),200)}else if(z==='DANGER'){this.beep(1000,.2,.5);setTimeout(()=>this.beep(1200,.2,.5),250);setTimeout(()=>this.beep(1400,.3,.5),500)}else if(z==='LOST'){this.beep(400,.4,.5);setTimeout(()=>this.beep(300,.5,.5),500)}}
+};
+
+// --- SOS MODULE ---
+const SOS={active:false,holdTimer:null,strobeTimer:null,targetPet:null,hcHistory:new RingBuffer(12),savedLocation:null,
+  holdStart(){this.holdTimer=setTimeout(()=>this.activate(),2000)},holdEnd(){clearTimeout(this.holdTimer)},
+  activate(){this.active=true;const p=this.targetPet||(App.pets.length?App.pets[0]:null);$('sos-active-name').textContent=p?p.name:'PET';$('sos-active').classList.add('active');if(navigator.vibrate)navigator.vibrate([500,200,500,200,500]);Audio.beep(1000,.5,.7);this._startStrobe()},
+  deactivate(){this.active=false;$('sos-active').classList.remove('active');clearInterval(this.strobeTimer);$('sos-strobe-area').style.background=''},
+  _startStrobe(){let on=false;this.strobeTimer=setInterval(()=>{$('sos-strobe-area').style.background=on?'#fff':'#e74c3c';$('sos-active').style.background=on?'#300':'#000';on=!on},400)},
+  updateHC(rssi){this.hcHistory.push(rssi);if(this.hcHistory.length<6)return;const r=median(this.hcHistory.slice(-3)),o=median(this.hcHistory.slice(-6,-3)),d=r-o;const a=$('hc-arrow'),t=$('hc-text'),rv=$('hc-rssi');rv.textContent=Math.round(r)+' dBm';if(d>3){a.textContent='🔥';t.textContent='HOT — Getting Closer!';t.style.color='var(--zone-danger)'}else if(d<-3){a.textContent='🧊';t.textContent='COLD — Moving Away';t.style.color='var(--accent-blue)'}else{a.textContent='➡️';t.textContent='STEADY — Keep searching';t.style.color='var(--text-muted)'}},
+  updateSnapshot(pet){if(!pet)return;const now=Date.now();const l=['<strong>'+pet.name+'</strong> '+pet.icon,'Status: <span style="color:var(--zone-'+pet.zone.stable.toLowerCase()+')">'+pet.zone.stable+'</span>','Last seen: '+pet.getLastSeenText(now),'Signal: '+(pet.lastRawRssi!==null?Math.round(pet.smoothedRssi)+' dBm':'N/A'),'Distance: ~'+pet.distMeters.toFixed(1)+'m (approx)','Confidence: '+pet.confidence+'%','Rescue ID: <strong>'+pet.rescueId+'</strong>'];if(this.savedLocation)l.push('📍 '+this.savedLocation.lat.toFixed(5)+', '+this.savedLocation.lon.toFixed(5));$('sos-snapshot').innerHTML=l.join('<br>')},
+  async saveLocation(){if(!navigator.geolocation){Toast.show('Geolocation not available');return}try{const pos=await new Promise((res,rej)=>navigator.geolocation.getCurrentPosition(res,rej,{timeout:10000}));this.savedLocation={lat:pos.coords.latitude,lon:pos.coords.longitude,time:Date.now()};Toast.show('Location saved!');const p=this.targetPet||App.pets[0];if(p)this.updateSnapshot(p)}catch(e){Toast.show('Could not get location: '+(e.message||'Denied'))}},
+  shareMessage(){const p=this.targetPet||(App.pets.length?App.pets[0]:null);let m='LOST PET ALERT\n';if(p){m+='Name: '+p.name+'\nRescue ID: '+p.rescueId+'\nLast signal: '+p.getLastSeenText(Date.now())+'\nStatus: '+p.zone.stable+'\nApprox distance: ~'+p.distMeters.toFixed(1)+'m\n'}if(this.savedLocation){m+='Owner location: '+this.savedLocation.lat.toFixed(5)+', '+this.savedLocation.lon.toFixed(5)+'\nMap: https://maps.google.com/?q='+this.savedLocation.lat+','+this.savedLocation.lon+'\n'}m+='\nSent via Santa Claus AI (mcorpai.org)\nNOT GPS — Bluetooth proximity only';if(navigator.share)navigator.share({title:'Lost Pet Alert',text:m}).catch(()=>{});else navigator.clipboard.writeText(m).then(()=>Toast.show('Copied to clipboard!')).catch(()=>Toast.show('Could not copy'))},
+  renderPetSelect(){if(!App.pets.length)return;$('sos-pet-select').innerHTML='<div class="section-title" style="margin-top:0">Select Pet</div>'+App.pets.map(p=>`<button class="btn btn-sm ${this.targetPet&&this.targetPet.id===p.id?'btn-success':'btn-secondary'}" style="margin:0 4px 4px 0" onclick="SOS.selectPet('${p.id}')">${p.icon} ${p.name}</button>`).join('')},
+  selectPet(id){this.targetPet=App.pets.find(p=>p.id===id)||null;this.hcHistory.clear();this.renderPetSelect();if(this.targetPet){this.updateSnapshot(this.targetPet);App.focusPetId=this.targetPet.id;$('sos-focus-banner').classList.remove('hidden')}}
+};
+
+// --- PET DETAIL OVERLAY ---
+const Detail={
+  pet:null,
+  open(id){
+    this.pet=App.pets.find(p=>p.id===id);if(!this.pet)return;
+    $('detail-title').textContent=this.pet.icon+' '+this.pet.name;
+    $('detail-overlay').classList.add('active');this.render();
+  },
+  close(){$('detail-overlay').classList.remove('active')},
+  render(){
+    const p=this.pet;if(!p)return;const z=p.zone.stable.toLowerCase();const now=Date.now();
+    let html=`
+    <div class="detail-ring zone-${z}"><div class="detail-dist">${p.distMeters<1?p.distMeters.toFixed(1):Math.round(p.distMeters)}</div><div class="detail-unit">meters (approx)</div><div class="detail-zone" style="color:var(--zone-${z})">${p.zone.stable}</div></div>
+    <div style="text-align:center;font-size:.65rem;color:var(--text-muted)">Not GPS — Bluetooth proximity estimate only</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0"><span style="font-size:.78rem">Signal Strength</span><span style="font-size:.78rem;font-family:var(--font-mono)">${Math.round(p.smoothedRssi)} dBm ${p.trendArrow}</span></div>
+    <div class="rssi-meter"><div class="rssi-meter-fill" style="width:${clamp((p.smoothedRssi+100)/70*100,0,100)}%;background:var(--zone-${z})"></div></div>
+    <div class="signal-bars">${[12,16,20,24,28].map((h,i)=>`<div class="bar" style="height:${h}px;width:6px;border-radius:2px;background:${i<Math.ceil(clamp((p.smoothedRssi+100)/70*5,0,5))?'var(--zone-'+z+')':'var(--text-muted)'}"></div>`).join('')}</div>
+    <div style="display:flex;justify-content:space-between;margin:8px 0"><span style="font-size:.75rem;color:var(--text-secondary)">Confidence: <strong>${p.confidence}%</strong></span><span style="font-size:.72rem;color:var(--accent-orange);font-style:italic">${p.whyText||''}</span></div>
+    <div class="rescue-card"><div style="font-size:.72rem;color:var(--text-secondary)">Rescue ID (for collar tag)</div><div class="rescue-id">${p.rescueId}</div><div style="font-size:.62rem;color:var(--text-muted)">Write this on pet's collar for recovery</div></div>
+    <div class="divider"></div>
+    <div class="section-title" style="font-size:.8rem">🎚️ Invisible Leash Distance</div>
+    <div class="leash-row">${Object.keys(LEASH_PRESETS).map(k=>`<div class="leash-btn ${p.leashPreset===k?'active':''}" onclick="Detail.setLeash('${k}')">${k}</div>`).join('')}</div>
+    <div style="margin-top:12px">
+      <div class="slider-row"><label>Caution</label><input type="range" min="-90" max="-40" value="${p.thresholds.cautionEnter}" oninput="Detail.updateThreshold('cautionEnter',this.value)"><span class="val" id="dt-caution">${p.thresholds.cautionEnter} dBm</span></div>
+      <div class="slider-row"><label>Warning</label><input type="range" min="-98" max="-55" value="${p.thresholds.warningEnter}" oninput="Detail.updateThreshold('warningEnter',this.value)"><span class="val" id="dt-warning">${p.thresholds.warningEnter} dBm</span></div>
+      <div class="slider-row"><label>Danger</label><input type="range" min="-100" max="-70" value="${p.thresholds.dangerEnter}" oninput="Detail.updateThreshold('dangerEnter',this.value)"><span class="val" id="dt-danger">${p.thresholds.dangerEnter} dBm</span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title" style="font-size:.8rem">📜 Alert History</div>
+    <div id="detail-alerts">${p.alertHistory.length?p.alertHistory.slice(0,15).map(a=>{const t=new Date(a.time);return`<div class="alert-item"><span><span class="alert-dot" style="background:var(--zone-${a.zone.toLowerCase()})"></span>${a.zone} — ~${a.dist}m</span><span style="color:var(--text-muted)">${t.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})} ${a.why?'('+a.why+')':''}</span></div>`}).join(''):'<div style="font-size:.75rem;color:var(--text-muted);text-align:center;padding:12px">No alerts yet</div>'}</div>`;
+    $('detail-body').innerHTML=html;
+  },
+  setLeash(preset){if(!this.pet)return;this.pet.leashPreset=preset;this.pet.thresholds={...LEASH_PRESETS[preset]};Store.savePet(this.pet);this.render()},
+  updateThreshold(key,val){
+    if(!this.pet)return;val=parseInt(val);this.pet.thresholds[key]=val;
+    if(key==='cautionEnter')this.pet.thresholds.cautionExit=val+5;
+    if(key==='warningEnter')this.pet.thresholds.warningExit=val+6;
+    if(key==='dangerEnter')this.pet.thresholds.dangerExit=val+6;
+    this.pet.leashPreset='custom';
+    const id=key==='cautionEnter'?'dt-caution':key==='warningEnter'?'dt-warning':'dt-danger';
+    $(id).textContent=val+' dBm';Store.savePet(this.pet);
+  }
+};
+
+// --- NAV ---
+const Nav={current:'home',go(tab){this.current=tab;document.querySelectorAll('.panel').forEach(el=>el.classList.remove('active'));$('panel-'+tab).classList.add('active');document.querySelectorAll('.bnav-btn').forEach(el=>{el.classList.toggle('active',el.dataset.tab===tab)});if(tab==='sos'){if(App.pets.length>0){$('sos-no-pets').classList.add('hidden');$('sos-content').classList.remove('hidden');if(!SOS.targetPet&&App.pets.length)SOS.selectPet(App.pets[0].id);SOS.renderPetSelect()}else{$('sos-no-pets').classList.remove('hidden');$('sos-content').classList.add('hidden')}}if(tab==='settings')Settings.renderPetList()}};
+
+// --- SETTINGS ---
+const Settings={
+  prefs:{sound:true,vibrate:true,notifWanted:false,highAlert:false,perfMode:'balanced'},
+  async load(){this.prefs.sound=await Store.getSetting('sound',true);this.prefs.vibrate=await Store.getSetting('vibrate',true);this.prefs.notifWanted=await Store.getSetting('notifWanted',false);this.prefs.highAlert=await Store.getSetting('highAlert',false);this.prefs.perfMode=await Store.getSetting('perfMode','balanced');perfProfile=PERF_PROFILES[this.prefs.perfMode]||PERF_PROFILES.balanced;this._updateToggles()},
+  toggle(key){this.prefs[key]=!this.prefs[key];Store.saveSetting(key,this.prefs[key]);this._updateToggles();if(key==='highAlert')Toast.show(this.prefs.highAlert?'High Alert ON':'High Alert OFF')},
+  async toggleNotif(){
+    if(!('Notification' in window)){Toast.show('Notifications not supported');return}
+    if(Notification.permission==='granted'){this.prefs.notifWanted=!this.prefs.notifWanted;Store.saveSetting('notifWanted',this.prefs.notifWanted);this._updateToggles();return}
+    if(Notification.permission==='denied'){$('notif-hint').classList.remove('hidden');Toast.show('Denied. Enable in browser settings.');return}
+    // default — request on user gesture
+    const result=await Notification.requestPermission();
+    if(result==='granted'){this.prefs.notifWanted=true;Store.saveSetting('notifWanted',true);Toast.show('Notifications enabled!')}
+    else{$('notif-hint').classList.remove('hidden');Toast.show('Permission denied')}
+    this._updateToggles();
+  },
+  setPerf(mode){this.prefs.perfMode=mode;perfProfile=PERF_PROFILES[mode]||PERF_PROFILES.balanced;Store.saveSetting('perfMode',mode);document.querySelectorAll('.perf-opt').forEach(el=>el.classList.remove('active'));$('perf-'+mode).classList.add('active');Toast.show('Performance: '+mode)},
+  _updateToggles(){const ts=$('toggle-sound'),tv=$('toggle-vibrate'),tn=$('toggle-notif'),th=$('toggle-highalert');if(ts)ts.classList.toggle('on',this.prefs.sound);if(tv)tv.classList.toggle('on',this.prefs.vibrate);if(tn)tn.classList.toggle('on',this.prefs.notifWanted&&Notification.permission==='granted');if(th)th.classList.toggle('on',this.prefs.highAlert)},
+  renderPetList(){const el=$('settings-pet-list');if(!App.pets.length){el.innerHTML='<div style="color:var(--text-muted);font-size:.82rem;padding:8px 0">No pets registered.</div>';return}el.innerHTML=App.pets.map(p=>`<div class="setting-row"><div><span style="font-size:1.2rem">${p.icon}</span> <strong>${p.name}</strong><div style="font-size:.65rem;color:var(--text-muted)">ID: ${p.rescueId} | Added ${new Date(p.createdAt).toLocaleDateString()}</div></div><button class="btn btn-danger-outline btn-sm" onclick="Settings.removePet('${p.id}')">Remove</button></div>`).join('')},
+  async removePet(id){if(!confirm('Remove this pet?'))return;await Store.deletePet(id);App.pets=App.pets.filter(p=>p.id!==id);App.render();this.renderPetList();Toast.show('Pet removed');if(!App.pets.length)BLE.stopScan()},
+  resetApp(){if(!confirm('DELETE ALL Santa AI DATA?'))return;if(!confirm('Are you sure? This cannot be undone.'))return;Store.clearAll();location.reload()}
+};
+
+// --- DATA MANAGER ---
+const DataManager={
+  async exportAll(){
+    const data={appVersion:APP_VERSION,schemaVersion:SCHEMA_VERSION,exported:new Date().toISOString(),pets:App.pets.map(p=>p.toJSON()),settings:Settings.prefs};
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='santa-ai-v35-backup-'+Date.now()+'.json';a.click();URL.revokeObjectURL(url);Toast.show('Backup exported!')
+  },
+  importFile(){$('import-input').click()},
+  async handleImport(ev){
+    const file=ev.target.files[0];if(!file)return;
+    try{
+      const text=await file.text();const data=JSON.parse(text);
+      if(!data.pets||!Array.isArray(data.pets))throw new Error('Invalid backup');
+      const action=App.pets.length>0?confirm('Merge with existing pets? (Cancel = Replace all)'):'merge';
+      if(action===false){App.pets=[];await Store.clearAll();await Store.init()}
+      for(const pd of data.pets){
+        if(App.pets.find(p=>p.id===pd.id))continue;
+        const pet=new Pet(pd);App.pets.push(pet);await Store.savePet(pet);
+      }
+      if(data.settings){Object.assign(Settings.prefs,data.settings);await Store.saveSetting('sound',Settings.prefs.sound);await Store.saveSetting('vibrate',Settings.prefs.vibrate)}
+      App.render();Toast.show(data.pets.length+' pet(s) imported!')
+    }catch(e){Toast.show('Import failed: '+e.message)}
+    ev.target.value='';
+  }
+};
+
+// --- HELP ---
+const Help={
+  open(){$('help-overlay').classList.add('active');$('help-body').innerHTML=this._content()},
+  close(){$('help-overlay').classList.remove('active')},
+  _content(){return`
+    <h2 style="margin-bottom:12px">📖 Quick Start (60 seconds)</h2>
+    <div class="tip-card info"><div class="tip-title">Step 1: Get a BLE Tag ($2–$5)</div><div class="tip-body">Search: "iTag", "Key Finder", or "Anti-lost". Uses CR2032 battery (6–12 months). Waterproof case recommended. No app needed — just the tag.</div></div>
+    <div class="tip-card info"><div class="tip-title">Step 2: Add Your Pet</div><div class="tip-body">Tap "+ Add New Pet" on Home. Hold tag 2–5 cm from phone (10 sec). Select the strongest signal. Move tag 2–3m away to verify. Name your pet and save.</div></div>
+    <div class="tip-card info"><div class="tip-title">Step 3: You're Protected!</div><div class="tip-body">Your pet is now monitored. 5 zones: SAFE (green), CAUTION (yellow), WARNING (orange), DANGER (red), LOST (purple). Tap a pet card for detailed view.</div></div>
+    <div class="tip-card info"><div class="tip-title">SOS Finder</div><div class="tip-body">Go to SOS tab. Select pet. Use Hot/Cold to find direction. Save your location. Share alert message with Rescue ID. Hold SOS button 2s for full alarm.</div></div>
+    <div class="tip-card info"><div class="tip-title">Rescue ID</div><div class="tip-body">Each pet gets a unique 8-character Rescue ID. Write it on a collar tag or card. Anyone who finds your pet can contact you via this code (you share it in the SOS message).</div></div>
+    <div class="tip-card info"><div class="tip-title">Multiple Pets</div><div class="tip-body">Add as many pets as needed. Each gets a separate tag and independent monitoring. Use "Focus" mode to track one pet with maximum accuracy.</div></div>
+    <div class="divider"></div>
+    <h3>⚠️ Important Limitations</h3>
+    <div class="tip-card warn"><div class="tip-body">
+      This is an <strong>Invisible Leash</strong> (Bluetooth proximity), NOT GPS. It cannot show your pet's location on a map.<br><br>
+      Walls, metal, water, and crowds reduce signal range.<br><br>
+      <strong>Android Chrome recommended.</strong> iOS/Safari BLE scanning is not supported due to platform policy.<br><br>
+      Screen lock may pause scanning. Keep screen on during active monitoring.<br><br>
+      Tag battery (CR2032) lasts 6–12 months. Replace when alerts become unreliable.
+    </div></div>
+    <div class="divider"></div>
+    <h3>🔧 Troubleshooting</h3>
+    <div class="highlight-box">
+      <p><strong>Tag not found?</strong> — Ensure Bluetooth is ON. Move within 1m. Some tags need a button press to wake up.</p>
+      <p><strong>Too many false alarms?</strong> — Adjust leash distance in Pet Detail. Try "10m" or "15m" preset.</p>
+      <p><strong>Battery draining?</strong> — Switch to "Battery Saver" in Settings. App automatically reduces activity when pets are safe.</p>
+      <p><strong>App stops in background?</strong> — Keep screen on. Some Android phones aggressively kill background tasks.</p>
+      <p><strong>Best setup?</strong> — Serve from localhost or HTTPS for stable permissions. Install as PWA (Add to Home Screen).</p>
+    </div>
+    <div class="divider"></div>
+    <h3>🏷️ Compatible BLE Tags</h3>
+    <div class="highlight-box">
+      <p><strong>iTAG</strong> — Most common, name shows as "iTAG". $2–3. Works well.</p>
+      <p><strong>Key Finder</strong> — Similar. Some show blank name (still works with device ID matching).</p>
+      <p><strong>Tile / AirTag / SmartTag</strong> — May work but these have their own apps. Not recommended.</p>
+      <p><strong>Tip:</strong> Some tags need a button press to start advertising. Check battery if tag stops responding.</p>
+    </div>`}
+};
+
+// --- LEGAL ---
+const Legal={
+  open(){$('legal-overlay').classList.add('active');$('legal-body').innerHTML=this._content()},
+  close(){$('legal-overlay').classList.remove('active')},
+  _content(){return`
+    <h2>Santa Claus AI v3.5</h2><p style="color:var(--text-secondary)">Offline AI-Powered Pet Safety — Invisible Leash System</p>
+    <h3 style="margin-top:16px">💰 Pricing</h3>
+    <div style="text-align:center;font-size:2rem;font-weight:900;color:var(--accent-green);margin:8px 0">$5</div>
+    <div style="text-align:center;font-size:.8rem;color:var(--text-secondary)">One-time payment. Permanent access. No subscription.</div>
+    <div class="highlight-box"><p>Pay once at <a href="https://mediatorsfoundation.org" style="color:var(--accent-blue)">mediatorsfoundation.org</a> and use forever.</p></div>
+    <h3>❤️ Where Your $5 Goes</h3>
+    <div class="charity-box"><p><strong>50%</strong> → Donated to homeless shelters in the United States</p><p><strong>50%</strong> → Retained by the Korean developer (Morgan J.)</p><p style="margin-top:8px;font-size:.7rem;color:var(--text-muted)">The developer's goal is to become a full-time philanthropist. All revenue beyond living expenses goes toward charitable projects for vulnerable communities worldwide.</p></div>
+    <h3>🤝 Partnerships</h3>
+    <div class="highlight-box"><p><strong>All charities and nonprofits are welcome to partner with us.</strong></p><p>• <strong>Charity Partnership</strong> — Distribute to communities you serve</p><p>• <strong>Technology Partnership</strong> — Build on or extend the open codebase</p><p>• <strong>ESG / Social Impact Investment & Sponsorship</strong></p><p style="margin-top:8px"><strong>How to partner:</strong> Visit <a href="https://mcorpai.org" style="color:var(--accent-blue)">mcorpai.org</a>, then email <a href="mailto:contact@mcorpai.org" style="color:var(--accent-blue)">contact@mcorpai.org</a>.</p><p style="margin-top:8px;font-style:italic;color:var(--text-muted)">Santa Claus AI does not accept commercial investment. We partner with warmth, not with profit.</p></div>
+    <h3>📜 Copyright & License</h3>
+    <div class="highlight-box"><p><strong>© 2026 Morgan J. (Gyu-min Jeon)</strong></p><p>M-Corp Ethical AI | <a href="https://mcorpai.org" style="color:var(--accent-blue)">mcorpai.org</a></p><p>Managed by: <a href="https://mediatorsfoundation.org" style="color:var(--accent-blue)">mediatorsfoundation.org</a></p><p>Email: <a href="mailto:contact@mcorpai.org" style="color:var(--accent-blue)">contact@mcorpai.org</a></p></div>
+    <div class="warning-legal"><p><strong>M-Corp Ethical AI License (Hippocratic 3.0 Derivative)</strong></p><p>PERMITTED: Humanitarian, animal welfare, education, research.</p><p>PROHIBITED: Military, surveillance, weapons, individual tracking, political oppression, border militarization.</p></div>
+    <div class="warning-legal"><p><strong>DISCLAIMER:</strong> THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY. Bluetooth distance estimates are approximations. This is not a substitute for physical supervision. The user bears full responsibility.</p></div>
+    <h3>🔒 Privacy</h3>
+    <div class="highlight-box"><p>Collects <strong>zero personal data</strong>. No accounts, no servers, no tracking. All AI data stored locally. Delete everything with one tap. GDPR-compliant by design.</p></div>
+    <h3>🎄 Ten Principles of Ethical AI</h3>
+    <div class="highlight-box"><p>1. Minimize hallucinations</p><p>2. Ensure transparency — 100% open-source</p><p>3. Guarantee accessibility — Works on $50 phones</p><p>4. Eliminate data exploitation — Zero data collection</p><p>5. Operate in low-resource environments</p><p>6. Remove legal liability</p><p>7. Affordable — $5 one-time, half to charity</p><p>8. Emphasize simplicity — Single file, no dependencies</p><p>9. Non-specialist friendly</p><p>10. Allow simple deletion</p></div>
+    <h3>📋 Legal Framework</h3>
+    <div class="highlight-box"><p>UDHR Articles 3,5,12,13 | Geneva Convention IV | UNCRC Articles 3,16 | CRPD Article 22 | GDPR Article 25 | Wassenaar Arrangement | EU Regulation 2021/821</p></div>
+    <p style="text-align:center;color:var(--text-muted);margin-top:20px;font-size:.72rem">Built with love for families who need it most. 🎅</p>`}
+};
+
+// --- DIAGNOSTICS ---
+const Diag={
+  open(){$('diag-overlay').classList.add('active');this.render()},close(){$('diag-overlay').classList.remove('active')},
+  render(){
+    const now=Date.now();
+    const lines=[
+      `App: Santa Claus AI v${APP_VERSION}`,`Schema: ${SCHEMA_VERSION}`,`Browser: ${navigator.userAgent.slice(0,80)}`,
+      `Secure Context: ${location.protocol}`,`BLE Support: ${BLE.supported?'YES':'NO'}`,
+      `Scanning: ${BLE.scanning}`,`Adv/sec: ${BLE.advPerSec}`,`Restart count (60s): ${BLE.restartCount}`,
+      `Restart locked: ${BLE.restartInProgress}`,`Track mode: ${App.trackMode}`,`Pets: ${App.pets.length}`,
+      `Perf mode: ${Settings.prefs.perfMode}`,`Notification: ${typeof Notification!=='undefined'?Notification.permission:'N/A'}`,
+      `---`,
+      ...App.pets.map(p=>`${p.icon} ${p.name}: zone=${p.zone.stable} rssi=${Math.round(p.smoothedRssi)} conf=${p.confidence}% seen=${p.getLastSeenText(now)} ambig=${p.ambiguousCount}`)
+    ];
+    $('diag-body').innerHTML=`<pre style="font-size:.72rem;color:var(--text-secondary);white-space:pre-wrap;line-height:1.8">${lines.join('\n')}</pre>
+    <button class="btn btn-secondary btn-sm btn-block" style="margin-top:12px" onclick="Diag.copy()">📋 Copy Diagnostics</button>`;
+  },
+  copy(){const el=$('diag-body').querySelector('pre');navigator.clipboard.writeText(el.textContent).then(()=>Toast.show('Copied!')).catch(()=>Toast.show('Failed'))}
+};
+
+// --- MAIN APP ---
+const App={
+  pets:[],watchdogTimer:null,renderTimer:null,demoTimer:null,demoMode:false,
+  trackMode:'all',focusPetId:null,
+  async init(){
+    console.log('%c🎅 Santa Claus AI v3.5 — M-Corp Ethical AI','font-size:16px;font-weight:bold;color:#c0392b');
+    console.log('%cHumanitarian use only. Military/surveillance PROHIBITED.','color:#e67e22');
+    console.log('%cLicense: Hippocratic 3.0 | UDHR | Geneva | GDPR','color:#8b949e');
+    await Store.init();await Settings.load();
+    const saved=await Store.getAllPets();this.pets=saved.map(d=>new Pet(d));
+    this.render();
+    // NO permission prompts on load — this is intentional (V3.5 fix)
+    if(this.pets.length>0){const ok=await BLE.startScan('track');if(!ok){Toast.show('BLE not available. Demo mode.');this._startDemo()}}
+    this.watchdogTimer=setInterval(()=>this._watchdog(),2000);
+    this.renderTimer=setInterval(()=>this.render(),perfProfile.renderInterval);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&this.pets.length>0&&!BLE.scanning&&!this.demoMode)BLE.restartScan()});
+    this._registerPWA();
+    // Silent notification enable if previously granted+wanted
+    if('Notification' in window&&Notification.permission==='granted'&&Settings.prefs.notifWanted){/* ready */}
+  },
+  setTrackMode(mode){
+    this.trackMode=mode;
+    $('btn-mode-all').classList.toggle('btn-success',mode==='all');$('btn-mode-all').classList.toggle('btn-secondary',mode!=='all');
+    $('btn-mode-focus').classList.toggle('btn-success',mode==='focus');$('btn-mode-focus').classList.toggle('btn-secondary',mode!=='focus');
+    if(mode==='focus'&&this.pets.length>0&&!this.focusPetId)this.focusPetId=this.pets[0].id;
+    Toast.show(mode==='all'?'Tracking all pets':'Focus mode — tap a pet to select');
+  },
+  onAdvertisement(event){
+    const now=Date.now();BLE.countAdv();
+    // Global throttle
+    if(now-globalLastProcessMs<GLOBAL_THROTTLE_MS)return;globalLastProcessMs=now;
+    // Wizard mode
+    if($('wizard-overlay').classList.contains('active')){Wizard.handleAdv(event);return}
+    routeAdvertisement(event,this.pets,now);
+    // SOS update
+    if(SOS.targetPet){const p=this.pets.find(pp=>pp.id===SOS.targetPet.id);if(p&&p.lastRawRssi!==null){SOS.updateHC(p.smoothedRssi);SOS.updateSnapshot(p)}}
+  },
+  addPet(pet){this.pets.push(pet);this.render()},
+  triggerAlert(pet){
+    if(Settings.prefs.sound)Audio.alertForZone(pet.zone.stable);
+    if(Settings.prefs.vibrate&&navigator.vibrate){const p={CAUTION:[100],WARNING:[200,100,200],DANGER:[400,100,400],LOST:[500,200,500,200,500]};navigator.vibrate(p[pet.zone.stable]||[100])}
+    if('Notification' in window&&Notification.permission==='granted'&&Settings.prefs.notifWanted){try{new Notification(pet.icon+' '+pet.name+': '+pet.zone.stable,{body:'Santa Claus AI — '+(pet.whyText||'Alert'),silent:true})}catch(e){}}
+  },
+  _watchdog(){
+    const now=Date.now();let needRestart=false;
+    for(const pet of this.pets){
+      if(!pet.lastSeenMs)continue;const silence=now-pet.lastSeenMs;
+      if(silence>perfProfile.lostMs)pet.markLost(now);
+      if(silence>perfProfile.restartMs&&BLE.scanning)needRestart=true;
+    }
+    // Single restart per cycle (V3.5 fix — no thrash)
+    if(needRestart&&!BLE.restartInProgress)BLE.restartScan();
+    // Update scan status
+    const bar=$('scan-status-bar');if(bar){bar.textContent=BLE.scanning?'📡 Scanning ('+BLE.advPerSec+' adv/s)':this.demoMode?'📡 Demo Mode':'📡 Not scanning'}
+  },
+  render(){
+    const now=Date.now();const list=$('pet-list');const empty=$('empty-state');const ctrl=$('dash-controls');const ctrl2=$('dash-controls2');
+    if(!this.pets.length){list.innerHTML='';empty.classList.remove('hidden');ctrl.classList.add('hidden');ctrl2.classList.add('hidden');return}
+    empty.classList.add('hidden');ctrl.classList.remove('hidden');ctrl2.classList.remove('hidden');
+    const sorted=[...this.pets].sort((a,b)=>{const za=ZONE_ORDER[a.zone.stable]||0,zb=ZONE_ORDER[b.zone.stable]||0;return zb!==za?zb-za:(a.lastSeenMs||0)-(b.lastSeenMs||0)});
+    list.innerHTML=sorted.map(pet=>{
+      const z=pet.zone.stable.toLowerCase();const isLost=pet.zone.stable==='LOST';const rd=isLost?'--':Math.round(pet.smoothedRssi);
+      return`<div class="pet-card zone-${z}" onclick="Detail.open('${pet.id}')">
+        <div class="pet-icon-circle">${pet.icon}</div>
+        <div class="pet-details">
+          <div class="pet-name">${pet.name}</div>
+          <div class="pet-status-row"><div class="status-dot" style="background:var(--zone-${z})"></div><span>${isLost?'NO SIGNAL':pet.zone.stable}</span><span style="margin-left:auto;font-size:.68rem;color:var(--text-muted)">${pet.getLastSeenText(now)}</span></div>
+          <div class="pet-conf">Conf: ${pet.confidence}% | ~${pet.distMeters.toFixed(1)}m</div>
+          ${pet.whyText?'<div class="pet-why">'+pet.whyText+'</div>':''}
+        </div>
+        <div class="pet-signal"><div class="pet-rssi">${rd}<span class="trend-arrow">${pet.trendArrow}</span></div><span class="zone-badge ${z}">${pet.zone.stable}</span></div>
+      </div>`}).join('');
+    // Update detail overlay if open
+    if($('detail-overlay').classList.contains('active')&&Detail.pet){Detail.render()}
+  },
+  _startDemo(){if(this.demoMode)return;this.demoMode=true;let tick=0;this.demoTimer=setInterval(()=>{const now=Date.now();this.pets.forEach((pet,i)=>{const base=-65-i*8;const wave=Math.sin((tick+i*30)/15)*18;const noise=(Math.random()-0.5)*6;pet.processRssi(base+wave+noise,now)});tick++},600)},
+  _registerPWA(){
+    const manifest={name:'Santa Claus AI',short_name:'SantaAI',description:'Offline Pet Safety — Invisible Leash',start_url:'.',display:'standalone',background_color:'#0d1117',theme_color:'#c0392b',icons:[{src:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">🎅</text></svg>'),sizes:'512x512',type:'image/svg+xml'}]};
+    const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});const link=$('pwa-manifest');if(link)link.href=URL.createObjectURL(blob);
+    if('serviceWorker' in navigator){const sw=`const C='santa-ai-v35';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['./'])));self.skipWaiting()});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))))});`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{})}
+  }
+};
+
+document.addEventListener('DOMContentLoaded',()=>App.init());
+</script>
+
+<!-- ============================================================
+     SANTA CLAUS AI v3.5 — COPYRIGHT & ETHICAL NOTICE
+     © 2026 Morgan J. (Gyu-min Jeon)
+     M-Corp Ethical AI | https://mcorpai.org
+     Managed by: https://mediatorsfoundation.org
+     Contact: contact@mcorpai.org
+     M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
+     HUMANITARIAN USE ONLY.
+     PROHIBITED: Military, surveillance, weapons, individual tracking,
+     political oppression, border militarization.
+     Legal: UDHR | Geneva Convention IV | UNCRC | CRPD | GDPR Art.25
+     | Wassenaar Arrangement | EU Regulation 2021/821
+     TEN PRINCIPLES OF ETHICAL AI:
+     1. Minimize hallucinations  2. Transparency  3. Accessibility
+     4. No data exploitation  5. Low-resource  6. No liability
+     7. Affordable  8. Simplicity  9. Non-specialist  10. Allow deletion
+     Zero data collection. All processing on-device only.
+     ============================================================ -->
+</body>
+</html>
