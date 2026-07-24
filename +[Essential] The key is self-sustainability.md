@@ -4,9 +4,6 @@
 **The Republic of Korea is implementing a basic AI law. Once I am recognized by the United States, I can sustain the project independently**
 **I prepared two versions in case it might not pass the review. This one is the straightforward version. It includes a human, emotional touch.**
 
-Public funds should be spent carefully. If supply chains are unstable, everything OTF is working on could become ineffective.
-Libraries are not trustworthy, because they rely on free labor.
-
 If external dependencies are high, it becomes difficult to save lives at scale. Only self-contained, “vanilla” code can truly do so — because it allows full control over every aspect of the system.
 Relying on libraries can be inherently risky, as their development and maintenance are often outside one’s direct control.
 
