@@ -12,3 +12,5 @@
 > * **Current Goal:** Seeking remote research partnerships, open-source collaborations, and funding to establish an independent Offline AI research lab in South Korea.
 
 **It is an AI model designed to align with ESG (Environmental, Social, and Governance) principles and the General Data Protection Regulation (GDPR).**
+
+Personal Workspace: [mcorpai.org](https://mcorpai.org/)
