@@ -1,6 +1,6 @@
 Personal Workspace(Email Contact Information): [mcorpai.org](https://mcorpai.org/)
 
-**Based in South Korea · Prefer Remote Work**
+**Based in South Korea**
 
 This project is maintained strictly remotely to ensure neutrality and focus. 
 
