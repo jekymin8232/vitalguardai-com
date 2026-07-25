@@ -1,3 +1,5 @@
+# v4.7.1 Security Audit Scope Map.
+
 ### Auditable Zero-Dependency Offline AI Architecture
 
 **Reference: Source Code Documentation** 
