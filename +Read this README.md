@@ -63,6 +63,8 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 1. **Human rights defenders, journalists, activists, and others who require strong personal security and privacy.**
 
+**(The public good is the highest priority.)**
+
 2. **Defense, emergency response, and disaster resilience solutions** leveraging an **Egress Kill Switch** (physical network isolation) together with a **BLE and ultrasonic local communication architecture**.
 
 3. **Lightweight machine learning and BLE scanning running entirely in pure JavaScript**, even on **10-year-old Android smartphones**. This enables organizations to repurpose legacy devices as **offline humanitarian and security nodes**, providing a practical ESG use case by extending device lifecycles.
@@ -74,6 +76,8 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 ### For example,
 
 1. It could become an essential tool for activists working in high-risk environments that demand the highest levels of security.
+
+**(The public good is the highest priority.)**
 
 2. equipping a Casio digital watch with top-tier security and lightweight machine learning AI for simple life-saving functions could significantly boost its market appeal. Combined with solar-powered operation, digital watches offer an ideal platform for always-on, low-power AI. Because this AI runs efficiently even on ultra-low-cost semiconductor chips, it does not significantly increase the manufacturing cost.
 
