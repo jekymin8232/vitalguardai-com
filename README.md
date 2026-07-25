@@ -1,3 +1,8 @@
+**Reference: OTF Review in Progress**
+
+![Internet Freedom](https://img.shields.io/badge/Internet%20Freedom-2e7d32?style=for-the-badge&logo=liberty&logoColor=white)
+[![Open Technology Fund Security Lab](https://img.shields.io/badge/Open%20Technology%20Fund%20Security%20Lab-1a365d?style=for-the-badge&logo=shield&logoColor=white)](https://apply.opentech.fund)
+
 # Vitalguard-AI 🛡️ Security
 ## Pursuing infrastructure-independent AI with uncompromising security.
 
@@ -32,11 +37,6 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 * **Standards & Compliance:** Architected to align seamlessly with ESG principles and GDPR (Privacy-by-Design).
 
 ---
-
-**Reference: OTF Review in Progress**
-
-![Internet Freedom](https://img.shields.io/badge/Internet%20Freedom-2e7d32?style=for-the-badge&logo=liberty&logoColor=white)
-[![Open Technology Fund Security Lab](https://img.shields.io/badge/Open%20Technology%20Fund%20Security%20Lab-1a365d?style=for-the-badge&logo=shield&logoColor=white)](https://apply.opentech.fund)
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
