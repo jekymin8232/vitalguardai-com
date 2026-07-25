@@ -8,6 +8,8 @@
 
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_V47_1_Code_Map.md
 
+**The project will continue to evolve through regular version updates based on security audit findings and newly identified security weaknesses.**
+
 ---
 
 ## 0. Document Control
