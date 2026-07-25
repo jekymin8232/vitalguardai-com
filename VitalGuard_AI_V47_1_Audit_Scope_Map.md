@@ -6,6 +6,16 @@ https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_V47_1
 
 Built with crypto.subtle, the browser’s native Web Crypto API.
 
+Rather than relying on live web delivery where code could change with each request, this tool is distributed as a single, verified static HTML file. Functioning as a fixed artifact, it undergoes hash verification before use and runs completely offline from local storage without any server in the loop once saved.
+
+To ensure integrity, every release is published alongside a SHA-256 hash and cryptographic signature. Users can verify locally that the file remains untampered with before launching it. Additionally, the build process is fully reproducible, allowing auditors to independently rebuild the artifact and confirm that the resulting hash matches the audited version.
+
+To defend against XSS and code injection within the browser context, a strict Content Security Policy (CSP) is enforced, and the use of innerHTML on untrusted input is strictly avoided. With zero reliance on remote scripts, CDNs, or eval(), the attack surface is tightly restricted to the single file under audit.
+
+We explicitly acknowledge that the host browser and operating system represent trust boundaries outside our control. Rather than making unrealistic guarantees, we transparently document this as an explicit application-layer boundary and operating assumption.
+
+Finally, to avoid the severe security risks associated with implementing custom cryptographic algorithms, we rely exclusively on the browser's native Web Crypto API (crypto.subtle).
+
 ---
 
 # 0. At-a-Glance — Audit Priority Map
