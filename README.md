@@ -1,3 +1,11 @@
+Personal Workspace(Email Contact Information): [mcorpai.org](https://mcorpai.org/)
+
+**Based in South Korea · Prefer Remote Work**
+
+This project is maintained strictly remotely to ensure neutrality and focus. For all inquiries, collaborations, or audit reports, please contact via email.
+
+---
+
 ### Ethical AI for the 6.8 Billion (Fully GDPR-compliant and aligned with ESG principles.)
 **Big Tech AI is for the 2 billion with infrastructure. Offline AI is ethical AI for the remaining 6.8 billion.**
 
@@ -25,8 +33,4 @@
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
----
 
-Personal Workspace(Email Contact Information): [mcorpai.org](https://mcorpai.org/)
-
-**Based in South Korea · Prefer Remote Work**
