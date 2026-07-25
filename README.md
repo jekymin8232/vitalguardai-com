@@ -1,4 +1,4 @@
-### Reference: OTF Review in Progress
+### Reference: OTF Review in Progress (OTF Security Lab)
 **The link will be made public upon successfully passing the Security Lab.**
 
 ![Internet Freedom](https://img.shields.io/badge/Internet%20Freedom-2e7d32?style=for-the-badge&logo=liberty&logoColor=white)
