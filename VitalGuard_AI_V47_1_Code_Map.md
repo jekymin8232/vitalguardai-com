@@ -1,10 +1,4 @@
 # VitalGuard AI v4.7.1 — Code Map & Release Verification
-
-Artifact: `VitalGuard_AI_complete_V47_1.html` — single-file, offline-first HTML application.
-Lineage: continuously updated from V4.3.8 to V4.7.1; V4.7.1 is a version-relabel / documentation remap of the **V4.6.9** security baseline plus one accessibility fix (VG471-01).
-
-> **Companion document:** the *Security Audit Scope Map v2* covers threat model, work-package priorities, and per-block test guidance. This document covers release identity, change lineage, module inventory, and verification evidence. Where the two overlap (deployment headers, residual risks, capability-scope), this document is authoritative on *what shipped*; the Scope Map is authoritative on *what to test*.
-
 ---
 
 ## 0. Release Identity (measured values)
