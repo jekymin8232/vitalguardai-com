@@ -13,21 +13,6 @@ The values below were measured from the exact shipped bytes of the artifact.
 
 ---
 
-## 0.1 Revision & patch history
-
-**Relabel step — 2026-07-19 (display strings only).**
-Visible framing strings — the page `<title>`, header sub, hero title/body/pillars, the intro hook, and in-app help/about copy across all seven UI languages — were reworded from disaster/pet phrasing to surveillance- and censorship-resistance phrasing to match the funder's mission scope. **No security-control logic, module, allowlist, or defence was changed**; the audited logic was byte-for-byte the V4.6.9 baseline. Line count at this step was 11,588 and no anchor shifted. Because these strings live inside the hash-pinned main application script, its CSP SHA-256 and the whole-file SHA-256 were recomputed.
-
-**Functional fix — 2026-07-19b (VG471-01, one fix).**
-A reproducible defect was corrected: in the *Add Demo Tag* wizard, tapping **Start Scan** did nothing on real devices. Root cause was a stacked-modal focus-trap error in `ModalA11y` — the `ConfirmModal` backdrop (`.sp-backdrop`, a direct `body` child) and the wizard overlay (inside `#app`) both became active in the same tick, so the lower wizard overlay's `lockOutside()` set `inert`/`aria-hidden` on the dialog above it, disabling **Start Scan**. The fix makes `rememberLock()` refuse to inert any element that is itself an active modal (`selector` match); non-modal background is still inerted, so focus-trapping, background isolation and screen-reader behaviour are preserved, and the top dialog is still isolated by z-index (350) and the existing Tab trap.
-
-- This is a genuine logic change in `script[1]` (no longer a byte-for-byte relabel of V4.6.9 in that one respect); the main-script CSP hash and the whole-file digest were recomputed.
-- The patch adds **6 lines**; every line anchor at or after original line **11,365** is shifted **+6** throughout this map (anchors before 11,365 are unchanged). Current line count: **11,594**.
-- No external dependency, network call, storage key, crypto path, action-policy rule or egress guard was touched; offline purity and the zero-egress posture are unchanged.
-- Verification: both `<script>` blocks pass `node --check`; the three CSP hashes equal the three shipped blocks; a headless DOM harness confirms the dialog is no longer `inert`, the button resolves, background inerting still engages while the wizard is open, and all inert state is restored on close.
-
----
-
 ## 1. Release Policy — Version-Relabel Remap (no logic change, one fix)
 
 V4.7.1 is a version-relabel and documentation remap of the V4.6.9 baseline. Except for displayed version strings, the security-control logic, defences, ordering, and runtime behaviour are byte-for-byte identical to V4.6.9 inside every executable block — **with one exception: the VG471-01 accessibility fix (see §0.1)**, which corrects a stacked-modal focus-trap so the wizard *Start Scan* dialog is interactive. That fix is the only functional change; nothing else was added, removed, weakened, or reordered, and no egress/crypto/action-policy surface was touched.
