@@ -318,7 +318,7 @@ As an open-source pioneer who refuses to be confined to the structural limits of
 
 # 🛡️ 4.7.2 Planned Future Updates
 
-Non-critical hardening items identified in the V47.1 security audit (overall grade: A). None are blocking; each is a small, incremental improvement scheduled for v4.7.2.
+Non-critical hardening items identified in the V47.1 security audit. None are blocking; each is a small, incremental improvement scheduled for v4.7.2.
 
 ---
 
