@@ -13,7 +13,6 @@
 | Artifact size | 613,833 bytes · 11,594 lines |
 | Scope-map version | 2.0 |
 | Correspondence | All line numbers in this document refer **only** to the artifact whose SHA-256 is stated above. Any modification to the file invalidates the line numbers; re-anchor with the CTRL+F strings provided in each table. |
-| Source reference | Code Map (companion document) — cross-referenced as "Code Map §N". |
 
 **How to use this map.** Sections are grouped as Work Packages (WP). Each high-priority block lists exact line ranges, copy-paste CTRL+F strings, and the specific properties to test. Section 1 is the priority overview; Section 2 is the threat model that frames *why* each area matters; Sections 4–9 are the technical detail.
 
