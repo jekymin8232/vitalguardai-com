@@ -63,7 +63,7 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 **For example,**
 
-equipping a Casio digital watch with top-tier security and lightweight machine learning AI for simple life-saving functions could significantly boost its market appeal. Combined with solar-powered operation, digital watches offer an ideal platform for always-on, low-power AI.
+equipping a Casio digital watch with top-tier security and lightweight machine learning AI for simple life-saving functions could significantly boost its market appeal. Combined with solar-powered operation, digital watches offer an ideal platform for always-on, low-power AI. Because this AI runs efficiently even on ultra-low-cost semiconductor chips, it does not significantly increase the manufacturing cost.
 
 
 
