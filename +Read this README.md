@@ -1,4 +1,4 @@
-### OTF Security Lab, http:// The link will be made public upon successfully passing the Security Lab.
+### OTF Security Lab, http:// (The link will be made public upon successfully passing the Security Lab)
 
 ![Internet Freedom](https://img.shields.io/badge/Internet%20Freedom-2e7d32?style=for-the-badge&logo=liberty&logoColor=white)
 [![Open Technology Fund Security Lab](https://img.shields.io/badge/Open%20Technology%20Fund%20Security%20Lab-1a365d?style=for-the-badge&logo=shield&logoColor=white)](https://apply.opentech.fund)
