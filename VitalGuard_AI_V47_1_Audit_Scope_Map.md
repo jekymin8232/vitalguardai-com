@@ -2,6 +2,8 @@
 
 *Auditable, zero-network-dependency, offline AI architecture — vendor-facing scope document.*
 
+**Licence: Apache-2.0 © mcorpai.org (Creator: ROK and Morgan J.)**
+
 ---
 
 ## 0. Document Control
