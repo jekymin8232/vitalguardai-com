@@ -39,10 +39,13 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 ---
 
-🔗 Sample Demo (MVP : Includes Basic Machine Learning AI)
+**The best security is lightweight.**
 
-🔊 Bluetooth Mesh Networking: https://vitalguardai.com/
+🔗 Sample Demo, Capacity: 1 Image (MVP : Includes Basic Machine Learning AI)
 
-🛡️ Bluetooth Ultrasonic: https://mcorpai.net/ 
+🔊 Bluetooth Mesh Networking (600kb): https://vitalguardai.com/
+
+🛡️ Bluetooth Ultrasonic: (460kb) https://mcorpai.net/ 
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
+
