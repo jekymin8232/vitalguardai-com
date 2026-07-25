@@ -294,21 +294,4 @@ Any byte change inside either `<script>` block or the `<style>` block invalidate
 
 ---
 
-## 13. Independent Verification (for reviewers)
-
-The artifact is a single hand-authored file with no build/bundling pipeline — the distributed file is the source. To confirm you hold the exact audited artifact:
-
-```bash
-sha256sum VitalGuard_AI_complete_V47_1.html
-# expected:
-# 2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea
-```
-
-If the digest matches, every line anchor in this map applies. If it differs, treat the file as a different artifact and re-anchor via the CTRL+F strings in the companion Scope Map.
-
----
-
-*END OF CODE MAP*
-
 *Prepared by Morgan J. (Gyu-min Jeon) — VitalGuard / M-Corp Ethical AI.*
-*Licence: Apache-2.0 © mcorpai.org (Creator: ROK and Morgan J.). The embedded Project Nayuki QR generator retains its original MIT notice.*
