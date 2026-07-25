@@ -46,6 +46,3 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 🛡️ Bluetooth Ultrasonic: https://mcorpai.net/ 
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
-**Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
-
-
