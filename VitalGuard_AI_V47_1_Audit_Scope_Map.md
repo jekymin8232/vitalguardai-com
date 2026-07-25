@@ -398,10 +398,6 @@ Note   : stability takes priority over hitting the size target
 
 ---
 
-*Scope note: these are refinements, not security fixes for active vulnerabilities. The v47.1 audit found no CRITICAL or HIGH issues.*
-
----
-
 **Morgan J.**  
 *Principal Architect & Founder, Republic of Korea*
 
