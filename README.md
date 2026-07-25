@@ -49,3 +49,16 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
+---
+
+### Research Applications
+
+1. **Human rights defenders, journalists, activists, and others who require strong personal security and privacy.**
+
+2. **Defense, emergency response, and disaster resilience solutions** leveraging an **Egress Kill Switch** (physical network isolation) together with a **BLE and ultrasonic local communication architecture**.
+
+3. **Lightweight machine learning and BLE scanning running entirely in pure JavaScript**, even on **10-year-old Android smartphones**. This enables organizations to repurpose legacy devices as **offline humanitarian and security nodes**, providing a practical ESG use case by extending device lifecycles.
+
+4. **Research and development of on-device AI and edge computing** that operate **without dependence on cloud servers**. With minimal power consumption, the system can be deployed for **30 days or longer** in suitable long-term field operations.
+
+
