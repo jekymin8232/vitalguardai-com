@@ -43,6 +43,6 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 🔗 Sample Demo
 
-🛡️ Bluetooth Ultrasonic: https://vitalguardai.com/
+🔊 Bluetooth Mesh Networking: https://vitalguardai.com/
 
-🔊 Bluetooth Mesh Networking: https://mcorpai.net/ 
+🛡️ Bluetooth Ultrasonic: https://mcorpai.net/ 
