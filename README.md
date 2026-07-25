@@ -3,7 +3,7 @@
 ![Internet Freedom](https://img.shields.io/badge/Internet%20Freedom-2e7d32?style=for-the-badge&logo=liberty&logoColor=white)
 [![Open Technology Fund Security Lab](https://img.shields.io/badge/Open%20Technology%20Fund%20Security%20Lab-1a365d?style=for-the-badge&logo=shield&logoColor=white)](https://apply.opentech.fund)
 
-# Vitalguard-AI 🛡️ Security Without Compromise.
+# VitalGuard AI 🛡️ Security Without Compromise
 ## Pursuing infrastructure-independent AI with uncompromising security.
 
 **Pursuing the ultimate single-file, zero-dependency architecture. Every module is designed from the ground up for the highest possible level of completeness and self-reliance.**
