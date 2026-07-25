@@ -7,15 +7,8 @@ The values below were measured from the exact shipped bytes of the artifact.
 
 | Property | Value |
 |---|---|
-| File size | **613,833 bytes** |
 | Lines | **11,594** |
-| Whole-file SHA-256 | `2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea` |
 | `APP_VERSION` | `4.7.1` |
-| `script[0]` (early hardening core) CSP hash | `sha256-UR7KMZpyZYRVtvDg538WL5H+lw2WF1fu9rRUU2N4hPA=` |
-| `script[1]` (main application) CSP hash | `sha256-bnWCLMmgML1HGrANO+aFnoiVJVIbZP4KN6OE0j+LT30=` |
-| `style[0]` (stylesheet) CSP hash | `sha256-4L8r+PuvQvTXiLjEyR/lOlpjl+aUSyJJCFZp4ff/T1A=` |
-| IndexedDB name / version | `VitalGuardAI_V41` / `2` |
-| Local-storage compatibility prefix | `vg41_` |
 | Licence | Apache-2.0 (whole artifact); embedded Project Nayuki QR generator retains its own MIT notice |
 
 > **Integrity note.** The detached whole-file SHA-256 above must be distributed through an independent trusted channel; it is a verification digest, **not** a digital signature. Any byte change to any `<script>` or `<style>` block invalidates both that block's CSP hash and the whole-file digest (see §12).
