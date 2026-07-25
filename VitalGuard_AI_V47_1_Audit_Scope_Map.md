@@ -9,7 +9,7 @@
 | Field | Value |
 |-------|-------|
 | Target artifact | `VitalGuard_AI_complete_V47_1.html` |
-| Artifact SHA-256 | `2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea` |
+| Artifact SHA-256 (Current version) | `2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea` |
 | Artifact size | 613,833 bytes · 11,594 lines |
 | Scope-map version | 2.0 |
 | Correspondence | All line numbers in this document refer **only** to the artifact whose SHA-256 is stated above. Any modification to the file invalidates the line numbers; re-anchor with the CTRL+F strings provided in each table. |
