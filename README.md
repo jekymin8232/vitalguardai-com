@@ -1,4 +1,4 @@
-# Vitalguard-AI
+# Vitalguard-AI 🛡️ Security
 ## Pursuing infrastructure-independent AI with uncompromising security.
 
 **Pursuing the ultimate single-file, zero-dependency architecture. Every module is designed from the ground up for the highest possible level of completeness and self-reliance.**
