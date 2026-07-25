@@ -382,19 +382,6 @@ if (!(window.trustedTypes && window.trustedTypes.createPolicy)) {
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   };
 }
-```
-
----
-
-## 5. Incremental file-size optimization (optional)
-
-**Why:** The single file is ~613 KB, above the 500 KB target. It is stable, so no rewrite is needed — only comment/duplication cleanup and, if useful, a separate lightweight field build.
-
-```text
-Target : keep core logic intact
-Method : remove redundant comments + duplicate helpers (no feature removal)
-Note   : stability takes priority over hitting the size target
-```
 
 ---
 
