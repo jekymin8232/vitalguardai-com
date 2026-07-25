@@ -41,8 +41,8 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
-Sample Demo
+🔗 Sample Demo
 
-🔗 https://vitalguardai.com/
+🛡️ Bluetooth Ultrasonic: https://vitalguardai.com/
 
-🔗 https://mcorpai.net/
+🔊 Bluetooth Mesh Networking: https://mcorpai.net/ 
