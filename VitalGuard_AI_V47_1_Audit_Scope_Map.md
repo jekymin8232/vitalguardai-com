@@ -1,34 +1,33 @@
-# v4.7.1 Security Audit Scope Map.
+# VitalGuard AI v4.7.1 — Security Audit Scope Map
 
-### Auditable Zero-Dependency Offline AI Architecture
-
-**Reference: Source Code Documentation** 
-
-https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_V47_1_Code_Map.md
-
-Built with crypto.subtle, the browser’s native Web Crypto API.
-
-Rather than relying on live web delivery where code could change with each request, this tool is distributed as a single, verified static HTML file. Functioning as a fixed artifact, it undergoes hash verification before use and runs completely offline from local storage without any server in the loop once saved.
-
-To ensure integrity, every release is published alongside a SHA-256 hash and cryptographic signature. Users can verify locally that the file remains untampered with before launching it. Additionally, the build process is fully reproducible, allowing auditors to independently rebuild the artifact and confirm that the resulting hash matches the audited version.
-
-To defend against XSS and code injection within the browser context, a strict Content Security Policy (CSP) is enforced, and the use of innerHTML on untrusted input is strictly avoided. With zero reliance on remote scripts, CDNs, or eval(), the attack surface is tightly restricted to the single file under audit.
-
-We explicitly acknowledge that the host browser and operating system represent trust boundaries outside our control. Rather than making unrealistic guarantees, we transparently document this as an explicit application-layer boundary and operating assumption.
-
-Finally, to avoid the severe security risks associated with implementing custom cryptographic algorithms, we rely exclusively on the browser's native Web Crypto API (crypto.subtle).
+*Auditable, zero-network-dependency, offline AI architecture — vendor-facing scope document.*
 
 ---
 
-# 0. At-a-Glance — Audit Priority Map
+## 0. Document Control
+
+| Field | Value |
+|-------|-------|
+| Target artifact | `VitalGuard_AI_complete_V47_1.html` |
+| Artifact SHA-256 | `2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea` |
+| Artifact size | 613,833 bytes · 11,594 lines |
+| Scope-map version | 2.0 |
+| Correspondence | All line numbers in this document refer **only** to the artifact whose SHA-256 is stated above. Any modification to the file invalidates the line numbers; re-anchor with the CTRL+F strings provided in each table. |
+| Source reference | Code Map (companion document) — cross-referenced as "Code Map §N". |
+
+**How to use this map.** Sections are grouped as Work Packages (WP). Each high-priority block lists exact line ranges, copy-paste CTRL+F strings, and the specific properties to test. Section 1 is the priority overview; Section 2 is the threat model that frames *why* each area matters; Sections 4–9 are the technical detail.
+
+---
+
+## 1. At-a-Glance — Audit Priority Map
 
 | WP | Domain | Core Line Range | Est. Volume | Priority |
 |----|--------|-----------------|-------------|----------|
-| **WP1** | Zero-Egress — first-executable network/frame/RTC/worker/eval isolation | **52–139** + policy regex **909** | ~90 lines | Highest |
+| **WP1** | Zero-Egress — first-executable network / frame / RTC / worker / eval isolation | **52–139** + policy regex **909** | ~90 lines | Highest |
 | **WP2 / WP7** | Anti-Injection — allowlist action dispatcher + Trusted Types sinks | **857–1006** | ~150 lines | Highest |
-| **WP6-a** | Crypto core — PBKDF2/AES-GCM-256 + purpose-bound AAD | **10,491–10,566** | ~75 lines | Highest |
+| **WP6-a** | Crypto core — PBKDF2 / AES-GCM-256 + purpose-bound AAD | **10,491–10,566** | ~75 lines | Highest |
 | **WP6-b** | At-rest encrypted vault — atomic writes + write-epoch race guard | **10,573–10,666** | ~95 lines | Highest |
-| **WP6-c** | Import boundary — schema/depth/size validation + typed plaintext gate | **10,394–10,446**, **10,906–10,926**, **6,705** | ~90 lines | High |
+| **WP6-c** | Import boundary — schema / depth / size validation + typed plaintext gate | **10,394–10,446**, **10,906–10,926**, **6,705** | ~90 lines | High |
 | **RP** | Rescue Pack replay guard — hashed bounded JTI ledger | **10,809–10,896** | ~85 lines | High |
 | **PP** | Passphrase policy — distinct-word + weak-pattern enforcement | **11,184–11,206** | ~25 lines | High |
 | **BQ** | BLE duplicate-binding quarantine — fail-closed routing | **10,895–11,066** | ~170 lines | High |
@@ -40,16 +39,57 @@ Finally, to avoid the severe security risks associated with implementing custom 
 
 > **Bottom line.**
 > 1. **No external CDNs or external domains.** A full-file sweep finds no active external resources; `connect-src 'none'` is declared in the meta CSP (line 39) and enforced at runtime by the first-executable core.
-> 2. **~80% of audit effort should concentrate on WP1, WP2/WP7 and the three WP6 blocks (~500 lines combined).** The V4.6.x hardening surfaces (replay guard, passphrase policy, BLE duplicate-binding, destructive coordination) are the most recent additions and warrant close attention as a second tier.
-> 3. **One embedded third-party component** (Nayuki QR, MIT) exists inline; it is the only supply-chain surface and is called out separately in §6.
+> 2. **~80% of audit effort should concentrate on WP1, WP2/WP7 and the three WP6 blocks (~500 lines combined).** The v4.6.x hardening surfaces (replay guard, passphrase policy, BLE duplicate-binding, destructive coordination) are the most recent additions and warrant close attention as a second tier.
+> 3. **One embedded third-party component** (Nayuki QR, MIT) exists inline; it is the only supply-chain surface and is described separately in §7.
 
 ---
 
-## 1. WP1 — Zero-Egress (First-Executable Network / Frame / RTC / Worker / eval Isolation)
+## 2. Threat Model
 
-The entire outbound-suppression guard lives in **script[0]**, the first executable block (lines 52–139), and installs before the visible shell, the stylesheet, and the main application script. This ordering is itself a control: by the time any application code runs, the outbound surface is already locked. The CSP model is **hash-pinned scripts with `default-src 'none'` and `connect-src 'none'`** (line 39); the runtime core below enforces the same boundary defensively even if the meta CSP is bypassed at the platform level.
+This section defines *who the artifact protects, from whom, and what failure would cost*, so that the technical scope below can be weighed against real-world consequence rather than abstract severity. It follows OTF Security Lab's stated focus on users in high-risk, surveillance-heavy contexts.
 
-### 1-A. First-executable hardening core — **Highest-priority detailed review**
+### 2.1 Protected users
+- Individuals operating **offline or in intermittently connected, low-resource environments** (e.g. refurbished phones, no reliable server access).
+- People for whom **local data disclosure carries elevated personal risk** — the design assumes the device itself may later be inspected, lost, or seized.
+
+### 2.2 Assets to protect
+| Asset | Where it lives | Why it matters |
+|-------|----------------|----------------|
+| Sensitive user records | At-rest encrypted vault (WP6-b) | Disclosure could expose the user or their contacts. |
+| Passphrase-derived keys | In-memory, derived per session (WP6-a) | Compromise defeats all at-rest protection. |
+| Rescue Pack contents | Encrypted, manually handed off (RP) | Replay or forgery could mislead a recipient. |
+| The integrity of the artifact itself | The single HTML file | A tampered build could silently exfiltrate or weaken protection. |
+
+### 2.3 Adversaries considered
+| Adversary | Capability assumed | Primary defence |
+|-----------|--------------------|-----------------|
+| Network observer / exfiltration attempt | Can observe or induce outbound traffic | WP1 Zero-Egress (no outbound channel exists) |
+| Malicious content / injection | Can supply crafted strings, imports, or DOM input | WP2/WP7 allowlist + Trusted Types; WP6-c import boundary |
+| Local attacker with device access after the fact | Can read local storage, attempt offline key guessing | WP6-a/b encryption + WP passphrase policy |
+| Spoofed proximity signals | Can broadcast crafted BLE advertisements | BQ fail-closed routing (advisory-only, never life-critical) |
+
+### 2.4 Explicitly outside the trust boundary
+The host **browser and operating system are trust boundaries outside the artifact's control**. Once arbitrary script execution or a compromised platform is assumed, in-page JavaScript cannot restore integrity. This is stated as an operating assumption, not a defended guarantee (see §10). Worst-case harm the design seeks to *bound* — not eliminate — is disclosure of locally stored sensitive data following device compromise.
+
+---
+
+## 3. Architecture & Integrity Model
+
+The artifact is a **single, self-contained static HTML file**. It is distributed as a fixed file rather than served live per request, so the code a user runs is the code that was audited.
+
+- **Cryptography** uses only the browser-native Web Crypto API (`crypto.subtle`). No custom cryptographic primitive is implemented — this deliberately avoids the well-known risks of hand-rolled crypto.
+- **Injection defence** enforces a strict Content Security Policy (`default-src 'none'`, `connect-src 'none'`, hash-pinned scripts, Trusted Types) and routes all HTML sinks through a neutralising policy; `innerHTML` is never assigned raw untrusted input.
+- **Attack surface** is confined to the one file under audit: no remote scripts, no CDNs, no `eval`, no `new Function`.
+
+**Integrity & reproducibility (stated precisely).** The artifact is hand-authored as a single file with **no build, bundling, or minification pipeline** — *the distributed file is the source*. "Reproducibility" therefore reduces to **byte-for-byte verification of the published file against its SHA-256** (see §14); there is no transform step for an auditor to re-run. Each release is published alongside its SHA-256 so a reviewer can confirm the file is untampered before launch. The in-app hash display is diagnostic only and is **not** a signature (see §10).
+
+---
+
+## 4. WP1 — Zero-Egress (First-Executable Network / Frame / RTC / Worker / eval Isolation)
+
+The outbound-suppression guard lives in **script[0]**, the first executable block (lines 52–139), and installs before the visible shell, the stylesheet, and the main application script. This ordering is itself a control: by the time any application code runs, the outbound surface is already locked. The CSP model is **hash-pinned scripts with `default-src 'none'` and `connect-src 'none'`** (line 39); the runtime core below enforces the same boundary defensively even if the meta CSP is bypassed at the platform level.
+
+### 4-A. First-executable hardening core — highest-priority detailed review
 **Lines: 52 – 139**
 
 | Item | Line | CTRL+F string (paste as-is) |
@@ -70,23 +110,22 @@ The entire outbound-suppression guard lives in **script[0]**, the first executab
 
 **What to test.**
 - Confirm every outbound and code-execution channel is locked without exception: `fetch`, `XMLHttpRequest`, `WebSocket`, `EventSource`, `sendBeacon`, `window.open`, `RTCPeerConnection` / `RTCDataChannel`, `Worker` / `SharedWorker`, `WebTransport` / `WebSocketStream`, `serviceWorker.register`, and `eval`. Workers are locked because they own a separate fetch scope (inline comment at line 88).
-- The locks are applied via a `lock()` helper intended to make each property non-configurable and non-writable. The central question is whether any locked handle can be **recovered or re-derived** — e.g. via `iframe.contentWindow.fetch`, prototype-chain reconstruction, `Reflect`, or importing a fresh realm. Note that same-origin child frames are themselves fail-closed (line 71), which is part of the intended defence-in-depth.
+- The locks are applied via a `lock()` helper intended to make each property non-configurable and non-writable. The central question is whether any locked handle can be **recovered or re-derived** — e.g. via `iframe.contentWindow.fetch`, prototype-chain reconstruction, `Reflect`, or importing a fresh realm. Note that same-origin child frames are themselves fail-closed (line 71), part of the intended defence-in-depth.
 - Confirm the post-install invariant check (line 112) genuinely reflects the locked state and cannot be satisfied by a partially-applied lock.
-- **Disclosed residual (please confirm, do not treat as undisclosed):** a meta CSP cannot enforce `frame-ancestors` or `sandbox`, and top-level `location` navigation cannot be made immutable by in-page JavaScript once arbitrary script execution is assumed. See the `security-limitations` meta tag (line 42). Production hosting is expected to set response headers (see §7).
+- **Disclosed residual (confirm, do not treat as undisclosed):** a meta CSP cannot enforce `frame-ancestors` or `sandbox`, and top-level `location` navigation cannot be made immutable by in-page JavaScript once arbitrary script execution is assumed. See the `security-limitations` meta tag (line 42). Production hosting is expected to set response headers (see §11).
 
-### 1-B. Action-policy egress token gate (parse-time)
-**Line: 909 (single regex line)**
-CTRL+F: `if(/constructor|prototype|__proto__`
+### 4-B. Action-policy egress token gate (parse-time)
+**Line: 909 (single regex line)** · CTRL+F: `if(/constructor|prototype|__proto__`
 
-This regex runs inside the action-policy parser *before* any dispatched call executes, so it is an intersection of WP1 and WP7. It blocks `fetch(`, `import(`, `Function(`, `eval(`, `XMLHttpRequest`, `WebSocket`, `EventSource`, `sendBeacon`, `localStorage`, `indexedDB`, `document.cookie`, `document.write`, `window.open`, and `location =`. Recommended testing: regex bypass via whitespace, Unicode homoglyphs, or string-concatenation such as `window['fe'+'tch']`, and confirmation that the parser rejects rather than best-effort-sanitizes on match.
+This regex runs inside the action-policy parser *before* any dispatched call executes, so it is an intersection of WP1 and WP7. It blocks `fetch(`, `import(`, `Function(`, `eval(`, `XMLHttpRequest`, `WebSocket`, `EventSource`, `sendBeacon`, `localStorage`, `indexedDB`, `document.cookie`, `document.write`, `window.open`, and `location =`. Recommended testing: regex bypass via whitespace, Unicode homoglyphs, or string-concatenation such as `window['fe'+'tch']`, and confirmation that the parser **rejects rather than best-effort-sanitises** on match.
 
 ---
 
-## 2. WP2 / WP7 — Anti-Injection (Allowlist Dispatcher + Trusted Types)
+## 5. WP2 / WP7 — Anti-Injection (Allowlist Dispatcher + Trusted Types)
 
-This block (lines 857–1006) is **the single most important area in the audit** — it is the core of the XSS and DOM-injection defence. The design deliberately uses **no `eval` and no `new Function`**; it parses only the `Namespace.method(args)` pattern and checks it against a frozen allowlist.
+This block (lines 857–1006) is the single most important area in the audit — the core of the XSS and DOM-injection defence. The design deliberately uses **no `eval` and no `new Function`**; it parses only the `Namespace.method(args)` pattern and checks it against a frozen allowlist.
 
-### 2-A. Allowlist and structural parser — **Core penetration-test target**
+### 5-A. Allowlist and structural parser — core penetration-test target
 **Lines: 857 – 918**
 
 | Item | Line | CTRL+F string |
@@ -97,13 +136,11 @@ This block (lines 857–1006) is **the single most important area in the audit**
 | Allowlist membership check | 912 | `if(!Object.prototype.hasOwnProperty.call(allowed,ns)` |
 | Frozen policy export | 918 | `return Object.freeze({normalize,parse,isAllowedAction,invoke});` |
 
-**The single most important test.**
-The primary attack objective is to **bypass the structural parser or the allowlist check** without tripping the dangerous-token regex (line 909). Verify argument-boundary handling: can a crafted argument cause a call to resolve to a namespace/method outside the frozen allowlist? Confirm that `hasOwnProperty` is used against `allowed` (line 912) so a polluted prototype cannot inject a phantom namespace — note that built-in prototypes are already frozen in the first-executable core (line 104), which this check depends on.
+**The single most important test.** The primary attack objective is to **bypass the structural parser or the allowlist check** without tripping the dangerous-token regex (line 909). Verify argument-boundary handling: can a crafted argument cause a call to resolve to a namespace/method outside the frozen allowlist? Confirm that `hasOwnProperty` is used against `allowed` (line 912) so a polluted prototype cannot inject a phantom namespace — built-in prototypes are already frozen in the first-executable core (line 104), which this check depends on.
 
-**Argument-to-sink data flow (the hard part of WP7).**
-The allowlist validates the *method name*, not the *semantic effect of arguments*. Review each allowlisted method that reaches a destructive or reflective sink — in particular anything routing to `ResetCenter.factory`, a full-wipe path, or a DOM-writing method — and confirm no such path is reachable with attacker-influenced arguments.
+**Argument-to-sink data flow (the hard part of WP7).** The allowlist validates the *method name*, not the *semantic effect of arguments*. Review each allowlisted method that reaches a destructive or reflective sink — in particular anything routing to `ResetCenter.factory`, a full-wipe path, or a DOM-writing method — and confirm no such path is reachable with attacker-influenced arguments.
 
-### 2-B. Trusted Types HTML-sink patches — **WP2 core**
+### 5-B. Trusted Types HTML-sink patches — WP2 core
 **Lines: 990 – 1006**
 
 | Item | Line | CTRL+F string |
@@ -113,18 +150,18 @@ The allowlist validates the *method name*, not the *semantic effect of arguments
 | Range.createContextualFragment patch | 1002 | `Range.prototype.createContextualFragment = function(html)` |
 
 **What to test (the hard part).**
-- The HTML neutraliser routes writes through a Trusted Types policy (`trusted-types vitalguard-html`, `require-trusted-types-for 'script'` in the CSP). Assess resistance to mutation XSS (mXSS), nested-tag obfuscation (`<scr<script>ipt>`), SVG/MathML namespace confusion, and comment-boundary tricks.
+- The HTML neutraliser routes writes through a Trusted Types policy (`trusted-types vitalguard-html`, `require-trusted-types-for 'script'`). Assess resistance to mutation XSS (mXSS), nested-tag obfuscation (`<scr<script>ipt>`), SVG/MathML namespace confusion, and comment-boundary tricks.
 - The `innerHTML` setter is patched at the prototype level. Assess whether the descriptor may be non-configurable in certain engines, whether an `Element.prototype` vs `HTMLElement.prototype` mismatch leaves a gap, or whether `<template>.content` routing bypasses the patch.
 - Determine whether any DOM-scrub / MutationObserver step fires *before* a hostile node becomes active, or whether a one-frame TOCTOU window exists.
 - Confirm that `data:` / `blob:` URL handling does not permit navigation to `data:text/html` or `blob:` in a new context — this intersects with WP1.
 
 ---
 
-## 3. WP6 — Data Sovereignty (Crypto Core · At-Rest Vault · Import Boundary)
+## 6. WP6 — Data Sovereignty (Crypto Core · At-Rest Vault · Import Boundary)
 
-Sensitive state is held in an **at-rest encrypted vault** with atomic, serialized writes and a write-epoch race guard; encrypted export/backup uses the same crypto core. All key material is passphrase-derived and never leaves the device.
+Sensitive state is held in an **at-rest encrypted vault** with atomic, serialised writes and a write-epoch race guard; encrypted export/backup uses the same crypto core. All key material is passphrase-derived and never leaves the device.
 
-### 3-A. Crypto core (V455Crypto) — **Core cryptographic review**
+### 6-A. Crypto core (V455Crypto) — core cryptographic review
 **Lines: 10,491 – 10,566**
 
 | Item | Line | CTRL+F string |
@@ -138,28 +175,28 @@ Sensitive state is held in an **at-rest encrypted vault** with atomic, serialize
 | Legacy v1/v2 decrypt path | 10,519 | `Unsupported legacy encrypted backup` |
 
 **Cryptographic review points.**
-- **PBKDF2 / 600,000 iterations / SHA-256 / AES-256-GCM** meets the OWASP recommendation for SHA-256; this is a verifiable strength worth citing in the report.
-- Confirm a **fresh 12-byte IV on every encryption** (line 10,503). GCM nonce reuse is catastrophic; confirm no code path reuses an IV. (The Code Map records a test producing 32 distinct IVs across 32 encryptions.)
+- **PBKDF2 / 600,000 iterations / SHA-256 / AES-256-GCM** meets the OWASP recommendation for SHA-256 — a verifiable strength worth citing in the report.
+- Confirm a **fresh 12-byte IV on every encryption** (line 10,503). GCM nonce reuse is catastrophic; confirm no code path reuses an IV. (Code Map records a test producing 32 distinct IVs across 32 encryptions.)
 - **AAD purpose-binding** (line 10,506): the additional-authenticated-data ties each ciphertext to its declared purpose/metadata. Confirm the AAD is reconstructed identically on decrypt (line 10,515 region) and that metadata tamper is rejected.
-- Review the **legacy v1/v2 decrypt path** (lines 10,519–10,523). Backward-compatible decryption of older envelopes is a common place for downgrade or confusion issues; confirm the version/`it`/`alg` checks cannot be coerced to accept a weaker envelope than intended.
-- Passphrase memory residency after derivation is not fully controllable in browser JS; worth a note rather than a finding.
+- Review the **legacy v1/v2 decrypt path** (lines 10,519–10,523). Backward-compatible decryption is a common place for downgrade/confusion issues; confirm the version / `it` / `alg` checks cannot be coerced to accept a weaker envelope than intended.
+- Passphrase memory residency after derivation is not fully controllable in browser JS; noted as a residual rather than a finding.
 
-### 3-B. At-rest encrypted vault — **race and durability review**
+### 6-B. At-rest encrypted vault — race and durability review
 **Lines: 10,573 – 10,666**
 
 | Item | Line | CTRL+F string |
 |------|------|---------------|
 | Vault object | 10,573 | `const SecureVaultV455={` |
-| Serialized write state | 10,574 | `writeQueue:Promise.resolve(), writeEpoch:0, writeBlocked:false` |
+| Serialised write state | 10,574 | `writeQueue:Promise.resolve(), writeEpoch:0, writeBlocked:false` |
 | Atomic update | 10,636 | `atomicUpdate(mutator){` |
 | Invalidate writes (epoch advance) | 10,650 | `async invalidateWrites(){this.writeBlocked=true;this.writeEpoch++` |
 
 **What to test.**
-- The vault is a **single encrypted envelope** committed atomically; there is no partial-state window by design. Confirm `atomicUpdate` (line 10,636) genuinely serializes concurrent mutators and that a mutator observing a stale `writeEpoch` is dropped (the intended guard against a delayed slider/threshold write restoring deleted data).
-- Confirm the destructive coordination in §DESTR (delete/wipe) correctly advances the epoch through `invalidateWrites` (line 10,650) so that a queued write cannot resurrect wiped state. This is the most subtle correctness property in the build; a targeted race harness is welcome here.
-- **Disclosed residual:** because the vault is one envelope, a small write re-encrypts the whole sensitive state. Record-per-envelope storage is intentionally deferred (see §7 and Code Map §11).
+- The vault is a **single encrypted envelope** committed atomically; there is no partial-state window by design. Confirm `atomicUpdate` (line 10,636) genuinely serialises concurrent mutators and that a mutator observing a stale `writeEpoch` is dropped (the intended guard against a delayed slider/threshold write restoring deleted data).
+- Confirm the destructive coordination in §7-D (delete/wipe) correctly advances the epoch through `invalidateWrites` (line 10,650) so a queued write cannot resurrect wiped state. This is the most subtle correctness property in the build; a targeted race harness is welcome.
+- **Disclosed residual:** because the vault is one envelope, a small write re-encrypts the whole sensitive state. Record-per-envelope storage is intentionally deferred (Code Map §11).
 
-### 3-C. Import boundary (schema / depth / size / typed plaintext gate)
+### 6-C. Import boundary (schema / depth / size / typed plaintext gate)
 **Lines: 10,394 – 10,446, 10,906 – 10,926, 6,705**
 
 | Item | Line | CTRL+F string |
@@ -171,18 +208,18 @@ Sensitive state is held in an **at-rest encrypted vault** with atomic, serialize
 | Hardened import entry point | 6,705 | `if(window.VitalGuardHardenedImport){ return window.VitalGuardHardenedImport(ev); }` |
 
 **What to test.**
-- `assertJsonShape` (line 10,406) enforces max depth, a node cap, circular-reference rejection via `WeakSet`, and a 1,000-child ceiling — the intended defence against JSON-bomb and prototype-pollution inputs. Confirm a `__proto__` key in import data cannot trigger prototype traversal (note built-in prototypes are frozen at line 104).
+- `assertJsonShape` (line 10,406) enforces max depth, a node cap, circular-reference rejection via `WeakSet`, and a 1,000-child ceiling — the intended defence against JSON-bomb and prototype-pollution inputs. Confirm a `__proto__` key in import data cannot trigger prototype traversal (built-in prototypes are frozen at line 104).
 - `sanitizePet` (line 10,414) forces every field through allowlist/range/length constraints with a 32 KB per-entry ceiling. Whether the trust boundary is drawn cleanly and completely at the import point is the central WP6 question.
-- **Plaintext import requires an explicit typed approval** ("IMPORT PLAINTEXT", line 10,922), gated behind a danger confirmation. Confirm there is no code path that imports plaintext without this gate, and that encrypted import decrypts and then re-validates through `assertJsonShape` (decrypted data is not implicitly trusted).
+- **Plaintext import requires explicit typed approval** ("IMPORT PLAINTEXT", line 10,922), gated behind a danger confirmation. Confirm no code path imports plaintext without this gate, and that encrypted import decrypts and then **re-validates** through `assertJsonShape` (decrypted data is not implicitly trusted).
 - Voice/audio data-URL handling has a bounded character ceiling (`maxVoiceDataUrlChars`, line 10,394). Assess post-`atob` size expansion.
 
 ---
 
-## 4. V4.6.x Hardening Surfaces (Most Recent Additions)
+## 7. v4.6.x Hardening Surfaces (Most Recent Additions)
 
-These controls are the most recent additions to the codebase and are therefore the least externally reviewed. They are grouped here so the vendor can budget a dedicated pass.
+These controls are the newest additions and therefore the least externally reviewed. They are grouped so the vendor can budget a dedicated pass.
 
-### 4-A. Rescue Pack replay guard
+### 7-A. Rescue Pack replay guard
 **Lines: 10,809 – 10,896**
 
 | Item | Line | CTRL+F string |
@@ -193,9 +230,9 @@ These controls are the most recent additions to the codebase and are therefore t
 | Replay hash (SHA-256 of jti) | 10,828 | `async function v469ReplayHash(jti){return V455Crypto.sha256Text('VitalGuard|VG-RP2|replay|'` |
 | Replay-seen check | 10,829 | `async function v455ReplaySeen(jti){` |
 
-**What to test.** Confirm the ledger stores **only SHA-256 hashes of the jti with a capped expiry** and never writes a raw jti locally; that the bounded ledger has a genuine upper bound (no unbounded growth); and that the encrypted-setting compatibility ledger and the profile-local ledger cannot disagree in a way that allows a single-use token to be replayed. **Disclosed residual:** the ledger is best-effort and browser-profile-local — clearing site data removes it. This is a documented limitation, not a claimed guarantee.
+**What to test.** Confirm the ledger stores **only SHA-256 hashes of the jti with a capped expiry** and never writes a raw jti locally; that the bounded ledger has a genuine upper bound (no unbounded growth); and that the encrypted-setting compatibility ledger and the profile-local ledger cannot disagree in a way that allows a single-use token to be replayed. **Disclosed residual:** the ledger is best-effort and browser-profile-local — clearing site data removes it. A documented limitation, not a claimed guarantee.
 
-### 4-B. Passphrase policy (distinct-word + weak-pattern)
+### 7-B. Passphrase policy (distinct-word + weak-pattern)
 **Lines: 11,184 – 11,206**
 
 | Item | Line | CTRL+F string |
@@ -205,9 +242,9 @@ These controls are the most recent additions to the codebase and are therefore t
 | Four-distinct-word rule | 11,194 | `if(new Set(normalized).size<4)return {ok:false,why:'repeated word'}` |
 | Frozen policy export | 11,204 | `window.VitalGuardPassphrasePolicyV469=Object.freeze` |
 
-**What to test.** Confirm the creation-strength gate (min 16 chars, no control chars, no repeated/common/sequential patterns, and either four distinct normalized words or a high-variety non-word path) is applied to **new** sensitive passphrases, and that unlocking a **legacy** vault deliberately does not re-apply the gate (so existing users are not locked out). Probe for normalization bypasses (NFKC / locale-casing) that could let near-duplicate words pass the distinct-word count.
+**What to test.** Confirm the creation-strength gate (min 16 chars, no control chars, no repeated/common/sequential patterns, and either four distinct normalised words or a high-variety non-word path) is applied to **new** sensitive passphrases, and that unlocking a **legacy** vault deliberately does not re-apply the gate (so existing users are not locked out). Probe for normalisation bypasses (NFKC / locale-casing) that could let near-duplicate words pass the distinct-word count.
 
-### 4-C. BLE duplicate-binding quarantine (fail-closed routing)
+### 7-C. BLE duplicate-binding quarantine (fail-closed routing)
 **Lines: 10,895 – 11,066**
 
 | Item | Line | CTRL+F string |
@@ -216,9 +253,9 @@ These controls are the most recent additions to the codebase and are therefore t
 | Routing eligibility check | 10,972 | `sig.bindingVersion==='v455-local-exact'` |
 | Exact-binding-first routing | 11,032 | `/* V4.6.8 (VG468-02, retained in V4.6.9` |
 
-**What to test.** Confirm that two records with the same exact local browser device ID are **never routed** and are both quarantined for local re-registration; that imported metadata cannot self-promote to a bound state without on-device re-registration; and that exact-binding is resolved before clone-candidate scoring. **Disclosed residual (important):** generic BLE advertisements are not cryptographically authenticated; advertisement-only identity is spoofable and is used only for advisory, fail-closed directional guidance — never for life-critical decisions.
+**What to test.** Confirm that two records with the same exact local browser device ID are **never routed** and are both quarantined for local re-registration; that imported metadata cannot self-promote to a bound state without on-device re-registration; and that exact-binding is resolved before clone-candidate scoring. **Disclosed residual (important):** generic BLE advertisements are not cryptographically authenticated; advertisement-only identity is spoofable and is used only for advisory, fail-closed directional guidance — **never** for life-critical decisions.
 
-### 4-D. Destructive coordination (Reset Center + persistence generation guard)
+### 7-D. Destructive coordination (Reset Center + persistence generation guard)
 **Lines: 8,122 – 8,186, 11,459 – 11,488**
 
 | Item | Line | CTRL+F string |
@@ -228,166 +265,103 @@ These controls are the most recent additions to the codebase and are therefore t
 | beforeClearAll (generation advance) | 11,479 | `async function beforeClearAll(){blocked=true;generation++` |
 | Frozen persistence API | 11,488 | `window.VitalGuardPersistenceV469=api` |
 
-**What to test.** Confirm full wipe removes app IndexedDB stores, all `vg41_` records, language keys (`vg_lang_v41` / `vg_lang_v412`), the replay ledger (`vg_rp_replay_v469`), and the vault fallback; that persistence is *blocked during* wipe and *unblocked after* so a fresh post-wipe session can save normally; and that no debounced write scheduled before the wipe survives it. This is the counterpart to the vault write-epoch guard in §3-B and should be tested together.
+**What to test.** Confirm full wipe removes app IndexedDB stores, all `vg41_` records, language keys (`vg_lang_v41` / `vg_lang_v412`), the replay ledger (`vg_rp_replay_v469`), and the vault fallback; that persistence is *blocked during* wipe and *unblocked after* so a fresh post-wipe session can save normally; and that no debounced write scheduled before the wipe survives it. This is the counterpart to the vault write-epoch guard in §6-B and should be tested together.
 
 ---
 
-## 5. Secondary Areas — Lighter Review Sufficient
+## 8. Secondary Areas — Lighter Review Sufficient
 
-### 5-A. Signal math filters
+### 8-A. Signal math filters
 **Lines: 3,750 – 3,924** — Kalman RSSI smoothing and RSSI-to-distance estimation. No military-use vector (civilian pet-proximity smoothing). Review numerical stability: division-by-zero, NaN propagation, filter divergence. Deterministic and white-box, consistent with the project's transparency principle.
 
-### 5-B. On-device AI
+### 8-B. On-device AI
 **Lines: 7,723 – 7,918** — IsolationForest / KNN / RLS ensemble (CTRL+F: `class IsolationForestLite` / `p.ai4={knn:new KNNLite`). Unsupervised, on-device, no model download and no remote inference — consistent with WP1. Confirm learned weights remain local only.
 
-### 5-C. BLE scan filters / permission boundary
+### 8-C. BLE scan filters / permission boundary
 **Lines: 5,229 – 5,358** — advertisement receive listener and scan-filter construction. If any register/wizard branch receives advertisements without signature filtering, note that it is transient, consent-gated, and — confirmed by WP1 zero-egress — that no received advertisement data leaves the device.
 
 ---
 
-## 6. Supply-Chain — Embedded Third-Party Component
+## 9. Supply-Chain — Embedded Third-Party Component
 
 **Lines: 4,161 – ~4,966** · CTRL+F: `Offline embedded library: Project Nayuki QR Code generator (MIT License).` and `var qrcodegen;`
 
-This is the **only** third-party component in the file, vendored inline under the MIT License (declared in the `third-party-license` meta tag, line 38). It is used for offline QR rendering of the encrypted Rescue Pack and performs no I/O. Suggested checks: confirm the vendored source matches an upstream Nayuki release without local modification (or that any modification is documented), and confirm it is reached only through the allowlisted dispatcher. For accuracy of framing: the project's "zero dependency" property is best stated as **zero network/runtime dependency, with one inline MIT-licensed rendering component** — this document states the boundary explicitly so it is not perceived as an undisclosed dependency.
+This is the **only** third-party component in the file, vendored inline under the MIT License (declared in the `third-party-license` meta tag, line 38). It is used for offline QR rendering of the encrypted Rescue Pack and performs no I/O. Suggested checks: confirm the vendored source matches an upstream Nayuki release without local modification (or that any modification is documented), and confirm it is reached only through the allowlisted dispatcher. For accuracy of framing: the project's dependency property is best stated as **zero network/runtime dependency, with one inline MIT-licensed rendering component** — stated explicitly here so it is not perceived as an undisclosed dependency.
 
 ---
 
-## 7. Disclosed Residual Risks (Confirm, Not Discover)
+## 10. Disclosed Residual Risks (Confirm, Not Discover)
 
-The maintainer flags the following proactively; they are recorded in the in-file meta tags and Code Map §10 and are not claimed to be resolved.
+Flagged proactively; recorded in the in-file meta tags and Code Map §10, and not claimed to be resolved.
 
-- **Meta-CSP limits:** `frame-ancestors` and `sandbox` cannot be enforced from a meta tag; the in-file frame guard (line 71) is defence-in-depth, and production hosting must set the response headers listed below. Top-level `location` navigation cannot be made immutable by in-page JS once arbitrary script execution is assumed (meta `security-limitations`, line 42).
-- **Capability-scope wording mismatch (please read):** the visible product copy still uses Swarm / Mesh / SOS-relay language, but the artifact implements only **passive BLE advertisement reception, local processing, and manual encrypted hand-off** — not BLE transmission, GATT relay, mesh routing, autonomous self-organization, or autonomous SOS relay. A nonvisual capability manifest documents the true boundary (meta `capability-scope`, line 45). Because this release freezes UX/copy, the visible mismatch is a **deliberately retained residual**; visible-copy correction is scheduled for a subsequent release.
+- **Meta-CSP limits:** `frame-ancestors` and `sandbox` cannot be enforced from a meta tag; the in-file frame guard (line 71) is defence-in-depth, and production hosting must set the response headers in §11. Top-level `location` navigation cannot be made immutable by in-page JS once arbitrary script execution is assumed (meta `security-limitations`, line 42).
+- **Capability-scope wording mismatch (please read):** the visible product copy still uses Swarm / Mesh / SOS-relay language, but the artifact implements only **passive BLE advertisement reception, local processing, and manual encrypted hand-off** — not BLE transmission, GATT relay, mesh routing, autonomous self-organisation, or autonomous SOS relay. A nonvisual capability manifest documents the true boundary (meta `capability-scope`, line 45). Because this release freezes UX/copy, the visible mismatch is a **deliberately retained residual**; visible-copy correction is scheduled for a subsequent release.
 - **Single-envelope vault:** small writes re-encrypt the full sensitive state; record-per-envelope storage is deferred (Code Map §11).
 - **Replay ledger** is best-effort and browser-profile-local; clearing site data removes it.
 - **Advertisement-only BLE identity** is spoofable and is not cryptographic authentication.
 - **Detached SHA-256 is not a signature.** The in-app hash is diagnostic only; the whole-file hash must be verified against a manifest delivered over an independent trusted channel (meta `release-integrity`, line 43).
 
-**Required deployment headers (verify at hosting):** `Content-Security-Policy: frame-ancestors 'none'`; `X-Content-Type-Options: nosniff`; a restrictive `Permissions-Policy`; `Cross-Origin-Opener-Policy: same-origin`; `Cross-Origin-Resource-Policy: same-origin`; a clean dedicated origin with no pre-existing uncontrolled Service Worker; and authenticated release-manifest delivery.
+---
+
+## 11. Deployment Requirements (Verify at Hosting)
+
+The artifact's in-page guards are defence-in-depth; full protection assumes the hosting environment also sets:
+
+- `Content-Security-Policy: frame-ancestors 'none'`
+- `X-Content-Type-Options: nosniff`
+- a restrictive `Permissions-Policy`
+- `Cross-Origin-Opener-Policy: same-origin`
+- `Cross-Origin-Resource-Policy: same-origin`
+- a clean, dedicated origin with no pre-existing uncontrolled Service Worker
+- authenticated release-manifest delivery (the SHA-256 in §0 delivered over an independent trusted channel)
 
 ---
 
-## 8. Out-of-Scope Areas (Integrity Check Only)
+## 12. Out-of-Scope Areas (Integrity Check Only)
 
 | Area | Location | Rationale |
 |------|----------|-----------|
 | Inline stylesheet | line 141 onward | Static; no executable logic; CSP hash covers integrity |
-| Static UI markup | body shell | `data-vg-on*` attributes are validated at runtime by the WP7 dispatcher (§2) |
+| Static UI markup | body shell | `data-vg-on*` attributes are validated at runtime by the WP7 dispatcher (§5) |
 | I18N translation strings | I18N block (line 1,450 onward) | Static localisation text (seven dictionaries + Arabic RTL) |
 | CSPRNG local record IDs | line 1,199 (`function genLocalIdSuffix(len){`) | Uses `crypto.getRandomValues`; light confirmation only |
 
 ---
 
-## 9. Internal Identifier Provenance
+## 13. Internal Identifier Provenance
 
-Reviewers performing a whitebox pass will observe internal identifiers that read `V455…` / `V469…` (for example storage keys `__vg_vault_v455__`, `vg_rp_replay_v469`; functions such as `v469ReplayHash`), together with historical change markers in comments (for example `VG468-02`). These identifiers are **intentionally preserved**: they encode the internal module lineage and the point at which each control was introduced, and renaming them would break runtime references and erase accurate history. They are documented here so the naming is not logged as an inconsistency finding. The corresponding functional change register (VG469-01 … VG469-09) is described in Code Map §2.
+A whitebox pass will observe internal identifiers such as `V455…` / `V469…` (e.g. storage keys `__vg_vault_v455__`, `vg_rp_replay_v469`; functions such as `v469ReplayHash`) alongside historical change markers in comments (e.g. `VG468-02`). These identifiers are **intentionally preserved**: they encode module lineage and the point at which each control was introduced; renaming them would break runtime references and erase accurate history. Documented here so the naming is not logged as an inconsistency finding. The corresponding functional change register (VG469-01 … VG469-09) is described in Code Map §2.
 
 ---
 
-## 10. Vendor-Facing One-Page Summary
+## 14. Reproducibility & Verification
 
-The high-priority surface concentrates in a small number of tight blocks: the **first-executable Zero-Egress core (lines 52–139)**, the **allowlist action dispatcher + Trusted Types sinks (lines 857–1006)**, the **crypto core (10,491–10,566)**, the **at-rest encrypted vault (10,573–10,666)**, and the **import boundary (10,394–10,446)**. A second tier covers the V4.6.x hardening surfaces: the **replay guard (10,809–10,896)**, **passphrase policy (11,184–11,206)**, **BLE duplicate-binding quarantine (10,895–11,066)**, and **destructive coordination (8,122–8,186 + 11,459–11,488)**. The file contains **no external CDNs or domains** and **one inline MIT component** (Nayuki QR, §6).
+Because the artifact is a single hand-authored file with no build pipeline, verification is direct:
 
-The points where external, adversarial review is considered most valuable — the project's highest areas of uncertainty — are:
+1. Obtain the release file and its published SHA-256 through an independent trusted channel.
+2. Compute the local hash and compare, e.g.:
+   ```bash
+   sha256sum VitalGuard_AI_complete_V47_1.html
+   # expected:
+   # 2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea
+   ```
+3. If the hashes match, the file is byte-for-byte identical to the audited artifact and every line number in this map applies. If they differ, treat the file as a different artifact and re-anchor via the CTRL+F strings.
+
+---
+
+## 15. Highest-Uncertainty Areas — Where External Review Is Most Valuable
+
+The maintainer requests focused, adversarial attention on the following, in priority order:
 
 1. **Recoverability of the locked egress handles** (line 97 region) — whether any of `fetch`, RTC, Worker, `eval`, etc. can be re-derived from another realm or via prototype reconstruction.
 2. **Allowlist-dispatcher argument-boundary bypass** (lines 907–912) — reaching a namespace/method outside the frozen allowlist, or an allowlisted method with an attacker-influenced argument that reaches a destructive or reflective sink.
 3. **Trusted Types / regex neutralisation** (lines 990–1002) — mXSS, `<template>.content` routing, and any TOCTOU window before scrubbing.
-4. **Vault write-epoch race** (lines 10,636, 10,650 with §4-D) — whether a delayed write can resurrect deleted or wiped data under concurrency.
+4. **Vault write-epoch race** (lines 10,636, 10,650 with §6-B) — whether a delayed write can resurrect deleted or wiped data under concurrency.
 5. **Legacy envelope decrypt path** (lines 10,519–10,523) — downgrade or version-confusion in backward-compatible decryption.
 
-We would be grateful for the vendor's assessment of each, and we will provide any additional context, build-environment detail, or targeted test harnesses on request.
+Additional context, build-environment detail, or targeted test harnesses will be provided on request.
 
 ---
 
-## 📜 Closing Remarks: Open Source Vision & Sustainability Statement
-
-As an open-source pioneer who refuses to be confined to the structural limits of conventional employment, the mission is to expand this foundational architecture into a scalable, decentralized ecosystem—creating a secure digital haven where developers, human rights defenders, and citizens can build, collaborate, and thrive together.
-
----
-
-### ⏳ Biography & Milestones
-
-*   **November 2025** — Officially reviewed by the Government of Luxembourg.
-*   **February 2026** — Reviewed by University College London (UCL) and the Institute of Development Studies (IDS) in the United Kingdom.
-*   **Summer 2026 (Expected)** — Officially reviewed by the OTF Security Lab in the United States.
-*   **2027 (Target)** — Expected to Achieve Technical Self-Sufficiency.
-
----
-
-# 🛡️ 4.7.2 Planned Future Updates
-
-Non-critical hardening items identified in the V4.7.1 security audit. None are blocking; each is a small, incremental improvement scheduled for v4.7.2.
-
----
-
-## 1. Wrap `localStorage.setItem` with quota-safe handling
-
-**Why:** The current build uses `localStorage` in ~17 places but handles `QuotaExceededError` in only 2. On low-storage devices some writes can fail silently, which conflicts with the offline-first design principle.
-
-```javascript
-// v4.7.2 — safe write helper (route all setItem calls through this)
-function vgSafeSet(key, value){
-  try {
-    localStorage.setItem(key, value);
-    return true;
-  } catch (e) {
-    // QuotaExceededError or privacy-mode denial — fail loudly, not silently
-    console.warn('[VitalGuard] storage write failed:', e && e.name);
-    return false; // caller can prompt user to clear old data
-  }
-}
-```
-
----
-
-## 2. Replace `document.write` with DOM APIs
-
-**Why:** `document.write` (4 occurrences) can block rendering and is neutralized under strict CSP / Trusted Types anyway. Using DOM APIs keeps behaviour predictable and consistent with the sanitization path.
-
-```javascript
-// Before
-document.write(html);
-
-// v4.7.2 — After (routes through the Trusted Types sanitize policy)
-const el = document.createElement('div');
-el.innerHTML = guard.html(html); // guard.html = 'vitalguard-html' policy
-document.body.appendChild(el);
-```
-
----
-
-## 3. Unify all `innerHTML` writes through the sanitize policy
-
-**Why:** `innerHTML` is used 56 times. Trusted Types already protects it, but centralizing every write through one helper guarantees no future edit bypasses the sanitizer.
-
-```javascript
-// v4.7.2 — single entry point for HTML injection
-function vgSetHTML(node, html){
-  node.innerHTML = guard.html(html); // never assign raw strings directly
-}
-```
-
----
-
-## 4. Add graceful degradation for browsers without Trusted Types / CSP
-
-**Why:** Trusted Types and strict CSP only take full effect on supporting browsers. On older engines the app should still refuse unsafe HTML rather than fall through.
-
-```javascript
-// v4.7.2 — fallback escaper when Trusted Types is unavailable
-if (!(window.trustedTypes && window.trustedTypes.createPolicy)) {
-  guard.html = function(v){
-    return String(v)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  };
-}
-
----
-
-**Morgan J.**  
-*Principal Architect & Founder, Republic of Korea*
-
-
+*Prepared by Morgan J. (Gyu-min Jeon) — VitalGuard / M-Corp Ethical AI.*
+*Licence: Apache-2.0 © mcorpai.org (Creator: ROK and Morgan J.)*
