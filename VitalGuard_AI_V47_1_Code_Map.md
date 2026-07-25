@@ -11,10 +11,6 @@ The values below were measured from the exact shipped bytes of the artifact.
 | `APP_VERSION` | `4.7.1` |
 | Licence | Apache-2.0 (whole artifact); embedded Project Nayuki QR generator retains its own MIT notice |
 
-> **Integrity note.** The detached whole-file SHA-256 above must be distributed through an independent trusted channel; it is a verification digest, **not** a digital signature. Any byte change to any `<script>` or `<style>` block invalidates both that block's CSP hash and the whole-file digest (see §12).
-
-> **Correction (supersedes earlier drafts).** An earlier Code Map draft recorded the file size as 613,719 bytes and did not state the whole-file SHA-256. The measured size of the shipped artifact is **613,833 bytes** and its digest is the value above; the three CSP hashes match the earlier draft exactly (the script/style bytes are unchanged), so the earlier size line was stale. Release-verification documents must always carry the measured size and digest of the exact shipped file.
-
 ---
 
 ## 0.1 Revision & patch history
