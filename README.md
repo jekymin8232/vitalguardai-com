@@ -51,7 +51,7 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 ---
 
-### Research Applications
+### Research Applications (Compact, Lightweight, with Maximum Security.)
 
 1. **Human rights defenders, journalists, activists, and others who require strong personal security and privacy.**
 
