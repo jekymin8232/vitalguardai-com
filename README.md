@@ -41,7 +41,7 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
-🚀 Try the Sample Demo
+Sample Demo
 
 🔗 https://vitalguardai.com/
 
