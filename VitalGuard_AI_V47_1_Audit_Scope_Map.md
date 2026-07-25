@@ -4,7 +4,7 @@
 
 **Licence: Apache-2.0 © mcorpai.org (Creator: ROK and Morgan J.)**
 
-**Reference: Complete Code Map**
+**Reference: Complete Code Map:**
 
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_V47_1_Code_Map.md
 
