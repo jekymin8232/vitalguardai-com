@@ -2,7 +2,9 @@ Personal Workspace(Email Contact Information): [mcorpai.org](https://mcorpai.org
 
 **Based in South Korea · Prefer Remote Work**
 
-This project is maintained strictly remotely to ensure neutrality and focus. For all inquiries, collaborations, or audit reports, please contact via email.
+This project is maintained strictly remotely to ensure neutrality and focus. 
+
+For all inquiries, collaborations, or audit reports, please contact via email.
 
 ---
 
