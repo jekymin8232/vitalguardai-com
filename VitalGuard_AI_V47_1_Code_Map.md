@@ -249,9 +249,6 @@ Final `V455`, `V455Crypto`, and replay-guard source were extracted from the ship
 - local replay detection remained effective after the encrypted compatibility setting was cleared;
 - final self-test source awaits both Rescue Pack encode and decode.
 
-### 9.4 Visual compatibility — PASS
-The visible shell and stylesheet are unchanged from V4.6.9; the only user-visible textual difference is the release identifier `4.6.9` → `4.7.1`; pixel-exact after version normalization.
-
 ---
 
 ## 10. Deployment Requirements & Residual Risk
