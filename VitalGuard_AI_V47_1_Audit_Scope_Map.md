@@ -10,8 +10,7 @@
 |-------|-------|
 | Target artifact | `VitalGuard_AI_complete_V47_1.html` |
 | Artifact SHA-256 (Current version) | `2d3f1a93b027d6a2edf98ff757f9415e3ec3c5850d40c8cfa7d78f97cb5d3aea` |
-| Artifact size | 613,833 bytes · 11,594 lines |
-| Scope-map version | 2.0 |
+| Artifact size (including comments) | 11,594 lines |
 | Correspondence | All line numbers in this document refer **only** to the artifact whose SHA-256 is stated above. Any modification to the file invalidates the line numbers; re-anchor with the CTRL+F strings provided in each table. |
 
 **How to use this map.** Sections are grouped as Work Packages (WP). Each high-priority block lists exact line ranges, copy-paste CTRL+F strings, and the specific properties to test. Section 1 is the priority overview; Section 2 is the threat model that frames *why* each area matters; Sections 4–9 are the technical detail.
