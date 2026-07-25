@@ -39,11 +39,11 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 ---
 
-🔗 Sample Demo(MVP)
+🔗 Sample Demo(MVP) Capacity: 1 Image
 
-🔊 Bluetooth Mesh Networking: https://vitalguardai.com/
+🔊 Bluetooth Mesh Networking (600kb): https://vitalguardai.com/
 
-🛡️ Bluetooth Ultrasonic: https://mcorpai.net/ 
+🛡️ Bluetooth Ultrasonic: (460kb) https://mcorpai.net/ 
 
 **Zero data collection. Full GDPR compliance. A sovereign AI that protects the lives of activists.**
 
