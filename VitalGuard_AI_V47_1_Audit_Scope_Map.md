@@ -314,6 +314,94 @@ As an open-source pioneer who refuses to be confined to the structural limits of
 
 ---
 
+# 4.7.2 Planned Future Updates
+
+Non-critical hardening items identified in the V47.1 security audit (overall grade: A). None are blocking; each is a small, incremental improvement scheduled for v4.7.2.
+
+---
+
+## 1. Wrap `localStorage.setItem` with quota-safe handling
+
+**Why:** The current build uses `localStorage` in ~17 places but handles `QuotaExceededError` in only 2. On low-storage devices some writes can fail silently, which conflicts with the offline-first design principle.
+
+```javascript
+// v4.7.2 — safe write helper (route all setItem calls through this)
+function vgSafeSet(key, value){
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (e) {
+    // QuotaExceededError or privacy-mode denial — fail loudly, not silently
+    console.warn('[VitalGuard] storage write failed:', e && e.name);
+    return false; // caller can prompt user to clear old data
+  }
+}
+```
+
+---
+
+## 2. Replace `document.write` with DOM APIs
+
+**Why:** `document.write` (4 occurrences) can block rendering and is neutralized under strict CSP / Trusted Types anyway. Using DOM APIs keeps behaviour predictable and consistent with the sanitization path.
+
+```javascript
+// Before
+document.write(html);
+
+// v4.7.2 — After (routes through the Trusted Types sanitize policy)
+const el = document.createElement('div');
+el.innerHTML = guard.html(html); // guard.html = 'vitalguard-html' policy
+document.body.appendChild(el);
+```
+
+---
+
+## 3. Unify all `innerHTML` writes through the sanitize policy
+
+**Why:** `innerHTML` is used 56 times. Trusted Types already protects it, but centralizing every write through one helper guarantees no future edit bypasses the sanitizer.
+
+```javascript
+// v4.7.2 — single entry point for HTML injection
+function vgSetHTML(node, html){
+  node.innerHTML = guard.html(html); // never assign raw strings directly
+}
+```
+
+---
+
+## 4. Add graceful degradation for browsers without Trusted Types / CSP
+
+**Why:** Trusted Types and strict CSP only take full effect on supporting browsers. On older engines the app should still refuse unsafe HTML rather than fall through.
+
+```javascript
+// v4.7.2 — fallback escaper when Trusted Types is unavailable
+if (!(window.trustedTypes && window.trustedTypes.createPolicy)) {
+  guard.html = function(v){
+    return String(v)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  };
+}
+```
+
+---
+
+## 5. Incremental file-size optimization (optional)
+
+**Why:** The single file is ~613 KB, above the 500 KB target. It is stable, so no rewrite is needed — only comment/duplication cleanup and, if useful, a separate lightweight field build.
+
+```text
+Target : keep core logic intact
+Method : remove redundant comments + duplicate helpers (no feature removal)
+Note   : stability takes priority over hitting the size target
+```
+
+---
+
+*Scope note: these are refinements, not security fixes for active vulnerabilities. The v47.1 audit found no CRITICAL or HIGH issues.*
+
+---
+
 **Morgan J.**  
 *Principal Architect & Founder, Republic of Korea*
 
