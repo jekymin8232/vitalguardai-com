@@ -1,4 +1,4 @@
-## Apache License 2.0 (After the establishment of the M-Corp AI Research Institute)
+## Apache License 2.0 (After M-Corp AI Research Institute Establishment)
 **The planned M-Corp AI Research Institute will distribute this project free of charge under the Apache License 2.0, for the public good, to organizations and communities requiring the highest level of security.**
 
 ### Reference: OTF Review in Progress (OTF Security Lab)
