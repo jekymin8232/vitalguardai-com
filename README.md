@@ -1,6 +1,6 @@
 ### Apache License 2.0 (After the Establishment of the M-Corp AI Research Institute)
 
-**The planned M-Corp AI Research Institute will distribute this project free of charge under the Apache License 2.0 for the public good, particularly to organizations and communities requiring the highest level of security.**
+**The planned M-Corp AI Research Institute will distribute this project free of charge under the Apache License 2.0 for the public good, particularly to organizations and communities requiring the highest level of security. (The planned M-Corp AI Research Institute places a strong emphasis on the public good.)**
 
 ---
 
