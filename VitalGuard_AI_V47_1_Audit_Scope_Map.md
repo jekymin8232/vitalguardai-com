@@ -4,6 +4,8 @@
 
 https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_V47_1_Code_Map.md
 
+Built with crypto.subtle, the browser’s native Web Crypto API.
+
 ---
 
 # 0. At-a-Glance — Audit Priority Map
