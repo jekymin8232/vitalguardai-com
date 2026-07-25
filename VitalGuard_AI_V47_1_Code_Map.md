@@ -15,15 +15,6 @@ The values below were measured from the exact shipped bytes of the artifact.
 
 ## 1. Release Policy — Version-Relabel Remap (no logic change, one fix)
 
-V4.7.1 is a version-relabel and documentation remap of the V4.6.9 baseline. Except for displayed version strings, the security-control logic, defences, ordering, and runtime behaviour are byte-for-byte identical to V4.6.9 inside every executable block — **with one exception: the VG471-01 accessibility fix (see §0.1)**, which corrects a stacked-modal focus-trap so the wizard *Start Scan* dialog is interactive. That fix is the only functional change; nothing else was added, removed, weakened, or reordered, and no egress/crypto/action-policy surface was touched.
-
-**What changed in V4.7.1, and only this:**
-
-- displayed release identifier `4.6.9` → `4.7.1` in the title, `APP_VERSION`, the seven localized `app_sub`/`hero_body` strings, the static header/hero markup, the first-executable core profile string, the self-check log label, the `hardenLabels()` display value, and the generated diagnostics/backup/recovery filename prefixes;
-- a `release-lineage` meta tag and a top-of-file CHANGELOG comment stating that this is a relabel of V4.6.9;
-- the inline **script** CSP hashes were recomputed from the final bytes — `script[0]` unchanged (`sha256-UR7KMZ…hPA=`), `script[1]` now `sha256-bnWCLM…T30=` after the VG471-01 fix; the **stylesheet is byte-identical to V4.6.9** and its CSP hash is unchanged (`sha256-4L8r+P…T1A=`);
-- this Code Map's line numbers, sizes, and hashes were remapped to the new file.
-
 **Intentionally preserved unchanged** (to avoid breakage or history distortion):
 
 - every internal JavaScript identifier, including `V455…`/`V469…` symbols, storage keys such as `vg_rp_replay_v469` and `__vg_vault_v455__`, and function names such as `v469ReadReplay` — renaming these would break runtime references;
