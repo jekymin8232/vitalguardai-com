@@ -39,7 +39,7 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 ---
 
-🔗 Sample Demo(MVP)
+🔗 Sample Demo(MVP : Includes Basic Machine Learning AI)
 
 🔊 Bluetooth Mesh Networking: https://vitalguardai.com/
 
