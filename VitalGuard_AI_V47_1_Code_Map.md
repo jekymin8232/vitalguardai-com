@@ -28,8 +28,6 @@ The values below were measured from the exact shipped bytes of the artifact.
 - final-DOM `data-vg-on*` actions passing the policy parser: **106**, policy failures: **0**;
 - static DOM IDs: **124**, duplicate IDs: **0**.
 
-A nonvisual capability manifest was added in `<head>` and in diagnostics: the artifact implements passive BLE advertisement reception, local processing, and manual encrypted hand-off — **not** BLE transmission, GATT relay, mesh routing, autonomous self-organisation, or autonomous SOS relay. The visible Swarm/Mesh wording remains unchanged because the release constraint prohibits UX/copy changes; reviewers should treat that wording mismatch as an explicitly retained residual risk (§10).
-
 ---
 
 ## 2. Change Register
