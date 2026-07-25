@@ -224,8 +224,7 @@ The results below are the maintainer's recorded verification evidence for the sh
 - final-DOM `data-vg-on*` actions passing the policy parser: **106**, failures: 0;
 - whole-file SHA-256 recomputed only after the CSP was final.
 
-### 9.2 Logic-identity verification — PASS
-Because V4.7.1 is a version-relabel, the primary check is that no logic changed relative to the V4.6.9 baseline that already passed the full runtime, crypto and destructive-race harnesses:
+### 9.2 Logic-identity verification 
 
 - line-level diff of `script[0]`, `script[1]`, `style[0]` shows only `v4.6.9` → `v4.7.1` display strings **and the VG471-01 focus-trap fix in `script[1]`**; `script[0]` and the stylesheet are byte-identical to V4.6.9;
 - guarded boot path, action dispatcher allowlist, and all `V455…`/`V469…` symbols unchanged;
