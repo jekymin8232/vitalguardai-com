@@ -59,6 +59,6 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 3. **Lightweight machine learning and BLE scanning running entirely in pure JavaScript**, even on **10-year-old Android smartphones**. This enables organizations to repurpose legacy devices as **offline humanitarian and security nodes**, providing a practical ESG use case by extending device lifecycles.
 
-4. **Research and development of on-device AI and edge computing** that operate **without dependence on cloud servers**. With minimal power consumption, the system can be deployed for **30 days or longer** in suitable long-term field operations.
+4. **Research and development of on-device AI and edge computing** that operate **without dependence on cloud servers**. With minimal power consumption, the system can be deployed for **30 days or longer** in suitable long-term field operations. (The target timeline is six months.)
 
 
