@@ -39,7 +39,7 @@ For all inquiries, collaborations, or audit reports, please contact via email.
 
 ---
 
-🔗 Sample Demo(MVP) Capacity: 1 Image
+🔗 Sample Demo, Capacity: 1 Image (MVP : Includes Basic Machine Learning AI)
 
 🔊 Bluetooth Mesh Networking (600kb): https://vitalguardai.com/
 
