@@ -1,4 +1,4 @@
-# VitalGuard AI v4.7.1 — Code Map & Release Verification
+# VitalGuard AI v4.7.1 — Code Map 
 ---
 
 ## 0. Release Identity (measured values)
