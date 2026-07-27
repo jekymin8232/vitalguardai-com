@@ -10,6 +10,10 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_V47_1_Co
 
 **The project will continue to evolve through regular version updates based on security audit findings and newly identified security weaknesses.**
 
+## AI Design Philosophy
+
+**Instead of heavy deep learning models, this project leverages a hybrid algorithm combining FSM, Behavior Trees, and lightweight RL. Driven by precise state control and rule-based logic, it minimizes computational overhead while guaranteeing real-time, stable performance.**
+
 ---
 
 ## 0. Document Control
