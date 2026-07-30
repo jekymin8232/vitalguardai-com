@@ -15,16 +15,6 @@
 | Verification date | **2026-07-30** |
 | Correspondence rule | Every line reference in this document applies only to the exact artifact identified by the SHA-256 above. Any byte-level modification invalidates the line map. Recalculate the hash and re-anchor with the listed CTRL+F strings and named anchors. |
 
-### Verified integrity details
-
-- CSP meta block: **lines 21–24**; CSP policy itself: **line 22**.
-- Machine-readable capability manifest: **lines 30–32**; meta element itself: **line 31**.
-- VG473A reinforcement log: **lines 37–39**.
-- The two inline script hashes and the inline style hash in the CSP match the final file bytes:
-  - Script 1: `sha256-+kp2tTsePIO8UPPo8maF16rTjNGqATVspH9eOFQdXQ4=`
-  - Script 2: `sha256-9HAmYYBOS+W3tH0LjQyJlCXTl/gEnNVmsxsEB4/kIS8=`
-  - Style: `sha256-YPoQf9KVLv7ZNqNdVbAAgnX6ncFaIYkxUcpg8K39pQA=`
-
 ---
 
 ## 1. At-a-Glance — Exact Audit Priority Map
