@@ -4,6 +4,8 @@
 
 ### By reviewing the [full code map](https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Full_Code_index.md), you will be able to begin the security audit much more quickly.
 
+## Designed from the ground up with robust security.
+
 **The current security audit scope is limited to approximately 1,800 lines of code. Should your security team consider a broader assessment necessary, please refer to the complete Code Map for the overall project structure.**
 
 ---
