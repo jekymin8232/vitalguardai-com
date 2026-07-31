@@ -2,6 +2,8 @@
 
 ### The complete code index is available in [V47_3_Full_Code_Index.md](https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Full_Code_index.md).
 
+### By reviewing the [full code map](https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Full_Code_index.md), you will be able to begin the security audit much more quickly.
+
 ---
 
 ## 0. Document Control
