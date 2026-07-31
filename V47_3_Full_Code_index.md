@@ -813,4 +813,4 @@ Module-level objects, classes and named functions, with the line of declaration.
 ---
 
 *Index only. Review scope for this artifact is defined in `V47_3_Audit_Scope_Map.md`.*
-*Artifact licence: Apache-2.0; embedded Project Nayuki QR component: MIT.*
+*Artifact licence: Apache-2.0
