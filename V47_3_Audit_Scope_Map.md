@@ -8,6 +8,8 @@
 
 ### By reviewing the [full code map](https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Full_Code_index.md), you will be able to begin the security audit much more quickly.
 
+**Like all web applications, it remains subject to browser security policies and potential zero-day vulnerabilities.**
+
 ---
 
 ## 0. Document Control
