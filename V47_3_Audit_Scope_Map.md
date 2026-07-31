@@ -12,7 +12,7 @@
 |---|---|
 | Target artifact | `VitalGuard_AI_complete_V47_3.html` |
 | Artifact SHA-256 | `b81c067f5523bc68728ae84f2fc93ce05077705ae4cb7e882f1c859885f47615` |
-| Physical line count | **13,294 lines** |
+| Physical line count | 13,294 lines **(Security Audit Scope: Approximately 1,856 Lines of Code)** |
 | Verification date | **2026-07-30** |
 | Correspondence rule | Every line reference in this document applies only to the exact artifact identified by the SHA-256 above. Any byte-level modification invalidates the line map. Recalculate the hash and re-anchor with the listed CTRL+F strings and named anchors. |
 
