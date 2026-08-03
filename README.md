@@ -9,3 +9,6 @@ https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_compl
 ### [Must read] v4.7.3 Security Audit Scope Map.
 https://github.com/jekymin8232/luckyvicky-homepage/blob/main/VitalGuard_AI_V47_3_Audit_Scope_Map.md
 
+### Complete Code Index
+https://github.com/jekymin8232/luckyvicky-homepage/blob/main/V47_3_Full_Code_index.md
+
