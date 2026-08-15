@@ -1,3 +1,4 @@
+### Code audit   
 # VitalGuard AI v4.7.3 — Full Code Index
 
 *A physical table of contents for `VitalGuard_AI_complete_V47_3.html`.*
