@@ -1,6 +1,6 @@
 ### Code audit   
 
-https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_3.html
+### [VitalGuard_AI_complete_V47_3.html](https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_3.html)
 
 # VitalGuard AI v4.7.3 — Full Code Index
 
