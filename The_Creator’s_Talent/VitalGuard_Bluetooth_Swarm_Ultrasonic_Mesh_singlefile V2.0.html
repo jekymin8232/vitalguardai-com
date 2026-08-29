@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#04100c">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' blob: data:; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<title>VitalGuard Bluetooth Swarm Ultrasonic Mesh V2.0</title>
+<style>
+:root{color-scheme:dark;--bg:#040907;--panel:#0b1511;--panel2:#101f19;--line:#223a31;--line2:#315648;--text:#effff7;--muted:#abcdbc;--dim:#719384;--good:#55ea92;--warn:#ffd16a;--bad:#ff6d7e;--info:#6edcff;--violet:#bca7ff;--shadow:0 16px 50px rgba(0,0,0,.42);--r:18px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html,body{min-height:100%;margin:0;background:radial-gradient(circle at 12% -10%,#173e2d 0,#06100c 40%,#020403 100%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{border:0;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.vg-root{max-width:1320px;margin:0 auto;padding:16px}.vg-hero{display:flex;gap:16px;justify-content:space-between;align-items:stretch;padding:18px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(19,58,42,.94),rgba(4,9,7,.97));border-radius:var(--r);box-shadow:var(--shadow)}.vg-title{min-width:0}.vg-title h1{margin:0 0 7px;font-size:clamp(22px,3.8vw,40px);letter-spacing:-.045em}.vg-title p{margin:0;color:var(--muted);line-height:1.52}.vg-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.vg-badge{border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:rgba(255,255,255,.04);font-size:12px;color:var(--muted);white-space:nowrap}.vg-badge.good{color:#dbffe9;border-color:rgba(85,234,146,.42);background:rgba(85,234,146,.08)}.vg-badge.warn{color:#fff1c7;border-color:rgba(255,209,106,.45);background:rgba(255,209,106,.08)}.vg-node{min-width:300px;border:1px solid var(--line);background:rgba(0,0,0,.24);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}.vg-node small{display:block;color:var(--dim);font-size:12px}.vg-node code{display:block;word-break:break-all;color:var(--good);font-family:var(--mono);font-size:12px}.vg-meter{height:8px;background:#07100c;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}.vg-meter>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--good),var(--info));transition:width .25s}.vg-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px}.vg-card{grid-column:span 4;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,rgba(16,31,25,.96),rgba(7,12,10,.96));box-shadow:var(--shadow);overflow:hidden}.vg-card.wide{grid-column:span 8}.vg-card.full{grid-column:1/-1}.vg-card header{padding:13px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}.vg-card header h2{margin:0;font-size:16px;letter-spacing:-.01em}.vg-card .body{padding:14px}.vg-status-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.vg-stat{border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(0,0,0,.16);padding:10px;min-height:76px}.vg-stat b{display:block;font-size:20px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vg-stat span{font-size:12px;color:var(--dim)}.vg-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--dim);box-shadow:0 0 0 3px rgba(255,255,255,.04);margin-right:6px}.vg-dot.good{background:var(--good)}.vg-dot.warn{background:var(--warn)}.vg-dot.bad{background:var(--bad)}.vg-dot.info{background:var(--info)}.vg-buttons{display:flex;flex-wrap:wrap;gap:8px}.vg-btn{border-radius:13px;padding:10px 12px;background:#17251f;color:var(--text);border:1px solid var(--line);min-height:42px}.vg-btn:hover{filter:brightness(1.12)}.vg-btn.primary{background:linear-gradient(180deg,#1f7749,#135934);border-color:#2a8755}.vg-btn.warn{background:linear-gradient(180deg,#705317,#3c2e0c);border-color:#927229}.vg-btn.danger{background:linear-gradient(180deg,#742230,#431019);border-color:#963144}.vg-btn.info{background:linear-gradient(180deg,#145a70,#0b3746);border-color:#207994}.vg-btn.violet{background:linear-gradient(180deg,#4f3b8d,#302557);border-color:#7059b6}.vg-field{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}.vg-field label{font-size:12px;color:var(--muted)}.vg-field input,.vg-field select,.vg-field textarea{width:100%;background:#07100c;border:1px solid var(--line);border-radius:13px;color:var(--text);padding:10px;outline:none}.vg-field textarea{min-height:92px;resize:vertical}.vg-field input:focus,.vg-field textarea:focus,.vg-field select:focus{border-color:#2e9e66;box-shadow:0 0 0 3px rgba(85,234,146,.1)}.vg-log{height:290px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:#030605;padding:8px;font-family:var(--mono);font-size:12px;line-height:1.45}.vg-log div{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);color:#dffbea}.vg-log .muted{color:var(--dim)}.vg-log .warn{color:var(--warn)}.vg-log .bad{color:var(--bad)}.vg-log .good{color:var(--good)}.vg-list{display:flex;flex-direction:column;gap:8px}.vg-item{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.14);border-radius:14px;padding:10px}.vg-item strong{font-size:13px}.vg-item small{color:var(--dim);line-height:1.45}.vg-pill{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);background:rgba(255,255,255,.03);white-space:nowrap}.vg-pill.good{color:var(--good);border-color:rgba(85,234,146,.42)}.vg-pill.warn{color:var(--warn);border-color:rgba(255,209,106,.42)}.vg-pill.bad{color:var(--bad);border-color:rgba(255,109,126,.42)}.vg-mini{font-size:12px;color:var(--dim);line-height:1.55}.vg-kv{display:grid;grid-template-columns:150px 1fr;gap:8px;font-size:13px}.vg-kv div{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}.vg-kv div:nth-child(odd){color:var(--dim)}.vg-tabs{display:flex;gap:8px;flex-wrap:wrap}.vg-tab{padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font-size:12px}.vg-tab.active{background:rgba(85,234,146,.12);color:var(--good);border-color:rgba(85,234,146,.4)}.vg-hidden{display:none!important}.vg-map{width:100%;min-height:270px;border:1px solid var(--line);border-radius:14px;background:radial-gradient(circle at center,#102018,#040806);overflow:hidden}.vg-map svg{width:100%;height:290px;display:block}.vg-compass{display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:#030605;min-height:260px;position:relative;overflow:hidden}.vg-arrow{width:150px;height:150px;transform:rotate(0deg);transition:transform .25s}.vg-compass .readout{text-align:center;margin-top:-12px}.vg-compass .readout b{font-size:28px}.vg-ledger{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.vg-test-pass{color:var(--good)}.vg-test-fail{color:var(--bad)}.vg-audit{border:1px solid rgba(85,234,146,.22);background:rgba(85,234,146,.06);border-radius:14px;padding:12px}.vg-warning{border:1px solid rgba(255,209,106,.32);background:rgba(255,209,106,.07);border-radius:14px;padding:12px;color:#fff0c7}.vg-sr{position:absolute;width:1px;height:1px;margin:-1px;clip:rect(0,0,0,0);overflow:hidden}.vg-manual{max-height:330px;overflow:auto;border:1px solid var(--line);border-radius:14px;padding:12px;background:#030605}.vg-manual h3{margin:10px 0 6px;font-size:14px}.vg-manual p,.vg-manual li{font-size:12px;color:var(--muted);line-height:1.55}.vg-manual ul{padding-left:18px}.vg-sos-board{border:1px solid var(--line2);border-radius:16px;background:linear-gradient(180deg,rgba(85,234,146,.12),rgba(0,0,0,.08));padding:14px;text-align:center}.vg-sos-board b{font-size:22px}.vg-sos-board p{margin:8px 0 0;color:var(--muted)}@media(max-width:1100px){.vg-card,.vg-card.wide{grid-column:1/-1}.vg-status-row{grid-template-columns:repeat(2,1fr)}.vg-hero{flex-direction:column}.vg-node{min-width:0;width:100%}}@media(max-width:620px){.vg-root{padding:10px}.vg-status-row,.vg-ledger{grid-template-columns:1fr}.vg-kv{grid-template-columns:1fr}.vg-buttons{display:grid;grid-template-columns:1fr}.vg-btn{width:100%}.vg-item{align-items:flex-start;flex-direction:column}.vg-map svg{height:240px}}
+</style>
+</head>
+<body>
+<div id="vg2-root" class="vg-root">
+  <section class="vg-hero" aria-label="VitalGuard Bluetooth Swarm Ultrasonic Mesh V2">
+    <div class="vg-title">
+      <h1>VitalGuard Bluetooth Swarm + Ultrasonic Mesh V2.0</h1>
+      <p>단일 HTML · 바닐라 JS · 무외부 의존성 · Clean Audit / Experimental Lab 분리 · Passive BLE Detection · Rescue AI · Acoustic FSK/Morse fallback.</p>
+      <div class="vg-badges">
+        <span class="vg-badge good">No external library</span><span class="vg-badge good">CSP connect-src none</span><span class="vg-badge good">Local-only</span><span class="vg-badge good">Modular IIFE</span><span class="vg-badge warn">Browser BLE TX 제한 명시</span><span class="vg-badge">V2.0 audit-ready</span>
+      </div>
+    </div>
+    <div class="vg-node">
+      <small>Local rescue mesh node</small>
+      <code id="nodeId">booting...</code>
+      <div class="vg-meter"><i id="bootMeter"></i></div>
+      <small id="bootText">initializing ethical modules</small>
+      <span id="auditPill" class="vg-pill good">clean audit mode</span>
+    </div>
+  </section>
+
+  <section class="vg-grid">
+    <article class="vg-card full">
+      <header><h2><span id="modeDot" class="vg-dot good"></span>System Status</h2><span id="clock" class="vg-pill">--:--:--</span></header>
+      <div class="body">
+        <div class="vg-status-row">
+          <div class="vg-stat"><span>Mode</span><b id="statMode">SAFE</b></div>
+          <div class="vg-stat"><span>BLE Scan</span><b id="statBle">idle</b></div>
+          <div class="vg-stat"><span>Passive Devices</span><b id="statDevices">0</b></div>
+          <div class="vg-stat"><span>Top Concern</span><b id="statConcern">0.00</b></div>
+          <div class="vg-stat"><span>Consensus</span><b id="statConsensus">0/0</b></div>
+          <div class="vg-stat"><span>Audio</span><b id="statAudio">idle</b></div>
+          <div class="vg-stat"><span>Outbox</span><b id="statOutbox">0</b></div>
+          <div class="vg-stat"><span>Power</span><b id="statPower">unknown</b></div>
+          <div class="vg-stat"><span>Integrity</span><b id="statIntegrity">armed</b></div>
+          <div class="vg-stat"><span>Tests</span><b id="statTests">not run</b></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="vg-card">
+      <header><h2>Profile & Build Gate</h2><span class="vg-pill">single file / modular</span></header>
+      <div class="body">
+        <div class="vg-field"><label for="buildMode">Build view</label><select id="buildMode"><option value="clean">Clean Audit Core</option><option value="experimental">Experimental Acoustic Lab</option><option value="all">Full V2 Review</option></select></div>
+        <div class="vg-field"><label for="role">Node role</label><select id="role"><option value="sentinel">Sentinel</option><option value="relay">Relay</option><option value="rescuer">Rescuer</option><option value="gateway">Gateway</option><option value="commander">Commander</option></select></div>
+        <div class="vg-field"><label for="profile">Environment profile</label><select id="profile"><option value="cornfield">Cornfield / maze</option><option value="forest" selected>Forest / trail</option><option value="remoteRoad">Remote road</option><option value="urban">Urban / elderly care</option><option value="water">Water-adjacent</option><option value="general">General humanitarian</option></select></div>
+        <div class="vg-field"><label for="groupId">Coverage group</label><input id="groupId" maxlength="32" value="sector-alpha"></div>
+        <div class="vg-buttons"><button id="saveConfig" class="vg-btn primary">Save Local Config</button><button id="rotateSalt" class="vg-btn">Rotate Privacy Salt</button></div>
+        <p class="vg-mini">Clean Audit 모드는 핵심 BLE proximity, 윤리 방어, 삭제, Rescue AI만 활성화합니다. Acoustic/Simulation은 별도 게이트 뒤에 있습니다.</p>
+      </div>
+    </article>
+
+    <article class="vg-card wide">
+      <header><h2>Core Controls</h2><span id="capabilityPill" class="vg-pill">capability audit pending</span></header>
+      <div class="body">
+        <div class="vg-buttons">
+          <button id="startCore" class="vg-btn primary">Start Core</button>
+          <button id="startProtocolScan" class="vg-btn info">BLE Protocol Scan</button>
+          <button id="startPassiveScan" class="vg-btn violet">Passive Any-Advertisement Scan</button>
+          <button id="stopBle" class="vg-btn">Stop BLE</button>
+          <button id="connectGatt" class="vg-btn info">Connect GATT Peer</button>
+          <button id="sendHeartbeat" class="vg-btn">Send Heartbeat</button>
+          <button id="broadcastSos" class="vg-btn danger">Broadcast SOS Query</button>
+          <button id="runSimulation" class="vg-btn warn">Run Rescue Simulation</button>
+          <button id="runTests" class="vg-btn primary">Run Self Tests</button>
+          <button id="exportLog" class="vg-btn">Export Local Log</button>
+          <button id="wipeAll" class="vg-btn danger">7-Pass Delete</button>
+        </div>
+        <div class="vg-warning" style="margin-top:12px">브라우저 Web Bluetooth는 일반적으로 BLE advertisement 송신을 제공하지 않습니다. V2.0은 Native Bridge hook, 수동 GATT peer write, 음향 FSK relay를 송신 계층으로 분리하고, 브라우저 한계를 UI와 감사 로그에 명시합니다.</div>
+      </div>
+    </article>
+
+    <article class="vg-card wide">
+      <header><h2>Passive Detection & Rescue AI</h2><span id="passivePill" class="vg-pill">raw RSSI 120s / fingerprint 2h</span></header>
+      <div class="body">
+        <div id="deviceList" class="vg-list"></div>
+      </div>
+    </article>
+
+    <article class="vg-card">
+      <header><h2>SOS Query Board</h2><span id="languagePill" class="vg-pill">multi-language</span></header>
+      <div class="body">
+        <div class="vg-field"><label for="sosLanguage">SOS language</label><select id="sosLanguage"><option value="en">English</option><option value="ko" selected>한국어</option><option value="es">Español</option><option value="ar">العربية</option><option value="fr">Français</option><option value="zh">中文</option><option value="hi">हिन्दी</option><option value="ja">日本語</option><option value="pt">Português</option><option value="de">Deutsch</option></select></div>
+        <div id="sosBoard" class="vg-sos-board"><b>길을 잃었나요?</b><p>도움이 필요하면 가까운 구조 노드에 머물러 주세요. 가능하면 움직이지 말고 소리를 들어 주세요.</p></div>
+        <div class="vg-buttons" style="margin-top:10px"><button id="markNeedHelp" class="vg-btn danger">Local Test: Need Help</button><button id="markSafe" class="vg-btn">Local Test: Not Distressed</button><button id="playBeacon" class="vg-btn warn">Audio Beacon</button></div>
+      </div>
+    </article>
+
+    <article class="vg-card wide">
+      <header><h2>Local Mesh Map</h2><span id="mapPill" class="vg-pill">SVG / no external map</span></header>
+      <div class="body">
+        <div class="vg-map" aria-label="local schematic mesh map">
+          <svg id="meshSvg" viewBox="0 0 640 290" role="img" aria-label="mesh node map">
+            <defs><radialGradient id="pulse" cx="50%" cy="50%"><stop offset="0" stop-color="#55ea92" stop-opacity=".9"/><stop offset="1" stop-color="#55ea92" stop-opacity="0"/></radialGradient></defs>
+            <rect x="0" y="0" width="640" height="290" fill="transparent"/>
+            <g id="meshEdges"></g><g id="meshNodes"></g><g id="meshDevices"></g>
+          </svg>
+        </div>
+      </div>
+    </article>
+
+    <article class="vg-card">
+      <header><h2>Rescuer Compass</h2><span id="navPill" class="vg-pill">dead reckoning fallback</span></header>
+      <div class="body">
+        <div class="vg-compass">
+          <svg class="vg-arrow" id="compassArrow" viewBox="0 0 120 120" aria-label="bearing arrow"><circle cx="60" cy="60" r="56" fill="rgba(85,234,146,.08)" stroke="#315648"/><path d="M60 10 L84 72 L60 60 L36 72 Z" fill="#55ea92"/><circle cx="60" cy="60" r="8" fill="#effff7"/></svg>
+          <div class="readout"><b id="navDistance">-- m</b><br><span id="navBearing" class="vg-mini">bearing --° · confidence --</span></div>
+        </div>
+        <div class="vg-buttons" style="margin-top:10px"><button id="startNav" class="vg-btn info">Start Navigation Sensors</button><button id="targetTop" class="vg-btn primary">Target Top Concern</button><button id="rescuerBeacon" class="vg-btn warn">Rescuer Beacon</button></div>
+      </div>
+    </article>
+
+    <article class="vg-card experimental">
+      <header><h2>Acoustic Mesh</h2><span id="audioBand" class="vg-pill">17.5/18.5kHz</span></header>
+      <div class="body">
+        <div class="vg-field"><label for="acousticMode">Transmission mode</label><select id="acousticMode"><option value="fsk">FSK near-ultrasonic</option><option value="audible">FSK audible fallback</option><option value="morse">Morse audible</option></select></div>
+        <div class="vg-field"><label for="messageText">Message</label><textarea id="messageText" maxlength="120">SAFE CHECK: VitalGuard V2 acoustic mesh test.</textarea></div>
+        <div class="vg-buttons"><button id="startAudio" class="vg-btn info">Start Audio RX</button><button id="calibrateAudio" class="vg-btn">Auto Calibrate</button><button id="sendText" class="vg-btn primary">Send Text</button><button id="sendMorse" class="vg-btn">Send Morse</button><button id="sendAck" class="vg-btn">Send ACK</button></div>
+        <p class="vg-mini">Raw audio is never persisted. Receiver uses symbol-window correlation and sliding frame decode.</p>
+      </div>
+    </article>
+
+    <article class="vg-card experimental">
+      <header><h2>Protocol Settings</h2><span class="vg-pill">mesh transport</span></header>
+      <div class="body">
+        <div class="vg-field"><label for="ttl">Default TTL</label><input id="ttl" type="number" min="1" max="15" value="7"></div>
+        <div class="vg-field"><label for="tdmaSlots">TDMA slots</label><input id="tdmaSlots" type="number" min="2" max="32" value="8"></div>
+        <div class="vg-field"><label for="measuredPower">Measured power @1m</label><input id="measuredPower" type="number" min="-90" max="-30" value="-59"></div>
+        <div class="vg-field"><label for="pathLoss">Path-loss exponent</label><input id="pathLoss" type="number" min="1.6" max="5.0" step="0.1" value="3.2"></div>
+      </div>
+    </article>
+
+    <article class="vg-card wide">
+      <header><h2>Module Health</h2><span class="vg-pill">merge-ready modules</span></header>
+      <div class="body"><div id="moduleList" class="vg-list"></div></div>
+    </article>
+
+    <article class="vg-card">
+      <header><h2>Ethical Fortress</h2><span id="ethicsPill" class="vg-pill good">active</span></header>
+      <div class="body">
+        <div class="vg-kv"><div>Purpose</div><div>civilian humanitarian rescue continuity</div><div>Tracking</div><div>no persistent identity profile</div><div>Storage</div><div>local-only, auto-expiring</div><div>Raw audio</div><div>never persisted</div><div>Network</div><div>CSP blocks external connection</div><div>Delete</div><div>button + Ctrl/Shift/Delete x3 + shake trigger</div></div>
+      </div>
+    </article>
+
+    <article class="vg-card full">
+      <header><h2>Self-Test & Audit Notes</h2><span id="selfTestPill" class="vg-pill">production checks</span></header>
+      <div class="body">
+        <div class="vg-ledger"><div id="testResults" class="vg-list"></div><div class="vg-manual" id="manualBox"></div></div>
+      </div>
+    </article>
+
+    <article class="vg-card full">
+      <header><h2>Event Log</h2><div class="vg-tabs"><button data-filter="all" class="vg-tab active">All</button><button data-filter="ble" class="vg-tab">BLE</button><button data-filter="ai" class="vg-tab">AI</button><button data-filter="audio" class="vg-tab">Audio</button><button data-filter="ethics" class="vg-tab">Ethics</button><button data-filter="warn" class="vg-tab">Warn</button></div></header>
+      <div class="body"><div id="log" class="vg-log" aria-live="polite"></div></div>
+    </article>
+  </section>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/*
+VitalGuard Bluetooth Swarm + Ultrasonic Mesh V2.0
+Single-file offline build. No external dependency. Browser limitations are handled by explicit capability gates.
+Modules are intentionally split as plain IIFEs and registered through one shared SwarmBus for easy merge/review.
+*/
+
+var APP_VERSION='2.0.0';
+var SERVICE_UUID='7d6b0001-5654-414c-4755-415244535731';
+var SERVICE_UUID_SHORT='7d6b0001';
+var CHARACTERISTIC_UUID='7d6b0002-5654-414c-4755-415244535731';
+var MAGIC=0x5357;
+var VERSION_BYTE=2;
+var ACOUSTIC_MAGIC='VG2A';
+var STORE_PREFIX='vg2_';
+var DB_NAME='VitalGuard_V2_LocalOnly_DB';
+var MAX_LOG=320;
+var MAX_TRACKS=600;
+var DEFAULT_TTL=7;
+var MODE_NAMES=['SAFE','WATCH','CONCERN','ALERT','RESCUE','PANIC'];
+var MODE_CODE={SAFE:0,WATCH:1,CONCERN:2,ALERT:3,RESCUE:4,PANIC:5};
+var ROLE_CODE={sentinel:1,relay:2,rescuer:3,gateway:4,commander:5};
+var PACKET={HEARTBEAT:1,ALERT:2,TEXT:3,SOS_QUERY:4,ACK:5,STATUS:6,TRIANGULATION:7};
+var RETENTION={rawRssiMs:120000,fingerprintMs:7200000,movementMs:14400000,alertMs:86400000,patternMs:604800000};
+
+function createBus(){var listeners=Object.create(null);return{on:function(name,fn){if(!listeners[name])listeners[name]=new Set();listeners[name].add(fn);return function(){if(listeners[name])listeners[name].delete(fn)}},off:function(name,fn){if(listeners[name])listeners[name].delete(fn)},emit:function(name,data){var set=listeners[name];if(!set)return;set.forEach(function(fn){try{fn(data)}catch(e){try{console.warn('[SwarmBus]',name,e)}catch(_){}}})},count:function(name){return listeners[name]?listeners[name].size:0},events:function(){return Object.keys(listeners)}}}
+var SwarmBus=window.SwarmBus || (window.SwarmBus=createBus());
+var VG=window.VitalGuardV2 || (window.VitalGuardV2={version:APP_VERSION,modules:{},state:null,bus:SwarmBus});
+
+var U=(function(){
+  function now(){return Date.now()}
+  function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+  function pad(n){return String(n).padStart(2,'0')}
+  function time(t){var d=new Date(t||Date.now());return pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())}
+  function dayHour(t){return new Date(t||Date.now()).getHours()}
+  function safe(s,n){return String(s==null?'':s).replace(/[<>]/g,function(c){return c==='<'?'‹':'›'}).slice(0,n||2000)}
+  function djb2(str){var h=5381;for(var i=0;i<String(str).length;i++)h=((h<<5)+h)^String(str).charCodeAt(i);return h>>>0}
+  function hex(n,len){return (n>>>0).toString(16).padStart(len||2,'0')}
+  function randomBytes(len){var a=new Uint8Array(len);if(window.crypto&&crypto.getRandomValues)crypto.getRandomValues(a);else for(var i=0;i<len;i++)a[i]=Math.floor(Math.random()*256);return a}
+  function bytesToHex(bytes){var out='';for(var i=0;i<bytes.length;i++)out+=hex(bytes[i],2);return out}
+  function randomId(prefix,len){return (prefix||'VG')+'-'+bytesToHex(randomBytes(len||8)).slice(0,(len||8)*2).toUpperCase()}
+  function deepFreeze(o){Object.freeze(o);Object.keys(o).forEach(function(k){if(o[k]&&typeof o[k]==='object'&&!Object.isFrozen(o[k]))deepFreeze(o[k])});return o}
+  function utf8(s){return new TextEncoder().encode(String(s||''))}
+  function text(bytes){try{return new TextDecoder().decode(bytes)}catch(e){return ''}}
+  function concat(arrays){var len=0;arrays.forEach(function(a){len+=a.length});var out=new Uint8Array(len);var p=0;arrays.forEach(function(a){out.set(a,p);p+=a.length});return out}
+  function writeU16(a,p,v){a[p]=(v>>8)&255;a[p+1]=v&255}
+  function readU16(a,p){return ((a[p]<<8)|a[p+1])>>>0}
+  function writeU32(a,p,v){a[p]=(v>>>24)&255;a[p+1]=(v>>>16)&255;a[p+2]=(v>>>8)&255;a[p+3]=v&255}
+  function readU32(a,p){return ((a[p]<<24)|(a[p+1]<<16)|(a[p+2]<<8)|a[p+3])>>>0}
+  function crc8(bytes){var c=0;for(var i=0;i<bytes.length;i++){c^=bytes[i];for(var j=0;j<8;j++)c=(c&0x80)?((c<<1)^0x07):(c<<1);c&=255}return c}
+  function crc16(bytes){var crc=0xFFFF;for(var i=0;i<bytes.length;i++){crc^=bytes[i]<<8;for(var j=0;j<8;j++){crc=(crc&0x8000)?((crc<<1)^0x1021):(crc<<1);crc&=0xFFFF}}return crc&0xFFFF}
+  function mean(a){return a.length?a.reduce(function(s,x){return s+x},0)/a.length:0}
+  function sd(a){if(a.length<2)return 0;var m=mean(a);return Math.sqrt(mean(a.map(function(x){return Math.pow(x-m,2)})))}
+  function haversine(a,b){if(!a||!b||a.lat==null||b.lat==null)return null;var R=6371000;var p1=a.lat*Math.PI/180,p2=b.lat*Math.PI/180;var dp=(b.lat-a.lat)*Math.PI/180,dl=(b.lon-a.lon)*Math.PI/180;var x=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return 2*R*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
+  function bearing(a,b){if(!a||!b||a.lat==null||b.lat==null)return null;var p1=a.lat*Math.PI/180,p2=b.lat*Math.PI/180;var dl=(b.lon-a.lon)*Math.PI/180;var y=Math.sin(dl)*Math.cos(p2);var x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl);return (Math.atan2(y,x)*180/Math.PI+360)%360}
+  function equirectFromLatLon(origin,p){var R=6371000;var lat0=origin.lat*Math.PI/180;return{x:(p.lon-origin.lon)*Math.PI/180*Math.cos(lat0)*R,y:(p.lat-origin.lat)*Math.PI/180*R}}
+  function latLonFromEquirect(origin,p){var R=6371000;var lat0=origin.lat*Math.PI/180;return{lat:origin.lat+(p.y/R)*180/Math.PI,lon:origin.lon+(p.x/(Math.cos(lat0)*R))*180/Math.PI}}
+  function dataViewToBytes(view){if(!view)return new Uint8Array(0);if(view instanceof DataView)return new Uint8Array(view.buffer,view.byteOffset,view.byteLength);if(view.buffer)return new Uint8Array(view.buffer);return new Uint8Array(0)}
+  function zeroFill(a,passes){if(!a||typeof a.fill!=='function')return;var patterns=[0,255,85,170,null,0,0];for(var i=0;i<(passes||7);i++){if(patterns[i]===null){if(window.crypto&&crypto.getRandomValues){var tmp=new Uint8Array(a.length);crypto.getRandomValues(tmp);a.set(tmp)}else a.fill(Math.floor(Math.random()*256))}else a.fill(patterns[i])}}
+  return{now:now,clamp:clamp,pad:pad,time:time,dayHour:dayHour,safe:safe,djb2:djb2,hex:hex,randomBytes:randomBytes,bytesToHex:bytesToHex,randomId:randomId,deepFreeze:deepFreeze,utf8:utf8,text:text,concat:concat,writeU16:writeU16,readU16:readU16,writeU32:writeU32,readU32:readU32,crc8:crc8,crc16:crc16,mean:mean,sd:sd,haversine:haversine,bearing:bearing,equirectFromLatLon:equirectFromLatLon,latLonFromEquirect:latLonFromEquirect,dataViewToBytes:dataViewToBytes,zeroFill:zeroFill}
+})();
+
+function module(name,deps,factory){try{if(typeof deps==='function'){factory=deps;deps=[]}var api=factory.apply(null,(deps||[]).map(function(d){return VG.modules[d]&&VG.modules[d].api}));VG.modules[name]={name:name,status:'ok',api:api||{},startedAt:U.now(),error:null};SwarmBus.emit('module:registered',{name:name,status:'ok'});return api}catch(e){VG.modules[name]={name:name,status:'error',api:{},startedAt:U.now(),error:e.message};try{console.error('[VG2 module]',name,e)}catch(_){}return {}}}
+
+var ETHICAL_MANIFEST=U.deepFreeze({
+  version:APP_VERSION,
+  project:'VitalGuard Bluetooth Swarm Ultrasonic Mesh V2',
+  purpose:'civilian humanitarian rescue continuity, local safety, and offline disaster response only',
+  allowed:['search_and_rescue','disaster_resilience','local_safety','education','accessibility','privacy_preserving_field_tests'],
+  prohibited:['weaponization','coercive_tracking','surveillance','persistent_identity_profiling','commercial_data_brokering','external_telemetry','remote_hardware_control','biometric_identification','voice_fingerprinting','face_recognition'],
+  retention:{rawRssi:'120 seconds memory only',fingerprint:'2 hours maximum',movement:'4 hours maximum',alerts:'24 hours maximum',patterns:'7 days aggregate only'},
+  safeguards:['zero_metadata_default','local_only','no_external_network','instant_deletion','tamper_wipe','short_lived_fingerprints','no_raw_audio_persistence','humanitarian_license_notice','browser_capability_disclosure'],
+  legal:['UDHR','Geneva Conventions humanitarian principles','UNCRC','CRPD','GDPR data minimization','Hippocratic-License-3 inspired restrictions','Dual-use caution: Wassenaar and EU 2021/821 awareness']
+});
+VG.ethicalManifest=ETHICAL_MANIFEST;
+
+var State=module('State',function(){
+  function loadNodeId(){try{var id=localStorage.getItem(STORE_PREFIX+'node_id');if(id)return id}catch(e){}var nid=U.randomId('VG2',8);try{localStorage.setItem(STORE_PREFIX+'node_id',nid)}catch(e){}return nid}
+  var state={
+    nodeId:loadNodeId(),sessionSalt:U.randomId('SALT',8),saltBorn:U.now(),buildMode:'clean',role:'sentinel',profile:'forest',groupId:'sector-alpha',mode:'SAFE',ttl:DEFAULT_TTL,seq:0,
+    integrity:'armed',tampered:false,started:false,capabilities:{webBluetooth:false,leScan:false,gattWrite:false,nativeAdvertise:false,audio:false,battery:false,wakeLock:false,geo:false,orientation:false},
+    ble:{scan:null,scanning:false,scanMode:'none',lastError:'',handlerInstalled:false},
+    audio:{started:false,lastRx:0,lastTx:0,rxPackets:0,txPackets:0,calibrated:false},
+    power:{level:null,charging:null,label:'unknown'},
+    location:null,heading:0,deadReckoning:{x:0,y:0,steps:0,lastAccel:0},target:null,
+    tracks:new Map(),nodes:new Map(),messages:new Map(),relayQueue:[],outbox:[],alerts:[],logs:[],testResults:[],responseMemory:new Map(),consensus:new Map(),seenBits:null,memoryPools:[],deleteInProgress:false,
+    config:{measuredPower:-59,pathLoss:3.2,tdmaSlots:8,audioSpace:17500,audioMark:18500,audioBitMs:64,audioVolume:.17,scanDuty:'adaptive'}
+  };
+  state.seenBits=new Uint8Array(256);state.memoryPools.push(state.seenBits,new Uint8Array(2048),new Float32Array(512));
+  state.nodes.set(state.nodeId,{id:state.nodeId,role:state.role,x:320,y:145,lat:null,lon:null,trust:1,lastSeen:U.now(),local:true});
+  VG.state=state;
+  return state;
+});
+
+var Logger=module('Logger',function(){
+  var filter='all';
+  function log(kind,msg,cls){if(VG.state&&VG.state.deleteInProgress)return;var rec={id:U.randomId('L',4),at:U.now(),kind:kind||'sys',msg:String(msg||''),cls:cls||''};VG.state.logs.push(rec);if(VG.state.logs.length>MAX_LOG)VG.state.logs.shift();SwarmBus.emit('log:new',rec);return rec}
+  function setFilter(f){filter=f||'all';SwarmBus.emit('log:filter',{filter:filter})}
+  function list(){return VG.state.logs.slice()}
+  function clear(){VG.state.logs.length=0;SwarmBus.emit('log:cleared',{})}
+  return{log:log,setFilter:setFilter,list:list,clear:clear,getFilter:function(){return filter}}
+});
+function log(kind,msg,cls){return Logger.log(kind,msg,cls)}
+
+var Profiles=module('Profiles',function(){
+  var profiles={
+    cornfield:{label:'Cornfield / maze',prior:.05,stationaryMs:600000,pathLoss:3.5,measuredPower:-62,nightBoost:.16,edgeBoost:.11,groupPenalty:.15,passiveEscalation:true},
+    forest:{label:'Forest / trail',prior:.02,stationaryMs:1200000,pathLoss:3.4,measuredPower:-61,nightBoost:.13,edgeBoost:.12,groupPenalty:.12,passiveEscalation:true},
+    remoteRoad:{label:'Remote road',prior:.08,stationaryMs:1800000,pathLoss:2.4,measuredPower:-59,nightBoost:.18,edgeBoost:.18,groupPenalty:.08,passiveEscalation:true},
+    urban:{label:'Urban / elderly care',prior:.012,stationaryMs:2700000,pathLoss:3.7,measuredPower:-60,nightBoost:.07,edgeBoost:.06,groupPenalty:.2,passiveEscalation:false},
+    water:{label:'Water-adjacent',prior:.07,stationaryMs:420000,pathLoss:2.8,measuredPower:-59,nightBoost:.18,edgeBoost:.16,groupPenalty:.08,passiveEscalation:true},
+    general:{label:'General humanitarian',prior:.025,stationaryMs:900000,pathLoss:3.1,measuredPower:-59,nightBoost:.11,edgeBoost:.1,groupPenalty:.12,passiveEscalation:true}
+  };
+  function current(){return profiles[VG.state.profile]||profiles.general}
+  function apply(name){if(!profiles[name])name='general';VG.state.profile=name;VG.state.config.pathLoss=profiles[name].pathLoss;VG.state.config.measuredPower=profiles[name].measuredPower;SwarmBus.emit('profile:changed',{profile:name,config:profiles[name]});return profiles[name]}
+  return{profiles:profiles,current:current,apply:apply}
+});
+
+var Bloom=module('Bloom',function(){
+  function clear(){VG.state.seenBits.fill(0)}
+  function hash(bytes,seed){var h=(seed*0x9E3779B1)>>>0;for(var i=0;i<bytes.length;i++){h^=bytes[i]+0x9e3779b9+(h<<6)+(h>>>2);h>>>=0}return h%(VG.state.seenBits.length*8)}
+  function add(bytes){for(var s=1;s<=3;s++){var bit=hash(bytes,s);VG.state.seenBits[bit>>3]|=1<<(bit&7)}}
+  function has(bytes){for(var s=1;s<=3;s++){var bit=hash(bytes,s);if((VG.state.seenBits[bit>>3]&(1<<(bit&7)))===0)return false}return true}
+  setInterval(clear,90000);
+  return{add:add,has:has,clear:clear}
+});
+
+var DB=module('DB',function(){
+  var db=null;var stores=['nodes','alerts','messages','config','trust','patterns','audit'];
+  function open(){if(db)return Promise.resolve(db);return new Promise(function(resolve,reject){if(!window.indexedDB){reject(new Error('IndexedDB unavailable'));return}var req=indexedDB.open(DB_NAME,2);req.onupgradeneeded=function(){var d=req.result;stores.forEach(function(s){if(!d.objectStoreNames.contains(s))d.createObjectStore(s,{keyPath:'id'})})};req.onsuccess=function(){db=req.result;resolve(db)};req.onerror=function(){reject(req.error||new Error('IndexedDB open failed'))}})}
+  function put(store,value){return open().then(function(d){return new Promise(function(resolve,reject){var tx=d.transaction(store,'readwrite');tx.objectStore(store).put(value);tx.oncomplete=function(){resolve(value)};tx.onerror=function(){reject(tx.error)}})})}
+  function all(store,limit){return open().then(function(d){return new Promise(function(resolve,reject){var out=[];var tx=d.transaction(store,'readonly');var req=tx.objectStore(store).openCursor();req.onsuccess=function(){var cur=req.result;if(cur&&(!limit||out.length<limit)){out.push(cur.value);cur.continue()}else resolve(out)};req.onerror=function(){reject(req.error)}})})}
+  function clearAll(){return open().then(function(d){return Promise.all(stores.map(function(s){return new Promise(function(resolve,reject){var tx=d.transaction(s,'readwrite');tx.objectStore(s).clear();tx.oncomplete=function(){resolve()};tx.onerror=function(){reject(tx.error)}})}))})}
+  function deleteDatabase(){return new Promise(function(resolve){try{if(db){db.close();db=null}var req=indexedDB.deleteDatabase(DB_NAME);req.onsuccess=function(){resolve(true)};req.onerror=function(){resolve(false)};req.onblocked=function(){resolve(false)}}catch(e){resolve(false)}})}
+  function verifyEmpty(){return open().then(function(){return Promise.all(stores.map(function(s){return all(s,1).then(function(x){return{x:s,n:x.length}})}))})}
+  return{open:open,put:put,all:all,clearAll:clearAll,deleteDatabase:deleteDatabase,verifyEmpty:verifyEmpty,stores:stores}
+});
+
+var Heartbeat=module('Heartbeat',function(){
+  function encode(extra){extra=extra||{};var b=new Uint8Array(31);U.writeU16(b,0,MAGIC);b[2]=VERSION_BYTE;U.writeU32(b,3,U.djb2(VG.state.nodeId));var role=ROLE_CODE[VG.state.role]||1;var mode=MODE_CODE[extra.mode||VG.state.mode]||0;b[7]=((role&7)<<5)|(mode&31);var batt=VG.state.power.level==null?255:Math.round(VG.state.power.level*100);b[8]=U.clamp(batt,0,255);b[9]=Math.round(U.clamp(Trust.average(),0,1)*255);VG.state.seq=(VG.state.seq+1)&0xffff;U.writeU16(b,10,VG.state.seq);b[12]=U.clamp(extra.ttl==null?VG.state.ttl:extra.ttl,0,15);b[13]=extra.packetType||PACKET.HEARTBEAT;b[14]=U.clamp(Math.round((extra.severity||0)*255),0,255);U.writeU32(b,15,U.djb2(VG.state.groupId));U.writeU32(b,19,extra.digest||U.djb2((extra.message||'')+VG.state.seq));U.writeU32(b,23,Math.floor(U.now()/1000));b[27]=SensorSummary.flags();b[28]=U.djb2(VG.state.profile)&255;b[29]=0;b[30]=U.crc8(b.slice(0,30));return b}
+  function decode(bytes,rssi,source){if(!bytes||bytes.length<31)return null;if(U.readU16(bytes,0)!==MAGIC)return null;if(U.crc8(bytes.slice(0,30))!==bytes[30])return null;var modeCode=bytes[7]&31;var roleCode=(bytes[7]>>5)&7;var roles=['unknown','sentinel','relay','rescuer','gateway','commander'];var id='NODE-'+U.hex(U.readU32(bytes,3),8);return{kind:'heartbeat',nodeId:id,role:roles[roleCode]||'unknown',mode:MODE_NAMES[modeCode]||'SAFE',battery:bytes[8]===255?null:bytes[8]/100,trust:bytes[9]/255,seq:U.readU16(bytes,10),ttl:bytes[12],packetType:bytes[13],severity:bytes[14]/255,groupHash:U.readU32(bytes,15),digest:U.readU32(bytes,19),timestamp:U.readU32(bytes,23)*1000,sensorFlags:bytes[27],profileHash:bytes[28],rssi:rssi,source:source||'ble',receivedAt:U.now()}}
+  return{encode:encode,decode:decode}
+});
+
+var PacketCodec=module('PacketCodec',function(){
+  function encode(obj){obj=obj||{};var clean=Ethics.sanitize(obj);var payload=U.utf8(JSON.stringify(clean));var max=180;if(payload.length>max)payload=payload.slice(0,max);var header=new Uint8Array(8);header[0]=0x56;header[1]=0x47;header[2]=VERSION_BYTE;header[3]=clean.type||PACKET.TEXT;header[4]=(payload.length>>8)&255;header[5]=payload.length&255;header[6]=VG.state.ttl&15;header[7]=VG.state.seq&255;var body=U.concat([header,payload]);var crc=U.crc16(body);var tail=new Uint8Array(2);U.writeU16(tail,0,crc);return U.concat([body,tail])}
+  function decode(bytes){if(!bytes||bytes.length<10||bytes[0]!==0x56||bytes[1]!==0x47)return null;var len=(bytes[4]<<8)|bytes[5];if(bytes.length<8+len+2)return null;var body=bytes.slice(0,8+len);var got=U.readU16(bytes,8+len);if(U.crc16(body)!==got)return null;var payload=body.slice(8);try{var obj=JSON.parse(U.text(payload));obj.type=body[3];obj.ttl=body[6];obj.seq=body[7];return obj}catch(e){return null}}
+  function id(bytes){return U.djb2(U.bytesToHex(bytes).slice(0,96))}
+  return{encode:encode,decode:decode,id:id}
+});
+
+var Trust=module('Trust',function(){
+  var table=new Map();
+  function get(id){var r=table.get(id);return r?r.score:.5}
+  function update(id,outcome,quality){var r=table.get(id)||{score:.5,success:0,total:0,lastSeen:0,malformed:0,relays:0};r.total++;if(outcome==='success'||outcome==='valid'||outcome==='relay')r.success++;if(outcome==='malformed')r.malformed++;if(outcome==='relay')r.relays++;var raw=r.success/Math.max(1,r.total);var consistency=1-U.clamp(r.malformed/Math.max(1,r.total),0,.8);var q=quality==null?.08:U.clamp(quality,0,1)*.12;r.score=U.clamp(raw*.72+consistency*.18+q+.05,.03,1);r.lastSeen=U.now();table.set(id,r);SwarmBus.emit('swarm:trust-update',{nodeId:id,score:r.score,outcome:outcome});return r.score}
+  function average(){var vals=Array.from(table.values()).map(function(r){return r.score});return vals.length?U.mean(vals):.5}
+  function clear(){table.clear()}
+  return{get:get,update:update,average:average,clear:clear,table:table}
+});
+
+var SensorSummary=module('SensorSummary',function(){
+  function flags(){var f=0;if(VG.state.capabilities.leScan)f|=1;if(VG.state.capabilities.audio)f|=2;if(VG.state.location)f|=4;if(VG.state.capabilities.battery)f|=8;if(VG.state.capabilities.wakeLock)f|=16;if(VG.state.capabilities.orientation)f|=32;return f}
+  return{flags:flags}
+});
+
+var Ethics=module('Ethics',function(){
+  var manifestHash=U.djb2(JSON.stringify(ETHICAL_MANIFEST));
+  var coreHash=0;var refs=[];var timer=null;
+  function sanitize(obj){var out={};Object.keys(obj||{}).forEach(function(k){if(/name|email|phone|identity|mac|address|face|voiceprint|biometric/i.test(k))return;out[k]=obj[k]});return out}
+  function validateManifest(){return !!ETHICAL_MANIFEST&&ETHICAL_MANIFEST.prohibited.indexOf('surveillance')>=0&&U.djb2(JSON.stringify(ETHICAL_MANIFEST))===manifestHash}
+  function installIntegrity(coreRefs){refs=coreRefs||[];coreHash=hashRefs();if(timer)clearInterval(timer);timer=setInterval(checkIntegrity,10000);return coreHash}
+  function hashRefs(){var s=JSON.stringify(ETHICAL_MANIFEST);refs.forEach(function(fn){try{s+=String(fn&&fn.toString?fn.toString():fn)}catch(e){s+='ERR'}});return U.djb2(s)}
+  function checkIntegrity(){var ok=validateManifest()&&hashRefs()===coreHash;VG.state.integrity=ok?'armed':'tamper';SwarmBus.emit('ethics:integrity',{ok:ok});if(!ok)tamperResponse('integrity mismatch');return ok}
+  function tamperResponse(reason){if(VG.state.tampered)return;VG.state.tampered=true;VG.state.mode='SAFE';log('ethics','tamper response: '+reason,'bad');try{PassiveScanner.stop()}catch(e){}try{DataWiper.wipe('tamper:'+reason)}catch(e){}}
+  function canOperate(){if(!validateManifest())throw new Error('Ethical manifest validation failed');if(VG.state.tampered)throw new Error('Tamper state: operation blocked');return true}
+  return{manifest:ETHICAL_MANIFEST,sanitize:sanitize,validateManifest:validateManifest,installIntegrity:installIntegrity,checkIntegrity:checkIntegrity,canOperate:canOperate,tamperResponse:tamperResponse}
+});
+
+var DataWiper=module('DataWiper',function(){
+  var keyWindow=[];var shakeTimes=[];
+  function clearLocalStorage(){try{Object.keys(localStorage).forEach(function(k){if(k.indexOf(STORE_PREFIX)===0||k.indexOf('vg_swarm')===0||k.indexOf('swarm_')===0)localStorage.removeItem(k)})}catch(e){}}
+  function clearSession(){try{sessionStorage.clear()}catch(e){}}
+  function clearMemory(){var s=VG.state;s.tracks.clear();s.nodes.clear();s.messages.clear();s.relayQueue.length=0;s.outbox.length=0;s.alerts.length=0;s.responseMemory.clear();s.consensus.clear();s.logs.length=0;s.testResults.length=0;s.memoryPools.forEach(function(a){U.zeroFill(a,7)});s.seenBits.fill(0)}
+  function wipe(reason){reason=reason||'manual';VG.state.deleteInProgress=true;return Promise.resolve().then(function(){try{PassiveScanner.stop()}catch(e){}try{Acoustic.stop()}catch(e){}return DB.clearAll().catch(function(){})}).then(function(){return DB.deleteDatabase()}).then(function(){clearLocalStorage();clearSession();clearMemory();VG.state.nodeId=U.randomId('VG2',8);VG.state.sessionSalt=U.randomId('SALT',8);VG.state.saltBorn=U.now();VG.state.deleteInProgress=false;SwarmBus.emit('ethics:wiped',{reason:reason,at:U.now(),nodeId:VG.state.nodeId});return true}).catch(function(e){VG.state.deleteInProgress=false;SwarmBus.emit('ethics:wipe-error',{error:e.message});return false})}
+  function installTriggers(){document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&e.key==='Delete'){var t=U.now();keyWindow=keyWindow.filter(function(x){return t-x<8000});keyWindow.push(t);if(keyWindow.length>=3){keyWindow=[];wipe('keyboard-ctrl-shift-delete-x3')}}});window.addEventListener('devicemotion',function(e){var a=e.accelerationIncludingGravity;if(!a)return;var mag=Math.sqrt((a.x||0)**2+(a.y||0)**2+(a.z||0)**2);if(mag>24){var t=U.now();shakeTimes=shakeTimes.filter(function(x){return t-x<5000});shakeTimes.push(t);if(shakeTimes.length>=5){shakeTimes=[];wipe('shake-x5')}}})}
+  installTriggers();
+  return{wipe:wipe,clearMemory:clearMemory}
+});
+
+var Capability=module('Capability',function(){
+  function audit(){var c=VG.state.capabilities;c.webBluetooth=!!navigator.bluetooth;c.leScan=!!(navigator.bluetooth&&navigator.bluetooth.requestLEScan);c.nativeAdvertise=!!window.VGNativeBLEAdvertiser;c.gattWrite=!!(navigator.bluetooth&&navigator.bluetooth.requestDevice);c.audio=!!(window.AudioContext||window.webkitAudioContext);c.battery=!!navigator.getBattery;c.wakeLock=!!navigator.wakeLock;c.geo=!!navigator.geolocation;c.orientation='DeviceOrientationEvent' in window;SwarmBus.emit('capability:audit',c);return c}
+  function label(){var c=VG.state.capabilities;var arr=[];if(c.leScan)arr.push('BLE scan');if(c.gattWrite)arr.push('GATT write');if(c.nativeAdvertise)arr.push('native BLE advertise');if(c.audio)arr.push('audio');if(c.geo)arr.push('geo');return arr.length?arr.join(' · '):'limited browser'}
+  audit();return{audit:audit,label:label}
+});
+
+var Power=module('Power',function(){
+  var wakeLock=null;
+  function start(){if(navigator.getBattery){navigator.getBattery().then(function(b){function upd(){VG.state.power.level=b.level;VG.state.power.charging=b.charging;VG.state.power.label=Math.round(b.level*100)+'%'+(b.charging?' charging':'');SwarmBus.emit('power:update',VG.state.power)}b.addEventListener('levelchange',upd);b.addEventListener('chargingchange',upd);upd()}).catch(function(){})}requestWakeLock()}
+  function requestWakeLock(){if(navigator.wakeLock&&navigator.wakeLock.request){navigator.wakeLock.request('screen').then(function(w){wakeLock=w;VG.state.capabilities.wakeLock=true;log('sys','screen wake lock active','good')}).catch(function(e){log('warn','wake lock unavailable: '+e.message,'warn')})}}
+  function scanDutyForConcern(score){if(score>.75)return{mode:'active',scanMs:9000,restMs:1000};if(score>.35)return{mode:'elevated',scanMs:4000,restMs:4000};return{mode:'normal',scanMs:2000,restMs:8000}}
+  return{start:start,requestWakeLock:requestWakeLock,scanDutyForConcern:scanDutyForConcern}
+});
+
+var PassiveScanner=module('PassiveScanner',function(){
+  function installHandler(){if(VG.state.ble.handlerInstalled||!navigator.bluetooth)return;navigator.bluetooth.addEventListener('advertisementreceived',handleAdvertisement);VG.state.ble.handlerInstalled=true}
+  function start(mode){Ethics.canOperate();mode=mode||'protocol';if(!navigator.bluetooth||!navigator.bluetooth.requestLEScan){VG.state.ble.lastError='Web Bluetooth LE scan unavailable';log('ble','LE scanning unavailable in this browser','bad');SwarmBus.emit('ble:error',{error:VG.state.ble.lastError});return Promise.reject(new Error(VG.state.ble.lastError))}installHandler();stop();var opts=mode==='passive'?{acceptAllAdvertisements:true,keepRepeatedDevices:true}:{filters:[{services:[SERVICE_UUID]}],keepRepeatedDevices:true};return navigator.bluetooth.requestLEScan(opts).then(function(scan){VG.state.ble.scan=scan;VG.state.ble.scanning=true;VG.state.ble.scanMode=mode;log('ble',(mode==='passive'?'passive any-advertisement':'protocol service')+' scan started','good');SwarmBus.emit('ble:scan-started',{mode:mode});return scan}).catch(function(e){VG.state.ble.lastError=e.message;VG.state.ble.scanning=false;log('ble','scan failed: '+e.message,'bad');SwarmBus.emit('ble:error',{error:e.message});throw e})}
+  function stop(){try{if(VG.state.ble.scan&&VG.state.ble.scan.active)VG.state.ble.scan.stop()}catch(e){}VG.state.ble.scan=null;VG.state.ble.scanning=false;VG.state.ble.scanMode='none';SwarmBus.emit('ble:scan-stopped',{});}
+  function extractPayloads(event){var out=[];try{if(event.serviceData&&event.serviceData.forEach){event.serviceData.forEach(function(v,k){out.push({kind:'service',key:String(k).toLowerCase(),bytes:U.dataViewToBytes(v)})})}}catch(e){}try{if(event.manufacturerData&&event.manufacturerData.forEach){event.manufacturerData.forEach(function(v,k){out.push({kind:'manufacturer',key:String(k),bytes:U.dataViewToBytes(v)})})}}catch(e){}return out}
+  function fingerprint(event,payloads){var rssi=typeof event.rssi==='number'?event.rssi:-100;var rssiBucket=Math.round(rssi/6)*6;var svc=payloads.filter(function(p){return p.kind==='service'}).length;var man=payloads.filter(function(p){return p.kind==='manufacturer'}).length;var len=payloads.reduce(function(s,p){return s+p.bytes.length},0);var name=event.device&&event.device.name?String(event.device.name):'';var flags=(/sos|help|구조|救|hilfe|ayuda|au secours/i.test(name)?'SOS':'')+':'+(name?'N':'_');var base=[VG.state.sessionSalt,event.device&&event.device.id?event.device.id:'anonymous',rssiBucket,svc,man,len,flags].join('|');return 'FP-'+U.hex(U.djb2(base),8)}
+  function handleAdvertisement(event){if(!VG.state.ble.scanning)return;var rssi=typeof event.rssi==='number'?event.rssi:-100;var payloads=extractPayloads(event);var isProtocol=false;var decoded=null;for(var i=0;i<payloads.length;i++){var p=payloads[i];if((p.key.indexOf(SERVICE_UUID_SHORT)>=0||p.key.indexOf(SERVICE_UUID)>=0)&&p.bytes.length>=31){decoded=Heartbeat.decode(p.bytes,rssi,'ble-service');if(decoded){isProtocol=true;break}}}
+    var fp=fingerprint(event,payloads);var name=event.device&&event.device.name?String(event.device.name):'';var sosName=/sos|help|구조|救|hilfe|ayuda|au secours/i.test(name);var obs={id:fp,at:U.now(),rssi:rssi,sourceNode:VG.state.nodeId,scanMode:VG.state.ble.scanMode,isProtocol:isProtocol,nameSOS:sosName,connectable:!!(event.device&&event.device.gatt),payloadKinds:payloads.map(function(p){return p.kind}),payloadBytes:payloads.reduce(function(s,p){return s+p.bytes.length},0)};
+    RescueAI.observe(obs);VG.state.power.lastBle=U.now();if(decoded){Trust.update(decoded.nodeId,'valid',Math.max(0,1-((Math.abs(rssi)+40)/70)));MeshCore.receiveHeartbeat(decoded);SwarmBus.emit('swarm:heartbeat-received',decoded)}else{SwarmBus.emit('swarm:passive-detection',obs)}
+  }
+  function rotateSalt(){VG.state.sessionSalt=U.randomId('SALT',8);VG.state.saltBorn=U.now();VG.state.tracks.clear();log('ethics','privacy salt rotated; passive fingerprints reset','good');SwarmBus.emit('privacy:salt-rotated',{})}
+  setInterval(function(){if(U.now()-VG.state.saltBorn>RETENTION.fingerprintMs)rotateSalt()},60000);
+  return{start:start,stop:stop,handleAdvertisement:handleAdvertisement,rotateSalt:rotateSalt,extractPayloads:extractPayloads,fingerprint:fingerprint}
+});
+
+var MeshCore=module('MeshCore',function(){
+  function receiveHeartbeat(h){var rec=VG.state.nodes.get(h.nodeId)||{id:h.nodeId};rec.role=h.role;rec.mode=h.mode;rec.rssi=h.rssi;rec.trust=h.trust;rec.battery=h.battery;rec.lastSeen=U.now();if(rec.x==null){var n=VG.state.nodes.size;rec.x=80+(n*83)%520;rec.y=60+(n*47)%190}VG.state.nodes.set(h.nodeId,rec);if(h.mode==='PANIC'||h.mode==='RESCUE')VG.state.mode='ALERT';if(shouldRelay(h))relay(h);SwarmBus.emit('mesh:nodes-changed',{})}
+  function shouldRelay(m){if((m.mode==='PANIC'||m.mode==='RESCUE')&&m.ttl>0)return true;if((m.ttl||0)<=0)return false;var p=.78;if(m.ttl===1)p=Math.max(p,.94);var density=VG.state.nodes.size;if(density>10)p-=Math.min(.45,(density-10)*.04);p*=U.clamp(m.trust||Trust.get(m.nodeId)||.5,.12,1);if(VG.state.power.level!=null&&VG.state.power.level<.15)p-=.35;return Math.random()<U.clamp(p,0,1)}
+  function relay(m){var copy=Object.assign({},m,{ttl:Math.max(0,(m.ttl||DEFAULT_TTL)-1),relayedBy:VG.state.nodeId,relayAt:U.now()});VG.state.relayQueue.push(copy);if(VG.state.relayQueue.length>80)VG.state.relayQueue.shift();VG.state.outbox.push({type:'relay',message:copy,at:U.now()});SwarmBus.emit('swarm:message-relay',copy);return copy}
+  function prune(){var t=U.now();Array.from(VG.state.nodes.keys()).forEach(function(k){var n=VG.state.nodes.get(k);if(!n.local&&t-(n.lastSeen||0)>RETENTION.fingerprintMs)VG.state.nodes.delete(k)});while(VG.state.relayQueue.length>80)VG.state.relayQueue.shift()}
+  setInterval(prune,30000);
+  return{receiveHeartbeat:receiveHeartbeat,shouldRelay:shouldRelay,relay:relay,prune:prune}
+});
+
+var MeshOutbox=module('MeshOutbox',function(){
+  var gatt={device:null,server:null,characteristic:null};
+  function nativeAdvertise(bytes){if(window.VGNativeBLEAdvertiser&&typeof window.VGNativeBLEAdvertiser.broadcast==='function'){try{window.VGNativeBLEAdvertiser.broadcast(bytes);log('ble','native bridge advertised heartbeat','good');return true}catch(e){log('ble','native advertise failed: '+e.message,'warn')}}return false}
+  function connectPeer(){Ethics.canOperate();if(!navigator.bluetooth||!navigator.bluetooth.requestDevice){log('ble','GATT peer connection unavailable','bad');return Promise.reject(new Error('GATT unavailable'))}return navigator.bluetooth.requestDevice({filters:[{services:[SERVICE_UUID]}],optionalServices:[SERVICE_UUID]}).then(function(device){gatt.device=device;return device.gatt.connect()}).then(function(server){gatt.server=server;return server.getPrimaryService(SERVICE_UUID)}).then(function(service){return service.getCharacteristic(CHARACTERISTIC_UUID)}).then(function(ch){gatt.characteristic=ch;VG.state.capabilities.gattWrite=true;log('ble','GATT peer write channel ready','good');return ch}).catch(function(e){log('ble','GATT peer failed: '+e.message,'warn');throw e})}
+  function writeGatt(bytes){if(!gatt.characteristic)return Promise.reject(new Error('No GATT peer'));return gatt.characteristic.writeValue(bytes).then(function(){log('ble','GATT packet written','good');return true})}
+  function sendPacket(obj){var bytes=obj instanceof Uint8Array?obj:PacketCodec.encode(obj);var sentNative=nativeAdvertise(bytes);var item={id:U.randomId('Q',4),bytes:bytes,at:U.now(),sentNative:sentNative,type:obj.type||PACKET.TEXT};VG.state.outbox.push(item);if(VG.state.outbox.length>100)VG.state.outbox.shift();if(gatt.characteristic)writeGatt(bytes).catch(function(e){log('ble','GATT write queued only: '+e.message,'warn')});if(!sentNative)SwarmBus.emit('outbox:packet',item);return item}
+  function sendHeartbeat(extra){var bytes=Heartbeat.encode(extra||{});var item=sendPacket(bytes);if(!item.sentNative)log('ble','heartbeat queued; browser advertisement TX not available without native bridge','warn');return item}
+  return{connectPeer:connectPeer,sendPacket:sendPacket,sendHeartbeat:sendHeartbeat,writeGatt:writeGatt,nativeAdvertise:nativeAdvertise,gatt:gatt}
+});
+
+function Track(id){this.id=id;this.firstSeen=U.now();this.lastSeen=U.now();this.raw=[];this.summary=[];this.concern=0;this.level=0;this.movement='unknown';this.consensus={votes:0,agree:0,score:0};this.estimate=null;this.flags={nameSOS:false,protocol:false,group:false,respondedSafe:false};}
+var RescueAI=module('RescueAI',function(){
+  function observe(obs){var t=U.now();var tr=VG.state.tracks.get(obs.id);if(!tr){tr=new Track(obs.id);VG.state.tracks.set(obs.id,tr)}tr.lastSeen=t;tr.flags.nameSOS=tr.flags.nameSOS||!!obs.nameSOS;tr.flags.protocol=tr.flags.protocol||!!obs.isProtocol;tr.raw.push({at:t,rssi:obs.rssi,sourceNode:obs.sourceNode||VG.state.nodeId});tr.raw=tr.raw.filter(function(x){return t-x.at<RETENTION.rawRssiMs});tr.summary.push({at:t,rssi:obs.rssi,sourceNode:obs.sourceNode||VG.state.nodeId});tr.summary=tr.summary.filter(function(x){return t-x.at<RETENTION.movementMs});analyze(tr);SwarmBus.emit('ai:track-updated',tr);return tr}
+  function classifyMovement(tr){var h=tr.raw;if(h.length<4)return 'insufficient';var rss=h.map(function(x){return x.rssi});var span=h[h.length-1].at-h[0].at;var dif=[];for(var i=1;i<rss.length;i++)dif.push(rss[i]-rss[i-1]);var jitter=U.sd(rss);var slope=(rss[rss.length-1]-rss[0])/Math.max(1,span/1000);var signChanges=0;for(var j=1;j<dif.length;j++)if(Math.sign(dif[j])!==0&&Math.sign(dif[j-1])!==0&&Math.sign(dif[j])!==Math.sign(dif[j-1]))signChanges++;if(jitter<2.2&&span>45000)return 'stationary';if(signChanges>=Math.max(3,Math.floor(dif.length*.55))&&jitter>4)return 'oscillating';if(Math.abs(slope)>1.2&&jitter>6)return 'running-or-signal-drop';if(jitter>5&&signChanges>2)return 'walking-erratic';if(jitter>=2&&jitter<=5)return 'walking-normal';return 'unknown'}
+  function stationaryMs(tr){var h=tr.raw;if(h.length<2)return 0;var rss=h.map(function(x){return x.rssi});if(U.sd(rss)<2.8)return h[h.length-1].at-h[0].at;return 0}
+  function signalDegradation(tr){var h=tr.raw;if(h.length<5)return 0;var first=U.mean(h.slice(0,Math.ceil(h.length/3)).map(function(x){return x.rssi}));var last=U.mean(h.slice(-Math.ceil(h.length/3)).map(function(x){return x.rssi}));return U.clamp((first-last-8)/24,0,1)}
+  function isolation(tr){var sources=new Set(tr.summary.filter(function(x){return U.now()-x.at<RETENTION.rawRssiMs}).map(function(x){return x.sourceNode}));return sources.size<=1?.7:Math.max(0,.45-sources.size*.08)}
+  function temporalRisk(){var h=U.dayHour();if(h>=0&&h<5)return .75;if(h>=21||h<7)return .45;return .12}
+  function groupPenalty(tr){var nearby=0;VG.state.tracks.forEach(function(o){if(o!==tr&&Math.abs((o.lastSeen||0)-tr.lastSeen)<25000){var or=o.raw[o.raw.length-1],rr=tr.raw[tr.raw.length-1];if(or&&rr&&Math.abs(or.rssi-rr.rssi)<5)nearby++}});tr.flags.group=nearby>=2;return nearby>=2?Profiles.current().groupPenalty:0}
+  function bayesLike(prior,factors){var odds=prior/Math.max(.0001,1-prior);factors.forEach(function(f){var p=U.clamp(f,.001,.999);odds*=p/(1-p)});return U.clamp(odds/(1+odds),0,1)}
+  function level(score){if(score>=.90)return 4;if(score>=.75)return 3;if(score>=.50)return 2;if(score>=.20)return 1;return 0}
+  function analyze(tr){var prof=Profiles.current();var sm=stationaryMs(tr);var stationaryFactor=U.clamp(sm/Math.max(1,prof.stationaryMs),0,1);var move=classifyMovement(tr);var irregular=(move==='walking-erratic'||move==='oscillating')?.78:(move==='running-or-signal-drop'?.65:(move==='stationary'?.42:.18));var temporal=temporalRisk();var degrade=signalDegradation(tr);var iso=isolation(tr);var sos=tr.flags.nameSOS?1:0;var penalty=groupPenalty(tr);var factors=[.08+stationaryFactor*.82,.12+irregular*.75,.08+temporal*.55,.08+degrade*.8,.1+iso*.55];if(sos)factors.push(.98);var score=bayesLike(prof.prior,factors);score=U.clamp(score-penalty,0,1);if(VG.state.responseMemory.get(tr.id)==='safe')score=Math.min(score,.18);tr.concern=score;tr.level=level(score);tr.movement=move;tr.stationaryMs=sm;tr.degradation=degrade;tr.isolation=iso;tr.consensus=Consensus.vote(tr);tr.estimate=Triangulation.estimateForTrack(tr);if(tr.level>=2)SwarmBus.emit('swarm:rescue-concern',{trackId:tr.id,score:score,level:tr.level,track:tr});return tr}
+  function prune(){var t=U.now();Array.from(VG.state.tracks.keys()).forEach(function(k){var tr=VG.state.tracks.get(k);tr.raw=tr.raw.filter(function(x){return t-x.at<RETENTION.rawRssiMs});tr.summary=tr.summary.filter(function(x){return t-x.at<RETENTION.movementMs});if(t-tr.lastSeen>RETENTION.fingerprintMs)VG.state.tracks.delete(k)});while(VG.state.tracks.size>MAX_TRACKS){var first=VG.state.tracks.keys().next().value;VG.state.tracks.delete(first)}}
+  function topTrack(){var best=null;VG.state.tracks.forEach(function(t){if(!best||t.concern>best.concern)best=t});return best}
+  setInterval(prune,30000);
+  return{observe:observe,analyze:analyze,classifyMovement:classifyMovement,stationaryMs:stationaryMs,signalDegradation:signalDegradation,temporalRisk:temporalRisk,topTrack:topTrack,prune:prune}
+});
+
+var Consensus=module('Consensus',function(){
+  function vote(track){var recent=track.summary.filter(function(x){return U.now()-x.at<RETENTION.rawRssiMs});var sources=Array.from(new Set(recent.map(function(x){return x.sourceNode})));var agree=0;var weighted=0;sources.forEach(function(s){var obs=recent.filter(function(x){return x.sourceNode===s});var avg=U.mean(obs.map(function(x){return x.rssi}));var q=U.clamp((avg+100)/65,0,1);var trust=Trust.get(s);var localConcern=track.concern||0;if(localConcern>.5)agree++;weighted+=q*trust});var score=sources.length?weighted/sources.length:0;var minAgree=track.level>=3?3:(track.level>=2?2:1);var result={votes:sources.length,agree:agree,score:score,passes:track.flags.nameSOS||agree>=minAgree};VG.state.consensus.set(track.id,result);return result}
+  return{vote:vote}
+});
+
+var Rssi=module('Rssi',function(){
+  function distance(rssi,profileName){var p=Profiles.profiles[profileName||VG.state.profile]||Profiles.current();var mp=Number(VG.state.config.measuredPower||p.measuredPower||-59);var ple=Number(VG.state.config.pathLoss||p.pathLoss||3);return Math.pow(10,(mp-rssi)/(10*ple))}
+  function calibrate(samples){if(!samples||samples.length<2)return null;var xs=[],ys=[];samples.forEach(function(s){if(s.distance>0&&typeof s.rssi==='number'){xs.push(Math.log10(s.distance));ys.push(s.rssi)}});var mx=U.mean(xs),my=U.mean(ys);var num=0,den=0;for(var i=0;i<xs.length;i++){num+=(xs[i]-mx)*(ys[i]-my);den+=(xs[i]-mx)**2}var slope=den?num/den:-30;var ple=U.clamp(-slope/10,1.6,5);VG.state.config.pathLoss=ple;return ple}
+  return{distance:distance,calibrate:calibrate}
+});
+
+function Kalman2D(){this.x=0;this.y=0;this.vx=0;this.vy=0;this.p=100;this.last=0}
+Kalman2D.prototype.update=function(pt,quality){var t=U.now();var dt=this.last?Math.min(5,(t-this.last)/1000):1;this.last=t;this.x+=this.vx*dt;this.y+=this.vy*dt;this.p+=8*dt;var r=U.clamp(60-(quality||.5)*45,8,60);var k=this.p/(this.p+r);var nx=this.x+k*(pt.x-this.x),ny=this.y+k*(pt.y-this.y);this.vx=(nx-this.x)/dt;this.vy=(ny-this.y)/dt;this.x=nx;this.y=ny;this.p=(1-k)*this.p;return{x:this.x,y:this.y,p:this.p}}
+var Triangulation=module('Triangulation',function(){
+  var filters=new Map();
+  function nodeCoord(id){var n=VG.state.nodes.get(id)||VG.state.nodes.get(VG.state.nodeId);if(!n)return{x:320,y:145};return{x:n.x==null?320:n.x,y:n.y==null?145:n.y,lat:n.lat,lon:n.lon}}
+  function estimateForTrack(tr){var recent=tr.summary.filter(function(o){return U.now()-o.at<RETENTION.rawRssiMs});if(!recent.length)return null;var byNode={};recent.forEach(function(o){if(!byNode[o.sourceNode])byNode[o.sourceNode]=[];byNode[o.sourceNode].push(o.rssi)});var circles=Object.keys(byNode).map(function(id){var c=nodeCoord(id);var avg=U.mean(byNode[id]);return{id:id,x:c.x,y:c.y,lat:c.lat,lon:c.lon,rssi:avg,d:Rssi.distance(avg)}});var est;if(circles.length>=3)est=gridSolve(circles);else if(circles.length===2)est=twoNode(circles);else est=singleNode(circles[0]);var quality=U.clamp(circles.length/3,0,1)*(1-U.clamp(U.sd(recent.map(function(o){return o.rssi}))/14,0,.85));var f=filters.get(tr.id);if(!f){f=new Kalman2D();f.x=est.x;f.y=est.y;filters.set(tr.id,f)}var smooth=f.update(est,quality);return{x:smooth.x,y:smooth.y,confidence:quality,nodes:circles.length,accuracy:Math.round(8+(1-quality)*45),raw:est,circles:circles}}
+  function singleNode(c){var d=U.clamp(c.d*3,8,120);return{x:U.clamp(c.x+d,20,620),y:U.clamp(c.y,20,270)}}
+  function twoNode(cs){var a=cs[0],b=cs[1];var total=Math.max(.1,a.d+b.d);var w=b.d/total;return{x:a.x*w+b.x*(1-w),y:a.y*w+b.y*(1-w)}}
+  function gridSolve(cs){var best={x:320,y:145,e:Infinity};for(var x=20;x<=620;x+=10){for(var y=20;y<=270;y+=10){var e=0;cs.forEach(function(c){var dd=Math.sqrt((x-c.x)**2+(y-c.y)**2)/3;var diff=dd-c.d;e+=diff*diff});if(e<best.e)best={x:x,y:y,e:e}}}return best}
+  return{estimateForTrack:estimateForTrack,gridSolve:gridSolve,nodeCoord:nodeCoord}
+});
+
+var SOS=module('SOS',function(){
+  var messages={
+    en:['Are you lost?','Stay nearby. Help can be coordinated from this local rescue node.'],ko:['길을 잃었나요?','도움이 필요하면 가까운 구조 노드에 머물러 주세요. 가능하면 움직이지 말고 소리를 들어 주세요.'],es:['¿Está perdido?','Permanezca cerca. La ayuda puede coordinarse desde este nodo local.'],ar:['هل أنت تائه؟','ابق قريباً. يمكن تنسيق المساعدة من هذه العقدة المحلية.'],fr:['Êtes-vous perdu ?','Restez près du nœud local. Les secours peuvent être coordonnés ici.'],zh:['你迷路了吗？','请留在附近。本地救援节点可以协调帮助。'],hi:['क्या आप रास्ता भटक गए हैं?','पास रहें। यह स्थानीय नोड सहायता समन्वय कर सकता है।'],ja:['道に迷いましたか？','近くにいてください。この救助ノードが支援を調整できます。'],pt:['Você está perdido?','Fique por perto. Este nó local pode coordenar ajuda.'],de:['Haben Sie sich verirrt?','Bleiben Sie in der Nähe. Dieser lokale Knoten kann Hilfe koordinieren.']
+  };
+  function current(lang){return messages[lang||UI.val('sosLanguage')||'ko']||messages.ko}
+  function broadcast(track){Ethics.canOperate();var m=current();var payload={type:PACKET.SOS_QUERY,mode:'SOS_QUERY',lang:UI.val('sosLanguage')||'ko',title:m[0],severity:1,target:track?track.id:null,at:U.now(),ttl:VG.state.ttl};MeshOutbox.sendPacket(payload);Acoustic.sendObject(payload).catch(function(){});VG.state.alerts.push({id:U.randomId('A',4),at:U.now(),target:payload.target,severity:1,message:m[0]});log('ai','SOS query broadcast: '+m[0],'warn');SwarmBus.emit('sos:broadcast',payload);return payload}
+  function markResponse(id,status){if(!id){var top=RescueAI.topTrack();id=top&&top.id}if(!id)return;VG.state.responseMemory.set(id,status==='safe'?'safe':'need_help');if(status==='need_help'){VG.state.mode='RESCUE';log('ai','local response marked NEED HELP','bad');broadcast(VG.state.tracks.get(id))}else{log('ai','local response marked safe; false-positive memory active','good')}SwarmBus.emit('sos:response',{id:id,status:status})}
+  function beacon(pattern){return Acoustic.beacon(pattern||'sos')}
+  return{messages:messages,current:current,broadcast:broadcast,markResponse:markResponse,beacon:beacon}
+});
+
+var Acoustic=module('Acoustic',function(){
+  var ctx=null,stream=null,analyser=null,rxTimer=null,lastSymbol=0,bitBuf=[];var PRE=[0xAA,0xAA,0x7E];
+  function getCtx(){if(ctx)return Promise.resolve(ctx);var C=window.AudioContext||window.webkitAudioContext;if(!C)return Promise.reject(new Error('AudioContext unavailable'));ctx=new C();return ctx.state==='suspended'?ctx.resume().then(function(){return ctx}):Promise.resolve(ctx)}
+  function start(){Ethics.canOperate();return getCtx().then(function(c){return navigator.mediaDevices&&navigator.mediaDevices.getUserMedia?navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false}).then(function(s){stream=s;var src=c.createMediaStreamSource(s);analyser=c.createAnalyser();analyser.fftSize=2048;src.connect(analyser);VG.state.audio.started=true;log('audio','audio RX started; raw samples memory-only','good');rxLoop();return true}):Promise.reject(new Error('Microphone API unavailable'))}).catch(function(e){log('audio','audio start failed: '+e.message,'bad');throw e})}
+  function stop(){if(rxTimer)cancelAnimationFrame(rxTimer);rxTimer=null;if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}VG.state.audio.started=false}
+  function rxLoop(){if(!analyser)return;var sampleRate=ctx.sampleRate;var buf=new Float32Array(analyser.fftSize);function step(){if(!analyser)return;analyser.getFloatTimeDomainData(buf);var mark=goertzel(buf,sampleRate,VG.state.config.audioMark);var space=goertzel(buf,sampleRate,VG.state.config.audioSpace);var decision=mark>space?1:0;var t=U.now();if(!lastSymbol||t-lastSymbol>=VG.state.config.audioBitMs){lastSymbol=t;bitBuf.push(decision);if(bitBuf.length>2400)bitBuf=bitBuf.slice(-1600);tryDecodeBits()}rxTimer=requestAnimationFrame(step)}step()}
+  function goertzel(samples,sr,freq){var coeff=2*Math.cos(2*Math.PI*freq/sr),s0=0,s1=0,s2=0;for(var i=0;i<samples.length;i++){s0=samples[i]+coeff*s1-s2;s2=s1;s1=s0}return s1*s1+s2*s2-coeff*s1*s2}
+  function bytesToBits(bytes){var bits=[];for(var i=0;i<bytes.length;i++)for(var b=7;b>=0;b--)bits.push((bytes[i]>>b)&1);return bits}
+  function bitsToBytes(bits){var n=Math.floor(bits.length/8);var out=new Uint8Array(n);for(var i=0;i<n;i++){var v=0;for(var b=0;b<8;b++)v=(v<<1)|(bits[i*8+b]&1);out[i]=v}return out}
+  function frame(payload){var body=U.concat([new Uint8Array(PRE),new Uint8Array([payload.length>>8,payload.length&255]),payload]);var crc=U.crc16(body);var tail=new Uint8Array(2);U.writeU16(tail,0,crc);return U.concat([body,tail])}
+  function parseFrame(bytes){for(var i=0;i<=bytes.length-7;i++){if(bytes[i]===PRE[0]&&bytes[i+1]===PRE[1]&&bytes[i+2]===PRE[2]){var len=(bytes[i+3]<<8)|bytes[i+4];var end=i+5+len+2;if(end<=bytes.length){var body=bytes.slice(i,end-2);var got=U.readU16(bytes,end-2);if(U.crc16(body)===got)return bytes.slice(i+5,i+5+len)}}}return null}
+  function tryDecodeBits(){if(bitBuf.length<80)return;for(var off=0;off<8;off++){var bytes=bitsToBytes(bitBuf.slice(off));var p=parseFrame(bytes);if(p){var obj=PacketCodec.decode(p);if(obj){VG.state.audio.rxPackets++;VG.state.audio.lastRx=U.now();log('audio','RX packet '+(obj.mode||obj.type||'data'),'good');SwarmBus.emit('audio:packet',obj);bitBuf=[];return obj}}}}
+  function tone(freq,dur,vol,at){return getCtx().then(function(c){var o=c.createOscillator();var g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.value=0;o.connect(g);g.connect(c.destination);var start=at||c.currentTime;g.gain.setValueAtTime(0,start);g.gain.linearRampToValueAtTime(vol||VG.state.config.audioVolume,start+.015);g.gain.setValueAtTime(vol||VG.state.config.audioVolume,start+dur-.02);g.gain.linearRampToValueAtTime(0,start+dur);o.start(start);o.stop(start+dur+.03);return start+dur})}
+  function sendBytes(bytes,mode){var payload=PacketCodec.encode({type:PACKET.TEXT,mode:'ACOUSTIC_RAW',data:U.bytesToHex(bytes).slice(0,120),at:U.now()});return txFrame(payload,mode)}
+  function txFrame(payload,mode){mode=mode||UI.val('acousticMode')||'fsk';return getCtx().then(function(c){var framed=frame(payload);var bits=bytesToBits(framed);var base=c.currentTime+.08;var bitMs=VG.state.config.audioBitMs/1000;var mark=mode==='audible'?2200:VG.state.config.audioMark;var space=mode==='audible'?1200:VG.state.config.audioSpace;bits.forEach(function(bit,i){tone(bit?mark:space,bitMs*.88,VG.state.config.audioVolume,base+i*bitMs)});VG.state.audio.txPackets++;VG.state.audio.lastTx=U.now();log('audio','TX FSK frame '+framed.length+' bytes','good');return true})}
+  function sendObject(obj){var payload=PacketCodec.encode(obj);return txFrame(payload,UI.val('acousticMode'))}
+  function morse(text){var table={A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..',0:'-----',1:'.----',2:'..---',3:'...--',4:'....-',5:'.....',6:'-....',7:'--...',8:'---..',9:'----.'};var seq=[];String(text||'SOS').toUpperCase().split('').forEach(function(ch){if(ch===' '){seq.push('gap');return}var code=table[ch]||'';code.split('').forEach(function(s){seq.push(s)});seq.push('char')});return getCtx().then(function(c){var t=c.currentTime+.05;seq.forEach(function(s){if(s==='.') {tone(700,.12,.22,t);t+=.18}else if(s==='-'){tone(700,.36,.22,t);t+=.42}else if(s==='char')t+=.3;else t+=.7});VG.state.audio.txPackets++;log('audio','TX Morse '+U.safe(text,60),'good')})}
+  function beacon(kind){return getCtx().then(function(c){var t=c.currentTime+.05;if(kind==='rescuer'){tone(360,.5,.28,t);tone(360,.5,.28,t+.72)}else{for(var i=0;i<3;i++)tone(520,.18,.30,t+i*.28);for(var j=0;j<3;j++)tone(520,.18,.30,t+1.25+j*.28)}log('audio',(kind==='rescuer'?'rescuer':'SOS')+' beacon played','warn')})}
+  function calibrate(){if(!analyser){log('audio','start audio before calibration','warn');return null}var p=Profiles.current();VG.state.config.audioMark=p.label.indexOf('Urban')>=0?6500:18500;VG.state.config.audioSpace=p.label.indexOf('Urban')>=0?4200:17500;VG.state.audio.calibrated=true;log('audio','audio band calibrated for '+p.label,'good');return VG.state.config}
+  return{start:start,stop:stop,sendBytes:sendBytes,sendObject:sendObject,morse:morse,beacon:beacon,calibrate:calibrate,frame:frame,parseFrame:parseFrame,bytesToBits:bytesToBits,bitsToBytes:bitsToBytes,goertzel:goertzel}
+});
+
+var Navigation=module('Navigation',function(){
+  var watchId=null;
+  function start(){if(navigator.geolocation){watchId=navigator.geolocation.watchPosition(function(pos){VG.state.location={lat:pos.coords.latitude,lon:pos.coords.longitude,accuracy:pos.coords.accuracy,at:U.now()};var n=VG.state.nodes.get(VG.state.nodeId);if(n){n.lat=VG.state.location.lat;n.lon=VG.state.location.lon}SwarmBus.emit('nav:location',VG.state.location)},function(e){log('warn','geolocation unavailable: '+e.message,'warn')},{enableHighAccuracy:true,maximumAge:5000,timeout:12000})}window.addEventListener('deviceorientation',function(e){if(typeof e.alpha==='number'){VG.state.heading=(360-e.alpha)%360;SwarmBus.emit('nav:heading',{heading:VG.state.heading})}});window.addEventListener('devicemotion',stepDetect);log('sys','navigation sensors requested','good')}
+  function stepDetect(e){var a=e.accelerationIncludingGravity;if(!a)return;var mag=Math.sqrt((a.x||0)**2+(a.y||0)**2+(a.z||0)**2);var t=U.now();if(mag>16&&t-VG.state.deadReckoning.lastAccel>420){VG.state.deadReckoning.lastAccel=t;VG.state.deadReckoning.steps++;var rad=(VG.state.heading||0)*Math.PI/180;VG.state.deadReckoning.x+=Math.sin(rad)*.75;VG.state.deadReckoning.y+=Math.cos(rad)*.75}}
+  function setTargetFromTop(){var t=RescueAI.topTrack();if(t&&t.estimate){VG.state.target={trackId:t.id,x:t.estimate.x,y:t.estimate.y,confidence:t.estimate.confidence,accuracy:t.estimate.accuracy,at:U.now()};log('ai','rescuer target set: '+t.id,'good');SwarmBus.emit('nav:target',VG.state.target)}else log('ai','no target with position estimate','warn')}
+  function currentBearing(){var target=VG.state.target;if(!target)return null;var local=Triangulation.nodeCoord(VG.state.nodeId);var dx=target.x-local.x,dy=target.y-local.y;var brg=(Math.atan2(dx,-dy)*180/Math.PI+360)%360;var dist=Math.sqrt(dx*dx+dy*dy)/3;return{bearing:brg,distance:dist,relative:(brg-(VG.state.heading||0)+360)%360,confidence:target.confidence||0,accuracy:target.accuracy||50}}
+  return{start:start,setTargetFromTop:setTargetFromTop,currentBearing:currentBearing}
+});
+
+var Simulation=module('Simulation',function(){
+  function seedNodes(){var coords=[[80,70],[260,55],[520,80],[120,230],[360,225],[570,220]];coords.forEach(function(c,i){var id='SIM-SENTINEL-'+(i+1);VG.state.nodes.set(id,{id:id,role:'sentinel',x:c[0],y:c[1],trust:.72+.04*i,lastSeen:U.now()})});SwarmBus.emit('mesh:nodes-changed',{})}
+  function run(){seedNodes();var target={x:388,y:174};var nodeIds=Array.from(VG.state.nodes.keys()).filter(function(id){return id.indexOf('SIM-SENTINEL')===0});var fp='FP-SIM-LOST-'+U.hex(U.djb2(String(U.now())),4);var tick=0;var timer=setInterval(function(){tick++;target.x+=Math.sin(tick/3)*4;target.y+=tick<5?0:(tick%2?3:-4);nodeIds.forEach(function(id){var n=VG.state.nodes.get(id);var d=Math.sqrt((target.x-n.x)**2+(target.y-n.y)**2)/3;var rssi=VG.state.config.measuredPower-10*VG.state.config.pathLoss*Math.log10(Math.max(1,d))+(Math.random()*6-3);RescueAI.observe({id:fp,at:U.now(),rssi:rssi,sourceNode:id,scanMode:'simulation',nameSOS:tick>7,isProtocol:false})});if(tick>12){clearInterval(timer);log('ai','simulation complete: passive SOS + triangulation scenario','good')}},450);log('ai','rescue simulation started','warn')}
+  return{seedNodes:seedNodes,run:run}
+});
+
+var TestRunner=module('TestRunner',function(){
+  function assert(name,fn){var ok=false,err='';try{ok=!!fn()}catch(e){err=e.message}var rec={name:name,ok:ok,error:err};VG.state.testResults.push(rec);return rec}
+  function run(){VG.state.testResults.length=0;assert('CRC16 deterministic',function(){var b=U.utf8('VitalGuard');return U.crc16(b)===U.crc16(b)&&U.crc16(b)>0});assert('Heartbeat encode/decode',function(){var b=Heartbeat.encode({mode:'WATCH',severity:.4});var d=Heartbeat.decode(b,-55,'test');return d&&d.mode==='WATCH'&&d.ttl>=0});assert('PacketCodec roundtrip',function(){var p=PacketCodec.encode({type:PACKET.TEXT,msg:'hello',identity:'blocked'});var d=PacketCodec.decode(p);return d&&d.msg==='hello'&&!('identity'in d)});assert('Bloom duplicate detection',function(){var b=U.utf8('x');Bloom.clear();var before=Bloom.has(b);Bloom.add(b);return before===false&&Bloom.has(b)===true});assert('RSSI distance monotonic',function(){return Rssi.distance(-80)>Rssi.distance(-50)});assert('Movement classifier stationary',function(){var tr=new Track('T');var t=U.now();for(var i=0;i<6;i++)tr.raw.push({at:t+i*10000,rssi:-62+(i%2?1:-1)});return RescueAI.classifyMovement(tr)==='stationary'});assert('Triangulation grid solve',function(){Simulation.seedNodes();var tr=new Track('TT');['SIM-SENTINEL-1','SIM-SENTINEL-2','SIM-SENTINEL-3'].forEach(function(id){tr.summary.push({at:U.now(),sourceNode:id,rssi:-62})});return !!Triangulation.estimateForTrack(tr)});assert('Ethical manifest intact',function(){return Ethics.validateManifest()});assert('No external connection primitives',function(){var s=document.documentElement.outerHTML;return !/\bXMLHttpRequest\s*\(|\bWebSocket\s*\(|\bEventSource\s*\(/.test(s)&&!/fetch\s*\(/.test(s)});assert('Delete module available',function(){return typeof DataWiper.wipe==='function'});VG.state.testResults.at=U.now();var pass=VG.state.testResults.filter(function(t){return t.ok}).length;log('sys','self tests '+pass+'/'+VG.state.testResults.length,'good');SwarmBus.emit('tests:complete',{pass:pass,total:VG.state.testResults.length});return VG.state.testResults}
+  return{run:run}
+});
+
+var UI=module('UI',function(){
+  var ids={};var logFilter='all';function el(id){return ids[id]||(ids[id]=document.getElementById(id))}function val(id){var e=el(id);return e?e.value:null}function set(id,text){var e=el(id);if(e)e.textContent=text}function cls(e,c,on){if(e)e.classList.toggle(c,!!on)}
+  function bind(){
+    set('nodeId',VG.state.nodeId);el('startCore').onclick=startCore;el('startProtocolScan').onclick=function(){PassiveScanner.start('protocol').catch(function(){})};el('startPassiveScan').onclick=function(){PassiveScanner.start('passive').catch(function(){})};el('stopBle').onclick=PassiveScanner.stop;el('connectGatt').onclick=function(){MeshOutbox.connectPeer().catch(function(){})};el('sendHeartbeat').onclick=function(){MeshOutbox.sendHeartbeat()};el('broadcastSos').onclick=function(){SOS.broadcast(RescueAI.topTrack())};el('runSimulation').onclick=Simulation.run;el('runTests').onclick=function(){TestRunner.run();renderTests()};el('exportLog').onclick=exportLog;el('wipeAll').onclick=function(){DataWiper.wipe('button')};el('rotateSalt').onclick=PassiveScanner.rotateSalt;el('saveConfig').onclick=saveConfig;el('startAudio').onclick=function(){Acoustic.start().catch(function(){})};el('calibrateAudio').onclick=Acoustic.calibrate;el('sendText').onclick=function(){Acoustic.sendObject({type:PACKET.TEXT,msg:val('messageText'),at:U.now()}).catch(function(){})};el('sendMorse').onclick=function(){Acoustic.morse(val('messageText'))};el('sendAck').onclick=function(){Acoustic.sendObject({type:PACKET.ACK,ack:true,at:U.now()}).catch(function(){})};el('startNav').onclick=Navigation.start;el('targetTop').onclick=Navigation.setTargetFromTop;el('playBeacon').onclick=function(){SOS.beacon('sos')};el('rescuerBeacon').onclick=function(){SOS.beacon('rescuer')};el('markNeedHelp').onclick=function(){SOS.markResponse(null,'need_help')};el('markSafe').onclick=function(){SOS.markResponse(null,'safe')};el('buildMode').onchange=function(){VG.state.buildMode=val('buildMode');applyBuildMode()};el('profile').onchange=function(){Profiles.apply(val('profile'));el('pathLoss').value=VG.state.config.pathLoss;el('measuredPower').value=VG.state.config.measuredPower};el('sosLanguage').onchange=renderSOS;['role','groupId','ttl','tdmaSlots','measuredPower','pathLoss','acousticMode'].forEach(function(id){var e=el(id);if(e)e.onchange=saveConfig});document.querySelectorAll('[data-filter]').forEach(function(b){b.onclick=function(){document.querySelectorAll('[data-filter]').forEach(function(x){x.classList.remove('active')});b.classList.add('active');logFilter=b.getAttribute('data-filter');renderLog()}});SwarmBus.on('log:new',renderLog);SwarmBus.on('ai:track-updated',function(){renderDevices();renderMap()});SwarmBus.on('mesh:nodes-changed',renderMap);SwarmBus.on('tests:complete',renderTests);SwarmBus.on('ethics:wiped',function(e){set('nodeId',VG.state.nodeId);renderLog();alertStatus('Local data deleted: '+e.reason)});SwarmBus.on('capability:audit',renderCapability);setInterval(refresh,1000);renderManual();renderSOS();applyBuildMode();renderCapability();renderModules();renderMap();refresh()}
+  function startCore(){Ethics.canOperate();VG.state.started=true;Power.start();Capability.audit();DB.open().then(function(){return DB.put('audit',{id:'boot-'+U.now(),at:U.now(),version:APP_VERSION,manifestHash:U.djb2(JSON.stringify(ETHICAL_MANIFEST))})}).catch(function(e){log('warn','DB open failed: '+e.message,'warn')});log('sys','core started in '+VG.state.buildMode+' mode','good');SwarmBus.emit('core:started',{})}
+  function saveConfig(){VG.state.role=val('role')||VG.state.role;VG.state.groupId=val('groupId')||VG.state.groupId;VG.state.ttl=Number(val('ttl')||VG.state.ttl);VG.state.config.tdmaSlots=Number(val('tdmaSlots')||VG.state.config.tdmaSlots);VG.state.config.measuredPower=Number(val('measuredPower')||VG.state.config.measuredPower);VG.state.config.pathLoss=Number(val('pathLoss')||VG.state.config.pathLoss);DB.put('config',{id:'local',at:U.now(),role:VG.state.role,profile:VG.state.profile,groupId:VG.state.groupId,ttl:VG.state.ttl,config:VG.state.config}).catch(function(){});log('sys','local config saved','good')}
+  function applyBuildMode(){var mode=VG.state.buildMode;document.querySelectorAll('.experimental').forEach(function(x){x.classList.toggle('vg-hidden',mode==='clean')});set('auditPill',mode==='clean'?'clean audit mode':(mode==='experimental'?'experimental lab enabled':'full v2 review'));el('auditPill').className='vg-pill '+(mode==='clean'?'good':'warn')}
+  function renderCapability(){set('capabilityPill',Capability.label());}
+  function renderSOS(){var m=SOS.current(val('sosLanguage'));var b=el('sosBoard');if(b)b.innerHTML='<b>'+U.safe(m[0],120)+'</b><p>'+U.safe(m[1],260)+'</p>'}
+  function renderDevices(){var box=el('deviceList');if(!box)return;var tracks=Array.from(VG.state.tracks.values()).sort(function(a,b){return b.concern-a.concern}).slice(0,12);if(!tracks.length){box.innerHTML='<div class="vg-item"><strong>No passive detections yet</strong><small>Start BLE scan or run simulation.</small></div>';return}box.innerHTML=tracks.map(function(t){var level=MODE_NAMES[t.level+1]||'WATCH';var cls=t.concern>.75?'bad':(t.concern>.45?'warn':'good');var c=t.consensus||{};var est=t.estimate?(' · '+Math.round(t.estimate.x)+','+Math.round(t.estimate.y)+' ±'+t.estimate.accuracy+'m'):'';return'<div class="vg-item"><div><strong>'+U.safe(t.id,32)+'</strong><br><small>movement '+t.movement+' · concern '+t.concern.toFixed(2)+' · consensus '+(c.agree||0)+'/'+(c.votes||0)+est+'</small></div><span class="vg-pill '+cls+'">'+level+'</span></div>'}).join('')}
+  function renderMap(){var nodes=el('meshNodes'),dev=el('meshDevices'),edges=el('meshEdges');if(!nodes||!dev||!edges)return;var nodeArr=Array.from(VG.state.nodes.values());edges.innerHTML='';for(var i=0;i<nodeArr.length;i++)for(var j=i+1;j<nodeArr.length;j++){var a=nodeArr[i],b=nodeArr[j];var d=Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2);if(d<240)edges.innerHTML+='<line x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" stroke="#315648" stroke-opacity=".45"/>'}nodes.innerHTML=nodeArr.map(function(n){var color=n.local?'#55ea92':(n.role==='rescuer'?'#6edcff':'#bca7ff');return'<g><circle cx="'+n.x+'" cy="'+n.y+'" r="8" fill="'+color+'"/><text x="'+(n.x+10)+'" y="'+(n.y+4)+'" fill="#abcdbc" font-size="10">'+U.safe(n.role||'node',12)+'</text></g>'}).join('');var tr=Array.from(VG.state.tracks.values()).filter(function(t){return t.estimate}).slice(0,20);dev.innerHTML=tr.map(function(t){var e=t.estimate;var color=t.concern>.75?'#ff6d7e':(t.concern>.45?'#ffd16a':'#55ea92');return'<g><circle cx="'+e.x+'" cy="'+e.y+'" r="'+(8+t.concern*10)+'" fill="url(#pulse)"/><circle cx="'+e.x+'" cy="'+e.y+'" r="6" fill="'+color+'"/><text x="'+(e.x+9)+'" y="'+(e.y+4)+'" fill="#effff7" font-size="10">'+t.concern.toFixed(2)+'</text></g>'}).join('')}
+  function renderModules(){var box=el('moduleList');if(!box)return;box.innerHTML=Object.keys(VG.modules).map(function(k){var m=VG.modules[k];var cls=m.status==='ok'?'good':'bad';return'<div class="vg-item"><div><strong>'+U.safe(k,40)+'</strong><br><small>'+U.safe(m.error||'ready · event-isolated module',120)+'</small></div><span class="vg-pill '+cls+'">'+m.status+'</span></div>'}).join('')}
+  function renderTests(){var box=el('testResults');if(!box)return;var arr=VG.state.testResults;if(!arr.length){box.innerHTML='<div class="vg-item"><strong>Self tests not run</strong><small>Run tests before field review.</small></div>';return}box.innerHTML=arr.map(function(t){return'<div class="vg-item"><div><strong class="'+(t.ok?'vg-test-pass':'vg-test-fail')+'">'+(t.ok?'PASS':'FAIL')+'</strong><br><small>'+U.safe(t.name+(t.error?' · '+t.error:''),160)+'</small></div></div>'}).join('');var pass=arr.filter(function(t){return t.ok}).length;set('statTests',pass+'/'+arr.length)}
+  function renderLog(){var box=el('log');if(!box)return;var entries=VG.state.logs.filter(function(r){return logFilter==='all'||r.kind===logFilter||r.cls===logFilter}).slice(-MAX_LOG);box.innerHTML=entries.map(function(r){var cls=r.cls||'';return'<div class="'+cls+'"><span class="muted">'+U.time(r.at)+' '+U.safe(r.kind,12)+'</span> '+U.safe(r.msg,220)+'</div>'}).join('');box.scrollTop=box.scrollHeight}
+  function renderManual(){var m=el('manualBox');if(!m)return;m.innerHTML='<h3>V2.0 audit checklist</h3><ul><li>Passive scan has two modes: VitalGuard protocol filter and any-advertisement rescue scan.</li><li>Non-protocol detections store only short-lived fingerprints, RSSI summaries, timestamps, and node references.</li><li>Browser BLE advertisement transmit is not falsely claimed; native bridge, GATT peer write, and acoustic relay are separated.</li><li>Rescue AI includes concern score, movement classifier, RSSI distance, consensus, temporal anomaly, group false-positive mitigation, and Kalman-smoothed map estimates.</li><li>Ethical Fortress performs manifest validation, function integrity checks, automatic expiry, and 7-pass local deletion.</li><li>Clean Audit mode hides experimental acoustic/simulation controls while keeping the single-file review boundary explicit.</li></ul><h3>Known limits</h3><p>Web Bluetooth support varies by browser and platform. iOS Safari cannot run Web Bluetooth scanning. RSSI location is approximate and should assist, not replace, trained rescue judgment.</p>'}
+  function refresh(){set('clock',U.time());set('statMode',VG.state.mode);set('statBle',VG.state.ble.scanning?VG.state.ble.scanMode:'idle');set('statDevices',String(VG.state.tracks.size));var top=RescueAI.topTrack();set('statConcern',top?top.concern.toFixed(2):'0.00');set('statConsensus',top&&top.consensus?(top.consensus.agree+'/'+top.consensus.votes):'0/0');set('statAudio',VG.state.audio.started?'rx':(VG.state.audio.txPackets?'tx '+VG.state.audio.txPackets:'idle'));set('statOutbox',String(VG.state.outbox.length));set('statPower',VG.state.power.label||'unknown');set('statIntegrity',VG.state.integrity);var dot=el('modeDot');if(dot){dot.className='vg-dot '+(VG.state.mode==='PANIC'||VG.state.mode==='RESCUE'?'bad':(VG.state.mode==='ALERT'||VG.state.mode==='CONCERN'?'warn':'good'))}var br=Navigation.currentBearing();if(br){set('navDistance',Math.round(br.distance)+' m');set('navBearing','bearing '+Math.round(br.bearing)+'° · confidence '+br.confidence.toFixed(2));el('compassArrow').style.transform='rotate('+br.relative+'deg)'}renderModules();}
+  function exportLog(){var data={version:APP_VERSION,at:new Date().toISOString(),nodeId:VG.state.nodeId,logs:Logger.list(),tests:VG.state.testResults};var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitalguard_v2_local_audit_log.json';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}
+  function alertStatus(msg){set('bootText',msg);var meter=el('bootMeter');if(meter)meter.style.width='100%'}
+  return{bind:bind,el:el,val:val,set:set,renderLog:renderLog,renderDevices:renderDevices,renderMap:renderMap,renderTests:renderTests,renderModules:renderModules,refresh:refresh,alertStatus:alertStatus}
+});
+
+(function boot(){
+  UI.bind();
+  Profiles.apply(VG.state.profile);
+  Ethics.installIntegrity([Ethics.sanitize,Ethics.validateManifest,DataWiper.wipe,PassiveScanner.start,RescueAI.observe,PacketCodec.encode,PacketCodec.decode]);
+  var steps=0;var bootTimer=setInterval(function(){steps++;var meter=document.getElementById('bootMeter');if(meter)meter.style.width=Math.min(100,steps*14)+'%';if(steps>=7){clearInterval(bootTimer);UI.alertStatus('V2.0 ready · clean audit modules armed')}},90);
+  log('sys','VitalGuard V2.0 initialized: single-file offline audit build','good');
+})();
+
+})();
+</script>
+</body>
+</html>
