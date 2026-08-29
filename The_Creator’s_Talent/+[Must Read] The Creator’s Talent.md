@@ -1,3 +1,5 @@
+### Please do not think of me as a coder. Coding is not my strength at all.
+
 This document is intended to **demonstrate the creator’s talent and capabilities.**
 
 The creator’s fundamental talent remains the same, regardless of the field in which it is applied.
