@@ -21,4 +21,4 @@ Creativity and problem-solving skills can be applied to virtually any field.
 
 <img width="184" height="263" alt="lo" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lo.PNG" />
 
-### I have a strong talent for simplifying complex problems, structuring them clearly, and finding effective solutions.
+#### I have a strong talent for simplifying complex problems, structuring them clearly, and finding effective solutions.
