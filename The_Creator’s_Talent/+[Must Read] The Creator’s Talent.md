@@ -20,3 +20,5 @@ Creativity and problem-solving skills can be applied to virtually any field.
 ### I am not someone who writes code; I am someone who thinks.
 
 <img width="184" height="263" alt="lo" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lo.PNG" />
+
+**I have a strong talent for simplifying complex problems, structuring them clearly, and finding effective solutions.**
