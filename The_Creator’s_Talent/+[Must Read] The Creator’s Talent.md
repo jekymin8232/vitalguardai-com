@@ -9,3 +9,7 @@ My core strength lies not in coding itself, but in **conceiving new ideas, struc
 Even when the technology or field changes, this ability to design remains the same.
 
 **I have the talent of a designer.**
+
+### My Core Strengths
+
+**My greatest strengths lie in creativity and problem-solving.**
