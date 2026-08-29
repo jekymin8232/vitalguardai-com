@@ -3,6 +3,8 @@
 This document is intended to demonstrate the creator’s talent and capabilities.
 The creator’s fundamental talent remains the same, regardless of the field in which it is applied.
 
+**Please don't misunderstand me. I can't code at all!**
+
 **I am not simply a coder—I am an architect.**
 
 My core strength lies not in coding itself, but in conceiving new ideas, structuring complex problems, and designing systems that can be implemented in the real world.
