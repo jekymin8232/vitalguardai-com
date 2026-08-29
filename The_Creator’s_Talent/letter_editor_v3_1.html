@@ -1,0 +1,616 @@
+<!--
+  Letter Composer V3.1 (block module for existing index.html)
+  Vanilla HTML + CSS + JS / no external libraries / fully offline
+  No network transmission. Images embedded locally as base64 only.
+  Open: loads a file's RAW SOURCE CODE as plain text (tags shown as text,
+  never rendered or executed), preserving line breaks and indentation.
+-->
+
+<style>
+.mlt-wrap{
+  --mlt-ink:#23201b; --mlt-paper:#fdfcf6; --mlt-line:#e4ded0;
+  --mlt-accent:#7a5c3e; --mlt-bg:#efece4; --mlt-bar:#fbfaf6;
+  --mlt-muted:#8a8475; --mlt-sel:#7a5c3e;
+  box-sizing:border-box; width:100%; max-width:920px; margin:24px auto; padding:0;
+  background:var(--mlt-bg); border:1px solid var(--mlt-line); border-radius:14px;
+  box-shadow:0 10px 40px rgba(60,50,35,.12);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",sans-serif;
+  color:var(--mlt-ink); overflow:hidden;
+}
+.mlt-wrap *{box-sizing:border-box;}
+
+.mlt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 20px;background:var(--mlt-bar);border-bottom:1px solid var(--mlt-line);}
+.mlt-title{font-size:15px;font-weight:700;letter-spacing:.2px;}
+.mlt-title small{display:block;font-weight:400;font-size:11px;color:var(--mlt-muted);margin-top:2px;}
+.mlt-headright{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.mlt-lang{display:flex;border:1px solid var(--mlt-line);border-radius:8px;overflow:hidden;}
+.mlt-lang button{border:none;background:#fff;color:var(--mlt-ink);font-size:12px;
+  padding:7px 11px;cursor:pointer;transition:.15s;font-weight:600;}
+.mlt-lang button.mlt-on{background:var(--mlt-accent);color:#fff;}
+.mlt-modes{display:flex;gap:6px;flex-wrap:wrap;}
+.mlt-seg{border:1px solid var(--mlt-line);background:#fff;color:var(--mlt-ink);
+  font-size:12px;padding:7px 12px;border-radius:8px;cursor:pointer;transition:.15s;white-space:nowrap;}
+.mlt-seg:hover{border-color:var(--mlt-accent);}
+.mlt-seg.mlt-on{background:var(--mlt-accent);color:#fff;border-color:var(--mlt-accent);}
+
+.mlt-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+  padding:8px 14px;background:var(--mlt-bar);border-bottom:1px solid var(--mlt-line);}
+.mlt-btn{min-width:32px;height:32px;padding:0 8px;border:1px solid transparent;background:transparent;
+  border-radius:7px;cursor:pointer;font-size:14px;color:var(--mlt-ink);
+  display:inline-flex;align-items:center;justify-content:center;transition:.12s;line-height:1;}
+.mlt-btn:hover{background:#efe9dc;}
+.mlt-btn:active{transform:translateY(1px);}
+.mlt-btn b{font-weight:800;} .mlt-btn i{font-style:italic;}
+.mlt-btn u{text-decoration:underline;} .mlt-btn s{text-decoration:line-through;}
+.mlt-sep{width:1px;height:22px;background:var(--mlt-line);margin:0 4px;}
+.mlt-select{height:32px;border:1px solid var(--mlt-line);border-radius:7px;background:#fff;
+  font-size:12px;padding:0 6px;color:var(--mlt-ink);cursor:pointer;max-width:160px;}
+.mlt-color{width:32px;height:32px;border:1px solid var(--mlt-line);border-radius:7px;padding:2px;cursor:pointer;background:#fff;}
+.mlt-color-wrap{display:inline-flex;align-items:center;gap:3px;}
+.mlt-color-lbl{font-size:11px;color:var(--mlt-muted);}
+
+.mlt-imgbar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:8px 14px;background:#f3eee2;border-bottom:1px solid var(--mlt-line);font-size:12px;color:var(--mlt-ink);}
+.mlt-imgbar.mlt-show{display:flex;}
+.mlt-imgbar label{color:var(--mlt-muted);}
+.mlt-range{width:160px;}
+.mlt-imgbar .mlt-btn{border:1px solid var(--mlt-line);background:#fff;}
+
+.mlt-stage{padding:26px;background:var(--mlt-bg);max-height:70vh;overflow:auto;}
+.mlt-cols{display:block;}
+.mlt-wrap.mlt-bi .mlt-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+.mlt-col{width:100%;min-width:0;}
+.mlt-col#mltColB{display:none;}
+.mlt-wrap.mlt-bi .mlt-col#mltColB{display:block;}
+.mlt-col-tag{font-size:11px;color:var(--mlt-muted);margin:0 4px 6px;font-weight:600;display:none;}
+.mlt-wrap.mlt-bi .mlt-col-tag{display:block;}
+
+.mlt-sheet{display:block;width:100%;background:var(--mlt-paper);border:1px solid var(--mlt-line);
+  border-radius:4px;box-shadow:0 6px 22px rgba(60,50,35,.10);padding:54px 56px;min-height:520px;
+  font-family:Georgia,"Times New Roman","Batang","바탕",serif;font-size:16px;line-height:1.85;
+  outline:none;color:var(--mlt-ink);transition:padding .2s,box-shadow .15s;
+  word-wrap:break-word;overflow-wrap:break-word;}
+.mlt-wrap.mlt-bi .mlt-sheet{min-height:420px;padding:36px 32px;}
+.mlt-sheet:focus{box-shadow:0 6px 26px rgba(122,92,62,.22);}
+.mlt-sheet.mlt-drag{outline:2px dashed var(--mlt-accent);outline-offset:-6px;background:#f6f1e6;}
+.mlt-sheet[contenteditable]:empty:before{content:attr(data-ph);color:#bfb8a6;font-style:italic;pointer-events:none;}
+.mlt-sheet p{margin:0 0 1em;}
+.mlt-sheet img{max-width:100%;height:auto;border-radius:2px;}
+.mlt-sheet img.mlt-selected{outline:3px solid var(--mlt-sel);outline-offset:2px;}
+
+.mlt-wrap.mlt-email .mlt-stage{padding:18px;}
+.mlt-wrap.mlt-email .mlt-cols{max-width:720px;margin:0 auto;}
+.mlt-wrap.mlt-email .mlt-sheet{padding:22px 24px;min-height:360px;border-radius:8px;
+  box-shadow:0 2px 8px rgba(60,50,35,.08);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",sans-serif;
+  font-size:15px;line-height:1.7;}
+
+.mlt-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 18px;background:var(--mlt-bar);border-top:1px solid var(--mlt-line);}
+.mlt-actions{display:flex;flex-wrap:wrap;gap:8px;}
+.mlt-action{border:1px solid var(--mlt-line);background:#fff;color:var(--mlt-ink);font-size:12.5px;
+  padding:9px 14px;border-radius:9px;cursor:pointer;transition:.15s;font-weight:600;
+  display:inline-flex;align-items:center;gap:6px;}
+.mlt-action:hover{border-color:var(--mlt-accent);color:var(--mlt-accent);}
+.mlt-action.mlt-primary{background:var(--mlt-accent);color:#fff;border-color:var(--mlt-accent);}
+.mlt-action.mlt-primary:hover{filter:brightness(1.08);color:#fff;}
+.mlt-action.mlt-danger:hover{border-color:#b5462f;color:#b5462f;}
+.mlt-stat{font-size:11.5px;color:var(--mlt-muted);}
+.mlt-stat b{color:var(--mlt-ink);font-weight:700;}
+
+.mlt-toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);
+  background:var(--mlt-ink);color:#fff;padding:11px 20px;border-radius:10px;font-size:13px;
+  opacity:0;pointer-events:none;transition:.25s;z-index:9999;box-shadow:0 8px 28px rgba(0,0,0,.25);max-width:90vw;}
+.mlt-toast.mlt-show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:640px){
+  .mlt-sheet{padding:32px 24px;}
+  .mlt-wrap.mlt-bi .mlt-cols{grid-template-columns:1fr;}
+  .mlt-head{flex-direction:column;align-items:stretch;}
+}
+</style>
+
+
+<div class="mlt-wrap" id="mltWrap">
+
+  <div class="mlt-head">
+    <div class="mlt-title">
+      <span data-i18n="title">Letter / Correspondence Composer</span>
+      <span style="font-weight:400;color:var(--mlt-muted);font-size:11px;">V3.1</span>
+      <small data-i18n="subtitle">Formatting applies as you type · Fully offline</small>
+    </div>
+    <div class="mlt-headright">
+      <div class="mlt-lang">
+        <button id="mltLangEn" class="mlt-on" type="button">EN</button>
+        <button id="mltLangKo" type="button">KO</button>
+      </div>
+      <div class="mlt-modes">
+        <button class="mlt-seg mlt-on" id="mltModeLetter" type="button" data-i18n="modeLetter">📜 Letterhead</button>
+        <button class="mlt-seg" id="mltModeEmail" type="button" data-i18n="modeEmail">✉️ Email body</button>
+        <button class="mlt-seg" id="mltBiToggle" type="button" data-i18n="bi">🌐 EN·KO side-by-side</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mlt-toolbar" id="mltToolbar">
+    <button class="mlt-btn" data-cmd="undo" data-i18n-title="tUndo" title="Undo" type="button">↶</button>
+    <button class="mlt-btn" data-cmd="redo" data-i18n-title="tRedo" title="Redo" type="button">↷</button>
+    <span class="mlt-sep"></span>
+
+    <select class="mlt-select" id="mltFont" data-i18n-title="tFont" title="Font">
+      <option value="Georgia,'Times New Roman','Batang','바탕',serif">Georgia (serif)</option>
+      <option value="'Times New Roman',Times,serif">Times New Roman</option>
+      <option value="'Palatino Linotype',Palatino,'Book Antiqua',serif">Palatino</option>
+      <option value="Garamond,'Adobe Garamond Pro',serif">Garamond</option>
+      <option value="'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif">Malgun Gothic / 맑은 고딕</option>
+      <option value="'Batang','바탕','AppleMyungjo',serif">Batang / 바탕 (myeongjo)</option>
+      <option value="'Gungsuh','궁서',serif">Gungsuh / 궁서 (brush)</option>
+      <option value="'Gulim','굴림',sans-serif">Gulim / 굴림</option>
+      <option value="'Dotum','돋움',sans-serif">Dotum / 돋움</option>
+      <option value="Verdana,Geneva,sans-serif">Verdana</option>
+      <option value="'Trebuchet MS',Helvetica,sans-serif">Trebuchet MS</option>
+      <option value="'Courier New',Courier,monospace">Courier New (typewriter)</option>
+      <option value="'Comic Sans MS','Comic Sans',cursive">Comic Sans MS</option>
+      <option value="'Brush Script MT','Segoe Script',cursive">Brush Script MT</option>
+    </select>
+    <span class="mlt-sep"></span>
+
+    <select class="mlt-select" id="mltSize" data-i18n-title="tSize" title="Size" style="max-width:108px;">
+      <option value="2" data-i18n="szXS">Very small</option>
+      <option value="3" selected data-i18n="szM">Normal</option>
+      <option value="4" data-i18n="szL">Large</option>
+      <option value="5" data-i18n="szXL">Larger</option>
+      <option value="6" data-i18n="szH">Heading</option>
+      <option value="7" data-i18n="szT">Title</option>
+    </select>
+    <button class="mlt-btn" data-step="up" data-i18n-title="tSizeUp" title="Increase size" type="button">A▲</button>
+    <button class="mlt-btn" data-step="down" data-i18n-title="tSizeDown" title="Decrease size" type="button">A▼</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="bold" data-i18n-title="tBold" title="Bold (Ctrl+B)" type="button"><b>B</b></button>
+    <button class="mlt-btn" data-cmd="italic" data-i18n-title="tItalic" title="Italic (Ctrl+I)" type="button"><i>I</i></button>
+    <button class="mlt-btn" data-cmd="underline" data-i18n-title="tUnderline" title="Underline (Ctrl+U)" type="button"><u>U</u></button>
+    <button class="mlt-btn" data-cmd="strikeThrough" data-i18n-title="tStrike" title="Strikethrough" type="button"><s>S</s></button>
+    <span class="mlt-sep"></span>
+
+    <span class="mlt-color-wrap">
+      <span class="mlt-color-lbl" data-i18n="lblFore">Text</span>
+      <input type="color" class="mlt-color" id="mltFore" value="#23201b" data-i18n-title="tFore" title="Text color">
+    </span>
+    <span class="mlt-color-wrap">
+      <span class="mlt-color-lbl" data-i18n="lblBack">Highlight</span>
+      <input type="color" class="mlt-color" id="mltBack" value="#fff27a" data-i18n-title="tBack" title="Highlight">
+    </span>
+    <button class="mlt-btn" id="mltClearHi" data-i18n-title="clearHi" title="Clear highlight" type="button">⌫</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="justifyLeft" data-i18n-title="tLeft" title="Align left" type="button">⬅</button>
+    <button class="mlt-btn" data-cmd="justifyCenter" data-i18n-title="tCenter" title="Align center" type="button">↔</button>
+    <button class="mlt-btn" data-cmd="justifyRight" data-i18n-title="tRight" title="Align right" type="button">➡</button>
+    <button class="mlt-btn" data-cmd="justifyFull" data-i18n-title="tJustify" title="Justify" type="button">▦</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="insertUnorderedList" data-i18n-title="tUL" title="Bullet list" type="button">•≡</button>
+    <button class="mlt-btn" data-cmd="insertOrderedList" data-i18n-title="tOL" title="Numbered list" type="button">1≡</button>
+    <button class="mlt-btn" data-cmd="outdent" data-i18n-title="tOutdent" title="Outdent" type="button">⇤</button>
+    <button class="mlt-btn" data-cmd="indent" data-i18n-title="tIndent" title="Indent" type="button">⇥</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" id="mltInsertImg" data-i18n="insertImg" title="" type="button">🖼 Image</button>
+    <button class="mlt-btn" data-cmd="removeFormat" data-i18n-title="tRemoveFmt" title="Clear formatting" type="button">⌧</button>
+    <input type="file" id="mltFile" accept="image/*" multiple style="display:none;">
+    <input type="file" id="mltOpenFile" accept=".html,.htm,.txt,.js,.css,.json,.xml,.md,.csv,.svg,text/*" style="display:none;">
+  </div>
+
+  <div class="mlt-imgbar" id="mltImgBar">
+    <label data-i18n="imgSizeLbl">Image size</label>
+    <input type="range" class="mlt-range" id="mltImgSize" min="10" max="100" value="100">
+    <span id="mltImgPct" style="min-width:38px;">100%</span>
+    <span class="mlt-sep"></span>
+    <label data-i18n="alignLbl">Align</label>
+    <button class="mlt-btn" data-img-align="left" data-i18n-title="tImgLeft" title="Left" type="button">⬅</button>
+    <button class="mlt-btn" data-img-align="center" data-i18n-title="tImgCenter" title="Center" type="button">↔</button>
+    <button class="mlt-btn" data-img-align="right" data-i18n-title="tImgRight" title="Right" type="button">➡</button>
+    <span class="mlt-sep"></span>
+    <button class="mlt-btn" id="mltImgDel" data-i18n="imgDel" title="" type="button">🗑 Delete</button>
+  </div>
+
+  <div class="mlt-stage">
+    <div class="mlt-cols" id="mltCols">
+      <div class="mlt-col" id="mltColA">
+        <div class="mlt-col-tag" data-i18n="tagA">For recipient (English)</div>
+        <div class="mlt-sheet" id="mltSheetA" contenteditable="true" data-ph="Type your letter here..."></div>
+      </div>
+      <div class="mlt-col" id="mltColB">
+        <div class="mlt-col-tag" data-i18n="tagB">For author (Korean)</div>
+        <div class="mlt-sheet" id="mltSheetB" contenteditable="true" data-ph="Your reference text..."></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mlt-foot">
+    <div class="mlt-actions">
+      <button class="mlt-action mlt-primary" id="mltSaveHtml" type="button" data-i18n="saveHtml">💾 Save HTML</button>
+      <button class="mlt-action" id="mltOpenHtml" type="button" data-i18n="openHtml">📂 Open HTML</button>
+      <button class="mlt-action" id="mltCopyText" type="button" data-i18n="copyText">📋 Copy plain text</button>
+      <button class="mlt-action" id="mltBackup" type="button" data-i18n="backup">🛟 Backup</button>
+      <button class="mlt-action mlt-danger" id="mltClearAll" type="button" data-i18n="clearAll">🗑 Clear all</button>
+    </div>
+    <div class="mlt-stat" id="mltStat"></div>
+  </div>
+</div>
+
+<div class="mlt-toast" id="mltToast"></div>
+
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- i18n ---------- */
+  var I18N = {
+    en:{
+      title:"Letter / Correspondence Composer",
+      subtitle:"Formatting applies as you type · Fully offline",
+      modeLetter:"📜 Letterhead", modeEmail:"✉️ Email body", bi:"🌐 EN·KO side-by-side",
+      tUndo:"Undo (Ctrl+Z)", tRedo:"Redo (Ctrl+Y)", tFont:"Font",
+      tSize:"Size", tSizeUp:"Increase size", tSizeDown:"Decrease size",
+      tBold:"Bold (Ctrl+B)", tItalic:"Italic (Ctrl+I)", tUnderline:"Underline (Ctrl+U)", tStrike:"Strikethrough",
+      lblFore:"Text", lblBack:"Highlight", tFore:"Text color", tBack:"Highlight", clearHi:"Clear highlight",
+      tLeft:"Align left", tCenter:"Align center", tRight:"Align right", tJustify:"Justify",
+      tUL:"Bullet list", tOL:"Numbered list", tOutdent:"Outdent", tIndent:"Indent",
+      insertImg:"🖼 Image", tRemoveFmt:"Clear formatting",
+      imgSizeLbl:"Image size", alignLbl:"Align", tImgLeft:"Left", tImgCenter:"Center", tImgRight:"Right", imgDel:"🗑 Delete",
+      tagA:"For recipient (English)", tagB:"For author (Korean)",
+      phA:"Type your letter here. Select text, then use the toolbar to make it bold, larger, colored, aligned, or change the font. Use 🖼 Image, or drag & drop an image into the page.",
+      phB:"Your reference text (Korean).",
+      szXS:"Very small", szM:"Normal", szL:"Large", szXL:"Larger", szH:"Heading", szT:"Title",
+      saveHtml:"💾 Save HTML", openHtml:"📂 Open source code", copyText:"📋 Copy plain text", backup:"🛟 Backup", clearAll:"🗑 Clear all",
+      tSaved:"Saved as an HTML file.", tBackup:"Backup file downloaded.",
+      tCopied:"Plain text copied.", tCopyFail:"Copy failed. Please select manually.",
+      tCleared:"All content cleared.", confirmClear:"Delete all content? This cannot be undone.",
+      tImgOnly:"Only image files can be inserted.", tImgBig:"Image is large (8MB+ recommended max).",
+      tImgAdded:"Image added. Click it to resize.", tImgDeleted:"Image deleted.",
+      tNotSupported:"Not supported in this browser.",
+      tLoaded:"Source code loaded as text.", tLoadFail:"Could not read the file.", tHtmlOnly:"Please choose a text or code file.",
+      confirmReplace:"Loading will replace the current content. Continue?",
+      statFmt:function(n,p){return "Characters "+n.toLocaleString()+" · approx. "+p+" page"+(p>1?"s":"");}
+    },
+    ko:{
+      title:"편지 / 서신 작성기",
+      subtitle:"입력하면 바로 서식이 반영됩니다 · 완전 오프라인",
+      modeLetter:"📜 편지지", modeEmail:"✉️ 이메일 본문", bi:"🌐 영·한 병기",
+      tUndo:"실행 취소 (Ctrl+Z)", tRedo:"다시 실행 (Ctrl+Y)", tFont:"글꼴",
+      tSize:"글씨 크기", tSizeUp:"글씨 키우기", tSizeDown:"글씨 줄이기",
+      tBold:"굵게 (Ctrl+B)", tItalic:"기울임 (Ctrl+I)", tUnderline:"밑줄 (Ctrl+U)", tStrike:"취소선",
+      lblFore:"글자", lblBack:"형광", tFore:"글자색", tBack:"형광펜", clearHi:"형광펜 지우기",
+      tLeft:"왼쪽 정렬", tCenter:"가운데 정렬", tRight:"오른쪽 정렬", tJustify:"양쪽 맞춤",
+      tUL:"글머리표 목록", tOL:"번호 목록", tOutdent:"내어쓰기", tIndent:"들여쓰기",
+      insertImg:"🖼 이미지", tRemoveFmt:"서식 지우기",
+      imgSizeLbl:"이미지 크기", alignLbl:"정렬", tImgLeft:"왼쪽", tImgCenter:"가운데", tImgRight:"오른쪽", imgDel:"🗑 삭제",
+      tagA:"상대방용 (English)", tagB:"본인용 (한국어)",
+      phA:"여기에 편지를 입력하세요. 글자를 드래그한 뒤 위 버튼으로 굵게·크게·색·정렬·글꼴을 조절할 수 있습니다. 🖼 이미지 버튼을 쓰거나, 이미지를 화면으로 끌어다 놓아도 됩니다.",
+      phB:"본인 확인용 한국어 내용을 여기에 적습니다.",
+      szXS:"아주 작게", szM:"보통", szL:"크게", szXL:"더 크게", szH:"제목", szT:"큰 제목",
+      saveHtml:"💾 HTML 저장", openHtml:"📂 코드 불러오기", copyText:"📋 순수 텍스트 복사", backup:"🛟 백업", clearAll:"🗑 전체 삭제",
+      tSaved:"HTML 파일로 저장했습니다.", tBackup:"백업 파일을 내려받았습니다.",
+      tCopied:"순수 텍스트를 복사했습니다.", tCopyFail:"복사에 실패했습니다. 직접 선택해 주세요.",
+      tCleared:"모든 내용을 삭제했습니다.", confirmClear:"작성한 모든 내용을 삭제할까요? 되돌릴 수 없습니다.",
+      tImgOnly:"이미지 파일만 넣을 수 있습니다.", tImgBig:"이미지가 큽니다(8MB 이하 권장).",
+      tImgAdded:"이미지를 넣었습니다. 클릭하면 크기를 조절할 수 있습니다.", tImgDeleted:"이미지를 삭제했습니다.",
+      tNotSupported:"이 브라우저에서 지원하지 않는 기능입니다.",
+      tLoaded:"소스 코드를 텍스트로 불러왔습니다.", tLoadFail:"파일을 읽지 못했습니다.", tHtmlOnly:"텍스트 또는 코드 파일을 선택해 주세요.",
+      confirmReplace:"불러오면 현재 작성한 내용이 대체됩니다. 계속할까요?",
+      statFmt:function(n,p){return "글자 "+n.toLocaleString()+"자 · 약 "+p+"쪽";}
+    }
+  };
+  var lang = "en";
+  function t(k){ return (I18N[lang] && I18N[lang][k] !== undefined) ? I18N[lang][k] : k; }
+
+  var wrap=document.getElementById("mltWrap"),
+      toolbar=document.getElementById("mltToolbar"),
+      sheetA=document.getElementById("mltSheetA"),
+      sheetB=document.getElementById("mltSheetB"),
+      stat=document.getElementById("mltStat"),
+      toast=document.getElementById("mltToast"),
+      fontSel=document.getElementById("mltFont"),
+      sizeSel=document.getElementById("mltSize"),
+      foreInp=document.getElementById("mltFore"),
+      backInp=document.getElementById("mltBack"),
+      fileInp=document.getElementById("mltFile"),
+      openInp=document.getElementById("mltOpenFile"),
+      imgBar=document.getElementById("mltImgBar"),
+      imgSize=document.getElementById("mltImgSize"),
+      imgPct=document.getElementById("mltImgPct");
+
+  var sheets=[sheetA,sheetB], activeSheet=sheetA, biMode=false, selectedImg=null;
+
+  try{ document.execCommand("defaultParagraphSeparator",false,"p"); }catch(e){}
+  try{ document.execCommand("styleWithCSS",false,true); }catch(e){}
+
+  /* ---------- language apply ---------- */
+  function applyLang(){
+    document.querySelectorAll("[data-i18n]").forEach(function(el){ el.textContent=t(el.dataset.i18n); });
+    document.querySelectorAll("[data-i18n-title]").forEach(function(el){ el.title=t(el.dataset.i18nTitle); });
+    sheetA.setAttribute("data-ph", t("phA"));
+    sheetB.setAttribute("data-ph", t("phB"));
+    updateStat();
+  }
+  document.getElementById("mltLangEn").addEventListener("click",function(){
+    lang="en"; this.classList.add("mlt-on"); document.getElementById("mltLangKo").classList.remove("mlt-on"); applyLang();
+  });
+  document.getElementById("mltLangKo").addEventListener("click",function(){
+    lang="ko"; this.classList.add("mlt-on"); document.getElementById("mltLangEn").classList.remove("mlt-on"); applyLang();
+  });
+
+  /* ---------- formatting ---------- */
+  function run(cmd,val){
+    activeSheet.focus();
+    try{ document.execCommand(cmd,false, val===undefined?null:val); }
+    catch(e){ showToast("tNotSupported"); }
+    updateStat();
+  }
+  sheets.forEach(function(s){ s.addEventListener("focus",function(){ activeSheet=s; }); });
+
+  toolbar.addEventListener("mousedown",function(ev){
+    var t2=ev.target.closest("button");
+    if(t2) ev.preventDefault();
+  });
+  toolbar.addEventListener("click",function(ev){
+    var btn=ev.target.closest("button");
+    if(!btn) return;
+    if(btn.dataset.cmd){ run(btn.dataset.cmd); return; }
+    if(btn.dataset.step){ stepSize(btn.dataset.step); return; }
+    if(btn.id==="mltClearHi"){ run("hiliteColor","transparent"); return; }
+    if(btn.id==="mltInsertImg"){ fileInp.click(); return; }
+  });
+
+  fontSel.addEventListener("change",function(){
+    var fam=fontSel.value, sel=window.getSelection();
+    activeSheet.focus();
+    if(sel && sel.toString().length>0){ run("fontName",fam); }
+    else { activeSheet.style.fontFamily=fam; }
+    updateStat();
+  });
+  sizeSel.addEventListener("change",function(){ run("fontSize",sizeSel.value); });
+  function stepSize(dir){
+    var v=parseInt(sizeSel.value,10);
+    v=dir==="up"?Math.min(7,v+1):Math.max(1,v-1);
+    sizeSel.value=String(v); run("fontSize",v);
+  }
+  foreInp.addEventListener("input",function(){ run("foreColor",foreInp.value); });
+  backInp.addEventListener("input",function(){ run("hiliteColor",backInp.value); });
+
+  /* ---------- image insert (button + drag&drop) ---------- */
+  fileInp.addEventListener("change",function(){
+    var files=fileInp.files; if(!files||!files.length) return;
+    addImageFiles(files, null, activeSheet);
+    fileInp.value="";
+  });
+
+  function addImageFiles(files, range, sheet){
+    var list=[].slice.call(files), chain=Promise.resolve(), any=false;
+    list.forEach(function(f){
+      if(!/^image\//.test(f.type)) return;
+      any=true;
+      if(f.size>8*1024*1024) showToast("tImgBig");
+      chain=chain.then(function(){
+        return new Promise(function(res){
+          var r=new FileReader();
+          r.onload=function(){ insertImage(sheet, r.result, range); range=null; res(); };
+          r.onerror=function(){ showToast("tLoadFail"); res(); };
+          r.readAsDataURL(f);
+        });
+      });
+    });
+    chain.then(function(){ if(any){ updateStat(); showToast("tImgAdded"); } else { showToast("tImgOnly"); } });
+  }
+
+  function insertImage(sheet, dataURL, range){
+    var img=document.createElement("img");
+    img.src=dataURL; img.className="mlt-img"; img.style.width="100%";
+    sheet.focus();
+    if(range){
+      range.insertNode(img);
+      range.setStartAfter(img); range.collapse(true);
+      var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    } else {
+      insertNodeAtCursor(sheet,img);
+    }
+  }
+  function insertNodeAtCursor(sheet,node){
+    sheet.focus();
+    var sel=window.getSelection();
+    if(sel && sel.rangeCount && sheet.contains(sel.anchorNode)){
+      var range=sel.getRangeAt(0);
+      range.deleteContents(); range.insertNode(node);
+      range.setStartAfter(node); range.collapse(true);
+      sel.removeAllRanges(); sel.addRange(range);
+    } else { sheet.appendChild(node); }
+  }
+  function caretRange(x,y){
+    if(document.caretRangeFromPoint) return document.caretRangeFromPoint(x,y);
+    if(document.caretPositionFromPoint){
+      var p=document.caretPositionFromPoint(x,y);
+      if(p){ var r=document.createRange(); r.setStart(p.offsetNode,p.offset); r.collapse(true); return r; }
+    }
+    return null;
+  }
+
+  sheets.forEach(function(s){
+    s.addEventListener("dragover",function(ev){ ev.preventDefault(); s.classList.add("mlt-drag"); });
+    s.addEventListener("dragleave",function(){ s.classList.remove("mlt-drag"); });
+    s.addEventListener("drop",function(ev){
+      ev.preventDefault(); s.classList.remove("mlt-drag");
+      activeSheet=s;
+      var dt=ev.dataTransfer;
+      if(dt && dt.files && dt.files.length){
+        var r=caretRange(ev.clientX, ev.clientY);
+        addImageFiles(dt.files, r, s);
+      }
+    });
+  });
+
+  /* ---------- image select & resize ---------- */
+  sheets.forEach(function(s){
+    s.addEventListener("click",function(ev){
+      if(ev.target && ev.target.tagName==="IMG"){ selectImage(ev.target); }
+      else { deselectImage(); }
+    });
+  });
+  function selectImage(img){
+    deselectImage(); selectedImg=img; img.classList.add("mlt-selected");
+    var w=parseInt(img.style.width,10); if(isNaN(w)) w=100;
+    imgSize.value=w; imgPct.textContent=w+"%"; imgBar.classList.add("mlt-show");
+  }
+  function deselectImage(){
+    if(selectedImg) selectedImg.classList.remove("mlt-selected");
+    selectedImg=null; imgBar.classList.remove("mlt-show");
+  }
+  imgSize.addEventListener("input",function(){
+    if(!selectedImg) return;
+    selectedImg.style.width=imgSize.value+"%"; selectedImg.style.height="auto";
+    imgPct.textContent=imgSize.value+"%"; updateStat();
+  });
+  imgBar.addEventListener("mousedown",function(ev){ var b=ev.target.closest("button"); if(b) ev.preventDefault(); });
+  imgBar.addEventListener("click",function(ev){
+    var btn=ev.target.closest("button"); if(!btn||!selectedImg) return;
+    if(btn.dataset.imgAlign){
+      var a=btn.dataset.imgAlign;
+      selectedImg.style.float="none"; selectedImg.style.display="inline"; selectedImg.style.margin="";
+      if(a==="center"){ selectedImg.style.display="block"; selectedImg.style.margin="10px auto"; }
+      else if(a==="left"){ selectedImg.style.float="left"; selectedImg.style.margin="4px 14px 8px 0"; }
+      else if(a==="right"){ selectedImg.style.float="right"; selectedImg.style.margin="4px 0 8px 14px"; }
+      return;
+    }
+    if(btn.id==="mltImgDel"){ selectedImg.remove(); deselectImage(); updateStat(); showToast("tImgDeleted"); }
+  });
+
+  /* ---------- modes ---------- */
+  document.getElementById("mltModeLetter").addEventListener("click",function(){ wrap.classList.remove("mlt-email"); setSeg("mltModeLetter"); });
+  document.getElementById("mltModeEmail").addEventListener("click",function(){ wrap.classList.add("mlt-email"); setSeg("mltModeEmail"); });
+  function setSeg(onId){
+    document.getElementById("mltModeLetter").classList.toggle("mlt-on",onId==="mltModeLetter");
+    document.getElementById("mltModeEmail").classList.toggle("mlt-on",onId==="mltModeEmail");
+  }
+  document.getElementById("mltBiToggle").addEventListener("click",function(){
+    biMode=!biMode; wrap.classList.toggle("mlt-bi",biMode); this.classList.toggle("mlt-on",biMode); updateStat();
+  });
+
+  wrap.addEventListener("keydown",function(ev){
+    if(!(ev.ctrlKey||ev.metaKey)) return;
+    var k=ev.key.toLowerCase();
+    if(k==="b"){ ev.preventDefault(); run("bold"); }
+    else if(k==="i"){ ev.preventDefault(); run("italic"); }
+    else if(k==="u"){ ev.preventDefault(); run("underline"); }
+  });
+
+  /* ---------- stat ---------- */
+  function textLen(el){ return (el.innerText||"").replace(/\s/g,"").length; }
+  function updateStat(){
+    var n=textLen(sheetA)+(biMode?textLen(sheetB):0);
+    var p=Math.max(1,Math.ceil(n/1800));
+    stat.innerHTML=t("statFmt")(n,p);
+  }
+  sheets.forEach(function(s){ s.addEventListener("input",updateStat); });
+
+  /* ---------- toast ---------- */
+  var toastTimer;
+  function showToast(key){
+    toast.textContent=t(key); toast.classList.add("mlt-show");
+    clearTimeout(toastTimer); toastTimer=setTimeout(function(){ toast.classList.remove("mlt-show"); },2400);
+  }
+
+  /* ---------- build / save (no copyright footer) ---------- */
+  function sheetFont(sheet,fb){ return (sheet.style.fontFamily&&sheet.style.fontFamily.length)?sheet.style.fontFamily:fb; }
+  function buildHtmlDoc(){
+    var isEmail=wrap.classList.contains("mlt-email");
+    var fb=isEmail?"-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif":"Georgia,'Times New Roman','Batang','바탕',serif";
+    var pad=isEmail?"24px":"54px 56px", maxw=isEmail?"720px":"820px";
+    var inner;
+    if(biMode){
+      inner='<table data-mlt="bi" style="width:100%;border-collapse:collapse;"><tr>'+
+        '<td style="width:50%;vertical-align:top;padding-right:18px;border-right:1px solid #e4ded0;font-family:'+sheetFont(sheetA,fb)+';">'+sheetA.innerHTML+'</td>'+
+        '<td style="width:50%;vertical-align:top;padding-left:18px;font-family:'+sheetFont(sheetB,fb)+';">'+sheetB.innerHTML+'</td></tr></table>';
+    } else {
+      inner='<div style="font-family:'+sheetFont(sheetA,fb)+';">'+sheetA.innerHTML+'</div>';
+    }
+    return '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'+
+      '<meta name="viewport" content="width=device-width,initial-scale=1"><title>Letter</title>'+
+      '<style>img{max-width:100%;height:auto;}</style></head>'+
+      '<body style="margin:0;background:#efece4;padding:28px;">'+
+      '<div data-mlt="doc" style="max-width:'+maxw+';margin:0 auto;background:#fdfcf6;'+
+      'border:1px solid #e4ded0;border-radius:6px;box-shadow:0 8px 30px rgba(60,50,35,.12);'+
+      'padding:'+pad+';font-size:16px;line-height:1.85;color:#23201b;">'+
+      inner+'</div></body></html>';
+  }
+  function downloadBlob(content,filename,type){
+    var blob=new Blob([content],{type:type}), url=URL.createObjectURL(blob);
+    var a=document.createElement("a"); a.href=url; a.download=filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); },1500);
+  }
+  function stamp(){ var d=new Date(); function p(x){return (x<10?"0":"")+x;}
+    return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+"_"+p(d.getHours())+p(d.getMinutes()); }
+
+  document.getElementById("mltSaveHtml").addEventListener("click",function(){
+    deselectImage(); downloadBlob(buildHtmlDoc(),"letter_"+stamp()+".html","text/html;charset=utf-8"); showToast("tSaved");
+  });
+  document.getElementById("mltBackup").addEventListener("click",function(){
+    deselectImage(); downloadBlob(buildHtmlDoc(),"letter_backup_"+stamp()+".html","text/html;charset=utf-8"); showToast("tBackup");
+  });
+
+  /* ---------- open / load RAW SOURCE CODE as plain text ---------- */
+  document.getElementById("mltOpenHtml").addEventListener("click",function(){ openInp.click(); });
+  openInp.addEventListener("change",function(){
+    var f=openInp.files && openInp.files[0]; if(!f){ return; }
+    // 현재 내용이 있으면 대체 확인
+    var hasContent=(sheetA.innerText||"").trim().length>0 || (biMode && (sheetB.innerText||"").trim().length>0);
+    if(hasContent && !confirm(t("confirmReplace"))){ openInp.value=""; return; }
+    var r=new FileReader();
+    r.onload=function(){ loadSourceCode(String(r.result)); openInp.value=""; };
+    r.onerror=function(){ showToast("tLoadFail"); openInp.value=""; };
+    r.readAsText(f);   // 파일을 '텍스트'로 읽음 → 렌더링하지 않음
+  });
+
+  // 파일의 원본 소스 코드를 글자 그대로 편집 칸에 표시(태그는 실행/렌더링되지 않음)
+  function loadSourceCode(str){
+    var pre=document.createElement("pre");
+    pre.style.cssText="white-space:pre-wrap;word-break:break-word;"+
+      "font-family:'Courier New',Courier,monospace;font-size:13px;line-height:1.55;margin:0;";
+    pre.textContent=str;          // textContent라 <,>,& 가 자동으로 글자 처리됨(코드 실행 불가)
+    sheetA.innerHTML="";
+    sheetA.appendChild(pre);
+    // 병기 모드였다면 단일 칸으로 정리
+    if(biMode){
+      biMode=false; wrap.classList.remove("mlt-bi");
+      document.getElementById("mltBiToggle").classList.remove("mlt-on"); sheetB.innerHTML="";
+    }
+    deselectImage(); updateStat();
+    sheetA.scrollIntoView({block:"nearest"});
+    showToast("tLoaded");
+  }
+
+  /* ---------- copy / clear ---------- */
+  document.getElementById("mltCopyText").addEventListener("click",function(){
+    var txt=sheetA.innerText+(biMode?"\n\n---\n\n"+sheetB.innerText:"");
+    function done(){ showToast("tCopied"); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(fallbackCopy);
+    } else { fallbackCopy(); }
+    function fallbackCopy(){
+      var ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); done(); }catch(e){ showToast("tCopyFail"); }
+      document.body.removeChild(ta);
+    }
+  });
+  document.getElementById("mltClearAll").addEventListener("click",function(){
+    if(!confirm(t("confirmClear"))) return;
+    sheetA.innerHTML=""; sheetB.innerHTML=""; deselectImage(); updateStat(); sheetA.focus(); showToast("tCleared");
+  });
+
+  applyLang();
+})();
+</script>

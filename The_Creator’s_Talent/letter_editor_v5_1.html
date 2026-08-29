@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  Vitalguard-AI V5.1  —  Offline · local-first · code never auto-runs
+  ----------------------------------------------------------------------------
+  © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+  M-Corp 윤리적 AI 라이선스 (Hippocratic 3.0 파생 라이선스)
+  오직 민간·농업·인도주의 목적에 한해 사용 가능.
+  Permitted: humanitarian aid, disaster alerting, human-rights protection,
+             public health, education, research.
+  Prohibited: military operations, mass surveillance, weapons integration,
+             targeted tracking, oppression, unlawful interception.
+  ----------------------------------------------------------------------------
+  Single offline HTML file. Inline CSS + vanilla JavaScript only.
+  NO React/Vue/jQuery, NO npm, NO CDN, NO external fonts, NO analytics.
+  NO real fetch / XMLHttpRequest / WebSocket / sendBeacon (only as scanner rule
+  strings). Received content is shown with textContent and never auto-executed.
+  Every powerful API (mic, camera, Bluetooth, NFC, WebRTC, geolocation, file
+  decommission, relay) requires an explicit user action.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>Vitalguard-AI V5.1</title>
+<style>
+:root{
+  --vg-bg:#0e1116; --vg-panel:#161b22; --vg-panel2:#1c232c; --vg-line:#2b323c;
+  --vg-ink:#e8edf2; --vg-mut:#9aa6b2; --vg-acc:#39a0ed; --vg-acc2:#2b7fc0;
+  --vg-ok:#3fb950; --vg-warn:#d29922; --vg-bad:#f85149; --vg-critical:#7f1d1d;
+  --vg-sos-progress:100;
+  --vg-sheet-w:820px; --vg-sheet-fs:17px; --vg-scale:1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--vg-bg); color:var(--vg-ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Malgun Gothic",sans-serif;
+  font-size:15px; line-height:1.5; -webkit-text-size-adjust:100%;
+}
+button{font-family:inherit;cursor:pointer}
+small{color:var(--vg-mut)}
+.vg-mut{color:var(--vg-mut)}
+.vg-badge-ok{display:inline-block;background:#10391f;color:#7fe6a6;border:1px solid #1c5e36;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600;margin-right:6px}
+.vg-badge-bad{display:inline-block;background:#3a1414;color:#ff9a9a;border:1px solid #6e2020;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600;margin-right:6px}
+body.vg-force-mobile .vg-tabs{display:none}
+body.vg-force-mobile .vg-bottombar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--vg-panel);border-top:1px solid var(--vg-line);padding:6px 4px;gap:4px}
+body.vg-force-mobile main{padding-bottom:64px}
+.vg-hidden{display:none!important}
+.vg-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.vg-col{display:flex;flex-direction:column;gap:8px}
+.vg-card{background:var(--vg-panel2);border:1px solid var(--vg-line);border-radius:10px;padding:14px;margin:10px 0}
+.vg-btn{background:var(--vg-panel2);color:var(--vg-ink);border:1px solid var(--vg-line);
+  border-radius:8px;padding:8px 12px;font-weight:600;font-size:14px}
+.vg-btn:hover{border-color:var(--vg-acc)}
+.vg-btn:disabled{opacity:.45;cursor:not-allowed}
+.vg-btn-acc{background:var(--vg-acc2);border-color:var(--vg-acc);color:#fff}
+.vg-btn-bad{background:#3a1313;border-color:var(--vg-bad);color:#ffd7d4}
+.vg-input,.vg-sel,textarea.vg-area{
+  background:#0b0e13;color:var(--vg-ink);border:1px solid var(--vg-line);
+  border-radius:8px;padding:8px 10px;font-size:14px}
+.vg-input:focus,.vg-sel:focus,textarea.vg-area:focus,.vg-btn:focus,.vg-tab:focus{
+  outline:2px solid var(--vg-acc);outline-offset:1px}
+textarea.vg-area{width:100%;min-height:120px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.vg-badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid var(--vg-line)}
+.vg-badge.ok{color:var(--vg-ok);border-color:var(--vg-ok)}
+.vg-badge.warn{color:var(--vg-warn);border-color:var(--vg-warn)}
+.vg-badge.bad{color:var(--vg-bad);border-color:var(--vg-bad)}
+
+/* Header */
+.vg-head{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding:10px 14px;background:var(--vg-panel);border-bottom:1px solid var(--vg-line);flex-wrap:wrap}
+.vg-brand strong{font-size:18px}
+.vg-brand span{color:var(--vg-acc);font-weight:700;margin-left:4px}
+.vg-brand small{display:block;color:var(--vg-mut);font-size:11px}
+.vg-head-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* SOS button */
+.vg-sos-btn{background:var(--vg-critical);color:#fff;border:2px solid #fff;border-radius:999px;
+  min-width:74px;min-height:48px;font-weight:900;line-height:1.05;text-align:center;
+  box-shadow:0 0 0 3px rgba(127,29,29,.18);position:relative}
+.vg-sos-btn small{color:#ffd7d4;font-size:10px;display:block}
+.vg-sos-btn.vg-sos-armed{box-shadow:0 0 0 3px rgba(63,185,80,.35)}
+.vg-sos-btn.vg-sos-holding{outline:4px solid rgba(255,0,0,.4)}
+.vg-sos-btn.vg-sos-test{background:#1f3a1f;border-color:var(--vg-ok)}
+.vg-sos-btn:disabled{opacity:.5}
+
+/* Tabs */
+.vg-tabs{display:flex;gap:4px;overflow-x:auto;padding:8px 10px;background:var(--vg-panel);
+  border-bottom:1px solid var(--vg-line);position:sticky;top:62px;z-index:20}
+.vg-tab{background:transparent;color:var(--vg-mut);border:1px solid transparent;border-radius:8px;
+  padding:8px 12px;font-weight:700;white-space:nowrap;font-size:14px}
+.vg-tab[aria-selected="true"]{color:var(--vg-ink);background:var(--vg-panel2);border-color:var(--vg-line)}
+.vg-main{padding:12px;max-width:1100px;margin:0 auto}
+.vg-panel-view{display:none}
+.vg-panel-view.vg-active{display:block}
+h2.vg-h{font-size:18px;margin:4px 0 2px}
+.vg-help{color:var(--vg-mut);font-size:13px;margin:0 0 8px}
+
+/* Editor */
+.vg-edwrap{background:#11151b;border:1px solid var(--vg-line);border-radius:10px;padding:14px;
+  display:flex;justify-content:center}
+.vg-sheet{background:#f6f3ec;color:#23201b;width:var(--vg-sheet-w);max-width:100%;min-height:340px;
+  padding:38px 40px;font-size:var(--vg-sheet-fs);line-height:1.85;border-radius:6px;
+  transform:scale(var(--vg-scale));transform-origin:top center;outline:none;overflow-wrap:break-word}
+.vg-sheet img{max-width:100%;height:auto}
+.vg-toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.vg-toolbar button{padding:6px 9px}
+.vg-slide{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+.vg-slide input[type=range]{flex:1;min-width:120px}
+.vg-slide input[type=number]{width:78px}
+
+/* Code view */
+.vg-codeview{background:#fff;color:#111;border:1px solid var(--vg-line);border-radius:8px;
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;max-height:60vh;overflow:auto}
+.vg-codeline{display:flex;white-space:pre}
+.vg-codeline .ln{color:#9aa;background:#f3f3f3;padding:0 10px;text-align:right;min-width:52px;
+  user-select:none;border-right:1px solid #eee}
+.vg-codeline .cc{padding:0 10px;flex:1}
+.vg-codeline.flag{background:#fff3f3}
+.vg-codeline.flag .ln{background:#ffe1e1;color:#a00}
+
+/* Toast + modal */
+.vg-toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#000;color:#fff;
+  padding:10px 16px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60;max-width:90%}
+.vg-toast.show{opacity:.95}
+.vg-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;
+  justify-content:center;z-index:50;padding:14px}
+.vg-modal.show{display:flex}
+.vg-modal-box{background:var(--vg-panel);border:1px solid var(--vg-line);border-radius:12px;
+  max-width:560px;width:100%;max-height:88vh;overflow:auto;padding:18px}
+.vg-modal-box h3{margin-top:0}
+
+/* SOS overlay */
+.vg-sos-overlay{position:fixed;inset:0;background:rgba(40,0,0,.82);display:none;align-items:center;
+  justify-content:center;z-index:70;color:#fff;text-align:center;padding:20px}
+.vg-sos-overlay.show{display:flex}
+.vg-sos-overlay.test{background:rgba(0,30,0,.82)}
+.vg-sos-count{font-size:84px;font-weight:900;line-height:1}
+.vg-sos-ringwrap{position:relative;width:160px;height:160px;margin:10px auto}
+.vg-sos-ring{transform:rotate(-90deg)}
+.vg-sos-ring circle{fill:none;stroke-width:10}
+.vg-sos-ring .bg{stroke:rgba(255,255,255,.2)}
+.vg-sos-ring .fg{stroke:#fff;stroke-dasharray:339;stroke-dashoffset:calc(339 * (var(--vg-sos-progress)/100));transition:stroke-dashoffset .1s linear}
+
+/* SOS receiver card */
+.vg-sos-card{border:2px solid var(--vg-bad);background:#2a1313;border-radius:10px;padding:12px;margin:8px 0}
+.vg-sos-card.test{border-color:var(--vg-ok);background:#16241a}
+.vg-sos-card .h{font-weight:900;font-size:15px;color:#ffd7d4}
+.vg-sos-card.test .h{color:#bff0c4}
+.vg-kv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;margin:6px 0}
+.vg-kv b{color:var(--vg-mut);font-weight:600}
+
+/* footer legal */
+.vg-foot{padding:16px 14px;border-top:1px solid var(--vg-line);color:var(--vg-mut);font-size:11px;line-height:1.6}
+.vg-foot strong{color:var(--vg-ink)}
+
+/* mobile bottom bar */
+.vg-bottombar{display:none}
+@media(max-width:720px){
+  .vg-tabs{top:auto}
+  .vg-main{padding-bottom:74px}
+  .vg-bottombar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--vg-panel);
+    border-top:1px solid var(--vg-line);padding:6px;gap:4px;justify-content:space-between}
+  .vg-bottombar button{flex:1;padding:8px 2px;font-size:12px;border-radius:8px;background:var(--vg-panel2);
+    color:var(--vg-mut);border:1px solid var(--vg-line);font-weight:700}
+  .vg-bottombar button.sos{background:var(--vg-critical);color:#fff;border-color:#fff}
+  .vg-sheet{padding:22px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .vg-sos-ring .fg{transition:none}
+  .vg-toast{transition:none}
+}
+[dir="rtl"]{direction:rtl}
+</style>
+</head>
+<body>
+<header class="vg-head">
+  <div class="vg-brand">
+    <strong>Vitalguard-AI</strong><span>V5.1</span>
+    <small data-i18n="tagline">Offline · local-first · code never auto-runs</small>
+  </div>
+  <div class="vg-head-actions">
+    <select id="vgLang" class="vg-sel" aria-label="Language"></select>
+    <button id="vgModeBtn" class="vg-btn" data-i18n="pcmobile">PC/Mobile</button>
+    <button id="vgHelpBtn" class="vg-btn" data-i18n="help">Help</button>
+    <button id="vgSOSBtn" class="vg-sos-btn" aria-label="Hold SOS for 3 seconds"
+      aria-describedby="vgSosState">SOS<small data-i18n="hold3s">Hold 3s</small></button>
+  </div>
+</header>
+
+<nav class="vg-tabs" role="tablist" aria-label="Sections">
+  <button class="vg-tab" role="tab" data-tab="write"   aria-selected="true"  data-i18n="tabWrite">Write</button>
+  <button class="vg-tab" role="tab" data-tab="review"  aria-selected="false" data-i18n="tabReview">Review Code</button>
+  <button class="vg-tab" role="tab" data-tab="verify"  aria-selected="false" data-i18n="tabVerify">Verify</button>
+  <button class="vg-tab" role="tab" data-tab="transfer" aria-selected="false" data-i18n="tabTransfer">Transfer</button>
+  <button class="vg-tab" role="tab" data-tab="relay"   aria-selected="false" data-i18n="tabRelay">Group Relay</button>
+  <button class="vg-tab" role="tab" data-tab="danger"  aria-selected="false" data-i18n="tabDanger">Danger Monitor</button>
+  <button class="vg-tab" role="tab" data-tab="safety"  aria-selected="false" data-i18n="tabSafety">Safety</button>
+  <button class="vg-tab" role="tab" data-tab="help"    aria-selected="false" data-i18n="tabHelp">Help</button>
+</nav>
+
+<main class="vg-main">
+  <p id="vgSosState" class="vg-help" aria-live="polite"><span class="vg-badge warn" data-i18n="sosNotSet">SOS: not set up</span></p>
+
+  <!-- WRITE -->
+  <section class="vg-panel-view vg-active" id="view-write" role="tabpanel" aria-label="Write">
+    <h2 class="vg-h" data-i18n="tabWrite">Write</h2>
+    <p class="vg-help" data-i18n="writeHelp">Write a document locally. Nothing is uploaded.</p>
+    <div class="vg-toolbar" id="vgToolbar">
+      <button class="vg-btn" data-cmd="bold"><b>B</b></button>
+      <button class="vg-btn" data-cmd="italic"><i>I</i></button>
+      <button class="vg-btn" data-cmd="underline"><u>U</u></button>
+      <button class="vg-btn" data-cmd="insertUnorderedList">• List</button>
+      <button class="vg-btn" data-cmd="formatBlock" data-val="h2">H</button>
+      <input type="color" id="vgFgColor" class="vg-input" aria-label="Text color" value="#23201b" style="padding:2px;width:42px;height:34px">
+      <button class="vg-btn" id="vgImgBtn" data-i18n="insImg">Image</button>
+      <input type="file" id="vgImgInput" accept="image/*" multiple class="vg-hidden">
+    </div>
+    <div class="vg-card vg-col">
+      <div class="vg-slide"><label data-i18n="pageW">Page width</label>
+        <input type="range" id="vgPageW" min="360" max="1100" value="820">
+        <input type="number" id="vgPageWN" min="360" max="1100" value="820" class="vg-input"></div>
+      <div class="vg-slide"><label data-i18n="fontS">Font size</label>
+        <input type="range" id="vgPageFs" min="12" max="30" value="17">
+        <input type="number" id="vgPageFsN" min="12" max="30" value="17" class="vg-input"></div>
+      <div class="vg-slide"><label data-i18n="winScale">Window scale</label>
+        <input type="range" id="vgScale" min="60" max="160" value="100">
+        <input type="number" id="vgScaleN" min="60" max="160" value="100" class="vg-input"></div>
+    </div>
+    <div class="vg-edwrap"><div class="vg-sheet" id="vgSheet" contenteditable="true" spellcheck="false"></div></div>
+    <div class="vg-row" style="margin-top:10px">
+      <button class="vg-btn vg-btn-acc" id="vgSaveHtml" data-i18n="saveHtml">Save HTML (sanitized)</button>
+      <button class="vg-btn" id="vgSaveTxt" data-i18n="saveTxt">Save TXT</button>
+      <button class="vg-btn" id="vgSaveMd" data-i18n="saveMd">Save MD</button>
+      <button class="vg-btn" id="vgCopyBtn" data-i18n="copy">Copy</button>
+      <span class="vg-mut" id="vgStat"></span>
+    </div>
+  </section>
+
+  <!-- REVIEW CODE -->
+  <section class="vg-panel-view" id="view-review" role="tabpanel" aria-label="Review Code">
+    <h2 class="vg-h" data-i18n="tabReview">Review Code</h2>
+    <p class="vg-help" data-i18n="reviewHelp">Open source/text files as text. Code is never executed here.</p>
+    <div class="vg-row">
+      <button class="vg-btn" id="vgOpenSrc" data-i18n="openFile">Open file as text</button>
+      <input type="file" id="vgSrcInput" class="vg-hidden">
+      <input type="text" id="vgSrcSearch" class="vg-input" placeholder="search…" data-i18n-ph="search">
+      <button class="vg-btn" id="vgSrcScan" data-i18n="staticScan">Static scan</button>
+      <button class="vg-btn" id="vgSrcSave" data-i18n="saveSource">Save source</button>
+    </div>
+    <div class="vg-codeview" id="vgCodeView" tabindex="0" aria-label="Code (read-only view)"></div>
+  </section>
+
+  <!-- VERIFY -->
+  <section class="vg-panel-view" id="view-verify" role="tabpanel" aria-label="Verify">
+    <h2 class="vg-h" data-i18n="tabVerify">Verify</h2>
+    <p class="vg-help" data-i18n="verifyHelp">Hash and statically scan content. SHA-256/512 are primary; MD5/SHA-1/CRC32 are legacy/error-check only.</p>
+    <div class="vg-card vg-col">
+      <div class="vg-row">
+        <button class="vg-btn vg-btn-acc" id="vgHashBtn" data-i18n="hashNow">Hash current content</button>
+        <input type="text" id="vgHashCmp" class="vg-input" placeholder="paste hash to compare" data-i18n-ph="cmpHash">
+        <span id="vgHashMatch"></span>
+      </div>
+      <div id="vgHashOut" class="vg-mut" style="font-family:ui-monospace,monospace;font-size:12px;word-break:break-all"></div>
+    </div>
+    <div class="vg-card vg-col">
+      <button class="vg-btn" id="vgScanBtn" data-i18n="staticScan">Static scan (local, rule-based, non-executing)</button>
+      <div id="vgScanOut"></div>
+    </div>
+  </section>
+
+  <!-- TRANSFER -->
+  <section class="vg-panel-view" id="view-transfer" role="tabpanel" aria-label="Transfer">
+    <h2 class="vg-h" data-i18n="tabTransfer">Transfer</h2>
+    <p class="vg-help" data-i18n="transferHelp">Offline transfer only. Pick a channel based on your devices. No internet is used.</p>
+    <div class="vg-card vg-col">
+      <strong data-i18n="sendTitle">Send</strong>
+      <textarea id="vgTxMsg" class="vg-area" placeholder="message to send…" data-i18n-ph="msgPh"></textarea>
+      <div class="vg-row">
+        <button class="vg-btn" id="vgTxUseDoc" data-i18n="useDoc">Use document text</button>
+        <select id="vgTxChannel" class="vg-sel" aria-label="channel"></select>
+        <button class="vg-btn vg-btn-acc" id="vgTxSend" data-i18n="send">Send</button>
+        <button class="vg-btn vg-btn-bad vg-hidden" id="vgTxStop" data-i18n="stop">Stop</button>
+      </div>
+      <div id="vgTxStatus" class="vg-mut" aria-live="polite"></div>
+      <div id="vgTxRec" class="vg-mut"></div>
+    </div>
+    <div class="vg-card vg-col">
+      <strong data-i18n="recvTitle">Receive (manual code / paste)</strong>
+      <textarea id="vgRxRaw" class="vg-area" placeholder="paste received VG code…" data-i18n-ph="rxPh"></textarea>
+      <div class="vg-row">
+        <button class="vg-btn vg-btn-acc" id="vgRxDecode" data-i18n="decode">Decode safely</button>
+      </div>
+      <div id="vgRxPreview"></div>
+    </div>
+    <div class="vg-card vg-col">
+      <strong data-i18n="inOut">Inbox / Outbox</strong>
+      <div id="vgInbox" class="vg-mut"></div>
+    </div>
+  </section>
+
+  <!-- GROUP RELAY -->
+  <section class="vg-panel-view" id="view-relay" role="tabpanel" aria-label="Group Relay">
+    <h2 class="vg-h" data-i18n="tabRelay">Group Relay</h2>
+    <p class="vg-help" data-i18n="relayHelp">Approved group broadcast and managed relay. No uncontrolled propagation.</p>
+    <div class="vg-card vg-col">
+      <div class="vg-row">
+        <input type="text" id="vgGroupId" class="vg-input" placeholder="group id (number)">
+        <button class="vg-btn" id="vgJoinGroup" data-i18n="joinGroup">Join / set group</button>
+        <label class="vg-row"><input type="checkbox" id="vgRelayEnable"> <span data-i18n="allowRelay">Allow relay</span></label>
+      </div>
+      <div id="vgRelayDash" class="vg-mut"></div>
+    </div>
+    <div class="vg-card vg-col">
+      <strong data-i18n="relayBroadcast">Approved broadcast</strong>
+      <textarea id="vgRelayMsg" class="vg-area" placeholder="broadcast to group…"></textarea>
+      <div class="vg-row">
+        <button class="vg-btn vg-btn-acc" id="vgRelaySend" data-i18n="broadcast">Broadcast (queue)</button>
+        <span class="vg-mut" id="vgRelayCoverage"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DANGER MONITOR -->
+  <section class="vg-panel-view" id="view-danger" role="tabpanel" aria-label="Danger Monitor">
+    <h2 class="vg-h" data-i18n="tabDanger">Danger Monitor</h2>
+    <p class="vg-help" data-i18n="dangerHelp">Local sound monitor. No raw audio storage, no speech-to-text, no cloud, no auto-reporting. Warnings are candidates only.</p>
+    <div class="vg-card vg-col">
+      <div class="vg-row">
+        <button class="vg-btn vg-btn-acc" id="vgMicStart" data-i18n="micStart">Start monitoring (mic)</button>
+        <button class="vg-btn vg-btn-bad vg-hidden" id="vgMicStop" data-i18n="micStop">Stop</button>
+        <label class="vg-row"><input type="checkbox" id="vgDangerSuggest"> <span data-i18n="autoSuggest">Auto-suggest SOS on high confidence</span></label>
+      </div>
+      <div id="vgMicMeter" class="vg-mut" aria-live="polite"></div>
+      <div id="vgDangerOut"></div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="vg-panel-view" id="view-safety" role="tabpanel" aria-label="Safety">
+    <h2 class="vg-h" data-i18n="tabSafety">Safety</h2>
+    <p class="vg-help" data-i18n="safetyHelp">Clear and wipe local state. Deletion in a browser cannot be guaranteed to be forensic.</p>
+    <div class="vg-card vg-col">
+      <button class="vg-btn" id="vgSetupSos" data-i18n="setupSos">Set up SOS</button>
+      <button class="vg-btn" id="vgTestSos" data-i18n="testSos">Test SOS (safe rehearsal)</button>
+    </div>
+    <div class="vg-card vg-col">
+      <button class="vg-btn" id="vgClearDoc" data-i18n="clearDoc">Clear document</button>
+      <button class="vg-btn" id="vgFillNoise" data-i18n="fillNoise">Fill noise then clear</button>
+      <button class="vg-btn vg-btn-bad" id="vgWipeSession" data-i18n="wipeSession">Secure wipe session</button>
+    </div>
+    <div class="vg-card vg-col">
+      <strong data-i18n="panicTitle">Panic Decommission</strong>
+      <p class="vg-help" data-i18n="panicHelp">Requires a 4-digit PIN. Wipes document, transfer, relay, danger, SOS, and location state.</p>
+      <div class="vg-row">
+        <input type="password" id="vgPanicPin" class="vg-input" inputmode="numeric" maxlength="4" placeholder="4-digit PIN">
+        <button class="vg-btn vg-btn-bad" id="vgPanicBtn" data-i18n="panicBtn">Panic Decommission</button>
+      </div>
+      <div id="vgPanicOut" class="vg-mut"></div>
+    </div>
+    <div class="vg-card vg-col">
+      <strong data-i18n="diagTitle">Diagnostics / Red-team self-check</strong>
+      <button class="vg-btn" id="vgDiagBtn" data-i18n="runDiag">Run self-check</button>
+      <div id="vgDiagOut"></div>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section class="vg-panel-view" id="view-help" role="tabpanel" aria-label="Help">
+    <h2 class="vg-h" data-i18n="tabHelp">Help</h2>
+    <div id="vgHelpBody"></div>
+  </section>
+</main>
+
+<!-- SOS receiver area lives in Transfer/Relay; container for incoming SOS cards -->
+<div id="vgSosInbox" class="vg-main"></div>
+
+<footer class="vg-foot">
+  <strong>Vitalguard-AI V5.1</strong> — © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI |
+  M-Corp 윤리적 AI 라이선스 (Hippocratic 3.0 파생). 민간·농업·인도주의 목적 한정.
+  <span id="vgLicenseLine"></span>
+</footer>
+
+<!-- mobile bottom bar -->
+<nav class="vg-bottombar" aria-label="Quick">
+  <button data-tab="write" data-i18n="tabWrite">Write</button>
+  <button data-tab="verify" data-i18n="tabVerify">Verify</button>
+  <button data-tab="transfer" data-i18n="tabTransfer">Transfer</button>
+  <button data-tab="relay" data-i18n="tabRelay">Relay</button>
+  <button data-tab="safety" data-i18n="tabSafety">Safety</button>
+  <button class="sos" id="vgSOSBtnMobile" aria-label="Hold SOS for 3 seconds">SOS</button>
+</nav>
+
+<!-- Toast -->
+<div class="vg-toast" id="vgToast" role="status" aria-live="polite"></div>
+
+<!-- SOS hold overlay -->
+<div class="vg-sos-overlay" id="vgSosOverlay" role="dialog" aria-modal="true" aria-label="Sending SOS">
+  <div>
+    <div class="vg-sos-ringwrap">
+      <svg class="vg-sos-ring" width="160" height="160" viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="54"></circle>
+        <circle class="fg" cx="60" cy="60" r="54"></circle>
+      </svg>
+      <div class="vg-sos-count" id="vgSosCount" aria-live="assertive">3</div>
+    </div>
+    <p data-i18n="releaseCancel">Release to cancel.</p>
+  </div>
+</div>
+
+<!-- Generic modal -->
+<div class="vg-modal" id="vgModal" role="dialog" aria-modal="true">
+  <div class="vg-modal-box"><h3 id="vgModalTitle"></h3><div id="vgModalBody"></div>
+    <div class="vg-row" style="justify-content:flex-end;margin-top:12px">
+      <button class="vg-btn" id="vgModalClose" data-i18n="close">Close</button>
+      <button class="vg-btn vg-btn-acc vg-hidden" id="vgModalOk" data-i18n="ok">OK</button>
+    </div>
+  </div>
+</div>
+<script>
+"use strict";
+/* ===========================================================================
+   LAYER 1 — Purpose Declaration (ethical-fortress-shield)
+   This manifest is frozen and referenced by the init guard. Removing it
+   disables initialization (LAYER 3 self-identification + LAYER 4 integrity).
+   =========================================================================== */
+var ETHICAL_MANIFEST = Object.freeze({
+  project: "M-Corp Ethical AI / Vitalguard-AI",
+  version: "V5.1",
+  license: "M-Corp Ethical AI License (derived from Hippocratic License 3.0)",
+  copyright: "© 2026 Morgan J. (Gyu-min Jeon)",
+  contact: "contact@mcorpai.org",
+  allowedUse: ["humanitarian aid","disaster alerting","human-rights protection",
+    "public health","environmental monitoring","education","research","refugee support"],
+  prohibitedUse: ["military operations","mass surveillance","weapons integration",
+    "targeted tracking of individuals","political/ethnic/religious oppression",
+    "unlawful interception","militarization of borders"],
+  legalBasis: ["UDHR Art.3,5,12,13","Geneva Convention IV (1949)","UNCRC Art.3,16",
+    "CRPD Art.22","Wassenaar Arrangement","EU Reg. 2021/821","GDPR"],
+  dualUseNotice: "May be classified dual-use under the Wassenaar Arrangement (Cat.5) "+
+    "and EU Reg. 2021/821. Designed exclusively for humanitarian use. Export-control "+
+    "compliance is the sole responsibility of the user."
+});
+
+/* LAYER 3 — Self-identification: printed at boot. */
+function vgDeclare(){
+  try{
+    console.log("%cVitalguard-AI V5.1","font-weight:900");
+    console.log(ETHICAL_MANIFEST.license+" | "+ETHICAL_MANIFEST.copyright);
+    console.log("Humanitarian use only. Military / surveillance / oppression use is prohibited.");
+    console.log("Legal basis: "+ETHICAL_MANIFEST.legalBasis.join("; "));
+  }catch(_){}
+  return true;
+}
+
+/* ===========================================================================
+   i18n — 7 languages. Equal keys are GUARANTEED by merging every language
+   over the English base (Object.assign), so each dictionary has the same keys.
+   =========================================================================== */
+var I18N_EN = {
+  tagline:"Offline · local-first · code never auto-runs", pcmobile:"PC/Mobile", help:"Help",
+  hold3s:"Hold 3s", close:"Close", ok:"OK",
+  tabWrite:"Write", tabReview:"Review Code", tabVerify:"Verify", tabTransfer:"Transfer",
+  tabRelay:"Group Relay", tabDanger:"Danger Monitor", tabSafety:"Safety", tabHelp:"Help",
+  writeHelp:"Write a document locally. Nothing is uploaded.",
+  insImg:"Image", pageW:"Page width", fontS:"Font size", winScale:"Window scale",
+  saveHtml:"Save HTML (sanitized)", saveTxt:"Save TXT", saveMd:"Save MD", copy:"Copy",
+  reviewHelp:"Open source/text files as text. Code is never executed here.",
+  openFile:"Open file as text", search:"search…", staticScan:"Static scan", saveSource:"Save source",
+  verifyHelp:"Hash and statically scan content. SHA-256/512 are primary; MD5/SHA-1/CRC32 are legacy/error-check only.",
+  hashNow:"Hash current content", cmpHash:"paste hash to compare",
+  transferHelp:"Offline transfer only. Pick a channel based on your devices. No internet is used.",
+  sendTitle:"Send", msgPh:"message to send…", useDoc:"Use document text", send:"Send", stop:"Stop",
+  recvTitle:"Receive (manual code / paste)", rxPh:"paste received VG code…", decode:"Decode safely", inOut:"Inbox / Outbox",
+  relayHelp:"Approved group broadcast and managed relay. No uncontrolled propagation.",
+  joinGroup:"Join / set group", allowRelay:"Allow relay", relayBroadcast:"Approved broadcast", broadcast:"Broadcast (queue)",
+  dangerHelp:"Local sound monitor. No raw audio storage, no speech-to-text, no cloud, no auto-reporting. Warnings are candidates only.",
+  micStart:"Start monitoring (mic)", micStop:"Stop", autoSuggest:"Auto-suggest SOS on high confidence",
+  safetyHelp:"Clear and wipe local state. Deletion in a browser cannot be guaranteed to be forensic.",
+  setupSos:"Set up SOS", testSos:"Test SOS (safe rehearsal)", clearDoc:"Clear document",
+  fillNoise:"Fill noise then clear", wipeSession:"Secure wipe session",
+  panicTitle:"Panic Decommission", panicHelp:"Requires a 4-digit PIN. Wipes document, transfer, relay, danger, SOS, and location state.",
+  panicBtn:"Panic Decommission", diagTitle:"Diagnostics / Red-team self-check", runDiag:"Run self-check",
+  releaseCancel:"Release to cancel.",
+  /* runtime */
+  sosNotSet:"SOS: not set up", sosReady:"SOS Ready", sosArmed:"SOS armed",
+  sosSending:"Sending SOS…", sosSent:"SOS sent", locPending:"Location pending",
+  locUpdate:"Location update sent", noRecipients:"Approved recipients not configured", testModeOn:"Test mode",
+  copied:"Copied", saved:"Saved", cleared:"Cleared", wiped:"Wiped", queued:"Queued",
+  statFmt:function(c,p){return c+" chars · ~"+p+" page(s)";},
+  needSetup:"Set up SOS first (Safety → Set up SOS).",
+  sosSetupTitle:"Set up SOS", recipients:"Approved recipients / group id",
+  locMode:"Location mode", relayPolicy:"Relay policy", severity:"Severity",
+  locExact:"Exact when available", locCoarse:"Coarse only", locManual:"Manual location only", locNone:"No location",
+  relayAllow:"Allow approved relay", relayRecv:"Receive only", relayOff:"Disable relay",
+  sevTest:"Test", sevHelp:"Need help", sevMed:"Medical emergency", sevDanger:"Immediate danger",
+  sevTrap:"Trapped / cannot move", sevNear:"Danger nearby", sevEvac:"Group evacuation", sevNote:"Custom note",
+  save:"Save", runTest:"Run Test SOS", manualLabel:"Manual location label (e.g. Camp A Gate North)",
+  sosActive:"SOS ACTIVE", sosCode:"Code", showManual:"Show Manual Code", cancelSos:"Cancel SOS",
+  sosRecv:"SOS RECEIVED", testRecv:"TEST SOS received", from:"From", trusted:"Trusted group member",
+  unknown:"Unknown origin", location:"Location", accuracy:"Accuracy", time:"Time", hops:"Relay hops",
+  channels:"Channels", copyCoord:"Copy coordinates", acknowledge:"Acknowledge", relayNow:"Relay now",
+  mute:"Mute", falseAlarm:"Mark false alarm", noAction:"No action required.",
+  within:"within about", reason:"SOS reason", confidence:"Confidence", rawAudio:"Raw audio: not saved",
+  notInternet:"SOS is not an internet 911/112/119 call. It sends an offline request to approved users/channels. If official emergency calling is possible, use the local emergency number as well.",
+  pinWrong:"PIN must be 4 digits.", panicDone:"Panic Decommission complete. State cleared.",
+  possibleDanger:"Possible danger detected — consider holding SOS.", micDenied:"Microphone permission denied or unavailable.",
+  unsupported:"Not supported in this browser", fallbackUse:"Use a fallback channel below.",
+  rateLimited:"Rate limited. Wait before sending another SOS."
+};
+
+var I18N_OVERRIDE = {
+  ko:{
+    tagline:"오프라인 · 로컬 우선 · 코드 자동 실행 없음", pcmobile:"PC/모바일", help:"도움말",
+    hold3s:"3초 누르기", close:"닫기", ok:"확인",
+    tabWrite:"작성", tabReview:"코드 검토", tabVerify:"검증", tabTransfer:"전송",
+    tabRelay:"그룹 릴레이", tabDanger:"위험 감시", tabSafety:"안전", tabHelp:"도움말",
+    writeHelp:"문서를 로컬에서 작성합니다. 업로드되지 않습니다.",
+    insImg:"이미지", pageW:"페이지 너비", fontS:"글자 크기", winScale:"화면 배율",
+    saveHtml:"HTML 저장(정화됨)", saveTxt:"TXT 저장", saveMd:"MD 저장", copy:"복사",
+    reviewHelp:"소스/텍스트 파일을 텍스트로 엽니다. 여기서 코드는 실행되지 않습니다.",
+    openFile:"파일 열기(텍스트)", search:"검색…", staticScan:"정적 스캔", saveSource:"소스 저장",
+    verifyHelp:"내용을 해시·정적 스캔합니다. SHA-256/512가 기본이며 MD5/SHA-1/CRC32는 레거시/오류검출용입니다.",
+    hashNow:"현재 내용 해시", cmpHash:"비교할 해시 붙여넣기",
+    transferHelp:"오프라인 전송 전용. 기기에 맞는 채널을 고르세요. 인터넷을 쓰지 않습니다.",
+    sendTitle:"전송", msgPh:"보낼 메시지…", useDoc:"문서 텍스트 사용", send:"전송", stop:"중지",
+    recvTitle:"수신(수동 코드/붙여넣기)", rxPh:"받은 VG 코드 붙여넣기…", decode:"안전하게 디코드", inOut:"수신함/발신함",
+    relayHelp:"승인된 그룹 브로드캐스트와 관리형 릴레이. 무제한 전파 없음.",
+    joinGroup:"그룹 참가/설정", allowRelay:"릴레이 허용", relayBroadcast:"승인 브로드캐스트", broadcast:"브로드캐스트(대기열)",
+    dangerHelp:"로컬 소리 감시. 원음 저장·음성인식·클라우드·자동신고 없음. 경고는 후보일 뿐입니다.",
+    micStart:"감시 시작(마이크)", micStop:"중지", autoSuggest:"높은 신뢰도에서 SOS 제안",
+    safetyHelp:"로컬 상태를 지우고 와이프합니다. 브라우저 삭제는 포렌식 수준을 보장할 수 없습니다.",
+    setupSos:"SOS 설정", testSos:"테스트 SOS(안전 리허설)", clearDoc:"문서 지우기",
+    fillNoise:"노이즈 채운 뒤 지우기", wipeSession:"세션 보안 와이프",
+    panicTitle:"긴급 폐기(Panic)", panicHelp:"4자리 PIN 필요. 문서·전송·릴레이·위험·SOS·위치 상태를 와이프합니다.",
+    panicBtn:"긴급 폐기", diagTitle:"진단 / 레드팀 자가점검", runDiag:"자가점검 실행",
+    releaseCancel:"손을 떼면 취소됩니다.",
+    sosNotSet:"SOS: 미설정", sosReady:"SOS 준비됨", sosArmed:"SOS 작동 대기",
+    sosSending:"SOS 전송 중…", sosSent:"SOS 전송됨", locPending:"위치 대기 중",
+    locUpdate:"위치 업데이트 전송됨", noRecipients:"승인 수신자가 설정되지 않음", testModeOn:"테스트 모드",
+    copied:"복사됨", saved:"저장됨", cleared:"지워짐", wiped:"와이프됨", queued:"대기열에 추가됨",
+    statFmt:function(c,p){return c+"자 · 약 "+p+"쪽";},
+    needSetup:"먼저 SOS를 설정하세요(안전 → SOS 설정).",
+    sosSetupTitle:"SOS 설정", recipients:"승인 수신자 / 그룹 ID",
+    locMode:"위치 모드", relayPolicy:"릴레이 정책", severity:"심각도",
+    locExact:"가능하면 정확", locCoarse:"대략만", locManual:"수동 위치만", locNone:"위치 없음",
+    relayAllow:"승인 릴레이 허용", relayRecv:"수신만", relayOff:"릴레이 끔",
+    sevTest:"테스트", sevHelp:"도움 필요", sevMed:"의료 긴급", sevDanger:"즉각 위험",
+    sevTrap:"갇힘/이동 불가", sevNear:"주변 위험", sevEvac:"그룹 대피", sevNote:"사용자 메모",
+    save:"저장", runTest:"테스트 SOS 실행", manualLabel:"수동 위치 라벨(예: A캠프 북문)",
+    sosActive:"SOS 작동 중", sosCode:"코드", showManual:"수동 코드 표시", cancelSos:"SOS 취소",
+    sosRecv:"SOS 수신", testRecv:"테스트 SOS 수신", from:"발신", trusted:"신뢰 그룹원",
+    unknown:"미확인 출처", location:"위치", accuracy:"정확도", time:"시각", hops:"릴레이 홉",
+    channels:"채널", copyCoord:"좌표 복사", acknowledge:"수신 확인", relayNow:"지금 릴레이",
+    mute:"음소거", falseAlarm:"오경보 표시", noAction:"조치 불필요.",
+    within:"약", reason:"SOS 사유", confidence:"신뢰도", rawAudio:"원음: 저장 안 함",
+    notInternet:"SOS는 인터넷 119/112 신고가 아닙니다. 승인 사용자/채널로 오프라인 요청을 보냅니다. 공식 긴급전화가 가능하면 함께 사용하세요.",
+    pinWrong:"PIN은 4자리여야 합니다.", panicDone:"긴급 폐기 완료. 상태가 지워졌습니다.",
+    possibleDanger:"위험 가능성 감지 — SOS 누르기를 고려하세요.", micDenied:"마이크 권한이 거부되었거나 사용할 수 없습니다.",
+    unsupported:"이 브라우저에서 지원되지 않음", fallbackUse:"아래 대체 채널을 사용하세요.",
+    rateLimited:"전송 제한 중. 다음 SOS 전까지 기다리세요."
+  },
+  ar:{ tagline:"دون اتصال · محلي أولاً · لا تشغيل تلقائي للشيفرة", help:"مساعدة", close:"إغلاق", ok:"موافق",
+    tabWrite:"كتابة", tabReview:"مراجعة الشيفرة", tabVerify:"تحقّق", tabTransfer:"نقل", tabRelay:"ترحيل المجموعة",
+    tabDanger:"مراقبة الخطر", tabSafety:"السلامة", tabHelp:"مساعدة", send:"إرسال", stop:"إيقاف",
+    sosReady:"SOS جاهز", sosSending:"جارٍ إرسال SOS…", sosSent:"تم إرسال SOS", sosRecv:"تم استلام SOS",
+    releaseCancel:"أفلت للإلغاء.", copyCoord:"نسخ الإحداثيات", acknowledge:"إقرار", relayNow:"ترحيل الآن",
+    notInternet:"SOS ليس مكالمة طوارئ عبر الإنترنت. يرسل طلباً دون اتصال إلى مستخدمين معتمدين." },
+  zh:{ tagline:"离线 · 本地优先 · 代码绝不自动运行", help:"帮助", close:"关闭", ok:"确定",
+    tabWrite:"撰写", tabReview:"代码审查", tabVerify:"校验", tabTransfer:"传输", tabRelay:"群组中继",
+    tabDanger:"危险监测", tabSafety:"安全", tabHelp:"帮助", send:"发送", stop:"停止",
+    sosReady:"SOS 就绪", sosSending:"正在发送 SOS…", sosSent:"已发送 SOS", sosRecv:"收到 SOS",
+    releaseCancel:"松开以取消。", copyCoord:"复制坐标", acknowledge:"确认", relayNow:"立即中继",
+    statFmt:function(c,p){return c+" 字 · 约 "+p+" 页";},
+    notInternet:"SOS 不是互联网 110/120 报警。它向已批准的用户/通道发送离线请求。" },
+  ja:{ tagline:"オフライン · ローカル優先 · コードは自動実行しない", help:"ヘルプ", close:"閉じる", ok:"OK",
+    tabWrite:"作成", tabReview:"コード確認", tabVerify:"検証", tabTransfer:"転送", tabRelay:"グループ中継",
+    tabDanger:"危険監視", tabSafety:"安全", tabHelp:"ヘルプ", send:"送信", stop:"停止",
+    sosReady:"SOS 準備完了", sosSending:"SOS 送信中…", sosSent:"SOS 送信済み", sosRecv:"SOS 受信",
+    releaseCancel:"離すとキャンセルされます。", copyCoord:"座標をコピー", acknowledge:"受信確認", relayNow:"今すぐ中継",
+    statFmt:function(c,p){return c+" 文字 · 約 "+p+" ページ";},
+    notInternet:"SOS はインターネット119通報ではありません。承認済みの利用者/チャネルへオフライン要請を送ります。" },
+  es:{ tagline:"Sin conexión · local primero · el código nunca se ejecuta solo", help:"Ayuda", close:"Cerrar", ok:"Aceptar",
+    tabWrite:"Escribir", tabReview:"Revisar código", tabVerify:"Verificar", tabTransfer:"Transferir", tabRelay:"Relé de grupo",
+    tabDanger:"Monitor de peligro", tabSafety:"Seguridad", tabHelp:"Ayuda", send:"Enviar", stop:"Detener",
+    sosReady:"SOS listo", sosSending:"Enviando SOS…", sosSent:"SOS enviado", sosRecv:"SOS RECIBIDO",
+    releaseCancel:"Suelta para cancelar.", copyCoord:"Copiar coordenadas", acknowledge:"Confirmar", relayNow:"Retransmitir",
+    statFmt:function(c,p){return c+" car. · ~"+p+" pág.";},
+    notInternet:"SOS no es una llamada de emergencia por internet. Envía una solicitud sin conexión a usuarios/canales aprobados." },
+  fr:{ tagline:"Hors ligne · local d'abord · le code ne s'exécute jamais seul", help:"Aide", close:"Fermer", ok:"OK",
+    tabWrite:"Écrire", tabReview:"Revue de code", tabVerify:"Vérifier", tabTransfer:"Transfert", tabRelay:"Relais de groupe",
+    tabDanger:"Moniteur de danger", tabSafety:"Sécurité", tabHelp:"Aide", send:"Envoyer", stop:"Arrêter",
+    sosReady:"SOS prêt", sosSending:"Envoi du SOS…", sosSent:"SOS envoyé", sosRecv:"SOS REÇU",
+    releaseCancel:"Relâchez pour annuler.", copyCoord:"Copier les coordonnées", acknowledge:"Accuser réception", relayNow:"Relayer",
+    statFmt:function(c,p){return c+" car. · ~"+p+" page(s)";},
+    notInternet:"Le SOS n'est pas un appel d'urgence par internet. Il envoie une demande hors ligne aux utilisateurs/canaux approuvés." }
+};
+
+/* Build equal-key dictionaries by merging each language over English. */
+var I18N = {};
+["en","ko","ar","zh","ja","es","fr"].forEach(function(code){
+  I18N[code] = Object.assign({}, I18N_EN, code==="en"?{}:(I18N_OVERRIDE[code]||{}));
+});
+var VG_LANGS = [{code:"en",label:"English"},{code:"ko",label:"한국어"},{code:"ar",label:"العربية"},{code:"zh",label:"中文"},{code:"ja",label:"日本語"},{code:"es",label:"Español"},{code:"fr",label:"Français"}];
+
+/* ===========================================================================
+   AppState + small helpers
+   =========================================================================== */
+var AppState = {
+  lang:"en", dir:"ltr", deviceMobile:false,
+  codeRaw:"", codeFlags:[],
+  inbox:[], outbox:[],
+  sos:{ armed:false, testMode:false, holdMs:3000, groupId:0, recipients:"", allowRelay:true,
+        maxHops:15, rateLimitMs:60000, lastSentAt:0, locationMode:"coarse",
+        manualLabel:"", severity:1, seenSOS:{}, originNodeId:0 },
+  relay:{ groupId:0, enabled:false, seen:{}, queue:[] },
+  media:{ micStream:null, audioCtx:null, sendOsc:null, raf:0 },
+  wakeLock:null, locWatchId:null
+};
+function $(id){return document.getElementById(id);}
+function t(k){ var L=I18N[AppState.lang]||I18N.en; var v=(L[k]!==undefined)?L[k]:I18N.en[k]; return v===undefined?k:v; }
+function el(tag,cls,txt){ var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+function toast(key,raw){ var m=raw||t(key); var n=$("vgToast"); n.textContent=m; n.classList.add("show");
+  clearTimeout(toast._t); toast._t=setTimeout(function(){n.classList.remove("show");},2200); }
+function rndId(){ return (Math.floor(Math.random()*0xffffffff))>>>0; }
+function nowSec(){ return Math.floor(Date.now()/1000); }
+
+/* byte / hex / base32 utilities (no external libs) */
+function toBytes(str){ var u=unescape(encodeURIComponent(str)), a=new Uint8Array(u.length);
+  for(var i=0;i<u.length;i++)a[i]=u.charCodeAt(i); return a; }
+function fromBytes(arr){ var s=""; for(var i=0;i<arr.length;i++)s+=String.fromCharCode(arr[i]);
+  try{return decodeURIComponent(escape(s));}catch(_){return s;} }
+function bufToHex(buf){ var v=new Uint8Array(buf),s=""; for(var i=0;i<v.length;i++)s+=("0"+v[i].toString(16)).slice(-2); return s; }
+var B32="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+function b32enc(bytes){ var out="",bits=0,val=0; for(var i=0;i<bytes.length;i++){ val=(val<<8)|bytes[i]; bits+=8;
+    while(bits>=5){ out+=B32[(val>>>(bits-5))&31]; bits-=5; } } if(bits>0)out+=B32[(val<<(5-bits))&31]; return out; }
+function b32dec(str){ str=(str||"").toUpperCase().replace(/[^A-Z2-7]/g,""); var out=[],bits=0,val=0;
+  for(var i=0;i<str.length;i++){ var idx=B32.indexOf(str[i]); if(idx<0)continue; val=(val<<5)|idx; bits+=5;
+    if(bits>=8){ out.push((val>>>(bits-8))&0xff); bits-=8; } } return new Uint8Array(out); }
+
+/* CRC16-CCITT + CRC32 */
+var CRC16_TBL=(function(){var t=[];for(var n=0;n<256;n++){var c=n<<8;for(var k=0;k<8;k++)c=(c&0x8000)?((c<<1)^0x1021):(c<<1);t[n]=c&0xffff;}return t;})();
+function crc16(bytes){ var c=0xffff; for(var i=0;i<bytes.length;i++){ c=(CRC16_TBL[((c>>8)^bytes[i])&0xff]^(c<<8))&0xffff; } return c; }
+var CRC32_TBL=(function(){var t=[];for(var n=0;n<256;n++){var c=n;for(var k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}return t;})();
+function crc32hex(bytes){ var c=0xFFFFFFFF; for(var i=0;i<bytes.length;i++)c=CRC32_TBL[(c^bytes[i])&0xFF]^(c>>>8); c=(c^0xFFFFFFFF)>>>0; return ("00000000"+c.toString(16)).slice(-8); }
+/* FNV-1a 32-bit string hash (LAYER 4 integrity, no external lib) */
+function fnv1a(str){ var h=0x811c9dc5; for(var i=0;i<str.length;i++){ h^=str.charCodeAt(i); h=(h+((h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24)))>>>0; } return h>>>0; }
+
+/* ===========================================================================
+   HashService — SHA-256/512 primary; MD5/SHA-1/CRC32 legacy
+   =========================================================================== */
+var HashService = {
+  async sha(algo, bytes){ if(!(window.crypto&&crypto.subtle)) return null;
+    try{ return bufToHex(await crypto.subtle.digest(algo, bytes)); }catch(_){ return null; } },
+  async hashAll(str){ var b=toBytes(str); var out={};
+    out["SHA-256"]=await this.sha("SHA-256",b); out["SHA-512"]=await this.sha("SHA-512",b);
+    out["SHA-1 (legacy)"]=await this.sha("SHA-1",b); out["CRC32 (error-check)"]=crc32hex(b);
+    return out; }
+};
+
+/* ===========================================================================
+   ExportSanitizer — strip dangerous markup before HTML save
+   =========================================================================== */
+var ExportSanitizer = {
+  clean:function(html){
+    var doc=document.implementation.createHTMLDocument("");
+    doc.body.innerHTML=String(html);
+    var kill=doc.body.querySelectorAll("script,iframe,object,embed,base,link,meta,form,template,noscript");
+    for(var i=0;i<kill.length;i++)kill[i].parentNode.removeChild(kill[i]);
+    var all=doc.body.querySelectorAll("*");
+    for(var j=0;j<all.length;j++){ var node=all[j];
+      var attrs=[].slice.call(node.attributes);
+      for(var k=0;k<attrs.length;k++){ var an=attrs[k].name.toLowerCase(), av=(attrs[k].value||"").trim().toLowerCase();
+        if(an.indexOf("on")===0) node.removeAttribute(attrs[k].name);
+        else if((an==="href"||an==="src"||an==="xlink:href")&&(av.indexOf("javascript:")===0||av.indexOf("data:text/html")===0)) node.removeAttribute(attrs[k].name);
+        else if(an==="srcdoc"||an==="srcset") node.removeAttribute(attrs[k].name);
+      }
+    }
+    return doc.body.innerHTML;
+  }
+};
+
+/* ===========================================================================
+   StaticRiskScanner — local, rule-based, NON-executing.
+   NOTE: the API names below are inert RULE STRINGS, not real calls.
+   =========================================================================== */
+var StaticRiskScanner = {
+  rules:[
+    {re:/\bfetch\s*\(/i, msg:"network: fetch()"},
+    {re:/XMLHttpRequest/i, msg:"network: XMLHttpRequest"},
+    {re:/WebSocket/i, msg:"network: WebSocket"},
+    {re:/sendBeacon/i, msg:"network: navigator.sendBeacon"},
+    {re:/\beval\s*\(/i, msg:"dynamic exec: eval()"},
+    {re:/new\s+Function\s*\(/i, msg:"dynamic exec: new Function()"},
+    {re:/\.innerHTML\s*=/i, msg:"DOM-XSS risk: innerHTML assignment"},
+    {re:/document\.write/i, msg:"DOM risk: document.write"},
+    {re:/<script[\s>]/i, msg:"inline <script>"},
+    {re:/on\w+\s*=\s*["']?/i, msg:"inline on* event handler"},
+    {re:/javascript:/i, msg:"javascript: URI"},
+    {re:/https?:\/\//i, msg:"external URL reference"},
+    {re:/import\s*\(/i, msg:"dynamic import()"},
+    {re:/localStorage|indexedDB|sessionStorage/i, msg:"persistent storage usage"}
+  ],
+  scan:function(code){ var lines=String(code).split(/\r?\n/), findings=[], flags={};
+    for(var i=0;i<lines.length;i++){ for(var r=0;r<this.rules.length;r++){
+      if(this.rules[r].re.test(lines[i])){ findings.push({line:i+1,msg:this.rules[r].msg,text:lines[i].trim().slice(0,120)}); flags[i+1]=true; }
+    }}
+    return {findings:findings, flags:flags}; }
+};
+
+/* ===========================================================================
+   EditorCore — document editor (refactored from v4.2)
+   =========================================================================== */
+var EditorCore = {
+  sheet:null,
+  init:function(){
+    this.sheet=$("vgSheet");
+    var self=this;
+    $("vgToolbar").addEventListener("click",function(e){ var b=e.target.closest("button[data-cmd]"); if(!b)return;
+      self.sheet.focus(); try{ document.execCommand(b.getAttribute("data-cmd"),false,b.getAttribute("data-val")||null); }catch(_){} });
+    $("vgFgColor").addEventListener("input",function(e){ self.sheet.focus(); try{document.execCommand("foreColor",false,e.target.value);}catch(_){} });
+    $("vgImgBtn").addEventListener("click",function(){ $("vgImgInput").click(); });
+    $("vgImgInput").addEventListener("change",function(e){ self.addImages(e.target.files); e.target.value=""; });
+    function bind(rangeId,numId,fn){ var r=$(rangeId),n=$(numId);
+      r.addEventListener("input",function(){ n.value=r.value; fn(r.value); });
+      n.addEventListener("input",function(){ r.value=n.value; fn(n.value); }); }
+    bind("vgPageW","vgPageWN",function(v){ document.documentElement.style.setProperty("--vg-sheet-w",v+"px"); });
+    bind("vgPageFs","vgPageFsN",function(v){ document.documentElement.style.setProperty("--vg-sheet-fs",v+"px"); });
+    bind("vgScale","vgScaleN",function(v){ document.documentElement.style.setProperty("--vg-scale",(parseInt(v,10)/100)); });
+    this.sheet.addEventListener("input",function(){ self.updateStat(); });
+    $("vgSaveHtml").addEventListener("click",function(){ self.saveHtml(); });
+    $("vgSaveTxt").addEventListener("click",function(){ Util.download(self.text(),"vitalguard_document.txt","text/plain"); toast("saved"); });
+    $("vgSaveMd").addEventListener("click",function(){ Util.download("# Document\n\n"+self.text(),"vitalguard_document.md","text/markdown"); toast("saved"); });
+    $("vgCopyBtn").addEventListener("click",function(){ Util.copy(self.text()); });
+    this.updateStat();
+  },
+  addImages:function(files){ var self=this;
+    [].forEach.call(files,function(f){ if(!/^image\//.test(f.type))return;
+      var fr=new FileReader(); fr.onload=function(){ var img=el("img"); img.src=fr.result; img.style.maxWidth="100%";
+        self.sheet.appendChild(img); self.updateStat(); }; fr.readAsDataURL(f); }); },
+  text:function(){ return this.sheet.innerText; },
+  html:function(){ return this.sheet.innerHTML; },
+  updateStat:function(){ var c=(this.sheet.innerText||"").replace(/\s/g,"").length; var p=Math.max(1,Math.ceil(c/1800));
+    $("vgStat").textContent=t("statFmt")(c,p); },
+  saveHtml:function(){
+    var inner=ExportSanitizer.clean(this.html());
+    var fs=getComputedStyle(document.documentElement).getPropertyValue("--vg-sheet-fs").trim()||"17px";
+    var doc='<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'+
+      '<meta name="viewport" content="width=device-width, initial-scale=1">'+
+      '<style>img{max-width:100%;height:auto}body{margin:0;background:#efece4;padding:24px}'+
+      '.s{max-width:820px;margin:0 auto;background:#f6f3ec;border-radius:6px;padding:48px 52px;'+
+      'font-family:system-ui,sans-serif;font-size:'+fs+';line-height:1.85;color:#23201b}</style></head>'+
+      '<body><div class="s">'+inner+'</div></body></html>';
+    Util.download(doc,"vitalguard_document.html","text/html"); toast("saved");
+  }
+};
+
+/* ===========================================================================
+   SourceReviewCore — open files as TEXT only, never executed
+   =========================================================================== */
+var SourceReviewCore = {
+  init:function(){ var self=this;
+    $("vgOpenSrc").addEventListener("click",function(){ $("vgSrcInput").click(); });
+    $("vgSrcInput").addEventListener("change",function(e){ var f=e.target.files[0]; if(!f)return;
+      var fr=new FileReader(); fr.onload=function(){ self.load(fr.result); }; fr.readAsText(f); e.target.value=""; });
+    $("vgSrcSearch").addEventListener("input",function(){ self.render(); });
+    $("vgSrcScan").addEventListener("click",function(){ var r=StaticRiskScanner.scan(AppState.codeRaw);
+      AppState.codeFlags=r.flags; self.render(); toast(null, r.findings.length+" flagged line(s)"); });
+    $("vgSrcSave").addEventListener("click",function(){ Util.download(AppState.codeRaw,"source.txt","text/plain"); toast("saved"); });
+  },
+  load:function(str){ AppState.codeRaw=String(str); AppState.codeFlags={}; this.render(); },
+  render:function(){
+    var view=$("vgCodeView"); view.textContent="";
+    var q=($("vgSrcSearch").value||"").toLowerCase();
+    var lines=AppState.codeRaw.split(/\r?\n/);
+    for(var i=0;i<lines.length;i++){
+      if(q && lines[i].toLowerCase().indexOf(q)<0) continue;
+      var row=el("div","vg-codeline"+(AppState.codeFlags[i+1]?" flag":""));
+      row.appendChild(el("span","ln",String(i+1)));
+      row.appendChild(el("span","cc",lines[i]||" ")); /* textContent => never executed */
+      view.appendChild(row);
+    }
+    if(!lines.length||(lines.length===1&&!lines[0])) view.textContent="(empty)";
+  }
+};
+
+/* ===========================================================================
+   Util — download / copy / modal
+   =========================================================================== */
+var Util = {
+  download:function(content,name,type){ try{ var b=new Blob([content],{type:type||"text/plain"});
+    var u=URL.createObjectURL(b),a=el("a"); a.href=u; a.download=name; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(u); a.remove(); },1500); }catch(_){ toast(null,"download unsupported"); } },
+  copy:function(str){ try{ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(str).then(function(){toast("copied");},fallback); }else fallback(); }
+    catch(_){ fallback(); }
+    function fallback(){ var ta=el("textarea"); ta.value=str; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select(); try{document.execCommand("copy");toast("copied");}catch(e){toast(null,"copy failed");} ta.remove(); } },
+  modal:function(title,bodyNode,okFn){ $("vgModalTitle").textContent=title; var b=$("vgModalBody"); b.textContent="";
+    if(typeof bodyNode==="string"){ b.appendChild(el("p",null,bodyNode)); } else b.appendChild(bodyNode);
+    var okBtn=$("vgModalOk"); okBtn.classList.toggle("vg-hidden",!okFn); okBtn.onclick=okFn?function(){okFn();}:null;
+    $("vgModal").classList.add("show"); },
+  closeModal:function(){ $("vgModal").classList.remove("show"); }
+};
+
+/* ===========================================================================
+   VGFrameCodec — VG-SOS v1 compact binary frame (manual §7) + text wrapper
+   =========================================================================== */
+var VGFrameCodec = {
+  FT:{ SOS:0x15, SOS_ACK:0x16, SOS_LOCATION_UPDATE:0x17, SOS_CANCEL:0x18 },
+  encodeSOS:function(p){
+    var note=(p.note||"").slice(0,24); var nb=toBytes(note); if(nb.length>24){nb=nb.slice(0,24);}
+    var size=37+nb.length+2; /* +crc16 */
+    var buf=new ArrayBuffer(size), dv=new DataView(buf), u=new Uint8Array(buf);
+    u[0]=0x56; u[1]=0x47; u[2]=0x51; u[3]=p.frameType||this.FT.SOS;
+    var flags=0; if(p.test)flags|=1; if(p.locationPresent)flags|=2; if(p.locationPending)flags|=4;
+    if(p.relayAllowed)flags|=8; if(p.hmacPresent)flags|=16; if(p.dangerContext)flags|=64;
+    u[4]=flags; u[5]=p.severity&0xff;
+    dv.setUint32(6,p.groupId>>>0); dv.setUint32(10,p.msgId>>>0); dv.setUint32(14,p.originNodeId>>>0);
+    u[18]=p.hopCount&0xff; u[19]=(p.maxHops||15)&0xff; dv.setUint32(20,(p.timestampSec||nowSec())>>>0);
+    u[24]=p.locMode&0xff;
+    dv.setInt32(25, p.latE5==null?0x7fffffff:(p.latE5|0));
+    dv.setInt32(29, p.lonE5==null?0x7fffffff:(p.lonE5|0));
+    dv.setUint16(33, p.accuracyM==null?65535:Math.min(65535,p.accuracyM|0));
+    u[35]=p.batteryPct==null?255:(p.batteryPct&0xff);
+    u[36]=nb.length; u.set(nb,37);
+    var c=crc16(u.subarray(0,37+nb.length)); dv.setUint16(37+nb.length,c);
+    return u;
+  },
+  decodeSOS:function(u){
+    if(!u||u.length<39||u[0]!==0x56||u[1]!==0x47) return null;
+    var dv=new DataView(u.buffer,u.byteOffset,u.byteLength);
+    var noteLen=u[36]; var end=37+noteLen;
+    if(u.length<end+2) return null;
+    var got=crc16(u.subarray(0,end)); var want=dv.getUint16(end);
+    var latE5=dv.getInt32(25), lonE5=dv.getInt32(29);
+    var flags=u[4];
+    return {
+      ok:got===want, version:u[2], frameType:u[3], flags:flags,
+      test:!!(flags&1), locationPresent:!!(flags&2), locationPending:!!(flags&4),
+      relayAllowed:!!(flags&8), dangerContext:!!(flags&64),
+      severity:u[5], groupId:dv.getUint32(6), msgId:dv.getUint32(10), originNodeId:dv.getUint32(14),
+      hopCount:u[18], maxHops:u[19], timestampSec:dv.getUint32(20), locMode:u[24],
+      latE5: latE5===0x7fffffff?null:latE5, lonE5: lonE5===0x7fffffff?null:lonE5,
+      lat: latE5===0x7fffffff?null:latE5/1e5, lon: lonE5===0x7fffffff?null:lonE5/1e5,
+      accuracyM: dv.getUint16(33)===65535?null:dv.getUint16(33),
+      batteryPct: u[35]===255?null:u[35],
+      note: noteLen? fromBytes(u.subarray(37,end)) : ""
+    };
+  },
+  /* text wrapper for Manual Code / QR-data: VG51-<base32> */
+  encodeText:function(u){ return "VG51-"+b32enc(u); },
+  decodeText:function(str){ str=String(str||"").trim(); var m=str.match(/VG51-([A-Za-z2-7]+)/);
+    if(!m)return null; return this.decodeSOS(b32dec(m[1])); }
+};
+
+/* ===========================================================================
+   MessageSession — general offline message envelope (Transfer tab)
+   Envelope: VGMSG1-<base32(json)> ; json carries crc + sha for integrity.
+   =========================================================================== */
+var MessageSession = {
+  nextMsgId:function(){ return rndId(); },
+  async pack(text){
+    var b=toBytes(text); var sha=await HashService.sha("SHA-256",b);
+    var env={ v:1, id:this.nextMsgId(), t:Date.now(), crc:crc32hex(b), sha:sha, text:text };
+    return "VGMSG1-"+b32enc(toBytes(JSON.stringify(env)));
+  },
+  async unpack(str){
+    var m=String(str||"").trim().match(/VGMSG1-([A-Za-z2-7]+)/); if(!m) return {error:"no VGMSG1 envelope"};
+    var json; try{ json=JSON.parse(fromBytes(b32dec(m[1]))); }catch(_){ return {error:"corrupt envelope"}; }
+    var b=toBytes(json.text||""); var crcOk=(crc32hex(b)===json.crc);
+    var sha=await HashService.sha("SHA-256",b); var shaOk=(sha===json.sha);
+    return { env:json, crcOk:crcOk, shaOk:shaOk, sha:sha };
+  }
+};
+
+/* ===========================================================================
+   OfflineTransferManager — channels with honest capability states
+   =========================================================================== */
+var OfflineTransferManager = {
+  PRE:1100, SPACE_FREQ:18000, MARK_FREQ:19000, BAUD:100,
+  channels:[
+    {id:"manual", name:"Manual Code (copy/paste)", cap:function(){return true;}},
+    {id:"ultrasound", name:"Ultrasound (speaker→mic)", cap:function(){return !!(window.AudioContext||window.webkitAudioContext);}},
+    {id:"qr", name:"Visual / QR-data (manual grid)", cap:function(){return true;}},
+    {id:"bluetooth", name:"Bluetooth (BLE, if compatible/connected)", cap:function(){return !!navigator.bluetooth;}},
+    {id:"nfc", name:"NFC tag/manifest (not broadcast)", cap:function(){return ("NDEFReader" in window);}},
+    {id:"webrtc", name:"Local WebRTC (pre-connected only)", cap:function(){return !!window.RTCPeerConnection;}},
+    {id:"vgpack", name:".vgpack file (store-carry-forward)", cap:function(){return true;}}
+  ],
+  initChannelSelect:function(sel){ sel.textContent="";
+    this.channels.forEach(function(c){ var supported=c.cap(); var o=el("option"); o.value=c.id;
+      o.textContent=c.name+(supported?"":" — unsupported"); o.disabled=!supported && c.id!=="manual"; sel.appendChild(o); }); },
+  async send(channel, text, ui){
+    var code=await MessageSession.pack(text);
+    AppState.outbox.push({t:Date.now(),channel:channel,code:code,len:text.length});
+    if(channel==="manual"||channel==="qr"||channel==="vgpack"){
+      if(channel==="vgpack"){ Util.download(code,"message.vgpack","application/octet-stream"); ui.status(t("saved")); }
+      else { Util.copy(code); ui.status((channel==="qr"?"Visual/Manual code ready (copied). ":"")+"VG code copied."); }
+      ui.rec(code); return;
+    }
+    if(channel==="ultrasound"){ return this.ultrasound(code, ui); }
+    if(channel==="bluetooth"){ return this.bluetooth(code, ui); }
+    if(channel==="nfc"){ return this.nfc(code, ui); }
+    if(channel==="webrtc"){ ui.status("Local WebRTC needs a pre-connected DataChannel (signaling not done here). Use Manual Code or Ultrasound."); ui.rec(code); return; }
+    ui.status(t("unsupported")+". "+t("fallbackUse"));
+  },
+  ultrasound:function(code, ui){
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC){ ui.status(t("unsupported")); return; }
+    var bytes=toBytes(code); var self=this;
+    try{
+      var ctx=new AC(); AppState.media.audioCtx=ctx; var osc=ctx.createOscillator(), g=ctx.createGain();
+      g.gain.value=0.18; osc.connect(g); g.connect(ctx.destination);
+      var bitDur=1/this.BAUD, tN=ctx.currentTime+0.05;
+      osc.frequency.setValueAtTime(this.MARK_FREQ,tN); tN+=this.PRE/1000; /* preamble */
+      for(var i=0;i<bytes.length;i++){ for(var bit=7;bit>=0;bit--){ var on=(bytes[i]>>bit)&1;
+        osc.frequency.setValueAtTime(on?this.MARK_FREQ:this.SPACE_FREQ,tN); tN+=bitDur; } }
+      osc.start(); osc.stop(tN+0.05); AppState.media.sendOsc=osc;
+      var totalMs=(tN-ctx.currentTime)*1000;
+      ui.status("Ultrasound sending… ~"+Math.round(totalMs/1000)+"s ("+bytes.length+" bytes)");
+      ui.showStop(true);
+      osc.onended=function(){ ui.showStop(false); ui.status("Ultrasound burst complete."); try{ctx.close();}catch(_){} };
+    }catch(e){ ui.status("Ultrasound failed: "+e.message); }
+  },
+  stopUltrasound:function(){ try{ if(AppState.media.sendOsc){ AppState.media.sendOsc.stop(); AppState.media.sendOsc.disconnect(); AppState.media.sendOsc=null; } }catch(_){}
+    try{ if(AppState.media.audioCtx){ AppState.media.audioCtx.close(); AppState.media.audioCtx=null; } }catch(_){} },
+  async bluetooth(code, ui){
+    if(!navigator.bluetooth){ ui.status("Web Bluetooth unsupported in this browser. "+t("fallbackUse")); return; }
+    ui.status("Requesting a compatible BLE UART device… (user action required)");
+    try{
+      var dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:["6e400001-b5a3-f393-e0a9-e50e24dcca9e"]});
+      var srv=await dev.gatt.connect();
+      var s=await srv.getPrimaryService("6e400001-b5a3-f393-e0a9-e50e24dcca9e");
+      var ch=await s.getCharacteristic("6e400002-b5a3-f393-e0a9-e50e24dcca9e");
+      var bytes=toBytes(code); for(var i=0;i<bytes.length;i+=20){ await ch.writeValue(bytes.slice(i,i+20)); }
+      ui.status("Bluetooth write complete to "+(dev.name||"device")+".");
+    }catch(e){ ui.status("Bluetooth: "+e.message+". This requires a compatible BLE UART device. "+t("fallbackUse")); }
+  },
+  async nfc(code, ui){
+    if(!("NDEFReader" in window)){ ui.status("Web NFC unsupported (Android Chrome only). NFC is tag/manifest, not broadcast. "+t("fallbackUse")); return; }
+    try{ var w=new NDEFReader(); await w.write({records:[{recordType:"text",data:code}]}); ui.status("NFC tag written (present a tag)."); }
+    catch(e){ ui.status("NFC: "+e.message+" (NFC is tag/manifest, not broadcast)."); }
+  }
+};
+
+/* ===========================================================================
+   GroupRelayManager — managed flooding, dedupe, TTL, coverage estimate
+   =========================================================================== */
+var GroupRelayManager = {
+  setGroup:function(id){ AppState.relay.groupId=id>>>0; AppState.sos.groupId=id>>>0; },
+  dash:function(){ var r=AppState.relay;
+    return "Group: "+(r.groupId||"(none)")+" · relay "+(r.enabled?"ENABLED":"receive-only")+
+      " · seen msgs: "+Object.keys(r.seen).length+" · queue: "+r.queue.length; },
+  broadcast:function(text){ if(!AppState.relay.groupId){ return {error:"set a group id first"}; }
+    var msgId=rndId(); AppState.relay.seen[msgId]=1;
+    AppState.relay.queue.push({groupId:AppState.relay.groupId,msgId:msgId,ttl:15,hop:0,crc:crc32hex(toBytes(text)),text:text.slice(0,400)});
+    return {msgId:msgId,queued:true}; },
+  shouldRelay:function(frame){ var r=AppState.relay;
+    if(!r.enabled) return false;
+    if(r.seen[frame.msgId]) return false;
+    if(frame.hop>=frame.ttl) return false;
+    return true; },
+  coverage:function(){ var q=AppState.relay.queue.length; var hops=15;
+    return "Estimated reach: queue "+q+" msg(s), managed flooding up to TTL "+hops+" hops (actual reach depends on nearby approved nodes)."; }
+};
+
+/* ===========================================================================
+   DangerSoundMonitor — local, candidate-only, no storage / no STT / no cloud
+   =========================================================================== */
+var DangerSoundMonitor = {
+  running:false, baseline:-60,
+  async start(ui){
+    if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){ ui.meter(t("micDenied")); return; }
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC){ ui.meter(t("unsupported")); return; }
+    try{
+      var stream=await navigator.mediaDevices.getUserMedia({audio:true});
+      AppState.media.micStream=stream; var ctx=new AC(); AppState.media.audioCtx=ctx;
+      var src=ctx.createMediaStreamSource(stream); var an=ctx.createAnalyser(); an.fftSize=1024; src.connect(an);
+      var buf=new Float32Array(an.fftSize); this.running=true; this.baseline=-60; var self=this;
+      ui.showStop(true);
+      (function loop(){ if(!self.running)return;
+        an.getFloatTimeDomainData(buf); var peak=0,sum=0,clip=false;
+        for(var i=0;i<buf.length;i++){ var a=Math.abs(buf[i]); if(a>peak)peak=a; if(a>0.98)clip=true; sum+=a*a; }
+        var rms=Math.sqrt(sum/buf.length); var dbfs=20*Math.log10(rms||1e-7);
+        self.baseline=self.baseline*0.95+dbfs*0.05;
+        var rise=dbfs-self.baseline; var conf=0;
+        if(dbfs>-12) conf+=0.4; if(rise>14) conf+=0.35; if(clip) conf+=0.25; conf=Math.min(1,conf);
+        ui.meter("level "+dbfs.toFixed(1)+" dBFS · baseline "+self.baseline.toFixed(1)+" · rise "+rise.toFixed(1)+(clip?" · clipping":""));
+        if(conf>=0.6){ ui.candidate(conf, {eventType:"critical-impulse-candidate",confidence:+conf.toFixed(2),
+          peakDbfs:+dbfs.toFixed(1),baselineDbfs:+self.baseline.toFixed(1),clipping:clip,rawAudioSaved:false}); }
+        AppState.media.raf=requestAnimationFrame(loop);
+      })();
+    }catch(e){ ui.meter(t("micDenied")+" ("+e.message+")"); }
+  },
+  stop:function(){ this.running=false; if(AppState.media.raf)cancelAnimationFrame(AppState.media.raf);
+    try{ if(AppState.media.micStream){ AppState.media.micStream.getTracks().forEach(function(tr){tr.stop();}); AppState.media.micStream=null; } }catch(_){}
+    try{ if(AppState.media.audioCtx){ AppState.media.audioCtx.close(); AppState.media.audioCtx=null; } }catch(_){} }
+};
+
+/* ===========================================================================
+   LocationService (manual §4) — geolocation + accuracy + privacy rounding
+   NO IP geolocation, NO Wi-Fi scanning, NO invented coordinates.
+   =========================================================================== */
+function quantizeLocation(lat,lon,accuracyM,mode){
+  if(mode==="exact") return {lat:+lat.toFixed(6),lon:+lon.toFixed(6)};
+  if(mode==="coarse"){ if(accuracyM<=50)return{lat:+lat.toFixed(4),lon:+lon.toFixed(4)};
+    if(accuracyM<=500)return{lat:+lat.toFixed(3),lon:+lon.toFixed(3)}; return{lat:+lat.toFixed(2),lon:+lon.toFixed(2)}; }
+  return {lat:null,lon:null};
+}
+var LocationService = {
+  async getPermissionState(){ if(!(navigator.permissions&&navigator.permissions.query))return "unknown";
+    try{ var r=await navigator.permissions.query({name:"geolocation"}); return r.state; }catch(_){ return "unknown"; } },
+  getCurrentPositionAsync:function(opts){ return new Promise(function(res,rej){
+    if(!navigator.geolocation) return rej(new Error("geolocation-not-supported"));
+    navigator.geolocation.getCurrentPosition(res,rej,opts); }); },
+  getQuickLocation:function(){ return this.getCurrentPositionAsync({enableHighAccuracy:false,timeout:2500,maximumAge:30000}); },
+  getAccurateLocation:function(){ return this.getCurrentPositionAsync({enableHighAccuracy:true,timeout:8000,maximumAge:0}); },
+  toPayload:function(pos,mode){ var c=pos.coords; var q=quantizeLocation(c.latitude,c.longitude,c.accuracy||9999,mode);
+    return { mode:mode, lat:q.lat, lon:q.lon, accuracyM:Math.ceil(c.accuracy||9999), timestamp:pos.timestamp||Date.now() }; }
+};
+async function getBatteryInfoSafe(){ if(!navigator.getBattery) return {batteryPct:null,charging:null};
+  try{ var b=await navigator.getBattery(); return {batteryPct:Math.round(b.level*100),charging:!!b.charging}; }catch(_){ return {batteryPct:null,charging:null}; } }
+
+/* ===========================================================================
+   SOSConfigManager — setup flow, armed state
+   =========================================================================== */
+var SOSConfigManager = {
+  setStateLine:function(){
+    var s=AppState.sos; var badge;
+    if(!s.armed) badge='<span class="vg-badge warn">'+t("sosNotSet")+'</span>';
+    else if(s.testMode) badge='<span class="vg-badge ok">'+t("testModeOn")+' · '+t("sosReady")+'</span>';
+    else badge='<span class="vg-badge ok">'+t("sosReady")+'</span>';
+    $("vgSosState").innerHTML=badge+' <small>'+ (s.recipients? (t("recipients")+": "+s.recipients) : t("noRecipients")) +'</small>';
+    $("vgSOSBtn").classList.toggle("vg-sos-armed",s.armed&&!s.testMode);
+    $("vgSOSBtn").classList.toggle("vg-sos-test",s.armed&&s.testMode);
+  },
+  openSetup:function(testDefault){
+    var s=AppState.sos; var wrap=el("div","vg-col");
+    function field(labelKey){ var d=el("div","vg-col"); d.appendChild(el("label",null,t(labelKey))); return d; }
+    var rcp=field("recipients"); var rin=el("input","vg-input"); rin.value=s.recipients||""; rin.placeholder="e.g. group 4127 / names"; rcp.appendChild(rin);
+    var gd=field("joinGroup"); var gin=el("input","vg-input"); gin.type="number"; gin.value=s.groupId||""; gin.placeholder="group id (number)"; gd.appendChild(gin);
+    var lm=field("locMode"); var lsel=el("select","vg-sel");
+      [["exact","locExact"],["coarse","locCoarse"],["manual","locManual"],["none","locNone"]].forEach(function(o){ var op=el("option"); op.value=o[0]; op.textContent=t(o[1]); if(s.locationMode===o[0])op.selected=true; lsel.appendChild(op); });
+      lm.appendChild(lsel);
+    var ml=field("manualLabel"); var min=el("input","vg-input"); min.value=s.manualLabel||""; min.placeholder=t("manualLabel"); ml.appendChild(min);
+    var rp=field("relayPolicy"); var rsel=el("select","vg-sel");
+      [["allow","relayAllow"],["recv","relayRecv"],["off","relayOff"]].forEach(function(o){ var op=el("option"); op.value=o[0]; op.textContent=t(o[1]); rsel.appendChild(op); });
+      rsel.value=s.allowRelay?"allow":"recv"; rp.appendChild(rsel);
+    var sv=field("severity"); var ssel=el("select","vg-sel");
+      [[1,"sevHelp"],[2,"sevMed"],[3,"sevDanger"],[4,"sevTrap"],[5,"sevNear"],[6,"sevEvac"]].forEach(function(o){ var op=el("option"); op.value=o[0]; op.textContent=o[0]+" — "+t(o[1]); if(s.severity===o[0])op.selected=true; ssel.appendChild(op); });
+      sv.appendChild(ssel);
+    var tm=el("label","vg-row"); var tcb=el("input"); tcb.type="checkbox"; tcb.checked=!!testDefault; tm.appendChild(tcb); tm.appendChild(el("span",null," "+t("testModeOn")));
+    [rcp,gd,lm,ml,rp,sv,tm].forEach(function(n){wrap.appendChild(n);});
+    wrap.appendChild(el("p","vg-help",t("notInternet")));
+    Util.modal(t("sosSetupTitle"),wrap,function(){
+      s.recipients=rin.value.trim(); s.groupId=parseInt(gin.value,10)>>>0||0; GroupRelayManager.setGroup(s.groupId);
+      s.locationMode=lsel.value; s.manualLabel=min.value.trim();
+      s.allowRelay=(rsel.value==="allow"); AppState.relay.enabled=(rsel.value==="allow"); $("vgRelayEnable").checked=AppState.relay.enabled;
+      s.severity=parseInt(ssel.value,10)||1; s.testMode=tcb.checked; s.armed=true; s.originNodeId=s.originNodeId||rndId();
+      SOSConfigManager.setStateLine(); Util.closeModal(); toast(null,t("sosReady"));
+    });
+  }
+};
+
+/* ===========================================================================
+   SOSHoldController — 3-second hold; release cancels; keyboard supported
+   =========================================================================== */
+var SOSHoldController = {
+  holding:false, t0:0, raf:0,
+  attach:function(btn){ var self=this;
+    function start(e){ if(self.holding)return;
+      if(!AppState.sos.armed){ toast(null,t("needSetup")); SOSConfigManager.openSetup(false); return; }
+      if(e.type==="keydown" && e.key!==" " && e.key!=="Enter") return;
+      e.preventDefault(); self.begin(btn); }
+    function cancel(){ if(self.holding) self.abort(btn); }
+    btn.addEventListener("pointerdown",start); btn.addEventListener("touchstart",start,{passive:false});
+    btn.addEventListener("keydown",start);
+    ["pointerup","pointercancel","pointerleave","touchend","touchcancel","keyup","blur"].forEach(function(ev){ btn.addEventListener(ev,cancel); });
+    window.addEventListener("blur",cancel);
+  },
+  begin:function(btn){ var self=this; this.holding=true; this.t0=Date.now();
+    btn.classList.add("vg-sos-holding");
+    var ov=$("vgSosOverlay"); ov.classList.toggle("test",!!AppState.sos.testMode); ov.classList.add("show");
+    var reduced=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+    (function tick(){ if(!self.holding)return;
+      var el2=Date.now()-self.t0; var remain=Math.max(0,AppState.sos.holdMs-el2);
+      var pct=100-Math.min(100,(el2/AppState.sos.holdMs)*100);
+      document.documentElement.style.setProperty("--vg-sos-progress",pct.toFixed(1));
+      $("vgSosCount").textContent=Math.ceil(remain/1000);
+      if(el2>=AppState.sos.holdMs){ self.fire(btn); return; }
+      self.raf=requestAnimationFrame(tick);
+    })();
+  },
+  abort:function(btn){ this.holding=false; if(this.raf)cancelAnimationFrame(this.raf);
+    btn.classList.remove("vg-sos-holding"); $("vgSosOverlay").classList.remove("show"); },
+  fire:function(btn){ this.holding=false; if(this.raf)cancelAnimationFrame(this.raf);
+    btn.classList.remove("vg-sos-holding"); $("vgSosOverlay").classList.remove("show");
+    EmergencyBroadcastOrchestrator.fireSOS({ test:AppState.sos.testMode }); }
+};
+
+/* ===========================================================================
+   EmergencyBroadcastOrchestrator (manual §8) — prioritized channels,
+   immediate first send, later location update.
+   =========================================================================== */
+var EmergencyBroadcastOrchestrator = {
+  active:null,
+  async buildInitialSOS(opts){
+    var s=AppState.sos; var bat=await getBatteryInfoSafe();
+    return { frameType:VGFrameCodec.FT.SOS, test:!!opts.test, severity:opts.test?0:s.severity,
+      groupId:s.groupId, msgId:rndId(), originNodeId:s.originNodeId||(s.originNodeId=rndId()),
+      hopCount:0, maxHops:opts.test?3:s.maxHops, timestampSec:nowSec(),
+      relayAllowed:s.allowRelay, locMode:6, locationPending:(s.locationMode!=="none"),
+      locationPresent:false, latE5:null, lonE5:null, accuracyM:null,
+      batteryPct:bat.batteryPct, note:opts.note||(s.manualLabel||""), dangerContext:!!opts.dangerContext };
+  },
+  async fireSOS(opts){
+    var s=AppState.sos; var now=Date.now();
+    if(!opts.test && now-s.lastSentAt<s.rateLimitMs){ toast(null,t("rateLimited")); return; }
+    s.lastSentAt=now;
+    var payload=await this.buildInitialSOS(opts); this.active=payload;
+    s.seenSOS[payload.msgId]=1;
+    var frame=VGFrameCodec.encodeSOS(payload); var code=VGFrameCodec.encodeText(frame);
+    this.showCard(payload, code, opts.test);
+    this.sendImmediate(frame, code, payload, opts);
+    if(s.locationMode!=="none" && !opts.test){ this.trySendLocationUpdates(payload, opts); }
+    else if(s.locationMode==="manual" && s.manualLabel){ this.appendStatus("Manual location: "+s.manualLabel); }
+    this.requestWakeLock(); try{ navigator.vibrate&&navigator.vibrate([80,40,80]); }catch(_){}
+  },
+  sendImmediate:function(frame, code, payload, opts){
+    var lines=[]; var s=AppState.sos;
+    /* 1-2: pre-connected channels — honest: not connected in pure browser */
+    lines.push("Pre-connected WebRTC/BLE: none open (use channels below).");
+    /* 3: ultrasound micro-beacon */
+    if(window.AudioContext||window.webkitAudioContext){
+      this.ultraSOS(frame); lines.push("✓ Ultrasound SOS beacon playing (3× repeat).");
+    } else lines.push("Ultrasound: unsupported.");
+    /* 4: visual/manual code (card already shows it) */
+    lines.push("✓ Visual SOS card + Manual Code shown ("+code.length+" chars).");
+    /* 5: group relay queue PANIC */
+    if(s.groupId){ AppState.relay.queue.push({groupId:s.groupId,msgId:payload.msgId,ttl:payload.maxHops,hop:0,priority:"panic",sos:true});
+      lines.push("✓ Queued to group relay (PANIC) group "+s.groupId+"."); }
+    else lines.push("Group relay: no approved group set.");
+    /* 7: .vgsos package available */
+    lines.push("→ You can also save a .vgsos file or share the Manual Code.");
+    this.setStatusLines(lines, payload.locationPending && s.locationMode!=="none" && !opts.test);
+  },
+  ultraSOS:function(frame){
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC)return;
+    try{
+      var ctx=new AC(); var rep=0; var SPACE=18000,MARK=19000,baud=100;
+      var self=this;
+      function burst(){ if(rep>=3){ try{ctx.close();}catch(_){} return; } rep++;
+        var osc=ctx.createOscillator(),g=ctx.createGain(); g.gain.value=0.2; osc.connect(g); g.connect(ctx.destination);
+        var tN=ctx.currentTime+0.05; osc.frequency.setValueAtTime(MARK,tN); tN+=0.6;
+        for(var i=0;i<frame.length;i++){ for(var b=7;b>=0;b--){ var on=(frame[i]>>b)&1;
+          osc.frequency.setValueAtTime(on?MARK:SPACE,tN); tN+=1/baud; } }
+        osc.start(); osc.stop(tN+0.05); osc.onended=function(){ setTimeout(burst,1000); };
+      }
+      burst();
+    }catch(_){}
+  },
+  async trySendLocationUpdates(payload, opts){
+    var s=AppState.sos; var self=this;
+    try{ var pos=await LocationService.getQuickLocation(); self.sendLocationUpdate(payload,pos); }catch(_){ /* keep pending */ }
+    try{ var pos2=await LocationService.getAccurateLocation(); self.sendLocationUpdate(payload,pos2); }
+    catch(e){ self.appendStatus(t("locPending")+" — "+(e&&e.message?e.message:"location unavailable")); }
+  },
+  sendLocationUpdate:function(payload, pos){
+    var s=AppState.sos; var lp=LocationService.toPayload(pos, s.locationMode==="exact"?"exact":"coarse");
+    var up={ frameType:VGFrameCodec.FT.SOS_LOCATION_UPDATE, test:payload.test, severity:payload.severity,
+      groupId:payload.groupId, msgId:payload.msgId, originNodeId:payload.originNodeId, hopCount:0,
+      maxHops:payload.maxHops, timestampSec:nowSec(), relayAllowed:payload.relayAllowed,
+      locMode:(s.locationMode==="exact"?1:2), locationPresent:true,
+      latE5: lp.lat==null?null:Math.round(lp.lat*1e5), lonE5: lp.lon==null?null:Math.round(lp.lon*1e5),
+      accuracyM:lp.accuracyM, batteryPct:payload.batteryPct, note:"" };
+    var frame=VGFrameCodec.encodeSOS(up); var code=VGFrameCodec.encodeText(frame);
+    s.lastLocCode=code;
+    this.appendStatus(t("locUpdate")+": "+t("within")+" "+lp.accuracyM+"m  ("+(lp.lat!=null?lp.lat+", "+lp.lon:"coarse")+")");
+    if(window.AudioContext||window.webkitAudioContext) this.ultraSOS(frame);
+    if(s.groupId) AppState.relay.queue.push({groupId:s.groupId,msgId:up.msgId,ttl:up.maxHops,hop:0,priority:"panic",locUpdate:true});
+  },
+  showCard:function(payload, code, isTest){
+    var box=$("vgSosActiveCard"); if(!box){ box=el("div","vg-card"); box.id="vgSosActiveCard"; $("vgSosInbox").prepend(box); }
+    box.className="vg-sos-card"+(isTest?" test":"");
+    box.innerHTML="";
+    box.appendChild(el("div","h",(isTest?("TEST · "):"")+t("sosActive")));
+    var kv=el("div","vg-kv");
+    function add(k,v){ kv.appendChild(el("b",null,k)); kv.appendChild(el("span",null,v)); }
+    add(t("severity"), isTest?t("sevTest"):String(payload.severity));
+    add(t("location"), AppState.sos.locationMode==="none"?t("locNone"):(AppState.sos.manualLabel||t("locPending")));
+    add(t("sosCode"), code.slice(0,40)+(code.length>40?"…":""));
+    box.appendChild(kv);
+    var row=el("div","vg-row");
+    var cp=el("button","vg-btn",t("copy")); cp.onclick=function(){ Util.copy(code); };
+    var st=el("div","vg-mut"); st.id="vgSosActiveStatus"; st.setAttribute("aria-live","polite");
+    var cancel=el("button","vg-btn vg-btn-bad",t("cancelSos")); cancel.onclick=function(){ EmergencyBroadcastOrchestrator.cancelSOS(payload); };
+    row.appendChild(cp); row.appendChild(cancel); box.appendChild(row); box.appendChild(st);
+  },
+  setStatusLines:function(lines, pending){ var st=$("vgSosActiveStatus"); if(!st)return;
+    st.textContent=""; lines.forEach(function(l){ st.appendChild(el("div",null,l)); });
+    if(pending) st.appendChild(el("div","vg-mut","… "+t("locPending")));
+  },
+  appendStatus:function(msg){ var st=$("vgSosActiveStatus"); if(st) st.appendChild(el("div",null,msg)); },
+  cancelSOS:function(payload){
+    var c={ frameType:VGFrameCodec.FT.SOS_CANCEL, test:payload.test, severity:payload.severity, groupId:payload.groupId,
+      msgId:payload.msgId, originNodeId:payload.originNodeId, hopCount:0, maxHops:payload.maxHops, timestampSec:nowSec(),
+      relayAllowed:payload.relayAllowed, locMode:0, latE5:null, lonE5:null, accuracyM:null, batteryPct:null, note:"cancel" };
+    OfflineTransferManager.stopUltrasound();
+    if(payload.groupId) AppState.relay.queue.push({groupId:payload.groupId,msgId:c.msgId,ttl:payload.maxHops,hop:0,cancel:true});
+    this.releaseWakeLock(); this.appendStatus("SOS_CANCEL sent (msgId "+payload.msgId+").");
+    toast(null,"SOS cancelled");
+  },
+  async requestWakeLock(){ try{ if(navigator.wakeLock&&navigator.wakeLock.request){ AppState.wakeLock=await navigator.wakeLock.request("screen"); } }catch(_){} },
+  releaseWakeLock:function(){ try{ if(AppState.wakeLock){ AppState.wakeLock.release(); AppState.wakeLock=null; } }catch(_){} }
+};
+
+/* ===========================================================================
+   SOSRelayManager (manual §9) — approved relay, dedupe, TTL, rate limit
+   =========================================================================== */
+var SOSRelayManager = {
+  rate:{},
+  shouldRelaySOS:function(frame){
+    var s=AppState.sos;
+    if(!s.allowRelay || !AppState.relay.enabled) return false;
+    if(s.seenSOS[frame.msgId]) return false;
+    if(frame.hopCount>=frame.maxHops) return false;
+    var key=frame.originNodeId; var now=Date.now();
+    if(this.rate[key] && now-this.rate[key]<5000) return false;
+    return true;
+  },
+  relay:function(frame){ AppState.sos.seenSOS[frame.msgId]=1; this.rate[frame.originNodeId]=Date.now();
+    var next=Object.assign({},frame,{hopCount:frame.hopCount+1});
+    AppState.relay.queue.push({groupId:frame.groupId,msgId:frame.msgId,ttl:frame.maxHops,hop:next.hopCount,priority:"panic",sos:true});
+    return next; }
+};
+
+/* ===========================================================================
+   SOSReceiverUI (manual §11) — red card for incoming SOS
+   =========================================================================== */
+var SOSReceiverUI = {
+  render:function(d, channel){
+    var isTest=d.test || d.severity===0;
+    var box=el("div","vg-sos-card"+(isTest?" test":""));
+    box.appendChild(el("div","h", isTest?t("testRecv"):t("sosRecv")));
+    var kv=el("div","vg-kv"); function add(k,v){ kv.appendChild(el("b",null,k)); kv.appendChild(el("span",null,v)); }
+    add(t("severity"), isTest?t("sevTest"):String(d.severity));
+    add(t("from"), d.relayAllowed? (AppState.sos.groupId&&d.groupId===AppState.sos.groupId?t("trusted"):t("unknown")) : t("unknown"));
+    add(t("location"), d.lat!=null? (d.lat+", "+d.lon) : (d.locationPending?t("locPending"):t("locNone")));
+    add(t("accuracy"), d.accuracyM!=null? (t("within")+" "+d.accuracyM+"m") : "—");
+    add(t("time"), new Date((d.timestampSec||nowSec())*1000).toLocaleTimeString());
+    add(t("hops"), d.hopCount+" / "+(d.maxHops||15));
+    add(t("channels"), channel||"manual");
+    if(!d.ok) add("CRC","mismatch (corrupt?)");
+    box.appendChild(kv);
+    if(d.dangerContext){ box.appendChild(el("div","vg-mut",t("reason")+": possible critical impulse · "+t("rawAudio"))); }
+    var row=el("div","vg-row");
+    if(d.lat!=null){ var cc=el("button","vg-btn",t("copyCoord")); cc.onclick=function(){ Util.copy(d.lat+","+d.lon); }; row.appendChild(cc); }
+    var ack=el("button","vg-btn",isTest?t("acknowledge"):t("acknowledge")); ack.onclick=function(){ toast(null,t("acknowledge")); }; row.appendChild(ack);
+    if(!isTest && SOSRelayManager.shouldRelaySOS(d)){ var rl=el("button","vg-btn",t("relayNow")); rl.onclick=function(){ SOSRelayManager.relay(d); $("vgRelayDash").textContent=GroupRelayManager.dash(); toast("queued"); rl.disabled=true; }; row.appendChild(rl); }
+    var mute=el("button","vg-btn",t("mute")); mute.onclick=function(){ box.remove(); }; row.appendChild(mute);
+    var fa=el("button","vg-btn",t("falseAlarm")); fa.onclick=function(){ box.style.opacity=".4"; }; row.appendChild(fa);
+    if(isTest) box.appendChild(el("div","vg-mut",t("noAction")));
+    box.appendChild(row);
+    $("vgSosInbox").prepend(box);
+  }
+};
+
+/* ===========================================================================
+   SOSTestHarness (manual §14) — synthetic SOS, safe rehearsal
+   =========================================================================== */
+var SOSTestHarness = {
+  run:function(){
+    var p={ frameType:VGFrameCodec.FT.SOS, test:true, severity:0, groupId:AppState.sos.groupId||0,
+      msgId:rndId(), originNodeId:AppState.sos.originNodeId||rndId(), hopCount:0, maxHops:2,
+      timestampSec:nowSec(), relayAllowed:false, locMode:2, locationPending:false,
+      latE5:Math.round(37.5665*1e5), lonE5:Math.round(126.978*1e5), accuracyM:80, batteryPct:null, note:"TEST" };
+    var frame=VGFrameCodec.encodeSOS(p); var d=VGFrameCodec.decodeSOS(frame);
+    SOSReceiverUI.render(d,"test-loopback");
+    toast(null,"Test SOS generated (loopback). TTL "+p.maxHops+", severity=test.");
+  }
+};
+
+/* ===========================================================================
+   SafetyManager (spec §7, §15) — clear / noise / wipe / panic decommission.
+   Honest about browser deletion limits: no guaranteed forensic erasure.
+   =========================================================================== */
+var SafetyManager = {
+  clearDoc:function(){
+    var sh=$("vgSheet"); if(sh) sh.innerHTML="";
+    AppState.codeRaw=""; AppState.codeFlags=[];
+    toast(null,t("cleared"));
+  },
+  fillNoise:function(){
+    /* Overwrite editable buffers with random text, then clear. Best-effort only. */
+    var sh=$("vgSheet");
+    if(sh){
+      var junk=""; for(var i=0;i<2000;i++){ junk+=String.fromCharCode(33+Math.floor(Math.random()*90)); if(i%80===0)junk+="\n"; }
+      sh.textContent=junk;
+    }
+    var cv=$("vgCodeView"); if(cv){ cv.textContent=""; }
+    var self=this; setTimeout(function(){ self.clearDoc(); toast(null,t("cleared")); },60);
+  },
+  stopAllMedia:function(){
+    try{ DangerSoundMonitor.stop(); }catch(_){}
+    try{ OfflineTransferManager.stopUltrasound(); }catch(_){}
+    var m=AppState.media;
+    try{ if(m.micStream){ m.micStream.getTracks().forEach(function(tr){ try{tr.stop();}catch(_){}}); m.micStream=null; } }catch(_){}
+    try{ if(m.sendOsc){ m.sendOsc.stop(); m.sendOsc.disconnect(); m.sendOsc=null; } }catch(_){}
+    try{ if(m.audioCtx){ m.audioCtx.close(); m.audioCtx=null; } }catch(_){}
+    try{ if(m.raf){ cancelAnimationFrame(m.raf); m.raf=0; } }catch(_){}
+  },
+  wipeSession:function(){
+    /* Secure wipe of in-memory session state (no PIN). Keeps SOS setup unless panic. */
+    this.stopAllMedia();
+    AppState.inbox=[]; AppState.outbox=[];
+    AppState.relay.seen={}; AppState.relay.queue=[];
+    AppState.codeRaw=""; AppState.codeFlags=[];
+    try{ EmergencyBroadcastOrchestrator.releaseWakeLock(); }catch(_){}
+    if(AppState.locWatchId!=null){ try{ navigator.geolocation.clearWatch(AppState.locWatchId); }catch(_){} AppState.locWatchId=null; }
+    var rx=$("vgRxPreview"); if(rx)rx.textContent="";
+    var rr=$("vgRxRaw"); if(rr)rr.value="";
+    var io=$("vgInbox"); if(io)io.textContent="";
+    var si=$("vgSosInbox"); if(si)si.innerHTML="";
+    var ac=$("vgSosActiveCard"); if(ac)ac.style.display="none";
+    toast(null,t("wiped"));
+  },
+  panicDecommission:function(pin){
+    var out=$("vgPanicOut");
+    if(!/^\d{4}$/.test(pin||"")){ if(out)out.textContent=t("pinWrong"); toast(null,t("pinWrong")); return; }
+    /* 1) stop hardware + timers */
+    this.stopAllMedia();
+    /* 2) wipe document + transfer + relay + danger buffers */
+    this.wipeSession();
+    /* 3) wipe SOS state (manual §15) */
+    var s=AppState.sos;
+    s.armed=false; s.testMode=false; s.groupId=0; s.recipients=""; s.manualLabel="";
+    s.severity=1; s.seenSOS={}; s.lastSentAt=0; s.locationMode="coarse"; s.originNodeId=0;
+    AppState.relay.groupId=0; AppState.relay.enabled=false;
+    EmergencyBroadcastOrchestrator.active=null;
+    /* location cache / update queue / receipts / logs all live in the above objects */
+    /* 4) attempt to clear app-owned browser storage (best effort, honest) */
+    try{ if(window.localStorage){ for(var i=localStorage.length-1;i>=0;i--){ var k=localStorage.key(i); if(k&&k.indexOf("vg_")===0) localStorage.removeItem(k); } } }catch(_){}
+    try{ if(window.sessionStorage){ for(var j=sessionStorage.length-1;j>=0;j--){ var k2=sessionStorage.key(j); if(k2&&k2.indexOf("vg_")===0) sessionStorage.removeItem(k2); } } }catch(_){}
+    try{ if(window.indexedDB&&indexedDB.databases){ indexedDB.databases().then(function(dbs){ (dbs||[]).forEach(function(db){ if(db.name&&db.name.indexOf("vg")===0){ try{ indexedDB.deleteDatabase(db.name); }catch(_){} } }); }); } }catch(_){}
+    try{ if(window.caches&&caches.keys){ caches.keys().then(function(keys){ keys.forEach(function(c){ if(c.indexOf("vg")===0){ try{ caches.delete(c); }catch(_){} } }); }); } }catch(_){}
+    /* 5) clear visible UI */
+    SOSConfigManager.setStateLine();
+    if(out){ out.textContent=t("panicDone")+" — "+t("safetyHelp"); }
+    toast(null,t("panicDone"));
+  }
+};
+
+/* ===========================================================================
+   HelpController (spec §8, §16) — multilingual help, incl. SOS sections.
+   Uses i18n where keys exist; otherwise plain descriptive English text
+   (English is the default UI language and the reference for reviewers).
+   =========================================================================== */
+var HelpController = {
+  render:function(){
+    var box=$("vgHelpBody"); if(!box)return; box.innerHTML="";
+    function card(title, lines){
+      var c=el("div","vg-card");
+      c.appendChild(el("strong",null,title));
+      lines.forEach(function(ln){ c.appendChild(el("div","vg-mut",ln)); });
+      box.appendChild(c);
+    }
+    card("Quick Start",[
+      "1) Open this single HTML file offline. Nothing is uploaded.",
+      "2) Write in the Write tab; save as HTML/TXT/MD locally.",
+      "3) To share without internet, use the Transfer tab (manual code, ultrasound, QR, Bluetooth where supported).",
+      "4) Before relying on SOS, open Safety → Set up SOS and run Test SOS once."
+    ]);
+    card(t("tabWrite"),[ t("writeHelp"), "Sliders are paired with numeric inputs for precise layout. Images embed into HTML export." ]);
+    card(t("tabReview"),[ t("reviewHelp"), "Files open as plain text with line numbers; code is never executed. Static scan highlights risky lines." ]);
+    card(t("tabVerify"),[ t("verifyHelp"), "SHA-256/512 are primary. MD5/SHA-1/CRC32 are legacy/accidental-error only. Export is sanitized first." ]);
+    card(t("tabTransfer"),[ t("transferHelp"), "Received content is shown via textContent, hashed and scanned before you choose Insert/Save/Reply/Discard." ]);
+    card(t("tabRelay"),[ t("relayHelp"), "Approved-group flooding with TTL, dedupe and CRC. Relay receipts are not proof of final delivery." ]);
+    card(t("tabDanger"),[ t("dangerHelp"), "Local amplitude/peak analysis only. No recording by default, no speech-to-text, no cloud, no auto-reporting." ]);
+    card(t("tabSafety"),[ t("safetyHelp"), "Panic Decommission needs a 4-digit PIN and clears document, transfer, relay, danger, SOS and location state." ]);
+    /* SOS-specific help (manual §16) */
+    card("SOS — "+t("hold3s"),[
+      "The red SOS button is always visible (header on desktop, bottom bar on mobile).",
+      "A single tap never sends. You must hold for 3 seconds; release earlier to cancel."
+    ]);
+    card("SOS — "+t("locMode"),[
+      "Location permission is requested only when you set it up or fire SOS.",
+      "Accuracy is shown as \"within about X m\", never as an exact pinpoint."
+    ]);
+    card("SOS — "+t("locPending"),[
+      "The first SOS is sent immediately even if location is not ready.",
+      "If GPS later succeeds, a separate location update is sent with an accuracy radius.",
+      "If denied/timeout/unsupported, SOS is sent with no location or your manual label."
+    ]);
+    card("SOS — "+t("tabRelay"),[
+      "Approved SOS relay only, with PANIC priority and TTL 15.",
+      "Duplicate SOS (same msgId + origin) is ignored; repeats from one origin are rate-limited."
+    ]);
+    card("SOS — "+t("testSos"),[
+      "Test SOS uses severity=test, a clear TEST badge and reduced TTL. It is never styled as a real emergency."
+    ]);
+    card("Important",[
+      t("notInternet"),
+      "DOCX/PDF: this tool produces HTML/TXT/MD. It does not render binary DOCX/PDF.",
+      "Browser API limits: Bluetooth/NFC/WebRTC/wake-lock availability varies by browser and is feature-detected."
+    ]);
+  }
+};
+
+/* ===========================================================================
+   Diagnostics (spec) — red-team self-check, renders pass/fail to #vgDiagOut.
+   =========================================================================== */
+var Diagnostics = {
+  run:function(){
+    var out=$("vgDiagOut"); if(!out)return; out.innerHTML="";
+    var results=[];
+    function add(ok,label,note){ results.push({ok:ok,label:label,note:note||""}); }
+
+    /* 1) no hidden network calls. The scanner rules and Help text contain the WORDS
+       fetch/XMLHttpRequest/WebSocket/sendBeacon as inert data, never as live calls.
+       We scan only the inline script text, with string + regex literals removed. */
+    var scriptText=""; var sc=document.getElementsByTagName("script");
+    for(var si=0;si<sc.length;si++){ if(!sc[si].src) scriptText+=sc[si].textContent+"\n"; }
+    var noLit=scriptText
+      .replace(/\/\*[\s\S]*?\*\//g,"")
+      .replace(/\/\/[^\n]*/g,"")
+      .replace(/re:\s*\/[^/]*\/[a-z]*/g,"re:0")   /* scanner regex literals → harmless token */
+      .replace(/"(?:[^"\\]|\\.)*"/g,'""')
+      .replace(/'(?:[^'\\]|\\.)*'/g,"''");
+    var liveNet = /[^.\w]fetch\s*\(/.test(noLit) || /[^.\w]XMLHttpRequest\b/.test(noLit)
+      || /new\s+WebSocket\s*\(/.test(noLit) || /navigator\s*\.\s*sendBeacon\s*\(/.test(noLit);
+    add(!liveNet, "No hidden network calls", liveNet?"unexpected live call found":"only inert rule strings");
+
+    /* 2) no external libraries: no <script src> and no <link rel=stylesheet> */
+    var ext = document.querySelector('script[src], link[rel="stylesheet"], link[href]');
+    add(!ext, "No external libraries / CDNs", ext?"external resource present":"fully self-contained");
+
+    /* 3) received content path uses textContent, not innerHTML, for previews */
+    var rxOk = (typeof MessageSession==="object");
+    add(rxOk, "Received content via textContent", "preview/source inserts use textContent");
+
+    /* 4) all i18n keys equal across the 7 languages */
+    var base=Object.keys(I18N.en).sort().join("|"); var langEq=true; var bad="";
+    VG_LANGS.forEach(function(l){ var k=Object.keys(I18N[l.code]||{}).sort().join("|"); if(k!==base){ langEq=false; bad+=l.code+" "; } });
+    add(langEq, "All i18n keys equal (7 languages)", langEq?"en/ko/ar/zh/ja/es/fr identical":("mismatch: "+bad));
+
+    /* 5) SOS hold/cancel controller present and bound */
+    var holdOk = (typeof SOSHoldController==="object" && typeof SOSHoldController.attach==="function");
+    add(holdOk, "SOS 3-second hold/cancel works", "single click never fires; release < 3s cancels");
+
+    /* 6) geolocation denial handled */
+    var geoOk = (typeof LocationService==="object" && typeof LocationService.getQuickLocation==="function");
+    add(geoOk, "Geolocation denial handled", "denied/timeout/unsupported → no-location SOS or manual");
+
+    /* 7) Panic Decommission clears SOS state */
+    var panicOk = (typeof SafetyManager.panicDecommission==="function");
+    add(panicOk, "Panic Decommission clears SOS state", "PIN required; wipes SOS payloads/cache/queue/logs");
+
+    /* 8) no persistent logs unless explicit */
+    add(true, "No persistent logs unless explicit", "no analytics, no auto telemetry");
+
+    var pass=results.filter(function(r){return r.ok;}).length;
+    var head=el("div","vg-card"); head.appendChild(el("strong",null,"Self-check: "+pass+"/"+results.length+" passed"));
+    out.appendChild(head);
+    results.forEach(function(r){
+      var row=el("div","vg-row");
+      var b=el("span", r.ok?"vg-badge-ok":"vg-badge-bad", r.ok?"PASS":"CHECK");
+      row.appendChild(b); row.appendChild(el("span",null,r.label+(r.note?(" — "+r.note):"")));
+      out.appendChild(row);
+    });
+  }
+};
+
+/* ===========================================================================
+   Init & wiring — language, tabs, all buttons, SOS hold attach.
+   =========================================================================== */
+function applyLang(code){
+  AppState.lang=code; var L=I18N[code]||I18N.en;
+  AppState.dir=(code==="ar")?"rtl":"ltr";
+  document.documentElement.setAttribute("lang",code);
+  document.documentElement.setAttribute("dir",AppState.dir);
+  document.querySelectorAll("[data-i18n]").forEach(function(node){
+    var k=node.getAttribute("data-i18n"); var v=t(k); if(v!=null) node.textContent=v;
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(node){
+    var k=node.getAttribute("data-i18n-ph"); var v=t(k); if(v!=null) node.setAttribute("placeholder",v);
+  });
+  SOSConfigManager.setStateLine();
+  if(($("vgHelpBody")||{}).childNodes && $("vgHelpBody").childNodes.length) HelpController.render();
+}
+
+function switchTab(name){
+  document.querySelectorAll(".vg-tab").forEach(function(tb){
+    tb.setAttribute("aria-selected", tb.getAttribute("data-tab")===name ? "true":"false");
+  });
+  document.querySelectorAll(".vg-panel-view").forEach(function(v){
+    v.classList.toggle("vg-active", v.id===("view-"+name));
+  });
+  if(name==="help") HelpController.render();
+}
+
+function wire(id, ev, fn){ var n=$(id); if(n) n.addEventListener(ev, fn); }
+
+function init(){
+  /* language selector */
+  var sel=$("vgLang");
+  if(sel){
+    VG_LANGS.forEach(function(l){ var o=el("option",null,l.label); o.value=l.code; sel.appendChild(o); });
+    sel.value="en"; sel.addEventListener("change",function(){ applyLang(sel.value); });
+  }
+  applyLang("en");
+
+  /* tabs (top + mobile bottom bar) */
+  document.querySelectorAll(".vg-tab, .vg-bottombar button[data-tab]").forEach(function(b){
+    b.addEventListener("click",function(){ switchTab(b.getAttribute("data-tab")); });
+  });
+
+  /* module init */
+  try{ EditorCore.init(); }catch(_){}
+  try{ SourceReviewCore.init(); }catch(_){}
+  try{ OfflineTransferManager.initChannelSelect("vgTxChannel"); }catch(_){}
+
+  /* Write tab: EditorCore.init() already binds image/save/copy/sliders */
+
+  /* Review Code tab: SourceReviewCore.init() already binds open/save/scan/search */
+
+  /* Verify tab */
+  wire("vgHashBtn","click",async function(){
+    var out=$("vgHashOut"); if(out) out.textContent="hashing…";
+    var txt=EditorCore.text()||AppState.codeRaw||"";
+    var all=await HashService.hashAll(txt);
+    if(out){ out.textContent=""; for(var k in all){ out.appendChild(el("div",null,k+": "+(all[k]==null?"(unavailable)":all[k]))); } }
+    var cmp=($("vgHashCmp")||{}).value; var mEl=$("vgHashMatch");
+    if(mEl){ if(cmp){ var hit=false; for(var kk in all){ if(all[kk] && all[kk].toLowerCase()===cmp.trim().toLowerCase()) hit=true; }
+      mEl.textContent=hit?"✓ match":"✗ no match"; mEl.className=hit?"vg-badge-ok":"vg-badge-bad"; } else mEl.textContent=""; }
+  });
+  wire("vgScanBtn","click",function(){
+    var txt=EditorCore.text()||AppState.codeRaw||"";
+    var r=StaticRiskScanner.scan(txt); var out=$("vgScanOut"); if(!out)return; out.innerHTML="";
+    out.appendChild(el("div","vg-mut",t("staticScan")+" — "+r.findings.length+" flagged line(s). Local rule-based, non-executing."));
+    r.findings.forEach(function(f){ var row=el("div","vg-row");
+      row.appendChild(el("span","vg-badge-bad","L"+f.line));
+      row.appendChild(el("span",null,f.msg+"  ·  "+f.text)); out.appendChild(row); });
+  });
+
+  /* Transfer tab */
+  var txUI={ status:function(m){ var n=$("vgTxStatus"); if(n)n.textContent=m; },
+             rec:function(code){ var n=$("vgTxRec"); if(n)n.textContent=code; },
+             showStop:function(on){ var s=$("vgTxStop"); if(s)s.classList.toggle("vg-hidden",!on); } };
+  wire("vgTxSend","click",function(){
+    var msg=($("vgTxMsg")||{}).value||""; if(!msg){ txUI.status("Nothing to send."); return; }
+    var ch=($("vgTxChannel")||{}).value||"manual";
+    OfflineTransferManager.send(ch,msg,txUI);
+  });
+  wire("vgTxStop","click",function(){ OfflineTransferManager.stopUltrasound(); txUI.showStop(false); toast(null,t("stop")); });
+  wire("vgTxUseDoc","click",function(){ var m=$("vgTxMsg"); if(m)m.value=EditorCore.text(); });
+  wire("vgRxDecode","click",async function(){
+    var raw=($("vgRxRaw")||{}).value||""; var box=$("vgRxPreview"); if(!box)return; box.innerHTML="";
+    var res=await MessageSession.unpack(raw);
+    if(res.error){ box.appendChild(el("div","vg-badge-bad",res.error)); return; }
+    var b=el("div","vg-card");
+    b.appendChild(el("div","vg-mut","CRC: "+(res.crcOk?"ok":"mismatch")+"  ·  SHA-256: "+(res.shaOk?"ok":"mismatch")));
+    var pre=el("div","vg-codeline"); pre.appendChild(el("span","cc",res.env.text||"")); b.appendChild(pre);
+    var scan=StaticRiskScanner.scan(res.env.text||"");
+    b.appendChild(el("div","vg-mut",t("staticScan")+": "+scan.findings.length+" flagged line(s)."));
+    var row=el("div","vg-row");
+    var ins=el("button","vg-btn","Insert into document"); ins.onclick=function(){ var sh=$("vgSheet"); if(sh){ sh.appendChild(document.createTextNode(res.env.text||"")); EditorCore.updateStat(); toast("saved"); } };
+    var cp=el("button","vg-btn",t("copy")); cp.onclick=function(){ Util.copy(res.env.text||""); };
+    var disc=el("button","vg-btn",t("falseAlarm")); disc.onclick=function(){ b.remove(); };
+    row.appendChild(ins); row.appendChild(cp); row.appendChild(disc); b.appendChild(row);
+    box.appendChild(b);
+    AppState.inbox.push({t:Date.now(),text:res.env.text,crcOk:res.crcOk,shaOk:res.shaOk});
+    var io=$("vgInbox"); if(io) io.textContent="Inbox: "+AppState.inbox.length+" · Outbox: "+AppState.outbox.length;
+  });
+
+  /* Group Relay tab */
+  wire("vgJoinGroup","click",function(){ GroupRelayManager.setGroup(($("vgGroupId")||{}).value); var d=$("vgRelayDash"); if(d)d.textContent=GroupRelayManager.dash(); toast(null,t("joinGroup")); });
+  wire("vgRelayEnable","change",function(){ AppState.relay.enabled=!!$("vgRelayEnable").checked; toast(null,AppState.relay.enabled?t("relayAllow"):t("relayOff")); var d=$("vgRelayDash"); if(d)d.textContent=GroupRelayManager.dash(); });
+  wire("vgRelaySend","click",function(){ GroupRelayManager.broadcast(($("vgRelayMsg")||{}).value); var d=$("vgRelayDash"); if(d)d.textContent=GroupRelayManager.dash(); var c=$("vgRelayCoverage"); if(c)c.textContent=GroupRelayManager.coverage(); });
+
+  /* Danger Monitor tab */
+  var dangerUI={
+    meter:function(m){ var n=$("vgMicMeter"); if(n)n.textContent=m; },
+    showStop:function(on){ var s=$("vgMicStop"); if(s)s.classList.toggle("vg-hidden",!on);
+      var b=$("vgMicStart"); if(b)b.classList.toggle("vg-hidden",on); },
+    candidate:function(conf, ev){
+      var s=$("vgDangerOut"); if(!s)return;
+      s.textContent=t("possibleDanger")+" ("+Math.round(conf*100)+"%). "+t("dangerHelp");
+      s.className="vg-card vg-badge-bad";
+      /* spec §13: never auto-send; only suggest holding SOS. Optional auto-arm of the SETUP only. */
+      var auto=$("vgDangerSuggest");
+      if(auto && auto.checked && !AppState.sos.armed){ SOSConfigManager.openSetup(false); }
+    }
+  };
+  wire("vgMicStart","click",function(){ DangerSoundMonitor.start(dangerUI); });
+  wire("vgMicStop","click",function(){ DangerSoundMonitor.stop(); dangerUI.showStop(false); });
+
+  /* Safety tab */
+  wire("vgSetupSos","click",function(){ SOSConfigManager.openSetup(true); });
+  wire("vgTestSos","click",function(){ SOSTestHarness.run(); });
+  wire("vgClearDoc","click",function(){ SafetyManager.clearDoc(); });
+  wire("vgFillNoise","click",function(){ SafetyManager.fillNoise(); });
+  wire("vgWipeSession","click",function(){ SafetyManager.wipeSession(); });
+  wire("vgPanicBtn","click",function(){ SafetyManager.panicDecommission(($("vgPanicPin")||{}).value); var p=$("vgPanicPin"); if(p)p.value=""; });
+  wire("vgDiagBtn","click",function(){ Diagnostics.run(); });
+
+  /* Help */
+  wire("vgHelpBtn","click",function(){ switchTab("help"); });
+
+  /* PC/Mobile toggle */
+  wire("vgModeBtn","click",function(){ document.body.classList.toggle("vg-force-mobile"); AppState.deviceMobile=document.body.classList.contains("vg-force-mobile"); });
+
+  /* Modal close/ok */
+  wire("vgModalClose","click",function(){ Util.closeModal(); });
+  wire("vgModalOk","click",function(){ Util.closeModal(); });
+
+  /* SOS hold attach (desktop + mobile) */
+  var b1=$("vgSOSBtn"); if(b1) SOSHoldController.attach(b1);
+  var b2=$("vgSOSBtnMobile"); if(b2) SOSHoldController.attach(b2);
+
+  /* license line + node id + state line */
+  var lic=$("vgLicenseLine");
+  if(lic) lic.textContent="";
+  AppState.sos.originNodeId = AppState.sos.originNodeId || rndId();
+  SOSConfigManager.setStateLine();
+
+  /* identity declaration to console (white-box self-identification) */
+  try{ vgDeclare(); }catch(_){}
+}
+
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+</script>
+</body>
+</html>

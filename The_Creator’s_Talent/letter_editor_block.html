@@ -1,0 +1,473 @@
+<!--
+  ============================================================
+  M-Corp 편지 템플릿 에디터 (Letter Composer)
+  - 기존 index.html 안에 그대로 붙여넣는 블록(박스) 모듈
+  - 바닐라 HTML + CSS + JS / 외부 라이브러리 0개 / 완전 오프라인
+  - 네트워크 전송 없음, 데이터 수집 없음, 즉시 전체 삭제 가능
+  ============================================================
+  © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+  M-Corp 윤리적 AI 라이선스 (Hippocratic 3.0 파생 라이선스)
+  오직 민간·농업·인도주의 목적에 한해 사용 가능.
+  ============================================================
+-->
+
+<style>
+/* 모든 클래스/ID에 mlt- 접두사를 붙여 기존 index.html과 충돌을 방지합니다 */
+.mlt-wrap{
+  --mlt-ink:#23201b;
+  --mlt-paper:#fdfcf6;
+  --mlt-line:#e4ded0;
+  --mlt-accent:#7a5c3e;
+  --mlt-bg:#efece4;
+  --mlt-bar:#fbfaf6;
+  --mlt-muted:#8a8475;
+  box-sizing:border-box;
+  width:100%;
+  max-width:920px;
+  margin:24px auto;
+  padding:0;
+  background:var(--mlt-bg);
+  border:1px solid var(--mlt-line);
+  border-radius:14px;
+  box-shadow:0 10px 40px rgba(60,50,35,.12);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",sans-serif;
+  color:var(--mlt-ink);
+  overflow:hidden;
+}
+.mlt-wrap *{box-sizing:border-box;}
+
+/* 상단 제목 줄 */
+.mlt-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:14px 20px;background:var(--mlt-bar);
+  border-bottom:1px solid var(--mlt-line);
+}
+.mlt-title{font-size:15px;font-weight:700;letter-spacing:.2px;}
+.mlt-title small{display:block;font-weight:400;font-size:11px;color:var(--mlt-muted);margin-top:2px;}
+.mlt-modes{display:flex;gap:6px;}
+.mlt-seg{
+  border:1px solid var(--mlt-line);background:#fff;color:var(--mlt-ink);
+  font-size:12px;padding:7px 12px;border-radius:8px;cursor:pointer;
+  transition:.15s;white-space:nowrap;
+}
+.mlt-seg:hover{border-color:var(--mlt-accent);}
+.mlt-seg.mlt-on{background:var(--mlt-accent);color:#fff;border-color:var(--mlt-accent);}
+
+/* 서식 툴바 */
+.mlt-toolbar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+  padding:8px 14px;background:var(--mlt-bar);border-bottom:1px solid var(--mlt-line);
+  position:sticky;top:0;z-index:5;
+}
+.mlt-btn{
+  min-width:32px;height:32px;padding:0 8px;border:1px solid transparent;
+  background:transparent;border-radius:7px;cursor:pointer;
+  font-size:14px;color:var(--mlt-ink);display:inline-flex;align-items:center;justify-content:center;
+  transition:.12s;line-height:1;
+}
+.mlt-btn:hover{background:#efe9dc;}
+.mlt-btn:active{transform:translateY(1px);}
+.mlt-btn b{font-weight:800;}
+.mlt-btn i{font-style:italic;}
+.mlt-btn u{text-decoration:underline;}
+.mlt-btn s{text-decoration:line-through;}
+.mlt-sep{width:1px;height:22px;background:var(--mlt-line);margin:0 4px;}
+.mlt-select{
+  height:32px;border:1px solid var(--mlt-line);border-radius:7px;background:#fff;
+  font-size:12px;padding:0 6px;color:var(--mlt-ink);cursor:pointer;
+}
+.mlt-color{
+  width:32px;height:32px;border:1px solid var(--mlt-line);border-radius:7px;
+  padding:2px;cursor:pointer;background:#fff;
+}
+.mlt-color-wrap{display:inline-flex;align-items:center;gap:3px;}
+.mlt-color-lbl{font-size:11px;color:var(--mlt-muted);}
+
+/* 편집 무대 */
+.mlt-stage{
+  padding:26px;background:var(--mlt-bg);
+  max-height:70vh;overflow:auto;
+}
+.mlt-cols{display:flex;gap:20px;align-items:flex-start;}
+.mlt-col{flex:1;min-width:0;}
+.mlt-col-tag{
+  font-size:11px;color:var(--mlt-muted);margin:0 4px 6px;font-weight:600;
+  display:none;
+}
+.mlt-wrap.mlt-bi .mlt-col-tag{display:block;}
+
+/* 편지지 시트 */
+.mlt-sheet{
+  background:var(--mlt-paper);
+  border:1px solid var(--mlt-line);
+  border-radius:4px;
+  box-shadow:0 6px 22px rgba(60,50,35,.10);
+  padding:54px 56px;
+  min-height:520px;
+  font-family:Georgia,"Times New Roman","Batang","바탕",serif;
+  font-size:16px;line-height:1.85;
+  outline:none;
+  color:var(--mlt-ink);
+  transition:max-width .2s, padding .2s;
+}
+.mlt-sheet:focus{box-shadow:0 6px 26px rgba(122,92,62,.22);}
+.mlt-sheet[contenteditable]:empty:before{
+  content:attr(data-ph);color:#bfb8a6;font-style:italic;pointer-events:none;
+}
+.mlt-sheet p{margin:0 0 1em;}
+
+/* 이메일 본문 모드: 좁고 평평하게, sans-serif */
+.mlt-wrap.mlt-email .mlt-stage{padding:18px;}
+.mlt-wrap.mlt-email .mlt-sheet{
+  padding:22px 24px;min-height:360px;border-radius:8px;
+  box-shadow:0 2px 8px rgba(60,50,35,.08);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",sans-serif;
+  font-size:15px;line-height:1.7;
+}
+.mlt-wrap.mlt-email .mlt-cols{max-width:720px;margin:0 auto;}
+
+/* 하단 바 */
+.mlt-foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 18px;background:var(--mlt-bar);border-top:1px solid var(--mlt-line);
+}
+.mlt-actions{display:flex;flex-wrap:wrap;gap:8px;}
+.mlt-action{
+  border:1px solid var(--mlt-line);background:#fff;color:var(--mlt-ink);
+  font-size:12.5px;padding:9px 14px;border-radius:9px;cursor:pointer;transition:.15s;
+  font-weight:600;display:inline-flex;align-items:center;gap:6px;
+}
+.mlt-action:hover{border-color:var(--mlt-accent);color:var(--mlt-accent);}
+.mlt-action.mlt-primary{background:var(--mlt-accent);color:#fff;border-color:var(--mlt-accent);}
+.mlt-action.mlt-primary:hover{filter:brightness(1.08);color:#fff;}
+.mlt-action.mlt-danger:hover{border-color:#b5462f;color:#b5462f;}
+.mlt-stat{font-size:11.5px;color:var(--mlt-muted);}
+.mlt-stat b{color:var(--mlt-ink);font-weight:700;}
+
+/* 토스트 알림 */
+.mlt-toast{
+  position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);
+  background:var(--mlt-ink);color:#fff;padding:11px 20px;border-radius:10px;
+  font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:9999;
+  box-shadow:0 8px 28px rgba(0,0,0,.25);
+}
+.mlt-toast.mlt-show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* 라이선스 푸터 */
+.mlt-license{
+  padding:10px 18px;background:var(--mlt-bar);border-top:1px solid var(--mlt-line);
+  font-size:10.5px;color:var(--mlt-muted);line-height:1.5;text-align:center;
+}
+
+@media(max-width:640px){
+  .mlt-sheet{padding:32px 24px;}
+  .mlt-cols{flex-direction:column;}
+  .mlt-head{flex-direction:column;align-items:stretch;}
+}
+</style>
+
+
+<!-- ==================== 편지 에디터 블록 본문 ==================== -->
+<div class="mlt-wrap" id="mltWrap">
+
+  <div class="mlt-head">
+    <div class="mlt-title">
+      편지 / 서신 작성기
+      <small>입력하면 바로 서식이 반영됩니다 · 완전 오프라인</small>
+    </div>
+    <div class="mlt-modes">
+      <button class="mlt-seg mlt-on" id="mltModeLetter" type="button">📜 편지지</button>
+      <button class="mlt-seg" id="mltModeEmail" type="button">✉️ 이메일 본문</button>
+      <button class="mlt-seg" id="mltBiToggle" type="button">🌐 영·한 병기</button>
+    </div>
+  </div>
+
+  <div class="mlt-toolbar" id="mltToolbar">
+    <button class="mlt-btn" data-cmd="undo" title="실행 취소 (Ctrl+Z)" type="button">↶</button>
+    <button class="mlt-btn" data-cmd="redo" title="다시 실행 (Ctrl+Y)" type="button">↷</button>
+    <span class="mlt-sep"></span>
+
+    <select class="mlt-select" id="mltSize" title="글씨 크기">
+      <option value="2">아주 작게</option>
+      <option value="3" selected>보통</option>
+      <option value="4">크게</option>
+      <option value="5">더 크게</option>
+      <option value="6">제목</option>
+      <option value="7">큰 제목</option>
+    </select>
+    <button class="mlt-btn" data-step="up" title="글씨 키우기" type="button">A▲</button>
+    <button class="mlt-btn" data-step="down" title="글씨 줄이기" type="button">A▼</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="bold" title="굵게 (Ctrl+B)" type="button"><b>B</b></button>
+    <button class="mlt-btn" data-cmd="italic" title="기울임 (Ctrl+I)" type="button"><i>I</i></button>
+    <button class="mlt-btn" data-cmd="underline" title="밑줄 (Ctrl+U)" type="button"><u>U</u></button>
+    <button class="mlt-btn" data-cmd="strikeThrough" title="취소선" type="button"><s>S</s></button>
+    <span class="mlt-sep"></span>
+
+    <span class="mlt-color-wrap">
+      <span class="mlt-color-lbl">글자</span>
+      <input type="color" class="mlt-color" id="mltFore" value="#23201b" title="글자색">
+    </span>
+    <span class="mlt-color-wrap">
+      <span class="mlt-color-lbl">형광</span>
+      <input type="color" class="mlt-color" id="mltBack" value="#fff27a" title="형광펜">
+    </span>
+    <button class="mlt-btn" id="mltClearHi" title="형광펜 지우기" type="button">⌫형광</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="justifyLeft" title="왼쪽 정렬" type="button">⬅</button>
+    <button class="mlt-btn" data-cmd="justifyCenter" title="가운데 정렬" type="button">↔</button>
+    <button class="mlt-btn" data-cmd="justifyRight" title="오른쪽 정렬" type="button">➡</button>
+    <button class="mlt-btn" data-cmd="justifyFull" title="양쪽 맞춤" type="button">▦</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="insertUnorderedList" title="글머리표 목록" type="button">•≡</button>
+    <button class="mlt-btn" data-cmd="insertOrderedList" title="번호 목록" type="button">1≡</button>
+    <button class="mlt-btn" data-cmd="outdent" title="내어쓰기" type="button">⇤</button>
+    <button class="mlt-btn" data-cmd="indent" title="들여쓰기" type="button">⇥</button>
+    <span class="mlt-sep"></span>
+
+    <button class="mlt-btn" data-cmd="removeFormat" title="서식 지우기" type="button">⌧</button>
+  </div>
+
+  <div class="mlt-stage">
+    <div class="mlt-cols" id="mltCols">
+      <div class="mlt-col" id="mltColA">
+        <div class="mlt-col-tag">상대방용 (English)</div>
+        <div class="mlt-sheet" id="mltSheetA" contenteditable="true"
+             data-ph="여기에 편지를 입력하세요. 글자를 드래그한 뒤 위 버튼으로 굵게·크게·색·정렬을 조절할 수 있습니다."></div>
+      </div>
+      <div class="mlt-col" id="mltColB" style="display:none;">
+        <div class="mlt-col-tag">본인용 (한국어)</div>
+        <div class="mlt-sheet" id="mltSheetB" contenteditable="true"
+             data-ph="본인 확인용 한국어 내용을 여기에 적습니다."></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mlt-foot">
+    <div class="mlt-actions">
+      <button class="mlt-action mlt-primary" id="mltSaveHtml" type="button">💾 HTML로 저장</button>
+      <button class="mlt-action" id="mltCopyText" type="button">📋 순수 텍스트 복사</button>
+      <button class="mlt-action" id="mltBackup" type="button">🛟 백업 내려받기</button>
+      <button class="mlt-action mlt-danger" id="mltClearAll" type="button">🗑 전체 삭제</button>
+    </div>
+    <div class="mlt-stat" id="mltStat">글자 0자 · 약 0쪽</div>
+  </div>
+
+  <div class="mlt-license">
+    © 2026 Morgan J. (Gyu-min Jeon) · M-Corp Ethical AI · M-Corp 윤리적 AI 라이선스 (Hippocratic 3.0 파생) · 민간·농업·인도주의 목적 전용 · 완전 오프라인, 데이터 외부 전송 없음
+  </div>
+</div>
+
+<div class="mlt-toast" id="mltToast"></div>
+
+
+<script>
+/* ============================================================
+   편지 에디터 로직 — 바닐라 JS, 전역 오염 방지를 위한 IIFE
+   네트워크 전송 함수(fetch/XHR/WebSocket) 일절 사용 안 함
+   ============================================================ */
+(function(){
+  "use strict";
+
+  var wrap     = document.getElementById("mltWrap");
+  var toolbar  = document.getElementById("mltToolbar");
+  var sheetA   = document.getElementById("mltSheetA");
+  var sheetB   = document.getElementById("mltSheetB");
+  var colB     = document.getElementById("mltColB");
+  var stat     = document.getElementById("mltStat");
+  var toast    = document.getElementById("mltToast");
+  var sizeSel  = document.getElementById("mltSize");
+  var foreInp  = document.getElementById("mltFore");
+  var backInp  = document.getElementById("mltBack");
+
+  var activeSheet = sheetA;   // 마지막으로 포커스된 편집 영역
+  var biMode = false;         // 영·한 병기 여부
+
+  // CSS 기반 서식이 인라인 style로 적용되도록 설정(저장 호환성 향상)
+  try { document.execCommand("styleWithCSS", false, true); } catch(e){}
+
+  function run(cmd, val){
+    activeSheet.focus();
+    try { document.execCommand(cmd, false, val === undefined ? null : val); }
+    catch(e){ showToast("이 브라우저에서 지원하지 않는 기능입니다."); }
+    updateStat();
+  }
+
+  // 어느 편집 영역이 활성인지 추적
+  sheetA.addEventListener("focus", function(){ activeSheet = sheetA; });
+  sheetB.addEventListener("focus", function(){ activeSheet = sheetB; });
+
+  // 툴바 버튼은 mousedown에서 선택영역이 사라지지 않도록 기본동작 차단
+  toolbar.addEventListener("mousedown", function(ev){
+    var t = ev.target.closest("button");
+    if(t) ev.preventDefault();
+  });
+
+  toolbar.addEventListener("click", function(ev){
+    var btn = ev.target.closest("button");
+    if(!btn) return;
+    if(btn.dataset.cmd){ run(btn.dataset.cmd); return; }
+    if(btn.dataset.step){ stepSize(btn.dataset.step); return; }
+    if(btn.id === "mltClearHi"){ run("hiliteColor", "transparent"); }
+  });
+
+  // 글씨 크기 (execCommand fontSize 1~7)
+  sizeSel.addEventListener("change", function(){ run("fontSize", sizeSel.value); });
+  function stepSize(dir){
+    var v = parseInt(sizeSel.value, 10);
+    v = dir === "up" ? Math.min(7, v+1) : Math.max(1, v-1);
+    sizeSel.value = String(v);
+    run("fontSize", v);
+  }
+
+  // 색상
+  foreInp.addEventListener("input", function(){ run("foreColor", foreInp.value); });
+  backInp.addEventListener("input", function(){ run("hiliteColor", backInp.value); });
+
+  // 모드 전환
+  document.getElementById("mltModeLetter").addEventListener("click", function(){
+    wrap.classList.remove("mlt-email");
+    setSeg("mltModeLetter");
+  });
+  document.getElementById("mltModeEmail").addEventListener("click", function(){
+    wrap.classList.add("mlt-email");
+    setSeg("mltModeEmail");
+  });
+  function setSeg(onId){
+    document.getElementById("mltModeLetter").classList.toggle("mlt-on", onId==="mltModeLetter");
+    document.getElementById("mltModeEmail").classList.toggle("mlt-on", onId==="mltModeEmail");
+  }
+
+  // 영·한 병기 토글
+  document.getElementById("mltBiToggle").addEventListener("click", function(){
+    biMode = !biMode;
+    wrap.classList.toggle("mlt-bi", biMode);
+    colB.style.display = biMode ? "block" : "none";
+    this.classList.toggle("mlt-on", biMode);
+    updateStat();
+  });
+
+  // 키보드 단축키 (Ctrl/Cmd + B / I / U)
+  wrap.addEventListener("keydown", function(ev){
+    if(!(ev.ctrlKey || ev.metaKey)) return;
+    var k = ev.key.toLowerCase();
+    if(k==="b"){ ev.preventDefault(); run("bold"); }
+    else if(k==="i"){ ev.preventDefault(); run("italic"); }
+    else if(k==="u"){ ev.preventDefault(); run("underline"); }
+  });
+
+  // 글자 수 / 분량 표시 (A4 1쪽 ≈ 1800자 기준 대략 추정)
+  function textLen(el){ return (el.innerText || "").replace(/\s/g,"").length; }
+  function updateStat(){
+    var n = textLen(sheetA) + (biMode ? textLen(sheetB) : 0);
+    var pages = Math.max(1, Math.ceil(n/1800));
+    stat.innerHTML = "글자 <b>"+n.toLocaleString()+"</b>자 · 약 <b>"+pages+"</b>쪽";
+  }
+  sheetA.addEventListener("input", updateStat);
+  sheetB.addEventListener("input", updateStat);
+
+  // 토스트
+  var toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("mlt-show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("mlt-show"); }, 2200);
+  }
+
+  // 현재 본문을 완성형 HTML 문서 문자열로 생성
+  function buildHtmlDoc(){
+    var isEmail = wrap.classList.contains("mlt-email");
+    var bodyFont = isEmail
+      ? "-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif"
+      : "Georgia,'Times New Roman','Batang','바탕',serif";
+    var pad = isEmail ? "24px" : "54px 56px";
+    var maxw = isEmail ? "720px" : "820px";
+
+    var inner;
+    if(biMode){
+      inner = '<table style="width:100%;border-collapse:collapse;"><tr>' +
+              '<td style="width:50%;vertical-align:top;padding-right:18px;border-right:1px solid #e4ded0;">' +
+              sheetA.innerHTML + '</td>' +
+              '<td style="width:50%;vertical-align:top;padding-left:18px;">' +
+              sheetB.innerHTML + '</td></tr></table>';
+    } else {
+      inner = sheetA.innerHTML;
+    }
+
+    return '<!DOCTYPE html>\n<html lang="ko"><head><meta charset="utf-8">' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+      '<title>Letter</title></head>' +
+      '<body style="margin:0;background:#efece4;padding:28px;">' +
+      '<div style="max-width:'+maxw+';margin:0 auto;background:#fdfcf6;' +
+      'border:1px solid #e4ded0;border-radius:6px;box-shadow:0 8px 30px rgba(60,50,35,.12);' +
+      'padding:'+pad+';font-family:'+bodyFont+';font-size:16px;line-height:1.85;color:#23201b;">' +
+      inner +
+      '<hr style="margin-top:40px;border:none;border-top:1px solid #e4ded0;">' +
+      '<p style="font-size:10px;color:#8a8475;text-align:center;margin:10px 0 0;">' +
+      '\u00A9 2026 Morgan J. (Gyu-min Jeon) · M-Corp Ethical AI · Hippocratic 3.0 \uD30C\uC0DD \uB77C\uC774\uC120\uC2A4 · ' +
+      '\uBBFC\uAC04\u00B7\uB18D\uC5C5\u00B7\uC778\uB3C4\uC8FC\uC758 \uBAA9\uC801 \uC804\uC6A9</p>' +
+      '</div></body></html>';
+  }
+
+  function downloadBlob(content, filename, type){
+    var blob = new Blob([content], {type:type});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+  }
+
+  function stamp(){
+    var d = new Date();
+    function p(x){ return (x<10?"0":"")+x; }
+    return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+"_"+p(d.getHours())+p(d.getMinutes());
+  }
+
+  // 저장: 서식 보존 단일 HTML
+  document.getElementById("mltSaveHtml").addEventListener("click", function(){
+    downloadBlob(buildHtmlDoc(), "letter_"+stamp()+".html", "text/html;charset=utf-8");
+    showToast("HTML 파일로 저장했습니다.");
+  });
+
+  // 순수 텍스트 복사
+  document.getElementById("mltCopyText").addEventListener("click", function(){
+    var txt = sheetA.innerText + (biMode ? "\n\n---\n\n" + sheetB.innerText : "");
+    function done(){ showToast("순수 텍스트를 복사했습니다."); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(fallbackCopy);
+    } else { fallbackCopy(); }
+    function fallbackCopy(){
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); done(); }
+      catch(e){ showToast("복사에 실패했습니다. 직접 선택해 주세요."); }
+      document.body.removeChild(ta);
+    }
+  });
+
+  // 백업 내려받기 (작업물 안전장치 — 에러/새로고침 대비)
+  document.getElementById("mltBackup").addEventListener("click", function(){
+    downloadBlob(buildHtmlDoc(), "letter_backup_"+stamp()+".html", "text/html;charset=utf-8");
+    showToast("백업 파일을 내려받았습니다.");
+  });
+
+  // 전체 삭제 (즉시 삭제 원칙)
+  document.getElementById("mltClearAll").addEventListener("click", function(){
+    if(!confirm("작성한 모든 내용을 삭제할까요? 이 동작은 되돌릴 수 없습니다.")) return;
+    sheetA.innerHTML = "";
+    sheetB.innerHTML = "";
+    updateStat();
+    sheetA.focus();
+    showToast("모든 내용을 삭제했습니다.");
+  });
+
+  updateStat();
+})();
+</script>
