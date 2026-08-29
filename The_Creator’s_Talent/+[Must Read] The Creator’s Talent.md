@@ -13,3 +13,5 @@ Even when the technology or field changes, this ability to design remains the sa
 ### My Core Strengths
 
 **My greatest strengths lie in creativity and problem-solving.**
+
+**Creativity and problem-solving skills can be applied to virtually any field.**
