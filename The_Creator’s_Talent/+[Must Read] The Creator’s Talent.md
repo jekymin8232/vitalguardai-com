@@ -16,3 +16,8 @@ I have the talent of an architect.
 My greatest strengths lie in creativity and problem-solving.
 
 Creativity and problem-solving skills can be applied to virtually any field.
+
+### I am not someone who writes code; I am someone who thinks.
+
+<img width="263" height="376" alt="lo" src="https://github.com/user-attachments/assets/d99705c9-23ca-476e-9cb9-6c3f9ad4a57f" />
+
