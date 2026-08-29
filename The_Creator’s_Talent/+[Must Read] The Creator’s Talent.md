@@ -3,7 +3,7 @@
 This document is intended to demonstrate the creator’s talent and capabilities.
 The creator’s fundamental talent remains the same, regardless of the field in which it is applied.
 
-**Please don't misunderstand me. I can't code at all!**
+**Coding alone cannot change the world!**
 
 **I am not simply a coder—I am an architect.**
 
