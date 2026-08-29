@@ -19,7 +19,4 @@ Creativity and problem-solving skills can be applied to virtually any field.
 
 ### I am not someone who writes code; I am someone who thinks.
 
-<img width="184" height="263" alt="lo" src="https://github.com/user-attachments/assets/d99705c9-23ca-476e-9cb9-6c3f9ad4a57f" />
-
-
-<img width="480" height="320" alt="Nepal" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/Nepal.jpg" />
+<img width="184" height="263" alt="lo" src="ttps://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lo.PNG" />
