@@ -1,4 +1,5 @@
 # The Developer’s Creativity and Problem-Solving Skills
+## I truly started from nothing, completely on my own, with zero financial resources.
 ## With better resources and opportunities, I can achieve much more.
 ### I often think of things that others may not. This is one of my talents.
 
