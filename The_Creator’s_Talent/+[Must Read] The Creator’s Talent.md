@@ -1,7 +1,7 @@
 # The Developer’s Creativity and Problem-Solving Skills
 ## I truly started from nothing, completely on my own, with zero financial resources.
 ## With better resources and opportunities, I can achieve much more.
-### I want to establish an AI research institute and continue advancing my work.
+## I want to establish an AI research institute and continue advancing my work.
 ### I often think of things that others may not. This is one of my talents.
 
 This document is intended to demonstrate the creator’s talent and capabilities.
