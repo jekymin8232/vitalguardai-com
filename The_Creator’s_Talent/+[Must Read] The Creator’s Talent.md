@@ -35,5 +35,6 @@ The truth is that I have not received much recognition or support in South Korea
 
 I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.
 
-As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
+What frustrates me is that, in South Korea, people are often judged based on their background and academic pedigree. In my view, those from privileged backgrounds may sometimes avoid legal consequences even when they commit serious wrongdoing. Of course, this may reflect my personal perspective, but from what I have observed, social discrimination is a very real issue.
 
+As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
