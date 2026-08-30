@@ -49,4 +49,6 @@ As for the talents I have, rather than devoting them solely to South Korea, I wa
 ### Does owning an expensive car and living in an expensive house necessarily make someone a great person?
 ### Are people who can barely afford a single piece of bread a day simply lazy?
 ### Human dignity never changes.
+### If people cannot find dignity in their own country, 
+### they may choose to immigrate to another country where their dignity is respected.
 
