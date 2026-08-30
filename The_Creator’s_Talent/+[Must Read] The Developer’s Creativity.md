@@ -1,4 +1,4 @@
-# The Developer’s Creativity
+# The Developer’s Creativity and Problem-Solving Skills
 
 ### Please do not think of me as a coder. Coding is not my strength at all.
 
