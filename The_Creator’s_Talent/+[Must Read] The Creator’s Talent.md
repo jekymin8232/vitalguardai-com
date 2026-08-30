@@ -24,3 +24,6 @@ Creativity and problem-solving skills can be applied to virtually any field.
 
 **For reference, my hobby:**
 https://mcorpai.com/
+
+**I enjoy thinking and exploring ideas.**
+
