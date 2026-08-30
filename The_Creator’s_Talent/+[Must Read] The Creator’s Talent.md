@@ -27,3 +27,13 @@ https://mcorpai.com/
 
 **I enjoy thinking and exploring ideas.**
 
+There is no such thing as a free lunch. Talent deserves to be valued and supported. With the right support, creativity and problem-solving abilities can grow even further.
+
+If I have been able to demonstrate this level of problem-solving ability with virtually no resources, I believe I could achieve much more with the right resources and opportunities.
+
+The truth is that I have not received much recognition or support in South Korea. I grew up in a difficult environment and had no one in a position to help me. It is unfortunate, but I do not want to pretend otherwise.
+
+As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
+
+
+
