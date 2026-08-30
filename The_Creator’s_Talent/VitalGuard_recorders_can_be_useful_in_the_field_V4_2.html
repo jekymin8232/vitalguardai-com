@@ -1,0 +1,3733 @@
+<!DOCTYPE html>
+<!--
+
+Not suitable for high-risk users. This is simply a test version.
+It is not suitable for high-risk users, but it can be sufficiently effective for protecting children in situations such as school bullying.
+
+Many children experiencing abuse are afraid of retaliation and often cannot tell their parents. 
+Even searching for or installing apps labeled “voice recorder” or “anti-bullying” can feel risky, as they worry it might leave a trace.
+
+This tool avoids app stores entirely. It is delivered as a single HTML file with zero external dependencies. 
+A trusted friend or teacher can share it quickly via KakaoTalk or Bluetooth—no formal installation process required.
+Because it does not go through an app store, it reduces concerns about visible download or installation history, which can provide a significant sense of reassurance.
+
+In high-stress situations—such as when a child feels cornered and is about to lose access to their phone—there is no time to enter passwords or manage files. 
+A simple three-tap gesture on the corner of the screen immediately clears all recordings and cached data, allowing rapid response under pressure.
+
+Many location-tracking and recording apps commonly used by parents today have a critical flaw: perpetrators are already familiar with them.
+This approach uses a single HTML file with no installation footprint, so there is no app history to detect. As an open-source design, its structure can also be modified freely.
+When hidden as a bookmark or within a browser tab, it is highly unlikely to be recognized by an attacker as a protective tool.
+
+===========================================================================
+ VitalGuard PWA Recorder (Alpha V3.8) This is a reference test version.
+This is a small reference/test app I created during the OTF review period.
+===========================================================================
+ © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+ License: M-Corp Ethical AI License (Hippocratic 3.0 Derivative)
+ Permitted use: civilian, agricultural, and humanitarian purposes ONLY.
+ Review status: security review demonstrator only.
+ Not a public release, not a consumer app, and not intended for distribution.
+
+This is a small experimental app I created informally while waiting for the OTF review process.
+
+ test V4.2 Changes:
+   1. Settings notice added as a one-time bilingual user disclosure before the settings panel opens.
+   2. YES / 예 opens Settings; NO / 아니오 exits the settings flow and attempts to close the page.
+   3. Notice state is stored locally and reset by app-data wipe / settings reset.
+   4. Version labels updated to V4.2.
+
+ test V3.8 Changes:
+   1. Calculator UI reduced by 10% for Chrome mobile fit.
+   2. Big Sudoku review duration changed to selectable 20 / 60 minutes.
+   3. 100% transparency now shows a clear confirmation dialog before switching.
+   4. Big Sudoku character system added: Santa, Dad, Child.
+   5. Character-based score and penalty rules added.
+   6. Number-button emoji effects added.
+   7. Hall of Fame updated to store character, score, clear time, and selected duration.
+
+ test V3.6 Changes:
+   1. Big Sudoku Review Mode added for 20/60-minute visible screen-on testing.
+   2. 100% transparency now prompts a review-mode dialog; OK starts the
+      20/60-minute Big Sudoku test session and explicit audio review capture.
+   3. During Big Sudoku Review Mode, recorder/settings surfaces are removed
+      and a bold security-review test banner remains visible.
+   4. At the end of the 20/60-minute session, capture stops, data is saved, and
+      the app returns to calculator mode with the settings icon hidden.
+
+ test V3.5 Changes:
+   1. Compact Visible Mode transparency model corrected:
+      0% = fully opaque, 100% = fully transparent.
+   2. 100% transparency now shows a warning that controls may be invisible.
+   3. Review recording duration added: 10 / 20 / 30 minutes, default 20.
+   4. Calculator C now clears both the visible calculator expression and the
+      hidden command buffer used by 0000 + operator commands.
+
+ test V3.4 Changes:
+   1. Compact Visible Mode added for Samsung pop-up / split-screen testing.
+   2. Calculator compact trigger: unlock code + % enters Compact Visible Mode.
+   3. User-controlled compact UI transparency controls added.
+
+ test V3.2 Changes:
+   1. Calculator reset trigger: unlock code + = resets settings to initial defaults.
+   2. Calculator recording trigger: unlock code + × starts/stops recording.
+   3. Help text now documents reset and recording flows clearly.
+
+ test V3.1 Changes:
+   1. Settings recovery now requires unlock code + = in calculator mode.
+   2. Help text now clearly documents the 0000 + = recovery flow.
+
+ test V3.0 Changes:
+   1. Screen mode (recorder/calculator) and settings-hide are SEPARATE concepts.
+   2. Calculator screen is absolutely silent: no toast, no dialog, no help,
+      no rec indicator. Recording happens covertly.
+   3. Save format is a top-priority user choice:
+      A) AS-IS  (default) — original audio file, fully playable.
+      B) IMAGE  — saved with a .jpg extension while preserving original audio bytes.
+                  User must rename .jpg → .webm to restore playback.
+   4. Hide-settings auto-switches to calculator first so user can recover
+      via the keypad code (default 0000, user-changeable).
+   5. Removed broken stripMeta byte-padding that destroyed WebM headers.
+=================================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>Calculator</title>
+
+<link rel="manifest" id="manifestLink">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='8' y='4' width='48' height='56' rx='6' fill='%23222'/><rect x='14' y='10' width='36' height='12' rx='2' fill='%23000'/><circle cx='20' cy='32' r='4' fill='%23555'/><circle cx='32' cy='32' r='4' fill='%23555'/><circle cx='44' cy='32' r='4' fill='%23555'/><circle cx='20' cy='44' r='4' fill='%23555'/><circle cx='32' cy='44' r='4' fill='%23555'/><circle cx='44' cy='44' r='4' fill='%23ff8800'/></svg>">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { background: #1a1a1a; color: #fff; user-select: none; -webkit-user-select: none; }
+
+/* === RECORDER SCREEN (full UX allowed) === */
+#recorderUI {
+  display: none; flex-direction: column; align-items: center;
+  height: 100vh; padding: 12px 16px 24px; text-align: center; overflow-y: auto;
+}
+#recorderUI.active { display: flex; }
+.rec-version-banner {
+  background: linear-gradient(90deg, #ff8800, #ff4400);
+  color: #000; padding: 7px 14px; border-radius: 6px;
+  font-size: 0.78em; font-weight: bold; margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.mode-switcher {
+  display: flex; gap: 6px; margin-bottom: 14px; width: 100%; max-width: 360px;
+  background: #222; padding: 4px; border-radius: 10px; border: 1px solid #333;
+}
+.mode-switch-btn {
+  flex: 1; padding: 10px 8px; background: transparent; border: none;
+  color: #888; border-radius: 7px; font-size: 0.88em; cursor: pointer;
+  transition: all 0.18s; font-weight: 600;
+}
+.mode-switch-btn.active { background: #ff8800; color: #000; }
+.rec-title { font-size: 1.5em; margin-bottom: 6px; color: #fff; }
+.rec-subtitle { font-size: 0.82em; color: #888; margin-bottom: 18px; max-width: 320px; line-height: 1.45; }
+.save-format-pill {
+  display: inline-flex; align-items: center; gap: 6px; margin-bottom: 18px;
+  padding: 6px 12px; background: #1a2a1a; border: 1px solid #2a4a2a;
+  border-radius: 14px; font-size: 0.78em; color: #88cc88;
+}
+.save-format-pill.image { background: #2a1a2a; border-color: #4a2a4a; color: #cc88cc; }
+.rec-button {
+  width: 180px; height: 180px; border-radius: 50%; border: 4px solid #444;
+  background: #2a2a2a; color: #888; font-size: 1.4em; font-weight: bold; cursor: pointer;
+  transition: all 0.3s; margin-bottom: 14px;
+}
+.rec-button:active { transform: scale(0.97); }
+.rec-button.recording { background: #5c1616; color: #fff; border-color: #ff3333; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,51,51,0.7); } 50% { box-shadow: 0 0 0 22px rgba(255,51,51,0); } }
+.rec-status { color: #888; font-size: 0.95em; min-height: 26px; margin-bottom: 8px; }
+.rec-timer { color: #ff8800; font-size: 1.6em; font-family: 'Courier New', monospace; min-height: 30px; }
+
+/* === CALCULATOR SCREEN (silent rule) === */
+#calcUI { display: none; flex-direction: column; height: 100vh; padding: 7px; }
+#calcUI.active { display: flex; }
+.calc-display {
+  background: #000; color: #0f0; font-family: 'Courier New', monospace;
+  font-size: 1.8em; text-align: right; padding: 14px 11px;
+  border-radius: 8px; min-height: 72px; word-break: break-all;
+  margin-bottom: 8px; border: 1px solid #333; overflow: hidden;
+}
+.calc-mode-row { display: flex; gap: 3.5px; margin-bottom: 5px; font-size: 0.63em; }
+.calc-mode-btn {
+  flex: 1; padding: 4px; background: #222; border: 1px solid #333;
+  color: #888; border-radius: 4px; cursor: pointer;
+}
+.calc-mode-btn.active { background: #ff8800; color: #000; border-color: #ff8800; }
+.calc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3.5px; flex: 1; }
+.calc-btn {
+  background: #333; border: none; border-radius: 6px; color: #fff;
+  font-size: 0.9em; cursor: pointer; transition: background 0.1s;
+  min-height: 40px; padding: 3.5px 2px;
+}
+.calc-btn:active { background: #555; }
+.calc-btn.op { background: #ff8800; font-weight: bold; }
+.calc-btn.op:active { background: #ffaa33; }
+.calc-btn.fn { background: #444; color: #4ec9b0; font-size: 0.76em; }
+.calc-btn.sci { background: #2a2a3a; color: #88aaff; font-size: 0.72em; }
+
+
+/* === COMPACT VISIBLE MODE (V3.6) ===
+   Purpose: keep a small visible recorder surface for Samsung pop-up / split-screen review testing.
+   Note: CSS transparency controls the web UI only; Android system pop-up-window opacity is not controlled by PWA code.
+   Transparency model: 0% = fully opaque, 100% = fully transparent.
+*/
+html.compact-visible-root,
+body.compact-visible-mode {
+  background: transparent;
+}
+body.compact-visible-mode #recorderUI {
+  justify-content: center;
+  align-items: center;
+  width: 124px;
+  height: 154px;
+  min-height: 154px;
+  max-height: 154px;
+  padding: 8px;
+  margin: auto;
+  overflow: hidden;
+  gap: 3px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 16px;
+  background: rgba(12,12,12,0.82);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  opacity: var(--compact-ui-opacity, 1);
+}
+body.compact-visible-mode .rec-version-banner,
+body.compact-visible-mode .mode-switcher,
+body.compact-visible-mode .rec-subtitle,
+body.compact-visible-mode .save-format-pill {
+  display: none;
+}
+body.compact-visible-mode .rec-title {
+  font-size: 0.78em;
+  margin: 0 0 3px;
+  letter-spacing: 0.02em;
+}
+body.compact-visible-mode .rec-button {
+  width: 68px;
+  height: 68px;
+  font-size: 0.64em;
+  border-width: 2px;
+  margin: 0 0 2px;
+}
+body.compact-visible-mode .rec-status {
+  font-size: 0.62em;
+  min-height: 13px;
+  margin: 0;
+  line-height: 1.15;
+}
+body.compact-visible-mode .rec-timer {
+  font-size: 0.84em;
+  min-height: 16px;
+}
+#compactExitBtn {
+  display: none;
+  margin-top: 4px;
+  padding: 5px 9px;
+  background: #242424;
+  border: 1px solid #555;
+  color: #bbb;
+  border-radius: 8px;
+  font-size: 0.64em;
+  font-weight: 700;
+  cursor: pointer;
+}
+body.compact-visible-mode #compactExitBtn {
+  display: inline-block;
+}
+.compact-card {
+  background: linear-gradient(135deg, #1a2a2a, #102020);
+  border: 1px solid #2a7777;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.compact-card-title {
+  font-size: 0.95em;
+  color: #99ffff;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+.compact-card-desc {
+  font-size: 0.76em;
+  color: #aaccdd;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+.range-row,
+.select-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.range-row input[type="range"] {
+  flex: 1;
+  accent-color: #ff8800;
+}
+.range-value {
+  min-width: 46px;
+  text-align: right;
+  color: #ffcc66;
+  font-family: 'Courier New', monospace;
+  font-size: 0.82em;
+}
+.select-control {
+  flex: 1;
+  background: #111;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 0.85em;
+}
+
+
+/* === BIG SUDOKU REVIEW MODE (V3.8) ===
+   Visible 20/60-minute screen-on test surface. This is not a hidden or invisible UI:
+   a bold review-test banner remains visible while the session is active.
+*/
+#gameUI {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: #f7f7f7;
+  color: #111;
+  overflow-y: auto;
+  padding: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+#gameUI.active { display: block; }
+.game-review-banner {
+  background: #111;
+  color: #fff;
+  border: 3px solid #ff8800;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-weight: 900;
+  font-size: 0.9em;
+  text-align: center;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.game-topbar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.game-stat {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.game-stat-label { font-size: 0.68em; color: #555; margin-bottom: 3px; }
+.game-stat-value { font-size: 1.05em; font-weight: 900; color: #111; }
+.character-panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
+.character-btn { border: 2px solid #ddd; background: #fff; color: #111; border-radius: 10px; padding: 8px 4px; font-weight: 900; cursor: pointer; line-height: 1.25; }
+.character-btn small { font-size: 0.72em; color: #666; font-weight: 800; }
+.character-btn.active { border-color: #ff8800; background: #fff4df; box-shadow: 0 0 0 2px rgba(255,136,0,0.18) inset; }
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+.game-help-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  color: #222;
+  line-height: 1.45;
+  font-size: 0.8em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.game-help-card h3 { font-size: 1em; margin-bottom: 5px; color: #111; }
+.game-help-card ul { margin-left: 18px; }
+.game-board-wrap {
+  overflow: auto;
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.16);
+}
+.big-sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 34px);
+  grid-template-rows: repeat(16, 34px);
+  gap: 0;
+  width: max-content;
+  background: #111;
+  border: 2px solid #111;
+}
+.sudoku-cell {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.84em;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sudoku-cell.box-shade { background: #f0f0f0; }
+.sudoku-cell.given { font-weight: 900; color: #000; cursor: default; }
+.sudoku-cell.user { background: #e9fff0; color: #064b21; }
+.sudoku-cell.ai { background: #eef4ff; color: #0b3e87; }
+.sudoku-cell.wrong { background: #ffecec; color: #b00020; }
+.sudoku-cell.selected { outline: 3px solid #ff8800; outline-offset: -3px; }
+.sudoku-cell:nth-child(4n) { border-right-color: #aaa; }
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  margin-top: 8px;
+}
+.num-btn, .game-action-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #111;
+  border-radius: 8px;
+  padding: 9px 4px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.num-btn.active { background: #ff8800; color: #000; border-color: #ff8800; }
+.game-actions { display: flex; gap: 8px; margin-top: 8px; }
+.game-action-btn { flex: 1; background: #111; color: #fff; border-color: #111; }
+.game-action-btn.secondary { background: #eee; color: #111; border-color: #ccc; }
+.game-result-line { margin-top: 8px; font-size: 0.82em; color: #333; min-height: 20px; }
+.game-result-line.good { color: #0a6b2a; font-weight: 900; }
+.game-result-line.bad { color: #b00020; font-weight: 900; }
+.game-result-line.win { color: #8a5a00; font-weight: 900; }
+.game-stat.score-perfect { border-color: #24a148; background: #f0fff4; }
+.game-stat.score-danger { border-color: #b00020; background: #fff0f0; }
+.sudoku-cell.locked { cursor: default; opacity: 0.86; }
+.sudoku-cell.correct-pop { animation: cellPop 0.38s ease-out; }
+.sudoku-cell.wrong-pop { animation: cellShake 0.34s ease-out; }
+@keyframes cellPop { 0% { transform: scale(1); } 55% { transform: scale(1.12); } 100% { transform: scale(1); } }
+@keyframes cellShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 75% { transform: translateX(-2px); } }
+.emoji-burst {
+  position: fixed;
+  z-index: 7000;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  font-size: 24px;
+  animation: emojiBurst 900ms ease-out forwards;
+  transform: translate(-50%, -50%);
+}
+@keyframes emojiBurst {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.7); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.45) rotate(var(--rot)); }
+}
+.game-center-pop {
+  position: fixed;
+  z-index: 7200;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.86);
+  color: #fff;
+  border: 3px solid #ff8800;
+  border-radius: 18px;
+  padding: 18px 22px;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 1000;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  animation: centerPop 1200ms ease-out forwards;
+  pointer-events: none;
+}
+@keyframes centerPop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.75); }
+  16% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+  82% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.98); }
+}
+.hof-panel {
+  display: none;
+  margin-top: 10px;
+  background: #fffdf2;
+  border: 2px solid #ffcc66;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+.hof-panel.active { display: block; }
+.hof-panel h3 { margin: 0 0 6px; font-size: 1em; color: #111; }
+.hof-table { width: 100%; border-collapse: collapse; font-size: 0.72em; }
+.hof-table th, .hof-table td { border-bottom: 1px solid #e6d28a; padding: 4px 3px; text-align: left; }
+.hof-table th { color: #6b4b00; font-weight: 900; }
+@media (min-width: 860px) {
+  .game-layout { grid-template-columns: 1fr 280px; align-items: start; }
+  .game-help-card { order: 2; }
+  .game-board-wrap { order: 1; }
+}
+@media (max-width: 430px) {
+  .big-sudoku-grid { grid-template-columns: repeat(16, 27px); grid-template-rows: repeat(16, 27px); }
+  .sudoku-cell { width: 27px; height: 27px; font-size: 0.68em; }
+  .game-topbar { grid-template-columns: 1fr 1fr; }
+  .number-pad { grid-template-columns: repeat(4, 1fr); }
+  .character-panel { grid-template-columns: 1fr; }
+}
+
+/* === SETTINGS BUTTON === */
+#settingsBtn {
+  position: fixed; top: 8px; right: 8px; width: 36px; height: 36px;
+  background: rgba(60,60,60,0.7); border: none; border-radius: 50%;
+  color: #999; font-size: 20px; cursor: pointer; z-index: 100;
+}
+#settingsBtn.hidden { display: none; }
+
+/* === SETTINGS PANEL === */
+#settingsPanel {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.97); z-index: 1000; overflow-y: auto;
+  padding: 16px;
+}
+#settingsPanel.active { display: block; }
+.settings-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #333;
+  position: sticky; top: 0; background: rgba(0,0,0,0.97); z-index: 10; padding-top: 4px;
+}
+.settings-header h2 { font-size: 1.1em; }
+.close-btn {
+  background: #c33; border: none; color: #fff;
+  width: 36px; height: 36px; border-radius: 50%; font-size: 18px; cursor: pointer;
+}
+.lang-row { display: flex; gap: 8px; margin-bottom: 14px; }
+.lang-btn {
+  flex: 1; padding: 10px; background: #222; border: 1px solid #444;
+  color: #fff; border-radius: 6px; cursor: pointer; font-size: 0.85em;
+}
+.lang-btn.active { background: #ff8800; border-color: #ff8800; color: #000; font-weight: bold; }
+
+/* === SAVE FORMAT — TOP PRIORITY (V3.0 critical UX) === */
+.save-format-card {
+  background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+  border: 2px solid #4a4aaa; border-radius: 12px; padding: 14px;
+  margin-bottom: 14px;
+}
+.save-format-title {
+  font-size: 1em; color: #aaccff; margin-bottom: 4px; font-weight: bold;
+}
+.save-format-desc {
+  font-size: 0.78em; color: #99aacc; margin-bottom: 12px; line-height: 1.45;
+}
+.save-format-options {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.save-format-opt {
+  padding: 12px 10px; background: #1a1a2a; border: 2px solid #333;
+  color: #aaa; border-radius: 8px; cursor: pointer; text-align: left;
+  transition: all 0.18s;
+}
+.save-format-opt.selected { background: #2a4a2a; border-color: #4a8; color: #fff; }
+.save-format-opt.selected.image { background: #4a2a4a; border-color: #c4a; }
+.save-format-opt-title { font-size: 0.88em; font-weight: bold; margin-bottom: 3px; }
+.save-format-opt-desc { font-size: 0.7em; line-height: 1.35; opacity: 0.85; }
+
+/* === HELP BANNER === */
+.help-banner {
+  background: linear-gradient(135deg, #1a3a5c, #0f1f3a);
+  border: 1px solid #2a5a8c; border-radius: 10px; padding: 14px;
+  margin-bottom: 14px; cursor: pointer; transition: background 0.2s;
+}
+.help-banner:active { background: #234; }
+.help-banner-title { font-size: 1em; color: #ffcc66; margin-bottom: 4px; }
+.help-banner-desc { font-size: 0.78em; color: #aac; line-height: 1.4; }
+
+/* === HIDE SETTINGS BANNER === */
+.hide-banner {
+  background: linear-gradient(135deg, #4a1a1a, #2a0a0a);
+  border: 1px solid #8c2a2a; border-radius: 10px; padding: 14px;
+  margin-bottom: 14px;
+}
+.hide-banner-title { font-size: 0.95em; color: #ffaaaa; margin-bottom: 6px; }
+.hide-banner-desc { font-size: 0.78em; color: #ccaaaa; line-height: 1.45; margin-bottom: 10px; }
+.hide-btn {
+  width: 100%; padding: 11px; background: #5c1616; border: 1px solid #c33;
+  color: #fff; border-radius: 6px; font-size: 0.9em; cursor: pointer; font-weight: bold;
+}
+.hide-btn:active { background: #722; }
+
+.setting-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid #222;
+}
+.setting-label { flex: 1; padding-right: 12px; }
+.setting-label .title { font-size: 0.92em; margin-bottom: 4px; }
+.setting-label .desc { font-size: 0.74em; color: #888; line-height: 1.4; }
+.toggle {
+  position: relative; width: 50px; height: 28px;
+  background: #444; border-radius: 14px; cursor: pointer;
+  transition: background 0.2s; flex-shrink: 0;
+}
+.toggle.on { background: #4a8; }
+.toggle::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 24px; height: 24px; background: #fff; border-radius: 50%;
+  transition: left 0.2s;
+}
+.toggle.on::after { left: 24px; }
+.section-title {
+  font-size: 0.8em; color: #ff8800; margin: 18px 0 6px;
+  text-transform: uppercase; letter-spacing: 1px; font-weight: bold;
+}
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.btn-action {
+  flex: 1; min-width: 120px; padding: 12px; background: #333;
+  border: 1px solid #555; color: #fff; border-radius: 6px;
+  font-size: 0.85em; cursor: pointer;
+}
+.btn-action.danger { background: #5c1616; border-color: #c33; }
+.btn-action.primary { background: #ff8800; border-color: #ff8800; color: #000; font-weight: bold; }
+.btn-action:active { background: #444; }
+.btn-action.primary:active { background: #ffaa33; }
+
+/* === HELP PANEL === */
+#helpPanel {
+  display: none; position: fixed; inset: 0;
+  background: #0a0a0a; z-index: 2000; overflow-y: auto; padding: 16px;
+  font-size: 0.88em; line-height: 1.6;
+}
+#helpPanel.active { display: block; }
+#helpPanel h3 { color: #ff8800; margin: 14px 0 6px; font-size: 1.05em; }
+#helpPanel h2 { color: #fff; margin: 4px 0 12px; font-size: 1.2em; }
+#helpPanel p { margin-bottom: 8px; color: #ccc; }
+#helpPanel code { background: #222; padding: 2px 6px; border-radius: 3px; color: #4ec9b0; font-size: 0.88em; }
+#helpPanel ul { margin-left: 18px; margin-bottom: 10px; color: #ccc; }
+#helpPanel li { margin-bottom: 5px; }
+.help-section { background: #151515; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid #ff8800; }
+.help-section.warn { border-left-color: #ff3333; background: #2a0f0f; }
+.help-section.warn h3 { color: #ff6666; }
+.help-section.tip { border-left-color: #4a8; background: #0f1f15; }
+.help-section.tip h3 { color: #88ccaa; }
+
+/* === TOAST (recorder screen only) === */
+#toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.95); color: #fff; padding: 12px 20px;
+  border-radius: 24px; font-size: 0.85em; z-index: 5000;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  border: 1px solid #444; max-width: 90vw; text-align: center;
+}
+#toast.show { opacity: 1; }
+
+/* === DIALOG === */
+#dialog {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85); z-index: 4000;
+  align-items: center; justify-content: center; padding: 20px;
+}
+#dialog.active { display: flex; }
+.dialog-box {
+  background: #1a1a1a; padding: 22px; border-radius: 12px;
+  width: 100%; max-width: 380px; max-height: calc(100dvh - 40px);
+  overflow-y: auto; border: 1px solid #444;
+}
+.dialog-box h3 { margin-bottom: 12px; color: #ff8800; font-size: 1.05em; }
+.dialog-box p { color: #ccc; line-height: 1.55; margin-bottom: 14px; font-size: 0.9em; white-space: pre-wrap; }
+#dialog.tap-close { cursor: pointer; }
+#dialog.tap-close .dialog-box { cursor: pointer; }
+#dialog.tap-close .dialog-buttons { display: none; }
+.dialog-box input {
+  width: 100%; padding: 10px; background: #000; border: 1px solid #444;
+  color: #fff; border-radius: 6px; font-size: 1em; margin-bottom: 12px;
+  font-family: 'Courier New', monospace;
+}
+.dialog-buttons { display: flex; gap: 8px; justify-content: flex-end; }
+
+/* === REC INDICATOR (recorder screen only) === */
+#recIndicator {
+  display: none; position: fixed; top: 8px; left: 8px;
+  width: 10px; height: 10px; border-radius: 50%; background: #c33;
+  z-index: 99; animation: blink 1.5s infinite;
+}
+#recIndicator.show { display: block; }
+@keyframes blink { 50% { opacity: 0.3; } }
+/* ============================================================
+   POWER-MENU GUARD (V4.1)
+   ============================================================ */
+#fakeShutdownMenu {
+  display: none; position: fixed; inset: 0;
+  width: 100vw; height: 100dvh;
+  background: #000;
+  z-index: 2147483644; align-items: center; justify-content: center;
+  flex-direction: column; padding: 20px;
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  touch-action: none; overscroll-behavior: none;
+}
+#fakeShutdownMenu.active { display: flex; }
+.fake-shutdown-options {
+  display: flex; flex-direction: column; gap: 60px;
+  align-items: center; flex: 1; justify-content: center;
+}
+.fake-shutdown-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  background: transparent; border: none; cursor: pointer; padding: 8px;
+}
+.fake-shutdown-btn:active { transform: scale(0.92); }
+.fake-shutdown-icon {
+  width: 84px; height: 84px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 42px; color: #fff;
+}
+.fake-shutdown-icon.power { background: #888; }
+.fake-shutdown-icon.restart { background: #2ecc71; }
+.fake-shutdown-icon.emergency { background: #e74c3c; }
+.fake-shutdown-label {
+  color: #fff; font-size: 1.05em; font-weight: 600; letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.fake-shutdown-bottom {
+  width: 100%; max-width: 420px; padding: 14px 24px;
+  background: rgba(40,40,40,0.85); border-radius: 30px;
+  color: #fff; text-align: center; font-size: 0.95em;
+  border: none; cursor: default;
+}
+
+/* Black-out screen */
+#blackoutScreen {
+  display: none; position: fixed; inset: 0;
+  width: 100vw; height: 100dvh;
+  min-width: 100vw; min-height: 100dvh;
+  background: #000 !important; z-index: 2147483646;
+  cursor: default; touch-action: none; overscroll-behavior: none;
+}
+#blackoutScreen.active { display: block; }
+body.power-trick-blackout {
+  background: #000 !important;
+  overflow: hidden !important;
+}
+body.power-trick-blackout > :not(#blackoutScreen):not(#blackoutKeypad) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.blackout-recovery-zone {
+  position: absolute; top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: transparent; border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Hidden tap zone — center-bottom of black screen, brings up keypad */
+.blackout-keypad-zone {
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 120px;
+  background: transparent; border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keypad (recovery via numeric code) */
+#blackoutKeypad {
+  display: none; position: fixed; inset: 0;
+  width: 100vw; height: 100dvh;
+  background: rgba(0,0,0,0.98);
+  z-index: 2147483647;
+  align-items: center; justify-content: center;
+  flex-direction: column; padding: 20px;
+}
+#blackoutKeypad.active { display: flex; }
+.keypad-display {
+  background: #000; color: #0f0; font-family: 'Courier New', monospace;
+  font-size: 2.2em; padding: 18px; border-radius: 8px;
+  border: 1px solid #333; min-width: 240px; max-width: 100%;
+  text-align: center; margin-bottom: 16px; letter-spacing: 0.4em;
+  min-height: 70px;
+}
+.keypad-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  width: 100%; max-width: 320px;
+}
+.keypad-btn {
+  padding: 18px 0; background: #2a2a2a; color: #fff;
+  border: 1px solid #444; border-radius: 10px;
+  font-size: 1.6em; cursor: pointer; font-family: 'Courier New', monospace;
+}
+.keypad-btn:active { background: #444; }
+.keypad-btn.action { background: #444; font-size: 0.9em; }
+.keypad-btn.cancel { color: #888; }
+
+/* Power-trick banner in settings */
+.power-trick-banner {
+  background: linear-gradient(135deg, #3a1a4a, #1a0a2a);
+  border: 1px solid #6c2a8c; border-radius: 10px; padding: 14px;
+  margin-bottom: 14px;
+}
+.power-trick-title { font-size: 0.98em; color: #ddaaff; margin-bottom: 6px; font-weight: 600; }
+.power-trick-desc { font-size: 0.78em; color: #c0a0d0; line-height: 1.45; margin-bottom: 10px; }
+.power-trick-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 10px;
+}
+.power-trick-row .toggle { flex-shrink: 0; }
+.power-trick-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.power-trick-test-btn {
+  flex: 1; min-width: 140px; padding: 10px;
+  background: #6c2a8c; border: 1px solid #8c3aac;
+  color: #fff; border-radius: 6px; font-size: 0.85em; cursor: pointer; font-weight: 600;
+}
+.power-trick-test-btn:active { background: #8c3aac; }
+.power-trick-duration {
+  display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;
+}
+.power-trick-duration-btn {
+  flex: 1; min-width: 56px; padding: 8px 4px;
+  background: #1a1a2a; border: 1px solid #333;
+  color: #aaa; border-radius: 6px; font-size: 0.78em; cursor: pointer;
+}
+.power-trick-duration-btn.selected { background: #6c2a8c; border-color: #8c3aac; color: #fff; }
+.power-trick-status {
+  font-size: 0.74em; color: #aaa; margin-top: 8px;
+  padding: 8px; background: rgba(0,0,0,0.3); border-radius: 6px;
+}
+.power-trick-status.armed { color: #4ec9b0; }
+
+</style>
+</head>
+<body>
+
+<!-- ============ FAKE SHUTDOWN MENU (V4.2) ============ -->
+<div id="fakeShutdownMenu">
+  <div class="fake-shutdown-options">
+    <button class="fake-shutdown-btn" id="fakePowerOff">
+      <div class="fake-shutdown-icon power">⏻</div>
+      <div class="fake-shutdown-label">Power off</div>
+    </button>
+    <button class="fake-shutdown-btn" id="fakeRestart">
+      <div class="fake-shutdown-icon restart">↻</div>
+      <div class="fake-shutdown-label">Restart</div>
+    </button>
+    <button class="fake-shutdown-btn" id="fakeEmergency">
+      <div class="fake-shutdown-icon emergency">📞</div>
+      <div class="fake-shutdown-label">Emergency call</div>
+    </button>
+  </div>
+  <button class="fake-shutdown-bottom" id="fakeShutdownBottom">Side button settings</button>
+</div>
+
+<!-- ============ BLACKOUT SCREEN ============ -->
+<div id="blackoutScreen">
+  <button class="blackout-recovery-zone" id="blackoutRecovery" aria-hidden="true"></button>
+  <button class="blackout-keypad-zone" id="blackoutKeypadOpen" aria-hidden="true"></button>
+</div>
+
+<!-- ============ RECOVERY KEYPAD ============ -->
+<div id="blackoutKeypad">
+  <div class="keypad-display" id="keypadDisplay"></div>
+  <div class="keypad-grid">
+    <button class="keypad-btn" data-kp="1">1</button>
+    <button class="keypad-btn" data-kp="2">2</button>
+    <button class="keypad-btn" data-kp="3">3</button>
+    <button class="keypad-btn" data-kp="4">4</button>
+    <button class="keypad-btn" data-kp="5">5</button>
+    <button class="keypad-btn" data-kp="6">6</button>
+    <button class="keypad-btn" data-kp="7">7</button>
+    <button class="keypad-btn" data-kp="8">8</button>
+    <button class="keypad-btn" data-kp="9">9</button>
+    <button class="keypad-btn action cancel" data-kp="cancel">Cancel</button>
+    <button class="keypad-btn" data-kp="0">0</button>
+    <button class="keypad-btn action" data-kp="ok">OK</button>
+  </div>
+</div>
+
+<div id="recIndicator" title="Recording"></div>
+<button id="settingsBtn" aria-label="Settings">⚙</button>
+
+<!-- ============ RECORDER SCREEN ============ -->
+<div id="recorderUI">
+  <div class="rec-version-banner">TEST VERSION V 4.2</div>
+
+  <div class="mode-switcher" role="tablist">
+    <button class="mode-switch-btn active" id="btnModeRecorder" data-screenmode="recorder">🎙 Recorder</button>
+    <button class="mode-switch-btn" id="btnModeCalc" data-screenmode="calculator">🧮 Calculator</button>
+  </div>
+
+  <div class="rec-title" id="recHeading">Audio Recorder</div>
+  <div class="rec-subtitle" id="recSubtitle">Tap the red button to start. Tap again to stop and save.</div>
+
+  <div class="save-format-pill" id="saveFormatPill">
+    <span id="saveFormatPillIcon">🎵</span>
+    <span id="saveFormatPillText">Saving as audio file (recommended)</span>
+  </div>
+
+  <button class="rec-button" id="recBtn">REC</button>
+  <div class="rec-status" id="recStatus">Ready</div>
+  <div class="rec-timer" id="recTimer">00:00</div>
+  <button id="compactExitBtn" type="button">FULL</button>
+</div>
+
+<!-- ============ CALCULATOR SCREEN ============ -->
+<div id="calcUI">
+  <div class="calc-display" id="calcDisplay">0</div>
+  <div class="calc-mode-row">
+    <button class="calc-mode-btn active" data-cmode="DEG" id="modeDEG">DEG</button>
+    <button class="calc-mode-btn" data-cmode="RAD" id="modeRAD">RAD</button>
+    <button class="calc-mode-btn" data-cmode="2nd" id="mode2nd">2nd</button>
+    <span class="calc-mode-btn" style="cursor:default; color:#666;">Sci</span>
+  </div>
+  <div class="calc-grid">
+    <button class="calc-btn sci" data-key="sin">sin</button>
+    <button class="calc-btn sci" data-key="cos">cos</button>
+    <button class="calc-btn sci" data-key="tan">tan</button>
+    <button class="calc-btn sci" data-key="log">log</button>
+    <button class="calc-btn sci" data-key="ln">ln</button>
+    <button class="calc-btn sci" data-key="sqrt">√</button>
+    <button class="calc-btn sci" data-key="x2">x²</button>
+    <button class="calc-btn sci" data-key="xy">xʸ</button>
+    <button class="calc-btn sci" data-key="pi">π</button>
+    <button class="calc-btn sci" data-key="e">e</button>
+    <button class="calc-btn fn" data-key="C">C</button>
+    <button class="calc-btn fn" data-key="±">±</button>
+    <button class="calc-btn fn" data-key="%">%</button>
+    <button class="calc-btn fn" data-key="(">(</button>
+    <button class="calc-btn fn" data-key=")">)</button>
+    <button class="calc-btn" data-key="7">7</button>
+    <button class="calc-btn" data-key="8">8</button>
+    <button class="calc-btn" data-key="9">9</button>
+    <button class="calc-btn op" data-key="/">÷</button>
+    <button class="calc-btn fn" data-key="del">⌫</button>
+    <button class="calc-btn" data-key="4">4</button>
+    <button class="calc-btn" data-key="5">5</button>
+    <button class="calc-btn" data-key="6">6</button>
+    <button class="calc-btn op" data-key="*">×</button>
+    <button class="calc-btn fn" data-key="1/x">1/x</button>
+    <button class="calc-btn" data-key="1">1</button>
+    <button class="calc-btn" data-key="2">2</button>
+    <button class="calc-btn" data-key="3">3</button>
+    <button class="calc-btn op" data-key="-">−</button>
+    <button class="calc-btn fn" data-key="!">n!</button>
+    <button class="calc-btn" data-key="0">0</button>
+    <button class="calc-btn" data-key="00">00</button>
+    <button class="calc-btn" data-key=".">.</button>
+    <button class="calc-btn op" data-key="+">+</button>
+    <button class="calc-btn op" data-key="=">=</button>
+  </div>
+
+</div>
+
+<!-- ============ BIG SUDOKU REVIEW MODE ============ -->
+<div id="gameUI" aria-label="Big Sudoku Review Mode">
+  <div class="game-review-banner" id="gameReviewBanner">
+    SECURITY REVIEW TEST VERSION · BIG SUDOKU <span id="gameBannerDuration">20</span>-MIN SCREEN-ON <br>
+    보안 심사 테스트 버전 · 빅 스도쿠 <span id="gameBannerDurationKo">20</span>분 화면 켜짐
+  </div>
+  <div class="game-topbar">
+    <div class="game-stat">
+      <div class="game-stat-label" id="gameTimerLabel">TIME LEFT / 남은 시간</div>
+      <div class="game-stat-value" id="gameTimer">20:00</div>
+    </div>
+    <div class="game-stat" id="characterStatCard">
+      <div class="game-stat-label">CHARACTER / 캐릭터</div>
+      <div class="game-stat-value" id="characterScore">👨</div>
+    </div>
+    <div class="game-stat score-perfect" id="scoreStatCard">
+      <div class="game-stat-label">SCORE / 점수</div>
+      <div class="game-stat-value" id="userScore">100</div>
+    </div>
+    <div class="game-stat">
+      <div class="game-stat-label">MISTAKES / 오답</div>
+      <div class="game-stat-value" id="mistakeScore">0</div>
+    </div>
+    <div class="game-stat">
+      <div class="game-stat-label">AI</div>
+      <div class="game-stat-value" id="aiScore">0</div>
+    </div>
+  </div>
+  <div class="game-layout">
+    <div class="game-help-card">
+      <h3>How to Play Big Sudoku / 빅 스도쿠 게임 방법</h3>
+      <p><strong>English:</strong> Choose a character, then fill empty cells with numbers from 1 to 16. Correct answers keep your score. Wrong answers deduct your character penalty. If your score reaches 0, restart Big Sudoku. A no-mistake clear within the selected duration enters the Hall of Fame.</p>
+      <p><strong>한국어:</strong> 캐릭터를 고른 뒤 빈칸에 1부터 16까지의 숫자를 입력하세요. 정답은 점수를 유지하고, 오답은 캐릭터별 벌점만큼 감점됩니다. 0점이 되면 빅 스도쿠를 다시 시작해야 합니다. 선택한 시간 안에 무오답으로 클리어하면 명예의 전당에 기록됩니다.</p>
+      <div class="character-panel" id="characterPanel">
+        <button class="character-btn active" data-character="dad" type="button">👨 아빠<br><small>100점 · -5</small></button>
+        <button class="character-btn" data-character="santa" type="button">🎅 산타<br><small>150점 · -15</small></button>
+        <button class="character-btn" data-character="child" type="button">🧒 아이<br><small>80점 · -2</small></button>
+      </div>
+      <p class="game-result-line" id="gameResultLine">Select an empty cell and choose a number. / 빈칸을 선택하고 숫자를 고르세요.</p>
+      <div class="number-pad" id="numberPad"></div>
+      <div class="game-actions">
+        <button class="game-action-btn secondary" id="hintBtn" type="button">Hint / 힌트</button>
+        <button class="game-action-btn secondary" id="clearCellBtn" type="button">Clear / 지우기</button>
+        <button class="game-action-btn secondary" id="restartGameBtn" type="button">Restart / 다시 시작</button>
+        <button class="game-action-btn secondary" id="hallOfFameBtn" type="button">🏆 Hall / 명예</button>
+        <button class="game-action-btn" id="endGameBtn" type="button">End Test / 테스트 종료</button>
+      </div>
+      <div class="hof-panel" id="hallOfFamePanel">
+        <h3>🏆 Hall of Fame / 명예의 전당</h3>
+        <div id="hallOfFameList">No records yet. / 아직 기록이 없습니다.</div>
+      </div>
+    </div>
+    <div class="game-board-wrap">
+      <div class="big-sudoku-grid" id="bigSudokuGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SETTINGS PANEL ============ -->
+<div id="settingsPanel">
+  <div class="settings-header">
+    <h2>⚙ <span data-i18n="settingsTitle">Settings</span></h2>
+    <button class="close-btn" id="closeSettings">×</button>
+  </div>
+
+  <div class="lang-row">
+    <button class="lang-btn active" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="ko">한국어</button>
+  </div>
+
+  <!-- === [#1 PRIORITY] SAVE FORMAT === -->
+  <div class="save-format-card">
+    <div class="save-format-title">💾 <span data-i18n="saveFmtTitle">Save Format (most important)</span></div>
+    <div class="save-format-desc" data-i18n="saveFmtDesc">Choose how recordings are saved. Default is "as-is" so the file plays normally. The image option keeps the audio bytes unchanged but saves the file with a .jpg extension; rename it to .webm to play it back.</div>
+    <div class="save-format-options">
+      <button class="save-format-opt selected" id="fmtAsIs" data-fmt="asis">
+        <div class="save-format-opt-title">🎵 <span data-i18n="fmtAsIsTitle">As-is (default)</span></div>
+        <div class="save-format-opt-desc" data-i18n="fmtAsIsDesc">Original audio file. Plays directly. Filename example: rec_xxx.webm</div>
+      </button>
+      <button class="save-format-opt image" id="fmtImage" data-fmt="image">
+        <div class="save-format-opt-title">🖼 <span data-i18n="fmtImageTitle">Image extension disguise</span></div>
+        <div class="save-format-opt-desc" data-i18n="fmtImageDesc">Saved as IMG_xxx.jpg with audio bytes unchanged. To play: rename .jpg → .webm yourself.</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- === [V4.2] POWER-MENU GUARD === -->
+  <div class="power-trick-banner" id="powerTrickBanner">
+    <div class="power-trick-title">⚡ <span data-i18n="ptTitle">Power-Menu Guard — black-screen protection flow</span></div>
+    <div class="power-trick-desc" data-i18n="ptDesc">When OFF (default), the recorder works normally. When ON, the guard is armed. If the device power-menu action briefly hides and returns the page, the app enters a short fake power menu and then a full-viewport black screen. On many Android devices this action may be Power + Volume Up, but the web app only detects the resulting visibility interruption, not the hardware keys themselves.</div>
+    <div class="power-trick-row">
+      <div class="setting-label">
+        <div class="title" data-i18n="ptEnabled">Power-Menu Guard (default OFF)</div>
+        <div class="desc" data-i18n="ptEnabledDesc">Off: normal recorder. On: armed — power-menu interruption may trigger the black-screen flow.</div>
+      </div>
+      <div class="toggle" data-opt="powerTrickEnabled"></div>
+    </div>
+    <div class="setting-label" style="margin-top:6px;">
+      <div class="title" data-i18n="ptDuration">Black-screen duration (default: 1 min — test mode)</div>
+      <div class="desc" data-i18n="ptDurationDesc">How long the black screen + silent recording lasts. Recovery is always available via numeric code (default 0000) on the hidden keypad.</div>
+    </div>
+    <div class="power-trick-duration">
+      <button class="power-trick-duration-btn selected" data-ptdur="1">1 min</button>
+      <button class="power-trick-duration-btn" data-ptdur="5">5 min</button>
+      <button class="power-trick-duration-btn" data-ptdur="15">15 min</button>
+      <button class="power-trick-duration-btn" data-ptdur="30">30 min</button>
+      <button class="power-trick-duration-btn" data-ptdur="60">60 min</button>
+    </div>
+    <div class="power-trick-actions">
+      <button class="power-trick-test-btn" id="powerTrickTestBtn" data-i18n="ptTestBtn">▶ Test black-screen flow</button>
+    </div>
+    <div class="power-trick-status" id="powerTrickStatus" data-i18n="ptStatusDisarmed">Status: disarmed</div>
+  </div>
+
+  <!-- HELP -->
+  <div class="help-banner" id="openHelp">
+    <div class="help-banner-title">📖 <span data-i18n="helpBannerTitle">Why was this built? — Open Design Philosophy</span></div>
+    <div class="help-banner-desc" data-i18n="helpBannerDesc">Read the design rationale, security reasoning, and field-safety warnings.</div>
+  </div>
+
+  <!-- HIDE SETTINGS -->
+  <div class="hide-banner">
+    <div class="hide-banner-title">🔒 <span data-i18n="hideTitle">Hide Settings Icon</span></div>
+    <div class="hide-banner-desc" data-i18n="hideDesc">Tap to remove the ⚙ icon. To reset settings to initial defaults: switch to the calculator, type 0000 (or your changed code), then press =. To start/stop recording in calculator mode: type 0000 (or your changed code), then press ×. The code is changeable below.</div>
+    <button class="hide-btn" id="hideSettingsBtn" data-i18n="hideBtn">OFF — Hide settings now</button>
+  </div>
+
+  <div class="section-title" data-i18n="secScreen">Default Screen</div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optScreen">Default screen on launch</div>
+      <div class="desc" data-i18n="optScreenDesc">Choose what appears when the app opens. You can also switch via the toggle at the top of the recorder screen.</div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-action" id="setRecorderDefault" data-i18n="btnRecDefault">🎙 Recorder (default)</button>
+    <button class="btn-action" id="setCalcDefault" data-i18n="btnCalcDefault">🧮 Calculator</button>
+  </div>
+
+  <div class="compact-card">
+    <div class="compact-card-title">▣ <span data-i18n="compactTitle">Compact Visible Mode</span></div>
+    <div class="compact-card-desc" data-i18n="compactDesc">For Samsung pop-up or split-screen review testing. In calculator mode, type 0000 (or your changed code), then press %. The app cannot turn itself into a Samsung pop-up window; open pop-up view manually from Android Recents.</div>
+    <div class="setting-row" style="border-bottom:0; padding:6px 0 2px;">
+      <div class="setting-label">
+        <div class="title" data-i18n="optCompact">Compact visible mode</div>
+        <div class="desc" data-i18n="optCompactDesc">Keeps a small visible recorder surface. Use only while the PWA window remains visible.</div>
+      </div>
+      <div class="toggle" data-opt="compactMode"></div>
+    </div>
+    <div class="range-row">
+      <span data-i18n="compactTransparencyLabel" style="font-size:0.76em; color:#aaa;">UI transparency</span>
+      <input id="compactTransparencyRange" type="range" min="0" max="100" step="1" value="0">
+      <span class="range-value" id="compactTransparencyValue">0%</span>
+    </div>
+  </div>
+
+  <div class="compact-card">
+    <div class="compact-card-title">☀ <span data-i18n="screenOnTitle">Review recording duration</span></div>
+    <div class="compact-card-desc" data-i18n="screenOnDesc">Choose the Big Sudoku review recording duration. This does not change Android system screen-timeout settings; the app only attempts to keep the screen awake through Wake Lock while it remains visible.</div>
+    <div class="select-row">
+      <span data-i18n="screenOnLabel" style="font-size:0.76em; color:#aaa;">Duration</span>
+      <select id="screenOnDurationSelect" class="select-control">
+        <option value="20" selected>20 min</option>
+        <option value="60">60 min</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- V3.5: Compact Visible Mode corrected; transparency and screen-on test duration added. -->
+
+  <div class="section-title" data-i18n="secTrigger">Recording Trigger</div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optInstant">Instant recording on launch</div>
+      <div class="desc" data-i18n="optInstantDesc">Auto-record the moment the app opens. In calculator mode, recording is fully silent.</div>
+    </div>
+    <div class="toggle" data-opt="instantRec"></div>
+  </div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optKeyword">Voice keyword trigger</div>
+      <div class="desc" data-i18n="optKeywordDesc">Auto-record on keyword detection (high battery use).</div>
+    </div>
+    <div class="toggle" data-opt="keywordTrigger"></div>
+  </div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optAcoustic">Acoustic event auto-record</div>
+      <div class="desc" data-i18n="optAcousticDesc">Auto-record on gunshots / explosions / screams via amplitude analysis.</div>
+    </div>
+    <div class="toggle" data-opt="acousticTrigger"></div>
+  </div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optBLE">BLE external trigger</div>
+      <div class="desc" data-i18n="optBLEDesc">Auto-record on danger signal from VitalGuard mesh.</div>
+    </div>
+    <div class="toggle" data-opt="bleTrigger"></div>
+  </div>
+
+  <div class="section-title" data-i18n="secStorage">Storage Behavior</div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optChunk">Automatic chunk splitting</div>
+      <div class="desc" data-i18n="optChunkDesc">Split every 30s; one file seizure ≠ full exposure.</div>
+    </div>
+    <div class="toggle" data-opt="chunkMode"></div>
+  </div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optWakeLock">Screen-off recording</div>
+      <div class="desc" data-i18n="optWakeLockDesc">Tries to keep the screen awake while recording; cannot guarantee recording after the device is locked.</div>
+    </div>
+    <div class="toggle" data-opt="wakeLock"></div>
+  </div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optVAD">VAD silence compression</div>
+      <div class="desc" data-i18n="optVADDesc">Detect speech regions; useful for analysis (does not modify the saved file).</div>
+    </div>
+    <div class="toggle on" data-opt="vad"></div>
+  </div>
+
+  <div class="section-title" data-i18n="secPanic">Emergency</div>
+  <div class="setting-row">
+    <div class="setting-label">
+      <div class="title" data-i18n="optPanic">Panic wipe (3-tap)</div>
+      <div class="desc" data-i18n="optPanicDesc">Top-left corner × 3 rapid taps → clear app settings/cache. Downloaded files cannot be deleted by this web app.</div>
+    </div>
+    <div class="toggle on" data-opt="panicWipe"></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-action danger" id="wipeNow" data-i18n="btnWipeNow">⚠ Clear App Data Now</button>
+    <button class="btn-action" id="changeCode" data-i18n="btnChangeCode">🔑 Change unlock code</button>
+  </div>
+
+  <div class="section-title">License</div>
+  <div style="font-size:0.74em; color:#777; padding:8px 0; line-height:1.5;">
+    © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI<br>
+    M-Corp Ethical AI License (Hippocratic 3.0 Derivative)<br>
+    <span data-i18n="licNote">Civilian / agricultural / humanitarian purposes only</span><br>
+    contact@mcorpai.org · mcorpai.org
+  </div>
+</div>
+
+<!-- ============ HELP PANEL ============ -->
+<div id="helpPanel">
+  <div class="settings-header">
+    <h2 id="helpTitle">📖 Why was this built? / 왜 이렇게 만들었는가?</h2>
+    <button class="close-btn" id="closeHelp">×</button>
+  </div>
+  <div class="lang-row">
+    <button class="lang-btn active" data-helplang="en">English</button>
+    <button class="lang-btn" data-helplang="ko">한국어</button>
+  </div>
+
+  <div id="helpEn">
+    <div class="help-section warn">
+      <h3>⚠ REVIEW STATUS — READ FIRST</h3>
+      <p><strong>This file is a security-review demonstrator.</strong> It is not a public release, not a consumer app, and not intended for distribution.</p>
+      <p>The PWA recorder is used to demonstrate offline, single-file, zero-dependency recording patterns and their browser-level limits. It should be evaluated as a review artifact, not as a deployed field application.</p>
+      <p>Calculator camouflage, Compact Visible Mode, and image-extension saving are reviewable design patterns. They do not remove platform limits, legal obligations, or device-level indicators controlled by Android or the browser.</p>
+    </div>
+
+    <div class="help-section tip">
+      <h3>💾 About the Save Format option (V3.0)</h3>
+      <p>Earlier versions tried to disguise files by altering the header. V3.8 keeps the safer two-option model:</p>
+      <ul>
+        <li><strong>As-is (default):</strong> The recording is saved unmodified. It plays directly in any audio player. Use this when you simply want a normal recording file.</li>
+        <li><strong>Image extension disguise:</strong> The audio bytes are preserved unchanged, but the file is downloaded with a <code>.jpg</code> extension. It may appear as a broken image. To play the audio, manually rename <code>IMG_20260105_xxx.jpg</code> back to <code>.webm</code>. Because the audio bytes are not wrapped or padded, renaming restores playback.</li>
+      </ul>
+      <p>You can change this option at any time. It only affects future recordings, not files already saved.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>The two-screen model</h3>
+      <p>The app has two distinct screens:</p>
+      <ul>
+        <li><strong>Recorder screen:</strong> Normal UX. Toasts, dialogs, and the help button work here. Default on first launch.</li>
+        <li><strong>Calculator screen:</strong> A working scientific calculator. The app is absolutely silent here — no toasts, no dialogs, no recording indicator, no help. Even when recording is active, the screen behaves like a normal calculator. This is the operational mode for risky environments.</li>
+      </ul>
+      <p>Switch between them using the toggle at the top of the recorder screen.</p>
+    </div>
+
+    <div class="help-section tip">
+      <h3>▣ Compact Visible Mode (V3.8)</h3>
+      <p>Compact Visible Mode creates a very small recorder surface intended for Samsung pop-up view or split-screen review testing. It does <strong>not</strong> make the web app a true Android background recorder.</p>
+      <ul>
+        <li><strong>Calculator command:</strong> type <code>0000</code> (or your changed code), then press <code>%</code>.</li>
+        <li><strong>Transparency:</strong> Settings allow 0%–100% UI transparency. 0% means fully opaque; 100% means fully transparent. This controls only the web UI surface, not the Android pop-up window frame.</li>
+        <li><strong>Samsung pop-up:</strong> the PWA cannot switch itself into Samsung pop-up view. Open Android Recents manually and choose pop-up or split-screen view.</li>
+        <li><strong>Reliability:</strong> recording is most likely to continue while the PWA window remains visibly open. If the app is fully hidden, minimized, or the screen locks, recording is not guaranteed.</li>
+      </ul>
+      <p><strong>Recommended S23 test flow:</strong> start recording, enter <code>0000 + %</code> for Compact Visible Mode, open Samsung pop-up view from Android Recents, set the screen-on review duration to 20/60 minutes, keep the device charging if possible, then verify saved files after 5, 20, and 60 minutes.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>Hidden gear icon</h3>
+      <p>The ⚙ icon can be hidden so the app appears to be only a calculator. To reset settings to the initial default state: switch to the calculator screen, type <code>0000</code> (or your changed code), then press <code>=</code>. The reset uses the current code; after reset, the code returns to <code>0000</code>.</p>
+      <p>To start or stop recording from the calculator screen: type <code>0000</code> (or your changed code), then press <code>×</code>. Recording remains silent in calculator mode.</p>
+      <p>To enter Compact Visible Mode from the calculator screen: type <code>0000</code> (or your changed code), then press <code>%</code>.</p>
+      <p>If you enter the wrong code, press <code>C</code>. The <code>C</code> key clears both the visible calculator expression and the hidden command buffer. For example, if you accidentally enter <code>000</code> instead of <code>0000</code>, press <code>C</code> and start again.</p>
+      <p>If you tap "Hide" from the recorder screen, the app first switches to the calculator and then removes the gear icon. Use the keypad commands above to record or reset settings.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>Why no password at recording time?</h3>
+      <p>Earlier versions required a password before each recording. Field testing showed this fails the most basic field reality: <strong>in an emergency, every second of fumbling with a password creates risk.</strong> V3.0 removes the password barrier. Recording starts the instant the user taps. Encryption can be added at the storage layer in production builds without blocking the capture path.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>Single HTML file, zero dependencies</h3>
+      <p>VitalGuard's core philosophy: <strong>auditable single file = supply chain attack immunity.</strong> Zero external libraries, CDNs, or API calls — only one SHA-256 hash needs verification. Service Worker and Manifest are inlined via <code>data:</code> URLs.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>Acoustic / keyword / BLE triggers</h3>
+      <p>Gunshots, explosions, and screams produce clear amplitude spikes (100–120 dB). The Web Audio API's <code>AnalyserNode</code> computes RMS and Zero-Crossing Rate; recording auto-starts when thresholds are exceeded. Pure DSP — no external ML.</p>
+      <p>When triggered while the calculator screen is active, recording starts <em>silently</em> — no toast, no indicator. Evidence is preserved without exposing the user.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>Panic wipe (3-tap)</h3>
+      <p>Three rapid taps within 1 second on the invisible top-left zone stops any active recording and clears this app's local settings/cache. Browser security prevents a web app from deleting files that were already downloaded to the device's file system.</p>
+      <p>Use the device file manager to remove downloaded recording files if needed.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>GDPR · UNCRC · CRPD alignment by design</h3>
+      <ul>
+        <li><strong>GDPR:</strong> zero servers → zero data transfer → zero processor liability</li>
+        <li><strong>UNCRC:</strong> child-protection alerts without any data collection</li>
+        <li><strong>CRPD:</strong> simple UI usable by non-specialists</li>
+      </ul>
+      <p>Compliance is structural, not bolted on.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>Pre-deployment status</h3>
+      <p>This is a demonstrator. Production deployment will add independent security audit (ROS), multilingual UI (Arabic, Rohingya, etc.), field pilots (UCL GDI Hub, IDS Sussex), Hippocratic License 3.0 liability clauses, and optional storage-layer AES-256-GCM that does not block the capture path.</p>
+    </div>
+  </div>
+
+  <div id="helpKo" style="display:none;">
+    <div class="help-section warn">
+      <h3>⚠ 심사 상태 — 먼저 읽으세요</h3>
+      <p><strong>이 파일은 보안 검토용 데모입니다.</strong> 공개 배포본이 아니며, 소비자용 앱도 아니고, 배포 목적도 아닙니다.</p>
+      <p>이 PWA 녹음기는 오프라인·단일 파일·무의존성 녹음 패턴과 브라우저 수준의 한계를 검토하기 위한 산출물입니다. 실제 배포된 현장 앱이 아니라 심사용 아티팩트로 평가해야 합니다.</p>
+      <p>계산기 위장, 작은 표시 모드, 이미지 확장자 저장은 검토 가능한 설계 패턴입니다. Android 또는 브라우저가 통제하는 플랫폼 한계, 법적 의무, 기기 수준 표시를 제거하지 않습니다.</p>
+    </div>
+
+    <div class="help-section tip">
+      <h3>💾 저장 형식 옵션에 대하여 (V3.0)</h3>
+      <p>이전 버전은 헤더를 바꾸는 방식으로 파일 위장을 시도했습니다. V3.8은 더 안전한 두 가지 옵션 모델을 유지합니다.</p>
+      <ul>
+        <li><strong>그대로 (기본):</strong> 녹음 파일을 변경 없이 저장합니다. 어떤 오디오 플레이어로든 바로 재생됩니다. 일반 녹음 파일이 필요하면 이 옵션을 사용하세요.</li>
+        <li><strong>이미지 확장자 위장:</strong> 오디오 바이트는 변경하지 않고 파일명만 <code>.jpg</code> 확장자로 다운로드합니다. 깨진 이미지처럼 보일 수 있습니다. 오디오를 재생하려면 <code>IMG_20260105_xxx.jpg</code>를 직접 <code>.webm</code>으로 이름을 바꾸세요. 바이트를 감싸거나 패딩하지 않으므로 이름 변경만으로 재생을 복구할 수 있습니다.</li>
+      </ul>
+      <p>이 옵션은 언제든 변경할 수 있습니다. 이미 저장된 파일에는 영향을 주지 않으며, 향후 녹음에만 적용됩니다.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>두 가지 화면 모델</h3>
+      <ul>
+        <li><strong>녹음기 화면:</strong> 일반 UX. 토스트·다이얼로그·도움말 버튼이 정상 작동. 첫 실행 시 기본.</li>
+        <li><strong>계산기 화면:</strong> 작동하는 공학용 계산기. 앱은 이 화면에서 절대 침묵 — 토스트·다이얼로그·녹음 인디케이터·도움말 모두 금지. 녹음 중이라도 외관상 그냥 계산기. 위험 환경의 운영 모드.</li>
+      </ul>
+      <p>녹음기 화면 상단의 토글로 전환합니다.</p>
+    </div>
+
+    <div class="help-section tip">
+      <h3>▣ 작은 표시 모드 (V3.8)</h3>
+      <p>작은 표시 모드는 삼성 팝업 화면 또는 분할 화면 심사 테스트를 위해 녹음기 화면을 매우 작게 보여주는 모드입니다. 이는 웹앱을 진짜 Android 백그라운드 녹음기로 바꾸는 기능이 아닙니다.</p>
+      <ul>
+        <li><strong>계산기 명령:</strong> <code>0000</code>(변경한 경우 변경한 코드)을 누른 뒤 <code>%</code>를 누르세요.</li>
+        <li><strong>투명도:</strong> 설정에서 UI 투명도를 0%–100%로 조정할 수 있습니다. 0%는 완전 불투명, 100%는 완전 투명입니다. 이는 웹 UI 표면만 조절하며, Android 팝업 창 프레임 자체는 제어하지 않습니다.</li>
+        <li><strong>삼성 팝업 화면:</strong> PWA가 스스로 삼성 팝업 화면으로 전환할 수는 없습니다. Android 최근 앱 화면에서 사용자가 직접 팝업 화면 또는 분할 화면을 선택해야 합니다.</li>
+        <li><strong>안정성:</strong> PWA 창이 실제로 화면에 보이는 동안 녹음 유지 가능성이 가장 높습니다. 앱이 완전히 숨겨지거나 최소화되거나 화면이 잠기면 녹음 지속은 보장되지 않습니다.</li>
+      </ul>
+      <p><strong>S23 권장 테스트 흐름:</strong> 녹음을 시작하고, <code>0000 + %</code>로 작은 표시 모드에 들어간 뒤, Android 최근 앱에서 삼성 팝업 화면을 직접 열고, 심사 녹음 시간을 20/60분 중 선택하세요. 가능하면 충전 상태로 유지한 뒤 5분, 20분, 60분 저장 파일을 확인하세요.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>설정 아이콘 숨김</h3>
+      <p>⚙ 아이콘을 숨길 수 있습니다. 앱은 외관상 계산기로만 보입니다. 설정 초기화: 계산기 화면에서 <code>0000</code>(변경한 경우 변경한 코드)을 누른 뒤 <code>=</code>를 누르세요. 초기화는 현재 코드를 기준으로 실행되며, 초기화 후 코드는 다시 <code>0000</code>으로 돌아갑니다.</p>
+      <p>계산기 화면에서 녹음을 시작하거나 중지하려면 <code>0000</code>(변경한 경우 변경한 코드)을 누른 뒤 <code>×</code>를 누르세요. 계산기 모드에서는 녹음이 조용히 동작합니다.</p>
+      <p>계산기 화면에서 작은 표시 모드로 들어가려면 <code>0000</code>(변경한 경우 변경한 코드)을 누른 뒤 <code>%</code>를 누르세요.</p>
+      <p>코드를 잘못 입력한 경우 <code>C</code>를 누르세요. <code>C</code> 키는 보이는 계산기 수식과 숨은 명령 입력 버퍼를 함께 초기화합니다. 예를 들어 <code>0000</code> 대신 <code>000</code>만 입력했다면 <code>C</code>를 누른 뒤 처음부터 다시 입력하세요.</p>
+      <p>녹음기 화면에서 "숨기기"를 누르면, 앱이 먼저 계산기 화면으로 자동 전환된 다음 톱니바퀴를 숨깁니다. 이후 위의 키패드 명령으로 녹음하거나 설정을 초기화할 수 있습니다.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>왜 녹음 시 비밀번호가 없는가?</h3>
+      <p>이전 버전은 매 녹음 시 비밀번호를 요구했습니다. 현장의 가장 기본 현실에 어긋남이 드러났습니다 — <strong>긴급 상황의 1초 1초가 위험을 키웁니다.</strong> V3.0은 비밀번호 장벽을 제거했습니다.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>단일 HTML, 외부 의존성 0개</h3>
+      <p>VitalGuard 핵심 철학: <strong>감사 가능한 단일 파일 = 공급망 공격 면역.</strong> 외부 라이브러리·CDN·API 모두 0개. SHA-256 해시 1개로 검증.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>음향·키워드·BLE 트리거</h3>
+      <p>총성·폭발음·비명은 100~120dB의 명확한 진폭 스파이크를 보입니다. <code>AnalyserNode</code>로 RMS와 Zero-Crossing Rate를 분석합니다. 외부 ML 라이브러리 없이 순수 DSP.</p>
+      <p>계산기 화면에서 트리거 발동 시 녹음은 <em>완전 침묵</em>으로 시작됩니다 — 토스트 없음, 인디케이터 없음.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>패닉 와이프 (3-탭)</h3>
+      <p>좌상단 보이지 않는 영역을 1초 이내 3번 탭하면 진행 중인 녹음을 중지하고 이 앱의 로컬 설정/캐시를 지웁니다. 브라우저 보안 구조상 이미 기기 파일 시스템에 다운로드된 녹음 파일은 웹앱이 삭제할 수 없습니다.</p>
+      <p>다운로드된 녹음 파일은 필요 시 기기의 파일 관리자에서 직접 삭제해야 합니다.</p>
+    </div>
+
+    <div class="help-section">
+      <h3>GDPR · UNCRC · CRPD 정렬</h3>
+      <ul>
+        <li><strong>GDPR:</strong> 서버 0개 → 데이터 이전 없음 → 처리자 책임 0</li>
+        <li><strong>UNCRC:</strong> 아동 보호 시 데이터 수집 없이 위험 알림만</li>
+        <li><strong>CRPD:</strong> 단순 UI로 비전문가도 사용 가능</li>
+      </ul>
+    </div>
+
+    <div class="help-section">
+      <h3>배포 전 단계</h3>
+      <p>이는 데모입니다. 실제 배포 시에는 독립 보안 감사(ROS), 다국어 UI, 현장 파일럿(UCL GDI Hub, IDS Sussex), Hippocratic License 3.0 면책 조항, 캡처 경로를 막지 않는 저장 단계 AES-256-GCM 옵션이 추가됩니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIALOG -->
+<div id="dialog">
+  <div class="dialog-box">
+    <h3 id="dlgTitle"></h3>
+    <p id="dlgMsg"></p>
+    <input type="text" id="dlgInput" style="display:none;" maxlength="20" inputmode="numeric">
+    <div class="dialog-buttons">
+      <button class="btn-action" id="dlgCancel" style="display:none;">Cancel</button>
+      <button class="btn-action primary" id="dlgOk">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+'use strict';
+/* =================================================================
+   VitalGuard PWA Recorder — Test V4.2
+   © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
+   ================================================================= */
+
+// ============ INLINE MANIFEST ============
+const MANIFEST = {
+  name: "Calculator", short_name: "Calc", start_url: "./",
+  display: "fullscreen", background_color: "#000000", theme_color: "#000000",
+  orientation: "portrait",
+  icons: [{
+    src: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect x='24' y='12' width='144' height='168' rx='18' fill='%23222'/><rect x='42' y='30' width='108' height='36' rx='6' fill='%23000'/><circle cx='60' cy='96' r='12' fill='%23555'/><circle cx='96' cy='96' r='12' fill='%23555'/><circle cx='132' cy='96' r='12' fill='%23555'/><circle cx='60' cy='132' r='12' fill='%23555'/><circle cx='96' cy='132' r='12' fill='%23555'/><circle cx='132' cy='132' r='12' fill='%23ff8800'/></svg>",
+    sizes: "192x192", type: "image/svg+xml", purpose: "any"
+  }]
+};
+try {
+  const mb = new Blob([JSON.stringify(MANIFEST)], {type: 'application/manifest+json'});
+  document.getElementById('manifestLink').href = URL.createObjectURL(mb);
+} catch(e) {}
+
+// ============ INLINE SERVICE WORKER ============
+if ('serviceWorker' in navigator) {
+  try {
+    const swBlob = new Blob([
+      "self.addEventListener('install',e=>self.skipWaiting());" +
+      "self.addEventListener('activate',e=>self.clients.claim());" +
+      "self.addEventListener('fetch',e=>{});"
+    ], {type: 'application/javascript'});
+    navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(()=>{});
+  } catch(e) {}
+}
+
+// ============ STATE ============
+const state = {
+  options: loadOptions(),
+  unlockCode: loadUnlockCode(),
+  recording: false,
+  mediaRecorder: null,
+  audioChunks: [],
+  currentStream: null,
+  audioContext: null,
+  analyser: null,
+  vadActive: false,
+  panicTaps: [],
+  calcDisplay: '0',
+  calcExpression: '',
+  calcWaiting: false,
+  calcMode: 'DEG',
+  chunkTimer: null,
+  wakeLock: null,
+  lang: 'en',
+  recStartTime: 0,
+  timerInterval: null,
+  acousticActive: false,
+  keywordActive: false,
+  calcRecentInput: '',
+  recordedMimeType: '',
+  calcCommandBuffer: '',
+  screenOnTimer: null,
+  transparency100Warned: false,
+  gameMode: false,
+  gameStartedAt: 0,
+  gameTimerInterval: null,
+  gameAiInterval: null,
+  gameSelectedCell: null,
+  gameSelectedNumber: 1,
+  gameCharacter: 'dad',
+  gameStartScore: 100,
+  gamePenalty: 5,
+  gameHintPenalty: 5,
+  gameHintsUsed: 0,
+  gameUserScore: 100,
+  gameAiScore: 0,
+  gameMistakes: 0,
+  gameUserMoves: 0,
+  gameOver: false,
+  gameCompleted: false,
+  gameBoard: [],
+  gameFixed: [],
+  gameOwner: [],
+  gameSessionMs: 20 * 60 * 1000,
+  firstRunDone: false
+};
+try { state.firstRunDone = localStorage.getItem('vg_firstrun_v8') === '1'; } catch(e) {}
+
+function loadOptions() {
+  // V3.0 schema
+  const def = {
+    saveFormat: 'asis',           // 'asis' | 'image'
+    screenMode: 'recorder',       // 'recorder' | 'calculator'
+    settingsVisible: true,
+    stealthMode: false,
+    instantRec: false,
+    keywordTrigger: false,
+    acousticTrigger: false,
+    bleTrigger: false,
+    chunkMode: false,
+    wakeLock: false,
+    vad: true,
+    panicWipe: true,
+    compactMode: false,
+    compactTransparency: 0,
+    screenOnDuration: 20,
+    powerTrickEnabled: false,
+    powerTrickDuration: 1
+  };
+  try {
+    const saved = JSON.parse(localStorage.getItem('vg_opts_v3') || '{}');
+    // V3.4: the older black-screen stealth setting was not functionally implemented in V3.2.
+    // Keep legacy saved values from suppressing UI side effects unexpectedly.
+    saved.stealthMode = false;
+    if (typeof saved.compactTransparency !== 'number') saved.compactTransparency = def.compactTransparency;
+    saved.compactTransparency = Math.min(100, Math.max(0, Math.round(saved.compactTransparency)));
+    if (![20, 60].includes(Number(saved.screenOnDuration))) saved.screenOnDuration = def.screenOnDuration;
+    saved.screenOnDuration = Number(saved.screenOnDuration);
+    // V4.2: validate powerTrick and settings notice
+    if (![1, 5, 15, 30, 60].includes(Number(saved.powerTrickDuration))) saved.powerTrickDuration = def.powerTrickDuration;
+    saved.powerTrickDuration = Number(saved.powerTrickDuration);
+    saved.powerTrickEnabled = !!saved.powerTrickEnabled;
+    return Object.assign(def, saved);
+  } catch(e) { return def; }
+}
+function saveOptions() {
+  try { localStorage.setItem('vg_opts_v3', JSON.stringify(state.options)); } catch(e) {}
+}
+function loadUnlockCode() {
+  try { return localStorage.getItem('vg_unlock_v3') || '0000'; } catch(e) { return '0000'; }
+}
+function saveUnlockCode(code) {
+  try { localStorage.setItem('vg_unlock_v3', code); } catch(e) {}
+  state.unlockCode = code;
+}
+
+const SETTINGS_NOTICE_V42_KEY = 'vg_settings_notice_v42_seen';
+let settingsNoticeV42Open = false;
+
+function hasSeenSettingsNoticeV42() {
+  try { return localStorage.getItem(SETTINGS_NOTICE_V42_KEY) === '1'; } catch(e) { return false; }
+}
+
+function markSettingsNoticeV42Seen() {
+  try { localStorage.setItem(SETTINGS_NOTICE_V42_KEY, '1'); } catch(e) {}
+}
+
+function clearSettingsNoticeV42Seen() {
+  try { localStorage.removeItem(SETTINGS_NOTICE_V42_KEY); } catch(e) {}
+}
+
+function buildSettingsNoticeV42Message() {
+  return [
+    'ENGLISH',
+    'This is a test version designed to introduce multiple offline AI variants of VitalGuard AI.',
+    'This version requires continuous updates.',
+    'All responsibility arising from the use of this app belongs to the user.',
+    '',
+    '한국어',
+    '이 버전은 VitalGuard AI 오프라인 AI의 다양한 버전을 소개하기 위한 테스트 버전입니다.',
+    '해당 버전은 지속적인 업데이트가 필요합니다.',
+    '이 앱의 사용에 따른 모든 책임은 사용자 본인에게 있습니다.'
+  ].join('\n');
+}
+
+async function showSettingsNoticeV42() {
+  if (settingsNoticeV42Open) return false;
+  settingsNoticeV42Open = true;
+  try {
+    return await dialog({
+      title: 'VitalGuard AI Test Version Notice / 테스트 버전 고지',
+      msg: buildSettingsNoticeV42Message(),
+      okLabel: 'YES / 예',
+      cancel: true,
+      cancelLabel: 'NO / 아니오'
+    });
+  } finally {
+    settingsNoticeV42Open = false;
+  }
+}
+
+function openSettingsPanel() {
+  settingsPanel.classList.add('active');
+  refreshToggles();
+  updateSaveFormatButtons();
+}
+
+function exitSettingsNoticeFlow() {
+  settingsPanel.classList.remove('active');
+  try { window.close(); } catch(e) {}
+}
+
+function getDefaultOptions() {
+  return {
+    saveFormat: 'asis',
+    screenMode: 'recorder',
+    settingsVisible: true,
+    stealthMode: false,
+    instantRec: false,
+    keywordTrigger: false,
+    acousticTrigger: false,
+    bleTrigger: false,
+    chunkMode: false,
+    wakeLock: false,
+    vad: true,
+    panicWipe: true,
+    compactMode: false,
+    compactTransparency: 0,
+    screenOnDuration: 20,
+    powerTrickEnabled: false,
+    powerTrickDuration: 1
+  };
+}
+
+function resetSettingsToInitialState() {
+  state.options = getDefaultOptions();
+  saveOptions();
+  saveUnlockCode('0000');
+  clearSettingsNoticeV42Seen();
+  state.calcRecentInput = '';
+  state.calcCommandBuffer = '';
+  state.calcDisplay = '0';
+  state.calcExpression = '';
+  state.calcWaiting = false;
+  state.calcMode = 'DEG';
+  calcUpdate();
+  applyI18n('en');
+  updateSaveFormatButtons();
+  applyUIMode();
+}
+
+// ============================================================
+// CRITICAL HELPER: are we on calculator screen?
+// While true, every UI side-effect MUST be suppressed.
+// ============================================================
+function inCalcScreen() {
+  return state.options.screenMode === 'calculator' || state.options.stealthMode;
+}
+
+// ============ I18N ============
+const I18N = {
+  en: {
+    settingsTitle: "Settings",
+    ptTitle: "Power-Menu Guard — black-screen protection flow",
+    ptDesc: "When OFF (default), the recorder works normally. When ON, the guard is armed. If the device power-menu action briefly hides and returns the page, the app enters a short fake power menu and then a full-viewport black screen. On many Android devices this action may be Power + Volume Up, but the web app only detects the resulting visibility interruption, not the hardware keys themselves.",
+    ptEnabled: "Power-Menu Guard (default OFF)",
+    ptEnabledDesc: "Off: normal recorder. On: armed — power-menu interruption may trigger the black-screen flow.",
+    ptDuration: "Black-screen duration (default: 1 min — test mode)",
+    ptDurationDesc: "How long the black screen + silent recording lasts. Recovery is always available via numeric code (default 0000) on the hidden keypad.",
+    ptTestBtn: "▶ Test black-screen flow",
+    ptStatusDisarmed: "Status: disarmed",
+    ptStatusArmed: "Status: ARMED — waiting for a power-menu interruption",
+    ptOnExplain: "Power-Menu Guard is now armed.\n\nTap anywhere to close this notice.\n\nUse your device power-menu action when needed. On many Android devices this may be Power + Volume Up. VitalGuard does not read those hardware keys directly; it only reacts if the page is briefly hidden and returns.\n\nWhen triggered, the app shows a short fake power menu and then enters a full-viewport black screen for the selected duration. Bottom-center hidden keypad recovery remains available with your unlock code.\n\nNote: Android system navigation buttons are OS-level UI and may still appear. The app blacks out only its own full viewport.",
+    ptOffExplain: "Power-Menu Guard is now OFF. The black-screen flow will not be triggered by page-visibility interruption.",
+    ptDurationChanged: "Black-screen duration: {MIN} minutes",
+    ptArmedToast: "Guard armed — waiting for power-menu interruption",
+    ptDisarmedToast: "Power-Menu Guard disarmed",
+    ptTestToast: "▶ Test mode — entering black-screen flow",
+    ptKeypadWrong: "Wrong code",
+    ptKeypadEmpty: "Enter code",
+    saveFmtTitle: "Save Format (most important)",
+    saveFmtDesc: "Choose how recordings are saved. Default is \"as-is\" so the file plays normally. The image option disguises the file but requires you to manually rename the extension to play it back.",
+    fmtAsIsTitle: "As-is (default)",
+    fmtAsIsDesc: "Original audio file. Plays directly. Filename example: rec_xxx.webm",
+    fmtImageTitle: "Image extension disguise",
+    fmtImageDesc: "Saved as IMG_xxx.jpg with audio bytes unchanged. To play: rename .jpg → .webm yourself.",
+    helpBannerTitle: "Why was this built? — Open Design Philosophy",
+    helpBannerDesc: "Read the design rationale, security reasoning, and field-safety warnings.",
+    hideTitle: "Hide Settings Icon",
+    hideDesc: "Tap to remove the ⚙ icon. To reset settings to initial defaults: switch to the calculator, type 0000 (or your changed code), then press =. To start/stop recording in calculator mode: type 0000 (or your changed code), then press ×. The code is changeable below.",
+    hideBtn: "OFF — Hide settings now",
+    secScreen: "Default Screen", secTrigger: "Recording Trigger",
+    secStorage: "Storage Behavior", secPanic: "Emergency",
+    optScreen: "Default screen on launch",
+    optScreenDesc: "Choose what appears when the app opens. You can also switch via the toggle at the top of the recorder screen.",
+    btnRecDefault: "🎙 Recorder (default)", btnCalcDefault: "🧮 Calculator",
+    compactTitle: "Compact Visible Mode",
+    compactDesc: "For Samsung pop-up or split-screen testing. In calculator mode, type 0000 (or your changed code), then press %. The app cannot turn itself into a Samsung pop-up window; open pop-up view manually from Android Recents.",
+    optCompact: "Compact visible mode",
+    optCompactDesc: "Keeps a small visible recorder surface. Use only while the PWA window remains visible.",
+    compactTransparencyLabel: "UI transparency",
+    screenOnTitle: "Review recording duration",
+    screenOnDesc: "Choose 20 or 60 minutes as the Big Sudoku review recording duration. This does not change Android system screen-timeout settings; it only defines the test window while Wake Lock attempts to keep the screen awake.",
+    screenOnLabel: "Duration",
+    transparent100Title: "Big Sudoku Review Mode",
+    transparent100Msg: "The screen will switch to Big Sudoku. For the selected duration, the app will try to keep the screen awake and continue recording while this screen remains visible. If the screen turns off, recording stops. Selected duration: {MINUTES} minutes. Proceed?",
+    bigSudokuDone: "Big Sudoku review test ended. Returning to calculator.",
+    calcClearTip: "If you enter the wrong code, press C. The C key clears both the calculator expression and the hidden command buffer.",
+    screenOnReached: "Screen-on test duration reached",
+    optStealth: "Black screen + secret pattern",
+    optStealthDesc: "Replace the calculator with a fully black screen. Tap zones 1→5→9 in 2 seconds to start recording.",
+    optInstant: "Instant recording on launch",
+    optInstantDesc: "Auto-record the moment the app opens. In calculator mode, recording is fully silent.",
+    optKeyword: "Voice keyword trigger",
+    optKeywordDesc: "Auto-record on keyword detection (high battery use).",
+    optAcoustic: "Acoustic event auto-record",
+    optAcousticDesc: "Auto-record on gunshots / explosions / screams via amplitude analysis.",
+    optBLE: "BLE external trigger",
+    optBLEDesc: "Auto-record on danger signal from VitalGuard mesh.",
+    optChunk: "Automatic chunk splitting",
+    optChunkDesc: "Split every 30s; one file seizure ≠ full exposure.",
+    optWakeLock: "Keep screen awake",
+    optWakeLockDesc: "Tries to keep the screen awake while recording. This is not true background recording and cannot guarantee recording after the device is locked.",
+    optVAD: "VAD silence compression",
+    optVADDesc: "Detect speech regions; useful for analysis (does not modify the saved file).",
+    optPanic: "Panic wipe (3-tap)",
+    optPanicDesc: "Top-left corner × 3 rapid taps → clear app settings/cache. Downloaded files cannot be deleted by this web app.",
+    btnWipeNow: "⚠ Clear App Data Now",
+    btnChangeCode: "🔑 Change unlock code",
+    licNote: "Civilian / agricultural / humanitarian purposes only",
+
+    recHeading: "Audio Recorder",
+    recSubtitle: "Tap the red button to start. Tap again to stop and save.",
+    recReady: "Ready", recRecording: "🔴 Recording...", recStopped: "Stopped — file saved",
+    recBtn: "REC", recBtnStop: "STOP",
+
+    pillAsis: "Saving as audio file (recommended)",
+    pillImage: "Saving with .jpg extension — rename .jpg → .webm to play",
+
+    firstRunTitle: "This is a reference test version",
+    firstRunMsg: "Optimized for Samsung Internet Browser.\n\nQuick guide:\n• Tap REC to record. The file saves as audio by default.\n• Calculator recording: enter 0000 (or your changed code), then press ×.\n• Settings reset: enter 0000 (or your changed code), then press =. This returns settings to the initial default state.\n• Calculator screen is silent — no popups, no recording indicator.\n• Default code is 0000 and can be changed in settings.",
+
+    hideConfirmTitle: "Hide settings icon?",
+    hideConfirmMsg: "The ⚙ icon will disappear.\n\nCalculator commands after hiding:\n• Record: type 0000 (or your changed code), then press ×.\n• Reset settings to initial defaults: type 0000 (or your changed code), then press =.\n\nIf you are currently on the recorder screen, the app will automatically switch to the calculator before hiding.\n\nProceed?",
+    settingsReset: "✅ Settings reset to initial defaults",
+    changeCodeTitle: "Change unlock code",
+    changeCodeMsg: "Enter a new code (digits only, 4–10 characters).\nForgetting the code means settings cannot be restored without wiping the app.",
+    codeSaved: "✅ New unlock code saved",
+    codeInvalid: "⚠ Code must be 4–10 digits",
+    confirmWipe: "Clear app settings/cache? Already downloaded recordings will not be deleted.",
+    allWiped: "🗑 App data cleared",
+    micDenied: "❌ Microphone permission required",
+    recStarted: "🔴 Recording started",
+    recEnded: "⏹ Recording stopped — file saved",
+    loudDetect: "⚠ Loud event detected — auto recording",
+    keywordDetect: "⚠ Keyword detected — auto recording",
+    bleNote: "BLE monitor active (manual pairing required)",
+    bleUnsupported: "⚠ BLE unsupported on this browser",
+    speechUnsupported: "⚠ Speech API unsupported",
+    fmtChangedAsis: "✅ Save format: as-is (audio file)",
+    fmtChangedImage: "✅ Save format: image disguise (.jpg)",
+    compactOn: "▣ Compact visible mode on",
+    compactOff: "▢ Compact visible mode off",
+    defaultRec: "✅ Default screen: Recorder",
+    defaultCalc: "✅ Default screen: Calculator"
+  },
+  ko: {
+    settingsTitle: "설정",
+    ptTitle: "전원 메뉴 가드 — 검은 화면 보호 흐름",
+    ptDesc: "OFF(기본) 상태에서는 일반 녹음기로 작동합니다. ON으로 전환하면 가드가 무장됩니다. 기기의 전원 메뉴 동작으로 페이지가 잠깐 숨겨졌다가 돌아오면, 앱이 짧은 가짜 전원 메뉴를 거쳐 전체 뷰포트 검은 화면으로 들어갑니다. 많은 안드로이드 기기에서는 이 동작이 전원 + 볼륨 업일 수 있지만, 웹 앱은 하드웨어 키 자체가 아니라 그 결과로 생기는 visibility interruption만 감지합니다.",
+    ptEnabled: "전원 메뉴 가드 (기본 OFF)",
+    ptEnabledDesc: "Off: 일반 녹음기. On: 무장 — 전원 메뉴 전환이 감지되면 검은 화면 흐름 진입.",
+    ptDuration: "검은 화면 지속 시간 (기본: 1분 — 테스트 모드)",
+    ptDurationDesc: "검은 화면 + 침묵 녹음이 지속되는 시간. 복구는 숨겨진 키패드의 숫자 코드(기본 0000)로 언제든 가능합니다.",
+    ptTestBtn: "▶ 검은 화면 흐름 테스트",
+    ptStatusDisarmed: "상태: 해제됨",
+    ptStatusArmed: "상태: 무장 — 전원 메뉴 전환 대기 중",
+    ptOnExplain: "전원 메뉴 가드가 무장되었습니다.\n\n이 안내는 화면 아무 곳이나 터치하면 닫힙니다.\n\n필요할 때 기기의 전원 메뉴 동작을 사용하세요. 많은 안드로이드 기기에서는 전원 + 볼륨 업일 수 있습니다. VitalGuard는 이 하드웨어 키를 직접 읽지 않고, 페이지가 잠깐 숨겨졌다가 돌아오는 변화만 감지합니다.\n\n감지되면 짧은 가짜 전원 메뉴를 거쳐 선택한 시간 동안 전체 뷰포트 검은 화면으로 들어갑니다. 하단 중앙의 숨겨진 키패드 복구는 잠금 해제 코드로 계속 사용할 수 있습니다.\n\n주의: 안드로이드 하단 내비게이션 버튼은 OS 영역이라 남아 있을 수 있습니다. 앱은 자체 전체 뷰포트만 검은색으로 덮습니다.",
+    ptOffExplain: "전원 메뉴 가드가 OFF 상태입니다. 페이지 전환 감지로 검은 화면 흐름이 실행되지 않습니다.",
+    ptDurationChanged: "검은 화면 지속 시간: {MIN}분",
+    ptArmedToast: "가드 무장 완료 — 전원 메뉴 전환 대기 중",
+    ptDisarmedToast: "전원 메뉴 가드 해제됨",
+    ptTestToast: "▶ 테스트 모드 — 검은 화면 흐름 실행",
+    ptKeypadWrong: "잘못된 코드",
+    ptKeypadEmpty: "코드를 입력하세요",
+    saveFmtTitle: "저장 형식 (가장 중요)",
+    saveFmtDesc: "녹음 파일을 어떻게 저장할지 선택하세요. 기본값은 \"그대로\"이며 파일이 정상 재생됩니다. 이미지 옵션은 파일을 위장하지만, 재생하려면 사용자가 직접 확장자를 바꿔야 합니다.",
+    fmtAsIsTitle: "그대로 (기본)",
+    fmtAsIsDesc: "원본 오디오 파일. 즉시 재생됨. 예시: rec_xxx.webm",
+    fmtImageTitle: "이미지 확장자 위장",
+    fmtImageDesc: "오디오 바이트는 그대로 두고 IMG_xxx.jpg로 저장. 재생하려면 .jpg → .webm으로 직접 이름 변경.",
+    helpBannerTitle: "왜 이렇게 만들었는가? — 설계 철학 보기",
+    helpBannerDesc: "설계 근거, 보안 사유, 현장 안전 경고를 확인하세요.",
+    hideTitle: "설정 아이콘 숨기기",
+    hideDesc: "OFF를 누르면 ⚙ 아이콘이 사라집니다. 설정 초기화: 계산기 화면에서 0000(변경한 경우 변경한 코드)을 누른 뒤 =를 누르세요. 계산기 녹음 시작/중지: 0000(변경한 경우 변경한 코드)을 누른 뒤 ×를 누르세요. 아래에서 코드를 변경할 수 있습니다.",
+    hideBtn: "OFF — 지금 설정 숨기기",
+    secScreen: "기본 화면", secTrigger: "녹음 트리거",
+    secStorage: "저장 동작", secPanic: "비상",
+    optScreen: "시작 시 기본 화면",
+    optScreenDesc: "앱 실행 시 어떤 화면이 보일지 선택. 녹음기 화면 상단의 토글로도 전환할 수 있습니다.",
+    btnRecDefault: "🎙 녹음기 (기본)", btnCalcDefault: "🧮 계산기",
+    compactTitle: "작은 표시 모드",
+    compactDesc: "삼성 팝업 화면 또는 분할 화면 테스트용입니다. 계산기 모드에서 0000(변경한 경우 변경한 코드)을 누른 뒤 %를 누르세요. 앱이 스스로 삼성 팝업 창으로 전환되지는 않으므로 Android 최근 앱에서 직접 팝업 화면을 열어야 합니다.",
+    optCompact: "작은 표시 모드",
+    optCompactDesc: "작은 녹음기 표면을 유지합니다. PWA 창이 실제로 보이는 상태에서만 사용하세요.",
+    compactTransparencyLabel: "UI 투명도",
+    screenOnTitle: "심사 녹음 시간",
+    screenOnDesc: "빅 스도쿠 심사 녹음 시간을 20분 또는 60분 중 선택합니다. 이 설정은 Android 시스템의 화면 자동 꺼짐 시간을 직접 변경하지 않으며, Wake Lock이 화면 켜짐 유지를 시도하는 테스트 기준 시간만 정합니다.",
+    screenOnLabel: "선택 시간",
+    transparent100Title: "빅 스도쿠 심사 모드",
+    transparent100Msg: "화면이 빅 스도쿠 게임으로 전환됩니다. 선택한 시간 동안 화면 창이 꺼지지 않도록 시도하며, 이 화면이 보이는 동안 녹음이 진행됩니다. 화면 창이 꺼지면 녹음도 중단됩니다. 선택 시간: {MINUTES}분. 진행할까요?",
+    bigSudokuDone: "빅 스도쿠 심사 테스트가 종료되었습니다. 계산기로 돌아갑니다.",
+    calcClearTip: "코드를 잘못 입력한 경우 C를 누르세요. C 키는 계산기 수식뿐 아니라 숨은 명령 입력 버퍼도 함께 초기화합니다.",
+    screenOnReached: "심사 녹음 시간이 도달했습니다",
+    optStealth: "검은화면 + 비밀패턴 모드",
+    optStealthDesc: "계산기를 완전 검은 화면으로 대체. 2초 이내 1→5→9 영역 탭으로 녹음 시작.",
+    optInstant: "즉시 녹음 모드",
+    optInstantDesc: "PWA 시작과 동시에 자동 녹음. 계산기 모드에서는 완전 침묵으로 녹음.",
+    optKeyword: "음성 키워드 자동 시작",
+    optKeywordDesc: '"도와주세요" 등 키워드 감지 시 자동 녹음 (배터리 소모 큼).',
+    optAcoustic: "음향 이벤트 자동 녹음",
+    optAcousticDesc: "총소리·폭발음·비명 등 굉음 감지 시 자동 녹음 (진폭 분석).",
+    optBLE: "BLE 외부 트리거",
+    optBLEDesc: "VitalGuard 메시 네트워크에서 위험 신호 수신 시 자동 녹음.",
+    optChunk: "자동 청크 분할",
+    optChunkDesc: "30초마다 분할 저장. 한 파일이 발견되어도 전체 노출 방지.",
+    optWakeLock: "화면 켜짐 유지",
+    optWakeLockDesc: "녹음 중 화면이 꺼지지 않도록 시도합니다. 이는 진짜 백그라운드 녹음이 아니며, 기기가 잠긴 뒤의 녹음 지속은 보장할 수 없습니다.",
+    optVAD: "VAD 무음 압축",
+    optVADDesc: "음성 구간 감지 (분석용; 저장 파일은 변경하지 않음).",
+    optPanic: "패닉 와이프 (3-탭 삭제)",
+    optPanicDesc: "좌상단 1초 이내 3번 탭 → 앱 설정/캐시 삭제. 이미 다운로드된 파일은 웹앱이 삭제할 수 없습니다.",
+    btnWipeNow: "⚠ 앱 데이터 삭제",
+    btnChangeCode: "🔑 잠금 해제 코드 변경",
+    licNote: "민간·농업·인도주의 목적에 한해 사용 가능",
+
+    recHeading: "녹음기",
+    recSubtitle: "빨간 버튼을 누르면 녹음이 시작됩니다. 다시 누르면 멈추고 저장됩니다.",
+    recReady: "준비됨", recRecording: "🔴 녹음 중...", recStopped: "중지 — 파일 저장됨",
+    recBtn: "녹음", recBtnStop: "중지",
+
+    pillAsis: "오디오 파일 그대로 저장 (권장)",
+    pillImage: "이미지 확장자 위장 저장 — 재생하려면 .jpg → .webm으로 이름 변경",
+
+    firstRunTitle: "환영합니다 — V3.8 (심사 테스트)",
+    firstRunMsg: "이 앱은 심사용 데모입니다.\n\n간단 안내:\n• 녹음 버튼을 누르면 녹음됩니다. 기본은 오디오 파일로 저장됩니다.\n• 계산기 녹음: 0000(변경한 경우 변경한 코드)을 누른 뒤 ×를 누르세요.\n• 설정 초기화: 0000(변경한 경우 변경한 코드)을 누른 뒤 =를 누르세요. 설정이 최초 기본 상태로 돌아갑니다.\n• 계산기 화면은 완전 침묵 — 팝업·녹음 인디케이터 모두 표시되지 않습니다.\n• 기본 코드는 0000이며 설정에서 변경할 수 있습니다.",
+
+    hideConfirmTitle: "설정 아이콘을 숨길까요?",
+    hideConfirmMsg: "⚙ 아이콘이 사라집니다.\n\n숨긴 뒤 계산기 명령:\n• 녹음: 0000(변경한 경우 변경한 코드)을 누른 뒤 ×를 누르세요.\n• 설정 초기화: 0000(변경한 경우 변경한 코드)을 누른 뒤 =를 누르세요.\n\n현재 녹음기 화면이라면 앱이 자동으로 계산기 화면으로 전환됩니다.\n\n진행할까요?",
+    settingsReset: "✅ 설정이 최초 기본 상태로 초기화되었습니다",
+    changeCodeTitle: "잠금 해제 코드 변경",
+    changeCodeMsg: "새 코드를 입력하세요 (숫자만, 4~10자리).\n코드를 잊으면 앱을 지우지 않고는 설정을 복구할 수 없습니다.",
+    codeSaved: "✅ 새 잠금 해제 코드 저장됨",
+    codeInvalid: "⚠ 코드는 4~10자리 숫자여야 합니다",
+    confirmWipe: "앱 설정/캐시를 삭제할까요? 이미 다운로드된 녹음 파일은 삭제되지 않습니다.",
+    allWiped: "🗑 앱 데이터 삭제됨",
+    micDenied: "❌ 마이크 권한이 필요합니다",
+    recStarted: "🔴 녹음 시작",
+    recEnded: "⏹ 녹음 중지 — 파일 저장됨",
+    loudDetect: "⚠ 굉음 감지 — 자동 녹음",
+    keywordDetect: "⚠ 키워드 감지 — 자동 녹음",
+    bleNote: "BLE 모니터 활성화 (수동 페어링 필요)",
+    bleUnsupported: "⚠ 이 브라우저는 BLE를 지원하지 않습니다",
+    speechUnsupported: "⚠ 음성 인식 미지원",
+    fmtChangedAsis: "✅ 저장 형식: 그대로 (오디오 파일)",
+    fmtChangedImage: "✅ 저장 형식: 이미지 확장자 위장 (.jpg)",
+    compactOn: "▣ 작은 표시 모드 켜짐",
+    compactOff: "▢ 작은 표시 모드 꺼짐",
+    defaultRec: "✅ 기본 화면: 녹음기",
+    defaultCalc: "✅ 기본 화면: 계산기"
+  }
+};
+function t(key) { return (I18N[state.lang] && I18N[state.lang][key]) || key; }
+
+function buildBigSudokuReviewMessage() {
+  const minutes = [20,60].includes(Number(state.options.screenOnDuration)) ? Number(state.options.screenOnDuration) : 20;
+  return t('transparent100Msg').replace('{MINUTES}', String(minutes));
+}
+
+
+function applyI18n(lang) {
+  state.lang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (I18N[lang] && I18N[lang][key]) el.textContent = I18N[lang][key];
+  });
+  document.querySelectorAll('.lang-btn[data-lang]').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.getElementById('recHeading').textContent = t('recHeading');
+  document.getElementById('recSubtitle').textContent = t('recSubtitle');
+  updateSaveFormatPill();
+  updateRecUI();
+}
+
+// ============ TOAST (silent in calc) ============
+function toast(msg, ms=2000) {
+  if (inCalcScreen()) return; // ABSOLUTE SILENCE in calculator
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._timer);
+  el._timer = setTimeout(()=>el.classList.remove('show'), ms);
+}
+
+// ============ DIALOG (silent in calc) ============
+function dialog(opts) {
+  return new Promise(resolve => {
+    if (inCalcScreen() && !opts.forceInCalc) {
+      // ABSOLUTE SILENCE: never show dialogs on calculator screen
+      resolve(null);
+      return;
+    }
+    const dlg = document.getElementById('dialog');
+    document.getElementById('dlgTitle').textContent = opts.title || '';
+    document.getElementById('dlgMsg').textContent = opts.msg || '';
+    const inp = document.getElementById('dlgInput');
+    const ok = document.getElementById('dlgOk');
+    const cancel = document.getElementById('dlgCancel');
+    if (opts.input) {
+      inp.style.display = '';
+      inp.value = opts.defaultValue || '';
+      inp.type = opts.inputType || 'text';
+      setTimeout(()=>inp.focus(), 50);
+    } else {
+      inp.style.display = 'none';
+    }
+    cancel.style.display = opts.cancel ? '' : 'none';
+    cancel.textContent = opts.cancelLabel || (state.lang==='ko' ? '취소' : 'Cancel');
+    ok.textContent = opts.okLabel || 'OK';
+    dlg.classList.toggle('tap-close', !!opts.tapToClose && !opts.input);
+    dlg.classList.add('active');
+    const cleanup = (val) => {
+      dlg.classList.remove('active');
+      dlg.classList.remove('tap-close');
+      ok.onclick = null; cancel.onclick = null; dlg.onclick = null;
+      resolve(val);
+    };
+    ok.onclick = () => cleanup(opts.input ? inp.value : true);
+    cancel.onclick = () => cleanup(null);
+    if (opts.tapToClose && !opts.input) {
+      dlg.onclick = () => cleanup(true);
+    }
+  });
+}
+
+// ============ UI MODE ============
+function applyUIMode() {
+  const calc = document.getElementById('calcUI');
+  const recorder = document.getElementById('recorderUI');
+  const game = document.getElementById('gameUI');
+  calc.classList.remove('active');
+  recorder.classList.remove('active');
+  if (game) game.classList.remove('active');
+
+  if (state.gameMode) {
+    if (game) game.classList.add('active');
+  } else if (state.options.screenMode === 'calculator') {
+    calc.classList.add('active');
+  } else {
+    recorder.classList.add('active');
+  }
+
+  const sb = document.getElementById('settingsBtn');
+  if (!state.gameMode && state.options.settingsVisible && state.options.screenMode === 'recorder') {
+    sb.classList.remove('hidden');
+  } else {
+    sb.classList.add('hidden');
+  }
+
+  if (inCalcScreen() || state.gameMode) document.getElementById('recIndicator').classList.remove('show');
+
+  applyCompactMode();
+
+  document.getElementById('btnModeRecorder').classList.toggle('active', state.options.screenMode === 'recorder');
+  document.getElementById('btnModeCalc').classList.toggle('active', state.options.screenMode === 'calculator');
+}
+
+function updateSaveFormatPill() {
+  const icon = document.getElementById('saveFormatPillIcon');
+  const text = document.getElementById('saveFormatPillText');
+  const pill = document.getElementById('saveFormatPill');
+  if (state.options.saveFormat === 'image') {
+    icon.textContent = '🖼';
+    text.textContent = t('pillImage');
+    pill.classList.add('image');
+  } else {
+    icon.textContent = '🎵';
+    text.textContent = t('pillAsis');
+    pill.classList.remove('image');
+  }
+}
+function updateSaveFormatButtons() {
+  document.getElementById('fmtAsIs').classList.toggle('selected', state.options.saveFormat === 'asis');
+  document.getElementById('fmtImage').classList.toggle('selected', state.options.saveFormat === 'image');
+}
+
+function applyCompactMode() {
+  const tr = Math.min(100, Math.max(0, Number(state.options.compactTransparency ?? 0)));
+  state.options.compactTransparency = tr;
+  const cssOpacity = Math.max(0, Math.min(1, (100 - tr) / 100));
+  document.documentElement.style.setProperty('--compact-ui-opacity', String(cssOpacity));
+  document.documentElement.classList.toggle('compact-visible-root', !!state.options.compactMode);
+  document.body.classList.toggle('compact-visible-mode', !!state.options.compactMode);
+
+  const range = document.getElementById('compactTransparencyRange');
+  const value = document.getElementById('compactTransparencyValue');
+  if (range) range.value = String(tr);
+  if (value) value.textContent = `${tr}%`;
+}
+
+async function maybeWarnFullTransparency() {
+  const tr = Number(state.options.compactTransparency || 0);
+  if (tr < 100) {
+    state.transparency100Warned = false;
+    return;
+  }
+  if (state.transparency100Warned || state.gameMode) return;
+  state.transparency100Warned = true;
+
+  const ok = await dialog({
+    title: t('transparent100Title'),
+    msg: buildBigSudokuReviewMessage(),
+    cancel: true,
+    okLabel: 'OK'
+  });
+
+  if (ok) {
+    await enterBigSudokuReviewMode();
+  } else {
+    state.options.compactTransparency = 99;
+    saveOptions();
+    applyCompactMode();
+  }
+}
+
+function updateScreenOnDurationSelect() {
+  const sel = document.getElementById('screenOnDurationSelect');
+  if (!sel) return;
+  const val = [20,60].includes(Number(state.options.screenOnDuration)) ? Number(state.options.screenOnDuration) : 20;
+  state.options.screenOnDuration = val;
+  sel.value = String(val);
+}
+
+function clearScreenOnTestTimer() {
+  if (state.screenOnTimer) {
+    clearTimeout(state.screenOnTimer);
+    state.screenOnTimer = null;
+  }
+}
+
+function startScreenOnTestTimer() {
+  clearScreenOnTestTimer();
+  const minutes = [20,60].includes(Number(state.options.screenOnDuration)) ? Number(state.options.screenOnDuration) : 20;
+  state.screenOnTimer = setTimeout(() => {
+    state.screenOnTimer = null;
+    if (state.recording) toast(t('screenOnReached'), 2500);
+  }, minutes * 60 * 1000);
+}
+
+function enterCompactVisibleMode(silent=false) {
+  state.options.screenMode = 'recorder';
+  state.options.compactMode = true;
+  saveOptions();
+  applyUIMode();
+  if (state.options.wakeLock) {
+    requestScreenWakeLock();
+    if (state.recording) startScreenOnTestTimer();
+  }
+  if (!silent) toast(t('compactOn'), 1800);
+}
+
+function exitCompactVisibleMode(silent=false) {
+  state.options.compactMode = false;
+  saveOptions();
+  applyCompactMode();
+  if (!silent) toast(t('compactOff'), 1500);
+}
+
+function toggleCompactVisibleMode() {
+  state.options.compactMode ? exitCompactVisibleMode() : enterCompactVisibleMode();
+}
+
+async function requestScreenWakeLock() {
+  if (!('wakeLock' in navigator)) return false;
+  if (document.visibilityState !== 'visible') return false;
+  try {
+    if (state.wakeLock) {
+      try { await state.wakeLock.release(); } catch(e) {}
+      state.wakeLock = null;
+    }
+    state.wakeLock = await navigator.wakeLock.request('screen');
+    state.wakeLock.addEventListener('release', () => { state.wakeLock = null; });
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+
+// ============ BIG SUDOKU REVIEW MODE (V3.8 GAMEPLAY PATCH) ============
+const BIG_SUDOKU_HOF_KEY = 'vg_big_sudoku_hof_v2';
+const BIG_SUDOKU_CHARACTERS = {
+  santa: { key: 'santa', emoji: '🎅', label: 'Santa / 산타', start: 150, penalty: 15, hintPenalty: 10, clearText: '🎅 Perfect delivery! / 완벽한 배달!' },
+  dad: { key: 'dad', emoji: '👨', label: 'Dad / 아빠', start: 100, penalty: 5, hintPenalty: 5, clearText: '👨 Balanced clear! / 균형 잡힌 클리어!' },
+  child: { key: 'child', emoji: '🧒', label: 'Child / 아이', start: 80, penalty: 2, hintPenalty: 2, clearText: '🧒 Brave clear! / 용감한 클리어!' }
+};
+const BIG_SUDOKU_SOLUTION = [
+  [9,1,6,10,7,4,2,14,3,11,5,12,15,16,8,13],
+  [13,15,16,7,11,5,10,3,6,2,8,1,9,4,12,14],
+  [5,2,14,12,8,1,13,9,16,15,4,7,10,11,3,6],
+  [4,11,3,8,16,6,12,15,14,9,10,13,7,2,5,1],
+  [15,16,7,9,14,8,3,4,11,10,2,6,13,12,1,5],
+  [12,14,5,6,13,2,1,11,4,8,15,9,3,7,16,10],
+  [11,3,10,13,9,12,15,7,1,5,14,16,4,6,2,8],
+  [1,4,8,2,10,16,5,6,13,12,7,3,11,14,15,9],
+  [14,13,2,16,3,10,11,12,8,6,9,15,1,5,7,4],
+  [8,6,12,15,1,9,14,5,7,4,3,2,16,13,10,11],
+  [7,10,4,11,2,15,16,8,5,1,13,14,6,3,9,12],
+  [3,9,1,5,6,7,4,13,10,16,12,11,2,8,14,15],
+  [6,7,11,4,12,3,8,16,9,14,1,10,5,15,13,2],
+  [16,5,13,1,15,14,6,10,2,7,11,8,12,9,4,3],
+  [10,12,9,14,4,13,7,2,15,3,6,5,8,1,11,16],
+  [2,8,15,3,5,11,9,1,12,13,16,4,14,10,6,7]
+];
+
+function isSudokuGiven(r, c) {
+  return ((r * 7 + c * 5) % 4 === 0) || ((r + c) % 9 === 0) || (r === c && r % 3 === 0);
+}
+
+function setupBigSudokuBoard() {
+  state.gameBoard = [];
+  state.gameFixed = [];
+  state.gameOwner = [];
+  for (let r=0; r<16; r++) {
+    state.gameBoard[r] = [];
+    state.gameFixed[r] = [];
+    state.gameOwner[r] = [];
+    for (let c=0; c<16; c++) {
+      const given = isSudokuGiven(r, c);
+      state.gameFixed[r][c] = given;
+      state.gameBoard[r][c] = given ? BIG_SUDOKU_SOLUTION[r][c] : 0;
+      state.gameOwner[r][c] = given ? 'given' : '';
+    }
+  }
+  state.gameSelectedCell = null;
+  state.gameSelectedNumber = 1;
+  const ch = BIG_SUDOKU_CHARACTERS[state.gameCharacter] || BIG_SUDOKU_CHARACTERS.dad;
+  state.gameStartScore = ch.start;
+  state.gamePenalty = ch.penalty;
+  state.gameHintPenalty = ch.hintPenalty;
+  state.gameHintsUsed = 0;
+  state.gameUserScore = ch.start;
+  state.gameAiScore = 0;
+  state.gameMistakes = 0;
+  state.gameUserMoves = 0;
+  state.gameOver = false;
+  state.gameCompleted = false;
+  renderBigSudoku();
+  renderNumberPad();
+  renderCharacterButtons();
+  renderHallOfFame();
+  setGameResult('Select an empty cell and choose a number. / 빈칸을 선택하고 숫자를 고르세요.');
+  updateGameStats();
+}
+
+function restartBigSudokuGameOnly() {
+  setupBigSudokuBoard();
+  centerPop('🔄 RESTART\n게임 다시 시작');
+  burstEmoji(window.innerWidth / 2, Math.min(window.innerHeight * 0.42, 360), ['🔄','🎲','✨','⭐']);
+}
+
+function renderBigSudoku() {
+  const grid = document.getElementById('bigSudokuGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  for (let r=0; r<16; r++) {
+    for (let c=0; c<16; c++) {
+      const cell = document.createElement('button');
+      cell.type = 'button';
+      cell.className = 'sudoku-cell';
+      const boxShade = ((Math.floor(r/4) + Math.floor(c/4)) % 2) === 0;
+      if (boxShade) cell.classList.add('box-shade');
+      if (state.gameFixed[r][c]) cell.classList.add('given');
+      if (!state.gameFixed[r][c] && state.gameOwner[r][c] === 'user') cell.classList.add('user');
+      if (!state.gameFixed[r][c] && state.gameOwner[r][c] === 'ai') cell.classList.add('ai');
+      if (state.gameOver || state.gameCompleted) cell.classList.add('locked');
+      if (state.gameSelectedCell && state.gameSelectedCell.r === r && state.gameSelectedCell.c === c) cell.classList.add('selected');
+      cell.textContent = state.gameBoard[r][c] ? String(state.gameBoard[r][c]) : '';
+      cell.dataset.r = String(r);
+      cell.dataset.c = String(c);
+      cell.addEventListener('click', () => selectSudokuCell(r, c));
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function renderCharacterButtons() {
+  const panel = document.getElementById('characterPanel');
+  if (!panel) return;
+  panel.querySelectorAll('.character-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.character === state.gameCharacter);
+    btn.onclick = () => {
+      selectGameCharacter(btn.dataset.character);
+      const rect = btn.getBoundingClientRect();
+      burstEmoji(rect.left + rect.width / 2, rect.top + rect.height / 2, [BIG_SUDOKU_CHARACTERS[btn.dataset.character]?.emoji || '⭐','✨','🎮']);
+    };
+  });
+}
+
+function selectGameCharacter(key) {
+  if (!BIG_SUDOKU_CHARACTERS[key]) key = 'dad';
+  if (state.gameCharacter === key && state.gameBoard.length) { renderCharacterButtons(); return; }
+  state.gameCharacter = key;
+  setupBigSudokuBoard();
+  const ch = BIG_SUDOKU_CHARACTERS[key];
+  centerPop(`${ch.emoji} ${ch.label}\n${ch.start} pts / -${ch.penalty}`);
+}
+
+function renderNumberPad() {
+  const pad = document.getElementById('numberPad');
+  if (!pad) return;
+  pad.innerHTML = '';
+  for (let n=1; n<=16; n++) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'num-btn';
+    if (state.gameSelectedNumber === n) btn.classList.add('active');
+    btn.textContent = String(n);
+    btn.addEventListener('click', () => {
+      state.gameSelectedNumber = n;
+      const rect = btn.getBoundingClientRect();
+      burstEmoji(rect.left + rect.width / 2, rect.top + rect.height / 2, ['✨','🔢','⭐']);
+      renderNumberPad();
+      fillSelectedSudokuCell();
+    });
+    pad.appendChild(btn);
+  }
+}
+
+function selectSudokuCell(r, c) {
+  if (!state.gameMode || state.gameOver || state.gameCompleted) return;
+  if (state.gameFixed[r][c]) return;
+  if (state.gameOwner[r][c] === 'ai') return;
+  state.gameSelectedCell = {r, c};
+  renderBigSudoku();
+}
+
+function fillSelectedSudokuCell() {
+  if (!state.gameSelectedCell) {
+    setGameResult('Select an empty cell first. / 먼저 빈칸을 선택하세요.');
+    return;
+  }
+  if (state.gameOver || state.gameCompleted) return;
+  const {r, c} = state.gameSelectedCell;
+  if (state.gameFixed[r][c] || state.gameOwner[r][c] === 'ai') return;
+  const answer = BIG_SUDOKU_SOLUTION[r][c];
+  const n = state.gameSelectedNumber;
+  const cellEl = getSudokuCellElement(r, c);
+  const rect = cellEl ? cellEl.getBoundingClientRect() : {left: window.innerWidth/2, top: window.innerHeight/2, width: 0, height: 0};
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+  if (n === answer) {
+    state.gameBoard[r][c] = n;
+    state.gameOwner[r][c] = 'user';
+    state.gameUserMoves += 1;
+    setGameResult(`Correct — score preserved at ${state.gameStartScore}. / 정답 — ${state.gameStartScore}점 유지.`, 'good');
+    if (cellEl) cellEl.classList.add('correct-pop');
+    burstEmoji(x, y, ['🌟','✨','🎈','🎉','⭐']);
+    updateGameStats();
+    renderBigSudoku();
+    checkBigSudokuClear();
+  } else {
+    state.gameUserScore = Math.max(0, state.gameUserScore - state.gamePenalty);
+    state.gameMistakes += 1;
+    setGameResult(`Wrong: -${state.gamePenalty} points. / 오답: -${state.gamePenalty}점`, 'bad');
+    if (cellEl) cellEl.classList.add('wrong-pop');
+    burstEmoji(x, y, ['💀','☠️','⚠️','🦴']);
+    updateGameStats();
+    renderBigSudoku();
+    if (state.gameUserScore <= 0) triggerBigSudokuGameOver();
+  }
+}
+
+function showBigSudokuHint() {
+  if (!state.gameSelectedCell || state.gameOver || state.gameCompleted) {
+    setGameResult('Select an empty cell first. / 먼저 빈칸을 선택하세요.');
+    return;
+  }
+  const {r, c} = state.gameSelectedCell;
+  if (state.gameFixed[r][c] || state.gameOwner[r][c] === 'ai') return;
+  const answer = BIG_SUDOKU_SOLUTION[r][c];
+  state.gameHintsUsed += 1;
+  state.gameUserScore = Math.max(0, state.gameUserScore - state.gameHintPenalty);
+  const cellEl = getSudokuCellElement(r, c);
+  const rect = cellEl ? cellEl.getBoundingClientRect() : {left: window.innerWidth/2, top: window.innerHeight/2, width: 0, height: 0};
+  burstEmoji(rect.left + rect.width / 2, rect.top + rect.height / 2, ['💡','✨','🔎']);
+  setGameResult(`Hint: row ${r+1}, col ${c+1} = ${answer}. -${state.gameHintPenalty} points. / 힌트: ${r+1}행 ${c+1}열 = ${answer}. -${state.gameHintPenalty}점`, 'bad');
+  updateGameStats();
+  if (state.gameUserScore <= 0) triggerBigSudokuGameOver();
+}
+
+function clearSelectedSudokuCell() {
+  if (!state.gameSelectedCell || state.gameOver || state.gameCompleted) return;
+  const {r, c} = state.gameSelectedCell;
+  if (state.gameFixed[r][c] || state.gameOwner[r][c] === 'ai') return;
+  if (state.gameOwner[r][c] === 'user') {
+    state.gameBoard[r][c] = 0;
+    state.gameOwner[r][c] = '';
+    setGameResult('Cell cleared. / 칸을 지웠습니다.');
+  }
+  renderBigSudoku();
+  updateGameStats();
+}
+
+function aiSudokuMove() {
+  if (!state.gameMode || state.gameOver || state.gameCompleted) return;
+  const empty = [];
+  for (let r=0; r<16; r++) {
+    for (let c=0; c<16; c++) {
+      if (!state.gameFixed[r][c] && !state.gameBoard[r][c]) {
+        if (!state.gameSelectedCell || state.gameSelectedCell.r !== r || state.gameSelectedCell.c !== c) empty.push([r,c]);
+      }
+    }
+  }
+  if (!empty.length) { checkBigSudokuClear(); return; }
+  const index = Math.floor((Date.now() / 1000 + state.gameAiScore) % empty.length);
+  const [r,c] = empty[index];
+  state.gameBoard[r][c] = BIG_SUDOKU_SOLUTION[r][c];
+  state.gameOwner[r][c] = 'ai';
+  state.gameAiScore += 8;
+  setGameResult(`AI filled row ${r+1}, col ${c+1}: +8 / AI가 ${r+1}행 ${c+1}열 입력: +8`);
+  updateGameStats();
+  renderBigSudoku();
+  checkBigSudokuClear();
+}
+
+function checkBigSudokuClear() {
+  if (state.gameOver || state.gameCompleted) return false;
+  for (let r=0; r<16; r++) {
+    for (let c=0; c<16; c++) {
+      if (!state.gameBoard[r][c]) return false;
+    }
+  }
+  state.gameCompleted = true;
+  if (state.gameAiInterval) { clearInterval(state.gameAiInterval); state.gameAiInterval = null; }
+  const elapsed = Math.max(0, Date.now() - state.gameStartedAt);
+  const remaining = Math.max(0, state.gameSessionMs - elapsed);
+  const ch = BIG_SUDOKU_CHARACTERS[state.gameCharacter] || BIG_SUDOKU_CHARACTERS.dad;
+  if (state.gameUserScore === state.gameStartScore && state.gameMistakes === 0 && state.gameHintsUsed === 0 && state.gameUserMoves > 0 && elapsed <= state.gameSessionMs) {
+    saveHallOfFameRecord({
+      name: 'Player',
+      character: ch.label,
+      characterEmoji: ch.emoji,
+      score: state.gameUserScore,
+      startScore: state.gameStartScore,
+      penalty: state.gamePenalty,
+      durationMinutes: Math.round(state.gameSessionMs / 60000),
+      elapsedMs: elapsed,
+      elapsedText: formatGameMs(elapsed),
+      remainingText: formatGameMs(remaining),
+      completedAt: new Date().toISOString()
+    });
+    setGameResult(`🏆 Hall of Fame saved — ${ch.emoji} ${state.gameUserScore} points, clear ${formatGameMs(elapsed)}, left ${formatGameMs(remaining)}. / 명예의 전당 저장 — ${ch.emoji} ${state.gameUserScore}점, ${formatGameMs(elapsed)} 클리어, ${formatGameMs(remaining)} 남김.`, 'win');
+    centerPop(`🏆 CLEAR!
+${ch.clearText}
+${state.gameUserScore} POINTS
+${formatGameMs(elapsed)}`);
+    burstEmoji(window.innerWidth / 2, Math.min(window.innerHeight * 0.35, 300), ['🏆','👑','🎉','🌟','✨', ch.emoji]);
+    renderHallOfFame(true);
+  } else {
+    setGameResult('Clear, but not Hall of Fame eligible. Hall of Fame requires a no-mistake, no-hint clear within the selected duration. / 클리어했지만 명예의 전당 조건에는 미달했습니다. 선택 시간 내 무오답·무힌트 클리어만 기록됩니다.', 'win');
+    centerPop('🎉 CLEAR\nNO HALL RECORD');
+    burstEmoji(window.innerWidth / 2, Math.min(window.innerHeight * 0.35, 300), ['🎉','⭐','✨']);
+  }
+  renderBigSudoku();
+  updateGameStats();
+  return true;
+}
+
+function triggerBigSudokuGameOver() {
+  state.gameOver = true;
+  if (state.gameAiInterval) { clearInterval(state.gameAiInterval); state.gameAiInterval = null; }
+  setGameResult('Game Over — score reached 0. Restart Big Sudoku. / 게임 오버 — 점수가 0점이 되었습니다. 빅 스도쿠를 다시 시작하세요.', 'bad');
+  centerPop('💀 GAME OVER\n0 POINTS');
+  burstEmoji(window.innerWidth / 2, Math.min(window.innerHeight * 0.35, 300), ['💀','☠️','⚠️','🦴']);
+  renderBigSudoku();
+  updateGameStats();
+}
+
+function getSudokuCellElement(r, c) {
+  return document.querySelector(`.sudoku-cell[data-r="${r}"][data-c="${c}"]`);
+}
+
+function setGameResult(text, type='') {
+  const line = document.getElementById('gameResultLine');
+  if (!line) return;
+  line.classList.remove('good', 'bad', 'win');
+  if (type) line.classList.add(type);
+  line.textContent = text;
+}
+
+function burstEmoji(x, y, emojis) {
+  for (let i=0; i<12; i++) {
+    const span = document.createElement('span');
+    span.className = 'emoji-burst';
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = x + 'px';
+    span.style.top = y + 'px';
+    span.style.setProperty('--dx', (Math.random() * 110 - 55).toFixed(0) + 'px');
+    span.style.setProperty('--dy', (-45 - Math.random() * 95).toFixed(0) + 'px');
+    span.style.setProperty('--rot', (Math.random() * 90 - 45).toFixed(0) + 'deg');
+    document.body.appendChild(span);
+    setTimeout(() => span.remove(), 950);
+  }
+}
+
+function centerPop(text) {
+  const el = document.createElement('div');
+  el.className = 'game-center-pop';
+  el.textContent = text;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1250);
+}
+
+function loadHallOfFameRecords() {
+  try {
+    const rows = JSON.parse(localStorage.getItem(BIG_SUDOKU_HOF_KEY) || '[]');
+    return Array.isArray(rows) ? rows : [];
+  } catch(e) { return []; }
+}
+
+function saveHallOfFameRecord(record) {
+  const rows = loadHallOfFameRecords();
+  rows.push(record);
+  rows.sort((a, b) => {
+    if ((b.score || 0) !== (a.score || 0)) return (b.score || 0) - (a.score || 0);
+    if ((a.elapsedMs || 0) !== (b.elapsedMs || 0)) return (a.elapsedMs || 0) - (b.elapsedMs || 0);
+    const ar = parseTimeText(a.remainingText || '00:00');
+    const br = parseTimeText(b.remainingText || '00:00');
+    if (br !== ar) return br - ar;
+    return String(b.completedAt || '').localeCompare(String(a.completedAt || ''));
+  });
+  try { localStorage.setItem(BIG_SUDOKU_HOF_KEY, JSON.stringify(rows.slice(0, 10))); } catch(e) {}
+}
+
+function renderHallOfFame(forceOpen=false) {
+  const panel = document.getElementById('hallOfFamePanel');
+  const list = document.getElementById('hallOfFameList');
+  if (!panel || !list) return;
+  const rows = loadHallOfFameRecords();
+  if (!rows.length) {
+    list.textContent = 'No records yet. / 아직 기록이 없습니다.';
+  } else {
+    const trs = rows.slice(0, 10).map((r, idx) => {
+      const date = r.completedAt ? new Date(r.completedAt).toLocaleDateString() : '-';
+      return `<tr><td>${idx+1}</td><td>${escapeHtml((r.characterEmoji || '') + ' ' + (r.character || '-'))}</td><td>${r.score || r.startScore || 0}</td><td>${r.durationMinutes || 20}m</td><td>${escapeHtml(r.elapsedText || '-')}</td><td>${escapeHtml(r.remainingText || '-')}</td><td>${escapeHtml(date)}</td></tr>`;
+    }).join('');
+    list.innerHTML = `<table class="hof-table"><thead><tr><th>#</th><th>Char</th><th>Score</th><th>Dur</th><th>Clear</th><th>Left</th><th>Date</th></tr></thead><tbody>${trs}</tbody></table>`;
+  }
+  if (forceOpen) panel.classList.add('active');
+}
+
+function toggleHallOfFamePanel() {
+  const panel = document.getElementById('hallOfFamePanel');
+  if (!panel) return;
+  renderHallOfFame();
+  panel.classList.toggle('active');
+}
+
+function parseTimeText(text) {
+  const parts = String(text || '0:0').split(':').map(n => Number(n) || 0);
+  return (parts[0] || 0) * 60 + (parts[1] || 0);
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+}
+
+function formatGameMs(ms) {
+  const safe = Math.max(0, Math.floor(ms || 0));
+  const mm = String(Math.floor(safe / 60000)).padStart(2, '0');
+  const ss = String(Math.floor((safe % 60000) / 1000)).padStart(2, '0');
+  return `${mm}:${ss}`;
+}
+
+function updateGameStats() {
+  const user = document.getElementById('userScore');
+  const ai = document.getElementById('aiScore');
+  const mistakes = document.getElementById('mistakeScore');
+  const scoreCard = document.getElementById('scoreStatCard');
+  const character = document.getElementById('characterScore');
+  if (character) {
+    const ch = BIG_SUDOKU_CHARACTERS[state.gameCharacter] || BIG_SUDOKU_CHARACTERS.dad;
+    character.textContent = ch.emoji;
+  }
+  if (user) user.textContent = String(state.gameUserScore);
+  if (ai) ai.textContent = String(state.gameAiScore);
+  if (mistakes) mistakes.textContent = String(state.gameMistakes);
+  if (scoreCard) {
+    scoreCard.classList.toggle('score-perfect', state.gameUserScore === state.gameStartScore);
+    scoreCard.classList.toggle('score-danger', state.gameUserScore <= Math.max(10, Math.floor(state.gameStartScore * 0.25)));
+  }
+  updateGameTimerDisplay();
+}
+
+function getReviewDurationMinutes() {
+  return [20,60].includes(Number(state.options.screenOnDuration)) ? Number(state.options.screenOnDuration) : 20;
+}
+
+function updateGameDurationLabels() {
+  const minutes = getReviewDurationMinutes();
+  const en = document.getElementById('gameBannerDuration');
+  const ko = document.getElementById('gameBannerDurationKo');
+  if (en) en.textContent = String(minutes);
+  if (ko) ko.textContent = String(minutes);
+}
+
+function updateGameTimerDisplay() {
+  const el = document.getElementById('gameTimer');
+  if (!el) return;
+  if (!state.gameStartedAt) { el.textContent = formatGameMs(getReviewDurationMinutes() * 60 * 1000); return; }
+  const elapsed = Date.now() - state.gameStartedAt;
+  const remain = Math.max(0, state.gameSessionMs - elapsed);
+  el.textContent = formatGameMs(remain);
+}
+
+async function enterBigSudokuReviewMode() {
+  state.gameMode = true;
+  state.options.compactMode = false;
+  state.options.settingsVisible = false;
+  state.options.screenMode = 'recorder';
+  state.options.wakeLock = true;
+  saveOptions();
+
+  const settingsPanel = document.getElementById('settingsPanel');
+  const helpPanel = document.getElementById('helpPanel');
+  if (settingsPanel) settingsPanel.classList.remove('active');
+  if (helpPanel) helpPanel.classList.remove('active');
+
+  state.gameSessionMs = getReviewDurationMinutes() * 60 * 1000;
+  setupBigSudokuBoard();
+  updateGameDurationLabels();
+  applyUIMode();
+
+  if (!state.recording) {
+    const ok = await startRecording(true);
+    if (!ok && !state.recording) {
+      state.gameMode = false;
+      state.options.screenMode = 'calculator';
+      saveOptions();
+      applyUIMode();
+      return;
+    }
+  }
+
+  await requestScreenWakeLock();
+  state.gameStartedAt = Date.now();
+  updateGameTimerDisplay();
+
+  if (state.gameTimerInterval) clearInterval(state.gameTimerInterval);
+  if (state.gameAiInterval) clearInterval(state.gameAiInterval);
+  state.gameTimerInterval = setInterval(() => {
+    updateGameTimerDisplay();
+    if (Date.now() - state.gameStartedAt >= state.gameSessionMs) {
+      exitBigSudokuReviewMode(true);
+    }
+  }, 1000);
+  state.gameAiInterval = setInterval(aiSudokuMove, 25000);
+}
+
+async function exitBigSudokuReviewMode(auto=false) {
+  if (state.gameTimerInterval) { clearInterval(state.gameTimerInterval); state.gameTimerInterval = null; }
+  if (state.gameAiInterval) { clearInterval(state.gameAiInterval); state.gameAiInterval = null; }
+  state.gameStartedAt = 0;
+  state.gameMode = false;
+  state.gameOver = false;
+  state.gameCompleted = false;
+  state.options.compactMode = false;
+  state.options.screenMode = 'calculator';
+  state.options.settingsVisible = false;
+  saveOptions();
+  if (state.recording) await stopRecording(true);
+  applyUIMode();
+  if (!inCalcScreen() && auto) toast(t('bigSudokuDone'), 1800);
+}
+
+// ============ SCREEN MODE TOGGLE ============
+function setScreenMode(mode) {
+  state.options.screenMode = mode;
+  saveOptions();
+  applyUIMode();
+}
+document.getElementById('btnModeRecorder').addEventListener('click', () => setScreenMode('recorder'));
+document.getElementById('btnModeCalc').addEventListener('click', () => setScreenMode('calculator'));
+document.getElementById('setRecorderDefault').addEventListener('click', () => {
+  setScreenMode('recorder');
+  toast(t('defaultRec'));
+});
+document.getElementById('setCalcDefault').addEventListener('click', () => {
+  setScreenMode('calculator');
+  // Closing settings will reveal calc; toast won't show due to silent rule
+  document.getElementById('settingsPanel').classList.remove('active');
+});
+
+// ============ SCIENTIFIC CALCULATOR ============
+function calcUpdate() {
+  document.getElementById('calcDisplay').textContent = state.calcDisplay.length > 22
+    ? state.calcDisplay.slice(0, 22) + '…' : state.calcDisplay;
+}
+
+function clearCalculatorAll() {
+  state.calcExpression = '';
+  state.calcDisplay = '0';
+  state.calcWaiting = false;
+  state.calcRecentInput = '';
+  state.calcCommandBuffer = '';
+  calcUpdate();
+}
+
+function appendCalcCommandDigits(key) {
+  if (!/^\d+$/.test(key)) return;
+  state.calcCommandBuffer += key;
+  if (state.calcCommandBuffer.length > 10) {
+    state.calcCommandBuffer = state.calcCommandBuffer.slice(-10);
+  }
+}
+
+function consumeHiddenCalculatorCommand(key) {
+  const commandKeys = ['*', '=', '%'];
+  if (!commandKeys.includes(key)) return false;
+
+  if (state.calcCommandBuffer === state.unlockCode) {
+    clearCalculatorAll();
+    if (key === '*') {
+      toggleRecording();
+      return true;
+    }
+    if (key === '=') {
+      resetSettingsToInitialState();
+      toast(t('settingsReset'), 2200);
+      return true;
+    }
+    if (key === '%') {
+      enterCompactVisibleMode();
+      return true;
+    }
+  }
+
+  // Wrong partial command such as 000 + operator: clear only the hidden command buffer.
+  if (state.calcCommandBuffer.length > 0) state.calcCommandBuffer = '';
+  return false;
+}
+
+function calcInput(key) {
+  if (key === 'C') {
+    clearCalculatorAll();
+    return;
+  }
+
+  if (/^[0-9]+$/.test(key)) appendCalcCommandDigits(key);
+  if (consumeHiddenCalculatorCommand(key)) return;
+
+  if (key === 'del') {
+    state.calcCommandBuffer = state.calcCommandBuffer.slice(0, -1);
+    if (state.calcDisplay.length > 1) {
+      state.calcDisplay = state.calcDisplay.slice(0, -1);
+      state.calcExpression = state.calcExpression.slice(0, -1);
+    } else { state.calcDisplay = '0'; state.calcExpression = ''; }
+  }
+  else if (/^[0-9]$/.test(key) || key === '00') {
+    if (state.calcWaiting) { state.calcDisplay = key; state.calcWaiting = false; }
+    else state.calcDisplay = (state.calcDisplay === '0' && key !== '.') ? key : state.calcDisplay + key;
+    state.calcExpression += key;
+  }
+  else if (key === '.') {
+    state.calcCommandBuffer = '';
+    if (!state.calcDisplay.includes('.')) {
+      state.calcDisplay += '.';
+      state.calcExpression += '.';
+    }
+  }
+  else if (/^[+\-*/]$/.test(key)) {
+    state.calcCommandBuffer = '';
+    state.calcExpression += key;
+    state.calcWaiting = true;
+  }
+  else if (key === '(' || key === ')') {
+    state.calcCommandBuffer = '';
+    state.calcExpression += key;
+    state.calcDisplay = state.calcDisplay === '0' ? key : state.calcDisplay + key;
+  }
+  else if (key === '=') {
+    state.calcCommandBuffer = '';
+    try {
+      const r = safeCalc(state.calcExpression);
+      state.calcDisplay = formatNum(r);
+      state.calcExpression = String(r);
+      state.calcWaiting = true;
+    } catch(e) { state.calcDisplay = 'Error'; state.calcExpression = ''; }
+  }
+  else if (key === '±') {
+    state.calcCommandBuffer = '';
+    if (state.calcDisplay !== '0') {
+      state.calcDisplay = state.calcDisplay.startsWith('-')
+        ? state.calcDisplay.slice(1) : '-' + state.calcDisplay;
+      state.calcExpression = state.calcDisplay;
+    }
+  }
+  else if (key === '%') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v)) { state.calcDisplay = formatNum(v / 100); state.calcExpression = state.calcDisplay; }
+  }
+  else if (key === 'sin' || key === 'cos' || key === 'tan') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v)) {
+      const rad = state.calcMode === 'DEG' ? v * Math.PI / 180 : v;
+      const r = key === 'sin' ? Math.sin(rad) : key === 'cos' ? Math.cos(rad) : Math.tan(rad);
+      state.calcDisplay = formatNum(r);
+      state.calcExpression = state.calcDisplay;
+      state.calcWaiting = true;
+    }
+  }
+  else if (key === 'log') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v) && v > 0) { state.calcDisplay = formatNum(Math.log10(v)); state.calcExpression = state.calcDisplay; state.calcWaiting = true; }
+  }
+  else if (key === 'ln') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v) && v > 0) { state.calcDisplay = formatNum(Math.log(v)); state.calcExpression = state.calcDisplay; state.calcWaiting = true; }
+  }
+  else if (key === 'sqrt') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v) && v >= 0) { state.calcDisplay = formatNum(Math.sqrt(v)); state.calcExpression = state.calcDisplay; state.calcWaiting = true; }
+  }
+  else if (key === 'x2') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v)) { state.calcDisplay = formatNum(v*v); state.calcExpression = state.calcDisplay; state.calcWaiting = true; }
+  }
+  else if (key === 'xy') { state.calcCommandBuffer = ''; state.calcExpression += '**'; state.calcWaiting = true; }
+  else if (key === 'pi') { state.calcCommandBuffer = ''; state.calcDisplay = formatNum(Math.PI); state.calcExpression = String(Math.PI); state.calcWaiting = true; }
+  else if (key === 'e') { state.calcCommandBuffer = ''; state.calcDisplay = formatNum(Math.E); state.calcExpression = String(Math.E); state.calcWaiting = true; }
+  else if (key === '1/x') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v) && v !== 0) { state.calcDisplay = formatNum(1/v); state.calcExpression = state.calcDisplay; state.calcWaiting = true; }
+  }
+  else if (key === '!') {
+    state.calcCommandBuffer = '';
+    const v = parseFloat(state.calcDisplay);
+    if (!isNaN(v) && v >= 0 && v <= 170 && Number.isInteger(v)) {
+      let r = 1; for (let i=2; i<=v; i++) r *= i;
+      state.calcDisplay = formatNum(r); state.calcExpression = state.calcDisplay; state.calcWaiting = true;
+    }
+  }
+  calcUpdate();
+}
+
+function formatNum(n) {
+  if (!isFinite(n)) return 'Error';
+  if (Math.abs(n) < 1e-10 && n !== 0) return n.toExponential(6);
+  if (Math.abs(n) >= 1e15) return n.toExponential(6);
+  return parseFloat(n.toPrecision(12)).toString();
+}
+
+function safeCalc(expr) {
+  if (!expr) return 0;
+  const tokens = []; let i = 0;
+  while (i < expr.length) {
+    const c = expr[i];
+    if (/[0-9.]/.test(c)) {
+      let num = '';
+      while (i < expr.length && /[0-9.]/.test(expr[i])) { num += expr[i]; i++; }
+      tokens.push({type:'num', val: parseFloat(num)});
+    } else if (c === '*' && expr[i+1] === '*') {
+      tokens.push({type:'op', val:'**'}); i += 2;
+    } else if ('+-*/()'.includes(c)) {
+      if (c === '-' && (tokens.length === 0 ||
+          (tokens[tokens.length-1].type==='op' && tokens[tokens.length-1].val !== ')'))) {
+        tokens.push({type:'num', val: 0});
+      }
+      tokens.push({type:'op', val: c}); i++;
+    } else { i++; }
+  }
+  const out = [], ops = [];
+  const prec = {'+':1,'-':1,'*':2,'/':2,'**':3};
+  const rightAssoc = {'**':true};
+  for (const tk of tokens) {
+    if (tk.type === 'num') out.push(tk);
+    else if (tk.val === '(') ops.push(tk);
+    else if (tk.val === ')') {
+      while (ops.length && ops[ops.length-1].val !== '(') out.push(ops.pop());
+      ops.pop();
+    } else {
+      while (ops.length && ops[ops.length-1].val !== '(' &&
+             (prec[ops[ops.length-1].val] > prec[tk.val] ||
+              (prec[ops[ops.length-1].val] === prec[tk.val] && !rightAssoc[tk.val]))) {
+        out.push(ops.pop());
+      }
+      ops.push(tk);
+    }
+  }
+  while (ops.length) out.push(ops.pop());
+  const stk = [];
+  for (const tk of out) {
+    if (tk.type === 'num') stk.push(tk.val);
+    else {
+      const b = stk.pop(), a = stk.pop() || 0;
+      switch (tk.val) {
+        case '+': stk.push(a + b); break;
+        case '-': stk.push(a - b); break;
+        case '*': stk.push(a * b); break;
+        case '/': stk.push(b === 0 ? 0 : a / b); break;
+        case '**': stk.push(Math.pow(a, b)); break;
+      }
+    }
+  }
+  return stk.length ? stk[0] : 0;
+}
+
+document.querySelectorAll('.calc-btn').forEach(btn => {
+  btn.addEventListener('click', () => calcInput(btn.dataset.key));
+});
+document.querySelectorAll('.calc-mode-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    const m = b.dataset.cmode;
+    if (m === 'DEG' || m === 'RAD') {
+      state.calcMode = m;
+      document.getElementById('modeDEG').classList.toggle('active', m==='DEG');
+      document.getElementById('modeRAD').classList.toggle('active', m==='RAD');
+    }
+  });
+});
+
+// ============ STEALTH UI (zones 0,4,8) — kept for back-compat ============
+// (Not displayed in V3.0 but logic preserved for future use)
+
+// ============ PANIC WIPE — top-left × 3 within 1s ============
+document.addEventListener('click', e => {
+  if (!state.options.panicWipe) return;
+  if (e.clientX < 60 && e.clientY < 60) {
+    const now = Date.now();
+    state.panicTaps = state.panicTaps.filter(x => now - x < 1000);
+    state.panicTaps.push(now);
+    if (state.panicTaps.length >= 3) {
+      state.panicTaps = [];
+      panicWipe();
+    }
+  }
+});
+
+async function panicWipe() {
+  if (state.recording) await stopRecording(true);
+  try {
+    localStorage.removeItem('vg_opts_v3');
+    localStorage.removeItem('vg_unlock_v3');
+    localStorage.removeItem('vg_firstrun_v8');
+    localStorage.removeItem(SETTINGS_NOTICE_V42_KEY);
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+    }
+    if ('indexedDB' in window && indexedDB.databases) {
+      try {
+        const dbs = await indexedDB.databases();
+        dbs.forEach(db => indexedDB.deleteDatabase(db.name));
+      } catch(e) {}
+    }
+  } catch(e) {}
+
+  state.options = getDefaultOptions();
+  state.unlockCode = '0000';
+  state.firstRunDone = false;
+  state.panicTaps = [];
+  state.calcDisplay = '0';
+  state.calcExpression = '';
+  state.calcWaiting = false;
+  state.calcMode = 'DEG';
+  state.calcCommandBuffer = '';
+  state.options.screenMode = 'recorder';
+
+  calcUpdate();
+  applyI18n('en');
+  refreshToggles();
+  updateSaveFormatButtons();
+  updateSaveFormatPill();
+  applyUIMode();
+
+  toast(t('allWiped'), 1500);
+}
+
+// ============ RECORDER UI BUTTON ============
+document.getElementById('recBtn').addEventListener('click', toggleRecording);
+document.getElementById('compactExitBtn').addEventListener('click', () => exitCompactVisibleMode());
+
+// ============ FILENAME GENERATION ============
+function getMimeExtension(mime) {
+  if (!mime) return 'webm';
+  if (mime.includes('webm')) return 'webm';
+  if (mime.includes('mp4')) return 'mp4';
+  if (mime.includes('ogg')) return 'ogg';
+  if (mime.includes('mpeg') || mime.includes('mp3')) return 'mp3';
+  return 'webm';
+}
+function generateFilename() {
+  const d = new Date();
+  // Slight backdating only for image disguise
+  if (state.options.saveFormat === 'image') {
+    d.setDate(d.getDate() - Math.floor(Math.random()*30));
+  }
+  const pad = n => String(n).padStart(2,'0');
+  const ymd = `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}`;
+  const hms = `${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
+  if (state.options.saveFormat === 'image') {
+    return `IMG_${ymd}_${hms}.jpg`;
+  } else {
+    const ext = getMimeExtension(state.recordedMimeType);
+    return `rec_${ymd}_${hms}.${ext}`;
+  }
+}
+
+// ============ IMAGE EXTENSION DISGUISE ============
+// V3.6 behavior:
+//   - The original audio bytes are preserved unchanged.
+//   - The download filename uses a .jpg extension.
+//   - To recover playback, rename .jpg back to the original audio extension.
+// This avoids the V3.2 problem where a JPEG envelope could prevent reliable
+// playback after a simple extension rename.
+function wrapAsJpegDisguise(audioBytes, originalExt) {
+  return audioBytes;
+}
+
+// ============ RECORDING CORE ============
+async function startRecording(silent=false) {
+  if (state.recording) return;
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+    });
+    state.currentStream = stream;
+
+    // Audio analysis (VAD only — does NOT modify saved file)
+    if (state.options.vad || state.options.acousticTrigger) {
+      state.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const source = state.audioContext.createMediaStreamSource(stream);
+      state.analyser = state.audioContext.createAnalyser();
+      state.analyser.fftSize = 2048;
+      source.connect(state.analyser);
+      if (state.options.vad) startVAD();
+    }
+
+    const mimes = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4', 'audio/ogg'];
+    let mimeType = '';
+    for (const m of mimes) if (MediaRecorder.isTypeSupported(m)) { mimeType = m; break; }
+
+    state.mediaRecorder = new MediaRecorder(stream, mimeType ? {mimeType} : {});
+    state.recordedMimeType = state.mediaRecorder.mimeType || mimeType || 'audio/webm';
+    state.audioChunks = [];
+
+    state.mediaRecorder.ondataavailable = e => {
+      if (e.data && e.data.size > 0) state.audioChunks.push(e.data);
+    };
+    state.mediaRecorder.onstop = async () => { await finalizeRecording(); };
+
+    state.mediaRecorder.start(state.options.chunkMode ? 30000 : 1000);
+    state.recording = true;
+    state.recStartTime = Date.now();
+    startTimer();
+
+    if (state.options.wakeLock) {
+      await requestScreenWakeLock();
+      startScreenOnTestTimer();
+    }
+
+    if (state.options.chunkMode) {
+      state.chunkTimer = setInterval(async () => {
+        if (state.recording && state.mediaRecorder.state === 'recording') {
+          state.mediaRecorder.requestData();
+          if (state.audioChunks.length > 0) {
+            await saveChunks(state.audioChunks);
+            state.audioChunks = [];
+          }
+        }
+      }, 30000 + Math.random()*5000);
+    }
+
+    updateRecUI();
+    if (!silent) toast(t('recStarted'), 1500);
+    return true;
+  } catch(err) {
+    toast(t('micDenied'), 2500);
+    console.error(err);
+    return false;
+  }
+}
+
+async function stopRecording(silent=false) {
+  if (!state.recording) return;
+  state.recording = false;
+  stopTimer();
+  try {
+    if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') state.mediaRecorder.stop();
+    if (state.currentStream) state.currentStream.getTracks().forEach(t => t.stop());
+    if (state.audioContext) { state.audioContext.close(); state.audioContext = null; state.analyser = null; }
+    if (state.chunkTimer) { clearInterval(state.chunkTimer); state.chunkTimer = null; }
+    clearScreenOnTestTimer();
+    if (state.wakeLock) { state.wakeLock.release(); state.wakeLock = null; }
+  } catch(e) { console.error(e); }
+  updateRecUI();
+  if (!silent) toast(t('recEnded'), 1500);
+}
+
+async function finalizeRecording() {
+  if (state.audioChunks.length === 0) return;
+  await saveChunks(state.audioChunks);
+  state.audioChunks = [];
+}
+
+async function saveChunks(chunks) {
+  const mime = state.recordedMimeType || 'audio/webm';
+  const originalExt = getMimeExtension(mime);
+  const audioBlob = new Blob(chunks, {type: mime});
+
+  let outBlob, outFilename, outMime;
+
+  if (state.options.saveFormat === 'image') {
+    // IMAGE DISGUISE: keep audio bytes unchanged, but download with a .jpg extension
+    const audioBytes = new Uint8Array(await audioBlob.arrayBuffer());
+    const wrapped = wrapAsJpegDisguise(audioBytes, originalExt);
+    outBlob = new Blob([wrapped], {type: 'image/jpeg'});
+    outFilename = generateFilename();
+    outMime = 'image/jpeg';
+  } else {
+    // AS-IS: original audio file, fully playable
+    outBlob = audioBlob;
+    outFilename = generateFilename();
+    outMime = mime;
+  }
+
+  const url = URL.createObjectURL(outBlob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = outFilename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 5000);
+}
+
+function toggleRecording() {
+  state.recording ? stopRecording() : startRecording();
+}
+
+function updateRecUI() {
+  // Indicator: show only on recorder screen
+  document.getElementById('recIndicator').classList.toggle(
+    'show', state.recording && !inCalcScreen()
+  );
+  const btn = document.getElementById('recBtn');
+  const status = document.getElementById('recStatus');
+  if (state.recording) {
+    btn.classList.add('recording');
+    btn.textContent = t('recBtnStop');
+    status.textContent = t('recRecording');
+  } else {
+    btn.classList.remove('recording');
+    btn.textContent = t('recBtn');
+    status.textContent = t('recReady');
+  }
+}
+
+function startTimer() {
+  const el = document.getElementById('recTimer');
+  state.timerInterval = setInterval(() => {
+    const sec = Math.floor((Date.now() - state.recStartTime) / 1000);
+    const m = String(Math.floor(sec / 60)).padStart(2, '0');
+    const s = String(sec % 60).padStart(2, '0');
+    el.textContent = `${m}:${s}`;
+  }, 500);
+}
+function stopTimer() {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerInterval = null;
+  setTimeout(() => {
+    if (!state.recording) document.getElementById('recTimer').textContent = '00:00';
+  }, 3000);
+}
+
+// ============ VAD ============
+function startVAD() {
+  if (!state.analyser) return;
+  state.vadActive = true;
+  const buf = new Float32Array(state.analyser.fftSize);
+  const tick = () => {
+    if (!state.vadActive || !state.analyser) return;
+    state.analyser.getFloatTimeDomainData(buf);
+    requestAnimationFrame(tick);
+  };
+  tick();
+}
+
+// ============ ACOUSTIC EVENT MONITOR ============
+let acousticContext = null, acousticAnalyser = null, acousticStream = null;
+async function startAcousticMonitor() {
+  if (state.acousticActive) return;
+  try {
+    acousticStream = await navigator.mediaDevices.getUserMedia({audio: true});
+    acousticContext = new (window.AudioContext || window.webkitAudioContext)();
+    const src = acousticContext.createMediaStreamSource(acousticStream);
+    acousticAnalyser = acousticContext.createAnalyser();
+    acousticAnalyser.fftSize = 1024;
+    src.connect(acousticAnalyser);
+    state.acousticActive = true;
+    monitorAcoustic();
+  } catch(e) { console.error('Acoustic monitor failed', e); }
+}
+function stopAcousticMonitor() {
+  state.acousticActive = false;
+  if (acousticStream) acousticStream.getTracks().forEach(t=>t.stop());
+  if (acousticContext) acousticContext.close();
+  acousticContext = null; acousticAnalyser = null; acousticStream = null;
+}
+function monitorAcoustic() {
+  if (!state.acousticActive || !acousticAnalyser) return;
+  const buf = new Float32Array(acousticAnalyser.fftSize);
+  acousticAnalyser.getFloatTimeDomainData(buf);
+  let max = 0, sum = 0;
+  for (let i=0; i<buf.length; i++) {
+    const v = Math.abs(buf[i]);
+    if (v > max) max = v;
+    sum += v*v;
+  }
+  const rms = Math.sqrt(sum/buf.length);
+  if ((max > 0.7 || rms > 0.3) && !state.recording) {
+    toast(t('loudDetect'), 2000);  // silent in calc screen automatically
+    stopAcousticMonitor();
+    startRecording(inCalcScreen()); // silent param when in calc
+  }
+  setTimeout(()=>monitorAcoustic(), 50);
+}
+
+// ============ KEYWORD TRIGGER ============
+let recognition = null;
+function startKeywordMonitor() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { toast(t('speechUnsupported')); return; }
+  recognition = new SR();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = state.lang === 'ko' ? 'ko-KR' : 'en-US';
+  const KEYWORDS = ['도와주세요', '도와줘', 'help me', 'emergency', 'help'];
+  recognition.onresult = e => {
+    for (let i=e.resultIndex; i<e.results.length; i++) {
+      const txt = e.results[i][0].transcript.toLowerCase();
+      for (const kw of KEYWORDS) {
+        if (txt.includes(kw.toLowerCase())) {
+          toast(t('keywordDetect'), 1500);
+          if (!state.recording) startRecording(inCalcScreen());
+          return;
+        }
+      }
+    }
+  };
+  recognition.onerror = ()=>{ try{recognition.start();}catch(e){} };
+  recognition.onend = ()=>{ if (state.keywordActive) try{recognition.start();}catch(e){} };
+  try { recognition.start(); state.keywordActive = true; } catch(e){}
+}
+function stopKeywordMonitor() {
+  state.keywordActive = false;
+  if (recognition) try{recognition.stop();}catch(e){}
+  recognition = null;
+}
+
+async function startBLEMonitor() {
+  if (!('bluetooth' in navigator)) { toast(t('bleUnsupported')); return; }
+  toast(t('bleNote'));
+}
+
+// ============ SETTINGS PANEL ============
+const settingsBtn = document.getElementById('settingsBtn');
+const settingsPanel = document.getElementById('settingsPanel');
+const closeSettings = document.getElementById('closeSettings');
+settingsBtn.addEventListener('click', async () => {
+  // Should never trigger on calc screen since icon is hidden, but defense in depth:
+  if (inCalcScreen()) return;
+
+  if (!hasSeenSettingsNoticeV42()) {
+    const accepted = await showSettingsNoticeV42();
+    markSettingsNoticeV42Seen();
+    if (!accepted) {
+      exitSettingsNoticeFlow();
+      return;
+    }
+  }
+
+  openSettingsPanel();
+});
+closeSettings.addEventListener('click', () => settingsPanel.classList.remove('active'));
+
+function refreshToggles() {
+  document.querySelectorAll('.toggle[data-opt]').forEach(t => {
+    t.classList.toggle('on', !!state.options[t.dataset.opt]);
+  });
+  applyCompactMode();
+  updateScreenOnDurationSelect();
+}
+
+
+document.querySelectorAll('.toggle[data-opt]').forEach(tog => {
+  tog.addEventListener('click', () => {
+    const opt = tog.dataset.opt;
+    state.options[opt] = !state.options[opt];
+    tog.classList.toggle('on', state.options[opt]);
+    saveOptions();
+    handleOptChange(opt);
+  });
+});
+
+
+const compactTransparencyRange = document.getElementById('compactTransparencyRange');
+if (compactTransparencyRange) {
+  compactTransparencyRange.addEventListener('input', () => {
+    state.options.compactTransparency = Math.min(100, Math.max(0, Number(compactTransparencyRange.value || 0)));
+    applyCompactMode();
+    saveOptions();
+    maybeWarnFullTransparency();
+  });
+}
+
+const screenOnDurationSelect = document.getElementById('screenOnDurationSelect');
+if (screenOnDurationSelect) {
+  screenOnDurationSelect.addEventListener('change', () => {
+    const val = Number(screenOnDurationSelect.value || 20);
+    state.options.screenOnDuration = [20,60].includes(val) ? val : 20;
+    updateScreenOnDurationSelect();
+    saveOptions();
+    if (state.gameMode) { state.gameSessionMs = getReviewDurationMinutes() * 60 * 1000; updateGameDurationLabels(); updateGameTimerDisplay(); }
+    if (state.recording && state.options.wakeLock) startScreenOnTestTimer();
+  });
+}
+
+
+const hintBtn = document.getElementById('hintBtn');
+if (hintBtn) hintBtn.addEventListener('click', showBigSudokuHint);
+const clearCellBtn = document.getElementById('clearCellBtn');
+if (clearCellBtn) clearCellBtn.addEventListener('click', clearSelectedSudokuCell);
+const endGameBtn = document.getElementById('endGameBtn');
+if (endGameBtn) endGameBtn.addEventListener('click', () => exitBigSudokuReviewMode(false));
+const restartGameBtn = document.getElementById('restartGameBtn');
+if (restartGameBtn) restartGameBtn.addEventListener('click', restartBigSudokuGameOnly);
+const hallOfFameBtn = document.getElementById('hallOfFameBtn');
+if (hallOfFameBtn) hallOfFameBtn.addEventListener('click', toggleHallOfFamePanel);
+
+function handleOptChange(opt) {
+  if (opt === 'stealthMode' || opt === 'compactMode') applyUIMode();
+  if (opt === 'acousticTrigger') {
+    state.options.acousticTrigger ? startAcousticMonitor() : stopAcousticMonitor();
+  }
+  if (opt === 'keywordTrigger') {
+    state.options.keywordTrigger ? startKeywordMonitor() : stopKeywordMonitor();
+  }
+  if (opt === 'bleTrigger' && state.options.bleTrigger) startBLEMonitor();
+  if (opt === 'wakeLock') {
+    if (state.options.wakeLock && state.recording) {
+      requestScreenWakeLock();
+      startScreenOnTestTimer();
+    } else {
+      clearScreenOnTestTimer();
+    }
+  }
+}
+
+// ============ SAVE FORMAT ============
+document.getElementById('fmtAsIs').addEventListener('click', () => {
+  state.options.saveFormat = 'asis';
+  saveOptions();
+  updateSaveFormatButtons();
+  updateSaveFormatPill();
+  toast(t('fmtChangedAsis'));
+});
+document.getElementById('fmtImage').addEventListener('click', () => {
+  state.options.saveFormat = 'image';
+  saveOptions();
+  updateSaveFormatButtons();
+  updateSaveFormatPill();
+  toast(t('fmtChangedImage'));
+});
+
+// ============ HIDE SETTINGS BUTTON ============
+document.getElementById('hideSettingsBtn').addEventListener('click', async () => {
+  const ok = await dialog({
+    title: t('hideConfirmTitle'),
+    msg: t('hideConfirmMsg'),
+    cancel: true
+  });
+  if (!ok) return;
+  // Auto-switch to calculator first so user has a way to recover
+  state.options.screenMode = 'calculator';
+  state.options.settingsVisible = false;
+  saveOptions();
+  settingsPanel.classList.remove('active');
+  applyUIMode();
+});
+
+// ============ CHANGE UNLOCK CODE ============
+document.getElementById('changeCode').addEventListener('click', async () => {
+  const newCode = await dialog({
+    title: t('changeCodeTitle'),
+    msg: t('changeCodeMsg'),
+    input: true, inputType: 'tel',
+    defaultValue: state.unlockCode, cancel: true
+  });
+  if (newCode === null) return;
+  if (!/^[0-9]{4,10}$/.test(newCode)) { toast(t('codeInvalid'), 2500); return; }
+  saveUnlockCode(newCode);
+  toast(t('codeSaved'), 2000);
+});
+
+// ============ HELP ============
+document.getElementById('openHelp').addEventListener('click', () => {
+  document.getElementById('helpPanel').classList.add('active');
+});
+document.getElementById('closeHelp').addEventListener('click', () => {
+  document.getElementById('helpPanel').classList.remove('active');
+});
+document.querySelectorAll('.lang-btn[data-helplang]').forEach(b => {
+  b.addEventListener('click', () => {
+    const l = b.dataset.helplang;
+    document.getElementById('helpEn').style.display = l === 'en' ? '' : 'none';
+    document.getElementById('helpKo').style.display = l === 'ko' ? '' : 'none';
+    document.querySelectorAll('.lang-btn[data-helplang]').forEach(x => x.classList.toggle('active', x.dataset.helplang === l));
+  });
+});
+
+document.querySelectorAll('.lang-btn[data-lang]').forEach(b => {
+  b.addEventListener('click', () => applyI18n(b.dataset.lang));
+});
+
+document.getElementById('wipeNow').addEventListener('click', async () => {
+  const ok = await dialog({title: '⚠', msg: t('confirmWipe'), cancel: true});
+  if (ok) panicWipe();
+});
+
+// ============ INITIALIZATION ============
+async function init() {
+  applyI18n('en');
+  applyUIMode();
+  refreshToggles();
+  updateSaveFormatButtons();
+  updateSaveFormatPill();
+
+  if (state.options.acousticTrigger) startAcousticMonitor();
+  if (state.options.keywordTrigger) startKeywordMonitor();
+
+  if (state.options.instantRec) {
+    setTimeout(() => startRecording(inCalcScreen()), 500);
+  }
+
+  // First-run welcome (recorder screen only, once per device)
+  if (!state.firstRunDone && state.options.screenMode === 'recorder') {
+    setTimeout(async () => {
+      await dialog({ title: t('firstRunTitle'), msg: t('firstRunMsg') });
+      try { localStorage.setItem('vg_firstrun_v8', '1'); } catch(e) {}
+      state.firstRunDone = true;
+    }, 600);
+  }
+}
+window.addEventListener('DOMContentLoaded', init);
+
+
+document.addEventListener('visibilitychange', () => {
+  if (state.recording && state.mediaRecorder && document.visibilityState === 'hidden') {
+    try {
+      if (state.mediaRecorder.state === 'recording') state.mediaRecorder.requestData();
+    } catch(e) {}
+  }
+  if (document.visibilityState === 'visible' && state.recording && state.options.wakeLock) {
+    requestScreenWakeLock();
+  }
+});
+
+window.addEventListener('beforeunload', e => {
+  if (state.recording) { e.preventDefault(); e.returnValue = ''; }
+});
+
+/* =====================================================================
+   POWER-MENU GUARD MODULE (V4.1)
+   - Default OFF. When toggled ON: shows a short tap-to-close armed notice.
+   - Once armed: a power-menu interruption is detected indirectly via
+     a fast visibilitychange transition (page hidden then visible within
+     a short window). On some Android devices the user action may be
+     Power + Volume Up, but the web app does not read hardware keys.
+   - Power off / Restart in the fake menu → full-viewport black screen +
+     audio mute + auto silent recording for the chosen duration.
+   - Recovery: hidden bottom-center tap zone opens a numeric keypad;
+     entering the unlock code (default 0000) recovers immediately.
+   - Top-right corner 3-tap remains as a fast recovery.
+   ===================================================================== */
+
+const powerTrick = {
+  armed: false,                  // is the guard listening for a page-visibility interruption?
+  menuVisible: false,
+  blackoutActive: false,
+  endTimer: null,
+  recoveryTaps: [],
+  prevAudioVolume: null,
+  startedRecordingHere: false,
+  // visibility-based power-menu interruption detection
+  hiddenAt: 0,
+  // keypad state
+  keypadInput: ''
+};
+
+async function tryPowerTrickFullscreen() {
+  try {
+    const root = document.documentElement;
+    if (root.requestFullscreen && !document.fullscreenElement) {
+      await root.requestFullscreen({ navigationUI: 'hide' });
+    }
+  } catch(e) {
+    // Fullscreen is best-effort only. Android/browser system bars may remain visible.
+  }
+}
+
+function exitPowerTrickFullscreen() {
+  try {
+    if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen();
+  } catch(e) {}
+}
+
+// ---- Show / hide fake menu ----
+function showFakeShutdownMenu() {
+  if (powerTrick.menuVisible) return;
+  // Hygiene: close any open settings panel before showing
+  document.getElementById('settingsPanel').classList.remove('active');
+  tryPowerTrickFullscreen();
+  const menu = document.getElementById('fakeShutdownMenu');
+  menu.classList.add('active');
+  powerTrick.menuVisible = true;
+}
+function hideFakeShutdownMenu() {
+  document.getElementById('fakeShutdownMenu').classList.remove('active');
+  powerTrick.menuVisible = false;
+}
+
+// ---- Engage blackout ----
+async function engagePowerTrickBlackout() {
+  hideFakeShutdownMenu();
+  tryPowerTrickFullscreen();
+  const minutes = [1,5,15,30,60].includes(Number(state.options.powerTrickDuration))
+    ? Number(state.options.powerTrickDuration) : 1;
+
+  powerTrick.blackoutActive = true;
+  document.body.classList.add('power-trick-blackout');
+
+  // Auto silent recording on entry (key value)
+  powerTrick.startedRecordingHere = false;
+  if (!state.recording) {
+    try {
+      await startRecording(true);  // silent param
+      powerTrick.startedRecordingHere = true;
+    } catch(e) { /* mic denied — blackout still proceeds */ }
+  }
+
+  // Mute any playing audio/video the page produces
+  try {
+    document.querySelectorAll('audio,video').forEach(el => {
+      if (powerTrick.prevAudioVolume === null) powerTrick.prevAudioVolume = el.volume;
+      el.muted = true; el.volume = 0;
+    });
+  } catch(e) {}
+
+  // Hide any rec indicator (camouflage)
+  document.getElementById('recIndicator').classList.remove('show');
+
+  // Show black screen
+  document.getElementById('blackoutScreen').classList.add('active');
+
+  // Try wake lock so recording survives idle
+  if ('wakeLock' in navigator) {
+    try { await navigator.wakeLock.request('screen'); } catch(e){}
+  }
+
+  // Schedule auto-recovery
+  if (powerTrick.endTimer) clearTimeout(powerTrick.endTimer);
+  powerTrick.endTimer = setTimeout(() => {
+    disengagePowerTrickBlackout(true);
+  }, minutes * 60 * 1000);
+}
+
+// ---- Disengage blackout ----
+function disengagePowerTrickBlackout(silent) {
+  if (!powerTrick.blackoutActive) return;
+  powerTrick.blackoutActive = false;
+
+  if (powerTrick.endTimer) { clearTimeout(powerTrick.endTimer); powerTrick.endTimer = null; }
+
+  // Hide black screen and keypad
+  document.getElementById('blackoutScreen').classList.remove('active');
+  document.getElementById('blackoutKeypad').classList.remove('active');
+  document.body.classList.remove('power-trick-blackout');
+  exitPowerTrickFullscreen();
+
+  // Reset keypad
+  powerTrick.keypadInput = '';
+  document.getElementById('keypadDisplay').textContent = '';
+
+  // Restore audio
+  try {
+    document.querySelectorAll('audio,video').forEach(el => {
+      el.muted = false;
+      if (powerTrick.prevAudioVolume !== null) el.volume = powerTrick.prevAudioVolume;
+    });
+  } catch(e) {}
+  powerTrick.prevAudioVolume = null;
+
+  // Restore rec indicator if applicable (recorder screen + still recording)
+  if (state.recording && !inCalcScreen()) {
+    document.getElementById('recIndicator').classList.add('show');
+  }
+  // Per spec: silent recovery — no toast.
+}
+
+// ---- Block all input while blackout is active ----
+// Allow only the recovery zone and keypad-open zone (and the keypad itself).
+function blackoutInputBlocker(e) {
+  if (!powerTrick.blackoutActive) return;
+  const t = e.target;
+  if (!t) return;
+  // Allow: blackout recovery (3-tap), keypad-open zone, keypad itself
+  if (t.id === 'blackoutRecovery') return;
+  if (t.id === 'blackoutKeypadOpen') return;
+  if (t.closest && t.closest('#blackoutKeypad')) return;
+  // Block everything else
+  e.stopPropagation();
+  e.preventDefault();
+}
+['click','touchstart','touchend','touchmove','keydown','keyup','wheel'].forEach(ev => {
+  document.addEventListener(ev, blackoutInputBlocker, {capture:true, passive:false});
+});
+
+// ---- Recovery: top-right corner × 3 within 1s ----
+document.getElementById('blackoutRecovery').addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (!powerTrick.blackoutActive) return;
+  const now = Date.now();
+  powerTrick.recoveryTaps = powerTrick.recoveryTaps.filter(t => now - t < 1000);
+  powerTrick.recoveryTaps.push(now);
+  if (powerTrick.recoveryTaps.length >= 3) {
+    powerTrick.recoveryTaps = [];
+    disengagePowerTrickBlackout(true);
+  }
+});
+
+// ---- Recovery: hidden bottom-center zone → opens keypad ----
+document.getElementById('blackoutKeypadOpen').addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (!powerTrick.blackoutActive) return;
+  // Open keypad on top of black screen
+  powerTrick.keypadInput = '';
+  document.getElementById('keypadDisplay').textContent = '';
+  document.getElementById('blackoutKeypad').classList.add('active');
+});
+
+// ---- Keypad button handlers ----
+document.querySelectorAll('#blackoutKeypad .keypad-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const k = btn.dataset.kp;
+    if (k === 'cancel') {
+      // Close keypad, stay in blackout
+      powerTrick.keypadInput = '';
+      document.getElementById('keypadDisplay').textContent = '';
+      document.getElementById('blackoutKeypad').classList.remove('active');
+      return;
+    }
+    if (k === 'ok') {
+      const code = state.unlockCode || '0000';
+      if (powerTrick.keypadInput === code) {
+        // Recover
+        disengagePowerTrickBlackout(true);
+      } else {
+        // Wrong: visual flash, then clear
+        const disp = document.getElementById('keypadDisplay');
+        disp.style.color = '#f44';
+        disp.textContent = t('ptKeypadWrong');
+        setTimeout(() => {
+          disp.style.color = '#0f0';
+          disp.textContent = '';
+          powerTrick.keypadInput = '';
+        }, 800);
+      }
+      return;
+    }
+    // Digit
+    if (/^[0-9]$/.test(k)) {
+      if (powerTrick.keypadInput.length < 10) {
+        powerTrick.keypadInput += k;
+        document.getElementById('keypadDisplay').textContent =
+          '•'.repeat(powerTrick.keypadInput.length);
+      }
+    }
+  });
+});
+
+// ---- Fake menu button handlers ----
+document.getElementById('fakePowerOff').addEventListener('click', (e) => {
+  e.stopPropagation();
+  tryPowerTrickFullscreen();
+  engagePowerTrickBlackout();
+});
+document.getElementById('fakeRestart').addEventListener('click', (e) => {
+  e.stopPropagation();
+  tryPowerTrickFullscreen();
+  engagePowerTrickBlackout();
+});
+document.getElementById('fakeEmergency').addEventListener('click', (e) => {
+  e.stopPropagation();
+  hideFakeShutdownMenu();
+  const num = (navigator.language && navigator.language.toLowerCase().startsWith('ko')) ? '112' : '911';
+  try { window.location.href = 'tel:' + num; } catch(err) {}
+});
+document.getElementById('fakeShutdownBottom').addEventListener('click', (e) => {
+  e.stopPropagation();
+  // Decoy — does nothing visible, like the real "Side button settings" link
+});
+
+// =====================================================================
+// POWER-MENU INTERRUPTION DETECTION (indirect, via visibilitychange)
+// =====================================================================
+// A sandboxed web app cannot reliably read physical Power or Volume keys.
+// Instead, this guard detects a fast hidden→visible transition
+// (within ~3 seconds) as a proxy for a system power-menu interruption.
+// On many Android devices the user's external action may be Power + Volume Up,
+// but this code only observes document.visibilityState.
+//
+// To avoid false positives (app-switching, notifications), we require:
+//   - powerTrick.armed === true
+//   - hidden duration between 200ms and 3000ms
+//   - blackout not currently active (we don't re-trigger inside blackout)
+//   - menu not currently visible
+// =====================================================================
+document.addEventListener('visibilitychange', () => {
+  if (!powerTrick.armed) return;
+  if (powerTrick.blackoutActive || powerTrick.menuVisible) return;
+  if (document.visibilityState === 'hidden') {
+    powerTrick.hiddenAt = Date.now();
+  } else if (document.visibilityState === 'visible' && powerTrick.hiddenAt > 0) {
+    const elapsed = Date.now() - powerTrick.hiddenAt;
+    powerTrick.hiddenAt = 0;
+    if (elapsed >= 200 && elapsed <= 3000) {
+      // Likely a power-menu interruption / brief screen-off
+      showFakeShutdownMenu();
+    }
+  }
+});
+
+// =====================================================================
+// Settings panel: Power Trick toggle + duration + test
+// =====================================================================
+function refreshPowerTrickDurationUI() {
+  const cur = Number(state.options.powerTrickDuration) || 1;
+  document.querySelectorAll('.power-trick-duration-btn').forEach(b => {
+    b.classList.toggle('selected', Number(b.dataset.ptdur) === cur);
+  });
+}
+function refreshPowerTrickStatus() {
+  const el = document.getElementById('powerTrickStatus');
+  if (!el) return;
+  if (state.options.powerTrickEnabled) {
+    el.textContent = t('ptStatusArmed');
+    el.classList.add('armed');
+  } else {
+    el.textContent = t('ptStatusDisarmed');
+    el.classList.remove('armed');
+  }
+}
+
+(function bindPowerTrickSettings() {
+  // Toggle handler — the generic toggle binder already flips state.options.
+  // We add the explainer dialog and arming behavior afterwards.
+  document.querySelectorAll('.toggle[data-opt="powerTrickEnabled"]').forEach(tog => {
+    tog.addEventListener('click', () => {
+      setTimeout(async () => {
+        if (state.options.powerTrickEnabled) {
+          // Show a short tap-to-close armed notice; keep the long explanation in Help/Settings copy.
+          await dialog({ title: '⚡ ' + t('ptTitle'), msg: t('ptOnExplain'), tapToClose: true });
+          powerTrick.armed = true;
+          refreshPowerTrickStatus();
+          toast(t('ptArmedToast'), 1600);
+        } else {
+          await dialog({ title: '⚡', msg: t('ptOffExplain') });
+          powerTrick.armed = false;
+          refreshPowerTrickStatus();
+          toast(t('ptDisarmedToast'), 1800);
+        }
+      }, 50);
+    });
+  });
+
+  // Duration buttons
+  document.querySelectorAll('.power-trick-duration-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      const min = Number(b.dataset.ptdur);
+      if (![1,5,15,30,60].includes(min)) return;
+      state.options.powerTrickDuration = min;
+      saveOptions();
+      refreshPowerTrickDurationUI();
+      toast(t('ptDurationChanged').replace('{MIN}', String(min)), 1600);
+    });
+  });
+
+  // Test button — always available; shows menu without requiring a real hardware-key event
+  document.getElementById('powerTrickTestBtn').addEventListener('click', () => {
+    if (!state.options.powerTrickEnabled) {
+      toast(t('ptOffExplain'), 2400);
+      return;
+    }
+    tryPowerTrickFullscreen();
+    toast(t('ptTestToast'), 900);
+    setTimeout(() => showFakeShutdownMenu(), 250);
+  });
+})();
+
+// =====================================================================
+// Calculator command: 911= or 112= → fake shutdown (only when armed)
+// =====================================================================
+(function hookCalcEmergencyCodes() {
+  const grid = document.querySelector('.calc-grid');
+  if (!grid) return;
+  grid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.calc-btn');
+    if (!btn) return;
+    const key = btn.dataset.key;
+    if (key === '=' && ['911','112'].includes(state.calcExpression) && state.options.powerTrickEnabled) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      // Reset calc display so the trigger leaves no trace
+      state.calcExpression = '';
+      state.calcDisplay = '0';
+      state.calcWaiting = false;
+      try { calcUpdate(); } catch(err) {}
+      showFakeShutdownMenu();
+    }
+  }, true);
+})();
+
+// =====================================================================
+// On load: if powerTrickEnabled was saved as true, re-arm silently
+// (no dialog — the user already saw it last session).
+// Also refresh duration & status UI.
+// =====================================================================
+(function powerTrickOnLoad() {
+  const init = () => {
+    if (state.options.powerTrickEnabled) {
+      powerTrick.armed = true;
+    }
+    refreshPowerTrickDurationUI();
+    refreshPowerTrickStatus();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* =====================================================================
+   END OF POWER-MENU GUARD MODULE (V4.1)
+   ===================================================================== */
+</script>
+</body>
+</html>
