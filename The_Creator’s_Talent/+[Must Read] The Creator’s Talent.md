@@ -53,4 +53,6 @@ As for the talents I have, rather than devoting them solely to South Korea, I wa
 ### they may choose to immigrate to another country where their dignity is respected.
 ### Ultimately, countries that respect human dignity will become stronger nations.
 ### Diplomacy is more important than money. At its core, diplomacy is about people.
+### Human dignity can never be exchanged for anything else.
+### Because human civilization is built upon the foundation of human dignity.
 
