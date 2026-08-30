@@ -49,11 +49,3 @@ As for the talents I have, rather than devoting them solely to South Korea, I wa
 ### Does owning an expensive car and living in an expensive house necessarily make someone a great person?
 ### Are people who can barely afford a single piece of bread a day simply lazy?
 ### Human dignity never changes.
-### If people cannot find dignity in their own country, 
-### they may choose to immigrate to another country where their dignity is respected.
-### Ultimately, countries that respect human dignity will become stronger nations.
-### Diplomacy is more important than money. At its core, diplomacy is about people.
-### Human dignity can never be exchanged for anything else.
-### Because human civilization is built upon the foundation of human dignity.
-### If a country fails to value human dignity, it will inevitably become weaker.
-### Regardless of ideology, human dignity is the same in every country.
