@@ -20,6 +20,7 @@ My greatest strengths lie in creativity and problem-solving.
 Creativity and problem-solving skills can be applied to virtually any field.
 
 # I am someone who thinks.
+## With zero financial support, I inevitably have a great deal to worry about.
 
 <img width="184" height="263" alt="lo" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lo.PNG" />
 
