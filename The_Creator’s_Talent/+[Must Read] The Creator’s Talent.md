@@ -34,7 +34,7 @@ There is no such thing as a free lunch. Talent deserves to be valued and support
 
 If I have been able to demonstrate this level of problem-solving ability with virtually no resources, I believe I could achieve much more with the right resources and opportunities.
 
-The truth is that I have not received much recognition or support in South Korea. I grew up in a difficult environment and had no one in a position to help me. It is unfortunate, but I do not want to pretend otherwise.
+The truth is that I have received no support whatsoever in South Korea. I grew up in a difficult environment and had no one in a position to help me. It is unfortunate, but I do not want to pretend otherwise.
 
 I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.
 
