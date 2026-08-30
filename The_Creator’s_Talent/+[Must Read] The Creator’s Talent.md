@@ -45,5 +45,6 @@ My favorite American film is *Good Will Hunting*. The protagonist works as a jan
 
 As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
 
+### A person cannot be defined by their background or where they come from.
 ### Human dignity never changes.
 
