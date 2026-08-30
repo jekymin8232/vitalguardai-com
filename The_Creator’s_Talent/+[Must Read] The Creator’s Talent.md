@@ -55,4 +55,5 @@ As for the talents I have, rather than devoting them solely to South Korea, I wa
 ### Diplomacy is more important than money. At its core, diplomacy is about people.
 ### Human dignity can never be exchanged for anything else.
 ### Because human civilization is built upon the foundation of human dignity.
-
+### If a country fails to value human dignity, it will inevitably become weaker.
+### Regardless of ideology, human dignity is the same in every country.
