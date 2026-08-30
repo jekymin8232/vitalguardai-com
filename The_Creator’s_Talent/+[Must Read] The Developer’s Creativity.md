@@ -10,7 +10,7 @@ My core strength lies not in coding itself, but in conceiving new ideas, structu
 Even when the technology or field changes, this ability to architect solutions remains the same.
 I have the talent of an architect.
 
-### My Core Strengths
+### Please believe in my creativity and problem-solving abilities.
 
 My greatest strengths lie in creativity and problem-solving.
 
