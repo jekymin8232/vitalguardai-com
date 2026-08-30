@@ -1,0 +1,854 @@
+
+   
+<div style="max-width: 1000px; margin: 12px auto 20px;
+            background: linear-gradient(120deg, #f6f8fa, #e6f0ff);
+            border-left: 3px solid #3b82f6;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            padding: 6px 18px;
+            font-family: 'Noto Sans', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1e293b;
+            line-height: 1.3;
+            font-size: 0.8rem;
+            text-align: left;">
+  <h2 style="color: #1d4ed8;
+             font-weight: 700;
+             margin: 0 0 4px 0;
+             font-size: 0.95rem;">
+    🌍 AI That Saves Lives, Dual Brain Micro-AI, Hybrid Offline Intelligence 🌱 TinyML + Dual-Brain Micro-AI for African Agriculture
+  </h2>
+  <p style="margin: 0;">
+    True life-saving AI isn’t the fastest — it’s the one that never stops. It isn’t the most complex, but the most ethical, transparent, and repairable that truly serves humanity. Only AI that runs on simple solar power and old smartphones can reach those who need it most — and keep them alive.
+  </p>
+</div>
+
+
+
+   
+
+   <!-- Mouse Flight AI Simulator with Level System: embeddable block start -->
+
+<style>
+  #mouse-ai-wrapper {
+    max-width: 260px;
+    margin: 16px auto;
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+    color: #e5e7eb;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  #mouse-ai-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  #mouse-ai-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  #mouse-ai-status {
+    font-size: 0.7rem;
+    opacity: 0.85;
+    text-align: right;
+  }
+
+  #mouse-ai-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    margin-bottom: 6px;
+    gap: 6px;
+  }
+
+  #mouse-ai-hud-left,
+  #mouse-ai-hud-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #mouse-ai-ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  #mouse-ai-ai-badge span {
+    font-size: 0.7rem;
+  }
+
+  #mouse-ai-level-select {
+    font-size: 0.68rem;
+    padding: 1px 4px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+  }
+
+  #mouse-ai-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #020617 0%, #020617 60%, #000 100%);
+  }
+
+  #mouse-ai-help {
+    margin-top: 6px;
+    font-size: 0.65rem;
+    line-height: 1.4;
+    color: #9ca3af;
+  }
+
+  #mouse-ai-help code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: rgba(15, 23, 42, 0.9);
+    padding: 1px 3px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+  }
+
+  #mouse-ai-container {
+    position: relative;
+  }
+
+  #mouse-ai-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  #mouse-ai-overlay-message {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(248, 250, 252, 0.3);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  .mouse-ai-auto #mouse-ai-ai-badge {
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+  }
+
+  .mouse-ai-human #mouse-ai-ai-badge {
+    border-color: rgba(249, 115, 22, 0.9);
+    box-shadow: 0 0 6px rgba(249, 115, 22, 0.7);
+  }
+
+  .mouse-ai-suggest #mouse-ai-ai-badge {
+    animation: mouse-ai-pulse 0.9s infinite alternate;
+  }
+
+  @keyframes mouse-ai-pulse {
+    from {
+      opacity: 0.85;
+      transform: translateY(-1px) scale(1.0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.03);
+    }
+  }
+</style>
+
+<section id="mouse-ai-wrapper">
+  <header id="mouse-ai-header">
+    <div id="mouse-ai-title">Mouse Flight AI Simulator 🐭 21 KB, V0.4(Alpha) </div>
+    <div id="mouse-ai-status">
+      <div>Distance: <span id="mouse-ai-distance">0</span> m</div>
+      <div>Best: <span id="mouse-ai-best">0</span> m</div>
+    </div>
+  </header>
+
+  <div id="mouse-ai-hud">
+    <div id="mouse-ai-hud-left">
+      <div>Mode: <span id="mouse-ai-mode-label">AI autopilot</span></div>
+      <div>Episodes: <span id="mouse-ai-episodes">0</span></div>
+    </div>
+    <div id="mouse-ai-hud-right">
+      <div id="mouse-ai-ai-badge">
+        <span id="mouse-ai-ai-face">🤖</span>
+        <span id="mouse-ai-ai-info">Lv.1 · Trust 0%</span>
+      </div>
+      <div>
+        Learning:
+        <select id="mouse-ai-level-select">
+          <option value="1">Lv.1 – Fresh (0% learning)</option>
+          <option value="2">Lv.2 – Cautious learner</option>
+          <option value="3">Lv.3 – Trained</option>
+          <option value="4">Lv.4 – Expert</option>
+          <option value="5">Lv.5 – Master (max)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="mouse-ai-container">
+    <canvas id="mouse-ai-canvas" width="240" height="360"></canvas>
+    <div id="mouse-ai-overlay">
+      <div id="mouse-ai-overlay-message">
+        Default: AI mouse flies automatically.<br>
+        Space / left click: switch to human control.
+      </div>
+    </div>
+  </div>
+
+  <div id="mouse-ai-help">
+    <div>· The mouse (🐭) flies forward and tries to dodge incoming cats (🐱).</div>
+    <div>· By default the AI controls the mouse and learns from every episode.</div>
+    <div>· Press <code>Space</code> or <code>left click</code> to take over. The AI stops acting until the next round.</div>
+    <div>· Use the <strong>AI Learning</strong> level (Lv.1–Lv.5) to reset and control how strong the learning is.</div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const canvas = document.getElementById("mouse-ai-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  const wrapper = document.getElementById("mouse-ai-wrapper");
+  const distanceEl = document.getElementById("mouse-ai-distance");
+  const bestEl = document.getElementById("mouse-ai-best");
+  const modeLabelEl = document.getElementById("mouse-ai-mode-label");
+  const episodesEl = document.getElementById("mouse-ai-episodes");
+  const aiFaceEl = document.getElementById("mouse-ai-ai-face");
+  const aiInfoEl = document.getElementById("mouse-ai-ai-info");
+  const overlayEl = document.getElementById("mouse-ai-overlay");
+  const overlayMessageEl = document.getElementById("mouse-ai-overlay-message");
+  const levelSelect = document.getElementById("mouse-ai-level-select");
+
+  const WIDTH = canvas.width;
+  const HEIGHT = canvas.height;
+
+  const GRAVITY = 0.0024;
+  const JUMP_VELOCITY = -0.9;
+  const BASE_SCROLL_SPEED = 0.16;
+  const MAX_DT = 50; // ms
+
+  const ENEMY_SPAWN_BASE = 900;
+  const ENEMY_SPAWN_VAR = 650;
+  const AI_STORAGE_KEY = "mouse_flight_ai_brain_v3";
+  const BEST_DISTANCE_KEY = "mouse_flight_best_distance_v3";
+  const MAX_LEVEL = 5;
+
+  let lastTime = 0;
+  let simTime = 0;
+  let distance = 0;
+  let bestDistance = Number(localStorage.getItem(BEST_DISTANCE_KEY) || "0");
+  let gameOver = false;
+
+  const player = {
+    x: WIDTH * 0.2,
+    y: HEIGHT * 0.5,
+    vy: 0,
+    radius: 12,
+  };
+
+  let enemies = [];
+  let enemySpawnTimer = 0;
+  let difficultyLevel = 0;
+
+  let autopilot = true;
+  let lastJumpTime = 0;
+  let decisionHistory = [];
+  let humanPendingJump = false;
+  const MAX_HISTORY = 32;
+
+  let overlayTimer = null;
+
+  const aiBrain = loadBrain();
+  let aiLevel = aiBrain.currentLevel || 1;
+  if (aiLevel < 1 || aiLevel > MAX_LEVEL) aiLevel = 1;
+  aiBrain.currentLevel = aiLevel;
+
+  distanceEl.textContent = "0";
+  bestEl.textContent = Math.floor(bestDistance).toString();
+  updateAIIndicators();
+  updateModeIndicators();
+  if (levelSelect) levelSelect.value = String(aiLevel);
+  showOverlayMessage(
+    "Default: AI mouse flies automatically. Space or left click to take control."
+  );
+  resetGame();
+
+  // ---------- Persistence ----------
+
+  function loadBrain() {
+    try {
+      const raw = localStorage.getItem(AI_STORAGE_KEY);
+      if (!raw) {
+        return { stats: {}, totalSuccess: 0, totalFail: 0, episodes: 0, currentLevel: 1 };
+      }
+      const parsed = JSON.parse(raw);
+      return {
+        stats: parsed.stats || {},
+        totalSuccess: parsed.totalSuccess || 0,
+        totalFail: parsed.totalFail || 0,
+        episodes: parsed.episodes || 0,
+        currentLevel: parsed.currentLevel || 1,
+      };
+    } catch (e) {
+      console.warn("AI brain load failed", e);
+      return { stats: {}, totalSuccess: 0, totalFail: 0, episodes: 0, currentLevel: 1 };
+    }
+  }
+
+  function saveBrain() {
+    try {
+      localStorage.setItem(
+        AI_STORAGE_KEY,
+        JSON.stringify({
+          stats: aiBrain.stats,
+          totalSuccess: aiBrain.totalSuccess,
+          totalFail: aiBrain.totalFail,
+          episodes: aiBrain.episodes,
+          currentLevel: aiLevel,
+        })
+      );
+    } catch (e) {
+      console.warn("AI brain save failed", e);
+    }
+  }
+
+  // ---------- UI helpers ----------
+
+  function showOverlayMessage(text, durationMs) {
+    if (!overlayEl) return;
+    overlayMessageEl.textContent = text;
+    overlayEl.style.display = "flex";
+    if (overlayTimer) clearTimeout(overlayTimer);
+    overlayTimer = setTimeout(function () {
+      overlayEl.style.display = "none";
+    }, durationMs || 10000); // default 10 seconds
+  }
+
+  function updateAIIndicators() {
+    const totalS = aiBrain.totalSuccess || 0;
+    const totalF = aiBrain.totalFail || 0;
+    const total = totalS + totalF;
+    let trust = 0;
+    if (total > 0) trust = Math.round((totalS / total) * 100);
+
+    let face = "🤖";
+    if (aiLevel >= 5) face = "🧠";
+    else if (aiLevel === 4) face = "😼";
+    else if (aiLevel === 3) face = "🙂";
+    else face = "🤖";
+
+    aiFaceEl.textContent = face;
+    aiInfoEl.textContent = "Lv." + aiLevel + " · Trust " + trust + "%";
+    episodesEl.textContent = (aiBrain.episodes || 0).toString();
+
+    if (levelSelect && levelSelect.value !== String(aiLevel)) {
+      levelSelect.value = String(aiLevel);
+    }
+  }
+
+  function updateModeIndicators() {
+    if (autopilot && !gameOver) {
+      modeLabelEl.textContent = "AI autopilot";
+      wrapper.classList.add("mouse-ai-auto");
+      wrapper.classList.remove("mouse-ai-human");
+    } else if (!gameOver) {
+      modeLabelEl.textContent = "Human control";
+      wrapper.classList.remove("mouse-ai-auto");
+      wrapper.classList.add("mouse-ai-human");
+    } else {
+      modeLabelEl.textContent = "Game over";
+      wrapper.classList.remove("mouse-ai-auto");
+      wrapper.classList.remove("mouse-ai-human");
+    }
+  }
+
+  function applyManualLevel(levelValue) {
+    const lvl = Number(levelValue);
+    if (!Number.isFinite(lvl) || lvl < 1 || lvl > MAX_LEVEL) return;
+
+    // Reset all learned experience
+    aiBrain.stats = {};
+    aiBrain.totalSuccess = 0;
+    aiBrain.totalFail = 0;
+    aiBrain.episodes = 0;
+    aiLevel = lvl;
+    saveBrain();
+    updateAIIndicators();
+    resetGame();
+    showOverlayMessage(
+      "AI learning level set to Lv." +
+        lvl +
+        ". Experience has been reset and a new training phase begins."
+    );
+  }
+
+  if (levelSelect) {
+    levelSelect.addEventListener("change", function (e) {
+      applyManualLevel(e.target.value);
+    });
+  }
+
+  // ---------- Game reset ----------
+
+  function resetGame() {
+    enemies = [];
+    enemySpawnTimer = 600;
+    distance = 0;
+    difficultyLevel = 0;
+    simTime = 0;
+    decisionHistory = [];
+    humanPendingJump = false;
+    lastJumpTime = 0;
+
+    player.x = WIDTH * 0.2;
+    player.y = HEIGHT * 0.5;
+    player.vy = 0;
+    distanceEl.textContent = "0";
+
+    gameOver = false;
+    autopilot = true; // new round always starts with AI control
+    updateModeIndicators();
+  }
+
+  // ---------- World / enemies ----------
+
+  function spawnEnemy() {
+    const y = 40 + Math.random() * (HEIGHT - 80);
+    const speed = BASE_SCROLL_SPEED + 0.035 * difficultyLevel + Math.random() * 0.05;
+    enemies.push({
+      x: WIDTH + 40,
+      y: y,
+      vx: speed,
+      passed: false,
+    });
+  }
+
+  function updateDifficulty() {
+    const newLevel = Math.floor(distance / 300);
+    if (newLevel > difficultyLevel) difficultyLevel = newLevel;
+  }
+
+  function getNearestThreat() {
+    let nearest = null;
+    let minDx = Infinity;
+    for (const e of enemies) {
+      const dx = e.x - player.x;
+      if (dx >= 0 && dx < minDx) {
+        minDx = dx;
+        nearest = e;
+      }
+    }
+    return nearest;
+  }
+
+  // ---------- State & RL ----------
+
+  function makeStateKey() {
+    const threat = getNearestThreat();
+    if (!threat) return "none";
+    const dx = threat.x - player.x;
+    const dy = threat.y - player.y;
+
+    let distBucket = 2;
+    if (dx < WIDTH * 0.25) distBucket = 0;
+    else if (dx < WIDTH * 0.5) distBucket = 1;
+
+    let dyBucket = 1;
+    if (dy < -20) dyBucket = 0;
+    else if (dy > 20) dyBucket = 2;
+
+    return dyBucket + ":" + distBucket;
+  }
+
+  function ensureState(stateKey) {
+    const stats = (aiBrain.stats[stateKey] = aiBrain.stats[stateKey] || {
+      jump: { s: 0, f: 0 },
+      stay: { s: 0, f: 0 },
+    });
+    return stats;
+  }
+
+  function getActionStats(stateKey, action) {
+    const stats = ensureState(stateKey);
+    return stats[action];
+  }
+
+  function rlPolicy(stateKey) {
+    if (stateKey === "none") return "stay";
+
+    // Learning strength: higher level => lower exploration
+    const epsLevelPart = 0.30 - (aiLevel - 1) * 0.05; // Lv1:0.30, Lv5:0.10
+    const eps = Math.max(0.04, epsLevelPart);
+
+    if (Math.random() < eps) {
+      return Math.random() < 0.5 ? "jump" : "stay";
+    }
+
+    const js = getActionStats(stateKey, "jump");
+    const ss = getActionStats(stateKey, "stay");
+    const jCount = js.s + js.f;
+    const sCount = ss.s + ss.f;
+    const jRate = jCount > 0 ? js.s / jCount : 0.5;
+    const sRate = sCount > 0 ? ss.s / sCount : 0.5;
+
+    if (jRate > sRate) return "jump";
+    if (sRate > jRate) return "stay";
+    return Math.random() < 0.5 ? "jump" : "stay";
+  }
+
+  function recordDecision(stateKey, action) {
+    decisionHistory.push({ stateKey: stateKey, action: action });
+    if (decisionHistory.length > MAX_HISTORY) decisionHistory.shift();
+  }
+
+  function updateAutoLevel() {
+    const s = aiBrain.totalSuccess || 0;
+    let target = 1;
+    if (s > 20) target = 2;
+    if (s > 60) target = 3;
+    if (s > 140) target = 4;
+    if (s > 260) target = 5;
+
+    if (target > aiLevel) {
+      aiLevel = target;
+      saveBrain();
+      updateAIIndicators();
+      showOverlayMessage("AI has improved its learning to Lv." + aiLevel + ".");
+    } else {
+      saveBrain();
+      updateAIIndicators();
+    }
+  }
+
+  function rewardHistory(kind) {
+    if (decisionHistory.length === 0) return;
+    const isSuccess = kind === "success";
+    for (const d of decisionHistory) {
+      const stats = getActionStats(d.stateKey, d.action);
+      if (isSuccess) {
+        stats.s += 1;
+        aiBrain.totalSuccess += 1;
+      } else {
+        stats.f += 1;
+        aiBrain.totalFail += 1;
+      }
+    }
+    if (!isSuccess) {
+      aiBrain.episodes += 1;
+    }
+    updateAutoLevel();
+  }
+
+  function simulateSafety(action) {
+    const nearEnemies = enemies.filter(function (e) {
+      return e.x > player.x - 10 && e.x < player.x + 220;
+    });
+    if (nearEnemies.length === 0) return 9999;
+
+    const horizon = 600; // ms
+    const step = 40; // ms
+    let y = player.y;
+    let vy = player.vy;
+    const top = 30;
+    const bottom = HEIGHT - 30;
+    let minClearance = Infinity;
+
+    for (let t = 0; t <= horizon; t += step) {
+      if (t === 0 && action === "jump") {
+        vy = JUMP_VELOCITY;
+      }
+      vy += GRAVITY * step;
+      y += vy * step;
+      if (y < top) {
+        y = top;
+        vy = 0;
+      }
+      if (y > bottom) {
+        y = bottom;
+        vy = 0;
+      }
+      for (const e of nearEnemies) {
+        const ex = e.x - e.vx * t;
+        const ey = e.y;
+        const dx = ex - player.x;
+        const dy = ey - y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < minClearance) minClearance = dist;
+      }
+    }
+    return minClearance;
+  }
+
+  function aiStep() {
+    const now = simTime;
+    const threat = getNearestThreat();
+
+    if (!threat) {
+      const center = HEIGHT * 0.5;
+      const diff = player.y - center;
+      if (diff > 30 && now - lastJumpTime > 220) {
+        player.vy = JUMP_VELOCITY;
+        lastJumpTime = now;
+        recordDecision("none", "jump");
+      } else {
+        recordDecision("none", "stay");
+      }
+      wrapper.classList.remove("mouse-ai-suggest");
+      return;
+    }
+
+    const stateKey = makeStateKey();
+    const safetyStay = simulateSafety("stay");
+    const safetyJump = simulateSafety("jump");
+    const SAFETY_MARGIN = 8;
+    let action;
+
+    if (safetyJump === 9999 && safetyStay === 9999) {
+      action = rlPolicy(stateKey);
+    } else {
+      const diff = safetyJump - safetyStay;
+      if (Math.abs(diff) > SAFETY_MARGIN) {
+        action = diff > 0 ? "jump" : "stay";
+      } else {
+        action = rlPolicy(stateKey);
+      }
+
+      if (diff > SAFETY_MARGIN && safetyJump < 9999) {
+        wrapper.classList.add("mouse-ai-suggest");
+      } else {
+        wrapper.classList.remove("mouse-ai-suggest");
+      }
+    }
+
+    if (action === "jump" && now - lastJumpTime > 180) {
+      player.vy = JUMP_VELOCITY;
+      lastJumpTime = now;
+    }
+
+    recordDecision(stateKey, action);
+  }
+
+  function humanObserveStep() {
+    const stateKey = makeStateKey();
+    const action = humanPendingJump ? "jump" : "stay";
+    recordDecision(stateKey, action);
+    humanPendingJump = false;
+  }
+
+  // ---------- Collisions ----------
+
+  function collideCircles(ax, ay, ar, bx, by, br) {
+    const dx = ax - bx;
+    const dy = ay - by;
+    return dx * dx + dy * dy < (ar + br) * (ar + br);
+  }
+
+  function checkCollisions() {
+    for (const e of enemies) {
+      if (collideCircles(player.x, player.y, player.radius, e.x, e.y, 12)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function handleGameOver() {
+    gameOver = true;
+    wrapper.classList.remove("mouse-ai-suggest");
+    updateModeIndicators();
+    if (distance > bestDistance) {
+      bestDistance = distance;
+      localStorage.setItem(BEST_DISTANCE_KEY, String(Math.floor(bestDistance)));
+      bestEl.textContent = Math.floor(bestDistance).toString();
+    }
+    showOverlayMessage(
+      "The mouse crashed. AI has learned from this episode. Press Space or click to start a new round."
+    );
+  }
+
+  // ---------- Game loop ----------
+
+  function update(dt) {
+    if (gameOver) return;
+
+    simTime += dt;
+
+    if (autopilot) {
+      aiStep();
+    } else {
+      humanObserveStep();
+    }
+
+    player.vy += GRAVITY * dt;
+    player.y += player.vy * dt;
+
+    const top = 30;
+    const bottom = HEIGHT - 30;
+    if (player.y < top) {
+      player.y = top;
+      player.vy = 0;
+    }
+    if (player.y > bottom) {
+      player.y = bottom;
+      player.vy = 0;
+    }
+
+    distance += BASE_SCROLL_SPEED * dt * 0.06;
+    distanceEl.textContent = Math.floor(distance).toString();
+    updateDifficulty();
+
+    enemySpawnTimer -= dt;
+    if (enemySpawnTimer <= 0) {
+      spawnEnemy();
+      const base = ENEMY_SPAWN_BASE - difficultyLevel * 60;
+      enemySpawnTimer = Math.max(320, base) + Math.random() * ENEMY_SPAWN_VAR;
+    }
+
+    for (const e of enemies) {
+      e.x -= e.vx * dt;
+      if (!e.passed && e.x < player.x) {
+        e.passed = true;
+        rewardHistory("success");
+      }
+    }
+    enemies = enemies.filter(function (e) {
+      return e.x > -40;
+    });
+
+    if (checkCollisions()) {
+      rewardHistory("fail");
+      handleGameOver();
+    }
+  }
+
+  function drawBackground() {
+    const grd = ctx.createLinearGradient(0, 0, 0, HEIGHT);
+    grd.addColorStop(0, "#020617");
+    grd.addColorStop(0.5, "#020617");
+    grd.addColorStop(1, "#000000");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+    const starsCount = 18;
+    ctx.fillStyle = "rgba(248, 250, 252, 0.28)";
+    for (let i = 0; i < starsCount; i++) {
+      const x = ((i * 53 + Math.floor(distance)) % WIDTH) | 0;
+      const y = (i * 31) % HEIGHT;
+      ctx.fillRect(x, y, 1, 1);
+    }
+
+    ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+    ctx.fillRect(0, HEIGHT - 28, WIDTH, 28);
+  }
+
+  function drawEnemies() {
+    ctx.font = "20px system-ui, Apple Color Emoji, Segoe UI Emoji";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (const e of enemies) {
+      ctx.save();
+      ctx.translate(e.x, e.y);
+      ctx.fillText("🐱", 0, 0);
+      ctx.restore();
+    }
+  }
+
+  function drawPlayer() {
+    ctx.save();
+    ctx.translate(player.x, player.y);
+    ctx.font = "22px system-ui, Apple Color Emoji, Segoe UI Emoji";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("🐭", 0, 0);
+    ctx.restore();
+  }
+
+  function render() {
+    drawBackground();
+    drawEnemies();
+    drawPlayer();
+  }
+
+  function loop(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    let dt = timestamp - lastTime;
+    lastTime = timestamp;
+    if (dt > MAX_DT) dt = MAX_DT;
+    update(dt);
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  // ---------- Input ----------
+
+  function humanTakeOver() {
+    if (gameOver) {
+      resetGame();
+      showOverlayMessage("New round. AI autopilot is active again.");
+      return;
+    }
+    if (autopilot) {
+      autopilot = false;
+      updateModeIndicators();
+      showOverlayMessage("Human control enabled. AI is now observing your play.");
+    }
+  }
+
+  function onKeyDown(e) {
+    if (e.code === "Space") {
+      e.preventDefault();
+      if (gameOver) {
+        humanTakeOver();
+      } else {
+        humanTakeOver();
+        player.vy = JUMP_VELOCITY;
+        humanPendingJump = true;
+      }
+    }
+  }
+
+  function onMouseDown(e) {
+    if (e.button === 0) {
+      if (gameOver) {
+        humanTakeOver();
+      } else {
+        humanTakeOver();
+        player.vy = JUMP_VELOCITY;
+        humanPendingJump = true;
+      }
+    }
+  }
+
+  canvas.addEventListener("mousedown", onMouseDown);
+  canvas.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+  window.addEventListener("keydown", onKeyDown);
+
+  requestAnimationFrame(loop);
+})();
+</script>
+
+<!-- Mouse Flight AI Simulator with Level System: embeddable block end -->
