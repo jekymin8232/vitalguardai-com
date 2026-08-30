@@ -1,3 +1,4 @@
+### I have nothing. I am starting from zero in every way.
 # The Developer’s Creativity and Problem-Solving Skills
 ## I truly started from nothing, completely on my own, with zero financial resources.
 ## With better resources and opportunities, I can achieve much more.
