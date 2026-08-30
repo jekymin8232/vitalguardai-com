@@ -47,5 +47,6 @@ As for the talents I have, rather than devoting them solely to South Korea, I wa
 
 ### A person cannot be defined by their background or where they come from.
 ### Does owning an expensive car and living in an expensive house necessarily make someone a great person?
+### Are people who can barely afford a single piece of bread a day simply lazy?
 ### Human dignity never changes.
 
