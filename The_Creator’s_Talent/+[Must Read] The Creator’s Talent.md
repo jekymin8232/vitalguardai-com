@@ -28,9 +28,6 @@ Creativity and problem-solving skills can be applied to virtually any field.
 
 #### I have a strong talent for simplifying complex problems, structuring them clearly, and finding effective solutions.
 
-**For reference, my hobby:**
-https://mcorpai.com/
-
 **I enjoy thinking and exploring ideas.**
 
 There is no such thing as a free lunch. Talent deserves to be valued and supported. With the right support, creativity and problem-solving abilities can grow even further.
