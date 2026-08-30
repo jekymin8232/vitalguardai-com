@@ -1,0 +1,2129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VitalGuard AI v4.2.3 코드 메뉴얼 (Code Map)</title>
+  <style>
+    :root {
+      --ink:#111;
+      --muted:#555;
+      --muted2:#777;
+      --border:#ddd;
+      --bg:#fff;
+      --bg2:#f6f7f9;
+      --code:#0b1020;
+      --codebg:#f1f5ff;
+      --accent:#2d6cdf;
+    }
+    html,body{background:var(--bg); color:var(--ink); margin:0; padding:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif; line-height:1.55;}
+    a{color:var(--accent); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 18px 90px;}
+    h1{font-size:1.9rem; margin:0 0 6px;}
+    .subtitle{color:var(--muted); margin:0 0 18px;}
+    h2{margin:34px 0 10px; font-size:1.35rem; border-bottom:2px solid var(--border); padding-bottom:8px;}
+    h3{margin:22px 0 8px; font-size:1.1rem;}
+    p{margin:10px 0;}
+    ul{margin:10px 0 10px 20px;}
+    ol{margin:10px 0 10px 22px;}
+    .toc{background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:14px 14px;}
+    .toc ul{margin:8px 0 0 18px;}
+    .badge{display:inline-block; font-size:.75rem; padding:2px 8px; border-radius:999px; background:rgba(45,108,223,.12); color:var(--accent); border:1px solid rgba(45,108,223,.24);}
+    .note{background: #fff7e6; border:1px solid #ffe0a3; padding:12px 12px; border-radius:12px; color:#4a3b16;}
+    .warn{background: #ffecec; border:1px solid #ffbdbd; padding:12px 12px; border-radius:12px; color:#5a1e1e;}
+    .ok{background: #ecfff2; border:1px solid #b8f2c8; padding:12px 12px; border-radius:12px; color:#0f3b1d;}
+    .grid{display:grid; grid-template-columns:1fr; gap:10px;}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr;} }
+    .card{border:1px solid var(--border); border-radius:12px; padding:12px 12px; background:#fff;}
+    .card-title{font-weight:800; margin:0 0 8px;}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; font-size:.92em;}
+    pre{background:var(--codebg); border:1px solid #d8e4ff; border-radius:12px; padding:12px; overflow:auto;}
+    pre code{color:var(--code);}
+    table{width:100%; border-collapse:collapse; margin:12px 0; font-size:.92rem;}
+    th,td{border:1px solid var(--border); padding:8px 8px; vertical-align:top;}
+    th{background:var(--bg2); text-align:left;}
+    .small{font-size:.9rem; color:var(--muted);}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
+    .pagebreak{page-break-before: always;}
+    .footer{margin-top:38px; font-size:.9rem; color:var(--muted2); border-top:1px dashed var(--border); padding-top:14px;}
+
+    /* Module deep dive helpers */
+    .mod{margin:18px 0; padding:12px 12px; border:1px solid var(--border); border-radius:12px; background:#fff;}
+    .mod h3{margin:0 0 6px;}
+    .badges{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 10px;}
+    .kbd{display:inline-block; padding:2px 8px; border-radius:999px; background:rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.12); font-size:.78rem}
+    .id-list{columns:2; column-gap:22px; margin:0 0 0 18px;}
+    .id-list li{break-inside:avoid; margin:0 0 4px;}
+    @media print {
+      a{color:inherit; text-decoration:none;}
+      .toc{page-break-after: always;}
+      .pagebreak{page-break-before: always;}
+      .wrap{max-width:none; padding:0;}
+      .id-list{columns:3;}
+    }
+    @page { size: A4; margin: 18mm; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="badge">VitalGuard AI v4.2.3</div>
+    <h1>코드 메뉴얼 / 코드 지도 (Code Map)</h1>
+    <p class="subtitle">
+      대상 파일: <span class="mono">VitalGuard_AI_complete_V42_3.html</span> (단일 파일 앱) · 생성일: 2026-03-04 (Wed) 00:00 UTC+09:00
+    </p>
+
+    <div class="note">
+      <b>이 문서의 목표</b><br>
+      1) 9,000+ 라인 단일 HTML에 들어있는 <b>모든 주요 로직의 구조·흐름·책임</b>을 설명하고,<br>
+      2) 코드를 처음 보는 GPT/개발자도 <b>검색 키워드와 모듈 지도만으로 빠르게 위치를 찾고 이해</b>할 수 있게 하며,<br>
+      3) <span class="mono">+다음 업데이트(SecurityLab_Comment_VitalGuard).txt</span>의 보안 개선 권고를 반영한 <b>v4.2.3 패치 요약</b>을 포함합니다.
+    </div>
+
+    <div class="toc">
+      <b>목차</b>
+      <ul>
+        <li><a href="#overview">1. 개요</a></li>
+        <li><a href="#howto">2. 실행 방법 / 권한 / 오프라인 원칙</a></li>
+        <li><a href="#anatomy">3. 파일 해부(Head/Body/Script)</a></li>
+        <li><a href="#flow">4. 핵심 흐름(부팅/스캔/알림/렌더)</a></li>
+        <li><a href="#data">5. 데이터 모델 & 저장소 지도</a></li>
+        <li><a href="#modules">6. 모듈 지도(라인 번호)</a></li>
+        <li><a href="#prefs">7. 설정/저장 키 인덱스</a></li>
+        <li><a href="#security423">8. v4.2.3 보안 보강 요약</a></li>
+        <li><a href="#deepdive">9. 모듈별 Deep Dive(스냅샷 + 키 함수)</a></li>
+        <li><a href="#domid">10. DOM id 인덱스</a></li>
+        <li><a href="#i18n">11. i18n 키 인덱스</a></li>
+        <li><a href="#audit">12. 감사 체크리스트</a></li>
+      </ul>
+    </div>
+
+    <h2 id="overview">1. 개요</h2>
+    <p>
+      <b>VitalGuard AI</b>는 단일 HTML 파일로 동작하는 “인프라 독립형(Offline-first) 생존/안전 프레임워크”입니다.
+      핵심은 <b>Web Bluetooth 기반 BLE 스캔</b>으로 태그의 RSSI를 수집하고,
+      필터링/추정(칼만/거리추정/경량 학습) 후 <b>존(near/mid/far/lost)</b> 상태를 판단하여
+      알림·가이드·SOS 같은 기능을 제공하는 것입니다.
+    </p>
+
+    <h2 id="howto">2. 실행 방법 / 권한 / 오프라인 원칙</h2>
+    <ul>
+      <li><b>권장</b>: HTTPS 환경(로컬 서버/정적 호스팅)에서 실행하면 Web Bluetooth/PWA가 가장 안정적입니다.</li>
+      <li><b>file://</b>: 브라우저 정책에 따라 Web Bluetooth/Service Worker 일부 제한 가능.</li>
+      <li><b>오프라인</b>: v4.2.3은 CSP(<code>connect-src 'none'</code>)로 의도치 않은 네트워크 호출을 차단합니다.</li>
+    </ul>
+
+    <h2 id="anatomy" class="pagebreak">3. 파일 해부(Head/Body/Script)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">패널(Panel)</div>
+        <ul>
+          <li><code>panel-home</code></li><li><code>panel-sos</code></li><li><code>panel-tips</code></li><li><code>panel-settings</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">오버레이(Overlay)</div>
+        <ul>
+          <li><code>wizard-overlay</code></li><li><code>detail-overlay</code></li><li><code>help-overlay</code></li><li><code>legal-overlay</code></li><li><code>lang-overlay</code></li><li><code>diag-overlay</code></li><li><code>emg-overlay</code></li><li><code>reset-overlay</code></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small">
+      중요한 점: Script 하단의 <code>PATCH:</code> 블록은 기존 메소드/동작을 덮어씁니다(최종 동작 결정).
+    </p>
+
+    <h2 id="flow" class="pagebreak">4. 핵심 흐름(부팅/스캔/알림/렌더)</h2>
+    <pre><code>DOMContentLoaded
+  ├─ I18N.init()
+  └─ App.init()
+       ├─ Store.init()
+       ├─ Settings.load()
+       ├─ Capabilities.check() / UI 반영
+       └─ (옵션) BLE.startScan()</code></pre>
+
+    <pre><code>advertisementreceived
+  └─ matchAndUpdate(event)
+       ├─ (Signature match) 어떤 Pet인지 판정
+       ├─ Pet.updateSignal() → zone 갱신
+       ├─ App.alertIfNeeded()
+       └─ App.render()</code></pre>
+
+    <h2 id="data" class="pagebreak">5. 데이터 모델 & 저장소 지도</h2>
+    <h3>5.1 IndexedDB objectStores</h3>
+    <ul>
+      
+    </ul>
+    <h3>5.2 Settings.prefs(핵심 키)</h3>
+    <p class="small">전역 설정은 Store.settings에 저장되며, 일부는 V40 패치로 확장됩니다.</p>
+
+    <h2 id="modules" class="pagebreak">6. 모듈 지도(라인 번호)</h2>
+    <p class="small">
+      아래 표의 “모듈 배너”는 소스에 있는 큰 구분 코멘트입니다. Ctrl+F로 배너를 찾으면 해당 섹션 시작점으로 바로 이동합니다.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:42%">모듈 배너(검색 키워드)</th>
+          <th style="width:12%;text-align:right">대략 라인</th>
+          <th>Ctrl+F 힌트</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>CONFIG</code></td><td style='text-align:right'><code>705</code></td><td><code>/* --- CONFIG --- */</code></td></tr>
+<tr><td><code>UTILS</code></td><td style='text-align:right'><code>752</code></td><td><code>/* --- UTILS --- */</code></td></tr>
+<tr><td><code>ETHICAL MANIFEST</code></td><td style='text-align:right'><code>780</code></td><td><code>/* --- ETHICAL MANIFEST --- */</code></td></tr>
+<tr><td><code>STATE</code></td><td style='text-align:right'><code>789</code></td><td><code>/* --- STATE --- */</code></td></tr>
+<tr><td><code>TOAST</code></td><td style='text-align:right'><code>793</code></td><td><code>/* --- TOAST --- */</code></td></tr>
+<tr><td><code>I18N (7 Languages)</code></td><td style='text-align:right'><code>809</code></td><td><code>/* --- I18N (7 Languages) --- */</code></td></tr>
+<tr><td><code>STORAGE</code></td><td style='text-align:right'><code>2912</code></td><td><code>/* --- STORAGE --- */</code></td></tr>
+<tr><td><code>SIGNAL FILTER (KALMAN)</code></td><td style='text-align:right'><code>3095</code></td><td><code>/* --- SIGNAL FILTER (KALMAN) --- */</code></td></tr>
+<tr><td><code>DISTANCE ESTIMATOR (V20)</code></td><td style='text-align:right'><code>3130</code></td><td><code>/* --- DISTANCE ESTIMATOR (V20) --- */</code></td></tr>
+<tr><td><code>Q-LEARNING LITE (V20/V35)</code></td><td style='text-align:right'><code>3166</code></td><td><code>/* --- Q-LEARNING LITE (V20/V35) --- */</code></td></tr>
+<tr><td><code>BEHAVIORAL FINGERPRINT</code></td><td style='text-align:right'><code>3226</code></td><td><code>/* --- BEHAVIORAL FINGERPRINT --- */</code></td></tr>
+<tr><td><code>RING BUFFER</code></td><td style='text-align:right'><code>3259</code></td><td><code>/* --- RING BUFFER --- */</code></td></tr>
+<tr><td><code>PET MODEL</code></td><td style='text-align:right'><code>3270</code></td><td><code>/* --- PET MODEL --- */</code></td></tr>
+<tr><td><code>QR GENERATOR (V4.1: Standard QR)</code></td><td style='text-align:right'><code>3509</code></td><td><code>/* --- QR GENERATOR (V4.1: Standard QR) --- */</code></td></tr>
+<tr><td><code>VOICE RECALL (V20)</code></td><td style='text-align:right'><code>4435</code></td><td><code>/* --- VOICE RECALL (V20) --- */</code></td></tr>
+<tr><td><code>VOICE ANNOUNCER (TTS)</code></td><td style='text-align:right'><code>4507</code></td><td><code>/* --- VOICE ANNOUNCER (TTS) --- */</code></td></tr>
+<tr><td><code>BLE MATCHING</code></td><td style='text-align:right'><code>4543</code></td><td><code>/* --- BLE MATCHING --- */</code></td></tr>
+<tr><td><code>BLE ENGINE (V35 hardened + V40 fixes)</code></td><td style='text-align:right'><code>4632</code></td><td><code>/* --- BLE ENGINE (V35 hardened + V40 fixes) --- */</code></td></tr>
+<tr><td><code>WIZARD (V35 + V40 signature hardening)</code></td><td style='text-align:right'><code>4829</code></td><td><code>/* --- WIZARD (V35 + V40 signature hardening) --- */</code></td></tr>
+<tr><td><code>SOS MODULE (V35)</code></td><td style='text-align:right'><code>5223</code></td><td><code>/* --- SOS MODULE (V35) --- */</code></td></tr>
+<tr><td><code>EMERGENCY MODE (V20)</code></td><td style='text-align:right'><code>5359</code></td><td><code>/* --- EMERGENCY MODE (V20) --- */</code></td></tr>
+<tr><td><code>PET DETAIL OVERLAY (expanded)</code></td><td style='text-align:right'><code>5589</code></td><td><code>/* --- PET DETAIL OVERLAY (expanded) --- */</code></td></tr>
+<tr><td><code>NAV</code></td><td style='text-align:right'><code>5879</code></td><td><code>/* --- NAV --- */</code></td></tr>
+<tr><td><code>SETTINGS</code></td><td style='text-align:right'><code>5914</code></td><td><code>/* --- SETTINGS --- */</code></td></tr>
+<tr><td><code>DATA MANAGER</code></td><td style='text-align:right'><code>6072</code></td><td><code>/* --- DATA MANAGER --- */</code></td></tr>
+<tr><td><code>HELP (expanded)</code></td><td style='text-align:right'><code>6180</code></td><td><code>/* --- HELP (expanded) --- */</code></td></tr>
+<tr><td><code>HELP (i18n)</code></td><td style='text-align:right'><code>6181</code></td><td><code>/* --- HELP (i18n) --- */</code></td></tr>
+<tr><td><code>ABOUT / LEGAL (i18n)</code></td><td style='text-align:right'><code>6198</code></td><td><code>/* --- ABOUT / LEGAL (i18n) --- */</code></td></tr>
+<tr><td><code>LANGUAGE MENU</code></td><td style='text-align:right'><code>6215</code></td><td><code>/* --- LANGUAGE MENU --- */</code></td></tr>
+<tr><td><code>DIAGNOSTICS (Download JSON)</code></td><td style='text-align:right'><code>6245</code></td><td><code>/* --- DIAGNOSTICS (Download JSON) --- */</code></td></tr>
+<tr><td><code>META-COGNITIVE COACH (Idea Amplifier)</code></td><td style='text-align:right'><code>6345</code></td><td><code>/* --- META-COGNITIVE COACH (Idea Amplifier) --- */</code></td></tr>
+<tr><td><code>APP CORE</code></td><td style='text-align:right'><code>6417</code></td><td><code>/* --- APP CORE --- */</code></td></tr>
+<tr><td><code>PWA</code></td><td style='text-align:right'><code>6868</code></td><td><code>/* --- PWA --- */</code></td></tr>
+<tr><td><code>SAFE TEXT / SANITIZER</code></td><td style='text-align:right'><code>6987</code></td><td><code>/* --- SAFE TEXT / SANITIZER --- */</code></td></tr>
+<tr><td><code>ERROR SHIELD (Crash-safe logging)</code></td><td style='text-align:right'><code>7029</code></td><td><code>/* --- ERROR SHIELD (Crash-safe logging) --- */</code></td></tr>
+<tr><td><code>CAPABILITY MATRIX</code></td><td style='text-align:right'><code>7098</code></td><td><code>/* --- CAPABILITY MATRIX --- */</code></td></tr>
+<tr><td><code>ACCESSIBILITY (UX)</code></td><td style='text-align:right'><code>7164</code></td><td><code>/* --- ACCESSIBILITY (UX) --- */</code></td></tr>
+<tr><td><code>WAKE LOCK (Monitoring keep-awake)</code></td><td style='text-align:right'><code>7193</code></td><td><code>/* --- WAKE LOCK (Monitoring keep-awake) --- */</code></td></tr>
+<tr><td><code>AI PACK v4.1</code></td><td style='text-align:right'><code>7227</code></td><td><code>/* --- AI PACK v4.1 --- */</code></td></tr>
+<tr><td><code>CONDUCTOR AI (Self-heal / UX suggestions)</code></td><td style='text-align:right'><code>7511</code></td><td><code>/* --- CONDUCTOR AI (Self-heal / UX suggestions) --- */</code></td></tr>
+<tr><td><code>RESET / INITIALIZE CENTER</code></td><td style='text-align:right'><code>7644</code></td><td><code>/* --- RESET / INITIALIZE CENTER --- */</code></td></tr>
+<tr><td><code>ENCRYPTED BACKUP (AES-GCM)</code></td><td style='text-align:right'><code>7798</code></td><td><code>/* --- ENCRYPTED BACKUP (AES-GCM) --- */</code></td></tr>
+<tr><td><code>V40 UI INJECTION</code></td><td style='text-align:right'><code>7852</code></td><td><code>/* --- V40 UI INJECTION --- */</code></td></tr>
+<tr><td><code>PATCH: Settings (new prefs + toggles)</code></td><td style='text-align:right'><code>8026</code></td><td><code>/* --- PATCH: Settings (new prefs + toggles) --- */</code></td></tr>
+<tr><td><code>PATCH: BLE filters toggle</code></td><td style='text-align:right'><code>8105</code></td><td><code>/* --- PATCH: BLE filters toggle --- */</code></td></tr>
+<tr><td><code>PATCH: Pet AI attach + safe sanitize</code></td><td style='text-align:right'><code>8112</code></td><td><code>/* --- PATCH: Pet AI attach + safe sanitize --- */</code></td></tr>
+<tr><td><code>PATCH: Detail feedback =&gt; kNN learning + extra explain</code></td><td style='text-align:right'><code>8148</code></td><td><code>/* --- PATCH: Detail feedback =&gt; kNN learning + extra explain --- */</code></td></tr>
+<tr><td><code>PATCH: Wizard + Emergency sanitize</code></td><td style='text-align:right'><code>8196</code></td><td><code>/* --- PATCH: Wizard + Emergency sanitize --- */</code></td></tr>
+<tr><td><code>PATCH: App init / monitoring =&gt; wake lock + conductor + error shield</code></td><td style='text-align:right'><code>8216</code></td><td><code>/* --- PATCH: App init / monitoring =&gt; wake lock + conductor + error shield --- */</code></td></tr>
+<tr><td><code>PATCH: Diagnostics (capabilities + error log + battery)</code></td><td style='text-align:right'><code>8271</code></td><td><code>/* --- PATCH: Diagnostics (capabilities + error log + battery) --- */</code></td></tr>
+<tr><td><code>PATCH: Coach card (tips + one-tap actions)</code></td><td style='text-align:right'><code>8338</code></td><td><code>/* --- PATCH: Coach card (tips + one-tap actions) --- */</code></td></tr>
+<tr><td><code>PATCH: Legal / About (VitalGuard Demo)</code></td><td style='text-align:right'><code>8373</code></td><td><code>/* --- PATCH: Legal / About (VitalGuard Demo) --- */</code></td></tr>
+<tr><td><code>PATCH: SOS snapshot sanitize</code></td><td style='text-align:right'><code>8389</code></td><td><code>/* --- PATCH: SOS snapshot sanitize --- */</code></td></tr>
+<tr><td><code>PATCH: Data import supports encrypted pack</code></td><td style='text-align:right'><code>8401</code></td><td><code>/* --- PATCH: Data import supports encrypted pack --- */</code></td></tr>
+<tr><td><code>V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance</code></td><td style='text-align:right'><code>8435</code></td><td><code>/* --- V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance --- */</code></td></tr>
+<tr><td><code>Lost flip counter fix (batterySuspect)</code></td><td style='text-align:right'><code>8466</code></td><td><code>/* --- Lost flip counter fix (batterySuspect) --- */</code></td></tr>
+<tr><td><code>Per-pet alerts (sound/vibrate/tts + min zone)</code></td><td style='text-align:right'><code>8510</code></td><td><code>/* --- Per-pet alerts (sound/vibrate/tts + min zone) --- */</code></td></tr>
+<tr><td><code>Max 10 active pets: enforce + disable overflow</code></td><td style='text-align:right'><code>8538</code></td><td><code>/* --- Max 10 active pets: enforce + disable overflow --- */</code></td></tr>
+<tr><td><code>Leash distance slider (2m–15m) in Detail -&gt; auto thresholds</code></td><td style='text-align:right'><code>8559</code></td><td><code>/* --- Leash distance slider (2m–15m) in Detail -&gt; auto thresholds --- */</code></td></tr>
+<tr><td><code>Calibration Pro (RLS) UI (Wizard + Detail)</code></td><td style='text-align:right'><code>8648</code></td><td><code>/* --- Calibration Pro (RLS) UI (Wizard + Detail) --- */</code></td></tr>
+<tr><td><code>Per-pet alerts UI in Detail</code></td><td style='text-align:right'><code>9030</code></td><td><code>/* --- Per-pet alerts UI in Detail --- */</code></td></tr>
+<tr><td><code>Rescue Pack (share/import) for SOS panel</code></td><td style='text-align:right'><code>9117</code></td><td><code>/* --- Rescue Pack (share/import) for SOS panel --- */</code></td></tr>
+<tr><td><code>Patch Detail.render to inject v4.1 UI blocks</code></td><td style='text-align:right'><code>9452</code></td><td><code>/* --- Patch Detail.render to inject v4.1 UI blocks --- */</code></td></tr>
+<tr><td><code>Patch V40UI.inject to include v4.1 injections</code></td><td style='text-align:right'><code>9463</code></td><td><code>/* --- Patch V40UI.inject to include v4.1 injections --- */</code></td></tr>
+<tr><td><code>Diagnostics: implement missing Run Self-Test button</code></td><td style='text-align:right'><code>9473</code></td><td><code>/* --- Diagnostics: implement missing Run Self-Test button --- */</code></td></tr>
+<tr><td><code>Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents)</code></td><td style='text-align:right'><code>9578</code></td><td><code>/* --- Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents) --- */</code></td></tr>
+<tr><td><code>FINAL: boot once</code></td><td style='text-align:right'><code>9650</code></td><td><code>/* --- FINAL: boot once --- */</code></td></tr>
+<tr><td><code>GLOBAL EVENT HOOKS</code></td><td style='text-align:right'><code>9657</code></td><td><code>/* --- GLOBAL EVENT HOOKS --- */</code></td></tr>
+<tr><td><code>INIT</code></td><td style='text-align:right'><code>9663</code></td><td><code>/* --- INIT --- */</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="prefs" class="pagebreak">7. 설정/저장 키 인덱스</h2>
+
+    <h3>7.1 prefs 키 목록</h3>
+    
+<table>
+  <thead><tr><th style="width:28%">키</th><th>의미</th></tr></thead>
+  <tbody>
+    <tr><td><code>autoOptimize</code></td><td>Conductor 자동 최적화/자가 치유 로직 사용</td></tr>
+<tr><td><code>autoWipeOnClose</code></td><td>v4.2.3: 세션 종료(pagehide) 시 로컬 데이터 자동 삭제(선택)</td></tr>
+<tr><td><code>highAlert</code></td><td>경고를 더 공격적으로(빈도/강도) 올리는 옵션</td></tr>
+<tr><td><code>highContrast</code></td><td>접근성: 고대비</td></tr>
+<tr><td><code>keepAlive</code></td><td>오디오 엔진 keep-alive(백그라운드 안정성 향상용)</td></tr>
+<tr><td><code>largeText</code></td><td>접근성: 큰 글씨</td></tr>
+<tr><td><code>notifWanted</code></td><td>브라우저 Notification 사용 의사(권한 요청 트리거)</td></tr>
+<tr><td><code>perfMode</code></td><td>성능 모드(balanced/low/power 등)</td></tr>
+<tr><td><code>reduceMotion</code></td><td>접근성: 모션 감소</td></tr>
+<tr><td><code>screenAwake</code></td><td>Wake Lock(화면 꺼짐 방지) 사용</td></tr>
+<tr><td><code>sound</code></td><td>UI 효과음/경고음 사용 여부</td></tr>
+<tr><td><code>tts</code></td><td>TTS(음성 안내) 사용</td></tr>
+<tr><td><code>useScanFilters</code></td><td>BLE scan 필터 사용(노이즈/부하 감소, 일부 태그는 누락 가능)</td></tr>
+<tr><td><code>vibrate</code></td><td>진동(햅틱) 사용 여부</td></tr>
+<tr><td><code>voiceRecall</code></td><td>Voice Recall(녹음/재생) 기능 사용</td></tr>
+<tr><td><code>volume</code></td><td>경고음/사이렌 볼륨(%)</td></tr>
+
+  </tbody>
+</table>
+
+
+    <h3>7.2 CryptoBox(암호 백업 포맷 요약)</h3>
+    <div class="card">
+      <div class="card-title">암호화 스펙(코드 기준)</div>
+      <ul>
+        <li>키 파생: <code>PBKDF2</code> / <code>SHA-256</code> / iterations: <code>120000</code></li>
+        <li>salt: 16 bytes, iv: 12 bytes</li>
+        <li>대칭: <code>AES-GCM</code> (256-bit key)</li>
+        <li>출력 JSON(예): <code>{ v: 1, alg: 'AES-GCM', it: 120000, salt: 'b64', iv: 'b64', ct: 'b64' }</code></li>
+      </ul>
+    </div>
+
+    <h2 id="security423" class="pagebreak">8. v4.2.3 보안 보강 요약</h2>
+    <p>
+      SecurityLab 코멘트의 핵심 4가지에 대해 v4.2.3에서 다음을 반영했습니다.
+    </p>
+    <ol>
+      <li><b>Service Worker cache→network fallback 제거</b>: cache-only 전략으로 변경</li>
+      <li><b>세션 종료 자동 삭제 옵션</b>: <code>autoWipeOnClose</code> 토글 + <code>Security.fullWipe()</code></li>
+      <li><b>CSP 메타 추가</b>: <code>connect-src 'none'</code> 포함(네트워크 차단)</li>
+      <li><b>prompt() 제거</b>: 암호 백업 패스프레이즈 입력은 <code>SecurePrompt</code> 모달로 대체</li>
+    </ol>
+    <div class="note">
+      추가로 v4.2.3에서는 BLE 재시작 딜레이에 20~50ms 지터를 추가(결정적 타이밍 패턴 완화)했습니다.
+      본 앱이 BLE를 “송신”하지 않는다는 한계가 있어 코멘트의 payload padding은 적용 대상이 제한됩니다.
+    </div>
+
+    <h2 id="deepdive" class="pagebreak">9. 모듈별 Deep Dive(스냅샷 + 키 함수)</h2>
+    <p class="small">
+      아래는 각 모듈 배너 섹션의 “상단 18줄” 코드 스냅샷과,
+      자동 추출한 “키 함수명” 힌트입니다. (가장 빠른 이해 방법: 배너 제목으로 Ctrl+F → 여기 스냅샷과 비교)
+    </p>
+    
+    <div class="mod">
+      <h3><code>CONFIG</code> <span class="small">(약 705행)</span></h3>
+      <p class="small"><b>역할:</b> 전역 상수/버전/임계값/성능 프로파일 등 &#x27;숫자/정책&#x27;이 모이는 구간.</p>
+      
+      <pre><code>/* ----------------------------- CONFIG ----------------------------- */
+const APP_VERSION = &#x27;4.2.3&#x27;;
+const SCHEMA_VERSION = 2;
+
+// Backward compatibility (do not change)
+const DB_NAME = &#x27;VitalGuardAI_V41&#x27;;
+const DB_VERSION = 2; // v3.9+ adds optional blob store
+const LS_PREFIX = &#x27;vg41_&#x27;;
+
+const MAX_RSSI_SAMPLES = 60;
+const ZONE_CONFIRM_COUNT = 4; // v4.1: more stable zone transitions
+const ZONE_CONFIRM_MS = 2000; // v4.1: more stable zone transitions
+const ALERT_COOLDOWN_MS = 20000;
+const MAX_RESTARTS_PER_MIN = 3;
+
+// High Alert tightens RSSI boundaries by +10 dBm (stronger signal required)
+const HIGH_ALERT_SHRINK = 10;
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>UTILS</code> <span class="small">(약 752행)</span></h3>
+      <p class="small"><b>역할:</b> DOM/시간/수학/포맷 등 반복 유틸 함수 모음.</p>
+      
+      <pre><code>/* ----------------------------- UTILS ----------------------------- */
+const $ = id =&gt; document.getElementById(id);
+const clamp = (v, lo, hi) =&gt; Math.max(lo, Math.min(hi, v));
+function median(arr) {
+  if(!arr || !arr.length) return 0;
+  const s=[...arr].sort((a,b)=&gt;a-b);
+  const m=Math.floor(s.length/2);
+  return s.length%2?s[m]:(s[m-1]+s[m])/2;
+}
+function genRescueId() {
+  const c=&#x27;ABCDEFGHJKLMNPQRSTUVWXYZ23456789&#x27;;
+  let r=&#x27;&#x27;;
+  for(let i=0;i&lt;8;i++) r+=c[Math.floor(Math.random()*c.length)];
+  return r;
+}
+function fmtAgo(ms) {
+  if(!ms) return &#x27;--&#x27;;
+  const s=Math.max(0, Math.round(ms/100)/10); // 0.1s precision</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>ETHICAL MANIFEST</code> <span class="small">(약 780행)</span></h3>
+      <p class="small"><b>역할:</b> 윤리/운영 원칙 텍스트(오프라인/프라이버시/안전 가드레일 선언).</p>
+      
+      <pre><code>/* ----------------------------- ETHICAL MANIFEST ----------------------------- */
+const ETHICAL_MANIFEST = {
+  version: APP_VERSION,
+  license: &#x27;Hippocratic 3.0 Derivative&#x27;,
+  purpose: &#x27;Life‑saving offline AI demo (no cloud, no telemetry)&#x27;,
+  prohibited: [&#x27;weaponization&#x27;,&#x27;coercive_tracking&#x27;,&#x27;data_exploitation&#x27;,&#x27;oppression&#x27;,&#x27;border_enforcement&#x27;],
+  principles: [&#x27;minimize_hallucinations&#x27;,&#x27;transparency&#x27;,&#x27;accessibility&#x27;,&#x27;no_data_exploitation&#x27;,&#x27;low_resource&#x27;,&#x27;no_liability&#x27;,&#x27;affordable&#x27;,&#x27;simplicity&#x27;,&#x27;non_specialist&#x27;,&#x27;allow_deletion&#x27;]
+};
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>STATE</code> <span class="small">(약 789행)</span></h3>
+      <p class="small"><b>역할:</b> 런타임 상태(메모리) 보관용 전역 상태 컨테이너.</p>
+      
+      <pre><code>/* ----------------------------- STATE ----------------------------- */
+let perfProfile = PERF_PROFILES.balanced;
+let globalLastProcessMs = 0;
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>TOAST</code> <span class="small">(약 793행)</span></h3>
+      <p class="small"><b>역할:</b> 화면 하단에 뜨는 짧은 메시지(Toast) UI.</p>
+      <div class='badges'><span class='kbd'><code>show</code></span></div>
+      <pre><code>/* ----------------------------- TOAST ----------------------------- */
+const Toast = {
+  show(msg, dur=2500) {
+    const el=document.createElement(&#x27;div&#x27;);
+    el.className=&#x27;toast&#x27;;
+    el.textContent=msg;
+    document.body.appendChild(el);
+    setTimeout(()=&gt;{
+      el.style.opacity=&#x27;0&#x27;;
+      el.style.transition=&#x27;0.3s&#x27;;
+      setTimeout(()=&gt;el.remove(),300);
+    }, dur);
+  }
+};
+
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>I18N (7 Languages)</code> <span class="small">(약 809행)</span></h3>
+      <p class="small"><b>역할:</b> 다국어 문자열 딕셔너리 + DOM 텍스트 주입/언어 전환 로직.</p>
+      <div class='badges'><span class='kbd'><code>fullWipe</code></span> <span class='kbd'><code>maybeAutoWipeOnClose</code></span></div>
+      <pre><code>/* ----------------------------- I18N (7 Languages) ----------------------------- */
+/*
+  VitalGuard AI is intended to be shown to non-technical audiences (diplomats, NGOs, universities, companies).
+  This tiny i18n layer keeps everything in a single offline HTML file (no libraries, no network).
+*/
+const I18N = (function(){
+  const STORAGE_KEY = &#x27;vg_lang_v41&#x27;;
+  const LEGACY_KEY = &#x27;vg_lang_v412&#x27;;
+  const RTL_LANGS = new Set([&#x27;ar&#x27;]);
+
+  const STR = {
+    en: {
+      app_title: &#x27;VitalGuard AI&#x27;,
+      app_sub: &#x27;v4.2.3 — Infrastructure‑Independent Survival Framework | McorpAI&#x27;,
+      app_mission: &#x27;Runs fully offline. No cloud. No telemetry. GDPR‑friendly by design.&#x27;,
+      app_disclaimer: &#x27;Demo skin: “Pet Safety Leash” using Bluetooth proximity (not GPS). Built to keep working when networks fail.&#x27;,
+      github: &#x27;GitHub Source&#x27;,
+      help: &#x27;Help&#x27;,</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>STORAGE</code> <span class="small">(약 2912행)</span></h3>
+      <p class="small"><b>역할:</b> IndexedDB 중심 영속화(Store). 펫/설정/AI/블롭 저장/로드/초기화.</p>
+      <div class='badges'><span class='kbd'><code>init</code></span> <span class='kbd'><code>savePet</code></span> <span class='kbd'><code>getAllPets</code></span> <span class='kbd'><code>_lsPets</code></span> <span class='kbd'><code>deletePet</code></span> <span class='kbd'><code>clearAll</code></span> <span class='kbd'><code>saveSetting</code></span> <span class='kbd'><code>getSetting</code></span> <span class='kbd'><code>saveAI</code></span> <span class='kbd'><code>getAI</code></span> <span class='kbd'><code>saveBlob</code></span> <span class='kbd'><code>getBlob</code></span></div>
+      <pre><code>/* ----------------------------- STORAGE ----------------------------- */
+const Store = {
+  db: null,
+
+  async init() {
+    return new Promise(resolve=&gt;{
+      try{
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = e =&gt; {
+          const db = e.target.result;
+          if(!db.objectStoreNames.contains(&#x27;pets&#x27;)) db.createObjectStore(&#x27;pets&#x27;,{keyPath:&#x27;id&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;settings&#x27;)) db.createObjectStore(&#x27;settings&#x27;,{keyPath:&#x27;key&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;ai&#x27;)) db.createObjectStore(&#x27;ai&#x27;,{keyPath:&#x27;key&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;alerts&#x27;)) db.createObjectStore(&#x27;alerts&#x27;,{keyPath:&#x27;id&#x27;});
+          if(!db.objectStoreNames.contains(&#x27;blobs&#x27;)) db.createObjectStore(&#x27;blobs&#x27;,{keyPath:&#x27;key&#x27;});
+        };
+        req.onsuccess = e =&gt; { this.db = e.target.result; resolve(); };
+        req.onerror = () =&gt; { console.warn(&#x27;IndexedDB open failed&#x27;); resolve(); };</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>SIGNAL FILTER (KALMAN)</code> <span class="small">(약 3095행)</span></h3>
+      <p class="small"><b>역할:</b> RSSI 노이즈를 줄이기 위한 칼만 필터 구현.</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>update</code></span> <span class='kbd'><code>getVelocity</code></span> <span class='kbd'><code>reset</code></span></div>
+      <pre><code>/* ----------------------------- SIGNAL FILTER (KALMAN) ----------------------------- */
+// Advanced Kalman filter (from V20, adapted)
+class KalmanRSSI {
+  constructor(){
+    this.x=-70;
+    this.v=0;
+    this.P=[[2,0],[0,2]];
+    this.Q=0.15;
+    this.R=5;
+    this.history=[];
+    this.maxHistory=30;
+  }
+  update(z){
+    const xPred=this.x+this.v;
+    const pPred=this.P[0][0]+this.Q;
+    const innov=z-xPred;
+    const K=pPred/(pPred+this.R);
+    this.x=xPred+K*innov;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>DISTANCE ESTIMATOR (V20)</code> <span class="small">(약 3130행)</span></h3>
+      <p class="small"><b>역할:</b> RSSI/TxPower 기반 거리 추정(경량 모델) + 보정 파라미터.</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>estimate</code></span> <span class='kbd'><code>addCalibration</code></span> <span class='kbd'><code>_recalc</code></span></div>
+      <pre><code>/* ----------------------------- DISTANCE ESTIMATOR (V20) ----------------------------- */
+class DistanceEstimator {
+  constructor(){
+    this.txPower=-59;
+    this.n=2.5;
+    this.calibPoints=[];
+  }
+  estimate(rssi){
+    if(rssi&gt;=0 || isNaN(rssi)) return 0;
+    return clamp(Math.pow(10, (this.txPower - rssi)/(10*this.n)), 0, 100);
+  }
+  addCalibration(rssi, dist){
+    this.calibPoints.push({rssi, dist});
+    this._recalc();
+  }
+  _recalc(){
+    if(this.calibPoints.length&lt;2) return;
+    const p1=this.calibPoints[this.calibPoints.length-2];</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Q-LEARNING LITE (V20/V35)</code> <span class="small">(약 3166행)</span></h3>
+      <p class="small"><b>역할:</b> 존 전이/경계 흔들림 완화를 위한 경량 Q-learning.</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>_key</code></span> <span class='kbd'><code>_getQ</code></span> <span class='kbd'><code>chooseAction</code></span> <span class='kbd'><code>update</code></span> <span class='kbd'><code>applyAction</code></span> <span class='kbd'><code>reset</code></span></div>
+      <pre><code>/* ----------------------------- Q-LEARNING LITE (V20/V35) ----------------------------- */
+class QLearningLite {
+  constructor(){
+    this.qTable={};
+    this.lr=0.3;
+    this.eps=0.2;
+    this.count=0;
+  }
+  _key(zone){ return zone; }
+  _getQ(s){
+    if(!this.qTable[s]) this.qTable[s]={widen:0, maintain:0, narrow:0};
+    return this.qTable[s];
+  }
+  chooseAction(zone){
+    const q=this._getQ(this._key(zone));
+    if(Math.random()&lt;this.eps){
+      const a=[&#x27;widen&#x27;,&#x27;maintain&#x27;,&#x27;narrow&#x27;];
+      return a[Math.floor(Math.random()*3)];</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>BEHAVIORAL FINGERPRINT</code> <span class="small">(약 3226행)</span></h3>
+      <p class="small"><b>역할:</b> 장기 패턴(평균/분산/광고율 등) 기록으로 이상 탐지 힌트 제공.</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>addReading</code></span> <span class='kbd'><code>getFeatures</code></span> <span class='kbd'><code>classify</code></span></div>
+      <pre><code>/* ----------------------------- BEHAVIORAL FINGERPRINT ----------------------------- */
+class BehavioralFingerprint {
+  constructor(){
+    this.window=[];
+    this.windowSize=60;
+  }
+  addReading(rssi){
+    this.window.push(rssi);
+    if(this.window.length&gt;this.windowSize) this.window.shift();
+  }
+  getFeatures(){
+    if(this.window.length&lt;10) return null;
+    const w=this.window;
+    const mean=w.reduce((a,b)=&gt;a+b,0)/w.length;
+    const variance=w.reduce((a,b)=&gt;a+(b-mean)**2,0)/w.length;
+    const recent=w.slice(-5);
+    const older=w.slice(-10,-5);
+    const trendMean=recent.reduce((a,b)=&gt;a+b,0)/recent.length;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>RING BUFFER</code> <span class="small">(약 3259행)</span></h3>
+      <p class="small"><b>역할:</b> 짧은 히스토리 저장을 위한 고정 길이 버퍼(최근 N개).</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>push</code></span> <span class='kbd'><code>clear</code></span> <span class='kbd'><code>slice</code></span></div>
+      <pre><code>/* ----------------------------- RING BUFFER ----------------------------- */
+class RingBuffer {
+  constructor(size){ this.size=size; this.buf=[]; }
+  push(v){ this.buf.push(v); if(this.buf.length&gt;this.size) this.buf.shift(); }
+  get data(){ return this.buf; }
+  get length(){ return this.buf.length; }
+  get last(){ return this.buf[this.buf.length-1]; }
+  clear(){ this.buf=[]; }
+  slice(a,b){ return this.buf.slice(a,b); }
+}
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PET MODEL</code> <span class="small">(약 3270행)</span></h3>
+      <p class="small"><b>역할:</b> 태그 1개를 표현하는 핵심 도메인 모델(Pet). 존 판정/히스토리/AI 상태 포함.</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>getMinInterval</code></span> <span class='kbd'><code>ingestRaw</code></span> <span class='kbd'><code>_effectiveThresholds</code></span> <span class='kbd'><code>processRssi</code></span> <span class='kbd'><code>markLost</code></span> <span class='kbd'><code>_addAlert</code></span> <span class='kbd'><code>getLastSeenText</code></span> <span class='kbd'><code>signatureStrength</code></span> <span class='kbd'><code>toJSON</code></span></div>
+      <pre><code>/* ----------------------------- PET MODEL ----------------------------- */
+class Pet {
+  constructor(data){
+    this.id = data.id || (&#x27;pet_&#x27;+Date.now()+&#x27;_&#x27;+Math.random().toString(36).slice(2,6));
+    this.name = data.name || &#x27;My Pet&#x27;;
+    this.icon = data.icon || &#x27;🐶&#x27;;
+    this.createdAt = data.createdAt || Date.now();
+    this.signature = data.signature || {};
+    this.rescueId = data.rescueId || genRescueId();
+    this.thresholds = data.thresholds || {...DEFAULT_THRESHOLDS};
+    this.leashPreset = data.leashPreset || &#x27;10m&#x27;;
+    this.aiToggles = data.aiToggles || {qlearn:false, behavior:true};
+    this.aiState = data.aiState || {};
+
+    // Runtime modules (not raw-persisted; but we import params when available)
+    this.kalman = new KalmanRSSI();
+    this.distance = new DistanceEstimator();
+    if(data.distanceCalib) this.distance.import(data.distanceCalib);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>QR GENERATOR (V4.1: Standard QR)</code> <span class="small">(약 3509행)</span></h3>
+      <p class="small"><b>역할:</b> QR 코드 생성 유틸(Rescue Pack 공유 등에 사용).</p>
+      <div class='badges'><span class='kbd'><code>generate</code></span> <span class='kbd'><code>_draw</code></span></div>
+      <pre><code>/* ----------------------------- QR GENERATOR (V4.1: Standard QR) ----------------------------- */
+/*
+  ✅ Standard QR (scannable)
+  Offline embedded library: Project Nayuki QR Code generator (MIT License).
+  (The library code is included below for offline-first operation.)
+*/
+/*
+ * QR Code generator library (TypeScript)
+ *
+ * Copyright (c) Project Nayuki. (MIT License)
+ * https://www.nayuki.io/page/qr-code-generator-library
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the &quot;Software&quot;), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>VOICE RECALL (V20)</code> <span class="small">(약 4435행)</span></h3>
+      <p class="small"><b>역할:</b> 마이크 녹음(MediaRecorder) → IndexedDB 저장 → 재생.</p>
+      <div class='badges'><span class='kbd'><code>hasClip</code></span> <span class='kbd'><code>record5s</code></span> <span class='kbd'><code>play</code></span> <span class='kbd'><code>clear</code></span></div>
+      <pre><code>/* ----------------------------- VOICE RECALL (V20) ----------------------------- */
+const VoiceRecall = {
+  key:&#x27;voice_recall&#x27;,
+  rec:null,
+  chunks:[],
+  recording:false,
+
+  async hasClip(){
+    const b=await Store.getBlob(this.key);
+    return !!b;
+  },
+
+  async record5s(){
+    try{
+      if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        Toast.show(&#x27;Mic not supported on this device/browser&#x27;);
+        return;
+      }</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>VOICE ANNOUNCER (TTS)</code> <span class="small">(약 4507행)</span></h3>
+      <p class="small"><b>역할:</b> SpeechSynthesis 기반 TTS 안내/경고 음성.</p>
+      <div class='badges'><span class='kbd'><code>supported</code></span> <span class='kbd'><code>speak</code></span> <span class='kbd'><code>zoneMessage</code></span></div>
+      <pre><code>/* ----------------------------- VOICE ANNOUNCER (TTS) ----------------------------- */
+const VoiceAnnouncer = {
+  lastSpokenMs:0,
+
+  supported(){
+    return &#x27;speechSynthesis&#x27; in window &amp;&amp; &#x27;SpeechSynthesisUtterance&#x27; in window;
+  },
+
+  speak(text){
+    if(!Settings.prefs.tts) return;
+    if(!this.supported()) return;
+    const now=nowMs();
+    if(now-this.lastSpokenMs&lt;4500) return; // avoid spam
+    this.lastSpokenMs=now;
+
+    try{
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 1.02;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>BLE MATCHING</code> <span class="small">(약 4543행)</span></h3>
+      <p class="small"><b>역할:</b> 광고 패킷이 어떤 Pet에 해당하는지 &#x27;시그니처 매칭&#x27;으로 판정.</p>
+      
+      <pre><code>/* ----------------------------- BLE MATCHING ----------------------------- */
+function _mfgPrefixHexFromEvent(event){
+  try{
+    if(!event.manufacturerData) return null;
+    let pref=null;
+    event.manufacturerData.forEach((v,k)=&gt;{
+      if(pref) return;
+      const u8=new Uint8Array(v.buffer, v.byteOffset, Math.min(v.byteLength,2));
+      pref=[...u8].map(b=&gt;b.toString(16).padStart(2,&#x27;0&#x27;)).join(&#x27;&#x27;).toUpperCase();
+    });
+    return pref;
+  }catch(e){
+    return null;
+  }
+}
+
+function matchScore(event, sig){
+  if(!sig) return 0;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>BLE ENGINE (V35 hardened + V40 fixes)</code> <span class="small">(약 4632행)</span></h3>
+      <p class="small"><b>역할:</b> 스캔 시작/중지/재시작, 필터, 스톨 감지 등 Web Bluetooth 스캔 엔진.</p>
+      <div class='badges'><span class='kbd'><code>checkSupport</code></span> <span class='kbd'><code>_resetCounters</code></span> <span class='kbd'><code>markAdv</code></span> <span class='kbd'><code>congestionLevel</code></span> <span class='kbd'><code>_buildTrackFilters</code></span> <span class='kbd'><code>startScan</code></span> <span class='kbd'><code>stopScan</code></span> <span class='kbd'><code>restartScan</code></span></div>
+      <pre><code>/* ----------------------------- BLE ENGINE (V35 hardened + V40 fixes) ----------------------------- */
+const BLE = {
+  scanning:false,
+  scanReq:null,
+  _handler:null,
+  supported:false,
+
+  // restart protection
+  restartCount:0,
+  restartWindowStart:0,
+  restartInProgress:false,
+  lastRestartMs:0,
+  lastRestartReason:&#x27;&#x27;,
+
+  // scan mode
+  lastScanMode:&#x27;track&#x27;,
+  usingFilters:false,
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>WIZARD (V35 + V40 signature hardening)</code> <span class="small">(약 4829행)</span></h3>
+      <p class="small"><b>역할:</b> 새 태그 등록 흐름(후보 수집→선택→signature 생성→저장).</p>
+      <div class='badges'><span class='kbd'><code>isOpen</code></span> <span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>_showStep</code></span> <span class='kbd'><code>_startScan</code></span> <span class='kbd'><code>_startDemoScan</code></span> <span class='kbd'><code>handleAdv</code></span> <span class='kbd'><code>_tagLikelihood</code></span> <span class='kbd'><code>_renderCandidates</code></span> <span class='kbd'><code>selectCandidate</code></span> <span class='kbd'><code>_goStep2</code></span> <span class='kbd'><code>skipVerify</code></span> <span class='kbd'><code>goStep3</code></span> <span class='kbd'><code>_buildIconPicker</code></span></div>
+      <pre><code>/* ----------------------------- WIZARD (V35 + V40 signature hardening) ----------------------------- */
+const Wizard = {
+  mode:&#x27;add&#x27;, // &#x27;add&#x27; | &#x27;reverify&#x27;
+  targetPetId:null,
+
+  candidates:{},
+  selectedId:null,
+  selectedSig:null,
+  baselineRssi:null,
+  verified:false,
+  chosenIcon:&#x27;🐶&#x27;,
+
+  scanTimer:null,
+  verifyTimer:null,
+
+  calib:{}, // {1:rssi,10:rssi}
+
+  isOpen(){</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>SOS MODULE (V35)</code> <span class="small">(약 5223행)</span></h3>
+      <p class="small"><b>역할:</b> Rescue Pack 생성/표시/공유(텍스트/QR/복구 입력).</p>
+      <div class='badges'><span class='kbd'><code>holdStart</code></span> <span class='kbd'><code>holdEnd</code></span> <span class='kbd'><code>activate</code></span> <span class='kbd'><code>deactivate</code></span> <span class='kbd'><code>_startStrobe</code></span> <span class='kbd'><code>updateHC</code></span> <span class='kbd'><code>updateSnapshot</code></span> <span class='kbd'><code>saveLocation</code></span> <span class='kbd'><code>shareMessage</code></span> <span class='kbd'><code>renderPetSelect</code></span> <span class='kbd'><code>selectPet</code></span></div>
+      <pre><code>/* ----------------------------- SOS MODULE (V35) ----------------------------- */
+const SOS = {
+  active:false,
+  holdTimer:null,
+  strobeTimer:null,
+  targetPet:null,
+  hcHistory:new RingBuffer(12),
+  savedLocation:null,
+
+  holdStart(){ this.holdTimer=setTimeout(()=&gt;this.activate(), 2000); },
+  holdEnd(){ clearTimeout(this.holdTimer); },
+
+  activate(){
+    this.active=true;
+    const p=this.targetPet || (App.pets.length?App.pets[0]:null);
+    $(&#x27;sos-active-name&#x27;).textContent = p ? p.name : &#x27;PET&#x27;;
+    $(&#x27;sos-active&#x27;).classList.add(&#x27;active&#x27;);
+    if(navigator.vibrate) navigator.vibrate([500,200,500,200,500]);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>EMERGENCY MODE (V20)</code> <span class="small">(약 5359행)</span></h3>
+      <p class="small"><b>역할:</b> 사이렌/스트로브/흔들기 SOS 등 즉시 경보 기능.</p>
+      <div class='badges'><span class='kbd'><code>load</code></span> <span class='kbd'><code>save</code></span> <span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>render</code></span> <span class='kbd'><code>saveFromUI</code></span> <span class='kbd'><code>toggleShake</code></span> <span class='kbd'><code>requestMotionPermission</code></span> <span class='kbd'><code>holdStart</code></span> <span class='kbd'><code>holdEnd</code></span> <span class='kbd'><code>activate</code></span> <span class='kbd'><code>deactivate</code></span> <span class='kbd'><code>_startStrobe</code></span> <span class='kbd'><code>getPayload</code></span></div>
+      <pre><code>/* ----------------------------- EMERGENCY MODE (V20) ----------------------------- */
+const Emergency = {
+  active:false,
+  strobeTimer:null,
+  wakeLock:null,
+  shakeEnabled:false,
+  shakeArmed:false,
+  lastShakeMs:0,
+
+  data:{ name:&#x27;&#x27;, phone:&#x27;&#x27;, medical:&#x27;&#x27; },
+
+  async load(){
+    this.data.name = await Store.getSetting(&#x27;emg_name&#x27;,&#x27;&#x27;);
+    this.data.phone = await Store.getSetting(&#x27;emg_phone&#x27;,&#x27;&#x27;);
+    this.data.medical = await Store.getSetting(&#x27;emg_medical&#x27;,&#x27;&#x27;);
+    this.shakeEnabled = await Store.getSetting(&#x27;emg_shake&#x27;, false);
+  },
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PET DETAIL OVERLAY (expanded)</code> <span class="small">(약 5589행)</span></h3>
+      <p class="small"><b>역할:</b> 펫별 상세 오버레이(상태/그래프/임계값 조정/AI 제안).</p>
+      <div class='badges'><span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>render</code></span> <span class='kbd'><code>setLeash</code></span> <span class='kbd'><code>updateThreshold</code></span> <span class='kbd'><code>toggleAI</code></span> <span class='kbd'><code>suggestAI</code></span> <span class='kbd'><code>applySuggestion</code></span> <span class='kbd'><code>aiFeedback</code></span> <span class='kbd'><code>resetQ</code></span></div>
+      <pre><code>/* ----------------------------- PET DETAIL OVERLAY (expanded) ----------------------------- */
+const Detail = {
+  pet:null,
+
+  open(id){
+    this.pet=App.pets.find(p=&gt;p.id===id);
+    if(!this.pet) return;
+
+    if(App.trackMode===&#x27;focus&#x27;){
+      App.focusPetId=id;
+      App.renderPetChips();
+    }
+
+    $(&#x27;detail-title&#x27;).textContent=this.pet.icon+&#x27; &#x27;+this.pet.name;
+    $(&#x27;detail-overlay&#x27;).classList.add(&#x27;active&#x27;);
+    this.render();
+  },
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>NAV</code> <span class="small">(약 5879행)</span></h3>
+      <p class="small"><b>역할:</b> 하단 네비게이션. panel 전환/활성화 처리.</p>
+      <div class='badges'><span class='kbd'><code>go</code></span></div>
+      <pre><code>/* ----------------------------- NAV ----------------------------- */
+const Nav = {
+  current:&#x27;home&#x27;,
+  go(tab){
+    this.current=tab;
+    document.querySelectorAll(&#x27;.panel&#x27;).forEach(el=&gt;el.classList.remove(&#x27;active&#x27;));
+    $(&#x27;panel-&#x27;+tab).classList.add(&#x27;active&#x27;);
+
+    document.querySelectorAll(&#x27;.bnav-btn&#x27;).forEach(el=&gt;{
+      el.classList.toggle(&#x27;active&#x27;, el.dataset.tab===tab);
+    });
+
+    if(tab===&#x27;sos&#x27;){
+      if(App.pets.length&gt;0){
+        $(&#x27;sos-no-pets&#x27;).classList.add(&#x27;hidden&#x27;);
+        $(&#x27;sos-content&#x27;).classList.remove(&#x27;hidden&#x27;);
+        if(!SOS.targetPet &amp;&amp; App.pets.length) SOS.selectPet(App.pets[0].id);
+        SOS.renderPetSelect();</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>SETTINGS</code> <span class="small">(약 5914행)</span></h3>
+      <p class="small"><b>역할:</b> 전역 설정 토글/슬라이더 + 저장/로드 + UI 반영. (v4.2.3 auto-wipe 포함)</p>
+      <div class='badges'><span class='kbd'><code>load</code></span> <span class='kbd'><code>_updateToggles</code></span> <span class='kbd'><code>_updatePerfUI</code></span> <span class='kbd'><code>_updateVolumeUI</code></span> <span class='kbd'><code>toggle</code></span> <span class='kbd'><code>toggleNotif</code></span> <span class='kbd'><code>setPerf</code></span> <span class='kbd'><code>setVolume</code></span> <span class='kbd'><code>renderPetList</code></span> <span class='kbd'><code>removePet</code></span> <span class='kbd'><code>resetApp</code></span></div>
+      <pre><code>/* ----------------------------- SETTINGS ----------------------------- */
+const Settings = {
+  prefs:{
+    sound:true,
+    vibrate:true,
+    notifWanted:false,
+    highAlert:false,
+    perfMode:&#x27;balanced&#x27;,
+    voiceRecall:false,
+    tts:false,
+    keepAlive:true,
+    autoWipeOnClose:false,
+    volume:70
+  },
+
+  async load(){
+    this.prefs.sound = await Store.getSetting(&#x27;sound&#x27;, true);
+    this.prefs.vibrate = await Store.getSetting(&#x27;vibrate&#x27;, true);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>DATA MANAGER</code> <span class="small">(약 6072행)</span></h3>
+      <p class="small"><b>역할:</b> 백업 export/import(plain JSON) 및 복구 로직. (패치로 암호 백업도 연동)</p>
+      <div class='badges'><span class='kbd'><code>exportAll</code></span> <span class='kbd'><code>importFile</code></span> <span class='kbd'><code>handleImport</code></span></div>
+      <pre><code>/* ----------------------------- DATA MANAGER ----------------------------- */
+const DataManager = {
+  async exportAll(){
+    const includeVoice = await Store.getBlob(VoiceRecall.key) ? confirm(&#x27;Include Voice Recall audio in backup? (file will be larger)&#x27;) : false;
+    let voiceBase64=null;
+
+    if(includeVoice){
+      const blob=await Store.getBlob(VoiceRecall.key);
+      if(blob){
+        voiceBase64 = await new Promise(res=&gt;{
+          const fr=new FileReader();
+          fr.onload=()=&gt;res(fr.result);
+          fr.onerror=()=&gt;res(null);
+          fr.readAsDataURL(blob);
+        });
+      }
+    }
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>HELP (expanded)</code> <span class="small">(약 6180행)</span></h3>
+      <p class="small"><b>역할:</b> 도움말 오버레이(UI 텍스트/가이드).</p>
+      
+      <pre><code>/* ----------------------------- HELP (expanded) ----------------------------- */</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>HELP (i18n)</code> <span class="small">(약 6181행)</span></h3>
+      <p class="small"><b>역할:</b> 도움말 오버레이(UI 텍스트/가이드).</p>
+      <div class='badges'><span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>_content</code></span></div>
+      <pre><code>/* ----------------------------- HELP (i18n) ----------------------------- */
+const Help = {
+  open(){
+    try{
+      if($(&#x27;help-body&#x27;)) $(&#x27;help-body&#x27;).innerHTML = this._content();
+    }catch(e){}
+    $(&#x27;help-overlay&#x27;).classList.add(&#x27;active&#x27;);
+  },
+  close(){
+    $(&#x27;help-overlay&#x27;).classList.remove(&#x27;active&#x27;);
+  },
+  _content(){
+    const lang = (typeof I18N!==&#x27;undefined&#x27; &amp;&amp; I18N.getLang) ? I18N.getLang() : &#x27;en&#x27;;
+    return (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.help &amp;&amp; (I18N.HTML.help[lang] || I18N.HTML.help.en)) || &#x27;&#x27;;
+  }
+};
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>ABOUT / LEGAL (i18n)</code> <span class="small">(약 6198행)</span></h3>
+      <p class="small"><b>역할:</b> 법/윤리/연락처/개요 등 정보성 오버레이.</p>
+      <div class='badges'><span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>_content</code></span></div>
+      <pre><code>/* ----------------------------- ABOUT / LEGAL (i18n) ----------------------------- */
+const Legal = {
+  open(){
+    try{
+      if($(&#x27;legal-body&#x27;)) $(&#x27;legal-body&#x27;).innerHTML = this._content();
+    }catch(e){}
+    $(&#x27;legal-overlay&#x27;).classList.add(&#x27;active&#x27;);
+  },
+  close(){
+    $(&#x27;legal-overlay&#x27;).classList.remove(&#x27;active&#x27;);
+  },
+  _content(){
+    const lang = (typeof I18N!==&#x27;undefined&#x27; &amp;&amp; I18N.getLang) ? I18N.getLang() : &#x27;en&#x27;;
+    return (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.legal &amp;&amp; (I18N.HTML.legal[lang] || I18N.HTML.legal.en)) || &#x27;&#x27;;
+  }
+};
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>LANGUAGE MENU</code> <span class="small">(약 6215행)</span></h3>
+      <p class="small"><b>역할:</b> 언어 선택 오버레이.</p>
+      <div class='badges'><span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>choose</code></span> <span class='kbd'><code>_syncUI</code></span></div>
+      <pre><code>/* ----------------------------- LANGUAGE MENU ----------------------------- */
+const Lang = {
+  open(){
+    const ov = $(&#x27;lang-overlay&#x27;);
+    if(!ov) return;
+    ov.classList.add(&#x27;active&#x27;);
+    this._syncUI();
+  },
+  close(){
+    const ov = $(&#x27;lang-overlay&#x27;);
+    if(ov) ov.classList.remove(&#x27;active&#x27;);
+  },
+  choose(code){
+    try{ if(typeof I18N!==&#x27;undefined&#x27; &amp;&amp; I18N.setLang) I18N.setLang(code); }catch(e){}
+    const sel = $(&#x27;langSelect&#x27;);
+    if(sel){
+      try{ sel.value = (typeof I18N!==&#x27;undefined&#x27; &amp;&amp; I18N.getLang) ? I18N.getLang() : code; }catch(e){ sel.value = code; }
+    }</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>DIAGNOSTICS (Download JSON)</code> <span class="small">(약 6245행)</span></h3>
+      <p class="small"><b>역할:</b> 진단 JSON 생성/다운로드(기능 지원/상태/로그 요약).</p>
+      <div class='badges'><span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>snapshot</code></span> <span class='kbd'><code>render</code></span> <span class='kbd'><code>copy</code></span> <span class='kbd'><code>download</code></span></div>
+      <pre><code>/* ----------------------------- DIAGNOSTICS (Download JSON) ----------------------------- */
+const Diag = {
+  open(){
+    $(&#x27;diag-overlay&#x27;).classList.add(&#x27;active&#x27;);
+    this.render();
+  },
+  close(){ $(&#x27;diag-overlay&#x27;).classList.remove(&#x27;active&#x27;); },
+
+  snapshot(){
+    const now=nowMs();
+    return {
+      appVersion:APP_VERSION,
+      schemaVersion:SCHEMA_VERSION,
+      time:new Date().toISOString(),
+      env:{
+        ua:navigator.userAgent,
+        protocol:location.protocol,
+        secureContext: !!window.isSecureContext,</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>META-COGNITIVE COACH (Idea Amplifier)</code> <span class="small">(약 6345행)</span></h3>
+      <p class="small"><b>역할:</b> 메타-코그니티브 코치(사용자에게 행동 제안/피드백).</p>
+      <div class='badges'><span class='kbd'><code>compute</code></span> <span class='kbd'><code>render</code></span></div>
+      <pre><code>/* ----------------------------- META-COGNITIVE COACH (Idea Amplifier) ----------------------------- */
+const Coach = {
+  lastRenderMs:0,
+
+  compute(){
+    const now=nowMs();
+    const tips=[];
+
+    // Environment
+    if(location.protocol.startsWith(&#x27;file&#x27;)){
+      tips.push(&#x27;You are running from &lt;span class=&quot;kbd&quot;&gt;file://&lt;/span&gt;. For best BLE reliability, use HTTPS/localhost or install as an app (앱 설치).&#x27;);
+    }
+    if(!BLE.checkSupport()){
+      tips.push(&#x27;This browser may not support BLE scanning (Web Bluetooth LE Scan). Use Android Chrome, or Demo mode.&#x27;);
+    }
+
+    // Scan health
+    if(App.monitoringWanted &amp;&amp; !BLE.scanning){</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>APP CORE</code> <span class="small">(약 6417행)</span></h3>
+      <p class="small"><b>역할:</b> 앱의 중심: 부팅/렌더 루프/광고 이벤트 처리/알림 트리거.</p>
+      <div class='badges'><span class='kbd'><code>init</code></span> <span class='kbd'><code>initFirstRunBanner</code></span> <span class='kbd'><code>dismissFirstRun</code></span> <span class='kbd'><code>resetTimers</code></span> <span class='kbd'><code>toggleMonitoring</code></span> <span class='kbd'><code>toggleDemo</code></span> <span class='kbd'><code>_startDemo</code></span> <span class='kbd'><code>_stopDemo</code></span> <span class='kbd'><code>_demoTick</code></span> <span class='kbd'><code>setTrackMode</code></span> <span class='kbd'><code>addPet</code></span> <span class='kbd'><code>onAdvertisement</code></span> <span class='kbd'><code>triggerAlert</code></span> <span class='kbd'><code>_watchdog</code></span></div>
+      <pre><code>/* ----------------------------- APP CORE ----------------------------- */
+const App = {
+  pets:[],
+  trackMode:&#x27;all&#x27;,
+  focusPetId:null,
+  demoMode:false,
+  monitoringWanted:false,
+
+  renderTimer:null,
+  watchdogTimer:null,
+
+  async init(){
+    // First-run banner / context warning
+    this.initFirstRunBanner();
+
+    await Store.init();
+    await Settings.load();
+    await Emergency.load();</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PWA</code> <span class="small">(약 6868행)</span></h3>
+      <p class="small"><b>역할:</b> PWA 매니페스트 생성 + 서비스워커 등록 + 설치 배너.</p>
+      <div class='badges'><span class='kbd'><code>registerPWA</code></span> <span class='kbd'><code>setupInstallBanner</code></span></div>
+      <pre><code>/* ----------------------------- PWA ----------------------------- */
+  registerPWA(){
+    if(!(&#x27;serviceWorker&#x27; in navigator)) return;
+
+    const startUrl = location.href;
+
+    const manifest = {
+      name: &quot;VitalGuard AI v&quot;+APP_VERSION,
+      short_name: &quot;VitalGuard AI&quot;,
+      start_url: startUrl,
+      display: &quot;standalone&quot;,
+      background_color: &quot;#0d1117&quot;,
+      theme_color: &quot;#c0392b&quot;,
+      description: &quot;Life‑Saving Offline AI Demo — Bluetooth proximity + tiny on‑device AI (no cloud).&quot;,
+      icons: [
+        {src:&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;192&#x27; height=&#x27;192&#x27;%3E%3Crect width=&#x27;192&#x27; height=&#x27;192&#x27; rx=&#x27;40&#x27; fill=&#x27;%23c0392b&#x27;/%3E%3Ctext x=&#x27;50%25&#x27; y=&#x27;54%25&#x27; dominant-baseline=&#x27;middle&#x27; text-anchor=&#x27;middle&#x27; font-size=&#x27;120&#x27;%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E&quot;, sizes:&quot;192x192&quot;, type:&quot;image/svg+xml&quot;},
+        {src:&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;512&#x27; height=&#x27;512&#x27;%3E%3Crect width=&#x27;512&#x27; height=&#x27;512&#x27; rx=&#x27;96&#x27; fill=&#x27;%23c0392b&#x27;/%3E%3Ctext x=&#x27;50%25&#x27; y=&#x27;54%25&#x27; dominant-baseline=&#x27;middle&#x27; text-anchor=&#x27;middle&#x27; font-size=&#x27;340&#x27;%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E&quot;, sizes:&quot;512x512&quot;, type:&quot;image/svg+xml&quot;}
+      ]</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>SAFE TEXT / SANITIZER</code> <span class="small">(약 6987행)</span></h3>
+      <p class="small"><b>역할:</b> 사용자 입력을 안전한 텍스트로 정제(XSS 방지).</p>
+      <div class='badges'><span class='kbd'><code>name</code></span> <span class='kbd'><code>phone</code></span> <span class='kbd'><code>text</code></span> <span class='kbd'><code>icon</code></span> <span class='kbd'><code>escapeHTML</code></span> <span class='kbd'><code>safeId</code></span></div>
+      <pre><code>/* ----------------------------- SAFE TEXT / SANITIZER ----------------------------- */
+  const Sanitizer = {
+    // Remove risky characters while keeping names readable (prevents HTML injection from user input/import).
+    name(s){
+      s = String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim();
+      s = s.replace(/[&lt;&gt;`]/g,&#x27;&#x27;);
+      if(!s) return &#x27;My Pet&#x27;;
+      return s.slice(0, 28);
+    },
+    phone(s){
+      s = String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim();
+      // allow digits + + - space
+      s = s.replace(/[^0-9+\-\s]/g,&#x27;&#x27;);
+      return s.slice(0, 24);
+    },
+    text(s, max=220){
+      s = String((s===undefined||s===null)?&#x27;&#x27;:s).replace(/[\u0000-\u001F\u007F]/g,&#x27;&#x27;).trim();
+      s = s.replace(/[&lt;&gt;`]/g,&#x27;&#x27;);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>ERROR SHIELD (Crash-safe logging)</code> <span class="small">(약 7029행)</span></h3>
+      <p class="small"><b>역할:</b> 런타임 오류를 잡아내고 복구/로그하는 보호층.</p>
+      <div class='badges'><span class='kbd'><code>load</code></span> <span class='kbd'><code>_schedulePersist</code></span> <span class='kbd'><code>capture</code></span> <span class='kbd'><code>hook</code></span> <span class='kbd'><code>clear</code></span></div>
+      <pre><code>/* ----------------------------- ERROR SHIELD (Crash-safe logging) ----------------------------- */
+  const ErrorShield = {
+    ring: new RingBuffer(36),
+    loaded:false,
+    persistTimer:null,
+    lastCaptureAt:0,
+
+    async load(){
+      try{
+        const saved = await Store.getAI(&#x27;errors&#x27;);
+        if(saved &amp;&amp; Array.isArray(saved.items)){
+          saved.items.slice(-36).forEach(it=&gt;this.ring.push(it));
+        }
+      }catch(e){}
+      this.loaded=true;
+    },
+
+    _schedulePersist(){</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>CAPABILITY MATRIX</code> <span class="small">(약 7098행)</span></h3>
+      <p class="small"><b>역할:</b> 브라우저 기능 지원 여부 계산 및 UI 표시.</p>
+      <div class='badges'><span class='kbd'><code>battery</code></span> <span class='kbd'><code>computeSync</code></span> <span class='kbd'><code>badgeHTML</code></span> <span class='kbd'><code>renderHTML</code></span></div>
+      <pre><code>/* ----------------------------- CAPABILITY MATRIX ----------------------------- */
+  const Capabilities = {
+    async battery(){
+      try{
+        if(navigator.getBattery) return await navigator.getBattery();
+      }catch(e){}
+      return null;
+    },
+    computeSync(){
+      const caps = {
+        secureContext: !!window.isSecureContext,
+        protocol: location.protocol,
+        webBluetooth: !!navigator.bluetooth,
+        leScan: !!(navigator.bluetooth &amp;&amp; navigator.bluetooth.requestLEScan),
+        advEvents: !!(navigator.bluetooth &amp;&amp; navigator.bluetooth.addEventListener),
+        serviceWorker: &#x27;serviceWorker&#x27; in navigator,
+        caches: &#x27;caches&#x27; in window,
+        wakeLock: !!(navigator.wakeLock &amp;&amp; navigator.wakeLock.request),</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>ACCESSIBILITY (UX)</code> <span class="small">(약 7164행)</span></h3>
+      <p class="small"><b>역할:</b> 큰 글씨/고대비/모션 감소 등 접근성 옵션 적용.</p>
+      <div class='badges'><span class='kbd'><code>apply</code></span> <span class='kbd'><code>injectCSS</code></span></div>
+      <pre><code>/* ----------------------------- ACCESSIBILITY (UX) ----------------------------- */
+  const Accessibility = {
+    apply(){
+      const root=document.documentElement;
+      root.classList.toggle(&#x27;a11y-large&#x27;, !!Settings.prefs.largeText);
+      root.classList.toggle(&#x27;a11y-contrast&#x27;, !!Settings.prefs.highContrast);
+      root.classList.toggle(&#x27;a11y-reduceMotion&#x27;, !!Settings.prefs.reduceMotion);
+    },
+    injectCSS(){
+      if(document.getElementById(&#x27;v40-a11y-style&#x27;)) return;
+      const css = document.createElement(&#x27;style&#x27;);
+      css.id=&#x27;v40-a11y-style&#x27;;
+      css.textContent = `
+        :root.a11y-large{ font-size: 18px; }
+        :root.a11y-contrast{
+          --bg-primary:#000;
+          --bg-secondary:#060606;
+          --bg-elevated:#0c0c0c;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>WAKE LOCK (Monitoring keep-awake)</code> <span class="small">(약 7193행)</span></h3>
+      <p class="small"><b>역할:</b> Wake Lock API로 화면 켜짐 유지(옵션).</p>
+      <div class='badges'><span class='kbd'><code>request</code></span> <span class='kbd'><code>release</code></span> <span class='kbd'><code>hookVisibility</code></span></div>
+      <pre><code>/* ----------------------------- WAKE LOCK (Monitoring keep-awake) ----------------------------- */
+  const WakeLockManager = {
+    lock:null,
+    async request(){
+      try{
+        if(!Settings.prefs.screenAwake) return false;
+        if(!(navigator.wakeLock &amp;&amp; navigator.wakeLock.request)) return false;
+        this.lock = await navigator.wakeLock.request(&#x27;screen&#x27;);
+        this.lock.addEventListener(&#x27;release&#x27;, ()=&gt;{ this.lock=null; });
+        return true;
+      }catch(e){
+        this.lock=null;
+        return false;
+      }
+    },
+    async release(){
+      try{
+        if(this.lock){ await this.lock.release(); }</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>AI PACK v4.1</code> <span class="small">(약 7227행)</span></h3>
+      <p class="small"><b>역할:</b> 오프라인 AI 팩(경량 모델/휴리스틱) 관련 로직.</p>
+      <div class='badges'><span class='kbd'><code>constructor</code></span> <span class='kbd'><code>_dist</code></span> <span class='kbd'><code>add</code></span> <span class='kbd'><code>predict</code></span> <span class='kbd'><code>reset</code></span> <span class='kbd'><code>update</code></span> <span class='kbd'><code>params</code></span> <span class='kbd'><code>_randInt</code></span> <span class='kbd'><code>_harmonic</code></span> <span class='kbd'><code>_c</code></span> <span class='kbd'><code>_buildTree</code></span> <span class='kbd'><code>train</code></span> <span class='kbd'><code>_pathLen</code></span> <span class='kbd'><code>score</code></span></div>
+      <pre><code>/* ----------------------------- AI PACK v4.1 ----------------------------- */
+
+  // kNN classifier (personalized, learns from feedback)
+  class KNNLite {
+    constructor(k=5){
+      this.k=k;
+      this.samples=[]; // {x:number[], y:0|1}
+    }
+    _dist(a,b){
+      let s=0;
+      for(let i=0;i&lt;a.length;i++){
+        const d=(a[i]-b[i]);
+        s+=d*d;
+      }
+      return Math.sqrt(s);
+    }
+    add(x,y){
+      if(!Array.isArray(x) || x.length&lt;3) return;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>CONDUCTOR AI (Self-heal / UX suggestions)</code> <span class="small">(약 7511행)</span></h3>
+      <p class="small"><b>역할:</b> 스캔 건강/UX 개선을 위한 자가 치유/제안 엔진.</p>
+      <div class='badges'><span class='kbd'><code>init</code></span> <span class='kbd'><code>refreshBattery</code></span> <span class='kbd'><code>batteryInfo</code></span> <span class='kbd'><code>compute</code></span> <span class='kbd'><code>tick</code></span> <span class='kbd'><code>enable</code></span> <span class='kbd'><code>disable</code></span> <span class='kbd'><code>load</code></span></div>
+      <pre><code>/* ----------------------------- CONDUCTOR AI (Self-heal / UX suggestions) ----------------------------- */
+  const ConductorAI = {
+    enabled:true,
+    lastTick:0,
+    lastSuggest:0,
+    safeMode:false,
+    battery:null,
+    lastBatteryAt:0,
+
+    async init(){
+      this.enabled = await Store.getSetting(&#x27;autoOptimize&#x27;, true);
+      try{
+        this.battery = await Capabilities.battery();
+      }catch(e){ this.battery=null; }
+    },
+
+    async refreshBattery(){
+      const now=nowMs();</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>RESET / INITIALIZE CENTER</code> <span class="small">(약 7644행)</span></h3>
+      <p class="small"><b>역할:</b> 리셋/초기화 UI. (v4.2.3: Hard reset은 full wipe로 강화)</p>
+      <div class='badges'><span class='kbd'><code>ensureUI</code></span> <span class='kbd'><code>open</code></span> <span class='kbd'><code>close</code></span> <span class='kbd'><code>render</code></span> <span class='kbd'><code>soft</code></span> <span class='kbd'><code>_confirmHard</code></span> <span class='kbd'><code>hard</code></span> <span class='kbd'><code>factory</code></span></div>
+      <pre><code>/* ----------------------------- RESET / INITIALIZE CENTER ----------------------------- */
+  const ResetCenter = {
+    ensureUI(){
+      if($(&#x27;reset-overlay&#x27;)) return;
+      const wrap=document.createElement(&#x27;div&#x27;);
+      wrap.innerHTML = `
+        &lt;div id=&quot;reset-overlay&quot; class=&quot;overlay&quot;&gt;
+          &lt;div class=&quot;overlay-header&quot;&gt;
+            &lt;div class=&quot;overlay-title&quot;&gt;Reset / Initialize&lt;/div&gt;
+            &lt;button class=&quot;overlay-close&quot; onclick=&quot;ResetCenter.close()&quot;&gt;✕&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;overlay-body&quot; id=&quot;reset-body&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      `;
+      document.body.appendChild(wrap.firstElementChild);
+    },
+
+    open(){</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>ENCRYPTED BACKUP (AES-GCM)</code> <span class="small">(약 7798행)</span></h3>
+      <p class="small"><b>역할:</b> AES-GCM + PBKDF2 기반 암호 백업/복구(CryptoBox).</p>
+      <div class='badges'><span class='kbd'><code>supported</code></span> <span class='kbd'><code>_b64</code></span> <span class='kbd'><code>_u8</code></span> <span class='kbd'><code>_deriveKey</code></span> <span class='kbd'><code>encryptString</code></span> <span class='kbd'><code>decryptToString</code></span></div>
+      <pre><code>/* ----------------------------- ENCRYPTED BACKUP (AES-GCM) ----------------------------- */
+  const CryptoBox = {
+    supported(){
+      return !!(window.crypto &amp;&amp; crypto.subtle &amp;&amp; window.TextEncoder &amp;&amp; window.TextDecoder);
+    },
+    _b64(u8){
+      let s=&#x27;&#x27;;
+      for(let i=0;i&lt;u8.length;i++) s+=String.fromCharCode(u8[i]);
+      return btoa(s);
+    },
+    _u8(b64){
+      const bin=atob(b64);
+      const u8=new Uint8Array(bin.length);
+      for(let i=0;i&lt;bin.length;i++) u8[i]=bin.charCodeAt(i);
+      return u8;
+    },
+    async _deriveKey(pass, salt){
+      const enc=new TextEncoder();</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>V40 UI INJECTION</code> <span class="small">(약 7852행)</span></h3>
+      <p class="small"><b>역할:</b> 하위 호환/기능 추가를 위한 대규모 패치·UI 주입 블록(V4.x 계열 확장).</p>
+      <div class='badges'><span class='kbd'><code>inject</code></span> <span class='kbd'><code>renderSafeBanner</code></span> <span class='kbd'><code>exportEncrypted</code></span> <span class='kbd'><code>showPitch</code></span></div>
+      <pre><code>/* ----------------------------- V40 UI INJECTION ----------------------------- */
+  const V40UI = {
+    injected:false,
+
+    inject(){
+      if(this.injected) return;
+      this.injected=true;
+
+      Accessibility.injectCSS();
+      ResetCenter.ensureUI();
+
+      // Inject Advanced toggles card into Settings panel (UX)
+      const panel=$(&#x27;panel-settings&#x27;);
+      if(panel &amp;&amp; !document.getElementById(&#x27;v40-advanced-card&#x27;)){
+        const card=document.createElement(&#x27;div&#x27;);
+        card.className=&#x27;card&#x27;;
+        card.id=&#x27;v40-advanced-card&#x27;;
+        card.innerHTML = `</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Settings (new prefs + toggles)</code> <span class="small">(약 8026행)</span></h3>
+      <p class="small"><b>역할:</b> 기존 모듈을 오버라이드/확장하는 패치 블록(최종 동작을 결정).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Settings (new prefs + toggles) ----------------------------- */
+  Settings.prefs = Object.assign({
+    useScanFilters:true,
+    screenAwake:false,
+    autoOptimize:true,
+    autoWipeOnClose:false,
+    largeText:false,
+    highContrast:false,
+    reduceMotion:false
+  }, Settings.prefs||{});
+
+  const _settingsLoad = Settings.load.bind(Settings);
+  Settings.load = async function(){
+    await _settingsLoad();
+
+    this.prefs.useScanFilters = await Store.getSetting(&#x27;useScanFilters&#x27;, true);
+    this.prefs.screenAwake = await Store.getSetting(&#x27;screenAwake&#x27;, false);
+    this.prefs.autoOptimize = await Store.getSetting(&#x27;autoOptimize&#x27;, true);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: BLE filters toggle</code> <span class="small">(약 8105행)</span></h3>
+      <p class="small"><b>역할:</b> 기존 모듈을 오버라이드/확장하는 패치 블록(최종 동작을 결정).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: BLE filters toggle ----------------------------- */
+  const _buildTrackFilters = BLE._buildTrackFilters.bind(BLE);
+  BLE._buildTrackFilters = function(pets){
+    if(Settings &amp;&amp; Settings.prefs &amp;&amp; Settings.prefs.useScanFilters===false) return null;
+    return _buildTrackFilters(pets);
+  };
+
+  </code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Pet AI attach + safe sanitize</code> <span class="small">(약 8112행)</span></h3>
+      <p class="small"><b>역할:</b> 기존 모듈을 오버라이드/확장하는 패치 블록(최종 동작을 결정).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Pet AI attach + safe sanitize ----------------------------- */
+  const _origPetToJSON = Pet.prototype.toJSON;
+  Pet.prototype.toJSON = function(){
+    const d=_origPetToJSON.call(this);
+    d.name = Sanitizer.name(d.name);
+    d.icon = Sanitizer.icon(d.icon);
+    d.aiToggles = Object.assign({knn:true, anomaly:true, rls:false}, d.aiToggles||{});
+    d.aiState = d.aiState || {};
+    try{
+      if(this.ai4){
+        d.aiState.knn = this.ai4.knn.export();
+        d.aiState.rls = this.ai4.rls.export();
+        d.aiState.iso = this.ai4.iso.export();
+      }
+    }catch(e){}
+    return d;
+  };
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Detail feedback =&gt; kNN learning + extra explain</code> <span class="small">(약 8148행)</span></h3>
+      <p class="small"><b>역할:</b> 기존 모듈을 오버라이드/확장하는 패치 블록(최종 동작을 결정).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Detail feedback =&gt; kNN learning + extra explain ----------------------------- */
+  const _origAiFeedback = Detail.aiFeedback.bind(Detail);
+  Detail.aiFeedback = async function(helpful){
+    try{
+      if(this.pet){
+        AIPackV4.attachPet(this.pet);
+        AIPackV4.learnFromFeedback(this.pet, helpful);
+        await Store.savePet(this.pet);
+      }
+    }catch(e){}
+    return _origAiFeedback(helpful);
+  };
+
+  const _origDetailRender = Detail.render.bind(Detail);
+  Detail.render = async function(){
+    await _origDetailRender();
+
+    const p=this.pet;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Wizard + Emergency sanitize</code> <span class="small">(약 8196행)</span></h3>
+      <p class="small"><b>역할:</b> 새 태그 등록 흐름(후보 수집→선택→signature 생성→저장).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Wizard + Emergency sanitize ----------------------------- */
+  const _wizardSave = Wizard.save.bind(Wizard);
+  Wizard.save = async function(){
+    try{
+      if($(&#x27;input-name&#x27;)) $(&#x27;input-name&#x27;).value = Sanitizer.name($(&#x27;input-name&#x27;).value||&#x27;&#x27;);
+      this.chosenIcon = Sanitizer.icon(this.chosenIcon);
+    }catch(e){}
+    return _wizardSave();
+  };
+
+  const _emgSaveFromUI = Emergency.saveFromUI.bind(Emergency);
+  Emergency.saveFromUI = function(){
+    try{
+      if($(&#x27;emg-name&#x27;)) $(&#x27;emg-name&#x27;).value = Sanitizer.text($(&#x27;emg-name&#x27;).value||&#x27;&#x27;, 50);
+      if($(&#x27;emg-phone&#x27;)) $(&#x27;emg-phone&#x27;).value = Sanitizer.phone($(&#x27;emg-phone&#x27;).value||&#x27;&#x27;);
+      if($(&#x27;emg-medical&#x27;)) $(&#x27;emg-medical&#x27;).value = Sanitizer.text($(&#x27;emg-medical&#x27;).value||&#x27;&#x27;, 220);
+    }catch(e){}
+    return _emgSaveFromUI();</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: App init / monitoring =&gt; wake lock + conductor + error shield</code> <span class="small">(약 8216행)</span></h3>
+      <p class="small"><b>역할:</b> 런타임 오류를 잡아내고 복구/로그하는 보호층.</p>
+      
+      <pre><code>/* ----------------------------- PATCH: App init / monitoring =&gt; wake lock + conductor + error shield ----------------------------- */
+  const _appInit = App.init.bind(App);
+  App.init = async function(){
+    ErrorShield.hook();
+    V40UI.inject();
+
+    await _appInit();
+
+    // Post-init loads
+    try{ await ErrorShield.load(); }catch(e){}
+    try{ await SafeMode.load(); }catch(e){}
+    try{ await ConductorAI.init(); }catch(e){}
+    try{ WakeLockManager.hookVisibility(); }catch(e){}
+
+    // Upgrade pets with new AI + sanitize imported names/icons
+    try{
+      for(const p of this.pets){
+        p.name = Sanitizer.name(p.name);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Diagnostics (capabilities + error log + battery)</code> <span class="small">(약 8271행)</span></h3>
+      <p class="small"><b>역할:</b> 진단 JSON 생성/다운로드(기능 지원/상태/로그 요약).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Diagnostics (capabilities + error log + battery) ----------------------------- */
+  const _diagSnapshot = Diag.snapshot.bind(Diag);
+  Diag.snapshot = function(){
+    const s=_diagSnapshot();
+    try{
+      s.capabilities = Capabilities.computeSync();
+      s.safeMode = {active:SafeMode.active, reason:SafeMode.reason};
+      s.errors = ErrorShield.ring.data;
+      const bi=ConductorAI.batteryInfo();
+      if(bi) s.battery = bi;
+    }catch(e){}
+    return s;
+  };
+
+  Diag.render = function(){
+    const snap=this.snapshot();
+    const errs = (snap.errors||[]).slice(-12).reverse();
+    $(&#x27;diag-body&#x27;).innerHTML = `</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Coach card (tips + one-tap actions)</code> <span class="small">(약 8338행)</span></h3>
+      <p class="small"><b>역할:</b> 메타-코그니티브 코치(사용자에게 행동 제안/피드백).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Coach card (tips + one-tap actions) ----------------------------- */
+  Coach.compute = function(){
+    const {tips, actions} = ConductorAI.compute();
+    // keep original small tips too (fallback)
+    const baseTips=[];
+    try{
+      if(!BLE.checkSupport()){
+        baseTips.push({k:&#x27;ble&#x27;, t:&#x27;This browser may not support BLE scanning. Use Android Chrome or Demo mode.&#x27;});
+      }
+    }catch(e){}
+    return {tips:[...baseTips, ...tips], actions};
+  };
+
+  Coach.render = function(){
+    const res=this.compute();
+    const tips=res.tips||[];
+    const actions=res.actions||[];
+    const card=$(&#x27;coach-card&#x27;);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Legal / About (VitalGuard Demo)</code> <span class="small">(약 8373행)</span></h3>
+      <p class="small"><b>역할:</b> 법/윤리/연락처/개요 등 정보성 오버레이.</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Legal / About (VitalGuard Demo) ----------------------------- */
+  // Replace the previous social-impact deck with a diplomacy‑friendly, life‑saving demo explanation.
+  Legal.open = function(){
+    try{
+      const lang = (typeof I18N!==&#x27;undefined&#x27; &amp;&amp; I18N.getLang) ? I18N.getLang() : &#x27;en&#x27;;
+      if($(&#x27;legal-body&#x27;)) $(&#x27;legal-body&#x27;).innerHTML = (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.legal &amp;&amp; (I18N.HTML.legal[lang] || I18N.HTML.legal.en)) || &#x27;&#x27;;
+    }catch(e){
+      if($(&#x27;legal-body&#x27;)) $(&#x27;legal-body&#x27;).textContent = &#x27;&#x27;;
+    }
+    $(&#x27;legal-overlay&#x27;).classList.add(&#x27;active&#x27;);
+  };
+  Legal._content = function(){
+    const lang = (typeof I18N!==&#x27;undefined&#x27; &amp;&amp; I18N.getLang) ? I18N.getLang() : &#x27;en&#x27;;
+    return (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.legal &amp;&amp; (I18N.HTML.legal[lang] || I18N.HTML.legal.en)) || &#x27;&#x27;;
+  };
+
+  </code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: SOS snapshot sanitize</code> <span class="small">(약 8389행)</span></h3>
+      <p class="small"><b>역할:</b> 기존 모듈을 오버라이드/확장하는 패치 블록(최종 동작을 결정).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: SOS snapshot sanitize ----------------------------- */
+  const _sosUpdateSnapshot = SOS.updateSnapshot.bind(SOS);
+  SOS.updateSnapshot = function(pet){
+    try{
+      if(pet){
+        pet.name = Sanitizer.name(pet.name);
+        pet.icon = Sanitizer.icon(pet.icon);
+      }
+    }catch(e){}
+    return _sosUpdateSnapshot(pet);
+  };
+
+  </code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>PATCH: Data import supports encrypted pack</code> <span class="small">(약 8401행)</span></h3>
+      <p class="small"><b>역할:</b> 기존 모듈을 오버라이드/확장하는 패치 블록(최종 동작을 결정).</p>
+      
+      <pre><code>/* ----------------------------- PATCH: Data import supports encrypted pack ----------------------------- */
+  const _handleImport = DataManager.handleImport.bind(DataManager);
+  DataManager.handleImport = async function(ev){
+    const file=ev.target.files &amp;&amp; ev.target.files[0];
+    if(!file) return;
+    try{
+      const text=await file.text();
+      let data=JSON.parse(text);
+
+      if(data &amp;&amp; data.enc){
+        if(!CryptoBox.supported()) throw new Error(&#x27;Crypto not supported&#x27;);
+        const pass = await SecurePrompt.askPassphrase({
+          title:&#x27;Decrypt Backup&#x27;,
+          message:&#x27;Enter passphrase to decrypt this backup:&#x27;,
+          confirm:false,
+          minLen:1,
+          placeholder:&#x27;Passphrase&#x27;
+        });</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance</code> <span class="small">(약 8435행)</span></h3>
+      <p class="small"><b>역할:</b> QR 코드 생성 유틸(Rescue Pack 공유 등에 사용).</p>
+      
+      <pre><code>/* ----------------------------- V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance
+------------------------------------------------------------------------------- */
+
+const V41_MAX_ACTIVE_PETS = 10;
+
+const V41_DEFAULT_ALERT_PREFS = {
+  sound: true,
+  vibrate: true,
+  tts: true,
+  minZone: &#x27;WARNING&#x27; // v4.1 default: reduce noise (no beep on CAUTION by default)
+};
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Lost flip counter fix (batterySuspect)</code> <span class="small">(약 8466행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Lost flip counter fix (batterySuspect) -------- */
+(function(){
+  const WINDOW_MS_DEFAULT = 30 * 60 * 1000; // 30 minutes
+  const _origMarkLost = Pet.prototype.markLost;
+  const _origProcess = Pet.prototype.processRssi;
+
+  Pet.prototype._v41PruneLostEvents = function(now){
+    const windowMs = (Settings?.prefs?.batteryWindowMs ?? WINDOW_MS_DEFAULT);
+    const arr = Array.isArray(this.lostEvents) ? this.lostEvents : [];
+    this.lostEvents = arr.filter(t =&gt; (now - t) &lt; windowMs);
+    this.lostFlips = this.lostEvents.length;
+    this.batterySuspect = (this.lostFlips &gt;= 3);
+  };
+
+  Pet.prototype.markLost = function(now){
+    if(this.disabled) return;
+      // v4.1 walking/unstable guard: delay LOST a bit when the signal is fluctuating (reduces false LOST while walking)
+      try{</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Per-pet alerts (sound/vibrate/tts + min zone)</code> <span class="small">(약 8510행)</span></h3>
+      <p class="small"><b>역할:</b> SpeechSynthesis 기반 TTS 안내/경고 음성.</p>
+      
+      <pre><code>/* -------- Per-pet alerts (sound/vibrate/tts + min zone) -------- */
+(function(){
+  const _origTrigger = App.triggerAlert.bind(App);
+  App.triggerAlert = function(pet, from, to){
+    try{
+      if(!pet || pet.disabled) return;
+
+      v41EnsureAlertPrefs(pet);
+      const prefs = pet.alertPrefs || V41_DEFAULT_ALERT_PREFS;
+      const minRank = v41ZoneRank(prefs.minZone || &#x27;WARNING&#x27;);
+      if(v41ZoneRank(to) &lt; minRank) return;
+
+      const key = `${pet.id}:${from}-&gt;${to}`;
+      const now = nowMs();
+      const last = this._alertCooldown.get(key) || 0;
+      if(now - last &lt; ALERT_COOLDOWN_MS) return;
+      this._alertCooldown.set(key, now);
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Max 10 active pets: enforce + disable overflow</code> <span class="small">(약 8538행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Max 10 active pets: enforce + disable overflow -------- */
+(function(){
+  const _origAddPet = App.addPet.bind(App);
+  App.addPet = function(pet){
+    try{
+      if(!pet) return;
+      const activeCount = this.pets.filter(p =&gt; !p.disabled).length;
+      if(activeCount &gt;= V41_MAX_ACTIVE_PETS){
+        Toast.show(`Max ${V41_MAX_ACTIVE_PETS} active pets for stability. Disable/remove one first.`, 3200);
+        return;
+      }
+      pet.disabled = false;
+      v41EnsureAlertPrefs(pet);
+      return _origAddPet(pet);
+    }catch(e){
+      console.warn(&#x27;v4.1 addPet patch failed:&#x27;, e);
+      return _origAddPet(pet);
+    }</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Leash distance slider (2m–15m) in Detail -&gt; auto thresholds</code> <span class="small">(약 8559행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Leash distance slider (2m–15m) in Detail -&gt; auto thresholds -------- */
+const V41UI = {};
+
+V41UI._distanceToRssi = function(pet, meters){
+  const tx = (pet?.distance?.txPower ?? -59);
+  const n = (pet?.distance?.n ?? 2.5);
+  return tx - 10 * n * Math.log10(Math.max(1, meters));
+};
+
+V41UI.applyMetersLeash = function(pet, meters){
+  if(!pet) return;
+  const m = Math.max(2, Math.min(15, Math.round(Number(meters)||10)));
+  const warn = Math.round(this._distanceToRssi(pet, m));
+  const caution = warn + 8;
+  const danger = warn - 7;
+
+  pet.thresholds = pet.thresholds || {...DEFAULT_THRESHOLDS};
+  pet.thresholds.cautionEnter = caution;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Calibration Pro (RLS) UI (Wizard + Detail)</code> <span class="small">(약 8648행)</span></h3>
+      <p class="small"><b>역할:</b> 새 태그 등록 흐름(후보 수집→선택→signature 생성→저장).</p>
+      
+      <pre><code>/* -------- Calibration Pro (RLS) UI (Wizard + Detail) -------- */
+(function(){
+  // Extend Wizard with Calibration Pro state
+  Wizard._ensureCalibPro = function(){
+    if(!this.calibPro || typeof this.calibPro !== &#x27;object&#x27;) this.calibPro = { points: [], rls: new RLSCalibrator() };
+    if(!Array.isArray(this.calibPro.points)) this.calibPro.points = [];
+    if(!this.calibPro.rls) this.calibPro.rls = new RLSCalibrator();
+    return this.calibPro;
+  };
+
+  Wizard.clearCalibPro = function(){
+    const cp = this._ensureCalibPro();
+    cp.points = [];
+    cp.rls.reset();
+    Toast.show(&#x27;Calibration Pro cleared.&#x27;, 1600);
+    this._refreshCalibModelUI();
+    V41UI.renderWizardCalibPro();
+  };</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Per-pet alerts UI in Detail</code> <span class="small">(약 9030행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Per-pet alerts UI in Detail -------- */
+V41UI.injectDetailAlertPrefs = function(pet){
+  try{
+    if(!pet) return;
+    const body = document.getElementById(&#x27;detail-body&#x27;);
+    if(!body) return;
+    if(document.getElementById(&#x27;v41-alertprefs-detail&#x27;)) return;
+
+    v41EnsureAlertPrefs(pet);
+    const prefs = pet.alertPrefs;
+
+    const card = document.createElement(&#x27;div&#x27;);
+    card.className = &#x27;card&#x27;;
+    card.id = &#x27;v41-alertprefs-detail&#x27;;
+    card.innerHTML = `
+      &lt;div class=&quot;section-title&quot;&gt;Alerts (per pet)&lt;/div&gt;
+
+      &lt;div class=&quot;setting-row&quot;&gt;</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Rescue Pack (share/import) for SOS panel</code> <span class="small">(약 9117행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Rescue Pack (share/import) for SOS panel -------- */
+(function(){
+  function b64urlEncodeUtf8(str){
+    const u8 = new TextEncoder().encode(str);
+    let bin = &#x27;&#x27;;
+    const chunk = 0x8000;
+    for(let i=0;i&lt;u8.length;i+=chunk){
+      bin += String.fromCharCode(...u8.subarray(i, i+chunk));
+    }
+    return btoa(bin).replace(/\+/g,&#x27;-&#x27;).replace(/\//g,&#x27;_&#x27;).replace(/=+$/,&#x27;&#x27;);
+  }
+
+  function b64urlDecodeUtf8(b64){
+    let s = b64.replace(/-/g,&#x27;+&#x27;).replace(/_/g,&#x27;/&#x27;);
+    const pad = s.length % 4;
+    if(pad) s += &#x27;=&#x27;.repeat(4-pad);
+    const bin = atob(s);
+    const u8 = new Uint8Array(bin.length);</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Patch Detail.render to inject v4.1 UI blocks</code> <span class="small">(약 9452행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Patch Detail.render to inject v4.1 UI blocks -------- */
+(function(){
+  const _origDetailRender = Detail.render.bind(Detail);
+  Detail.render = function(p){
+    _origDetailRender(p);
+    V41UI.injectDetailMetersLeash(p);
+    V41UI.injectDetailAlertPrefs(p);
+    V41UI.injectDetailCalibPro(p);
+  };
+})();
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Patch V40UI.inject to include v4.1 injections</code> <span class="small">(약 9463행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Patch V40UI.inject to include v4.1 injections -------- */
+(function(){
+  const _origInject = V40UI.inject.bind(V40UI);
+  V40UI.inject = function(){
+    _origInject();
+    V41UI.injectWizardCalibPro();
+    V41UI.injectSOSRescuePack();
+  };
+})();
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Diagnostics: implement missing Run Self-Test button</code> <span class="small">(약 9473행)</span></h3>
+      <p class="small"><b>역할:</b> 진단 JSON 생성/다운로드(기능 지원/상태/로그 요약).</p>
+      
+      <pre><code>/* -------- Diagnostics: implement missing Run Self-Test button -------- */
+(function(){
+  if(typeof Diag.runQuickTest === &#x27;function&#x27;) return;
+  Diag._lastSelfTest = null;
+
+  const _origSnapshot = Diag.snapshot.bind(Diag);
+  Diag.snapshot = function(){
+    const snap = _origSnapshot();
+    if(Diag._lastSelfTest) snap.selfTest = Diag._lastSelfTest;
+    return snap;
+  };
+
+  Diag.runQuickTest = function(){
+    const results = [];
+    const t0 = performance.now();
+
+    // 1) QR generator
+    try{</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents)</code> <span class="small">(약 9578행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* -------- Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents) -------- */
+(function(){
+  // 1) Persist extra fields
+  const _toJSON = Pet.prototype.toJSON;
+  Pet.prototype.toJSON = function(){
+    const base = _toJSON.call(this);
+    try{
+      base.alertPrefs = this.alertPrefs;
+      base.leashDistanceM = this.leashDistanceM;
+      base.disabled = !!this.disabled;
+      base.lostEvents = Array.isArray(this.lostEvents) ? this.lostEvents : [];
+    }catch(_){}
+    return base;
+  };
+
+  // 2) Restore extra fields after App.init loads pets
+  const _origInit = App.init.bind(App);
+  App.init = async function(){</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>FINAL: boot once</code> <span class="small">(약 9650행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* ----------------------------- FINAL: boot once ----------------------------- */
+  // Ensure injection is ready even if Settings tab opened before init
+  try{ V40UI.inject(); }catch(e){}
+
+})();
+
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>GLOBAL EVENT HOOKS</code> <span class="small">(약 9657행)</span></h3>
+      <p class="small"><b>역할:</b> 전역 이벤트 바인딩(DOMContentLoaded, 오디오 priming 등).</p>
+      
+      <pre><code>/* ----------------------------- GLOBAL EVENT HOOKS ----------------------------- */
+// Prime audio on first user gesture (helps autoplay restrictions)
+document.addEventListener(&#x27;pointerdown&#x27;, async ()=&gt;{
+  await AudioEngine.ensure();
+}, {once:true});
+</code></pre>
+    </div>
+    
+    <div class="mod">
+      <h3><code>INIT</code> <span class="small">(약 9663행)</span></h3>
+      <p class="small"><b>역할:</b> 모듈/패치 섹션. 제목을 키워드로 Ctrl+F 하여 내용을 추적하세요.</p>
+      
+      <pre><code>/* ----------------------------- INIT ----------------------------- */
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, ()=&gt;{
+  try{ I18N.init(); }catch(e){ console.warn(&#x27;I18N.init error:&#x27;, e); }
+  App.init();
+});
+</code></pre>
+    </div>
+    
+
+    <h2 id="domid" class="pagebreak">10. DOM id 인덱스</h2>
+    <p class="small">
+      단일 파일 앱에서는 “DOM id”가 곧 기능의 입구입니다.
+      예: <code>toggle-*</code>는 Settings 토글, <code>panel-*</code>는 Nav 패널, <code>*overlay</code>는 오버레이.
+    </p>
+    <div class="grid">
+      
+        <div class="card">
+          <div class="card-title">v41 <span class="small">(31)</span></div>
+          <ul class="id-list"><li><code>v41-ap-minzone</code></li><li><code>v41-ap-sound</code></li><li><code>v41-ap-tts</code></li><li><code>v41-ap-vibrate</code></li><li><code>v41-calibpro-clear</code></li><li><code>v41-calibpro-dist</code></li><li><code>v41-calibpro-dist-label</code></li><li><code>v41-calibpro-list</code></li><li><code>v41-calibpro-preview</code></li><li><code>v41-calibpro-record</code></li><li><code>v41-calibpro-stats</code></li><li><code>v41-dcalib-apply-leash</code></li><li><code>v41-dcalib-clear</code></li><li><code>v41-dcalib-dist</code></li><li><code>v41-dcalib-dist-label</code></li><li><code>v41-dcalib-list</code></li><li><code>v41-dcalib-record</code></li><li><code>v41-dcalib-stats</code></li><li><code>v41-leash-apply</code></li><li><code>v41-leash-m</code></li><li><code>v41-leash-m-label</code></li><li><code>v41-rp-assist</code></li><li><code>v41-rp-code</code></li><li><code>v41-rp-copy</code></li><li><code>v41-rp-generate</code></li><li><code>v41-rp-import</code></li><li><code>v41-rp-qr</code></li><li><code>v41-rp-share</code></li><li><code>v41-rp-sms</code></li><li><code>v41-rp-start</code></li><li><code>v41-rp-stop</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">i18n <span class="small">(30)</span></div>
+          <ul class="id-list"><li><code>i18n_about_link</code></li><li><code>i18n_app_disclaimer</code></li><li><code>i18n_app_mission</code></li><li><code>i18n_app_sub</code></li><li><code>i18n_app_title</code></li><li><code>i18n_badge_ble</code></li><li><code>i18n_badge_gdpr</code></li><li><code>i18n_badge_offline</code></li><li><code>i18n_badge_tiny</code></li><li><code>i18n_contact_line</code></li><li><code>i18n_empty_btn</code></li><li><code>i18n_empty_text</code></li><li><code>i18n_firstrun_body</code></li><li><code>i18n_firstrun_help</code></li><li><code>i18n_firstrun_ok</code></li><li><code>i18n_firstrun_title</code></li><li><code>i18n_github_link</code></li><li><code>i18n_help_link</code></li><li><code>i18n_help_title</code></li><li><code>i18n_hero_body</code></li><li><code>i18n_hero_pillars</code></li><li><code>i18n_hero_title</code></li><li><code>i18n_install_sub</code></li><li><code>i18n_install_title</code></li><li><code>i18n_lang_link</code></li><li><code>i18n_lang_note</code></li><li><code>i18n_lang_subtitle</code></li><li><code>i18n_lang_title</code></li><li><code>i18n_legal_title</code></li><li><code>i18n_tips_title</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">toggle <span class="small">(14)</span></div>
+          <ul class="id-list"><li><code>toggle-autoOptimize</code></li><li><code>toggle-autoWipeOnClose</code></li><li><code>toggle-highContrast</code></li><li><code>toggle-highalert</code></li><li><code>toggle-keepAlive</code></li><li><code>toggle-largeText</code></li><li><code>toggle-notif</code></li><li><code>toggle-reduceMotion</code></li><li><code>toggle-scanFilters</code></li><li><code>toggle-screenAwake</code></li><li><code>toggle-sound</code></li><li><code>toggle-tts</code></li><li><code>toggle-vibrate</code></li><li><code>toggle-voiceRecall</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">other <span class="small">(11)</span></div>
+          <ul class="id-list"><li><code>app</code></li><li><code>congestionBadge</code></li><li><code>installBanner</code></li><li><code>installBtn</code></li><li><code>installDismiss</code></li><li><code>langSelect</code></li><li><code>tipsI18n</code></li><li><code>vg3SecondHook</code></li><li><code>vgHero</code></li><li><code>volumeSlider</code></li><li><code>volumeVal</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">emg <span class="small">(10)</span></div>
+          <ul class="id-list"><li><code>emg-active-name</code></li><li><code>emg-active-sub</code></li><li><code>emg-body</code></li><li><code>emg-call</code></li><li><code>emg-medical</code></li><li><code>emg-name</code></li><li><code>emg-overlay</code></li><li><code>emg-phone</code></li><li><code>emg-qr</code></li><li><code>emg-strobe</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">sp <span class="small">(9)</span></div>
+          <ul class="id-list"><li><code>sp-1</code></li><li><code>sp-2</code></li><li><code>sp-3</code></li><li><code>sp-cancel</code></li><li><code>sp-fields</code></li><li><code>sp-hint</code></li><li><code>sp-msg</code></li><li><code>sp-ok</code></li><li><code>sp-title</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">sos <span class="small">(8)</span></div>
+          <ul class="id-list"><li><code>sos-active</code></li><li><code>sos-active-name</code></li><li><code>sos-content</code></li><li><code>sos-focus-banner</code></li><li><code>sos-no-pets</code></li><li><code>sos-pet-select</code></li><li><code>sos-snapshot</code></li><li><code>sos-strobe-area</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">btn <span class="small">(7)</span></div>
+          <ul class="id-list"><li><code>btn-demo-toggle</code></li><li><code>btn-mode-all</code></li><li><code>btn-mode-focus</code></li><li><code>btn-scan-toggle</code></li><li><code>btn-skip-verify</code></li><li><code>btn-verified</code></li><li><code>btn-wiz-save</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">scan <span class="small">(6)</span></div>
+          <ul class="id-list"><li><code>scan-health-fill</code></li><li><code>scan-health-meta</code></li><li><code>scan-health-row</code></li><li><code>scan-list</code></li><li><code>scan-status</code></li><li><code>scan-status-bar</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">detail <span class="small">(4)</span></div>
+          <ul class="id-list"><li><code>detail-alerts</code></li><li><code>detail-body</code></li><li><code>detail-overlay</code></li><li><code>detail-title</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">panel <span class="small">(4)</span></div>
+          <ul class="id-list"><li><code>panel-home</code></li><li><code>panel-settings</code></li><li><code>panel-sos</code></li><li><code>panel-tips</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">diag <span class="small">(3)</span></div>
+          <ul class="id-list"><li><code>diag-body</code></li><li><code>diag-overlay</code></li><li><code>diag-pre</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">dt <span class="small">(3)</span></div>
+          <ul class="id-list"><li><code>dt-caution</code></li><li><code>dt-danger</code></li><li><code>dt-warning</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">hc <span class="small">(3)</span></div>
+          <ul class="id-list"><li><code>hc-arrow</code></li><li><code>hc-rssi</code></li><li><code>hc-text</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">perf <span class="small">(3)</span></div>
+          <ul class="id-list"><li><code>perf-balanced</code></li><li><code>perf-fast</code></li><li><code>perf-saver</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">wiz <span class="small">(3)</span></div>
+          <ul class="id-list"><li><code>wiz-step-1</code></li><li><code>wiz-step-2</code></li><li><code>wiz-step-3</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">ai <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>ai-feedback</code></li><li><code>ai-suggestion</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">calib <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>calib-10m</code></li><li><code>calib-1m</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">coach <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>coach-body</code></li><li><code>coach-card</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">dash <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>dash-controls</code></li><li><code>dash-controls2</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">help <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>help-body</code></li><li><code>help-overlay</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">legal <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>legal-body</code></li><li><code>legal-overlay</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">pet <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>pet-chips</code></li><li><code>pet-list</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">reset <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>reset-body</code></li><li><code>reset-overlay</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">verify <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>verify-delta</code></li><li><code>verify-status</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">wizard <span class="small">(2)</span></div>
+          <ul class="id-list"><li><code>wizard-overlay</code></li><li><code>wizard-title</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">emergency <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>emergency-active</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">empty <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>empty-state</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">first <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>first-run-banner</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">fr <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>fr-proto</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">icon <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>icon-picker</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">import <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>import-input</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">input <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>input-name</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">lang <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>lang-overlay</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">notif <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>notif-hint</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">pwa <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>pwa-manifest</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">qr <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>qr-${p.id}</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">settings <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>settings-pet-list</code></li></ul>
+        </div>
+        
+
+        <div class="card">
+          <div class="card-title">v40 <span class="small">(1)</span></div>
+          <ul class="id-list"><li><code>v40-adv-hint</code></li></ul>
+        </div>
+        
+    </div>
+
+    <h2 id="i18n" class="pagebreak">11. i18n 키 인덱스</h2>
+    <p class="small">
+      I18N 딕셔너리(<code>const STR</code>)의 키 목록입니다. DOM에서 <code>id="i18n_키"</code> 형태로 매핑됩니다.
+    </p>
+    <div class="card">
+      <div class="card-title">STR.en 키 목록</div>
+      <ul class="id-list"><li><code>app_title</code></li><li><code>app_sub</code></li><li><code>app_mission</code></li><li><code>app_disclaimer</code></li><li><code>github</code></li><li><code>help</code></li><li><code>about</code></li><li><code>help_title</code></li><li><code>legal_title</code></li><li><code>tips_title</code></li><li><code>install_title</code></li><li><code>empty_text</code></li><li><code>empty_btn</code></li><li><code>hook_html</code></li><li><code>hero_title</code></li><li><code>hero_body</code></li><li><code>hero_pillars_html</code></li><li><code>badge_offline</code></li><li><code>badge_gdpr</code></li><li><code>badge_ble</code></li><li><code>badge_tiny</code></li><li><code>contact_line</code></li><li><code>nav_home</code></li><li><code>nav_sos</code></li><li><code>nav_tips</code></li><li><code>nav_settings</code></li><li><code>install_sub</code></li><li><code>install_btn</code></li><li><code>install_dismiss</code></li></ul>
+    </div>
+
+    <h2 id="audit" class="pagebreak">12. 감사 체크리스트</h2>
+    <ol>
+      <li><b>네트워크 호출 검색</b>: <code>fetch(</code>, <code>XMLHttpRequest</code>, <code>WebSocket</code>, <code>sendBeacon</code></li>
+      <li><b>CSP 확인</b>: Head에 <code>connect-src 'none'</code></li>
+      <li><b>Service Worker</b>: <code>fetch</code> fallback이 없는지(swCode 템플릿)</li>
+      <li><b>삭제 경로</b>: <code>Store.clearAll()</code> vs <code>Security.fullWipe()</code> 차이 이해</li>
+      <li><b>암호 백업</b>: PBKDF2 iterations/알고리즘, AES-GCM 사용 확인</li>
+      <li><b>입력 sanitization</b>: Sanitizer 경유 여부 확인</li>
+    </ol>
+
+    <div class="footer">
+      <div><b>문서 생성:</b> GPT-5.2 Pro · 2026-03-04 (Wed) 00:00 UTC+09:00</div>
+      <div><b>대상 코드:</b> VitalGuard AI v4.2.3 (single-file)</div>
+    </div>
+  </div>
+</body>
+</html>
