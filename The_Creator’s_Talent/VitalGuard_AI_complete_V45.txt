@@ -1,0 +1,222 @@
+================================================================================
+VITALGUARD AI — SECURITY HARDENING AUDIT REPORT
+================================================================================
+TARGET        : VitalGuard_AI_complete_V45_Vibranium_Shield.html
+BASELINE      : VitalGuard_AI_complete_V44_1.html (V4.4.1)
+AUDIT DATE    : 2026-06-22
+AUDITOR MODE  : vitalguard-code-security-auditor v2.0 (full scan)
+                + ethical-fortress-shield (architecture/ethics)
+                + independent manual white-box review
+FILE SIZE     : 498,577 bytes (~487 KB) — under the 500 KB ceiling
+SYNTAX CHECK  : node --check PASS (hardening core + 9,903-line body)
+================================================================================
+
+--------------------------------------------------------------------------------
+0. REVIEWER SUMMARY (English — shareable with OTF Security Lab)
+--------------------------------------------------------------------------------
+VitalGuard is a single-file, offline-first, zero-dependency HTML/JS application
+for surveillance- and censorship-resistance. Its security model is primarily
+STRUCTURAL: the most dangerous attack surfaces — network egress, data
+exfiltration, server-side attack surface, and transport-layer MITM — are removed
+by architecture, not merely mitigated.
+
+V4.5 adds an immutable "hardening core" that runs as the first executable step
+and closes six residual client-side surfaces identified in V4.4.1:
+
+  1. WebRTC IP-leak channel  (RTCPeerConnection family neutralised)
+  2. Reversible egress stubs (now locked: non-writable + non-configurable)
+  3. Worker/SharedWorker egress bypass (constructors neutralised; CSP also blocks)
+  4. Prototype pollution     (Object/Array/Function/String/Number/Boolean frozen)
+  5. Dynamic code execution  (indirect eval neutralised; CSP already forbids it)
+  6. window.name covert channel (kept empty across navigations)
+
+Plus a bounded runtime self-check and a SHA-256 integrity fingerprint for
+tamper-evidence.
+
+HONEST SCOPE STATEMENT: No client-side artifact is provably unbreakable, and a
+static review — however thorough — is NOT a substitute for an independent
+penetration test. This report documents the hardening that was implemented and
+verified by inspection. The authoritative validation remains the OTF Security
+Lab white-box engagement. Presenting this build as "rigorously hardened with a
+documented threat model and known limitations" is both accurate and the posture
+most likely to earn auditor confidence.
+
+--------------------------------------------------------------------------------
+1. MODULE RESULTS (vitalguard-code-security-auditor v2.0)
+--------------------------------------------------------------------------------
+MODULE_01  EXTERNAL DEPENDENCY DETECTION ............ CLEAN
+  - 0 CDN references (tailwind/react/vue/axios/unpkg/jsdelivr/cloudflare/
+    googleapis/node-fetch/require). QR generator is inlined vanilla JS.
+  - data:image/* inline assets: ALLOWED (offline inline, per rubric).
+
+MODULE_02  EXTERNAL API DETECTION ................... CLEAN
+  - No outbound API calls. CSP connect-src 'none' is the primary control.
+  - All network sinks (fetch/XHR/WebSocket/EventSource/sendBeacon/form.submit)
+    neutralised; V4.5 additionally LOCKS them non-writable/non-configurable.
+
+MODULE_03  OFFLINE PURITY ........................... PASS
+  - App is reachable with the network fully disconnected; no resource load
+    depends on a remote origin. Graceful-degradation paths present in body.
+
+MODULE_04  COPYRIGHT / LICENSE ...................... INFO (BY DESIGN)
+  - License declared: Apache-2.0 (meta + SPDX + banner). Consistent throughout.
+  - The strict auditor check expects Morgan J. / Gyu-min Jeon / M-Corp +
+    Hippocratic 3.0 keywords and would otherwise flag COPYRIGHT_INCOMPLETE.
+  - PER PROJECT POLICY this is INTENTIONAL: copyright/AI-attribution notices are
+    deliberately omitted until an institution-appropriate license is chosen.
+    Therefore NO deduction is applied. ACTION (optional): confirm whether the
+    OTF-facing build should remain Apache-2.0 or adopt the Hippocratic-derived
+    license before final submission.
+
+MODULE_05  COMMENT QUALITY / MODULE STRUCTURE ....... PASS (LOW: comment density)
+  - Code is modular (named guards/namespaces, Object.freeze on policy tables).
+  - LOW: comment-to-code density is high in places (a Claude-style trait). Not a
+    security issue; only a minor size factor. No action required.
+
+MODULE_06  SECURITY VULNERABILITY SWEEP ............. STRONG (scope-limited)
+  Verified hardened surfaces:
+    - XSS/DOM injection: Trusted Types policy 'vitalguard-html' + HTML sink
+      scrubber + Sanitizer (escapeHTML/safeId/name/text) + no inline event
+      attributes (replaced by a tokenised allowlist Action Dispatcher that
+      never uses eval/Function).
+    - Crypto: AES-GCM-256, PBKDF2-SHA-256 @ 600,000 iterations, fresh 16-byte
+      salt + 12-byte IV per operation (no reuse), AAD-bound envelope (v2).
+      CSPRNG (crypto.getRandomValues) used for all security randomness.
+    - Egress/exfiltration: connect-src 'none' + early pre-guard + runtime guard
+      + V4.5 immutable lock (closes the reversibility gap).
+    - WebRTC IP leak: CLOSED in V4.5 (was OPEN in V4.4.1).
+    - Clickjacking: CSP frame-ancestors 'none' (NOTE: frame-ancestors is ignored
+      when CSP is delivered via <meta>; see Section 4 residual risk R-2).
+  Scope note: this is a targeted hardening review, not a line-by-line audit of
+  all 10k lines. BLE filter usage, every AudioContext state path, and full
+  fuzzing are explicitly OUT OF SCOPE here and belong to the OTF pentest.
+
+MODULE_07  BUG PATTERN SCAN ........................ NOT FULLY EXERCISED (scope)
+  - The hardening core itself: all global overrides wrapped in try/catch; timers
+    bounded (self-check stops after 6 ticks — no perpetual loop); async hash is
+    non-blocking with .catch. No new uncaught paths introduced.
+  - Full body bug sweep deferred to dedicated review / pentest.
+
+MODULE_08  MILITARY-USE / ETHICAL ARCHITECTURE ..... DEFENSE_LEVEL: STRONG
+  - Architecture is structurally incompatible with C2/weapon/surveillance reuse:
+    no data egress, no persistent identifiers required, no device-control
+    interface (no WebSerial/WebUSB/GPIO), no reliable two-way command channel.
+  - V4.5 reinforces this: egress is now immutable, and WebRTC (a potential
+    out-of-band channel and IP-deanonymiser) is removed.
+  - ethical-fortress-shield principle satisfied at the ARCHITECTURE layer
+    (ethics enforced by structure, not only by comments).
+
+MODULE_10  CROSS-AI CONTAMINATION DETECTOR .......... CLEAN
+  CHATGPT_PATTERNS_FOUND : 0  (no Tailwind CDN / React|Vue / axios / npm / ESM)
+  CLAUDE_PATTERNS_FOUND  : 0 CRITICAL (only LOW comment density, see MODULE_05)
+  TOTAL_CONTAMINATION_SCORE : 0
+  CONTAMINATION_LEVEL    : CLEAN
+  RECOMMENDED_AI_FOR_NEXT_EDIT : Either
+
+--------------------------------------------------------------------------------
+2. INDEPENDENT WHITE-BOX ANALYSIS (auditor's own review, not skill output)
+--------------------------------------------------------------------------------
+THREAT MODEL (as built):
+  The dominant risk for an offline single-file tool is NOT remote compromise
+  (there is no server and no live network), but: (a) covert exfiltration if any
+  script executes, (b) client-side code injection, (c) data-at-rest exposure,
+  (d) de-anonymisation via browser side channels. V4.5 is organised around
+  shrinking exactly these.
+
+WHAT V4.5 GENUINELY IMPROVES OVER V4.4.1:
+  + The single highest-value fix is WebRTC removal. In V4.4.1 a crafted or
+    injected snippet could instantiate RTCPeerConnection and, via ICE
+    candidates, reveal the device's local and public IP even behind VPN/Tor —
+    a direct contradiction of the product's purpose. V4.5 makes the constructors
+    throw and locks them.
+  + Egress immutability matters because V4.4.1's stubs were plain reassignments;
+    an attacker with script execution could overwrite window.fetch back to a
+    working handle. V4.5's non-configurable/non-writable definitions defeat that
+    specific restoration path. (The existing try/catch reassignments in the body
+    fail silently against the lock, which is the intended outcome.)
+  + Prototype freezing removes the classic __proto__ / constructor.prototype
+    pollution sinks at the language level, complementing the action-policy
+    string filter that already blocked those tokens.
+
+RESIDUAL RISKS / HONEST LIMITATIONS (these belong in the OTF disclosure):
+  R-1  Self-integrity and the runtime self-check are TAMPER-EVIDENCE, not tamper-
+       PROOF. An adversary who can already inject script into the page can also
+       alter or remove the checker. They raise the cost of silent tampering;
+       they do not make the file immutable. State this plainly to reviewers.
+  R-2  Several CSP directives (frame-ancestors, sandbox, report-to) are IGNORED
+       when CSP is delivered via <meta http-equiv> rather than an HTTP header.
+       For clickjacking, the practical control in a header-less single file is
+       JS frame-busting; if the file is ever served over HTTP, set the CSP and
+       X-Frame-Options as real response headers. Do not claim header-only
+       protections that a <meta> tag cannot enforce.
+  R-3  Static, in-file CSP nonces are not per-request secrets. In a single
+       offline file the nonce is readable by anyone who can read the document,
+       so it chiefly blocks naive injected inline scripts; it is not equivalent
+       to server-generated nonces. This is acceptable for the offline model but
+       should be described accurately.
+  R-4  Key-derivation strength is bounded by Web Crypto: PBKDF2 @ 600k is strong
+       and standards-aligned, but PBKDF2 is not memory-hard. Argon2/scrypt are
+       not natively available without shipping a dependency (which would violate
+       the zero-dependency rule). Current choice is the correct trade-off; note
+       it rather than overstate it.
+  R-5  Browser/runtime trust: all client-side defenses assume an uncompromised
+       browser and OS. A rooted device, a malicious browser build, or a
+       hardware keylogger is outside any in-page control. This is a property of
+       the platform, not a defect of VitalGuard.
+
+DO-NOT-OVERCLAIM GUIDANCE FOR THE OTF CONVERSATION:
+  - Lead with the threat model and the architectural elimination of egress.
+  - Present the six V4.5 fixes as defense-in-depth, each independently useful.
+  - Disclose R-1..R-5 proactively. Auditors trust teams that surface their own
+    limitations far more than teams that claim impenetrability.
+  - Avoid absolute words ("unbreakable", "impenetrable") in any written or
+    spoken statement to the Lab.
+
+--------------------------------------------------------------------------------
+3. VERSION COMPARISON  (V4.4.1 -> V4.5)
+--------------------------------------------------------------------------------
+PREVIOUS_AUDIT : V4.4.1 baseline (already audit-hardened)
+CURRENT_AUDIT  : 2026-06-22 (V4.5)
+
+RESOLVED_ISSUES (newly closed in V4.5):
+  - WebRTC IP-leak channel (RTCPeerConnection family) ........ CLOSED
+  - Reversible network egress overrides ...................... LOCKED (immutable)
+  - Worker/SharedWorker egress-bypass surface ................ NEUTRALISED
+  - Object/Array/Function/String/Number/Boolean pollution .... FROZEN
+  - Indirect eval execution path (redundant to CSP) .......... NEUTRALISED
+  - window.name covert channel ............................... SANITISED
+
+REMAINING_ISSUES (carried forward, by design or platform):
+  - Apache-2.0 vs Hippocratic license decision (policy, not defect)
+  - R-1..R-5 residual limitations (inherent to client-side / offline model)
+
+NEW_ISSUES: none introduced (syntax verified; timers bounded; try/catch wrapped).
+
+IMPROVEMENT_SCORE  : material increase in client-surface coverage; the WebRTC
+                     fix alone removes a concrete de-anonymisation vector.
+REGRESSION_DETECTED: NO
+REGRESSION_DETAIL  : All V4.4.1 controls preserved and verified present
+                     (early pre-guard, RuntimeNetworkGuard x3, AES-GCM @600k,
+                     Trusted Types policy, Action Policy x6, ExternalNav x5).
+
+--------------------------------------------------------------------------------
+4. CHATGPT HANDOFF
+--------------------------------------------------------------------------------
+N/A — edits were applied directly to the file in this session. No outstanding
+CRITICAL/HIGH actions require a coder handoff.
+
+--------------------------------------------------------------------------------
+5. RECOMMENDED NEXT STEPS
+--------------------------------------------------------------------------------
+  1. Smoke-test in a real browser (Chromium + Firefox + iOS Safari):
+     open DevTools console and confirm the attestation line
+     "[VitalGuard SelfCheck] hardening attestation v4.5" plus
+     "[VitalGuard Integrity] core fingerprint:" appear, and that core app
+     flows (add pet, scan, SOS, encrypted backup/restore) still work.
+  2. Decide the OTF-facing license (Apache-2.0 vs Hippocratic-derived) before
+     submission; only then add the corresponding notice.
+  3. Provide the OTF Lab with this report's Section 0 + Section 3 residual-risk
+     list as the honest baseline. Let the white-box pentest be the final word.
+================================================================================
+END OF REPORT
+================================================================================
