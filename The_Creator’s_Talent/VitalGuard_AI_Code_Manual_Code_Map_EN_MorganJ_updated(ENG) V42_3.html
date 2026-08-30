@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>VitalGuard AI v4.2.3 Code Manual (Code Map)</title>
+<style>
+    :root {
+      --ink:#111;
+      --muted:#555;
+      --muted2:#777;
+      --border:#ddd;
+      --bg:#fff;
+      --bg2:#f6f7f9;
+      --code:#0b1020;
+      --codebg:#f1f5ff;
+      --accent:#2d6cdf;
+    }
+    html,body{background:var(--bg); color:var(--ink); margin:0; padding:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif; line-height:1.55;}
+    a{color:var(--accent); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .wrap{max-width:980px; margin:0 auto; padding:26px 18px 90px;}
+    h1{font-size:1.9rem; margin:0 0 6px;}
+    .subtitle{color:var(--muted); margin:0 0 18px;}
+    h2{margin:34px 0 10px; font-size:1.35rem; border-bottom:2px solid var(--border); padding-bottom:8px;}
+    h3{margin:22px 0 8px; font-size:1.1rem;}
+    p{margin:10px 0;}
+    ul{margin:10px 0 10px 20px;}
+    ol{margin:10px 0 10px 22px;}
+    .toc{background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:14px 14px;}
+    .toc ul{margin:8px 0 0 18px;}
+    .badge{display:inline-block; font-size:.75rem; padding:2px 8px; border-radius:999px; background:rgba(45,108,223,.12); color:var(--accent); border:1px solid rgba(45,108,223,.24);}
+    .note{background: #fff7e6; border:1px solid #ffe0a3; padding:12px 12px; border-radius:12px; color:#4a3b16;}
+    .warn{background: #ffecec; border:1px solid #ffbdbd; padding:12px 12px; border-radius:12px; color:#5a1e1e;}
+    .ok{background: #ecfff2; border:1px solid #b8f2c8; padding:12px 12px; border-radius:12px; color:#0f3b1d;}
+    .grid{display:grid; grid-template-columns:1fr; gap:10px;}
+    @media (min-width: 900px){ .grid{grid-template-columns:1fr 1fr;} }
+    .card{border:1px solid var(--border); border-radius:12px; padding:12px 12px; background:#fff;}
+    .card-title{font-weight:800; margin:0 0 8px;}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; font-size:.92em;}
+    pre{background:var(--codebg); border:1px solid #d8e4ff; border-radius:12px; padding:12px; overflow:auto;}
+    pre code{color:var(--code);}
+    table{width:100%; border-collapse:collapse; margin:12px 0; font-size:.92rem;}
+    th,td{border:1px solid var(--border); padding:8px 8px; vertical-align:top;}
+    th{background:var(--bg2); text-align:left;}
+    .small{font-size:.9rem; color:var(--muted);}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
+    .pagebreak{page-break-before: always;}
+    .footer{margin-top:38px; font-size:.9rem; color:var(--muted2); border-top:1px dashed var(--border); padding-top:14px;}
+
+    /* Module deep dive helpers */
+    .mod{margin:18px 0; padding:12px 12px; border:1px solid var(--border); border-radius:12px; background:#fff;}
+    .mod h3{margin:0 0 6px;}
+    .badges{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 10px;}
+    .kbd{display:inline-block; padding:2px 8px; border-radius:999px; background:rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.12); font-size:.78rem}
+    .id-list{columns:2; column-gap:22px; margin:0 0 0 18px;}
+    .id-list li{break-inside:avoid; margin:0 0 4px;}
+    @media print {
+      a{color:inherit; text-decoration:none;}
+      .toc{page-break-after: always;}
+      .pagebreak{page-break-before: always;}
+      .wrap{max-width:none; padding:0;}
+      .id-list{columns:3;}
+    }
+    @page { size: A4; margin: 18mm; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+<div class="badge">VitalGuard AI v4.2.3</div>
+<h1>Code Manual / Code Map</h1>
+<p class="subtitle">Target file: <span class="mono">VitalGuard_AI_complete_V42_3.html</span> (single-file app) · Updated: 2026-03-09 (Mon) UTC+09:00 · Author: Morgan J.</p>
+<div class="note"><b>Purpose of this document</b><br/>1) Explain the structure, flow, and responsibilities of the major logic blocks inside the single-file HTML application,<br/>2) let a new reviewer find the right module quickly using stable search keywords and module banners instead of volatile line references,<br/>3) summarize the v4.2.3 hardening changes reflected in the SecurityLab feedback notes.</div>
+<div class="toc">
+<b>Table of Contents</b>
+<ul><li><a href="#overview">1. Overview</a></li><li><a href="#howto">2. Execution, Permissions, and Offline Rules</a></li><li><a href="#anatomy">3. File Anatomy (Head / Body / Script)</a></li><li><a href="#flow">4. Core Flow (Boot / Scan / Alert / Render)</a></li><li><a href="#data">5. Data Model and Storage Map</a></li><li><a href="#modules">6. Module Directory</a></li><li><a href="#prefs">7. Settings and Storage Key Index</a></li><li><a href="#security423">8. v4.2.3 Security Hardening Summary</a></li><li><a href="#deepdive">9. Module Deep Dive (Snapshots + Key Functions)</a></li><li><a href="#domid">10. DOM ID Index</a></li><li><a href="#i18n">11. I18N Key Index</a></li><li><a href="#audit">12. Audit Checklist</a></li></ul>
+</div>
+<h2 id="overview">1. Overview</h2>
+<p><b>VitalGuard AI</b> is a single-file, infrastructure-independent, offline-first safety framework. Its core loop uses <b>Web Bluetooth BLE scanning</b> to collect tag RSSI values, then applies filtering and interpretation layers such as Kalman smoothing, distance estimation, and lightweight on-device learning to determine zone states and trigger alerts, guidance, and SOS workflows.</p>
+<h2 id="howto">2. Execution, Permissions, and Offline Rules</h2>
+<ul><li><b>Recommended</b>: Run under HTTPS (local server or static hosting) for the most reliable Web Bluetooth and PWA behavior.</li><li><b>file://</b>: Depending on browser policy, Web Bluetooth and Service Worker features may be partially restricted.</li><li><b>Offline rule</b>: v4.2.3 uses CSP (<code>connect-src 'none'</code>) to block unintended network calls.</li></ul>
+<h2 class="pagebreak" id="anatomy">3. File Anatomy (Head / Body / Script)</h2>
+<div class="grid">
+<div class="card">
+<div class="card-title">Panels</div>
+<ul>
+<li><code>panel-home</code></li><li><code>panel-sos</code></li><li><code>panel-tips</code></li><li><code>panel-settings</code></li>
+</ul>
+</div>
+<div class="card">
+<div class="card-title">Overlays</div>
+<ul>
+<li><code>wizard-overlay</code></li><li><code>detail-overlay</code></li><li><code>help-overlay</code></li><li><code>legal-overlay</code></li><li><code>lang-overlay</code></li><li><code>diag-overlay</code></li><li><code>emg-overlay</code></li><li><code>reset-overlay</code></li>
+</ul>
+</div>
+</div>
+<p class="small">Important: the <code>PATCH:</code> blocks near the end of the script override earlier methods and behaviors, so they determine the final runtime behavior.</p>
+<h2 class="pagebreak" id="flow">4. Core Flow (Boot / Scan / Alert / Render)</h2>
+<pre><code>DOMContentLoaded
+  ├─ I18N.init()
+  └─ App.init()
+       ├─ Store.init()
+       ├─ Settings.load()
+       ├─ capability check / UI hydration
+       └─ (optional) BLE.startScan()</code></pre>
+<pre><code>advertisementreceived
+  └─ routeAdvertisement(event)
+       ├─ signature matching decides which Pet owns the packet
+       ├─ Pet.processRssi() updates signal and zone state
+       ├─ App.triggerAlert() fires when thresholds escalate
+       └─ App.render() refreshes the UI</code></pre>
+<h2 class="pagebreak" id="data">5. Data Model and Storage Map</h2>
+<h3>5.1 IndexedDB Object Stores</h3>
+<ul><li><code>pets</code></li><li><code>settings</code></li><li><code>ai</code></li><li><code>alerts</code></li><li><code>blobs</code></li></ul>
+<h3>5.2 Core Settings.prefs Keys</h3>
+<p class="small">Global preferences are stored in Store.settings, and later V40/V41 patches extend that baseline with additional toggles and persistence fields.</p>
+<h2 class="pagebreak" id="modules">6. Module Directory</h2>
+<p class="small">The table below lists the large module banners that appear in the source. Use Ctrl+F on the banner text to jump directly to the matching section.</p>
+<table>
+<thead>
+<tr>
+<th style="width:42%">Module banner (search keyword)</th>
+
+<th>Ctrl+F hint</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><code>CONFIG</code></td><td><code>/* --- CONFIG --- */</code></td></tr>
+<tr><td><code>UTILS</code></td><td><code>/* --- UTILS --- */</code></td></tr>
+<tr><td><code>ETHICAL MANIFEST</code></td><td><code>/* --- ETHICAL MANIFEST --- */</code></td></tr>
+<tr><td><code>STATE</code></td><td><code>/* --- STATE --- */</code></td></tr>
+<tr><td><code>TOAST</code></td><td><code>/* --- TOAST --- */</code></td></tr>
+<tr><td><code>I18N (7 Languages)</code></td><td><code>/* --- I18N (7 Languages) --- */</code></td></tr>
+<tr><td><code>STORAGE</code></td><td><code>/* --- STORAGE --- */</code></td></tr>
+<tr><td><code>SIGNAL FILTER (KALMAN)</code></td><td><code>/* --- SIGNAL FILTER (KALMAN) --- */</code></td></tr>
+<tr><td><code>DISTANCE ESTIMATOR (V20)</code></td><td><code>/* --- DISTANCE ESTIMATOR (V20) --- */</code></td></tr>
+<tr><td><code>Q-LEARNING LITE (V20/V35)</code></td><td><code>/* --- Q-LEARNING LITE (V20/V35) --- */</code></td></tr>
+<tr><td><code>BEHAVIORAL FINGERPRINT</code></td><td><code>/* --- BEHAVIORAL FINGERPRINT --- */</code></td></tr>
+<tr><td><code>RING BUFFER</code></td><td><code>/* --- RING BUFFER --- */</code></td></tr>
+<tr><td><code>PET MODEL</code></td><td><code>/* --- PET MODEL --- */</code></td></tr>
+<tr><td><code>QR GENERATOR (V4.1: Standard QR)</code></td><td><code>/* --- QR GENERATOR (V4.1: Standard QR) --- */</code></td></tr>
+<tr><td><code>VOICE RECALL (V20)</code></td><td><code>/* --- VOICE RECALL (V20) --- */</code></td></tr>
+<tr><td><code>VOICE ANNOUNCER (TTS)</code></td><td><code>/* --- VOICE ANNOUNCER (TTS) --- */</code></td></tr>
+<tr><td><code>BLE MATCHING</code></td><td><code>/* --- BLE MATCHING --- */</code></td></tr>
+<tr><td><code>BLE ENGINE (V35 hardened + V40 fixes)</code></td><td><code>/* --- BLE ENGINE (V35 hardened + V40 fixes) --- */</code></td></tr>
+<tr><td><code>WIZARD (V35 + V40 signature hardening)</code></td><td><code>/* --- WIZARD (V35 + V40 signature hardening) --- */</code></td></tr>
+<tr><td><code>SOS MODULE (V35)</code></td><td><code>/* --- SOS MODULE (V35) --- */</code></td></tr>
+<tr><td><code>EMERGENCY MODE (V20)</code></td><td><code>/* --- EMERGENCY MODE (V20) --- */</code></td></tr>
+<tr><td><code>PET DETAIL OVERLAY (expanded)</code></td><td><code>/* --- PET DETAIL OVERLAY (expanded) --- */</code></td></tr>
+<tr><td><code>NAV</code></td><td><code>/* --- NAV --- */</code></td></tr>
+<tr><td><code>SETTINGS</code></td><td><code>/* --- SETTINGS --- */</code></td></tr>
+<tr><td><code>DATA MANAGER</code></td><td><code>/* --- DATA MANAGER --- */</code></td></tr>
+<tr><td><code>HELP (expanded)</code></td><td><code>/* --- HELP (expanded) --- */</code></td></tr>
+<tr><td><code>HELP (i18n)</code></td><td><code>/* --- HELP (i18n) --- */</code></td></tr>
+<tr><td><code>ABOUT / LEGAL (i18n)</code></td><td><code>/* --- ABOUT / LEGAL (i18n) --- */</code></td></tr>
+<tr><td><code>LANGUAGE MENU</code></td><td><code>/* --- LANGUAGE MENU --- */</code></td></tr>
+<tr><td><code>DIAGNOSTICS (Download JSON)</code></td><td><code>/* --- DIAGNOSTICS (Download JSON) --- */</code></td></tr>
+<tr><td><code>META-COGNITIVE COACH (Idea Amplifier)</code></td><td><code>/* --- META-COGNITIVE COACH (Idea Amplifier) --- */</code></td></tr>
+<tr><td><code>APP CORE</code></td><td><code>/* --- APP CORE --- */</code></td></tr>
+<tr><td><code>PWA</code></td><td><code>/* --- PWA --- */</code></td></tr>
+<tr><td><code>SAFE TEXT / SANITIZER</code></td><td><code>/* --- SAFE TEXT / SANITIZER --- */</code></td></tr>
+<tr><td><code>ERROR SHIELD (Crash-safe logging)</code></td><td><code>/* --- ERROR SHIELD (Crash-safe logging) --- */</code></td></tr>
+<tr><td><code>CAPABILITY MATRIX</code></td><td><code>/* --- CAPABILITY MATRIX --- */</code></td></tr>
+<tr><td><code>ACCESSIBILITY (UX)</code></td><td><code>/* --- ACCESSIBILITY (UX) --- */</code></td></tr>
+<tr><td><code>WAKE LOCK (Monitoring keep-awake)</code></td><td><code>/* --- WAKE LOCK (Monitoring keep-awake) --- */</code></td></tr>
+<tr><td><code>AI PACK v4.1</code></td><td><code>/* --- AI PACK v4.1 --- */</code></td></tr>
+<tr><td><code>CONDUCTOR AI (Self-heal / UX suggestions)</code></td><td><code>/* --- CONDUCTOR AI (Self-heal / UX suggestions) --- */</code></td></tr>
+<tr><td><code>RESET / INITIALIZE CENTER</code></td><td><code>/* --- RESET / INITIALIZE CENTER --- */</code></td></tr>
+<tr><td><code>ENCRYPTED BACKUP (AES-GCM)</code></td><td><code>/* --- ENCRYPTED BACKUP (AES-GCM) --- */</code></td></tr>
+<tr><td><code>V40 UI INJECTION</code></td><td><code>/* --- V40 UI INJECTION --- */</code></td></tr>
+<tr><td><code>PATCH: Settings (new prefs + toggles)</code></td><td><code>/* --- PATCH: Settings (new prefs + toggles) --- */</code></td></tr>
+<tr><td><code>PATCH: BLE filters toggle</code></td><td><code>/* --- PATCH: BLE filters toggle --- */</code></td></tr>
+<tr><td><code>PATCH: Pet AI attach + safe sanitize</code></td><td><code>/* --- PATCH: Pet AI attach + safe sanitize --- */</code></td></tr>
+<tr><td><code>PATCH: Detail feedback =&gt; kNN learning + extra explain</code></td><td><code>/* --- PATCH: Detail feedback =&gt; kNN learning + extra explain --- */</code></td></tr>
+<tr><td><code>PATCH: Wizard + Emergency sanitize</code></td><td><code>/* --- PATCH: Wizard + Emergency sanitize --- */</code></td></tr>
+<tr><td><code>PATCH: App init / monitoring =&gt; wake lock + conductor + error shield</code></td><td><code>/* --- PATCH: App init / monitoring =&gt; wake lock + conductor + error shield --- */</code></td></tr>
+<tr><td><code>PATCH: Diagnostics (capabilities + error log + battery)</code></td><td><code>/* --- PATCH: Diagnostics (capabilities + error log + battery) --- */</code></td></tr>
+<tr><td><code>PATCH: Coach card (tips + one-tap actions)</code></td><td><code>/* --- PATCH: Coach card (tips + one-tap actions) --- */</code></td></tr>
+<tr><td><code>PATCH: Legal / About (VitalGuard Demo)</code></td><td><code>/* --- PATCH: Legal / About (VitalGuard Demo) --- */</code></td></tr>
+<tr><td><code>PATCH: SOS snapshot sanitize</code></td><td><code>/* --- PATCH: SOS snapshot sanitize --- */</code></td></tr>
+<tr><td><code>PATCH: Data import supports encrypted pack</code></td><td><code>/* --- PATCH: Data import supports encrypted pack --- */</code></td></tr>
+<tr><td><code>V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance</code></td><td><code>/* --- V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance --- */</code></td></tr>
+<tr><td><code>Lost flip counter fix (batterySuspect)</code></td><td><code>/* --- Lost flip counter fix (batterySuspect) --- */</code></td></tr>
+<tr><td><code>Per-pet alerts (sound/vibrate/tts + min zone)</code></td><td><code>/* --- Per-pet alerts (sound/vibrate/tts + min zone) --- */</code></td></tr>
+<tr><td><code>Max 10 active pets: enforce + disable overflow</code></td><td><code>/* --- Max 10 active pets: enforce + disable overflow --- */</code></td></tr>
+<tr><td><code>Leash distance slider (2m–15m) in Detail -&gt; auto thresholds</code></td><td><code>/* --- Leash distance slider (2m–15m) in Detail -&gt; auto thresholds --- */</code></td></tr>
+<tr><td><code>Calibration Pro (RLS) UI (Wizard + Detail)</code></td><td><code>/* --- Calibration Pro (RLS) UI (Wizard + Detail) --- */</code></td></tr>
+<tr><td><code>Per-pet alerts UI in Detail</code></td><td><code>/* --- Per-pet alerts UI in Detail --- */</code></td></tr>
+<tr><td><code>Rescue Pack (share/import) for SOS panel</code></td><td><code>/* --- Rescue Pack (share/import) for SOS panel --- */</code></td></tr>
+<tr><td><code>Patch Detail.render to inject v4.1 UI blocks</code></td><td><code>/* --- Patch Detail.render to inject v4.1 UI blocks --- */</code></td></tr>
+<tr><td><code>Patch V40UI.inject to include v4.1 injections</code></td><td><code>/* --- Patch V40UI.inject to include v4.1 injections --- */</code></td></tr>
+<tr><td><code>Diagnostics: implement missing Run Self-Test button</code></td><td><code>/* --- Diagnostics: implement missing Run Self-Test button --- */</code></td></tr>
+<tr><td><code>Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents)</code></td><td><code>/* --- Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents) --- */</code></td></tr>
+<tr><td><code>FINAL: boot once</code></td><td><code>/* --- FINAL: boot once --- */</code></td></tr>
+<tr><td><code>GLOBAL EVENT HOOKS</code></td><td><code>/* --- GLOBAL EVENT HOOKS --- */</code></td></tr>
+<tr><td><code>INIT</code></td><td><code>/* --- INIT --- */</code></td></tr>
+</tbody>
+</table>
+<h2 class="pagebreak" id="prefs">7. Settings and Storage Key Index</h2>
+<h3>7.1 prefs Key List</h3>
+<table>
+<thead><tr><th style="width:28%">Key</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>autoOptimize</code></td><td>Enables the Conductor auto-optimization and self-heal logic.</td></tr>
+<tr><td><code>autoWipeOnClose</code></td><td>v4.2.3 option to wipe local data automatically when the session ends (pagehide).</td></tr>
+<tr><td><code>highAlert</code></td><td>Makes alerts more aggressive in frequency and intensity.</td></tr>
+<tr><td><code>highContrast</code></td><td>Accessibility: high-contrast mode.</td></tr>
+<tr><td><code>keepAlive</code></td><td>Keeps the audio engine alive to improve background stability.</td></tr>
+<tr><td><code>largeText</code></td><td>Accessibility: larger text.</td></tr>
+<tr><td><code>notifWanted</code></td><td>Tracks whether the user wants browser notifications and whether permission should be requested.</td></tr>
+<tr><td><code>perfMode</code></td><td>Performance mode (for example balanced / low-power / faster behavior).</td></tr>
+<tr><td><code>reduceMotion</code></td><td>Accessibility: reduced motion.</td></tr>
+<tr><td><code>screenAwake</code></td><td>Enables Wake Lock to keep the screen awake.</td></tr>
+<tr><td><code>sound</code></td><td>Enables UI sounds and alert sounds.</td></tr>
+<tr><td><code>tts</code></td><td>Enables TTS voice announcements.</td></tr>
+<tr><td><code>useScanFilters</code></td><td>Uses BLE scan filters to reduce noise and load, with the trade-off that some tags may be missed.</td></tr>
+<tr><td><code>vibrate</code></td><td>Enables vibration / haptic alerts.</td></tr>
+<tr><td><code>voiceRecall</code></td><td>Enables the Voice Recall record / playback feature.</td></tr>
+<tr><td><code>volume</code></td><td>Master alert / siren volume (%).</td></tr>
+</tbody>
+</table>
+<h3>7.2 CryptoBox (Encrypted Backup Format Summary)</h3>
+<div class="card">
+<div class="card-title">Encryption Specification (as implemented in code)</div>
+<ul>
+<li>Key derivation: <code>PBKDF2</code> / <code>SHA-256</code> / iterations: <code>120000</code></li>
+<li>salt: 16 bytes, iv: 12 bytes</li>
+<li>Symmetric cipher: <code>AES-GCM</code> (256-bit key)</li>
+<li>Output JSON (example): <code>{ v: 1, alg: 'AES-GCM', it: 120000, salt: 'b64', iv: 'b64', ct: 'b64' }</code></li>
+</ul>
+</div>
+<h2 class="pagebreak" id="security423">8. v4.2.3 Security Hardening Summary</h2>
+<p>The four most important SecurityLab comments are reflected in v4.2.3 as follows.</p>
+<ol><li><b>Service Worker cache→network fallback removed</b>: switched to a cache-only strategy.</li><li><b>Session-end auto-wipe option</b>: <code>autoWipeOnClose</code> toggle + <code>Security.fullWipe()</code>.</li><li><b>CSP meta added</b>: includes <code>connect-src 'none'</code> to block network egress.</li><li><b>prompt() removed</b>: encrypted-backup passphrase entry now uses the <code>SecurePrompt</code> modal.</li></ol>
+<div class="note">v4.2.3 also adds a 20–50 ms jitter to BLE restart delay to reduce deterministic timing patterns. Because the app listens for BLE traffic rather than transmitting custom payloads, payload-padding suggestions are only partially applicable.</div>
+<h2 class="pagebreak" id="deepdive">9. Module Deep Dive (Snapshots + Key Functions)</h2>
+<p class="small">Below are opening code snapshots for each module banner plus auto-extracted key function hints. Fastest workflow: Ctrl+F the module banner in the source, then compare it with the snapshot here.</p>
+<div class="mod">
+<h3><code>CONFIG</code> </h3>
+<p class="small"><b>Role:</b> Holds global constants, versioning, thresholds, and other numeric policy values.</p>
+<pre><code>/* ----------------------------- CONFIG ----------------------------- */
+const APP_VERSION = '4.2.3';
+const SCHEMA_VERSION = 2;
+
+// Backward compatibility (do not change)
+const DB_NAME = 'VitalGuardAI_V41';
+const DB_VERSION = 2; // v3.9+ adds optional blob store
+const LS_PREFIX = 'vg41_';
+
+const MAX_RSSI_SAMPLES = 60;
+const ZONE_CONFIRM_COUNT = 4; // v4.1: more stable zone transitions
+const ZONE_CONFIRM_MS = 2000; // v4.1: more stable zone transitions
+const ALERT_COOLDOWN_MS = 20000;
+const MAX_RESTARTS_PER_MIN = 3;
+
+// High Alert tightens RSSI boundaries by +10 dBm (stronger signal required)
+const HIGH_ALERT_SHRINK = 10;
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>UTILS</code> </h3>
+<p class="small"><b>Role:</b> Reusable utility helpers for DOM access, time, math, and formatting.</p>
+<pre><code>/* ----------------------------- UTILS ----------------------------- */
+const $ = id =&gt; document.getElementById(id);
+const clamp = (v, lo, hi) =&gt; Math.max(lo, Math.min(hi, v));
+function median(arr) {
+  if(!arr || !arr.length) return 0;
+  const s=[...arr].sort((a,b)=&gt;a-b);
+  const m=Math.floor(s.length/2);
+  return s.length%2?s[m]:(s[m-1]+s[m])/2;
+}
+function genRescueId() {
+  const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let r='';
+  for(let i=0;i&lt;8;i++) r+=c[Math.floor(Math.random()*c.length)];
+  return r;
+}
+function fmtAgo(ms) {
+  if(!ms) return '--';
+  const s=Math.max(0, Math.round(ms/100)/10); // 0.1s precision</code></pre>
+</div>
+<div class="mod">
+<h3><code>ETHICAL MANIFEST</code> </h3>
+<p class="small"><b>Role:</b> Ethical and operational manifesto text for offline behavior, privacy, and safety guardrails.</p>
+<pre><code>/* ----------------------------- ETHICAL MANIFEST ----------------------------- */
+const ETHICAL_MANIFEST = {
+  version: APP_VERSION,
+  license: 'Hippocratic 3.0 Derivative',
+  purpose: 'Life‑saving offline AI demo (no cloud, no telemetry)',
+  prohibited: ['weaponization','coercive_tracking','data_exploitation','oppression','border_enforcement'],
+  principles: ['minimize_hallucinations','transparency','accessibility','no_data_exploitation','low_resource','no_liability','affordable','simplicity','non_specialist','allow_deletion']
+};
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>STATE</code> </h3>
+<p class="small"><b>Role:</b> Global in-memory runtime state container.</p>
+<pre><code>/* ----------------------------- STATE ----------------------------- */
+let perfProfile = PERF_PROFILES.balanced;
+let globalLastProcessMs = 0;
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>TOAST</code> </h3>
+<p class="small"><b>Role:</b> Toast UI for short transient messages.</p>
+<div class="badges"><span class="kbd"><code>show</code></span></div>
+<pre><code>/* ----------------------------- TOAST ----------------------------- */
+const Toast = {
+  show(msg, dur=2500) {
+    const el=document.createElement('div');
+    el.className='toast';
+    el.textContent=msg;
+    document.body.appendChild(el);
+    setTimeout(()=&gt;{
+      el.style.opacity='0';
+      el.style.transition='0.3s';
+      setTimeout(()=&gt;el.remove(),300);
+    }, dur);
+  }
+};
+
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>I18N (7 Languages)</code> </h3>
+<p class="small"><b>Role:</b> Language dictionaries plus DOM text injection and language-switching logic.</p>
+<div class="badges"><span class="kbd"><code>fullWipe</code></span> <span class="kbd"><code>maybeAutoWipeOnClose</code></span></div>
+<pre><code>/* ----------------------------- I18N (7 Languages) ----------------------------- */
+/*
+  VitalGuard AI is intended to be shown to non-technical audiences (diplomats, NGOs, universities, companies).
+  This tiny i18n layer keeps everything in a single offline HTML file (no libraries, no network).
+*/
+const I18N = (function(){
+  const STORAGE_KEY = 'vg_lang_v41';
+  const LEGACY_KEY = 'vg_lang_v412';
+  const RTL_LANGS = new Set(['ar']);
+
+  const STR = {
+    en: {
+      app_title: 'VitalGuard AI',
+      app_sub: 'v4.2.3 — Infrastructure‑Independent Survival Framework | McorpAI',
+      app_mission: 'Runs fully offline. No cloud. No telemetry. GDPR‑friendly by design.',
+      app_disclaimer: 'Demo skin: “Pet Safety Leash” using Bluetooth proximity (not GPS). Built to keep working when networks fail.',
+      github: 'GitHub Source',
+      help: 'Help',</code></pre>
+</div>
+<div class="mod">
+<h3><code>STORAGE</code> </h3>
+<p class="small"><b>Role:</b> IndexedDB-centric persistence layer for pets, settings, AI state, blobs, and reset flows.</p>
+<div class="badges"><span class="kbd"><code>init</code></span> <span class="kbd"><code>savePet</code></span> <span class="kbd"><code>getAllPets</code></span> <span class="kbd"><code>_lsPets</code></span> <span class="kbd"><code>deletePet</code></span> <span class="kbd"><code>clearAll</code></span> <span class="kbd"><code>saveSetting</code></span> <span class="kbd"><code>getSetting</code></span> <span class="kbd"><code>saveAI</code></span> <span class="kbd"><code>getAI</code></span> <span class="kbd"><code>saveBlob</code></span> <span class="kbd"><code>getBlob</code></span></div>
+<pre><code>/* ----------------------------- STORAGE ----------------------------- */
+const Store = {
+  db: null,
+
+  async init() {
+    return new Promise(resolve=&gt;{
+      try{
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = e =&gt; {
+          const db = e.target.result;
+          if(!db.objectStoreNames.contains('pets')) db.createObjectStore('pets',{keyPath:'id'});
+          if(!db.objectStoreNames.contains('settings')) db.createObjectStore('settings',{keyPath:'key'});
+          if(!db.objectStoreNames.contains('ai')) db.createObjectStore('ai',{keyPath:'key'});
+          if(!db.objectStoreNames.contains('alerts')) db.createObjectStore('alerts',{keyPath:'id'});
+          if(!db.objectStoreNames.contains('blobs')) db.createObjectStore('blobs',{keyPath:'key'});
+        };
+        req.onsuccess = e =&gt; { this.db = e.target.result; resolve(); };
+        req.onerror = () =&gt; { console.warn('IndexedDB open failed'); resolve(); };</code></pre>
+</div>
+<div class="mod">
+<h3><code>SIGNAL FILTER (KALMAN)</code> </h3>
+<p class="small"><b>Role:</b> Kalman filter implementation used to reduce RSSI noise.</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>update</code></span> <span class="kbd"><code>getVelocity</code></span> <span class="kbd"><code>reset</code></span></div>
+<pre><code>/* ----------------------------- SIGNAL FILTER (KALMAN) ----------------------------- */
+// Advanced Kalman filter (from V20, adapted)
+class KalmanRSSI {
+  constructor(){
+    this.x=-70;
+    this.v=0;
+    this.P=[[2,0],[0,2]];
+    this.Q=0.15;
+    this.R=5;
+    this.history=[];
+    this.maxHistory=30;
+  }
+  update(z){
+    const xPred=this.x+this.v;
+    const pPred=this.P[0][0]+this.Q;
+    const innov=z-xPred;
+    const K=pPred/(pPred+this.R);
+    this.x=xPred+K*innov;</code></pre>
+</div>
+<div class="mod">
+<h3><code>DISTANCE ESTIMATOR (V20)</code> </h3>
+<p class="small"><b>Role:</b> Lightweight distance estimator based on RSSI / TxPower, including calibration parameters.</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>estimate</code></span> <span class="kbd"><code>addCalibration</code></span> <span class="kbd"><code>_recalc</code></span></div>
+<pre><code>/* ----------------------------- DISTANCE ESTIMATOR (V20) ----------------------------- */
+class DistanceEstimator {
+  constructor(){
+    this.txPower=-59;
+    this.n=2.5;
+    this.calibPoints=[];
+  }
+  estimate(rssi){
+    if(rssi&gt;=0 || isNaN(rssi)) return 0;
+    return clamp(Math.pow(10, (this.txPower - rssi)/(10*this.n)), 0, 100);
+  }
+  addCalibration(rssi, dist){
+    this.calibPoints.push({rssi, dist});
+    this._recalc();
+  }
+  _recalc(){
+    if(this.calibPoints.length&lt;2) return;
+    const p1=this.calibPoints[this.calibPoints.length-2];</code></pre>
+</div>
+<div class="mod">
+<h3><code>Q-LEARNING LITE (V20/V35)</code> </h3>
+<p class="small"><b>Role:</b> Lightweight Q-learning used to stabilize zone transitions and boundary jitter.</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>_key</code></span> <span class="kbd"><code>_getQ</code></span> <span class="kbd"><code>chooseAction</code></span> <span class="kbd"><code>update</code></span> <span class="kbd"><code>applyAction</code></span> <span class="kbd"><code>reset</code></span></div>
+<pre><code>/* ----------------------------- Q-LEARNING LITE (V20/V35) ----------------------------- */
+class QLearningLite {
+  constructor(){
+    this.qTable={};
+    this.lr=0.3;
+    this.eps=0.2;
+    this.count=0;
+  }
+  _key(zone){ return zone; }
+  _getQ(s){
+    if(!this.qTable[s]) this.qTable[s]={widen:0, maintain:0, narrow:0};
+    return this.qTable[s];
+  }
+  chooseAction(zone){
+    const q=this._getQ(this._key(zone));
+    if(Math.random()&lt;this.eps){
+      const a=['widen','maintain','narrow'];
+      return a[Math.floor(Math.random()*3)];</code></pre>
+</div>
+<div class="mod">
+<h3><code>BEHAVIORAL FINGERPRINT</code> </h3>
+<p class="small"><b>Role:</b> Tracks longer signal patterns (mean, variance, change rate, etc.) to provide anomaly hints.</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>addReading</code></span> <span class="kbd"><code>getFeatures</code></span> <span class="kbd"><code>classify</code></span></div>
+<pre><code>/* ----------------------------- BEHAVIORAL FINGERPRINT ----------------------------- */
+class BehavioralFingerprint {
+  constructor(){
+    this.window=[];
+    this.windowSize=60;
+  }
+  addReading(rssi){
+    this.window.push(rssi);
+    if(this.window.length&gt;this.windowSize) this.window.shift();
+  }
+  getFeatures(){
+    if(this.window.length&lt;10) return null;
+    const w=this.window;
+    const mean=w.reduce((a,b)=&gt;a+b,0)/w.length;
+    const variance=w.reduce((a,b)=&gt;a+(b-mean)**2,0)/w.length;
+    const recent=w.slice(-5);
+    const older=w.slice(-10,-5);
+    const trendMean=recent.reduce((a,b)=&gt;a+b,0)/recent.length;</code></pre>
+</div>
+<div class="mod">
+<h3><code>RING BUFFER</code> </h3>
+<p class="small"><b>Role:</b> Fixed-size buffer for short recent history (latest N values).</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>push</code></span> <span class="kbd"><code>clear</code></span> <span class="kbd"><code>slice</code></span></div>
+<pre><code>/* ----------------------------- RING BUFFER ----------------------------- */
+class RingBuffer {
+  constructor(size){ this.size=size; this.buf=[]; }
+  push(v){ this.buf.push(v); if(this.buf.length&gt;this.size) this.buf.shift(); }
+  get data(){ return this.buf; }
+  get length(){ return this.buf.length; }
+  get last(){ return this.buf[this.buf.length-1]; }
+  clear(){ this.buf=[]; }
+  slice(a,b){ return this.buf.slice(a,b); }
+}
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>PET MODEL</code> </h3>
+<p class="small"><b>Role:</b> Core domain model that represents one tracked tag / pet, including zone logic, history, and AI state.</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>getMinInterval</code></span> <span class="kbd"><code>ingestRaw</code></span> <span class="kbd"><code>_effectiveThresholds</code></span> <span class="kbd"><code>processRssi</code></span> <span class="kbd"><code>markLost</code></span> <span class="kbd"><code>_addAlert</code></span> <span class="kbd"><code>getLastSeenText</code></span> <span class="kbd"><code>signatureStrength</code></span> <span class="kbd"><code>toJSON</code></span></div>
+<pre><code>/* ----------------------------- PET MODEL ----------------------------- */
+class Pet {
+  constructor(data){
+    this.id = data.id || ('pet_'+Date.now()+'_'+Math.random().toString(36).slice(2,6));
+    this.name = data.name || 'My Pet';
+    this.icon = data.icon || '🐶';
+    this.createdAt = data.createdAt || Date.now();
+    this.signature = data.signature || {};
+    this.rescueId = data.rescueId || genRescueId();
+    this.thresholds = data.thresholds || {...DEFAULT_THRESHOLDS};
+    this.leashPreset = data.leashPreset || '10m';
+    this.aiToggles = data.aiToggles || {qlearn:false, behavior:true};
+    this.aiState = data.aiState || {};
+
+    // Runtime modules (not raw-persisted; but we import params when available)
+    this.kalman = new KalmanRSSI();
+    this.distance = new DistanceEstimator();
+    if(data.distanceCalib) this.distance.import(data.distanceCalib);</code></pre>
+</div>
+<div class="mod">
+<h3><code>QR GENERATOR (V4.1: Standard QR)</code> </h3>
+<p class="small"><b>Role:</b> QR generation utility used for Rescue Pack sharing and emergency cards.</p>
+<div class="badges"><span class="kbd"><code>generate</code></span> <span class="kbd"><code>_draw</code></span></div>
+<pre><code>/* ----------------------------- QR GENERATOR (V4.1: Standard QR) ----------------------------- */
+/*
+  ✅ Standard QR (scannable)
+  Offline embedded library: Project Nayuki QR Code generator (MIT License).
+  (The library code is included below for offline-first operation.)
+*/
+/*
+ * QR Code generator library (TypeScript)
+ *
+ * Copyright (c) Project Nayuki. (MIT License)
+ * https://www.nayuki.io/page/qr-code-generator-library
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:</code></pre>
+</div>
+<div class="mod">
+<h3><code>VOICE RECALL (V20)</code> </h3>
+<p class="small"><b>Role:</b> MediaRecorder capture followed by IndexedDB storage and playback.</p>
+<div class="badges"><span class="kbd"><code>hasClip</code></span> <span class="kbd"><code>record5s</code></span> <span class="kbd"><code>play</code></span> <span class="kbd"><code>clear</code></span></div>
+<pre><code>/* ----------------------------- VOICE RECALL (V20) ----------------------------- */
+const VoiceRecall = {
+  key:'voice_recall',
+  rec:null,
+  chunks:[],
+  recording:false,
+
+  async hasClip(){
+    const b=await Store.getBlob(this.key);
+    return !!b;
+  },
+
+  async record5s(){
+    try{
+      if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        Toast.show('Mic not supported on this device/browser');
+        return;
+      }</code></pre>
+</div>
+<div class="mod">
+<h3><code>VOICE ANNOUNCER (TTS)</code> </h3>
+<p class="small"><b>Role:</b> SpeechSynthesis-based TTS announcements and alerts.</p>
+<div class="badges"><span class="kbd"><code>supported</code></span> <span class="kbd"><code>speak</code></span> <span class="kbd"><code>zoneMessage</code></span></div>
+<pre><code>/* ----------------------------- VOICE ANNOUNCER (TTS) ----------------------------- */
+const VoiceAnnouncer = {
+  lastSpokenMs:0,
+
+  supported(){
+    return 'speechSynthesis' in window &amp;&amp; 'SpeechSynthesisUtterance' in window;
+  },
+
+  speak(text){
+    if(!Settings.prefs.tts) return;
+    if(!this.supported()) return;
+    const now=nowMs();
+    if(now-this.lastSpokenMs&lt;4500) return; // avoid spam
+    this.lastSpokenMs=now;
+
+    try{
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 1.02;</code></pre>
+</div>
+<div class="mod">
+<h3><code>BLE MATCHING</code> </h3>
+<p class="small"><b>Role:</b> Signature matching that decides which Pet a BLE advertisement belongs to.</p>
+<pre><code>/* ----------------------------- BLE MATCHING ----------------------------- */
+function _mfgPrefixHexFromEvent(event){
+  try{
+    if(!event.manufacturerData) return null;
+    let pref=null;
+    event.manufacturerData.forEach((v,k)=&gt;{
+      if(pref) return;
+      const u8=new Uint8Array(v.buffer, v.byteOffset, Math.min(v.byteLength,2));
+      pref=[...u8].map(b=&gt;b.toString(16).padStart(2,'0')).join('').toUpperCase();
+    });
+    return pref;
+  }catch(e){
+    return null;
+  }
+}
+
+function matchScore(event, sig){
+  if(!sig) return 0;</code></pre>
+</div>
+<div class="mod">
+<h3><code>BLE ENGINE (V35 hardened + V40 fixes)</code> </h3>
+<p class="small"><b>Role:</b> Web Bluetooth scan engine: start / stop / restart, filters, stall detection, and congestion handling.</p>
+<div class="badges"><span class="kbd"><code>checkSupport</code></span> <span class="kbd"><code>_resetCounters</code></span> <span class="kbd"><code>markAdv</code></span> <span class="kbd"><code>congestionLevel</code></span> <span class="kbd"><code>_buildTrackFilters</code></span> <span class="kbd"><code>startScan</code></span> <span class="kbd"><code>stopScan</code></span> <span class="kbd"><code>restartScan</code></span></div>
+<pre><code>/* ----------------------------- BLE ENGINE (V35 hardened + V40 fixes) ----------------------------- */
+const BLE = {
+  scanning:false,
+  scanReq:null,
+  _handler:null,
+  supported:false,
+
+  // restart protection
+  restartCount:0,
+  restartWindowStart:0,
+  restartInProgress:false,
+  lastRestartMs:0,
+  lastRestartReason:'',
+
+  // scan mode
+  lastScanMode:'track',
+  usingFilters:false,
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>WIZARD (V35 + V40 signature hardening)</code> </h3>
+<p class="small"><b>Role:</b> New tag registration flow: candidate collection, selection, signature creation, and save.</p>
+<div class="badges"><span class="kbd"><code>isOpen</code></span> <span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>_showStep</code></span> <span class="kbd"><code>_startScan</code></span> <span class="kbd"><code>_startDemoScan</code></span> <span class="kbd"><code>handleAdv</code></span> <span class="kbd"><code>_tagLikelihood</code></span> <span class="kbd"><code>_renderCandidates</code></span> <span class="kbd"><code>selectCandidate</code></span> <span class="kbd"><code>_goStep2</code></span> <span class="kbd"><code>skipVerify</code></span> <span class="kbd"><code>goStep3</code></span> <span class="kbd"><code>_buildIconPicker</code></span></div>
+<pre><code>/* ----------------------------- WIZARD (V35 + V40 signature hardening) ----------------------------- */
+const Wizard = {
+  mode:'add', // 'add' | 'reverify'
+  targetPetId:null,
+
+  candidates:{},
+  selectedId:null,
+  selectedSig:null,
+  baselineRssi:null,
+  verified:false,
+  chosenIcon:'🐶',
+
+  scanTimer:null,
+  verifyTimer:null,
+
+  calib:{}, // {1:rssi,10:rssi}
+
+  isOpen(){</code></pre>
+</div>
+<div class="mod">
+<h3><code>SOS MODULE (V35)</code> </h3>
+<p class="small"><b>Role:</b> Rescue Pack creation, display, and sharing (text / QR / restore input).</p>
+<div class="badges"><span class="kbd"><code>holdStart</code></span> <span class="kbd"><code>holdEnd</code></span> <span class="kbd"><code>activate</code></span> <span class="kbd"><code>deactivate</code></span> <span class="kbd"><code>_startStrobe</code></span> <span class="kbd"><code>updateHC</code></span> <span class="kbd"><code>updateSnapshot</code></span> <span class="kbd"><code>saveLocation</code></span> <span class="kbd"><code>shareMessage</code></span> <span class="kbd"><code>renderPetSelect</code></span> <span class="kbd"><code>selectPet</code></span></div>
+<pre><code>/* ----------------------------- SOS MODULE (V35) ----------------------------- */
+const SOS = {
+  active:false,
+  holdTimer:null,
+  strobeTimer:null,
+  targetPet:null,
+  hcHistory:new RingBuffer(12),
+  savedLocation:null,
+
+  holdStart(){ this.holdTimer=setTimeout(()=&gt;this.activate(), 2000); },
+  holdEnd(){ clearTimeout(this.holdTimer); },
+
+  activate(){
+    this.active=true;
+    const p=this.targetPet || (App.pets.length?App.pets[0]:null);
+    $('sos-active-name').textContent = p ? p.name : 'PET';
+    $('sos-active').classList.add('active');
+    if(navigator.vibrate) navigator.vibrate([500,200,500,200,500]);</code></pre>
+</div>
+<div class="mod">
+<h3><code>EMERGENCY MODE (V20)</code> </h3>
+<p class="small"><b>Role:</b> Immediate emergency signaling: siren, strobe, shake-triggered SOS, and contact payload logic.</p>
+<div class="badges"><span class="kbd"><code>load</code></span> <span class="kbd"><code>save</code></span> <span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>render</code></span> <span class="kbd"><code>saveFromUI</code></span> <span class="kbd"><code>toggleShake</code></span> <span class="kbd"><code>requestMotionPermission</code></span> <span class="kbd"><code>holdStart</code></span> <span class="kbd"><code>holdEnd</code></span> <span class="kbd"><code>activate</code></span> <span class="kbd"><code>deactivate</code></span> <span class="kbd"><code>_startStrobe</code></span> <span class="kbd"><code>getPayload</code></span></div>
+<pre><code>/* ----------------------------- EMERGENCY MODE (V20) ----------------------------- */
+const Emergency = {
+  active:false,
+  strobeTimer:null,
+  wakeLock:null,
+  shakeEnabled:false,
+  shakeArmed:false,
+  lastShakeMs:0,
+
+  data:{ name:'', phone:'', medical:'' },
+
+  async load(){
+    this.data.name = await Store.getSetting('emg_name','');
+    this.data.phone = await Store.getSetting('emg_phone','');
+    this.data.medical = await Store.getSetting('emg_medical','');
+    this.shakeEnabled = await Store.getSetting('emg_shake', false);
+  },
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>PET DETAIL OVERLAY (expanded)</code> </h3>
+<p class="small"><b>Role:</b> Per-pet detail overlay for status, charts, threshold tuning, and AI suggestions.</p>
+<div class="badges"><span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>render</code></span> <span class="kbd"><code>setLeash</code></span> <span class="kbd"><code>updateThreshold</code></span> <span class="kbd"><code>toggleAI</code></span> <span class="kbd"><code>suggestAI</code></span> <span class="kbd"><code>applySuggestion</code></span> <span class="kbd"><code>aiFeedback</code></span> <span class="kbd"><code>resetQ</code></span></div>
+<pre><code>/* ----------------------------- PET DETAIL OVERLAY (expanded) ----------------------------- */
+const Detail = {
+  pet:null,
+
+  open(id){
+    this.pet=App.pets.find(p=&gt;p.id===id);
+    if(!this.pet) return;
+
+    if(App.trackMode==='focus'){
+      App.focusPetId=id;
+      App.renderPetChips();
+    }
+
+    $('detail-title').textContent=this.pet.icon+' '+this.pet.name;
+    $('detail-overlay').classList.add('active');
+    this.render();
+  },
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>NAV</code> </h3>
+<p class="small"><b>Role:</b> Bottom navigation and panel activation logic.</p>
+<div class="badges"><span class="kbd"><code>go</code></span></div>
+<pre><code>/* ----------------------------- NAV ----------------------------- */
+const Nav = {
+  current:'home',
+  go(tab){
+    this.current=tab;
+    document.querySelectorAll('.panel').forEach(el=&gt;el.classList.remove('active'));
+    $('panel-'+tab).classList.add('active');
+
+    document.querySelectorAll('.bnav-btn').forEach(el=&gt;{
+      el.classList.toggle('active', el.dataset.tab===tab);
+    });
+
+    if(tab==='sos'){
+      if(App.pets.length&gt;0){
+        $('sos-no-pets').classList.add('hidden');
+        $('sos-content').classList.remove('hidden');
+        if(!SOS.targetPet &amp;&amp; App.pets.length) SOS.selectPet(App.pets[0].id);
+        SOS.renderPetSelect();</code></pre>
+</div>
+<div class="mod">
+<h3><code>SETTINGS</code> </h3>
+<p class="small"><b>Role:</b> Global settings toggles and sliders, including load/save/UI reflection and the v4.2.3 auto-wipe option.</p>
+<div class="badges"><span class="kbd"><code>load</code></span> <span class="kbd"><code>_updateToggles</code></span> <span class="kbd"><code>_updatePerfUI</code></span> <span class="kbd"><code>_updateVolumeUI</code></span> <span class="kbd"><code>toggle</code></span> <span class="kbd"><code>toggleNotif</code></span> <span class="kbd"><code>setPerf</code></span> <span class="kbd"><code>setVolume</code></span> <span class="kbd"><code>renderPetList</code></span> <span class="kbd"><code>removePet</code></span> <span class="kbd"><code>resetApp</code></span></div>
+<pre><code>/* ----------------------------- SETTINGS ----------------------------- */
+const Settings = {
+  prefs:{
+    sound:true,
+    vibrate:true,
+    notifWanted:false,
+    highAlert:false,
+    perfMode:'balanced',
+    voiceRecall:false,
+    tts:false,
+    keepAlive:true,
+    autoWipeOnClose:false,
+    volume:70
+  },
+
+  async load(){
+    this.prefs.sound = await Store.getSetting('sound', true);
+    this.prefs.vibrate = await Store.getSetting('vibrate', true);</code></pre>
+</div>
+<div class="mod">
+<h3><code>DATA MANAGER</code> </h3>
+<p class="small"><b>Role:</b> Plain JSON backup export/import and restore logic; later patches also connect encrypted backups.</p>
+<div class="badges"><span class="kbd"><code>exportAll</code></span> <span class="kbd"><code>importFile</code></span> <span class="kbd"><code>handleImport</code></span></div>
+<pre><code>/* ----------------------------- DATA MANAGER ----------------------------- */
+const DataManager = {
+  async exportAll(){
+    const includeVoice = await Store.getBlob(VoiceRecall.key) ? confirm('Include Voice Recall audio in backup? (file will be larger)') : false;
+    let voiceBase64=null;
+
+    if(includeVoice){
+      const blob=await Store.getBlob(VoiceRecall.key);
+      if(blob){
+        voiceBase64 = await new Promise(res=&gt;{
+          const fr=new FileReader();
+          fr.onload=()=&gt;res(fr.result);
+          fr.onerror=()=&gt;res(null);
+          fr.readAsDataURL(blob);
+        });
+      }
+    }
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>HELP (expanded)</code> </h3>
+<p class="small"><b>Role:</b> Help overlay for guide text and user instructions.</p>
+<pre><code>/* ----------------------------- HELP (expanded) ----------------------------- */</code></pre>
+</div>
+<div class="mod">
+<h3><code>HELP (i18n)</code> </h3>
+<p class="small"><b>Role:</b> Help overlay for guide text and user instructions.</p>
+<div class="badges"><span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>_content</code></span></div>
+<pre><code>/* ----------------------------- HELP (i18n) ----------------------------- */
+const Help = {
+  open(){
+    try{
+      if($('help-body')) $('help-body').innerHTML = this._content();
+    }catch(e){}
+    $('help-overlay').classList.add('active');
+  },
+  close(){
+    $('help-overlay').classList.remove('active');
+  },
+  _content(){
+    const lang = (typeof I18N!=='undefined' &amp;&amp; I18N.getLang) ? I18N.getLang() : 'en';
+    return (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.help &amp;&amp; (I18N.HTML.help[lang] || I18N.HTML.help.en)) || '';
+  }
+};
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>ABOUT / LEGAL (i18n)</code> </h3>
+<p class="small"><b>Role:</b> Informational overlay for legal text, ethics, contact details, and overview content.</p>
+<div class="badges"><span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>_content</code></span></div>
+<pre><code>/* ----------------------------- ABOUT / LEGAL (i18n) ----------------------------- */
+const Legal = {
+  open(){
+    try{
+      if($('legal-body')) $('legal-body').innerHTML = this._content();
+    }catch(e){}
+    $('legal-overlay').classList.add('active');
+  },
+  close(){
+    $('legal-overlay').classList.remove('active');
+  },
+  _content(){
+    const lang = (typeof I18N!=='undefined' &amp;&amp; I18N.getLang) ? I18N.getLang() : 'en';
+    return (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.legal &amp;&amp; (I18N.HTML.legal[lang] || I18N.HTML.legal.en)) || '';
+  }
+};
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>LANGUAGE MENU</code> </h3>
+<p class="small"><b>Role:</b> Language chooser overlay.</p>
+<div class="badges"><span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>choose</code></span> <span class="kbd"><code>_syncUI</code></span></div>
+<pre><code>/* ----------------------------- LANGUAGE MENU ----------------------------- */
+const Lang = {
+  open(){
+    const ov = $('lang-overlay');
+    if(!ov) return;
+    ov.classList.add('active');
+    this._syncUI();
+  },
+  close(){
+    const ov = $('lang-overlay');
+    if(ov) ov.classList.remove('active');
+  },
+  choose(code){
+    try{ if(typeof I18N!=='undefined' &amp;&amp; I18N.setLang) I18N.setLang(code); }catch(e){}
+    const sel = $('langSelect');
+    if(sel){
+      try{ sel.value = (typeof I18N!=='undefined' &amp;&amp; I18N.getLang) ? I18N.getLang() : code; }catch(e){ sel.value = code; }
+    }</code></pre>
+</div>
+<div class="mod">
+<h3><code>DIAGNOSTICS (Download JSON)</code> </h3>
+<p class="small"><b>Role:</b> Diagnostics JSON generation and download, including capability and log summaries.</p>
+<div class="badges"><span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>snapshot</code></span> <span class="kbd"><code>render</code></span> <span class="kbd"><code>copy</code></span> <span class="kbd"><code>download</code></span></div>
+<pre><code>/* ----------------------------- DIAGNOSTICS (Download JSON) ----------------------------- */
+const Diag = {
+  open(){
+    $('diag-overlay').classList.add('active');
+    this.render();
+  },
+  close(){ $('diag-overlay').classList.remove('active'); },
+
+  snapshot(){
+    const now=nowMs();
+    return {
+      appVersion:APP_VERSION,
+      schemaVersion:SCHEMA_VERSION,
+      time:new Date().toISOString(),
+      env:{
+        ua:navigator.userAgent,
+        protocol:location.protocol,
+        secureContext: !!window.isSecureContext,</code></pre>
+</div>
+<div class="mod">
+<h3><code>META-COGNITIVE COACH (Idea Amplifier)</code> </h3>
+<p class="small"><b>Role:</b> Meta-cognitive coach that proposes user actions and collects feedback.</p>
+<div class="badges"><span class="kbd"><code>compute</code></span> <span class="kbd"><code>render</code></span></div>
+<pre><code>/* ----------------------------- META-COGNITIVE COACH (Idea Amplifier) ----------------------------- */
+const Coach = {
+  lastRenderMs:0,
+
+  compute(){
+    const now=nowMs();
+    const tips=[];
+
+    // Environment
+    if(location.protocol.startsWith('file')){
+      tips.push('You are running from &lt;span class="kbd"&gt;file://&lt;/span&gt;. For best BLE reliability, use HTTPS/localhost or install as an app (install as an app).');
+    }
+    if(!BLE.checkSupport()){
+      tips.push('This browser may not support BLE scanning (Web Bluetooth LE Scan). Use Android Chrome, or Demo mode.');
+    }
+
+    // Scan health
+    if(App.monitoringWanted &amp;&amp; !BLE.scanning){</code></pre>
+</div>
+<div class="mod">
+<h3><code>APP CORE</code> </h3>
+<p class="small"><b>Role:</b> Application core: boot, render loop, advertisement handling, watchdogs, and alert triggers.</p>
+<div class="badges"><span class="kbd"><code>init</code></span> <span class="kbd"><code>initFirstRunBanner</code></span> <span class="kbd"><code>dismissFirstRun</code></span> <span class="kbd"><code>resetTimers</code></span> <span class="kbd"><code>toggleMonitoring</code></span> <span class="kbd"><code>toggleDemo</code></span> <span class="kbd"><code>_startDemo</code></span> <span class="kbd"><code>_stopDemo</code></span> <span class="kbd"><code>_demoTick</code></span> <span class="kbd"><code>setTrackMode</code></span> <span class="kbd"><code>addPet</code></span> <span class="kbd"><code>onAdvertisement</code></span> <span class="kbd"><code>triggerAlert</code></span> <span class="kbd"><code>_watchdog</code></span></div>
+<pre><code>/* ----------------------------- APP CORE ----------------------------- */
+const App = {
+  pets:[],
+  trackMode:'all',
+  focusPetId:null,
+  demoMode:false,
+  monitoringWanted:false,
+
+  renderTimer:null,
+  watchdogTimer:null,
+
+  async init(){
+    // First-run banner / context warning
+    this.initFirstRunBanner();
+
+    await Store.init();
+    await Settings.load();
+    await Emergency.load();</code></pre>
+</div>
+<div class="mod">
+<h3><code>PWA</code> </h3>
+<p class="small"><b>Role:</b> PWA manifest generation, service worker registration, and install banner logic.</p>
+<div class="badges"><span class="kbd"><code>registerPWA</code></span> <span class="kbd"><code>setupInstallBanner</code></span></div>
+<pre><code>/* ----------------------------- PWA ----------------------------- */
+  registerPWA(){
+    if(!('serviceWorker' in navigator)) return;
+
+    const startUrl = location.href;
+
+    const manifest = {
+      name: "VitalGuard AI v"+APP_VERSION,
+      short_name: "VitalGuard AI",
+      start_url: startUrl,
+      display: "standalone",
+      background_color: "#0d1117",
+      theme_color: "#c0392b",
+      description: "Life‑Saving Offline AI Demo — Bluetooth proximity + tiny on‑device AI (no cloud).",
+      icons: [
+        {src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='40' fill='%23c0392b'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='120'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E", sizes:"192x192", type:"image/svg+xml"},
+        {src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Crect width='512' height='512' rx='96' fill='%23c0392b'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='340'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E", sizes:"512x512", type:"image/svg+xml"}
+      ]</code></pre>
+</div>
+<div class="mod">
+<h3><code>SAFE TEXT / SANITIZER</code> </h3>
+<p class="small"><b>Role:</b> Input sanitization layer that normalizes user text and reduces XSS risk.</p>
+<div class="badges"><span class="kbd"><code>name</code></span> <span class="kbd"><code>phone</code></span> <span class="kbd"><code>text</code></span> <span class="kbd"><code>icon</code></span> <span class="kbd"><code>escapeHTML</code></span> <span class="kbd"><code>safeId</code></span></div>
+<pre><code>/* ----------------------------- SAFE TEXT / SANITIZER ----------------------------- */
+  const Sanitizer = {
+    // Remove risky characters while keeping names readable (prevents HTML injection from user input/import).
+    name(s){
+      s = String((s===undefined||s===null)?'':s).replace(/[\u0000-\u001F\u007F]/g,'').trim();
+      s = s.replace(/[&lt;&gt;`]/g,'');
+      if(!s) return 'My Pet';
+      return s.slice(0, 28);
+    },
+    phone(s){
+      s = String((s===undefined||s===null)?'':s).replace(/[\u0000-\u001F\u007F]/g,'').trim();
+      // allow digits + + - space
+      s = s.replace(/[^0-9+\-\s]/g,'');
+      return s.slice(0, 24);
+    },
+    text(s, max=220){
+      s = String((s===undefined||s===null)?'':s).replace(/[\u0000-\u001F\u007F]/g,'').trim();
+      s = s.replace(/[&lt;&gt;`]/g,'');</code></pre>
+</div>
+<div class="mod">
+<h3><code>ERROR SHIELD (Crash-safe logging)</code> </h3>
+<p class="small"><b>Role:</b> Protective layer that captures runtime errors and records recovery data.</p>
+<div class="badges"><span class="kbd"><code>load</code></span> <span class="kbd"><code>_schedulePersist</code></span> <span class="kbd"><code>capture</code></span> <span class="kbd"><code>hook</code></span> <span class="kbd"><code>clear</code></span></div>
+<pre><code>/* ----------------------------- ERROR SHIELD (Crash-safe logging) ----------------------------- */
+  const ErrorShield = {
+    ring: new RingBuffer(36),
+    loaded:false,
+    persistTimer:null,
+    lastCaptureAt:0,
+
+    async load(){
+      try{
+        const saved = await Store.getAI('errors');
+        if(saved &amp;&amp; Array.isArray(saved.items)){
+          saved.items.slice(-36).forEach(it=&gt;this.ring.push(it));
+        }
+      }catch(e){}
+      this.loaded=true;
+    },
+
+    _schedulePersist(){</code></pre>
+</div>
+<div class="mod">
+<h3><code>CAPABILITY MATRIX</code> </h3>
+<p class="small"><b>Role:</b> Computes browser capability support and renders capability badges/UI.</p>
+<div class="badges"><span class="kbd"><code>battery</code></span> <span class="kbd"><code>computeSync</code></span> <span class="kbd"><code>badgeHTML</code></span> <span class="kbd"><code>renderHTML</code></span></div>
+<pre><code>/* ----------------------------- CAPABILITY MATRIX ----------------------------- */
+  const Capabilities = {
+    async battery(){
+      try{
+        if(navigator.getBattery) return await navigator.getBattery();
+      }catch(e){}
+      return null;
+    },
+    computeSync(){
+      const caps = {
+        secureContext: !!window.isSecureContext,
+        protocol: location.protocol,
+        webBluetooth: !!navigator.bluetooth,
+        leScan: !!(navigator.bluetooth &amp;&amp; navigator.bluetooth.requestLEScan),
+        advEvents: !!(navigator.bluetooth &amp;&amp; navigator.bluetooth.addEventListener),
+        serviceWorker: 'serviceWorker' in navigator,
+        caches: 'caches' in window,
+        wakeLock: !!(navigator.wakeLock &amp;&amp; navigator.wakeLock.request),</code></pre>
+</div>
+<div class="mod">
+<h3><code>ACCESSIBILITY (UX)</code> </h3>
+<p class="small"><b>Role:</b> Applies accessibility options such as large text, high contrast, and reduced motion.</p>
+<div class="badges"><span class="kbd"><code>apply</code></span> <span class="kbd"><code>injectCSS</code></span></div>
+<pre><code>/* ----------------------------- ACCESSIBILITY (UX) ----------------------------- */
+  const Accessibility = {
+    apply(){
+      const root=document.documentElement;
+      root.classList.toggle('a11y-large', !!Settings.prefs.largeText);
+      root.classList.toggle('a11y-contrast', !!Settings.prefs.highContrast);
+      root.classList.toggle('a11y-reduceMotion', !!Settings.prefs.reduceMotion);
+    },
+    injectCSS(){
+      if(document.getElementById('v40-a11y-style')) return;
+      const css = document.createElement('style');
+      css.id='v40-a11y-style';
+      css.textContent = `
+        :root.a11y-large{ font-size: 18px; }
+        :root.a11y-contrast{
+          --bg-primary:#000;
+          --bg-secondary:#060606;
+          --bg-elevated:#0c0c0c;</code></pre>
+</div>
+<div class="mod">
+<h3><code>WAKE LOCK (Monitoring keep-awake)</code> </h3>
+<p class="small"><b>Role:</b> Wake Lock manager that keeps the screen awake when enabled.</p>
+<div class="badges"><span class="kbd"><code>request</code></span> <span class="kbd"><code>release</code></span> <span class="kbd"><code>hookVisibility</code></span></div>
+<pre><code>/* ----------------------------- WAKE LOCK (Monitoring keep-awake) ----------------------------- */
+  const WakeLockManager = {
+    lock:null,
+    async request(){
+      try{
+        if(!Settings.prefs.screenAwake) return false;
+        if(!(navigator.wakeLock &amp;&amp; navigator.wakeLock.request)) return false;
+        this.lock = await navigator.wakeLock.request('screen');
+        this.lock.addEventListener('release', ()=&gt;{ this.lock=null; });
+        return true;
+      }catch(e){
+        this.lock=null;
+        return false;
+      }
+    },
+    async release(){
+      try{
+        if(this.lock){ await this.lock.release(); }</code></pre>
+</div>
+<div class="mod">
+<h3><code>AI PACK v4.1</code> </h3>
+<p class="small"><b>Role:</b> Offline AI pack containing lightweight models and heuristics.</p>
+<div class="badges"><span class="kbd"><code>constructor</code></span> <span class="kbd"><code>_dist</code></span> <span class="kbd"><code>add</code></span> <span class="kbd"><code>predict</code></span> <span class="kbd"><code>reset</code></span> <span class="kbd"><code>update</code></span> <span class="kbd"><code>params</code></span> <span class="kbd"><code>_randInt</code></span> <span class="kbd"><code>_harmonic</code></span> <span class="kbd"><code>_c</code></span> <span class="kbd"><code>_buildTree</code></span> <span class="kbd"><code>train</code></span> <span class="kbd"><code>_pathLen</code></span> <span class="kbd"><code>score</code></span></div>
+<pre><code>/* ----------------------------- AI PACK v4.1 ----------------------------- */
+
+  // kNN classifier (personalized, learns from feedback)
+  class KNNLite {
+    constructor(k=5){
+      this.k=k;
+      this.samples=[]; // {x:number[], y:0|1}
+    }
+    _dist(a,b){
+      let s=0;
+      for(let i=0;i&lt;a.length;i++){
+        const d=(a[i]-b[i]);
+        s+=d*d;
+      }
+      return Math.sqrt(s);
+    }
+    add(x,y){
+      if(!Array.isArray(x) || x.length&lt;3) return;</code></pre>
+</div>
+<div class="mod">
+<h3><code>CONDUCTOR AI (Self-heal / UX suggestions)</code> </h3>
+<p class="small"><b>Role:</b> Self-heal and UX suggestion engine for scan health and optimization.</p>
+<div class="badges"><span class="kbd"><code>init</code></span> <span class="kbd"><code>refreshBattery</code></span> <span class="kbd"><code>batteryInfo</code></span> <span class="kbd"><code>compute</code></span> <span class="kbd"><code>tick</code></span> <span class="kbd"><code>enable</code></span> <span class="kbd"><code>disable</code></span> <span class="kbd"><code>load</code></span></div>
+<pre><code>/* ----------------------------- CONDUCTOR AI (Self-heal / UX suggestions) ----------------------------- */
+  const ConductorAI = {
+    enabled:true,
+    lastTick:0,
+    lastSuggest:0,
+    safeMode:false,
+    battery:null,
+    lastBatteryAt:0,
+
+    async init(){
+      this.enabled = await Store.getSetting('autoOptimize', true);
+      try{
+        this.battery = await Capabilities.battery();
+      }catch(e){ this.battery=null; }
+    },
+
+    async refreshBattery(){
+      const now=nowMs();</code></pre>
+</div>
+<div class="mod">
+<h3><code>RESET / INITIALIZE CENTER</code> </h3>
+<p class="small"><b>Role:</b> Reset / initialize UI. In v4.2.3, hard reset is strengthened through full wipe.</p>
+<div class="badges"><span class="kbd"><code>ensureUI</code></span> <span class="kbd"><code>open</code></span> <span class="kbd"><code>close</code></span> <span class="kbd"><code>render</code></span> <span class="kbd"><code>soft</code></span> <span class="kbd"><code>_confirmHard</code></span> <span class="kbd"><code>hard</code></span> <span class="kbd"><code>factory</code></span></div>
+<pre><code>/* ----------------------------- RESET / INITIALIZE CENTER ----------------------------- */
+  const ResetCenter = {
+    ensureUI(){
+      if($('reset-overlay')) return;
+      const wrap=document.createElement('div');
+      wrap.innerHTML = `
+        &lt;div id="reset-overlay" class="overlay"&gt;
+          &lt;div class="overlay-header"&gt;
+            &lt;div class="overlay-title"&gt;Reset / Initialize&lt;/div&gt;
+            &lt;button class="overlay-close" onclick="ResetCenter.close()"&gt;✕&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class="overlay-body" id="reset-body"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      `;
+      document.body.appendChild(wrap.firstElementChild);
+    },
+
+    open(){</code></pre>
+</div>
+<div class="mod">
+<h3><code>ENCRYPTED BACKUP (AES-GCM)</code> </h3>
+<p class="small"><b>Role:</b> AES-GCM + PBKDF2 encrypted backup / restore helper (CryptoBox).</p>
+<div class="badges"><span class="kbd"><code>supported</code></span> <span class="kbd"><code>_b64</code></span> <span class="kbd"><code>_u8</code></span> <span class="kbd"><code>_deriveKey</code></span> <span class="kbd"><code>encryptString</code></span> <span class="kbd"><code>decryptToString</code></span></div>
+<pre><code>/* ----------------------------- ENCRYPTED BACKUP (AES-GCM) ----------------------------- */
+  const CryptoBox = {
+    supported(){
+      return !!(window.crypto &amp;&amp; crypto.subtle &amp;&amp; window.TextEncoder &amp;&amp; window.TextDecoder);
+    },
+    _b64(u8){
+      let s='';
+      for(let i=0;i&lt;u8.length;i++) s+=String.fromCharCode(u8[i]);
+      return btoa(s);
+    },
+    _u8(b64){
+      const bin=atob(b64);
+      const u8=new Uint8Array(bin.length);
+      for(let i=0;i&lt;bin.length;i++) u8[i]=bin.charCodeAt(i);
+      return u8;
+    },
+    async _deriveKey(pass, salt){
+      const enc=new TextEncoder();</code></pre>
+</div>
+<div class="mod">
+<h3><code>V40 UI INJECTION</code> </h3>
+<p class="small"><b>Role:</b> Large backward-compatible patch / UI injection layer for V4.x feature additions.</p>
+<div class="badges"><span class="kbd"><code>inject</code></span> <span class="kbd"><code>renderSafeBanner</code></span> <span class="kbd"><code>exportEncrypted</code></span> <span class="kbd"><code>showPitch</code></span></div>
+<pre><code>/* ----------------------------- V40 UI INJECTION ----------------------------- */
+  const V40UI = {
+    injected:false,
+
+    inject(){
+      if(this.injected) return;
+      this.injected=true;
+
+      Accessibility.injectCSS();
+      ResetCenter.ensureUI();
+
+      // Inject Advanced toggles card into Settings panel (UX)
+      const panel=$('panel-settings');
+      if(panel &amp;&amp; !document.getElementById('v40-advanced-card')){
+        const card=document.createElement('div');
+        card.className='card';
+        card.id='v40-advanced-card';
+        card.innerHTML = `</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Settings (new prefs + toggles)</code> </h3>
+<p class="small"><b>Role:</b> Patch block that overrides or extends earlier modules and therefore contributes to final behavior.</p>
+<pre><code>/* ----------------------------- PATCH: Settings (new prefs + toggles) ----------------------------- */
+  Settings.prefs = Object.assign({
+    useScanFilters:true,
+    screenAwake:false,
+    autoOptimize:true,
+    autoWipeOnClose:false,
+    largeText:false,
+    highContrast:false,
+    reduceMotion:false
+  }, Settings.prefs||{});
+
+  const _settingsLoad = Settings.load.bind(Settings);
+  Settings.load = async function(){
+    await _settingsLoad();
+
+    this.prefs.useScanFilters = await Store.getSetting('useScanFilters', true);
+    this.prefs.screenAwake = await Store.getSetting('screenAwake', false);
+    this.prefs.autoOptimize = await Store.getSetting('autoOptimize', true);</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: BLE filters toggle</code> </h3>
+<p class="small"><b>Role:</b> Patch block that overrides or extends earlier modules and therefore contributes to final behavior.</p>
+<pre><code>/* ----------------------------- PATCH: BLE filters toggle ----------------------------- */
+  const _buildTrackFilters = BLE._buildTrackFilters.bind(BLE);
+  BLE._buildTrackFilters = function(pets){
+    if(Settings &amp;&amp; Settings.prefs &amp;&amp; Settings.prefs.useScanFilters===false) return null;
+    return _buildTrackFilters(pets);
+  };
+
+  </code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Pet AI attach + safe sanitize</code> </h3>
+<p class="small"><b>Role:</b> Patch block that overrides or extends earlier modules and therefore contributes to final behavior.</p>
+<pre><code>/* ----------------------------- PATCH: Pet AI attach + safe sanitize ----------------------------- */
+  const _origPetToJSON = Pet.prototype.toJSON;
+  Pet.prototype.toJSON = function(){
+    const d=_origPetToJSON.call(this);
+    d.name = Sanitizer.name(d.name);
+    d.icon = Sanitizer.icon(d.icon);
+    d.aiToggles = Object.assign({knn:true, anomaly:true, rls:false}, d.aiToggles||{});
+    d.aiState = d.aiState || {};
+    try{
+      if(this.ai4){
+        d.aiState.knn = this.ai4.knn.export();
+        d.aiState.rls = this.ai4.rls.export();
+        d.aiState.iso = this.ai4.iso.export();
+      }
+    }catch(e){}
+    return d;
+  };
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Detail feedback =&gt; kNN learning + extra explain</code> </h3>
+<p class="small"><b>Role:</b> Patch block that overrides or extends earlier modules and therefore contributes to final behavior.</p>
+<pre><code>/* ----------------------------- PATCH: Detail feedback =&gt; kNN learning + extra explain ----------------------------- */
+  const _origAiFeedback = Detail.aiFeedback.bind(Detail);
+  Detail.aiFeedback = async function(helpful){
+    try{
+      if(this.pet){
+        AIPackV4.attachPet(this.pet);
+        AIPackV4.learnFromFeedback(this.pet, helpful);
+        await Store.savePet(this.pet);
+      }
+    }catch(e){}
+    return _origAiFeedback(helpful);
+  };
+
+  const _origDetailRender = Detail.render.bind(Detail);
+  Detail.render = async function(){
+    await _origDetailRender();
+
+    const p=this.pet;</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Wizard + Emergency sanitize</code> </h3>
+<p class="small"><b>Role:</b> New tag registration flow: candidate collection, selection, signature creation, and save.</p>
+<pre><code>/* ----------------------------- PATCH: Wizard + Emergency sanitize ----------------------------- */
+  const _wizardSave = Wizard.save.bind(Wizard);
+  Wizard.save = async function(){
+    try{
+      if($('input-name')) $('input-name').value = Sanitizer.name($('input-name').value||'');
+      this.chosenIcon = Sanitizer.icon(this.chosenIcon);
+    }catch(e){}
+    return _wizardSave();
+  };
+
+  const _emgSaveFromUI = Emergency.saveFromUI.bind(Emergency);
+  Emergency.saveFromUI = function(){
+    try{
+      if($('emg-name')) $('emg-name').value = Sanitizer.text($('emg-name').value||'', 50);
+      if($('emg-phone')) $('emg-phone').value = Sanitizer.phone($('emg-phone').value||'');
+      if($('emg-medical')) $('emg-medical').value = Sanitizer.text($('emg-medical').value||'', 220);
+    }catch(e){}
+    return _emgSaveFromUI();</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: App init / monitoring =&gt; wake lock + conductor + error shield</code> </h3>
+<p class="small"><b>Role:</b> Protective layer that captures runtime errors and records recovery data.</p>
+<pre><code>/* ----------------------------- PATCH: App init / monitoring =&gt; wake lock + conductor + error shield ----------------------------- */
+  const _appInit = App.init.bind(App);
+  App.init = async function(){
+    ErrorShield.hook();
+    V40UI.inject();
+
+    await _appInit();
+
+    // Post-init loads
+    try{ await ErrorShield.load(); }catch(e){}
+    try{ await SafeMode.load(); }catch(e){}
+    try{ await ConductorAI.init(); }catch(e){}
+    try{ WakeLockManager.hookVisibility(); }catch(e){}
+
+    // Upgrade pets with new AI + sanitize imported names/icons
+    try{
+      for(const p of this.pets){
+        p.name = Sanitizer.name(p.name);</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Diagnostics (capabilities + error log + battery)</code> </h3>
+<p class="small"><b>Role:</b> Diagnostics JSON generation and download, including capability and log summaries.</p>
+<pre><code>/* ----------------------------- PATCH: Diagnostics (capabilities + error log + battery) ----------------------------- */
+  const _diagSnapshot = Diag.snapshot.bind(Diag);
+  Diag.snapshot = function(){
+    const s=_diagSnapshot();
+    try{
+      s.capabilities = Capabilities.computeSync();
+      s.safeMode = {active:SafeMode.active, reason:SafeMode.reason};
+      s.errors = ErrorShield.ring.data;
+      const bi=ConductorAI.batteryInfo();
+      if(bi) s.battery = bi;
+    }catch(e){}
+    return s;
+  };
+
+  Diag.render = function(){
+    const snap=this.snapshot();
+    const errs = (snap.errors||[]).slice(-12).reverse();
+    $('diag-body').innerHTML = `</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Coach card (tips + one-tap actions)</code> </h3>
+<p class="small"><b>Role:</b> Meta-cognitive coach that proposes user actions and collects feedback.</p>
+<pre><code>/* ----------------------------- PATCH: Coach card (tips + one-tap actions) ----------------------------- */
+  Coach.compute = function(){
+    const {tips, actions} = ConductorAI.compute();
+    // keep original small tips too (fallback)
+    const baseTips=[];
+    try{
+      if(!BLE.checkSupport()){
+        baseTips.push({k:'ble', t:'This browser may not support BLE scanning. Use Android Chrome or Demo mode.'});
+      }
+    }catch(e){}
+    return {tips:[...baseTips, ...tips], actions};
+  };
+
+  Coach.render = function(){
+    const res=this.compute();
+    const tips=res.tips||[];
+    const actions=res.actions||[];
+    const card=$('coach-card');</code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Legal / About (VitalGuard Demo)</code> </h3>
+<p class="small"><b>Role:</b> Informational overlay for legal text, ethics, contact details, and overview content.</p>
+<pre><code>/* ----------------------------- PATCH: Legal / About (VitalGuard Demo) ----------------------------- */
+  // Replace the previous social-impact deck with a diplomacy‑friendly, life‑saving demo explanation.
+  Legal.open = function(){
+    try{
+      const lang = (typeof I18N!=='undefined' &amp;&amp; I18N.getLang) ? I18N.getLang() : 'en';
+      if($('legal-body')) $('legal-body').innerHTML = (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.legal &amp;&amp; (I18N.HTML.legal[lang] || I18N.HTML.legal.en)) || '';
+    }catch(e){
+      if($('legal-body')) $('legal-body').textContent = '';
+    }
+    $('legal-overlay').classList.add('active');
+  };
+  Legal._content = function(){
+    const lang = (typeof I18N!=='undefined' &amp;&amp; I18N.getLang) ? I18N.getLang() : 'en';
+    return (I18N &amp;&amp; I18N.HTML &amp;&amp; I18N.HTML.legal &amp;&amp; (I18N.HTML.legal[lang] || I18N.HTML.legal.en)) || '';
+  };
+
+  </code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: SOS snapshot sanitize</code> </h3>
+<p class="small"><b>Role:</b> Patch block that overrides or extends earlier modules and therefore contributes to final behavior.</p>
+<pre><code>/* ----------------------------- PATCH: SOS snapshot sanitize ----------------------------- */
+  const _sosUpdateSnapshot = SOS.updateSnapshot.bind(SOS);
+  SOS.updateSnapshot = function(pet){
+    try{
+      if(pet){
+        pet.name = Sanitizer.name(pet.name);
+        pet.icon = Sanitizer.icon(pet.icon);
+      }
+    }catch(e){}
+    return _sosUpdateSnapshot(pet);
+  };
+
+  </code></pre>
+</div>
+<div class="mod">
+<h3><code>PATCH: Data import supports encrypted pack</code> </h3>
+<p class="small"><b>Role:</b> Patch block that overrides or extends earlier modules and therefore contributes to final behavior.</p>
+<pre><code>/* ----------------------------- PATCH: Data import supports encrypted pack ----------------------------- */
+  const _handleImport = DataManager.handleImport.bind(DataManager);
+  DataManager.handleImport = async function(ev){
+    const file=ev.target.files &amp;&amp; ev.target.files[0];
+    if(!file) return;
+    try{
+      const text=await file.text();
+      let data=JSON.parse(text);
+
+      if(data &amp;&amp; data.enc){
+        if(!CryptoBox.supported()) throw new Error('Crypto not supported');
+        const pass = await SecurePrompt.askPassphrase({
+          title:'Decrypt Backup',
+          message:'Enter passphrase to decrypt this backup:',
+          confirm:false,
+          minLen:1,
+          placeholder:'Passphrase'
+        });</code></pre>
+</div>
+<div class="mod">
+<h3><code>V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance</code> </h3>
+<p class="small"><b>Role:</b> QR generation utility used for Rescue Pack sharing and emergency cards.</p>
+<pre><code>/* ----------------------------- V4.1 EXTRA PATCHES -----------------------------
+   Goals:
+   - Real scannable QR (handled earlier via Nayuki QR generator)
+   - Calibration Pro (RLS) fully integrated (Wizard + Detail)
+   - Rescue Pack share/import standardized in SOS panel (text/code/QR)
+   - Per-pet alert preferences (sound/vibrate/voice + min zone)
+   - Stability improvements: max 10 active pets, lost flip counter fix, better false-lost resistance
+------------------------------------------------------------------------------- */
+
+const V41_MAX_ACTIVE_PETS = 10;
+
+const V41_DEFAULT_ALERT_PREFS = {
+  sound: true,
+  vibrate: true,
+  tts: true,
+  minZone: 'WARNING' // v4.1 default: reduce noise (no beep on CAUTION by default)
+};
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>Lost flip counter fix (batterySuspect)</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Lost flip counter fix (batterySuspect) -------- */
+(function(){
+  const WINDOW_MS_DEFAULT = 30 * 60 * 1000; // 30 minutes
+  const _origMarkLost = Pet.prototype.markLost;
+  const _origProcess = Pet.prototype.processRssi;
+
+  Pet.prototype._v41PruneLostEvents = function(now){
+    const windowMs = (Settings?.prefs?.batteryWindowMs ?? WINDOW_MS_DEFAULT);
+    const arr = Array.isArray(this.lostEvents) ? this.lostEvents : [];
+    this.lostEvents = arr.filter(t =&gt; (now - t) &lt; windowMs);
+    this.lostFlips = this.lostEvents.length;
+    this.batterySuspect = (this.lostFlips &gt;= 3);
+  };
+
+  Pet.prototype.markLost = function(now){
+    if(this.disabled) return;
+      // v4.1 walking/unstable guard: delay LOST a bit when the signal is fluctuating (reduces false LOST while walking)
+      try{</code></pre>
+</div>
+<div class="mod">
+<h3><code>Per-pet alerts (sound/vibrate/tts + min zone)</code> </h3>
+<p class="small"><b>Role:</b> SpeechSynthesis-based TTS announcements and alerts.</p>
+<pre><code>/* -------- Per-pet alerts (sound/vibrate/tts + min zone) -------- */
+(function(){
+  const _origTrigger = App.triggerAlert.bind(App);
+  App.triggerAlert = function(pet, from, to){
+    try{
+      if(!pet || pet.disabled) return;
+
+      v41EnsureAlertPrefs(pet);
+      const prefs = pet.alertPrefs || V41_DEFAULT_ALERT_PREFS;
+      const minRank = v41ZoneRank(prefs.minZone || 'WARNING');
+      if(v41ZoneRank(to) &lt; minRank) return;
+
+      const key = `${pet.id}:${from}-&gt;${to}`;
+      const now = nowMs();
+      const last = this._alertCooldown.get(key) || 0;
+      if(now - last &lt; ALERT_COOLDOWN_MS) return;
+      this._alertCooldown.set(key, now);
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>Max 10 active pets: enforce + disable overflow</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Max 10 active pets: enforce + disable overflow -------- */
+(function(){
+  const _origAddPet = App.addPet.bind(App);
+  App.addPet = function(pet){
+    try{
+      if(!pet) return;
+      const activeCount = this.pets.filter(p =&gt; !p.disabled).length;
+      if(activeCount &gt;= V41_MAX_ACTIVE_PETS){
+        Toast.show(`Max ${V41_MAX_ACTIVE_PETS} active pets for stability. Disable/remove one first.`, 3200);
+        return;
+      }
+      pet.disabled = false;
+      v41EnsureAlertPrefs(pet);
+      return _origAddPet(pet);
+    }catch(e){
+      console.warn('v4.1 addPet patch failed:', e);
+      return _origAddPet(pet);
+    }</code></pre>
+</div>
+<div class="mod">
+<h3><code>Leash distance slider (2m–15m) in Detail -&gt; auto thresholds</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Leash distance slider (2m–15m) in Detail -&gt; auto thresholds -------- */
+const V41UI = {};
+
+V41UI._distanceToRssi = function(pet, meters){
+  const tx = (pet?.distance?.txPower ?? -59);
+  const n = (pet?.distance?.n ?? 2.5);
+  return tx - 10 * n * Math.log10(Math.max(1, meters));
+};
+
+V41UI.applyMetersLeash = function(pet, meters){
+  if(!pet) return;
+  const m = Math.max(2, Math.min(15, Math.round(Number(meters)||10)));
+  const warn = Math.round(this._distanceToRssi(pet, m));
+  const caution = warn + 8;
+  const danger = warn - 7;
+
+  pet.thresholds = pet.thresholds || {...DEFAULT_THRESHOLDS};
+  pet.thresholds.cautionEnter = caution;</code></pre>
+</div>
+<div class="mod">
+<h3><code>Calibration Pro (RLS) UI (Wizard + Detail)</code> </h3>
+<p class="small"><b>Role:</b> New tag registration flow: candidate collection, selection, signature creation, and save.</p>
+<pre><code>/* -------- Calibration Pro (RLS) UI (Wizard + Detail) -------- */
+(function(){
+  // Extend Wizard with Calibration Pro state
+  Wizard._ensureCalibPro = function(){
+    if(!this.calibPro || typeof this.calibPro !== 'object') this.calibPro = { points: [], rls: new RLSCalibrator() };
+    if(!Array.isArray(this.calibPro.points)) this.calibPro.points = [];
+    if(!this.calibPro.rls) this.calibPro.rls = new RLSCalibrator();
+    return this.calibPro;
+  };
+
+  Wizard.clearCalibPro = function(){
+    const cp = this._ensureCalibPro();
+    cp.points = [];
+    cp.rls.reset();
+    Toast.show('Calibration Pro cleared.', 1600);
+    this._refreshCalibModelUI();
+    V41UI.renderWizardCalibPro();
+  };</code></pre>
+</div>
+<div class="mod">
+<h3><code>Per-pet alerts UI in Detail</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Per-pet alerts UI in Detail -------- */
+V41UI.injectDetailAlertPrefs = function(pet){
+  try{
+    if(!pet) return;
+    const body = document.getElementById('detail-body');
+    if(!body) return;
+    if(document.getElementById('v41-alertprefs-detail')) return;
+
+    v41EnsureAlertPrefs(pet);
+    const prefs = pet.alertPrefs;
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = 'v41-alertprefs-detail';
+    card.innerHTML = `
+      &lt;div class="section-title"&gt;Alerts (per pet)&lt;/div&gt;
+
+      &lt;div class="setting-row"&gt;</code></pre>
+</div>
+<div class="mod">
+<h3><code>Rescue Pack (share/import) for SOS panel</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Rescue Pack (share/import) for SOS panel -------- */
+(function(){
+  function b64urlEncodeUtf8(str){
+    const u8 = new TextEncoder().encode(str);
+    let bin = '';
+    const chunk = 0x8000;
+    for(let i=0;i&lt;u8.length;i+=chunk){
+      bin += String.fromCharCode(...u8.subarray(i, i+chunk));
+    }
+    return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+
+  function b64urlDecodeUtf8(b64){
+    let s = b64.replace(/-/g,'+').replace(/_/g,'/');
+    const pad = s.length % 4;
+    if(pad) s += '='.repeat(4-pad);
+    const bin = atob(s);
+    const u8 = new Uint8Array(bin.length);</code></pre>
+</div>
+<div class="mod">
+<h3><code>Patch Detail.render to inject v4.1 UI blocks</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Patch Detail.render to inject v4.1 UI blocks -------- */
+(function(){
+  const _origDetailRender = Detail.render.bind(Detail);
+  Detail.render = function(p){
+    _origDetailRender(p);
+    V41UI.injectDetailMetersLeash(p);
+    V41UI.injectDetailAlertPrefs(p);
+    V41UI.injectDetailCalibPro(p);
+  };
+})();
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>Patch V40UI.inject to include v4.1 injections</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Patch V40UI.inject to include v4.1 injections -------- */
+(function(){
+  const _origInject = V40UI.inject.bind(V40UI);
+  V40UI.inject = function(){
+    _origInject();
+    V41UI.injectWizardCalibPro();
+    V41UI.injectSOSRescuePack();
+  };
+})();
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>Diagnostics: implement missing Run Self-Test button</code> </h3>
+<p class="small"><b>Role:</b> Diagnostics JSON generation and download, including capability and log summaries.</p>
+<pre><code>/* -------- Diagnostics: implement missing Run Self-Test button -------- */
+(function(){
+  if(typeof Diag.runQuickTest === 'function') return;
+  Diag._lastSelfTest = null;
+
+  const _origSnapshot = Diag.snapshot.bind(Diag);
+  Diag.snapshot = function(){
+    const snap = _origSnapshot();
+    if(Diag._lastSelfTest) snap.selfTest = Diag._lastSelfTest;
+    return snap;
+  };
+
+  Diag.runQuickTest = function(){
+    const results = [];
+    const t0 = performance.now();
+
+    // 1) QR generator
+    try{</code></pre>
+</div>
+<div class="mod">
+<h3><code>Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents)</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* -------- Persist &amp; restore v4.1 per-pet fields (alertPrefs / leashDistanceM / disabled / lostEvents) -------- */
+(function(){
+  // 1) Persist extra fields
+  const _toJSON = Pet.prototype.toJSON;
+  Pet.prototype.toJSON = function(){
+    const base = _toJSON.call(this);
+    try{
+      base.alertPrefs = this.alertPrefs;
+      base.leashDistanceM = this.leashDistanceM;
+      base.disabled = !!this.disabled;
+      base.lostEvents = Array.isArray(this.lostEvents) ? this.lostEvents : [];
+    }catch(_){}
+    return base;
+  };
+
+  // 2) Restore extra fields after App.init loads pets
+  const _origInit = App.init.bind(App);
+  App.init = async function(){</code></pre>
+</div>
+<div class="mod">
+<h3><code>FINAL: boot once</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* ----------------------------- FINAL: boot once ----------------------------- */
+  // Ensure injection is ready even if Settings tab opened before init
+  try{ V40UI.inject(); }catch(e){}
+
+})();
+
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>GLOBAL EVENT HOOKS</code> </h3>
+<p class="small"><b>Role:</b> Global event hooks such as DOMContentLoaded and first-gesture audio priming.</p>
+<pre><code>/* ----------------------------- GLOBAL EVENT HOOKS ----------------------------- */
+// Prime audio on first user gesture (helps autoplay restrictions)
+document.addEventListener('pointerdown', async ()=&gt;{
+  await AudioEngine.ensure();
+}, {once:true});
+</code></pre>
+</div>
+<div class="mod">
+<h3><code>INIT</code> </h3>
+<p class="small"><b>Role:</b> Module or patch section. Use the heading text as a stable Ctrl+F anchor in the source.</p>
+<pre><code>/* ----------------------------- INIT ----------------------------- */
+document.addEventListener('DOMContentLoaded', ()=&gt;{
+  try{ I18N.init(); }catch(e){ console.warn('I18N.init error:', e); }
+  App.init();
+});
+</code></pre>
+</div>
+<h2 class="pagebreak" id="domid">10. DOM ID Index</h2>
+<p class="small">In a single-file application, DOM IDs are often the quickest entry points into behavior. For example, <code>toggle-*</code> maps to Settings toggles, <code>panel-*</code> maps to navigation panels, and <code>*overlay</code> maps to overlay screens.</p>
+<div class="grid">
+<div class="card">
+<div class="card-title">v41 <span class="small">(31)</span></div>
+<ul class="id-list"><li><code>v41-ap-minzone</code></li><li><code>v41-ap-sound</code></li><li><code>v41-ap-tts</code></li><li><code>v41-ap-vibrate</code></li><li><code>v41-calibpro-clear</code></li><li><code>v41-calibpro-dist</code></li><li><code>v41-calibpro-dist-label</code></li><li><code>v41-calibpro-list</code></li><li><code>v41-calibpro-preview</code></li><li><code>v41-calibpro-record</code></li><li><code>v41-calibpro-stats</code></li><li><code>v41-dcalib-apply-leash</code></li><li><code>v41-dcalib-clear</code></li><li><code>v41-dcalib-dist</code></li><li><code>v41-dcalib-dist-label</code></li><li><code>v41-dcalib-list</code></li><li><code>v41-dcalib-record</code></li><li><code>v41-dcalib-stats</code></li><li><code>v41-leash-apply</code></li><li><code>v41-leash-m</code></li><li><code>v41-leash-m-label</code></li><li><code>v41-rp-assist</code></li><li><code>v41-rp-code</code></li><li><code>v41-rp-copy</code></li><li><code>v41-rp-generate</code></li><li><code>v41-rp-import</code></li><li><code>v41-rp-qr</code></li><li><code>v41-rp-share</code></li><li><code>v41-rp-sms</code></li><li><code>v41-rp-start</code></li><li><code>v41-rp-stop</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">i18n <span class="small">(30)</span></div>
+<ul class="id-list"><li><code>i18n_about_link</code></li><li><code>i18n_app_disclaimer</code></li><li><code>i18n_app_mission</code></li><li><code>i18n_app_sub</code></li><li><code>i18n_app_title</code></li><li><code>i18n_badge_ble</code></li><li><code>i18n_badge_gdpr</code></li><li><code>i18n_badge_offline</code></li><li><code>i18n_badge_tiny</code></li><li><code>i18n_contact_line</code></li><li><code>i18n_empty_btn</code></li><li><code>i18n_empty_text</code></li><li><code>i18n_firstrun_body</code></li><li><code>i18n_firstrun_help</code></li><li><code>i18n_firstrun_ok</code></li><li><code>i18n_firstrun_title</code></li><li><code>i18n_github_link</code></li><li><code>i18n_help_link</code></li><li><code>i18n_help_title</code></li><li><code>i18n_hero_body</code></li><li><code>i18n_hero_pillars</code></li><li><code>i18n_hero_title</code></li><li><code>i18n_install_sub</code></li><li><code>i18n_install_title</code></li><li><code>i18n_lang_link</code></li><li><code>i18n_lang_note</code></li><li><code>i18n_lang_subtitle</code></li><li><code>i18n_lang_title</code></li><li><code>i18n_legal_title</code></li><li><code>i18n_tips_title</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">toggle <span class="small">(14)</span></div>
+<ul class="id-list"><li><code>toggle-autoOptimize</code></li><li><code>toggle-autoWipeOnClose</code></li><li><code>toggle-highContrast</code></li><li><code>toggle-highalert</code></li><li><code>toggle-keepAlive</code></li><li><code>toggle-largeText</code></li><li><code>toggle-notif</code></li><li><code>toggle-reduceMotion</code></li><li><code>toggle-scanFilters</code></li><li><code>toggle-screenAwake</code></li><li><code>toggle-sound</code></li><li><code>toggle-tts</code></li><li><code>toggle-vibrate</code></li><li><code>toggle-voiceRecall</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">other <span class="small">(11)</span></div>
+<ul class="id-list"><li><code>app</code></li><li><code>congestionBadge</code></li><li><code>installBanner</code></li><li><code>installBtn</code></li><li><code>installDismiss</code></li><li><code>langSelect</code></li><li><code>tipsI18n</code></li><li><code>vg3SecondHook</code></li><li><code>vgHero</code></li><li><code>volumeSlider</code></li><li><code>volumeVal</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">emg <span class="small">(10)</span></div>
+<ul class="id-list"><li><code>emg-active-name</code></li><li><code>emg-active-sub</code></li><li><code>emg-body</code></li><li><code>emg-call</code></li><li><code>emg-medical</code></li><li><code>emg-name</code></li><li><code>emg-overlay</code></li><li><code>emg-phone</code></li><li><code>emg-qr</code></li><li><code>emg-strobe</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">sp <span class="small">(9)</span></div>
+<ul class="id-list"><li><code>sp-1</code></li><li><code>sp-2</code></li><li><code>sp-3</code></li><li><code>sp-cancel</code></li><li><code>sp-fields</code></li><li><code>sp-hint</code></li><li><code>sp-msg</code></li><li><code>sp-ok</code></li><li><code>sp-title</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">sos <span class="small">(8)</span></div>
+<ul class="id-list"><li><code>sos-active</code></li><li><code>sos-active-name</code></li><li><code>sos-content</code></li><li><code>sos-focus-banner</code></li><li><code>sos-no-pets</code></li><li><code>sos-pet-select</code></li><li><code>sos-snapshot</code></li><li><code>sos-strobe-area</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">btn <span class="small">(7)</span></div>
+<ul class="id-list"><li><code>btn-demo-toggle</code></li><li><code>btn-mode-all</code></li><li><code>btn-mode-focus</code></li><li><code>btn-scan-toggle</code></li><li><code>btn-skip-verify</code></li><li><code>btn-verified</code></li><li><code>btn-wiz-save</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">scan <span class="small">(6)</span></div>
+<ul class="id-list"><li><code>scan-health-fill</code></li><li><code>scan-health-meta</code></li><li><code>scan-health-row</code></li><li><code>scan-list</code></li><li><code>scan-status</code></li><li><code>scan-status-bar</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">detail <span class="small">(4)</span></div>
+<ul class="id-list"><li><code>detail-alerts</code></li><li><code>detail-body</code></li><li><code>detail-overlay</code></li><li><code>detail-title</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">panel <span class="small">(4)</span></div>
+<ul class="id-list"><li><code>panel-home</code></li><li><code>panel-settings</code></li><li><code>panel-sos</code></li><li><code>panel-tips</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">diag <span class="small">(3)</span></div>
+<ul class="id-list"><li><code>diag-body</code></li><li><code>diag-overlay</code></li><li><code>diag-pre</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">dt <span class="small">(3)</span></div>
+<ul class="id-list"><li><code>dt-caution</code></li><li><code>dt-danger</code></li><li><code>dt-warning</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">hc <span class="small">(3)</span></div>
+<ul class="id-list"><li><code>hc-arrow</code></li><li><code>hc-rssi</code></li><li><code>hc-text</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">perf <span class="small">(3)</span></div>
+<ul class="id-list"><li><code>perf-balanced</code></li><li><code>perf-fast</code></li><li><code>perf-saver</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">wiz <span class="small">(3)</span></div>
+<ul class="id-list"><li><code>wiz-step-1</code></li><li><code>wiz-step-2</code></li><li><code>wiz-step-3</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">ai <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>ai-feedback</code></li><li><code>ai-suggestion</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">calib <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>calib-10m</code></li><li><code>calib-1m</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">coach <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>coach-body</code></li><li><code>coach-card</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">dash <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>dash-controls</code></li><li><code>dash-controls2</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">help <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>help-body</code></li><li><code>help-overlay</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">legal <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>legal-body</code></li><li><code>legal-overlay</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">pet <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>pet-chips</code></li><li><code>pet-list</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">reset <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>reset-body</code></li><li><code>reset-overlay</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">verify <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>verify-delta</code></li><li><code>verify-status</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">wizard <span class="small">(2)</span></div>
+<ul class="id-list"><li><code>wizard-overlay</code></li><li><code>wizard-title</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">emergency <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>emergency-active</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">empty <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>empty-state</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">first <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>first-run-banner</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">fr <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>fr-proto</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">icon <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>icon-picker</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">import <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>import-input</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">input <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>input-name</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">lang <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>lang-overlay</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">notif <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>notif-hint</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">pwa <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>pwa-manifest</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">qr <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>qr-${p.id}</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">settings <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>settings-pet-list</code></li></ul>
+</div>
+<div class="card">
+<div class="card-title">v40 <span class="small">(1)</span></div>
+<ul class="id-list"><li><code>v40-adv-hint</code></li></ul>
+</div>
+</div>
+<h2 class="pagebreak" id="i18n">11. I18N Key Index</h2>
+<p class="small">Key list for the I18N dictionary (<code>const STR</code>). In the DOM, elements are typically mapped through IDs such as <code>i18n_key</code>.</p>
+<div class="card">
+<div class="card-title">STR.en Key List</div>
+<ul class="id-list"><li><code>app_title</code></li><li><code>app_sub</code></li><li><code>app_mission</code></li><li><code>app_disclaimer</code></li><li><code>github</code></li><li><code>help</code></li><li><code>about</code></li><li><code>help_title</code></li><li><code>legal_title</code></li><li><code>tips_title</code></li><li><code>install_title</code></li><li><code>empty_text</code></li><li><code>empty_btn</code></li><li><code>hook_html</code></li><li><code>hero_title</code></li><li><code>hero_body</code></li><li><code>hero_pillars_html</code></li><li><code>badge_offline</code></li><li><code>badge_gdpr</code></li><li><code>badge_ble</code></li><li><code>badge_tiny</code></li><li><code>contact_line</code></li><li><code>nav_home</code></li><li><code>nav_sos</code></li><li><code>nav_tips</code></li><li><code>nav_settings</code></li><li><code>install_sub</code></li><li><code>install_btn</code></li><li><code>install_dismiss</code></li></ul>
+</div>
+<h2 class="pagebreak" id="audit">12. Audit Checklist</h2>
+<ol><li><b>Search for network-call primitives</b>: <code>fetch(</code><code>XMLHttpRequest</code><code>WebSocket</code><code>sendBeacon</code></li><li><b>Confirm CSP</b>: verify that  exists in the document head</li><li><b>Service Worker</b>: verify that no cache→network fallback remains in the service worker template</li><li><b>Deletion paths</b>: understand the difference between  and </li><li><b>Encrypted backup</b>: confirm PBKDF2 iterations / algorithm choices and AES-GCM usage</li><li><b>Input sanitization</b>: confirm that user-controlled input passes through </li></ol>
+<div class="footer"><div><b>Author:</b> Morgan J. · Updated: 2026-03-09 (Mon) UTC+09:00</div><div><b>Target code:</b> VitalGuard AI v4.2.3 (single-file app)</div><div>Line-based references were intentionally removed so the manual remains stable across future revisions.</div></div>
+</div>
+</body>
+</html>

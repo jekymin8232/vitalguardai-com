@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; manifest-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=(self), bluetooth=(self), accelerometer=(self), gyroscope=(self), magnetometer=(self), camera=(), payment=(), usb=()">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="theme-color" content="#c0392b">
-<title>VitalGuard AI v4.2.2 — Infrastructure‑Independent Survival Framework</title>
+<title>VitalGuard AI v4.2.4 — Infrastructure‑Independent Survival Framework</title>
 <link rel="manifest" id="pwa-manifest">
 <style>
 /* ============================================================
-   VitalGuard AI v4.2 — MASTER STYLESHEET
+   VitalGuard AI v4.2.4 — MASTER STYLESHEET
    © 2026 Morgan J. (Gyu-min Jeon) | M-Corp Ethical AI
    https://mcorpai.org | contact@mcorpai.org
    Managed by: https://mcorpai.org
@@ -190,6 +194,24 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 
 #vg3SecondHook p { font-size: 0.93rem; line-height: 1.6; }
 #vg3SecondHook .vg-hook-langs { font-size: 0.72rem; line-height: 1.4; font-weight: 500; margin-top: 8px; opacity: 1; color: var(--text-muted); }
+
+
+/* ============================================================
+   v4.2.4 SECURITY PATCH: Secure Prompt Modal (replaces prompt())
+   - prevents passphrase entry via browser-native prompt()
+   ============================================================ */
+.sp-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:350;display:none;align-items:center;justify-content:center;padding:18px}
+.sp-backdrop.active{display:flex}
+.sp-dialog{width:100%;max-width:420px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:16px}
+.sp-title{font-weight:800;font-size:1rem;margin-bottom:6px}
+.sp-msg{font-size:.82rem;color:var(--text-secondary);line-height:1.5;margin-bottom:12px}
+.sp-field{display:flex;gap:8px;align-items:center;margin:8px 0}
+.sp-input{flex:1;padding:10px 12px;border-radius:10px;background:var(--bg-secondary);border:1px solid var(--border-color);color:var(--text-primary);font-size:.9rem;user-select:text}
+.sp-input:focus{outline:none;border-color:var(--accent-blue)}
+.sp-actions{display:flex;gap:8px;margin-top:12px}
+.sp-hint{font-size:.7rem;color:var(--text-muted);margin-top:6px;line-height:1.4}
+.sp-kbd{font-family:var(--font-mono);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:2px 6px;border-radius:8px;font-size:.72rem}
+
 </style>
 </head>
 <body>
@@ -210,7 +232,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
   <header class="header">
     <div class="header-logo">🛡️</div>
     <div class="header-title" id="i18n_app_title">VitalGuard AI</div>
-    <div class="header-sub" id="i18n_app_sub">v4.2 — Infrastructure‑Independent Survival Framework | McorpAI</div>
+    <div class="header-sub" id="i18n_app_sub">v4.2.4 — Infrastructure‑Independent Survival Framework | McorpAI</div>
     <div class="header-mission" id="i18n_app_mission">Runs fully offline. No cloud. No telemetry. GDPR‑friendly by design.</div>
     <div class="header-disclaimer" id="i18n_app_disclaimer">Demo skin: “Pet Safety Leash” using Bluetooth proximity (not GPS). Built to keep working when networks fail.</div>
     <div class="header-links">
@@ -254,6 +276,14 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
       </div>
     </div>
 
+    <div id="audit-build-note" class="file-warning">
+      <div class="title">🔐 Audit build note</div>
+      <div class="body">
+        This v4.2.4 clean audit build intentionally ships with no external scripts and no automatic service worker registration.
+        Core BLE scanning, zone logic, Rescue Pack encode/decode, QR generation, alerts, and storage operate locally on-device.
+        BLE radio activity is local Bluetooth signaling, not IP network traffic. User-initiated actions such as opening external links, mailto:, tel:, SMS/share sheets, browser permission dialogs, and manual file import/export are outside the app’s zero-network-egress claim.
+      </div>
+    </div>
 
     <div id="vgHero" class="card" style="margin-top:12px">
       
@@ -267,9 +297,9 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
       </div>
 <div class="section-title" id="i18n_hero_title">🛡️ Infrastructure‑Independent Survival Framework</div>
       <div id="i18n_hero_body" style="font-size:.82rem;color:var(--text-secondary);line-height:1.6">
-        VitalGuard AI v4.2 is a single‑file, offline‑first continuity toolkit combining Bluetooth beacon proximity and lightweight on‑device logic—designed to operate during outages and off‑grid deployments, with data kept on‑device by default (no cloud retention unless you export).
+        VitalGuard AI v4.2.4 is a single‑file, offline‑first continuity toolkit combining Bluetooth beacon proximity and lightweight on‑device logic—designed to operate during outages and off‑grid deployments, with data kept on‑device by default (no cloud retention unless you export).
       </div>
-      <div class="small" id="i18n_contact_line" style="margin-top:10px;opacity:.85;text-align:center">Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8cefe3e2f8edeff8cce1efe3fefcede5a2e3feeb">[email&#160;protected]</a> • mcorpai.org </div>
+      <div class="small" id="i18n_contact_line" style="margin-top:10px;opacity:.85;text-align:center">Contact: <a href="mailto:contact@mcorpai.org">contact@mcorpai.org</a> • mcorpai.org </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px">
         <span class="badge ok" id="i18n_badge_offline">100% Offline</span>
         <span class="badge ok" id="i18n_badge_gdpr">GDPR‑friendly</span>
@@ -669,10 +699,10 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 
 /* ============================================================
-   VitalGuard AI v4.2
+   VitalGuard AI v4.2.4
    - Merged: V20 feature richness + V35 engine hardening + V38 UI ideas
    - Vanilla HTML/CSS/JS, single-file, offline-first.
    - Ethical AI License: Hippocratic 3.0 Derivative (Humanitarian use only)
@@ -681,7 +711,7 @@ body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-
 'use strict';
 
 /* ----------------------------- CONFIG ----------------------------- */
-const APP_VERSION = '4.2';
+const APP_VERSION = '4.2.4';
 const SCHEMA_VERSION = 2;
 
 // Backward compatibility (do not change)
@@ -727,6 +757,13 @@ const PERF_PROFILES = {
 
 const ZONE_ORDER = {SAFE:0, CAUTION:1, WARNING:2, DANGER:3, LOST:4};
 
+
+const BUILD_FLAGS = Object.freeze({
+  cleanAudit: true,
+  enableServiceWorker: false,
+  enableInstallBanner: false
+});
+
 /* ----------------------------- UTILS ----------------------------- */
 const $ = id => document.getElementById(id);
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
@@ -752,6 +789,15 @@ function fmtAgo(ms) {
 }
 function safeJson(obj) {
   try { return JSON.stringify(obj, null, 2); } catch(e){ return '{"error":"json_failed"}'; }
+}
+
+function safeParseJson(text, fallback=null){
+  try{
+    const parsed = (typeof text === 'string') ? JSON.parse(text) : text;
+    return (parsed && typeof parsed === 'object') ? parsed : fallback;
+  }catch(e){
+    return fallback;
+  }
 }
 function nowMs(){ return Date.now(); }
 
@@ -797,7 +843,7 @@ const I18N = (function(){
   const STR = {
     en: {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — Infrastructure‑Independent Survival Framework | McorpAI',
+      app_sub: 'v4.2.4 — Infrastructure‑Independent Survival Framework | McorpAI',
       app_mission: 'Runs fully offline. No cloud. No telemetry. GDPR‑friendly by design.',
       app_disclaimer: 'Demo skin: “Pet Safety Leash” using Bluetooth proximity (not GPS). Built to keep working when networks fail.',
       github: 'GitHub Source',
@@ -811,7 +857,7 @@ const I18N = (function(){
       empty_btn: '+ Add Demo Tag',
       hook_html: '<p><strong>This “Pet Safety Leash” UI is a neutral demo skin for everyday usability testing.</strong></p><p>Under the hood, it is an <strong>Offline Bluetooth Swarm Network</strong> built for zero‑infrastructure disaster response.</p><p>When internet and grid power collapse to zero—wildfires, floods, hurricanes—devices self‑organize and keep operating.</p><p>No cloud. No cell towers. No accounts: local coordination, SOS relay, and continuity across nearby nodes.</p><p><strong>Early‑warning system + life‑saving mesh</strong>—an infrastructure‑independent resilience layer, deployable from ordinary phones.</p><div class="vg-hook-langs" dir="ltr">UI languages (7): English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español</div>',
       hero_title: '🛡️ Infrastructure‑Independent Survival Framework',
-      hero_body: 'VitalGuard AI v4.2 is a single‑file, offline‑first continuity toolkit combining Bluetooth beacon proximity and lightweight on‑device logic—designed to operate during outages and off‑grid deployments, with data kept on‑device by default (no cloud retention unless you export).',
+      hero_body: 'VitalGuard AI v4.2.4 is a single‑file, offline‑first continuity toolkit combining Bluetooth beacon proximity and lightweight on‑device logic—designed to operate during outages and off‑grid deployments, with data kept on‑device by default (no cloud retention unless you export).',
       hero_pillars_html: '<p><strong>Infrastructure‑Independent Survival Framework</strong> — designed for continuity during outages and off‑grid deployments.</p><p>• <strong>Extreme S&amp;R (Avalanche/Landslide)</strong>: Bluetooth beacon proximity to guide a radar‑like life‑locator workflow when responders are off‑grid.</p><p>• <strong>Upcycling E‑Waste (ESG &amp; SDGs)</strong>: repurpose retired smartphones into offline relief nodes.</p><p>• <strong>Off‑Grid Agriculture &amp; Asset Protection</strong>: practical patterns for livestock and asset safety where coverage is unavailable.</p><p>• <strong>Arabic &amp; Global Ready</strong>: built‑in multilingual UI (7 languages) including Arabic (RTL).</p>',
       badge_offline: '100% Offline',
       badge_gdpr: 'GDPR‑friendly',
@@ -829,7 +875,7 @@ const I18N = (function(){
     },
     ko: {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — 인프라 독립형 생존 프레임워크 | McorpAI',
+      app_sub: 'v4.2.4 — 인프라 독립형 생존 프레임워크 | McorpAI',
       app_mission: '완전 오프라인. 클라우드 없음. 추적(텔레메트리) 없음. GDPR 친화 설계.',
       app_disclaimer: '데모 스킨: “강아지 안전 목줄(Pet Safety Leash)” — 블루투스 근접( GPS 아님 ). 네트워크가 끊겨도 동작하도록 설계.',
       github: 'GitHub 소스',
@@ -843,7 +889,7 @@ const I18N = (function(){
       empty_btn: '+ 데모 태그 추가',
       hook_html: '<p><strong>지금 보시는 “반려동물 안전 목줄” UI는 일상적 사용성 테스트를 위한 중립적인 데모 스킨입니다.</strong></p><p>내부적으로는 <strong>오프라인 블루투스 군집망(Offline Bluetooth Swarm Network)</strong>—무인프라 재난 대응을 위해 설계된 프레임워크입니다.</p><p>인터넷과 전력망이 0으로 붕괴되는 산불·홍수·허리케인 상황에서도, 기기들이 스스로 군집을 이루어 작동을 지속합니다.</p><p>클라우드도, 기지국도, 계정도 없습니다: 현장 로컬 조정, SOS 릴레이, 인접 노드 간 연속성을 제공합니다.</p><p><strong>조기경보 + 인명구조 메쉬</strong>—일반 스마트폰만으로 배치 가능한, 인프라 독립형 회복탄력성 레이어입니다.</p><div class="vg-hook-langs" dir="ltr">UI languages (7): English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español</div>',
       hero_title: '🛡️ 인프라 독립형 생존 프레임워크',
-      hero_body: 'VitalGuard AI v4.2는 단일 HTML 파일 기반의 오프라인 연속성 도구로, BLE 비콘 근접도와 온디바이스 경량 로직을 결합해 전력·통신 장애 및 오프그리드 환경에서도 작동하도록 설계되었습니다. 데이터는 기기에만 보관됩니다.',
+      hero_body: 'VitalGuard AI v4.2.4는 단일 HTML 파일 기반의 오프라인 연속성 도구로, BLE 비콘 근접도와 온디바이스 경량 로직을 결합해 전력·통신 장애 및 오프그리드 환경에서도 작동하도록 설계되었습니다. 데이터는 기기에만 보관됩니다.',
       hero_pillars_html: '<p><strong>인프라 독립형 생존 프레임워크</strong> — 전력·통신 장애 및 오프그리드 환경에서도 연속성을 확보합니다.</p><p>• <strong>극한 수색·구조(눈사태/산사태)</strong>: BLE 비콘 근접도와 온디바이스 로직으로, 구조대가 오프라인에서도 단계적으로 위치를 좁혀갈 수 있도록 지원합니다.</p><p>• <strong>폐스마트폰 업사이클링(ESG/SDGs)</strong>: 방치된 기기를 ‘오프라인 구호 노드’로 재탄생시킵니다.</p><p>• <strong>오프그리드 목축·자산 보호</strong>: 초원/사막 등 무커버리지 환경에서 가축·자산 안전 패턴을 제공합니다.</p><p>• <strong>Arabic 포함 7개국어</strong>: 아랍어(RTL)까지 내장되어 즉시 배포 가능합니다.</p>',
       badge_offline: '완전 오프라인',
       badge_gdpr: 'GDPR 친화',
@@ -861,7 +907,7 @@ const I18N = (function(){
     },
     ar: {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — إطار بقاء مستقل عن البنية التحتية | McorpAI',
+      app_sub: 'v4.2.4 — إطار بقاء مستقل عن البنية التحتية | McorpAI',
       app_mission: 'يعمل دون اتصال بالكامل. لا سحابة. لا تتبع. مصمم ليكون متوافقًا مع GDPR.',
       app_disclaimer: 'واجهة العرض: «مقود أمان للحيوانات الأليفة» عبر قرب Bluetooth (ليس GPS). مصمم للعمل حتى عند انقطاع الشبكات.',
       github: 'مصدر GitHub',
@@ -875,7 +921,7 @@ const I18N = (function(){
       empty_btn: '+ إضافة علامة للعرض',
       hook_html: '<p><strong>واجهة «مقود أمان للحيوانات الأليفة» التي تراها الآن هي غلاف تجريبي محايد لاختبارات سهولة الاستخدام اليومية.</strong></p><p>تحت الغطاء، هو <strong>شبكة سرب Bluetooth غير متصلة (Offline Bluetooth Swarm Network)</strong> صُمِّمت للاستجابة للكوارث دون بنية تحتية.</p><p>عندما ينهار الإنترنت وشبكة الكهرباء تمامًا—حرائق الغابات، الفيضانات، الأعاصير—تتشكّل الأجهزة كسرب ذاتيًا وتواصل العمل.</p><p>لا سحابة. لا أبراج خلوية. لا حسابات: تنسيق محلي، ترحيل نداءات الاستغاثة، واستمرارية عبر العقد القريبة.</p><p><strong>نظام إنذار مبكر + شبكة إنقاذ للأرواح</strong>—طبقة صمود مستقلة عن البنية التحتية، قابلة للنشر عبر هواتف عادية.</p><div class="vg-hook-langs" dir="ltr">UI languages (7): English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español</div>',
       hero_title: '🛡️ إطار بقاء مستقل عن البنية التحتية',
-      hero_body: 'VitalGuard AI v4.2 أداة استمرارية ضمن ملف واحد تعمل دون اتصال، تجمع بين قرب منارة Bluetooth ومنطق خفيف على الجهاز—لتعمل أثناء الانقطاعات وفي البيئات خارج الشبكة، مع حفظ البيانات على الجهاز (بدون احتفاظ سحابي إلا عند التصدير).',
+      hero_body: 'VitalGuard AI v4.2.4 أداة استمرارية ضمن ملف واحد تعمل دون اتصال، تجمع بين قرب منارة Bluetooth ومنطق خفيف على الجهاز—لتعمل أثناء الانقطاعات وفي البيئات خارج الشبكة، مع حفظ البيانات على الجهاز (بدون احتفاظ سحابي إلا عند التصدير).',
       hero_pillars_html: '<p><strong>إطار بقاء مستقل عن البنية التحتية</strong> — للاستمرارية أثناء الانقطاعات وعمليات النشر خارج الشبكة.</p><p>• <strong>البحث والإنقاذ في الظروف القاسية (انهيارات ثلجية/انزلاقات أرضية)</strong>: قرب منارات BLE لدعم سير عمل تحديد موقع يشبه الرادار عند العمل خارج الشبكة.</p><p>• <strong>إعادة توظيف النفايات الإلكترونية (ESG/SDGs)</strong>: تحويل الهواتف المتقاعدة إلى عقد إغاثة تعمل دون اتصال.</p><p>• <strong>زراعة خارج الشبكة وحماية الأصول</strong>: أنماط عملية لسلامة الماشية والأصول حيث لا توجد تغطية.</p><p>• <strong>جاهز للعربية والعالم</strong>: واجهة متعددة اللغات (7 لغات) بما في ذلك العربية (RTL).</p>',
       badge_offline: 'دون اتصال 100%',
       badge_gdpr: 'صديق لـ GDPR',
@@ -893,7 +939,7 @@ const I18N = (function(){
     },
     ja: {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — インフラ非依存サバイバル・フレームワーク | McorpAI',
+      app_sub: 'v4.2.4 — インフラ非依存サバイバル・フレームワーク | McorpAI',
       app_mission: '完全オフライン。クラウドなし。テレメトリーなし。GDPRに配慮した設計。',
       app_disclaimer: 'デモ用スキン：「ペット安全リード」— Bluetooth近接（GPSではありません）。ネットワーク障害時でも動作する設計。',
       github: 'GitHub ソース',
@@ -907,7 +953,7 @@ const I18N = (function(){
       empty_btn: '+ デモタグを追加',
       hook_html: '<p><strong>いま表示されている「ペット用セーフティリード」UIは、日常のユーザビリティ検証のための中立的なデモスキンです。</strong></p><p>内部的には、ゼロ・インフラの災害対応に向けて設計された <strong>オフラインBluetoothスワーム・ネットワーク</strong> です。</p><p>インターネットと電力網が完全に途絶する—山火事、洪水、ハリケーン—状況でも、端末が自律的に群れを形成して動作し続けます。</p><p>クラウドなし。基地局なし。アカウントなし：ローカル協調、SOS中継、近接ノード間の継続性を実現します。</p><p><strong>早期警戒 + 生命救助メッシュ</strong>—一般的なスマートフォンから展開できる、インフラ非依存のレジリエンス層です。</p><div class="vg-hook-langs" dir="ltr">UI languages (7): English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español</div>',
       hero_title: '🛡️ インフラ非依存サバイバル・フレームワーク',
-      hero_body: 'VitalGuard AI v4.2 は単一 HTML ファイルのオフライン継続性ツールです。BLE ビーコン近接と軽量なオンデバイス・ロジックを組み合わせ、停電や通信障害、オフグリッド環境でも動作するよう設計されています。データは端末内にのみ保持されます。',
+      hero_body: 'VitalGuard AI v4.2.4 は単一 HTML ファイルのオフライン継続性ツールです。BLE ビーコン近接と軽量なオンデバイス・ロジックを組み合わせ、停電や通信障害、オフグリッド環境でも動作するよう設計されています。データは端末内にのみ保持されます。',
       hero_pillars_html: '<p><strong>インフラ非依存サバイバル・フレームワーク</strong> — 停電・通信障害やオフグリッド配備でも継続運用できる設計です。</p><p>• <strong>極限の捜索救助（雪崩/土砂崩れ）</strong>: BLE ビーコン近接により、オフグリッド環境でも段階的に位置を絞り込むワークフローを支援します。</p><p>• <strong>E‑Waste のアップサイクル（ESG/SDGs）</strong>: 退役したスマホをオフライン救援ノードとして再利用します。</p><p>• <strong>オフグリッド農業＆資産保護</strong>: 電波の届かない環境での家畜・資産の安全パターンを提供します。</p><p>• <strong>アラビア語を含む 7 言語</strong>: アラビア語（RTL）を含む多言語 UI を内蔵しています。</p>',
       badge_offline: '完全オフライン',
       badge_gdpr: 'GDPR配慮',
@@ -925,7 +971,7 @@ const I18N = (function(){
     },
     fr: {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — Cadre de survie indépendant de l’infrastructure | McorpAI',
+      app_sub: 'v4.2.4 — Cadre de survie indépendant de l’infrastructure | McorpAI',
       app_mission: 'Fonctionne entièrement hors ligne. Pas de cloud. Pas de télémétrie. Conçu pour être compatible RGPD.',
       app_disclaimer: 'Habillage de démo : « Laisse de sécurité pour animaux » via la proximité Bluetooth (pas GPS). Conçu pour fonctionner même quand les réseaux tombent.',
       github: 'Code GitHub',
@@ -939,7 +985,7 @@ const I18N = (function(){
       empty_btn: '+ Ajouter une balise',
       hook_html: '<p><strong>L’interface « Pet Safety Leash » que vous voyez est une interface de démonstration neutre pour des tests d’utilisabilité au quotidien.</strong></p><p>Sous le capot, c’est un <strong>Bluetooth Swarm Network hors ligne</strong> conçu pour la réponse aux catastrophes sans aucune infrastructure.</p><p>Quand Internet et le réseau électrique tombent à zéro—incendies, inondations, ouragans—les appareils s’auto‑organisent et continuent d’opérer.</p><p>Pas de cloud. Pas d’antennes. Pas de comptes : coordination locale, relais SOS et continuité entre nœuds à proximité.</p><p><strong>Alerte précoce + maillage de sauvetage</strong>—une couche de résilience indépendante des infrastructures, déployable depuis des téléphones ordinaires.</p><div class="vg-hook-langs" dir="ltr">UI languages (7): English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español</div>',
       hero_title: '🛡️ Cadre de survie indépendant de l’infrastructure',
-      hero_body: 'VitalGuard AI v4.2 est un outil de continuité hors‑ligne en fichier unique, combinant la proximité de balises Bluetooth et une logique légère sur l’appareil—conçu pour fonctionner pendant les pannes et les déploiements hors‑réseau, avec des données conservées localement (pas de rétention dans le cloud sauf export).',
+      hero_body: 'VitalGuard AI v4.2.4 est un outil de continuité hors‑ligne en fichier unique, combinant la proximité de balises Bluetooth et une logique légère sur l’appareil—conçu pour fonctionner pendant les pannes et les déploiements hors‑réseau, avec des données conservées localement (pas de rétention dans le cloud sauf export).',
       hero_pillars_html: '<p><strong>Cadre de survie indépendant de l’infrastructure</strong> — pour assurer la continuité pendant les pannes et les déploiements hors‑réseau.</p><p>• <strong>S&amp;R extrême (avalanche/glissement de terrain)</strong> : proximité de balises BLE pour soutenir un workflow de localisation « type radar » en mode hors‑réseau.</p><p>• <strong>Upcycling des e‑déchets (ESG &amp; ODD)</strong> : réutiliser des smartphones retraités comme nœuds de secours hors‑ligne.</p><p>• <strong>Agriculture hors‑réseau &amp; protection des actifs</strong> : patterns pratiques pour le bétail et les actifs sans couverture.</p><p>• <strong>Arabe &amp; prêt pour le monde</strong> : UI multilingue intégrée (7 langues) dont l’arabe (RTL).</p>',
       badge_offline: '100% hors ligne',
       badge_gdpr: 'RGPD‑friendly',
@@ -957,7 +1003,7 @@ const I18N = (function(){
     },
     'zh-TW': {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — 救命離線 AI 示範 | McorpAI',
+      app_sub: 'v4.2.4 — 救命離線 AI 示範 | McorpAI',
       app_mission: '完全離線運作。無雲端。無追蹤。以 GDPR 友善為設計原則。',
       app_disclaimer: '示範外觀：「寵物安全牽繩」— 以藍牙近距離偵測（非 GPS）。為網路中斷情境而設計。',
       github: 'GitHub 原始碼',
@@ -988,7 +1034,7 @@ const I18N = (function(){
     },
     es: {
       app_title: 'VitalGuard AI',
-      app_sub: 'v4.2 — Marco de supervivencia independiente de la infraestructura | McorpAI',
+      app_sub: 'v4.2.4 — Marco de supervivencia independiente de la infraestructura | McorpAI',
       app_mission: 'Funciona totalmente sin conexión. Sin nube. Sin telemetría. Diseñado para ser compatible con el GDPR.',
       app_disclaimer: 'Piel de demo: “Correa de seguridad para mascotas” usando proximidad Bluetooth (no GPS). Diseñado para funcionar cuando fallan las redes.',
       github: 'Código en GitHub',
@@ -1002,7 +1048,7 @@ const I18N = (function(){
       empty_btn: '+ Añadir etiqueta',
       hook_html: '<p><strong>La interfaz de «Pet Safety Leash» que está viendo es una interfaz de demostración neutra para pruebas de usabilidad cotidianas.</strong></p><p>Bajo el capó, es una <strong>red de enjambre Bluetooth sin conexión (Offline Bluetooth Swarm Network)</strong> diseñada para respuesta a desastres sin infraestructura.</p><p>Cuando Internet y la red eléctrica colapsan a cero—incendios, inundaciones, huracanes—los dispositivos se auto‑organizan y siguen operando.</p><p>Sin nube. Sin torres celulares. Sin cuentas: coordinación local, retransmisión de SOS y continuidad entre nodos cercanos.</p><p><strong>Alerta temprana + malla que salva vidas</strong>—una capa de resiliencia independiente de la infraestructura, desplegable desde teléfonos comunes.</p><div class="vg-hook-langs" dir="ltr">UI languages (7): English · 한국어 · العربية (RTL) · 日本語 · Français · 繁體中文(台灣) · Español</div>',
       hero_title: '🛡️ Marco de supervivencia independiente de la infraestructura',
-      hero_body: 'VitalGuard AI v4.2 es una herramienta de continuidad en un solo archivo y sin conexión, que combina proximidad de balizas Bluetooth y lógica ligera en el dispositivo—diseñada para funcionar durante interrupciones y despliegues fuera de red, con los datos guardados en el dispositivo (sin retención en la nube salvo exportación).',
+      hero_body: 'VitalGuard AI v4.2.4 es una herramienta de continuidad en un solo archivo y sin conexión, que combina proximidad de balizas Bluetooth y lógica ligera en el dispositivo—diseñada para funcionar durante interrupciones y despliegues fuera de red, con los datos guardados en el dispositivo (sin retención en la nube salvo exportación).',
       hero_pillars_html: '<p><strong>Marco de supervivencia independiente de la infraestructura</strong> — para continuidad durante interrupciones y despliegues fuera de red.</p><p>• <strong>B&amp;R extremo (avalancha/deslizamiento)</strong>: proximidad de balizas BLE para apoyar un flujo de localización «tipo radar» fuera de red.</p><p>• <strong>Upcycling de e‑waste (ESG &amp; ODS)</strong>: reutilizar smartphones retirados como nodos de ayuda sin conexión.</p><p>• <strong>Agricultura fuera de red &amp; protección de activos</strong>: patrones prácticos para ganado y activos sin cobertura.</p><p>• <strong>Árabe y listo para el mundo</strong>: UI multilingüe integrada (7 idiomas), incluido árabe (RTL).</p>',
       badge_offline: '100% sin conexión',
       badge_gdpr: 'Compatible GDPR',
@@ -2619,7 +2665,253 @@ const I18N = (function(){
   return { init, apply, t, setLang, getLang, HTML };
 })();
 
-/* ---- V4.2.2 SECURITY HELPERS (global scope) ---- */
+/* ---- V4.2.4 SECURITY HELPERS (global scope) ---- */
+
+/* ---- v4.2.4 SECURITY PATCH: SecurePrompt (replaces prompt() for secrets) ---- */
+const SecurePrompt = (()=> {
+  let backdrop=null;
+  let resolver=null;
+
+  function ensure(){
+    if(backdrop) return;
+    const wrap=document.createElement('div');
+    wrap.id='sp-backdrop';
+    wrap.className='sp-backdrop';
+    wrap.innerHTML = `
+      <div class="sp-dialog" role="dialog" aria-modal="true" aria-labelledby="sp-title">
+        <div class="sp-title" id="sp-title">Secure Input</div>
+        <div class="sp-msg" id="sp-msg"></div>
+        <div id="sp-fields"></div>
+        <div class="sp-hint" id="sp-hint" style="display:none"></div>
+        <div class="sp-actions">
+          <button class="btn btn-secondary" id="sp-cancel" type="button">Cancel</button>
+          <button class="btn btn-primary" id="sp-ok" type="button">OK</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(wrap);
+    backdrop=wrap;
+
+    // cancel on backdrop click
+    backdrop.addEventListener('pointerdown', (e)=>{
+      if(e.target===backdrop) cancel();
+    });
+
+    $('sp-cancel').addEventListener('click', ()=>cancel());
+    $('sp-ok').addEventListener('click', ()=>submit());
+
+    backdrop.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape'){ e.preventDefault(); cancel(); }
+      if(e.key==='Enter'){
+        // Enter to submit when focus is inside an input
+        if(e.target && e.target.tagName==='INPUT'){
+          e.preventDefault();
+          submit();
+        }
+      }
+    });
+  }
+
+  function open(opts){
+    ensure();
+    opts=opts||{};
+    const title=opts.title||'Secure Input';
+    const message=opts.message||'';
+    const hint=opts.hint||'';
+    const okText=opts.okText||'OK';
+    const cancelText=opts.cancelText||'Cancel';
+
+    $('sp-title').textContent=title;
+    $('sp-msg').textContent=message;
+
+    const hintEl=$('sp-hint');
+    if(hint){
+      hintEl.style.display='';
+      hintEl.innerHTML=hint;
+    }else{
+      hintEl.style.display='none';
+      hintEl.textContent='';
+    }
+
+    $('sp-ok').textContent=okText;
+    $('sp-cancel').textContent=cancelText;
+
+    // build fields
+    const fields=$('sp-fields');
+    fields.innerHTML='';
+
+    const row=document.createElement('div');
+    row.className='sp-field';
+
+    const input=document.createElement('input');
+    input.className='sp-input';
+    input.id='sp-input';
+    input.type=opts.type||'text';
+    input.placeholder=opts.placeholder||'';
+    input.autocomplete='off';
+    input.spellcheck=false;
+    input.value='';
+    row.appendChild(input);
+
+    if((opts.type||'')==='password'){
+      const toggle=document.createElement('button');
+      toggle.type='button';
+      toggle.className='btn btn-secondary btn-sm';
+      toggle.textContent='Show';
+      toggle.addEventListener('click', ()=>{
+        const isPw=input.type==='password';
+        input.type=isPw?'text':'password';
+        toggle.textContent=isPw?'Hide':'Show';
+        input.focus();
+      });
+      row.appendChild(toggle);
+    }
+
+    fields.appendChild(row);
+
+    let confirmInput=null;
+    if(opts.confirm){
+      const crow=document.createElement('div');
+      crow.className='sp-field';
+      confirmInput=document.createElement('input');
+      confirmInput.className='sp-input';
+      confirmInput.id='sp-confirm';
+      confirmInput.type=opts.type||'text';
+      confirmInput.placeholder=opts.confirmPlaceholder||'Confirm';
+      confirmInput.autocomplete='off';
+      confirmInput.spellcheck=false;
+      confirmInput.value='';
+      crow.appendChild(confirmInput);
+      fields.appendChild(crow);
+    }
+
+    backdrop._spOpts=opts;
+    backdrop.classList.add('active');
+
+    setTimeout(()=>{ try{ input.focus(); }catch(e){} }, 0);
+
+    return new Promise(res=>{
+      resolver=(val)=>{
+        try{ input.value=''; }catch(e){}
+        try{ if(confirmInput) confirmInput.value=''; }catch(e){}
+        res(val);
+      };
+    });
+  }
+
+  function close(){
+    if(backdrop) backdrop.classList.remove('active');
+  }
+
+  function cancel(){
+    close();
+    if(resolver){ const r=resolver; resolver=null; r(null); }
+  }
+
+  function submit(){
+    if(!backdrop || !resolver) return;
+    const opts=backdrop._spOpts||{};
+    const input=$('sp-input');
+    const val=input ? String(input.value||'') : '';
+
+    if(opts.minLen && val.length < opts.minLen){
+      try{ Toast.show(opts.tooShortMessage||'Too short'); }catch(e){}
+      return;
+    }
+    if(opts.pattern){
+      try{
+        const re=new RegExp(opts.pattern);
+        if(!re.test(val)){
+          try{ Toast.show(opts.patternMessage||'Invalid'); }catch(e){}
+          return;
+        }
+      }catch(e){}
+    }
+    if(opts.confirm){
+      const c=$('sp-confirm');
+      const cval=c ? String(c.value||'') : '';
+      if(val!==cval){
+        try{ Toast.show(opts.mismatchMessage||'Does not match'); }catch(e){}
+        return;
+      }
+    }
+
+    close();
+    const r=resolver; resolver=null;
+    r(val);
+  }
+
+  async function askPassphrase(opts){
+    opts=Object.assign({
+      title:'Passphrase',
+      type:'password',
+      confirm:false,
+      minLen:6,
+      placeholder:'Passphrase',
+      confirmPlaceholder:'Confirm passphrase',
+      hint:'<span class="sp-kbd">Tip</span> Use a long passphrase. It is processed locally (no network).'
+    }, opts||{});
+    return open(opts);
+  }
+
+  async function askText(opts){
+    opts=Object.assign({
+      title:'Confirm',
+      type:'text',
+      confirm:false,
+      minLen:0,
+      placeholder:''
+    }, opts||{});
+    return open(opts);
+  }
+
+  return { open, askPassphrase, askText };
+})();
+
+/* ---- v4.2.4 SECURITY PATCH: Auto-wipe & full wipe helpers ---- */
+const Security = {
+  // Full wipe: localStorage + IndexedDB + Cache Storage + Service Worker registrations (best effort)
+  async fullWipe(){
+    try{ await Store.clearAll(); }catch(e){}
+    try{
+      if('indexedDB' in window){
+        await new Promise(res=>{
+          try{
+            const req=indexedDB.deleteDatabase(DB_NAME);
+            req.onsuccess=()=>res();
+            req.onerror=()=>res();
+            req.onblocked=()=>res();
+          }catch(e){ res(); }
+        });
+      }
+    }catch(e){}
+    try{
+      if('caches' in window){
+        const keys=await caches.keys();
+        for(const k of keys){
+          if(String(k).startsWith('vitalguard-ai')){ try{ await caches.delete(k); }catch(e){} }
+        }
+      }
+    }catch(e){}
+    try{
+      if('serviceWorker' in navigator){
+        const regs=await navigator.serviceWorker.getRegistrations();
+        regs.forEach(r=>{ try{ r.unregister(); }catch(e){} });
+      }
+    }catch(e){}
+  },
+
+  // If enabled, wipe when the session ends (pagehide). This is best-effort: browsers may terminate early.
+  maybeAutoWipeOnClose(){
+    try{
+      if(Settings && Settings.prefs && Settings.prefs.autoWipeOnClose){
+        // fire-and-forget
+        this.fullWipe();
+      }
+    }catch(e){}
+  }
+};
+
 function safeLocalStorageSet(key,val){
   try{ localStorage.setItem(key,val); }
   catch(e){
@@ -2632,6 +2924,12 @@ function safeLocalStorageSet(key,val){
       }catch(x){}
     }
   }
+}
+function safeLocalStorageGet(key){
+  try{ return localStorage.getItem(key); }catch(e){ return null; }
+}
+function safeLocalStorageRemove(key){
+  try{ localStorage.removeItem(key); }catch(e){}
 }
 function _vgE(s){
   if(s==null)return'';
@@ -2692,12 +2990,14 @@ const Store = {
 
   _lsPets() {
     const p=[];
-    for(let i=0;i<localStorage.length;i++){
-      const k=localStorage.key(i);
-      if(k && k.startsWith(LS_PREFIX+'pet_')){
-        try{ p.push(JSON.parse(localStorage.getItem(k))); }catch(e){}
+    try{
+      for(let i=0;i<localStorage.length;i++){
+        const k=localStorage.key(i);
+        if(k && k.startsWith(LS_PREFIX+'pet_')){
+          try{ p.push(JSON.parse(safeLocalStorageGet(k))); }catch(e){}
+        }
       }
-    }
+    }catch(e){}
     return p;
   },
 
@@ -2710,7 +3010,7 @@ const Store = {
         tx.onerror=()=>r();
       });
     }
-    localStorage.removeItem(LS_PREFIX+'pet_'+id);
+    safeLocalStorageRemove(LS_PREFIX+'pet_'+id);
   },
 
   async clearAll() {
@@ -2724,11 +3024,13 @@ const Store = {
     }
     // SAFE: only delete our keys, NEVER clear all local storage
     const toRemove=[];
-    for(let i=0;i<localStorage.length;i++){
-      const k=localStorage.key(i);
-      if(k && k.startsWith(LS_PREFIX)) toRemove.push(k);
-    }
-    toRemove.forEach(k=>localStorage.removeItem(k));
+    try{
+      for(let i=0;i<localStorage.length;i++){
+        const k=localStorage.key(i);
+        if(k && k.startsWith(LS_PREFIX)) toRemove.push(k);
+      }
+    }catch(e){}
+    toRemove.forEach(k=>safeLocalStorageRemove(k));
   },
 
   async saveSetting(key, value) {
@@ -2751,7 +3053,7 @@ const Store = {
         req.onerror=()=>r(def);
       });
     }
-    const v=localStorage.getItem(LS_PREFIX+'s_'+key);
+    const v=safeLocalStorageGet(LS_PREFIX+'s_'+key);
     return v!==null ? JSON.parse(v) : def;
   },
 
@@ -2775,7 +3077,7 @@ const Store = {
         req.onerror=()=>r(null);
       });
     }
-    const v=localStorage.getItem(LS_PREFIX+'ai_'+key);
+    const v=safeLocalStorageGet(LS_PREFIX+'ai_'+key);
     return v ? JSON.parse(v) : null;
   },
 
@@ -2789,10 +3091,10 @@ const Store = {
       });
     }
     // fallback: base64 in localStorage (best-effort)
-    if(!blob){ localStorage.removeItem(LS_PREFIX+'blob_'+key); return false; }
+    if(!blob){ safeLocalStorageRemove(LS_PREFIX+'blob_'+key); return false; }
     return new Promise(res=>{
       const fr=new FileReader();
-      fr.onload=()=>{ try{ localStorage.setItem(LS_PREFIX+'blob_'+key, fr.result); res(true); }catch(e){ res(false); } };
+      fr.onload=()=>{ try{ safeLocalStorageSet(LS_PREFIX+'blob_'+key, fr.result); res(true); }catch(e){ res(false); } };
       fr.onerror=()=>res(false);
       fr.readAsDataURL(blob);
     });
@@ -2806,7 +3108,7 @@ const Store = {
         req.onerror=()=>r(null);
       });
     }
-    const dataUrl = localStorage.getItem(LS_PREFIX+'blob_'+key);
+    const dataUrl = safeLocalStorageGet(LS_PREFIX+'blob_'+key);
     if(!dataUrl) return null;
     // Convert dataURL back to Blob
     try{
@@ -3002,6 +3304,7 @@ class RingBuffer {
 /* ----------------------------- PET MODEL ----------------------------- */
 class Pet {
   constructor(data){
+    data = sanitizeImportedPetData(data || {});
     this.id = data.id || ('pet_'+Date.now()+'_'+Math.random().toString(36).slice(2,6));
     this.name = data.name || 'My Pet';
     this.icon = data.icon || '🐶';
@@ -3142,7 +3445,7 @@ class Pet {
 
         if(now-this.zone.lastAlertMs > ALERT_COOLDOWN_MS){
           this.zone.lastAlertMs = now;
-          App.triggerAlert(this);
+          App.triggerAlert(this, prevS, this.zone.stable);
           this._addAlert(now);
         }
       }else{
@@ -3164,6 +3467,7 @@ class Pet {
   }
 
   markLost(now){
+    const prevS=this.zone.stable;
     if(this.zone.stable!=='LOST'){
       this.zone.stable='LOST';
       this.zone.candidate='LOST';
@@ -3177,7 +3481,7 @@ class Pet {
 
       if(now-this.zone.lastAlertMs > ALERT_COOLDOWN_MS){
         this.zone.lastAlertMs = now;
-        App.triggerAlert(this);
+        App.triggerAlert(this, prevS, 'LOST');
         this._addAlert(now);
       }
     }
@@ -4164,6 +4468,154 @@ const QRGenerator = {
 };
 
 
+
+/* ----------------------------- AUDIO ENGINE (math siren / keepalive) ----------------------------- */
+const AudioEngine = (()=>{
+  let ctx = null;
+  let master = null;
+  let keepOsc = null;
+  let keepGain = null;
+  let sirenTimer = null;
+  let emergencyActive = false;
+  let _vol = 0.7;
+
+  async function ensure(){
+    try{
+      if(!ctx){
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if(!AC) return false;
+        ctx = new AC();
+        master = ctx.createGain();
+        master.gain.value = _vol;
+        master.connect(ctx.destination);
+      }
+      if(ctx.state === 'suspended'){
+        try{ await ctx.resume(); }catch(_e){}
+      }
+      return true;
+    }catch(e){
+      console.warn('AudioEngine.ensure failed:', e);
+      return false;
+    }
+  }
+
+  function setVolume01(v){
+    const n = clamp(Number(v) || 0, 0, 1);
+    _vol = n;
+    try{ if(master && ctx) master.gain.setTargetAtTime(_vol, ctx.currentTime, 0.01); }catch(_e){}
+    return _vol;
+  }
+
+  function _tone(freq, duration=0.18, volume=0.35, type='sine', when=0){
+    if(!ctx || !master) return;
+    const now = ctx.currentTime + Math.max(0, when);
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, now);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(Math.max(0.0001, Math.min(volume, 1) * _vol), now + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    osc.connect(gain).connect(master);
+    osc.start(now);
+    osc.stop(now + duration + 0.02);
+  }
+
+  function _sweep(fromFreq, toFreq, duration=0.9, volume=0.6, type='sawtooth', when=0){
+    if(!ctx || !master) return;
+    const now = ctx.currentTime + Math.max(0, when);
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(fromFreq, now);
+    osc.frequency.linearRampToValueAtTime(toFreq, now + duration * 0.5);
+    osc.frequency.linearRampToValueAtTime(fromFreq, now + duration);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(Math.max(0.0001, Math.min(volume, 1) * _vol), now + 0.03);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    osc.connect(gain).connect(master);
+    osc.start(now);
+    osc.stop(now + duration + 0.02);
+  }
+
+  async function alertForZone(zone){
+    const ok = await ensure();
+    if(!ok) return false;
+    const z = String(zone || '').toUpperCase();
+    if(z === 'CAUTION'){
+      _tone(880, 0.14, 0.20, 'sine', 0);
+      _tone(1100, 0.12, 0.16, 'triangle', 0.16);
+    }else if(z === 'WARNING'){
+      _tone(1180, 0.11, 0.28, 'square', 0);
+      _tone(1180, 0.11, 0.28, 'square', 0.18);
+      _tone(1320, 0.16, 0.34, 'square', 0.36);
+    }else if(z === 'DANGER' || z === 'LOST'){
+      _sweep(620, 1420, 0.95, 0.72, 'sawtooth', 0);
+    }else{
+      _tone(740, 0.12, 0.18, 'sine', 0);
+    }
+    return true;
+  }
+
+  async function startEmergencySiren(){
+    const ok = await ensure();
+    if(!ok || emergencyActive) return false;
+    emergencyActive = true;
+    const loop = ()=>{
+      if(!emergencyActive) return;
+      _sweep(610, 1440, 0.92, 0.82, 'sawtooth', 0);
+      _sweep(920, 420, 0.92, 0.55, 'square', 0.95);
+      sirenTimer = setTimeout(loop, 1850);
+    };
+    loop();
+    return true;
+  }
+
+  function stopEmergencySiren(){
+    emergencyActive = false;
+    if(sirenTimer){ clearTimeout(sirenTimer); sirenTimer = null; }
+  }
+
+  async function startKeepAlive(){
+    const ok = await ensure();
+    if(!ok || keepOsc) return false;
+    try{
+      keepOsc = ctx.createOscillator();
+      keepGain = ctx.createGain();
+      keepOsc.type = 'sine';
+      keepOsc.frequency.value = 18;
+      keepGain.gain.value = 0.00001;
+      keepOsc.connect(keepGain).connect(master);
+      keepOsc.start();
+      return true;
+    }catch(e){
+      console.warn('AudioEngine.startKeepAlive failed:', e);
+      keepOsc = null; keepGain = null;
+      return false;
+    }
+  }
+
+  function stopKeepAlive(){
+    if(keepOsc){
+      try{ keepOsc.stop(); }catch(_e){}
+    }
+    keepOsc = null;
+    keepGain = null;
+  }
+
+  return {
+    ensure,
+    alertForZone,
+    startEmergencySiren,
+    stopEmergencySiren,
+    startKeepAlive,
+    stopKeepAlive,
+    setVolume01,
+    get vol(){ return _vol; },
+    set vol(v){ setVolume01(v); }
+  };
+})();
+
 /* ----------------------------- VOICE RECALL (V20) ----------------------------- */
 const VoiceRecall = {
   key:'voice_recall',
@@ -4269,6 +4721,10 @@ const VoiceAnnouncer = {
     if(z==='DANGER') return `${pet.name} danger.`;
     if(z==='LOST') return `${pet.name} lost signal.`;
     return `${pet.name} status changed.`;
+  },
+
+  say(text){
+    return this.speak(text);
   }
 };
 
@@ -4543,7 +4999,16 @@ const BLE = {
     this.lastRestartReason=reason;
 
     this.stopScan();
-    await new Promise(r=>setTimeout(r, 600));
+    // v4.2.4: add small bounded jitter to reduce deterministic timing signatures (best-effort)
+    let _j=0;
+    try{
+      const u=new Uint32Array(1);
+      crypto.getRandomValues(u);
+      _j = 20 + (u[0] % 31); // 20~50ms
+    }catch(e){
+      _j = 20 + Math.floor(Math.random()*31);
+    }
+    await new Promise(r=>setTimeout(r, 600 + _j));
     await this.startScan(this.lastScanMode || 'track', {silent:true});
     this.restartInProgress=false;
   }
@@ -5645,6 +6110,7 @@ const Settings = {
     voiceRecall:false,
     tts:false,
     keepAlive:true,
+    autoWipeOnClose:false,
     volume:70
   },
 
@@ -5658,6 +6124,7 @@ const Settings = {
     this.prefs.voiceRecall = await Store.getSetting('voiceRecall', false);
     this.prefs.tts = await Store.getSetting('tts', false);
     this.prefs.keepAlive = await Store.getSetting('keepAlive', true);
+    this.prefs.autoWipeOnClose = await Store.getSetting('autoWipeOnClose', false);
     this.prefs.volume = await Store.getSetting('volume', 70);
 
     perfProfile = PERF_PROFILES[this.prefs.perfMode] || PERF_PROFILES.balanced;
@@ -5782,10 +6249,10 @@ const Settings = {
     if(!App.pets.length) BLE.stopScan();
   },
 
-  resetApp(){
+  async resetApp(){
     if(!confirm('DELETE ALL VitalGuard AI DATA?')) return;
     if(!confirm('Are you sure? This cannot be undone.')) return;
-    Store.clearAll();
+    try{ await Security.fullWipe(); }catch(e){}
     location.reload();
   }
 };
@@ -5821,7 +6288,7 @@ const DataManager = {
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
     a.href=url;
-    a.download='vitalguard-ai-v41-7-backup-'+Date.now()+'.json';
+    a.download='vitalguard-ai-v4.2.4-backup-'+Date.now()+'.json';
     a.click();
     URL.revokeObjectURL(url);
     Toast.show('Backup exported!');
@@ -5835,22 +6302,24 @@ const DataManager = {
 
     try{
       const text=await file.text();
-      const data=JSON.parse(text);
-      if(!data.pets || !Array.isArray(data.pets)) throw new Error('Invalid backup');
+      const data=safeParseJson(text);
+      if(!data || !data.pets || !Array.isArray(data.pets)) throw new Error('Invalid backup');
 
       const merge = (App.pets.length>0) ? confirm('Merge with existing pets?\nCancel = Replace all') : true;
 
       if(!merge){
         App.pets=[];
-        await Store.clearAll();
+        await Security.fullWipe();
         await Store.init();
       }
 
       let imported=0;
       for(const pd of data.pets){
-        if(pd.id) pd.id=_vgI(pd.id);
-        if(App.pets.find(p=>p.id===pd.id)) continue;
-        const pet=new Pet(pd);
+        if(!pd || typeof pd !== 'object') continue;
+        const clean = sanitizeImportedPetData(pd);
+        if(clean.id) clean.id=_vgI(clean.id);
+        if(clean.id && App.pets.find(p=>p.id===clean.id)) continue;
+        const pet=new Pet(clean);
         App.pets.push(pet);
         await Store.savePet(pet);
         imported++;
@@ -5858,7 +6327,7 @@ const DataManager = {
 
       if(data.settings){
         // Import known settings only
-        const keys=['sound','vibrate','notifWanted','highAlert','perfMode','voiceRecall','tts','keepAlive','volume'];
+        const keys=['sound','vibrate','notifWanted','highAlert','perfMode','voiceRecall','tts','keepAlive','autoWipeOnClose','useScanFilters','screenAwake','autoOptimize','largeText','highContrast','reduceMotion','volume'];
         for(const k of keys){
           if(k in data.settings){
             Settings.prefs[k]=data.settings[k];
@@ -6029,9 +6498,10 @@ const Diag = {
         </div>
       </div>
 
-      <div style="display:flex;gap:8px;margin:10px 0">
+      <div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap">
         <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.copy()">📋 Copy</button>
         <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.download()">⬇️ Download</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="Diag.runQuickTest()">🧪 Run Self-Test</button>
       </div>
 
       <pre id="diag-pre" style="white-space:pre-wrap;background:var(--bg-elevated);padding:12px;border-radius:12px;border:1px solid var(--border-color);font-size:.72rem;color:var(--text-secondary);line-height:1.4">${safeJson(snap)}</pre>
@@ -6056,7 +6526,7 @@ const Diag = {
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
     a.href=url;
-    a.download='vitalguard-ai-v41-7-diagnostics-'+Date.now()+'.json';
+    a.download='vitalguard-ai-v4.2.4-diagnostics-'+Date.now()+'.json';
     a.click();
     URL.revokeObjectURL(url);
     Toast.show('Downloaded');
@@ -6205,6 +6675,7 @@ const App = {
     // Safety: stop keepalive when leaving
     window.addEventListener('pagehide', ()=>{
       AudioEngine.stopKeepAlive();
+      Security.maybeAutoWipeOnClose();
     });
 
     Toast.show('VitalGuard AI v'+APP_VERSION+' ready');
@@ -6213,7 +6684,7 @@ const App = {
   initFirstRunBanner(){
     const banner=$('first-run-banner');
     if(!banner) return;
-    const dismissed = localStorage.getItem(LS_PREFIX+'firstRunDismissed')==='1';
+    let dismissed = false; try{ dismissed = localStorage.getItem(LS_PREFIX+'firstRunDismissed')==='1'; }catch(e){}
     const protoSpan=$('fr-proto');
     if(protoSpan) protoSpan.textContent=location.protocol;
     if(dismissed) return;
@@ -6225,7 +6696,7 @@ const App = {
   },
 
   dismissFirstRun(){
-    localStorage.setItem(LS_PREFIX+'firstRunDismissed','1');
+    try{ localStorage.setItem(LS_PREFIX+'firstRunDismissed','1'); }catch(e){}
     $('first-run-banner').classList.add('hidden');
   },
 
@@ -6587,6 +7058,7 @@ const App = {
 
   /* ----------------------------- PWA ----------------------------- */
   registerPWA(){
+    if(BUILD_FLAGS.cleanAudit || !BUILD_FLAGS.enableServiceWorker) return;
     if(!('serviceWorker' in navigator)) return;
 
     const startUrl = location.href;
@@ -6613,12 +7085,48 @@ const App = {
     const swCode = `
       const CACHE='vitalguard-ai-${APP_VERSION}-cache';
       const START_URL=${JSON.stringify(startUrl)};
+
       self.addEventListener('install', e=>{
-        e.waitUntil(caches.open(CACHE).then(c=>c.addAll([START_URL])));
+        // Note: initial cache fill requires fetching START_URL once (same-origin).
+        // We intentionally do NOT implement any cache->network fallback in fetch handler.
+        self.skipWaiting();
+        e.waitUntil(
+          caches.open(CACHE).then(c=>c.addAll([START_URL])).catch(()=>{})
+        );
       });
-      self.addEventListener('activate', e=>{ e.waitUntil(self.clients.claim()); });
+
+      self.addEventListener('activate', e=>{
+        e.waitUntil((async()=>{
+          try{
+            const keys = await caches.keys();
+            await Promise.all(keys.map(k=>k!==CACHE ? caches.delete(k) : 0));
+          }catch(e){}
+          try{ await self.clients.claim(); }catch(e){}
+        })());
+      });
+
       self.addEventListener('fetch', e=>{
-        e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));
+        // v4.2.4 SECURITY: cache-only. Never fall back to network.
+        if(e.request.method!=='GET') return;
+
+        // For external links, allow normal browser navigation (user-initiated).
+        try{
+          const url = new URL(e.request.url);
+          if(url.origin !== self.location.origin) return;
+        }catch(err){}
+
+        e.respondWith(
+          caches.match(e.request).then(r=>{
+            if(r) return r;
+
+            // Navigation fallback: serve START_URL if cached
+            if(e.request.mode==='navigate'){
+              return caches.match(START_URL);
+            }
+
+            return new Response('Offline (cache only)', {status:503, headers:{'Content-Type':'text/plain'}});
+          }).catch(()=>new Response('Offline', {status:503}))
+        );
       });
     `;
     const swBlob = new Blob([swCode], {type:'text/javascript'});
@@ -6627,11 +7135,16 @@ const App = {
   },
 
   setupInstallBanner(){
-    let deferredPrompt=null;
     const banner=$('installBanner');
+    if(BUILD_FLAGS.cleanAudit || !BUILD_FLAGS.enableInstallBanner){
+      if(banner) banner.classList.remove('active');
+      if(banner) banner.style.display='none';
+      return;
+    }
+    let deferredPrompt=null;
     const btn=$('installBtn');
     const dismiss=$('installDismiss');
-    const dismissed = localStorage.getItem(LS_PREFIX+'installDismissed')==='1';
+    let dismissed = false; try{ dismissed = localStorage.getItem(LS_PREFIX+'installDismissed')==='1'; }catch(e){}
 
     window.addEventListener('beforeinstallprompt', e=>{
       e.preventDefault();
@@ -6651,7 +7164,7 @@ const App = {
 
     if(dismiss){
       dismiss.addEventListener('click', ()=>{
-        localStorage.setItem(LS_PREFIX+'installDismissed','1');
+        try{ localStorage.setItem(LS_PREFIX+'installDismissed','1'); }catch(e){}
         if(banner) banner.classList.remove('active');
       });
     }
@@ -6698,6 +7211,36 @@ const App = {
       return String(s).replace(/[&<>'"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]||c;});
     },
     safeId(s){return String(s==null?'':s).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,64);}
+  };
+
+  const sanitizeImportedPetData = globalThis.sanitizeImportedPetData = function(data){
+    const src = (data && typeof data === 'object') ? data : {};
+    const sig = (src.signature && typeof src.signature === 'object') ? src.signature : {};
+    const clean = Object.assign({}, src);
+    clean.id = src.id ? Sanitizer.safeId(src.id) : src.id;
+    clean.name = Sanitizer.name(src.name);
+    clean.icon = Sanitizer.icon(src.icon);
+    clean.rescueId = Sanitizer.text(src.rescueId || genRescueId(), 32);
+    clean.signature = {
+      deviceId: sig.deviceId ? Sanitizer.safeId(sig.deviceId) : null,
+      nameExact: sig.nameExact != null ? Sanitizer.text(sig.nameExact, 64) : null,
+      namePrefix: sig.namePrefix != null ? Sanitizer.text(sig.namePrefix, 32) : null,
+      serviceUuids: Array.isArray(sig.serviceUuids) ? sig.serviceUuids.slice(0, 8).map(u => Sanitizer.text(u, 64)) : null,
+      manufacturerId: Number.isFinite(sig.manufacturerId) ? sig.manufacturerId : (sig.manufacturerId ?? undefined),
+      manufacturerDataPrefixHex: sig.manufacturerDataPrefixHex ? String(sig.manufacturerDataPrefixHex).replace(/[^0-9A-Fa-f]/g,'').slice(0, 16).toUpperCase() : null,
+      appearance: sig.appearance ?? null,
+      confirmed: !!sig.confirmed
+    };
+    if(Array.isArray(src.alertHistory)){
+      clean.alertHistory = src.alertHistory.slice(0, 40).map(a => ({
+        time: Number.isFinite(a && a.time) ? a.time : nowMs(),
+        zone: Sanitizer.text(a && a.zone != null ? a.zone : 'SAFE', 12).toUpperCase(),
+        rssi: Number.isFinite(a && a.rssi) ? a.rssi : null,
+        dist: Sanitizer.text(a && a.dist != null ? a.dist : '', 16),
+        why: Sanitizer.text(a && a.why != null ? a.why : '', 120)
+      }));
+    }
+    return clean;
   };
 
   function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
@@ -7416,7 +7959,14 @@ const App = {
 
     async _confirmHard(){
       const msg = 'Type RESET to confirm (case-sensitive).';
-      const v = prompt(msg, '');
+      const v = await SecurePrompt.askText({
+        title:'Confirm Hard Reset',
+        message: msg,
+        placeholder:'Type RESET',
+        okText:'Confirm',
+        cancelText:'Cancel',
+        hint:'This will attempt to wipe VitalGuard local data on this device.'
+      });
       return v === 'RESET';
     },
 
@@ -7429,7 +7979,7 @@ const App = {
       }catch(e){}
 
       try{
-        await Store.clearAll();
+        await Security.fullWipe();
       }catch(e){}
       Toast.show('Hard reset complete');
       this.close();
@@ -7446,7 +7996,7 @@ const App = {
       }catch(e){}
 
       try{
-        await Store.clearAll();
+        await Security.fullWipe();
       }catch(e){}
 
       // Best effort: unregister SW and delete caches
@@ -7563,6 +8113,18 @@ const App = {
 
           <div class="divider"></div>
 
+          <div class="section-title" style="font-size:.8rem;margin-top:0">Security & Privacy</div>
+
+          <div class="setting-row">
+            <span style="font-size:.78rem">Auto Wipe on Close (best effort)</span>
+            <div class="toggle" id="toggle-autoWipeOnClose" onclick="Settings.toggleV40(\'autoWipeOnClose\')"></div>
+          </div>
+          <div style="margin-top:6px;font-size:.68rem;color:var(--text-muted);line-height:1.4">
+            When enabled, VitalGuard will attempt to wipe local data when the session ends (tab/app closed).
+          </div>
+
+          <div class="divider"></div>
+
           <div class="section-title" style="font-size:.8rem;margin-top:0">Accessibility</div>
 
           <div class="setting-row">
@@ -7632,8 +8194,17 @@ const App = {
 
     async exportEncrypted(){
       if(!CryptoBox.supported()){ Toast.show('WebCrypto not supported'); return; }
-      const pass = prompt('Set a passphrase for encrypted backup (write it down).', '');
-      if(!pass || pass.length<6){ Toast.show('Passphrase too short'); return; }
+      const pass = await SecurePrompt.askPassphrase({
+        title:'Encrypted Backup',
+        message:'Set a passphrase for encrypted backup (write it down).',
+        confirm:true,
+        minLen:6,
+        placeholder:'Passphrase',
+        confirmPlaceholder:'Confirm passphrase',
+        tooShortMessage:'Passphrase too short',
+        mismatchMessage:'Passphrases do not match'
+      });
+      if(!pass){ Toast.show('Cancelled'); return; }
 
       // Use DataManager export structure
       const includeVoice = await Store.getBlob(VoiceRecall.key) ? confirm('Include Voice Recall audio? (larger file)') : false;
@@ -7662,7 +8233,7 @@ const App = {
 
       try{
         const pack = await CryptoBox.encryptString(JSON.stringify(data), pass);
-        downloadText('vitalguard-ai-v41-7-backup-encrypted-'+Date.now()+'.json', safeJson(pack), 'application/json');
+        downloadText('vitalguard-ai-v4.2.4-backup-encrypted-'+Date.now()+'.json', safeJson(pack), 'application/json');
         Toast.show('Encrypted backup exported');
       }catch(e){
         Toast.show('Encrypt failed');
@@ -7684,6 +8255,7 @@ const App = {
     useScanFilters:true,
     screenAwake:false,
     autoOptimize:true,
+    autoWipeOnClose:false,
     largeText:false,
     highContrast:false,
     reduceMotion:false
@@ -7696,6 +8268,7 @@ const App = {
     this.prefs.useScanFilters = await Store.getSetting('useScanFilters', true);
     this.prefs.screenAwake = await Store.getSetting('screenAwake', false);
     this.prefs.autoOptimize = await Store.getSetting('autoOptimize', true);
+    this.prefs.autoWipeOnClose = await Store.getSetting('autoWipeOnClose', false);
     this.prefs.largeText = await Store.getSetting('largeText', false);
     this.prefs.highContrast = await Store.getSetting('highContrast', false);
     this.prefs.reduceMotion = await Store.getSetting('reduceMotion', false);
@@ -7709,12 +8282,14 @@ const App = {
     const t1=$('toggle-scanFilters');
     const t2=$('toggle-screenAwake');
     const t3=$('toggle-autoOptimize');
+    const t7=$('toggle-autoWipeOnClose');
     const t4=$('toggle-largeText');
     const t5=$('toggle-highContrast');
     const t6=$('toggle-reduceMotion');
     if(t1) t1.classList.toggle('on', !!this.prefs.useScanFilters);
     if(t2) t2.classList.toggle('on', !!this.prefs.screenAwake);
     if(t3) t3.classList.toggle('on', !!this.prefs.autoOptimize);
+    if(t7) t7.classList.toggle('on', !!this.prefs.autoWipeOnClose);
     if(t4) t4.classList.toggle('on', !!this.prefs.largeText);
     if(t5) t5.classList.toggle('on', !!this.prefs.highContrast);
     if(t6) t6.classList.toggle('on', !!this.prefs.reduceMotion);
@@ -7739,6 +8314,9 @@ const App = {
       Toast.show(this.prefs.autoOptimize?'Conductor ON':'Conductor OFF');
       ConductorAI.enabled=this.prefs.autoOptimize;
       await Store.saveSetting('autoOptimize', this.prefs.autoOptimize);
+    }
+    if(key==='autoWipeOnClose'){
+      Toast.show(this.prefs.autoWipeOnClose?'Auto-wipe on close ON':'Auto-wipe on close OFF');
     }
     if(key==='largeText' || key==='highContrast' || key==='reduceMotion'){
       Accessibility.apply();
@@ -7978,7 +8556,7 @@ const App = {
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
     a.href=url;
-    a.download='vitalguard-ai-v41-7-diagnostics-'+Date.now()+'.json';
+    a.download='vitalguard-ai-v4.2.4-diagnostics-'+Date.now()+'.json';
     a.click();
     URL.revokeObjectURL(url);
     Toast.show('Downloaded');
@@ -8054,14 +8632,20 @@ const App = {
     if(!file) return;
     try{
       const text=await file.text();
-      let data=JSON.parse(text);
+      let data=safeParseJson(text);
 
       if(data && data.enc){
         if(!CryptoBox.supported()) throw new Error('Crypto not supported');
-        const pass = prompt('Enter passphrase to decrypt this backup:', '');
+        const pass = await SecurePrompt.askPassphrase({
+          title:'Decrypt Backup',
+          message:'Enter passphrase to decrypt this backup:',
+          confirm:false,
+          minLen:1,
+          placeholder:'Passphrase'
+        });
         if(!pass) throw new Error('No passphrase');
         const plain = await CryptoBox.decryptToString(data, pass);
-        data = JSON.parse(plain);
+        data = safeParseJson(plain);
         // Build a fake event payload for original handler
         const blob = new Blob([JSON.stringify(data)], {type:'application/json'});
         const f2 = new File([blob], 'decrypted-backup.json', {type:'application/json'});
@@ -8156,24 +8740,30 @@ function v41EnsureAlertPrefs(p){
   App.triggerAlert = function(pet, from, to){
     try{
       if(!pet || pet.disabled) return;
+      if(!this._alertCooldown || typeof this._alertCooldown.get !== 'function') this._alertCooldown = new Map();
 
       v41EnsureAlertPrefs(pet);
       const prefs = pet.alertPrefs || V41_DEFAULT_ALERT_PREFS;
+      const zoneTo = String(to || pet.zone?.stable || 'SAFE').toUpperCase();
+      const zoneFrom = String(from || zoneTo).toUpperCase();
       const minRank = v41ZoneRank(prefs.minZone || 'WARNING');
-      if(v41ZoneRank(to) < minRank) return;
+      if(v41ZoneRank(zoneTo) < minRank) return;
 
-      const key = `${pet.id}:${from}->${to}`;
+      const key = `${pet.id}:${zoneFrom}->${zoneTo}`;
       const now = nowMs();
       const last = this._alertCooldown.get(key) || 0;
       if(now - last < ALERT_COOLDOWN_MS) return;
       this._alertCooldown.set(key, now);
 
-      if(Settings.prefs.sound && prefs.sound) AudioEngine.alertForZone(to);
+      if(Settings.prefs.sound && prefs.sound) AudioEngine.alertForZone(zoneTo);
       if(Settings.prefs.vibrate && prefs.vibrate && navigator.vibrate) navigator.vibrate([200,120,200]);
-      if(Settings.prefs.tts && prefs.tts) VoiceAnnouncer.say(`${pet.name} ${to.toLowerCase()}`);
+      if(Settings.prefs.tts && prefs.tts){
+        if(typeof VoiceAnnouncer.say === 'function') VoiceAnnouncer.say(`${pet.name} ${zoneTo.toLowerCase()}`);
+        else VoiceAnnouncer.speak(VoiceAnnouncer.zoneMessage ? VoiceAnnouncer.zoneMessage(pet) : `${pet.name} ${zoneTo.toLowerCase()}`);
+      }
     }catch(e){
-      console.warn('v4.1 triggerAlert patch failed:', e);
-      return _origTrigger(pet, from, to);
+      console.warn('v4.2.4 triggerAlert patch failed:', e);
+      return _origTrigger(pet);
     }
   };
 })();
@@ -8307,6 +8897,17 @@ V41UI.injectDetailMetersLeash = function(pet){
     V41UI.renderWizardCalibPro();
   };
 
+
+  if(typeof Wizard.selectedCandidate !== 'function'){
+    Wizard.selectedCandidate = function(){
+      const c = this.candidates && this.selectedId ? this.candidates[this.selectedId] : null;
+      if(!c) return null;
+      const recent = Array.isArray(c.rssiSamples) ? c.rssiSamples.slice(-4) : [];
+      const rssi = Number.isFinite(c.rssi) ? c.rssi : (recent.length ? median(recent) : null);
+      return Object.assign({}, c, { rssi });
+    };
+  }
+
   Wizard.recordCalibPro = function(dist){
     const cand = this.selectedCandidate();
     if(!cand){
@@ -8343,8 +8944,8 @@ V41UI.injectDetailMetersLeash = function(pet){
         }
       }else{
         const tmp = new DistanceEstimator();
-        if(this.calib['1m'] && Number.isFinite(this.calib['1m'].rssi)) tmp.addCalibration(this.calib['1m'].rssi, 1);
-        if(this.calib['10m'] && Number.isFinite(this.calib['10m'].rssi)) tmp.addCalibration(this.calib['10m'].rssi, 10);
+        if(Number.isFinite(this.calib[1])) tmp.addCalibration(this.calib[1], 1);
+        if(Number.isFinite(this.calib[10])) tmp.addCalibration(this.calib[10], 10);
         tx = tmp.txPower;
         n = tmp.n;
       }
@@ -8362,7 +8963,7 @@ V41UI.injectDetailMetersLeash = function(pet){
   };
 
   // Reset pro state when wizard resets
-  const _wizReset = Wizard.reset.bind(Wizard);
+  const _wizReset = (typeof Wizard.reset === 'function') ? Wizard.reset.bind(Wizard) : function(){ try{ clearInterval(Wizard.verifyTimer); }catch(_e){} try{ Wizard.candidates={}; Wizard.selectedId=null; Wizard.selectedSig=null; Wizard.verified=false; Wizard.baselineRssi=null; Wizard.calib={}; }catch(_e){} };
   Wizard.reset = function(){
     _wizReset();
     this.calibPro = { points: [], rls: new RLSCalibrator() };
@@ -8390,9 +8991,9 @@ V41UI.injectDetailMetersLeash = function(pet){
       }
 
       // Sanitize inputs
-      let name = ($('wiz-name').value || '').trim() || 'My Pet';
+      let name = (($('input-name') ? $('input-name').value : '') || '').trim() || 'My Pet';
       name = name.replace(/[\n\r\t]+/g,' ').slice(0,24);
-      let icon = ($('wiz-icon').value || '🐶').trim() || '🐶';
+      let icon = (this.chosenIcon || '🐶').trim() || '🐶';
       if(icon.length > 2) icon = icon.slice(0,2);
 
       // Use the selected signature (Step 1 → Select)
@@ -8418,8 +9019,8 @@ V41UI.injectDetailMetersLeash = function(pet){
 
       // Basic calibration points (1m, 10m)
       pet.distance = pet.distance || new DistanceEstimator();
-      if(this.calib['1m'] && Number.isFinite(this.calib['1m'].rssi)) pet.distance.addCalibration(this.calib['1m'].rssi, 1);
-      if(this.calib['10m'] && Number.isFinite(this.calib['10m'].rssi)) pet.distance.addCalibration(this.calib['10m'].rssi, 10);
+      if(Number.isFinite(this.calib[1])) pet.distance.addCalibration(this.calib[1], 1);
+      if(Number.isFinite(this.calib[10])) pet.distance.addCalibration(this.calib[10], 10);
 
       // Pro calibration (RLS): needs 3+ samples for stability
       const cp = this.calibPro;
@@ -8460,7 +9061,7 @@ V41UI.injectDetailMetersLeash = function(pet){
   /* Wizard UI injection */
   V41UI.injectWizardCalibPro = function(){
     try{
-      const step2 = document.getElementById('wizard-step-2');
+      const step2 = document.getElementById('wiz-step-2');
       if(!step2) return;
       if(document.getElementById('v41-calibpro-wizard')) return;
 
@@ -8985,10 +9586,15 @@ V41UI.injectDetailAlertPrefs = function(pet){
       <div id="v41-rp-assist" class="highlight-box" style="margin-top:12px;display:none"></div>
     `;
 
-    // Insert right after the first SOS card (Rescue Broadcast)
-    const cards = panel.querySelectorAll('.card');
-    if(cards && cards.length > 0) panel.insertBefore(card, cards[1] || null);
-    else panel.appendChild(card);
+    // Insert near the top of the SOS panel without assuming queried cards are direct children.
+    const directCards = Array.from(panel.children).filter(el => el.classList && el.classList.contains('card'));
+    if(directCards.length > 0){
+      const anchor = directCards[1] || null;
+      if(anchor && anchor.parentElement === panel) panel.insertBefore(card, anchor);
+      else panel.appendChild(card);
+    }else{
+      panel.appendChild(card);
+    }
 
     const codeEl = card.querySelector('#v41-rp-code');
     const qrCanvas = card.querySelector('#v41-rp-qr');
@@ -9030,6 +9636,16 @@ V41UI.injectDetailAlertPrefs = function(pet){
         }
       }catch(e){
         Toast.show('Share cancelled.', 1500);
+      }
+    });
+
+    card.querySelector('#v41-rp-sms').addEventListener('click', ()=>{
+      try{
+        if(!codeEl.value.trim()){ generate(); }
+        const body = encodeURIComponent(codeEl.value.trim());
+        window.location.href = `sms:?&body=${body}`;
+      }catch(e){
+        Toast.show('SMS not supported on this device.', 2400);
       }
     });
 
@@ -9076,7 +9692,7 @@ V41UI.injectDetailAlertPrefs = function(pet){
         </div>
         <div style="text-align:right">
           <div style="font-size:.78rem">RSSI: <b>${Number.isFinite(pet.smoothedRssi)?Math.round(pet.smoothedRssi):'—'}</b>dBm</div>
-          <div style="font-size:.78rem">Distance: <b>${Number.isFinite(pet.estimatedDistanceM)?pet.estimatedDistanceM.toFixed(1):'—'}</b>m</div>
+          <div style="font-size:.78rem">Distance: <b>${Number.isFinite(pet.distMeters)?pet.distMeters.toFixed(1):'—'}</b>m</div>
         </div>
       </div>
     `;
@@ -9146,16 +9762,6 @@ V41UI.injectDetailAlertPrefs = function(pet){
       dists.forEach(d=>{
         const rssi = tx - 10*n*Math.log10(d);
         rls.update(d, rssi);
-      });
-      card.querySelector('#v41-rp-sms').addEventListener('click', ()=>{
-        try{
-          if(!codeEl.value.trim()){ generate(); }
-          const text = encodeURIComponent(codeEl.value.trim());
-          // NOTE: SMS URL schemes vary by platform; this works on most mobile browsers.
-          window.location.href = `sms:?&body=${text}`;
-        }catch(e){
-          Toast.show('SMS not supported on this device.', 2400);
-        }
       });
 
       const p = rls.params();
