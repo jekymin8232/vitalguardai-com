@@ -33,7 +33,7 @@ If I have been able to demonstrate this level of problem-solving ability with vi
 
 The truth is that I have not received much recognition or support in South Korea. I grew up in a difficult environment and had no one in a position to help me. It is unfortunate, but I do not want to pretend otherwise.
 
+I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.
+
 As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
-
-
 
