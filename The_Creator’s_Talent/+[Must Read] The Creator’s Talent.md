@@ -37,4 +37,10 @@ I hold no negative feelings toward any country. I maintain a friendly and positi
 
 What frustrates me is that, in South Korea, people are often judged based on their background and academic pedigree. In my view, those from privileged backgrounds may sometimes avoid legal consequences even when they commit serious wrongdoing. Of course, this may reflect my personal perspective, but from what I have observed, social discrimination is a very real issue.
 
+Many people face social discrimination, and some are choosing to leave South Korea as a result. This is by no means a healthy social phenomenon. For a country to progress, discrimination must not stand in the way of opportunity.
+
+Great talent can emerge from the most difficult circumstances because talent has nothing to do with a person’s social status or background. We must never forget that.
+
+My favorite American film is *Good Will Hunting*. The protagonist works as a janitor while demonstrating an extraordinary gift for mathematics. America did not abandon him. What truly matters is not a person’s social status, but their talent and potential to change the world.
+
 As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
