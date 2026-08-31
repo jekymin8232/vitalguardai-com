@@ -107,7 +107,7 @@ Explainable white-box AI has the potential to become an international standard b
 
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
-The place you see in the photo is my first AI research lab.
+**The place you see in the photo is my first AI research lab.**
 
 **AI systems that can be held accountable are more likely to be adopted as international standards.**
 
