@@ -37,7 +37,7 @@ If I have been able to demonstrate this level of problem-solving ability with vi
 
 The truth is that I have received no support whatsoever in South Korea. I grew up in a difficult environment and had no one in a position to help me. It is unfortunate, but I do not want to pretend otherwise.
 
-I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.
+**I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.**
 
 Great talent can emerge from the most difficult circumstances because talent has nothing to do with a person’s social status or background. We must never forget that.
 
