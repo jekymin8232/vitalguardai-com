@@ -106,3 +106,5 @@ Explainable white-box AI has the potential to become an international standard b
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
 ### Can South Korea be considered an advanced country in AI?
+
+Black-box AI cannot become an international standard, no matter how powerful it is, because its decisions cannot be explained and no one can ultimately be held accountable for them. With white-box AI, transparency itself creates accountability. Only explainable AI can become a truly international standard. If adopted as an international standard, it could significantly strengthen a country’s diplomatic influence and national interests.
