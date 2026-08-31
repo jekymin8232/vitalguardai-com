@@ -92,6 +92,6 @@ Regrettably, black-box AI cannot become an international standard because no one
 Explainable white-box AI has the potential to become an international standard because its transparency makes accountability clear and verifiable, rather than requiring anyone to take responsibility for decisions they cannot understand. The black-box AI bubble will eventually burst, and in the long run, white-box AI will be the model that endures.
 
 
-<img width="300" height="600" alt="jeon4" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon4.jpg" />
+<img width="300" height="500" alt="jeon4" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon4.jpg" />
 
 
