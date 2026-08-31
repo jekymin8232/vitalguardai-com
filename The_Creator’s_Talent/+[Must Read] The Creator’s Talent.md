@@ -45,4 +45,6 @@ My favorite American film is *Good Will Hunting*. The protagonist works as a jan
 
 As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
 
-Many people favor AI developed by Big Tech, but these systems depend heavily on infrastructure and may offer little value in regions where that infrastructure is unavailable. Their inner workings are also largely opaque, making their decisions difficult to interpret or independently audit. When an AI system cannot be properly examined, security vulnerabilities become much harder to detect, explain, and correct. As AI capabilities become increasingly standardized, security, transparency, and accountability will inevitably become more important.
+Many people favor AI developed by Big Tech, but these systems depend heavily on infrastructure and may offer little value in regions where that infrastructure is unavailable. Their inner workings are also largely opaque, making their decisions difficult to interpret or independently audit. 
+
+When an AI system cannot be properly examined, security vulnerabilities become much harder to detect, explain, and correct. As AI capabilities become increasingly standardized, security, transparency, and accountability will inevitably become more important.
