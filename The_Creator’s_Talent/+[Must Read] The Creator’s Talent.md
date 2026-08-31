@@ -65,8 +65,6 @@ Although this AI was created by a Korean, South Korea will ultimately come to de
 
 South Korea places enormous value on a degree from Seoul National University. Yet outside Korea, the university’s name alone carries far less weight, and many people around the world are unfamiliar with it. What truly matters is not academic pedigree, but a person’s demonstrated talent and what they are capable of achieving. 
 
-I am only a high school graduate, and the one thing I truly have is raw talent. Distinguished scholars at Seoul National University in South Korea may be reluctant to work with me, while scholars at Harvard and Oxford may be far more open to collaborating with me. This is because what truly matters to them is not a person’s academic credentials, but who they are at their core—their talent, ideas, and potential.
-
 **People should be judged and trusted on the strength of their abilities—not merely on the name of the university they attended.**
 
 Big Tech AI cannot become a truly universal standard. No responsible international organization can adopt an opaque black-box system—one whose reasoning cannot be independently understood, audited, or verified—as a global standard. 
@@ -91,7 +89,7 @@ The real opportunity lies elsewhere: in developing highly transparent, explainab
 
 Only white-box AI can become an international standard. The only AI that can be explained to the international community is AI that is inherently explainable. No international organization can reasonably take responsibility for a black-box AI system whose decisions cannot be understood or explained, because doing so would exceed the limits of what it can responsibly endorse.
 
-White-box AI, by contrast, provides transparency, explainability, and accountability. Because its processes and decisions can be examined, verified, and understood, the risks and responsibilities can be clearly assessed. That is why white-box AI has the potential to become a trusted international standard.
+White-box AI, by contrast, provides transparency, explainability, and accountability. Because its processes and decisions can be examined, verified, and understood, the risks and responsibilities can be clearly assessed. 
 
 Regrettably, black-box AI cannot become an international standard because no one is willing to assume enormous responsibility for decisions that cannot be explained. Pouring $100 billion into it is sheer madness.
 
