@@ -83,3 +83,4 @@ The real opportunity lies elsewhere: in developing highly transparent, explainab
 
 **Regardless of the country, I will do my absolute best for everyone supporting me.**
 
+**It is only natural that those who help you through your most difficult times become lifelong friends.**
