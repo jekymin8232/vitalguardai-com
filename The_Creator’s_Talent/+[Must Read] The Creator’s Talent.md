@@ -123,4 +123,14 @@ Design the system so that the entire codebase can be understood at a glance. Any
 
 Be honest. Do not exaggerate performance. What matters is authenticity and transparency. When a system is honest about its capabilities and limitations, anyone can examine the code, modify it, strengthen it, and improve upon it.
 
+Why is minimizing external dependencies so important for a technology that aspires to become an international standard? The principle is simple.
+
+Every external dependency introduces code written, maintained, and changed by people outside the system’s direct control. When a system combines countless libraries, it also inherits countless maintenance policies, security practices, update schedules, and potential points of failure. Many libraries have maintainers, but no single organization has a binding obligation to fix defects, respond to new international requirements, or support the code over the long term.
+
+This does not mean that every external library is inherently unreliable. The real question is whether every critical component can be identified, audited, controlled, and maintained by a clearly accountable party. When dependencies become excessive, ownership becomes blurred and responsibility can easily be passed from one party to another. Excessive dependency can therefore become a form of fragmented accountability.
+
+By minimizing external dependencies—and ensuring that every remaining component is transparent and fully auditable—a system can respond more quickly and consistently as international requirements evolve. Most importantly, it becomes clear who is responsible when something goes wrong.
+
+Ultimately, international trust is built on transparency and accountability. People must be able to understand how a system works, identify who is responsible for it, and verify that problems can be corrected. Independence from external dependencies is not merely a technical preference; it is a principle of responsible governance. An international standard must not outsource responsibility.
+
 Finally, put human dignity first. If AI simply takes jobs away from people, it should not become an international standard. An international standard should protect people and promote AI that creates opportunities and expands meaningful employment.
