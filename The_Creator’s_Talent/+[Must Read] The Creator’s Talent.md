@@ -95,6 +95,8 @@ Explainable white-box AI has the potential to become an international standard b
 
 **But I did not give up. Because I have a dream.**
 
+https://mcorpai.org/AINecklace_Summary_Korea.pdf
+
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
 
