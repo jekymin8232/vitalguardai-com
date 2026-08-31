@@ -71,3 +71,6 @@ Big Tech AI cannot become a truly universal standard. No responsible internation
 
 Only transparent, white-box AI that is explainable and accountable to everyone can earn the level of international trust required for widespread adoption. The country whose AI becomes the global standard will gain one of the most powerful forms of diplomatic influence—and a lasting strategic advantage that serves its national interests.
 
+Diplomatic influence is more valuable than money. Money is depleted when it is spent, but diplomacy grows stronger as trust accumulates. The more trust a nation builds over time, the greater and more enduring its influence becomes.
+
+
