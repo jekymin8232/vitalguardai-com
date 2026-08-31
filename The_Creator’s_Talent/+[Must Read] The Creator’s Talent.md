@@ -123,7 +123,9 @@ Design the system so that the entire codebase can be understood at a glance. Any
 
 Be honest. Do not exaggerate performance. What matters is authenticity and transparency. When a system is honest about its capabilities and limitations, anyone can examine the code, modify it, strengthen it, and improve upon it.
 
-**Why is minimizing external dependencies so important for a technology that aspires to become an international standard? The principle is simple.**
+**Why is minimizing external dependencies so important for a technology that aspires to become an international standard?** 
+
+**The principle is simple.**
 
 Every external dependency introduces code written, maintained, and changed by people outside the system’s direct control. When a system combines countless libraries, it also inherits countless maintenance policies, security practices, update schedules, and potential points of failure. Many libraries have maintainers, but no single organization has a binding obligation to fix defects, respond to new international requirements, or support the code over the long term.
 
