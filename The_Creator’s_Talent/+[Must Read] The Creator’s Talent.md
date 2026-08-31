@@ -81,5 +81,5 @@ The real opportunity lies elsewhere: in developing highly transparent, explainab
 
 **I am constantly thinking, exploring, and developing new ideas. With sufficient support, continued growth is inevitable.**
 
-**Regardless of the country, I will do my best for those who support me.**
+**Regardless of the country, I will do my absolute best for everyone supporting me.**
 
