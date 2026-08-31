@@ -75,6 +75,8 @@ Diplomatic influence is more valuable than money. Money is depleted when it is s
 
 South Korea may invest tens of billions of dollars in black-box AI, yet still be left with little lasting strategic value. AI developed in Korea risks remaining a largely domestic technology, used primarily within the country. The Big Tech AI market is already dominated by the United States and China, leaving very little room for other nations to compete on the same terms.
 
+(South Korea is already preparing to allocate up to $100 billion to black-box AI.)
+
 The real opportunity lies elsewhere: in developing highly transparent, explainable white-box AI. Only AI that can be independently understood, audited, and verified can earn the trust required for broad adoption by the international community.
 
 **I am constantly thinking, exploring, and developing new ideas. With sufficient support, continued growth is inevitable.**
