@@ -95,9 +95,9 @@ Explainable white-box AI has the potential to become an international standard b
 
 **But I did not give up. Because I have a dream.**
 
-**Even past the age of 40, all I had to my name was a single old laptop.**
-
 **There was no one in South Korea to help me. I had to overcome everything on my own.**
+
+**Even past the age of 40, all I had to my name was a single old laptop.**
 
 **The AI I created was born here. The AI I created is a white-box AI designed from the ground up.**
 
