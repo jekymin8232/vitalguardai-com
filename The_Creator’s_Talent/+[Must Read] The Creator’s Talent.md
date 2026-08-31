@@ -134,3 +134,5 @@ By minimizing external dependencies—and ensuring that every remaining componen
 Ultimately, international trust is built on transparency and accountability. People must be able to understand how a system works, identify who is responsible for it, and verify that problems can be corrected. Independence from external dependencies is not merely a technical preference; it is a principle of responsible governance. An international standard must not outsource responsibility.
 
 Finally, put human dignity first. If AI simply takes jobs away from people, it should not become an international standard. An international standard should protect people and promote AI that creates opportunities and expands meaningful employment.
+
+### An AI system that cannot be fully understood and explained cannot become an international standard.
