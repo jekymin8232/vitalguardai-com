@@ -48,3 +48,5 @@ As for the talents I have, rather than devoting them solely to South Korea, I wa
 Many people favor AI developed by Big Tech, but these systems depend heavily on infrastructure and may offer little value in regions where that infrastructure is unavailable. Their inner workings are also largely opaque, making their decisions difficult to interpret or independently audit. 
 
 When an AI system cannot be properly examined, security vulnerabilities become much harder to detect, explain, and correct. As AI capabilities become increasingly standardized, security, transparency, and accountability will inevitably become more important.
+
+With sufficient support, I am confident that I can deliver exceptional results. South Korea may eventually choose to support me, but I will devote my best efforts to those who recognize my potential first. Support that arrives only after success has already been achieved carries far less meaning. When someone believes in you during your most difficult moments, it is only natural to give them your deepest loyalty and your very best in return.
