@@ -97,6 +97,8 @@ Explainable white-box AI has the potential to become an international standard b
 
 **I have hope that I can become self-reliant, just like the brilliant mathematician who worked as a janitor in Good Will Hunting.**
 
+**Even past the age of 40, a single laptop was all I had to my name.**
+
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
 
