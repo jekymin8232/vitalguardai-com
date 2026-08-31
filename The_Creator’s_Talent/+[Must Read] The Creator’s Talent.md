@@ -52,3 +52,8 @@ When an AI system cannot be properly examined, security vulnerabilities become m
 With sufficient support, I am confident that I can deliver exceptional results. 
 
 South Korea may eventually choose to support me, but I will devote my best efforts to those who recognize my potential first. Support that arrives only after success has already been achieved carries far less meaning. When someone believes in you during your most difficult moments, it is only natural to give them your deepest loyalty and your very best in return.
+
+South Korea is investing heavily in physical AI and systems developed by major technology companies, but it may still struggle to overcome the regulatory and trust barriers created by the GDPR. To shape the global AI landscape, a country generally needs either strong diplomatic influence or a vast domestic market—and South Korea has clear limitations in both areas.
+
+The most powerful AI is not necessarily the one with the highest performance. It is the AI that earns international trust and becomes a global standard. Ultimately, a system built on verifiable security, transparency, and accountability will have the greatest influence—and the country that establishes such a standard will secure a lasting strategic advantage and advance its national interests.
+
