@@ -145,7 +145,7 @@ Ultimately, international trust is built on transparency and accountability. Peo
 
 **Diplomatic influence, by contrast, is an asset that can accumulate over time. Prioritize diplomacy. Explainable white-box AI can help strengthen diplomatic trust because its transparency and accountability give it the potential to become an international standard.**
 
-**Only trustworthy AI—not merely high-performing AI—can become an international standard.**
+### Only trustworthy AI—not merely high-performing AI—can become an international standard.
 
 **Finally, I would like to pose a diplomatic question. If there were 100 scholars from around the world, whom would they be more likely to nominate for the Nobel Peace Prize: the architect of a black-box AI or the architect of a white-box AI?**
 
