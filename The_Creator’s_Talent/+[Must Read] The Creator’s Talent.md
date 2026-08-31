@@ -20,7 +20,6 @@ My greatest strengths lie in creativity and problem-solving.
 Creativity and problem-solving skills can be applied to virtually any field.
 
 # I am someone who thinks.
-## With zero financial support, I inevitably have a great deal to worry about.
 
 <img width="184" height="263" alt="lo" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/lo.PNG" />
 
@@ -37,8 +36,6 @@ If I have been able to demonstrate this level of problem-solving ability with vi
 The truth is that I have received no support whatsoever in South Korea. I grew up in a difficult environment and had no one in a position to help me. It is unfortunate, but I do not want to pretend otherwise.
 
 I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.
-
-What frustrates me is that, in South Korea, people are often judged based on their background and academic pedigree. In my view, those from privileged backgrounds may sometimes avoid legal consequences even when they commit serious wrongdoing. Of course, this may reflect my personal perspective, but from what I have observed, social discrimination is a very real issue.
 
 Many people face social discrimination, and some are choosing to leave South Korea as a result. This is by no means a healthy social phenomenon. For a country to progress, discrimination must not stand in the way of opportunity.
 
