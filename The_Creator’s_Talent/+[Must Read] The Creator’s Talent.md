@@ -147,7 +147,6 @@ Ultimately, international trust is built on transparency and accountability. Peo
 
 **Only trustworthy AI—not merely high-performing AI—can become an international standard.**
 
-Finally, I would like to pose a diplomatic question. If there were 100 scholars from around the world, whom would they be more likely to nominate for the Nobel Peace Prize: the architect of a black-box AI or the architect of a white-box AI?
+**Finally, I would like to pose a diplomatic question. If there were 100 scholars from around the world, whom would they be more likely to nominate for the Nobel Peace Prize: the architect of a black-box AI or the architect of a white-box AI?**
 
-This is, of course, a diplomatic question. I encourage you to think deeply about what it implies.
-
+**This is, of course, a diplomatic question. I encourage you to think deeply about what it implies.**
