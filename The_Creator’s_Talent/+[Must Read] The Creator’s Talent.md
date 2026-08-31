@@ -109,6 +109,8 @@ Explainable white-box AI has the potential to become an international standard b
 
 **The place you see in the photo is my first AI research lab.**
 
+If I receive sponsorship for my AI research, I plan to hire two to three developers from Eastern Europe. However, this place won't satisfy them. In fact, it's not a satisfying space for anyone—myself included.   
+
 **AI systems that can be held accountable are more likely to be adopted as international standards.**
 
 Black-box AI cannot become an international standard, no matter how powerful it is, because its decisions cannot be explained and no one can ultimately be held accountable for them. With white-box AI, transparency itself creates accountability. Only explainable AI can become a truly international standard. If adopted as an international standard, it could significantly strengthen a country’s diplomatic influence and national interests.
