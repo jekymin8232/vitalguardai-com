@@ -61,4 +61,6 @@ It is the AI that earns international trust and becomes a global standard. Ultim
 
 Ultimately, the AI most widely preferred around the world will be one that NGOs and the broader international community can trust and adopt with confidence.
 
+Although this AI was created by a Korean, South Korea will ultimately come to deeply regret its failure to recognize and support one of its own talents. This is how Korea’s own Good Will Hunting story will end.
+
 
