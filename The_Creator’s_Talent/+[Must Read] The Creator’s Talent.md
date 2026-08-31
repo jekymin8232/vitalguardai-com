@@ -139,7 +139,7 @@ Ultimately, international trust is built on transparency and accountability. Peo
 
 ### An AI system that cannot be fully understood and explained cannot become an international standard.
 
-Always keep this in mind: **Diplomacy matters more than money.** Money is depleted as it is spent, and in some countries, its value can become extremely unstable. Ten million dollars today could effectively be worth only a fraction of that tomorrow. Do not become fixated on monetary value.
+**Always keep this in mind: Diplomacy matters more than money. Money is depleted as it is spent, and in some countries, its value can become extremely unstable. Ten million dollars today could effectively be worth only a fraction of that tomorrow. Do not become fixated on monetary value.**
 
 **Diplomatic influence, by contrast, is an asset that can accumulate over time. Prioritize diplomacy. Explainable white-box AI can help strengthen diplomatic trust because its transparency and accountability give it the potential to become an international standard.**
 
