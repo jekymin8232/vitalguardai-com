@@ -55,5 +55,7 @@ South Korea may eventually choose to support me, but I will devote my best effor
 
 South Korea is investing heavily in physical AI and systems developed by major technology companies, but it may still struggle to overcome the regulatory and trust barriers created by the GDPR. To shape the global AI landscape, a country generally needs either strong diplomatic influence or a vast domestic market—and South Korea has clear limitations in both areas.
 
-The most powerful AI is not necessarily the one with the highest performance. It is the AI that earns international trust and becomes a global standard. Ultimately, a system built on verifiable security, transparency, and accountability will have the greatest influence—and the country that establishes such a standard will secure a lasting strategic advantage and advance its national interests.
+The most powerful AI is not necessarily the one with the highest performance. 
+
+It is the AI that earns international trust and becomes a global standard. Ultimately, a system built on verifiable security, transparency, and accountability will have the greatest influence—and the country that establishes such a standard will secure a lasting strategic advantage and advance its national interests.
 
