@@ -108,3 +108,11 @@ Explainable white-box AI has the potential to become an international standard b
 ### Can South Korea be considered an advanced country in AI?
 
 Black-box AI cannot become an international standard, no matter how powerful it is, because its decisions cannot be explained and no one can ultimately be held accountable for them. With white-box AI, transparency itself creates accountability. Only explainable AI can become a truly international standard. If adopted as an international standard, it could significantly strengthen a country’s diplomatic influence and national interests.
+
+If you want AI to become an international standard, do not rely on external libraries. Even when those libraries are open source, excessive complexity can make the system too difficult to fully understand and verify, preventing it from becoming a truly transparent international standard.
+
+Design the system so that the entire codebase can be understood at a glance. Anyone who opens the project on GitHub should be able to see how the whole system works without having to navigate layers of hidden complexity. Only uncompromising transparency can earn the trust required for an international standard.
+
+Be honest. Do not exaggerate performance. What matters is authenticity and transparency. When a system is honest about its capabilities and limitations, anyone can examine the code, modify it, strengthen it, and improve upon it.
+
+Finally, put human dignity first. If AI simply takes jobs away from people, it should not become an international standard. An international standard should protect people and promote AI that creates opportunities and expands meaningful employment.
