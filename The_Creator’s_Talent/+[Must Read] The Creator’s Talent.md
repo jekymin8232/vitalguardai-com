@@ -85,7 +85,7 @@ The real opportunity lies elsewhere: in developing highly transparent, explainab
 
 **It is only natural that those who help you through your most difficult times become lifelong friends.**
 
-We need to collaborate with people who think critically and independently if we want to secure the future.
+**We need to collaborate with people who think critically and independently if we want to secure the future.**
 
 Only white-box AI can become an international standard. The only AI that can be explained to the international community is AI that is inherently explainable. No international organization can reasonably take responsibility for a black-box AI system whose decisions cannot be understood or explained, because doing so would exceed the limits of what it can responsibly endorse.
 
