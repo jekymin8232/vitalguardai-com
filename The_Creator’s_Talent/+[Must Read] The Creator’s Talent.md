@@ -138,3 +138,8 @@ Ultimately, international trust is built on transparency and accountability. Peo
 **Finally, put human dignity first. If AI simply takes jobs away from people, it should not become an international standard. An international standard should protect people and promote AI that creates opportunities and expands meaningful employment.**
 
 ### An AI system that cannot be fully understood and explained cannot become an international standard.
+
+Always keep this in mind: **Diplomacy matters more than money.** Money is depleted as it is spent, and in some countries, its value can become extremely unstable. Ten million dollars today could effectively be worth only a fraction of that tomorrow. Do not become fixated on monetary value.
+
+**Diplomatic influence, by contrast, is an asset that can accumulate over time. Prioritize diplomacy. Explainable white-box AI can help strengthen diplomatic trust because its transparency and accountability give it the potential to become an international standard.**
+
