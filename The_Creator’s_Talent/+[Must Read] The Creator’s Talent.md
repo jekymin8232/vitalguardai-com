@@ -67,4 +67,5 @@ South Korea places enormous value on a degree from Seoul National University. Ye
 
 People should be judged and trusted on the strength of their abilities—not merely on the name of the university they attended.
 
+Big Tech AI cannot become a truly universal standard. No responsible international organization can adopt an opaque black-box system—one whose reasoning cannot be independently understood, audited, or verified—as a global standard. Only transparent, white-box AI that is explainable and accountable to everyone can earn the level of international trust required for widespread adoption. The country whose AI becomes the global standard will gain one of the most powerful forms of diplomatic influence—and a lasting strategic advantage that serves its national interests.
 
