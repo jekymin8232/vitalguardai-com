@@ -71,7 +71,7 @@ Big Tech AI cannot become a truly universal standard. No responsible internation
 
 Only transparent, white-box AI that is explainable and accountable to everyone can earn the level of international trust required for widespread adoption. The country whose AI becomes the global standard will gain one of the most powerful forms of diplomatic influence—and a lasting strategic advantage that serves its national interests.
 
-Diplomatic influence is more valuable than money. Money is depleted when it is spent, but diplomacy grows stronger as trust accumulates. The more trust a nation builds over time, the greater and more enduring its influence becomes.
+**Diplomatic influence is more valuable than money. Money is depleted when it is spent, but diplomacy grows stronger as trust accumulates. The more trust a nation builds over time, the greater and more enduring its influence becomes.**
 
 South Korea may invest tens of billions of dollars in black-box AI, yet still be left with little lasting strategic value. AI developed in Korea risks remaining a largely domestic technology, used primarily within the country. The Big Tech AI market is already dominated by the United States and China, leaving very little room for other nations to compete on the same terms.
 
