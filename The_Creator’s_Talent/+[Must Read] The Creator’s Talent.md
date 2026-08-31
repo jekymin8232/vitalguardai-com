@@ -42,5 +42,3 @@ Great talent can emerge from the most difficult circumstances because talent has
 My favorite American film is *Good Will Hunting*. The protagonist works as a janitor while demonstrating an extraordinary gift for mathematics. America did not abandon him. What truly matters is not a person’s social status, but their talent and potential to change the world.
 
 As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
-
-### A person cannot be defined by their background or where they come from.
