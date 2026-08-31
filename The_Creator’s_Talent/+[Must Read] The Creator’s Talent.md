@@ -101,7 +101,7 @@ Explainable white-box AI has the potential to become an international standard b
 
 **There was no one in South Korea to help me. I had to overcome everything on my own.**
 
-**The AI I created was born here.**
+**The AI I created was born here. The AI I created is a white-box AI designed from the ground up.**
 
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
