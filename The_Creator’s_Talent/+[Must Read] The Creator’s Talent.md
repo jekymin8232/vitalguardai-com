@@ -109,7 +109,9 @@ Explainable white-box AI has the potential to become an international standard b
 
 **The place you see in the photo is my first AI research lab.**
 
-If I receive sponsorship for my AI research, I plan to hire two to three developers from Eastern Europe. However, this place won't satisfy them. In fact, it's not a satisfying space for anyone—myself included. Not even anyone could endure a single day in this place. I’ve been researching here all by myself for years.         
+If I receive sponsorship for my AI research, I plan to hire two to three developers from Eastern Europe. However, this place won't satisfy them. In fact, it's not a satisfying space for anyone—myself included. Not even anyone could endure a single day in this place. 
+
+I’ve been researching here all by myself for years.         
 
 **AI systems that can be held accountable are more likely to be adopted as international standards.**
 
