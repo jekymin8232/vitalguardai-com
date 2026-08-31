@@ -37,8 +37,6 @@ The truth is that I have received no support whatsoever in South Korea. I grew u
 
 I hold no negative feelings toward any country. I maintain a friendly and positive attitude toward almost every nation.
 
-Many people face social discrimination, and some are choosing to leave South Korea as a result. This is by no means a healthy social phenomenon. For a country to progress, discrimination must not stand in the way of opportunity.
-
 Great talent can emerge from the most difficult circumstances because talent has nothing to do with a person’s social status or background. We must never forget that.
 
 My favorite American film is *Good Will Hunting*. The protagonist works as a janitor while demonstrating an extraordinary gift for mathematics. America did not abandon him. What truly matters is not a person’s social status, but their talent and potential to change the world.
@@ -46,6 +44,3 @@ My favorite American film is *Good Will Hunting*. The protagonist works as a jan
 As for the talents I have, rather than devoting them solely to South Korea, I want to use them to do my best for people around the world.
 
 ### A person cannot be defined by their background or where they come from.
-### Does owning an expensive car and living in an expensive house necessarily make someone a great person?
-### Are people who can barely afford a single piece of bread a day simply lazy?
-### Human dignity never changes.
