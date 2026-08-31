@@ -80,3 +80,6 @@ South Korea is already preparing to allocate up to $100 billion to black-box AI.
 The real opportunity lies elsewhere: in developing highly transparent, explainable white-box AI. Only AI that can be independently understood, audited, and verified can earn the trust required for broad adoption by the international community.
 
 **I am constantly thinking, exploring, and developing new ideas. With sufficient support, continued growth is inevitable.**
+
+**Regardless of the country, I will do my best for those who support me.**
+
