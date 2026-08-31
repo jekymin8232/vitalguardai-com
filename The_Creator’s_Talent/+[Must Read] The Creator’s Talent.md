@@ -25,7 +25,7 @@ Creativity and problem-solving skills can be applied to virtually any field.
 
 ## If I can establish an AI research institute, I will grow tremendously.
 
-I’m planning to recruit a small team of two or three low-level developers from Eastern Europe to build low-level AI systems. These systems have a wide range of applications, many of which do not require traditional data centers. Building a data center could mean giving up data sovereignty and security.
+I’m planning to recruit a small team of two or three low-level developers from Eastern Europe to build low-level AI systems. These systems have a wide range of applications, many of which do not require traditional data centers. Building a data center could mean giving up data sovereignty and security. True sovereign AI is explainable, white-box AI.
 
 #### I have a strong talent for simplifying complex problems, structuring them clearly, and finding effective solutions.
 
