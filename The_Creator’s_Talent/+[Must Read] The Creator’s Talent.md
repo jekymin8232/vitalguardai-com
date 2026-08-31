@@ -135,7 +135,7 @@ By minimizing external dependencies—and ensuring that every remaining componen
 
 Ultimately, international trust is built on transparency and accountability. People must be able to understand how a system works, identify who is responsible for it, and verify that problems can be corrected. Independence from external dependencies is not merely a technical preference; it is a principle of responsible governance. An international standard must not outsource responsibility.
 
-**Finally, put human dignity first. If AI simply takes jobs away from people, it should not become an international standard. An international standard should protect people and promote AI that creates opportunities and expands meaningful employment.**
+**put human dignity first. If AI simply takes jobs away from people, it should not become an international standard. An international standard should protect people and promote AI that creates opportunities and expands meaningful employment.**
 
 ### An AI system that cannot be fully understood and explained cannot become an international standard.
 
@@ -146,3 +146,8 @@ Ultimately, international trust is built on transparency and accountability. Peo
 **Diplomatic influence, by contrast, is an asset that can accumulate over time. Prioritize diplomacy. Explainable white-box AI can help strengthen diplomatic trust because its transparency and accountability give it the potential to become an international standard.**
 
 **Only trustworthy AI—not merely high-performing AI—can become an international standard.**
+
+Finally, I would like to pose a diplomatic question. If there were 100 scholars from around the world, whom would they be more likely to nominate for the Nobel Peace Prize: the architect of a black-box AI or the architect of a white-box AI?
+
+This is, of course, a diplomatic question. I encourage you to think deeply about what it implies.
+
