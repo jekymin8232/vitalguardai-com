@@ -49,4 +49,6 @@ Many people favor AI developed by Big Tech, but these systems depend heavily on 
 
 When an AI system cannot be properly examined, security vulnerabilities become much harder to detect, explain, and correct. As AI capabilities become increasingly standardized, security, transparency, and accountability will inevitably become more important.
 
-With sufficient support, I am confident that I can deliver exceptional results. South Korea may eventually choose to support me, but I will devote my best efforts to those who recognize my potential first. Support that arrives only after success has already been achieved carries far less meaning. When someone believes in you during your most difficult moments, it is only natural to give them your deepest loyalty and your very best in return.
+With sufficient support, I am confident that I can deliver exceptional results. 
+
+South Korea may eventually choose to support me, but I will devote my best efforts to those who recognize my potential first. Support that arrives only after success has already been achieved carries far less meaning. When someone believes in you during your most difficult moments, it is only natural to give them your deepest loyalty and your very best in return.
