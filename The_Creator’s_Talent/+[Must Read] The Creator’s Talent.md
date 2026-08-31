@@ -63,4 +63,6 @@ Ultimately, the AI most widely preferred around the world will be one that NGOs 
 
 Although this AI was created by a Korean, South Korea will ultimately come to deeply regret its failure to recognize and support one of its own talents. This is how Korea’s own Good Will Hunting story will end.
 
+South Korea places enormous value on a degree from Seoul National University. Yet outside Korea, the university’s name alone carries far less weight, and many people around the world are unfamiliar with it. What truly matters is not academic pedigree, but a person’s demonstrated talent and what they are capable of achieving. People should be judged and trusted on the strength of their abilities—not merely on the name of the university they attended.
+
 
