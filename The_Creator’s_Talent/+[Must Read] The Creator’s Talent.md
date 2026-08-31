@@ -105,4 +105,4 @@ Explainable white-box AI has the potential to become an international standard b
 
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
-
+### Can South Korea be considered an advanced country in AI?
