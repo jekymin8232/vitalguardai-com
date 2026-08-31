@@ -99,6 +99,8 @@ Explainable white-box AI has the potential to become an international standard b
 
 **Even past the age of 40, all I had to my name was a single old laptop.**
 
+**There was no one in South Korea to help me. I had to overcome everything on my own.**
+
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
 
