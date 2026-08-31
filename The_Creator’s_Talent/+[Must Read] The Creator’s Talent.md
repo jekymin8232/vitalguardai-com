@@ -87,7 +87,7 @@ Only white-box AI can become an international standard. The only AI that can be 
 
 White-box AI, by contrast, provides transparency, explainability, and accountability. Because its processes and decisions can be examined, verified, and understood, the risks and responsibilities can be clearly assessed. 
 
-Regrettably, black-box AI cannot become an international standard because no one is willing to assume enormous responsibility for decisions that cannot be explained. Pouring $100 billion into it is sheer madness.
+Regrettably, black-box AI cannot become an international standard because no one is willing to assume enormous responsibility for decisions that cannot be explained.
 
 Explainable white-box AI has the potential to become an international standard because its transparency makes accountability clear and verifiable, rather than requiring anyone to take responsibility for decisions they cannot understand. The black-box AI bubble will eventually burst, and in the long run, white-box AI will be the model that endures.
 
