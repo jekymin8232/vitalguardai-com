@@ -95,13 +95,13 @@ Explainable white-box AI has the potential to become an international standard b
 
 **But I did not give up. Because I have a dream.**
 
-**I have hope that I can become self-reliant, just like the brilliant mathematician who worked as a janitor in Good Will Hunting.**
-
 **Even past the age of 40, all I had to my name was a single old laptop.**
 
 **There was no one in South Korea to help me. I had to overcome everything on my own.**
 
 **The AI I created was born here. The AI I created is a white-box AI designed from the ground up.**
+
+**I have hope that I can become self-reliant, just like the brilliant mathematician who worked as a janitor in Good Will Hunting.**
 
 <img width="635" height="486" alt="jeon8" src="https://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/jeon8.PNG" />
 
