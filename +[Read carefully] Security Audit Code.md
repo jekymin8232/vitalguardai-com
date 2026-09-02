@@ -6,6 +6,8 @@
 
 **Do you really think we can detect 100% of the malware that can be generated on an unlimited scale?**
 
+**If you can't see the code with your own eyes, don't trust it.**
+
 ## The single-file vanilla architecture is an intentional design choice.
 ### It may look like spaghetti code at first, 
 ### but modularization can simplify the architecture and improve maintainability.
