@@ -11,6 +11,7 @@
 ### Ultimately, the cost of sustaining an attack may become so high that attackers are forced to give up.
 
 ## The ultimate form of security is to make an attack too costly to sustain.
+## The best security strategy is to make an attack too costly and difficult to sustain.
 
 # Security Audit Code
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_3.html
