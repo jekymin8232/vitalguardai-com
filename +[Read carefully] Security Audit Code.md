@@ -51,7 +51,7 @@ Ultimately, it is not about doing more. It is about making the right decisions a
 
 **Rather than pouring enormous amounts of money into security every year and still constantly living in fear, the best security is security that does not require you to worry too much about it.**
 
-Treat security like Lionel Messi: mostly walking around the pitch, but completely reliable when it counts.   
+You should approach security just like Lionel Messi—a player who spends most of his time walking on the pitch, yet is always someone you can rely on.   
 
 
 
