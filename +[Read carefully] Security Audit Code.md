@@ -1,6 +1,7 @@
 ## The single-file vanilla architecture is an intentional design choice.
 ### It may look like spaghetti code at first, 
 ### but modularization can simplify the architecture and improve maintainability.
+## You have to give up unnecessary features to maintain security.
 
 ### Spreading resources across multiple dependencies can increase the risk of supply chain attacks.
 ### A compromise of one component does not grant access to the entire system or server.
