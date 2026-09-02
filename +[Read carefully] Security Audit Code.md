@@ -12,6 +12,7 @@
 
 ## Don't boast about flashy features. Unnecessary complexity only increases the attack surface.
 
+### The ability to decide which features to remove and which to include is the greatest talent of all.
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
 ### Ultimately, the cost of sustaining an attack may become so high that attackers are forced to give up.
