@@ -8,7 +8,7 @@
 
 ### I am continuously conducting research and maintain full control over all of the code.
 
-## Unnecessary complexity only increases the attack surface.
+## Don't boast about flashy features. Unnecessary complexity only increases the attack surface.
 
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
