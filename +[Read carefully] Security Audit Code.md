@@ -35,6 +35,8 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Audit_Scope_Map.
 
 **However, I believe the software provides strong security resilience, as exploiting browser zero-day vulnerabilities can require significant expertise and resources.**
 
+---
+
 I think of system security as being like soccer.
 
 A soccer player with flashy individual skills may look impressive, but that alone does not make them a great player. What truly matters is the ability to finish when it counts.
