@@ -2,6 +2,8 @@
 ### It may look like spaghetti code at first, 
 ### but modularization can simplify the architecture and improve maintainability.
 
+### Spreading resources across multiple dependencies can increase the risk of supply chain attacks.
+
 ### I am continuously conducting research and maintain full control over all of the code. 
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
