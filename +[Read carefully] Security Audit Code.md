@@ -6,7 +6,10 @@
 ### Spreading resources across multiple dependencies can increase the risk of supply chain attacks.
 ### A compromise of one component does not grant access to the entire system or server.
 
-### I am continuously conducting research and maintain full control over all of the code. 
+### I am continuously conducting research and maintain full control over all of the code.
+
+## Unnecessary complexity only increases the attack surface.
+
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
 ### Ultimately, the cost of sustaining an attack may become so high that attackers are forced to give up.
