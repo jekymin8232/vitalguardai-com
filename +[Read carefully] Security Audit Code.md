@@ -1,4 +1,4 @@
-### The single-file vanilla architecture is an intentional design choice.
+## The single-file vanilla architecture is an intentional design choice.
 ### It may look like spaghetti code at first, 
 ### but modularization can simplify the architecture and improve maintainability.
 
