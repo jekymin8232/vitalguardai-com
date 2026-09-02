@@ -1,3 +1,4 @@
+## I’m not just a coder; I’m an architect.
 **Malware and hacking tools will continue to evolve, ushering in a future where people may not even know whether they have been hacked or whether malware is present on their systems.**
 
 **Do you think this future is merely hypothetical? As AI continues to advance, malware could be generated at an effectively unlimited scale. Traditional antivirus software may struggle to detect and defend against an ever-growing number of new and constantly evolving threats.**
