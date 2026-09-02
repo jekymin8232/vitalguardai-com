@@ -1,4 +1,7 @@
 ### The single-file vanilla architecture is an intentional design choice.
+### It may look like spaghetti code at first, 
+### but modularization can simplify the architecture and improve maintainability.
+
 ### I am continuously conducting research and maintain full control over all of the code. 
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
