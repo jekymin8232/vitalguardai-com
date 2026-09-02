@@ -35,4 +35,16 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Audit_Scope_Map.
 
 **However, I believe the software provides strong security resilience, as exploiting browser zero-day vulnerabilities can require significant expertise and resources.**
 
+I think of system security as being like soccer.
+
+A soccer player with flashy individual skills may look impressive, but that alone does not make them a great player. What truly matters is the ability to finish when it counts.
+
+Look at Lionel Messi, one of the greatest soccer players in the world. He often walks around the pitch rather than constantly running. Yet when the decisive moment comes, he demonstrates an extraordinary ability to finish.
+
+To some people, watching him walk might make him look lazy. But knowing **when to run and when to walk** is precisely what separates an exceptional player from an ordinary one.
+
+The same principle applies to system security. Flashiness is not talent—it can be a distraction, even a form of deception. True talent lies in knowing **what to remove, what to keep, and what to add**.
+
+Ultimately, it is not about doing more. It is about making the right decisions at the right moment.
+
 
