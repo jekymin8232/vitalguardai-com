@@ -55,4 +55,5 @@ You should approach security just like Lionel Messi—a player who spends most o
 
 ### Security is not a circus. Don't be fooled by flashy moves. Lionel Messi doesn't rely on flashy play.   
 ### The greatest talent lies in knowing what to remove, what to keep, and what to add.
+### The best security lies in knowing what decisions to make.
 
