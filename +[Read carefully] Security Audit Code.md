@@ -10,7 +10,6 @@
 ### I can build and ship updates quickly without any downtime or waiting.   
 ### Ultimately, the cost of sustaining an attack may become so high that attackers are forced to give up.
 
-## The ultimate form of security is to make an attack too costly to sustain.
 ## The best security strategy is to make an attack too costly and difficult to sustain.
 ## Ultimately, the attacker will have no choice but to give up.
 
