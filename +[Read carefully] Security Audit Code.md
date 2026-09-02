@@ -1,3 +1,4 @@
+### The single-file vanilla architecture is an intentional design choice.
 ### I am continuously conducting research and maintain full control over all of the code. 
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
