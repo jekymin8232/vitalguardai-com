@@ -3,6 +3,7 @@
 ### but modularization can simplify the architecture and improve maintainability.
 
 ### Spreading resources across multiple dependencies can increase the risk of supply chain attacks.
+### A compromise of one component does not grant access to the entire system or server.
 
 ### I am continuously conducting research and maintain full control over all of the code. 
 ### Because there are no external dependencies, 
