@@ -12,7 +12,7 @@
 
 ## The ultimate form of security is to make an attack too costly to sustain.
 ## The best security strategy is to make an attack too costly and difficult to sustain.
-# Ultimately, the attacker will have no choice but to give up.
+## Ultimately, the attacker will have no choice but to give up.
 
 # Security Audit Code
 https://github.com/jekymin8232/vitalguardai-com/blob/main/VitalGuard_AI_complete_V47_3.html
