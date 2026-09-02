@@ -14,6 +14,7 @@
 
 ### Pursuing flashy features is never what makes software great.
 ### The ability to decide which features to remove and which to include is the greatest talent of all.
+### Removing external dependencies is a great design choice.
 ### Because there are no external dependencies, 
 ### I can build and ship updates quickly without any downtime or waiting.   
 ### Ultimately, the cost of sustaining an attack may become so high that attackers are forced to give up.
