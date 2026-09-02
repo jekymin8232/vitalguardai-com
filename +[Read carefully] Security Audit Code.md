@@ -1,3 +1,5 @@
+**Malware and hacking tools will continue to evolve, ushering in a future where people may not even know whether they have been hacked or whether malware is present on their systems.**
+
 ## The single-file vanilla architecture is an intentional design choice.
 ### It may look like spaghetti code at first, 
 ### but modularization can simplify the architecture and improve maintainability.
