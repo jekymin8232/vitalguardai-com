@@ -14,3 +14,6 @@ https://github.com/jekymin8232/vitalguardai-com/blob/main/V47_3_Audit_Scope_Map.
 
 **I have built the software with layered defenses designed to respond rapidly to emerging attacks, including zero-day threats. However, vulnerabilities within the browser itself may be difficult to address because the software fundamentally depends on the browser environment.**
 
+**However, I believe the software provides strong security resilience, as exploiting browser zero-day vulnerabilities can require significant expertise and resources.**
+
+
