@@ -53,6 +53,7 @@ Ultimately, it is not about doing more. It is about making the right decisions a
 
 You should approach security just like Lionel Messi—a player who spends most of his time walking on the pitch, yet is always someone you can rely on. In security, flashy and complex designs can be a source of risk. The strongest security comes from simple design.  
 
-### Security is not a circus. Don't be fooled by flashy moves. Lionel Messi doesn't rely on flashy play.   
+### Security is not a circus. 
+### Don't be fooled by flashy moves. Lionel Messi doesn't rely on flashy play.   
 ### The greatest talent lies in knowing what to remove, what to keep, and what to add.
 
