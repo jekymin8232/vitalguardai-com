@@ -83,22 +83,3 @@ Ten design principles, derived from GDPR, UNCRC, and CRPD, are each mapped to a 
 - *Basic health screening* — symptom checklist with a Naïve Bayes three-level risk category (Low / Medium / High). This is a screening tool, not a diagnostic instrument.
 
 **Reproducibility checklist.** Independent reviewers can verify: file size, offline operation (e.g. airplane mode), absence of network APIs, absence of persistent storage writes, and deterministic algorithmic pathways.
-
----
-
-## 5. Limitations, Risks, and Future Work
-
-**Technical limitations.** No complex diagnosis; no pixel-level image processing; no generative capability (by design); updates require manual file replacement.
-
-**Deployment barriers.** Institutional legal conservatism and first-adopter risk; staff trust in contexts where technology has been associated with surveillance; the need for local adaptation across different populations.
-
-**Ethical risks.**
-
-- *Surveillance appropriation* — the deployment context may repurpose identity matching for monitoring, despite technical safeguards.
-- *Developer bias* — transparent code still embodies its authors' assumptions.
-- *Illusion of technological self-reliance* — a 54 kB file does not constitute self-reliance.
-- *Asymmetric design authority* — transfer of design authority to communities is aspirational at present.
-- *Normative framing* — the principles reflect a particular (Western liberal) tradition and are a starting point for dialogue.
-- *Paradox of transparency* — auditability presumes auditors who may not be available locally.
-
-**Future directions.** A 3–6 month controlled pilot with academic and humanitarian partners; a community self-reliance model for transferring technical ownership; exploration of use by activists, journalists, and persons with disabilities; and policy engagement with international organisations.
