@@ -106,15 +106,3 @@ Ten design principles, derived from GDPR, UNCRC, and CRPD, are each mapped to a 
 - *Paradox of transparency* — auditability presumes auditors who may not be available locally.
 
 **Future directions.** A 3–6 month controlled pilot with academic and humanitarian partners; a community self-reliance model for transferring technical ownership; exploration of use by activists, journalists, and persons with disabilities; and policy engagement with international organisations.
-
----
-
-## Links
-
-- Project site and offline demos: <https://mcorpai.org/>
-- Repository: <https://github.com/henrymorgan10/mcorpai-org>
-- A tamper-evident checksum of the 54 kB release bundle can be provided on request.
-
-## License
-
-Released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
