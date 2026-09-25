@@ -10,8 +10,6 @@ Gyu-min Jeon (Morgan J.) · M-Corp Ethical AI · contact@mcorpai.org · February
 
 ## 1. Problem and Approach
 
-Humanitarian AI commonly assumes connectivity, centralised data, and institutional capacity. These conditions are often absent in refugee camps, conflict zones, and high-surveillance environments, where privacy and liability risks may outweigh potential benefits.
-
 VitalGuard inverts the usual design question. Instead of asking *"What can AI do?"*, it asks:
 
 > *"What may AI ethically be permitted to do in the most vulnerable settings, and under what institutional conditions?"*
