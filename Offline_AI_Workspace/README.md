@@ -6,8 +6,6 @@ Gyu-min Jeon (Morgan J.) · M-Corp Ethical AI · contact@mcorpai.org · February
 
 > VitalGuard is an offline AI artefact constrained to 54 kB, written in vanilla HTML and JavaScript with zero external dependencies. It is presented as a research pathway, not a finished or field-validated product.
 
-한국어: [README.ko.md](./README.ko.md)
-
 ---
 
 ## 1. Problem and Approach
