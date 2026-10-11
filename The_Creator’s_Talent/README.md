@@ -134,8 +134,3 @@ Sends data as sound using the Web Audio API (`OscillatorNode` out, `getUserMedia
 ## 6. Copyright Holder: Morgan J.
 
 ### Licensed under the **Apache License, Version 2.0**. See `LICENSE`.
-
-<img width="261" height="261" alt="Morgan J" src="ttps://raw.githubusercontent.com/henrymorgan10/mcorpai-org/main/Morgan J. Caricature.jpg" />
-
-### This project was initiated in South Korea.
-### You are free to use the source code. 
