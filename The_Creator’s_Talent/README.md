@@ -139,4 +139,5 @@ Licensed under the **Apache License, Version 2.0**. See `LICENSE`.
 
 <img width="327" height="327" alt="Morgan J  Caricature" src="https://github.com/user-attachments/assets/292c7083-d145-4b9e-9f53-d5a383537e14" />
 
+**You are free to use the source code. What truly matters is the ability to design systems and the intellectual capacity behind them.**
 
