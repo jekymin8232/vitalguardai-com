@@ -135,6 +135,8 @@ Sends data as sound using the Web Audio API (`OscillatorNode` out, `getUserMedia
 
 Licensed under the **Apache License, Version 2.0**. See `LICENSE`.
 
+### This project was initiated in South Korea.
+
 <img width="409" height="409" alt="Morgan J  Caricature" src="https://github.com/user-attachments/assets/292c7083-d145-4b9e-9f53-d5a383537e14" />
 
 
