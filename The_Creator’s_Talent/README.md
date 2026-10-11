@@ -131,7 +131,7 @@ Sends data as sound using the Web Audio API (`OscillatorNode` out, `getUserMedia
 
 ---
 
-## 6. License
+## 6. Copyright Holder: Morgan J.
 
 Licensed under the **Apache License, Version 2.0**. See `LICENSE`.
 
