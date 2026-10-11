@@ -139,4 +139,3 @@ Sends data as sound using the Web Audio API (`OscillatorNode` out, `getUserMedia
 
 ### This project was initiated in South Korea.
 ### You are free to use the source code. 
-### What truly matters is the ability to design systems and the intellectual capacity behind them.
