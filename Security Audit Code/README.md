@@ -1,3 +1,15 @@
+As an independent researcher, I am currently exploring several paths to ensure the long-term sustainability and future development of my research. I believe that **international collaboration with institutions, researchers, and partners who share my vision and values, and who can provide technical or financial support, is essential** to achieving this goal.
+
+One of my most pressing priorities is to **establish a minimum level of financial stability that will allow me to continue my work as an independent researcher**. This is not about pursuing personal financial gain. Rather, securing a modest but stable means of supporting myself is essential to ensuring that financial hardship does not force me to abandon the research I have dedicated myself to.
+
+I firmly believe that this research has the potential to extend far beyond conventional software development. **It could help protect the safety and lives of countless people facing severe communication restrictions, internet shutdowns, and situations where access to essential digital infrastructure is severely limited or completely unavailable.**
+
+**My ultimate goal is to turn this technological possibility into a practical reality: to develop technology that can help protect people even in the most extreme circumstances, when conventional systems and technologies can no longer function.**
+
+To make this vision a reality, I need not only the basic financial stability required to sustain my research, but also meaningful, long-term partnerships with individuals and organizations that recognize the potential humanitarian value of this technology and are willing to help bring it to life.
+
+---
+
 ## The Only Software That Works During a Shutdown.
 # VitalGuard AI v4.7.3 — Security Audit Scope Map
 
