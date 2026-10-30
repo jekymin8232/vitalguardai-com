@@ -1,3 +1,5 @@
+Large language models (LLMs) require substantial investments in servers, computing infrastructure, and ongoing operational costs. In contrast, investing directly in talented individuals is a far more cost-effective approach, with the potential to deliver a higher probability of success.
+
 # VitalGuard AI
 
 **Constraint-Based Ethical Design for Ultra-Lightweight Offline AI in Humanitarian Contexts**
