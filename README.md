@@ -1,4 +1,4 @@
-## [Collaboration Opportunities](https://github.com/jekymin8232/vitalguardai-com/blob/main/%2BCOLLABORATION.md)
+## ➡️ [Collaboration Opportunities](https://github.com/jekymin8232/vitalguardai-com/blob/main/%2BCOLLABORATION.md)
 
 # VitalGuard AI v4.7.3 — Security Audit Scope Map
 
