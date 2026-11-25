@@ -1,4 +1,4 @@
-### Research Paper: [https://mcorpai.org/](https://mcorpai.org/?utm_source=chatgpt.com)
+**Research Paper: [https://mcorpai.org/](https://mcorpai.org/)**
 
 # VitalGuard AI v4.7.3 — Security Audit Scope Map
 
