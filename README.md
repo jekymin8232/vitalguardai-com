@@ -1,6 +1,4 @@
-**Personal Lab: [mcorpai.org](https://mcorpai.org/)**
-
-**VISION: [vitalguardai.com](https://vitalguardai.com/)**
+**[Personal Lab](https://mcorpai.org/) · [Vision](https://vitalguardai.com/)**
 
 # VitalGuard AI v4.7.3 — Security Audit Scope Map
 
