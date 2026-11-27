@@ -1,4 +1,4 @@
-**Research Paper: [mcorpai.org](https://mcorpai.org/)**
+**Personal Studio: [mcorpai.org](https://mcorpai.org/)**
 
 # VitalGuard AI v4.7.3 — Security Audit Scope Map
 
